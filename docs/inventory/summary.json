@@ -1,0 +1,31 @@
+{
+  "files": 117,
+  "bytes": 3028277492,
+  "excluded_trees": [
+    ".codex",
+    ".git",
+    ".pytest_cache",
+    "MuscleCore分析資料/website/.pytest_cache",
+    "MuscleCore分析資料/website/.venv",
+    "MuscleCore分析資料/website/app/__pycache__",
+    "MuscleCore分析資料/website/app/services/__pycache__",
+    "MuscleCore分析資料/website/tests/__pycache__",
+    "VibeCart_AI/MongoDB/__pycache__",
+    "VibeCart_AI/services/__pycache__"
+  ],
+  "errors": [],
+  "identical_files": [
+    [
+      "VibeCart_AI/MongoDB/02_專案整合規格_v1.1_來源快照.md",
+      "討論的相關記錄/VibeCart_AI_專案整合規格_v1.1.md"
+    ],
+    [
+      "VibeCart_AI/MongoDB/07_購物車更新規格_來源快照.md",
+      "討論的相關記錄/VibeCart_AI_MongoDB_Cart_Schema_Update.md"
+    ],
+    [
+      "VibeCart_AI/MongoDB/13_完整Schema_v1.0_來源快照.md",
+      "討論的相關記錄/VibeCart_AI_MongoDB_Complete_Schema.md"
+    ]
+  ]
+}

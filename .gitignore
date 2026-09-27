@@ -1,0 +1,47 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Environment variables and local secrets
+.env
+.env.*
+!.env.example
+
+# OS/editor files
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/
+
+# Project archives and large demo/export media
+*.zip
+*.mp4
+*.mov
+*.avi
+*.mkv
+
+# PDFs can be large export artifacts. Remove this rule if a small PDF must live in Git.
+*.pdf
+
+# Local tools, private backup state and credentials / 本機工具與機密備份狀態
+.codex/
+.backup-state/
+node_modules/
+*.pem
+*.key
+*.p12
+*service-account*.json
+*service_account*.json
+credentials*.json
+token*.json
+desktop.ini
+*.log

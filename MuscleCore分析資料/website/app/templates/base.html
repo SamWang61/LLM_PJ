@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="MuscleCore 智慧運動商品購物平台">
+  <title>{% block title %}MuscleCore{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+</head>
+<body>
+  <header class="site-header">
+    <a class="brand" href="{{ url_for('store.home') }}"><span>M</span> MuscleCore</a>
+    <nav aria-label="主要導覽">
+      <a href="{{ url_for('store.home') }}">商城</a>
+      {% if session.get('user_id') %}<a href="{{ url_for('store.cart') }}">購物車 <b>{{ session.get('cart', {})|length }}</b></a>{% endif %}
+      {% if session.get('role') == 'admin' %}<a href="{{ url_for('admin.dashboard') }}">營運後台</a>{% endif %}
+      {% if session.get('user_id') %}<span class="member">{{ session.get('name') }}</span><a href="{{ url_for('auth.logout') }}">登出</a>
+      {% else %}<a href="{{ url_for('auth.login') }}">登入</a><a class="nav-cta" href="{{ url_for('auth.register') }}">加入會員</a>{% endif %}
+    </nav>
+  </header>
+  {% with messages = get_flashed_messages(with_categories=true) %}{% if messages %}<div class="flash-stack">{% for category, message in messages %}<div class="flash {{ category }}">{{ message }}</div>{% endfor %}</div>{% endif %}{% endwith %}
+  <main>{% block content %}{% endblock %}</main>
+  <footer>© 2026 MuscleCore · Python × MongoDB 智慧運動商城</footer>
+</body>
+</html>
+

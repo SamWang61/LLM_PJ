@@ -1,0 +1,16 @@
+# 文件中心 / Documentation hub
+
+本目錄提供跨模組索引與管理規則；原文件保留在既有目錄，以維持引用、來源快照與遷移可追溯性。This hub consolidates navigation while preserving original paths and historical evidence.
+
+| 主題 / Topic | 入口 / Entry |
+|---|---|
+| 全部文件 / All documents | [逐份雙語索引](DOCUMENT_INDEX.md) |
+| 目錄管理 / Repository management | [管理政策](REPOSITORY_GUIDE.md) |
+| 備份 / Backup | [流程與狀態](BACKUP.md) |
+| 現行資料層 / Current data layer | [MongoDB README](../VibeCart_AI/MongoDB/README.md) |
+| 原始規格 / Source specifications | [規格與討論](../討論的相關記錄/README.md) |
+| 歷史進度 / Historical progress | [進度入口](../專題進度/README.md) |
+| 展示網站 / Demo website | [啟動說明](../MuscleCore分析資料/website/README.md) |
+| 完整檔案清冊 / File inventory | [CSV](inventory/files.csv)、[摘要](inventory/summary.json) |
+
+中文原稿是專題依據；英文摘要用於協助理解，不取代正式欄位定義。來源快照與原始報告不為了翻譯而覆寫。Chinese source specifications remain authoritative; English summaries do not replace field definitions or alter snapshots.
