@@ -8,7 +8,8 @@
 .gitignore,661,document / 文件,78dbe46200f1d146dea4c832a4d002cfa27ed27914bc1f0ed7f18090a2f2b9cf,text read / 文字讀取 (47 lines)
 CHANGELOG.md,946,document / 文件,72e3313ef9e2c0a56aaf044cfbb081bb90e5b17bfd0606061b5636af5370c359,text read / 文字讀取 (12 lines)
 CODE_OF_CONDUCT.md,489,document / 文件,4726f51366646dfcc33567477d958f49b3854f9f2f36d29bdaab72d6116447ae,text read / 文字讀取 (5 lines)
-CONTRIBUTING.md,1653,document / 文件,fb95fc512975fbba3276432ff838405f084651d0137ad4e43352a19de3106904,text read / 文字讀取 (16 lines)
+CONTRIBUTING.md,1922,document / 文件,35bd44c6a4ca20c4f1c92754b57fc9b46deb1f517f996e5fb867bff4005b53d9,text read / 文字讀取 (18 lines)
+Gemini 匯出 2026年9月30日 晚上7_19_25 [GMT+8].md,3723,document / 文件,6718a7eb7833a959816771243824928b35a181408e3c10e3af19ff2f4dd80ac0,text read / 文字讀取 (72 lines)
 MuscleCore分析資料/MuscleCore_Python_MongoDB_v1.0.zip,1908878,Drive artifact / 雲端大型附件,760e7cd781959f1e34c97810054f9ed9d01fd9ce3aec49d1743c7b2959c91154,binary hashed / 二進位雜湊
 MuscleCore分析資料/website/.env,204,private / 機密,,not read / 未讀取內容
 MuscleCore分析資料/website/.env.example,204,document / 文件,b1527649acdb9e0e59933b2c8a14f2c785fa9d184a7ebd26ce2f58bddcb5ebbb,text read / 文字讀取 (8 lines)
@@ -92,10 +93,11 @@ VibeCart_AI/services/review_service.py,3088,source / 原始碼,6d703aa07e98aefd4
 VibeCart_AI/services/sku_cart_service.py,9138,source / 原始碼,de557ec7e2f28a5098107013191e5a5293273b2950344808c17c503eceaf536f,text read / 文字讀取 (128 lines)
 [MuscleCore運動用品電商網站_報告.pdf,444610054,Drive artifact / 雲端大型附件,c8f2cd6b15383c483683f492c2d785bbbd90589741da69bbd0cee0eed51e9594,binary hashed / 二進位雜湊
 docs/BACKUP.md,4116,document / 文件,4232ee43f6c03c3cd7f395099bf7c6f3bd2f750a17a9e44ff65c4e9d6aeadb51,text read / 文字讀取 (41 lines)
-docs/DOCUMENT_INDEX.md,7072,document / 文件,5bb776d2feffbd96d1131be02912fd4eac9054c39bfc14cd5a7a6932aa6401cf,text read / 文字讀取 (38 lines)
+docs/DOCUMENT_INDEX.md,7282,document / 文件,06540b33183b9f4477fc975e28bebdb47ee59a76c6fdf5f555e1a1ec479f6544,text read / 文字讀取 (39 lines)
 docs/ORGANIZATION_REPORT.md,2471,document / 文件,e453ab02cada05682c0f1b01ecbadd0675a092c996e4bfed78bb3a3dba2129d9,text read / 文字讀取 (25 lines)
-docs/README.md,1256,document / 文件,f1895405ea2e7520aa9a5c026b9b1b29c880cc0e59f36318677339231c93b408,text read / 文字讀取 (16 lines)
+docs/README.md,1438,document / 文件,59c32a0ea0101d7d0cba416b543c340d5b7f934e7ffe8bec6e8a8dff439f1eeb,text read / 文字讀取 (17 lines)
 docs/REPOSITORY_GUIDE.md,3470,document / 文件,e6fe3d9d0ab355d68b6293f428c5a32db40d2b3ff730993a1785e50fd405638c,text read / 文字讀取 (37 lines)
+docs/分支(Branch)規劃與協作機制.md,6696,document / 文件,3cf233bed561d7f748d11b2b4db0f878bdf6f2450502f3c7c1199b238978dbe2,text read / 文字讀取 (125 lines)
 scripts/check_repository.py,2503,source / 原始碼,59e6ae373d239c21ea0bf55a551eb2fd34908f1db1ea3b9cded9de68651f95cb,text read / 文字讀取 (56 lines)
 scripts/inventory.py,3367,source / 原始碼,f0b7796353354eb3564a3e191b040cb62d741c8dc8ba677cdbd41b64ba54d607,text read / 文字讀取 (69 lines)
 專題進度/LLM購物網站專題_2026-09-09_今日總結與下一步規劃_v1.0.md,20512,document / 文件,52d2a1190196c0620da21650aa8cb8d43a35ae33684a9a0dc35fdb48c2aa5cac,text read / 文字讀取 (487 lines)
