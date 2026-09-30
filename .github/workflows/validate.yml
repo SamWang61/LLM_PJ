@@ -13,7 +13,7 @@ jobs:
       - name: 檔案政策 / File policy
         run: python scripts/check_repository.py
       - name: 安裝展示網站依賴 / Install demo dependencies
-        run: python -m pip install -r 'MuscleCore分析資料/website/requirements.txt'
+        run: python -m pip install -r 'MuscleCore分析資料/website/requirements-test.txt'
       - name: 網站離線測試 / Offline demo tests
         working-directory: MuscleCore分析資料/website
         run: python -m pytest tests -q -p no:cacheprovider

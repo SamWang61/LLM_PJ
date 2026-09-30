@@ -9,15 +9,16 @@ VibeCart AI builds on the MuscleCore sports store to explore personalized shoppi
 ## 目前狀態 / Current status
 
 - **新版資料層**：Complete Schema v4，含 SKU 購物車、訂單明細與評價服務。2026-09-19 保存的證據為 27 集合、59 自訂索引、66 項整合測試通過；這是歷史證據，並非本次重新驗證 Atlas。
-- **展示網站**：`MuscleCore分析資料/website` 為 Flask + Jinja2 + MongoDB MVP；尚未接線新版 Schema。
-- **尚待完成**：完整 AI 推薦、排程計分、批次統計、網站與新版資料層整合。規格中的 FastAPI／Firebase 部署是設計內容，不代表已部署。
+- **展示網站**：`MuscleCore分析資料/website` 為 Flask + Jinja2 + MongoDB MVP；已提供可選 v4 路由介接與離線測試；尚未完成真實資料庫整合驗收。
+- **尚待完成**：完整 AI 推薦、排程計分、批次統計，以及真實模型與新版資料層整合驗收。規格中的 FastAPI／Firebase 部署是設計內容，不代表已部署。
 
-The v4 data layer and the Flask demo remain separate. Historical Atlas test reports are retained; AI ranking, scheduled scoring, deployment, and application integration are not represented as complete.
+The Flask demo now has an opt-in v4 adapter and LangGraph workflows; live integration remains unverified. Historical Atlas test reports are retained; AI ranking, scheduled scoring, deployment, and application integration are not represented as complete.
 
 ## 閱讀入口 / Start here
 
 | 入口 / Entry | 用途 / Purpose |
 |---|---|
+| [Flask／SKU／AI 串接](docs/FLASK_SKU_AI_INTEGRATION.md) | 啟用方式、LangGraph 架構與待驗收項目 / Integration and UAT |
 | [文件中心](docs/README.md) | 按主題閱讀 / Topic-based navigation |
 | [目錄與管理政策](docs/REPOSITORY_GUIDE.md) | 路徑、版本與附件政策 / Layout and lifecycle |
 | [全部文件索引](docs/DOCUMENT_INDEX.md) | 逐份文件的中英文定位 / Bilingual document catalog |

@@ -16,3 +16,5 @@ Never commit credentials, real customer data, dependency caches, or large media.
 新檔案加入後，以 `python scripts/inventory.py` 更新清冊；此清冊刻意略過依賴環境、快取與機密內容。Regenerate the inventory after file changes; dependencies, caches and secret contents are outside its inspection scope.
 
 四人功能分工與既有遠端分支使用方式見 [分支規劃與協作機制](docs/%E5%88%86%E6%94%AF%28Branch%29%E8%A6%8F%E5%8A%83%E8%88%87%E5%8D%94%E4%BD%9C%E6%A9%9F%E5%88%B6.md)。See the branch guide for ownership and remote branch setup.
+
+測試 Flask／AI 串接前，在 website 安裝 `requirements-test.txt`，離線測試不下載 BGE 權重、不呼叫 Claude API。Install the test requirements to execute real LangGraph workflows with fake model providers.

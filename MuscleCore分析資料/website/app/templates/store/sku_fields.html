@@ -1,0 +1,8 @@
+<input type="hidden" name="operation_id" value="{{ operation_id() }}">
+<label>商品規格
+<select name="sku_id" required>
+<option value="">請選擇規格</option>
+{% for sku in product.skus %}
+<option value="{{ sku._id }}" {% if sku.available_quantity < 1 %}disabled{% endif %}>{{ sku.sku_code }} · {{ sku.variant_attributes.values()|join(' / ') }} · NT$ {{ sku.price }} · 庫存 {{ sku.available_quantity }}</option>
+{% endfor %}</select></label>
+<label>數量 <input type="number" name="quantity" value="1" min="1" max="99" required></label>
