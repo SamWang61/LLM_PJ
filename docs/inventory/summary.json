@@ -1,7 +1,8 @@
 {
-  "files": 117,
-  "bytes": 3028277492,
+  "files": 119,
+  "bytes": 3028288572,
   "excluded_trees": [
+    ".backup-state",
     ".codex",
     ".git",
     ".pytest_cache",
