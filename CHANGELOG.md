@@ -1,5 +1,11 @@
 # 變更紀錄 / Changelog
 
+## 2026-10-02 — SAM 後台與連線 / Dashboard and connection
+
+- 建立依賴整合分支的 AI 後台：台北日期、示範訂單、營收與推薦行為監測。Added scoped dashboard queries and summary caching.
+- 私有 v4 設定與可清理的真實交易驗證；38 項離線測試通過。Added a private profile and live verification evidence.
+- 更新雙語分支規則、文件索引與交付清冊；保留既有架構。Updated ownership and navigation without moving existing files.
+
 ## 2026-09-27 — 倉庫整理 / Repository organization
 
 - 新增中文優先的雙語首頁、文件索引、貢獻規範、安全政策與協作範本。Added Chinese-first bilingual navigation and collaboration documents.

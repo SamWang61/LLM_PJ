@@ -4,6 +4,8 @@
 
 | 主題 / Topic | 入口 / Entry |
 |---|---|
+| [SAM 後台與 v4 測試交接](AI_DASHBOARD.md) | SAM ownership, stacked branch, private profile and validation. |
+| [Atlas 驗證報告](V4_TEST_VERIFICATION.json) | Live schema, indexes and transaction checks; no credentials. |
 | [Flask／SKU／AI 串接](FLASK_SKU_AI_INTEGRATION.md) | v4 routes, LangGraph workflows, setup and UAT. |
 | 全部文件 / All documents | [逐份雙語索引](DOCUMENT_INDEX.md) |
 | 目錄管理 / Repository management | [管理政策](REPOSITORY_GUIDE.md) |

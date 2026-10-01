@@ -1,3 +1,5 @@
+> 2026-10-02 更新：SAM 的後台、私有連線與真實 Atlas 驗證已交付，見 [後續交接](AI_DASHBOARD.md) 與 [讀回證據](V4_TEST_VERIFICATION.json)。下文 9/30 測試狀態保留為歷史紀錄。Live follow-up evidence supersedes the historical database UAT status; real model-provider checks remain pending.
+
 # Flask × SKU 購物車 × LangGraph AI 串接
 
 實作日期：2026-09-30。此分支提供可執行的模組串接與離線測試；不是 Atlas 上线或模型品質驗收證明。

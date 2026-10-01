@@ -6,7 +6,13 @@ from .db import init_db
 
 
 def create_app(test_config=None):
-    load_dotenv()
+    # Select an ignored local profile explicitly without replacing the legacy .env.
+    profile = os.getenv("APP_ENV_FILE")
+    if profile:
+        from pathlib import Path
+        if not Path(profile).is_file():
+            raise ValueError("APP_ENV_FILE does not exist")
+    load_dotenv(dotenv_path=profile)
     app = Flask(__name__)
     app.config.from_mapping(
         SECRET_KEY=os.getenv("SECRET_KEY", "dev-only-secret"),

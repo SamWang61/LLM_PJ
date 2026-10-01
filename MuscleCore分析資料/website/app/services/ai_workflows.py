@@ -134,9 +134,13 @@ def storefront_recommendations(products, events, query=""):
 
 def summary_metrics(insights):
     """Allowlist: no names, emails, IDs, free-text product content or raw orders."""
-    return {"currency": "TWD", "scope": "latest_100_orders", "revenue": str(insights["revenue"]),
+    return {"currency": "TWD", "scope": insights.get("scope_key", "latest_100_orders"),
+            "start": insights.get("start", ""), "end": insights.get("end", ""),
+            "timezone": "Asia/Taipei", "demo": insights.get("demo", "all"),
+            "data_mode": insights.get("mode", "v4"),
+            "revenue": str(insights["revenue"]),
             "paid_orders": insights["orders"], "average_order_value": str(insights["avg_order"]),
-            "low_stock_skus": len(insights["low_stock"])}
+            "low_stock_skus": insights.get("low_stock_count", len(insights["low_stock"]))}
 
 
 def claude_model():
@@ -156,7 +160,9 @@ def build_summary_graph(model_factory):
         try:
             prompt = ChatPromptTemplate.from_messages([
                 ("system", "你是電商營運分析助理。僅依提供的彙總數據，以繁體中文提出三點簡短摘要。"
-                 "資料僅涵蓋最近100筆訂單，不能宣稱為全站、月營收或推論成長趨勢。"
+                 "scope=latest_100_orders 表示最近100筆；date_range 表示台北時間 start 至 end 含結束日。"
+                 "須說明 demo 的示範訂單篩選。data_mode=legacy 的有效訂單並非確認付款。"
+                 "低庫存是目前狀態，並非過去區間。不能宣稱全站營收或推論成長趨勢。"
                  "不得捏造商品、因果或數字；資料不足須說明。建議供人工評估，不執行任何操作。"),
                 ("human", "營運統計：{metrics}")])
             chain = prompt | model_factory() | StrOutputParser()
