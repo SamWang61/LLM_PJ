@@ -1,5 +1,12 @@
 # 變更紀錄 / Changelog
 
+## 2026-10-02 — SAM 行為計分 / Preference scoring
+
+- 新增 v4 事件去重、70／30 上限與逐事件半衰期計算；讀取有效政策。Added policy-based member scoring.
+- 提供預設只讀批次工具、會員限額、重跑與並行更新防護；未啟用排程。Added bounded dry-run/apply job.
+- 50 項離線測試通過；真實 Atlas 嚴格格式、寫入與重跑通過且測試資料清理完成。See [verification](docs/SAM_SCORING_VERIFICATION.json).
+- 新增 [SAM 執行清單](docs/SAM_WORK_PLAN.md) 與 [操作交接](docs/PREFERENCE_SCORING.md)。
+
 ## 2026-10-02 — 合併與連線紀錄 / Merge and connection record
 
 - PR #3 先合入 SAM 整合分支，PR #2 再合入 main；合併後 CI 通過。Both PRs merged in dependency order; main CI passed.

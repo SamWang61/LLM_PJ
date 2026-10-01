@@ -85,6 +85,19 @@ def smoke(db):
         db.users.update_one({'_id': user['_id']}, {'$set': {'role': 'customer'}})
         assert client.get('/admin/').status_code == 302
         checks.append('live_admin_metrics_monitor_summary_and_revocation')
+        from VibeCart_AI.services.preference_service import rebuild_member
+        from datetime import datetime, timezone
+        scored_at = datetime.now(timezone.utc)
+        preview = rebuild_member(db, user['_id'], as_of=scored_at)
+        assert not preview['applied']
+        assert db.user_preference_scores.count_documents({'user_id': user['_id']}) == 0
+        score = rebuild_member(db, user['_id'], as_of=scored_at, apply=True)
+        repeated = rebuild_member(db, user['_id'], as_of=scored_at, apply=True)
+        assert score['snapshot'] == repeated['snapshot']
+        assert score['excluded_purchase_events'] == 1  # checkout above is explicitly demo
+        assert score['snapshot']['products'][str(product['_id'])]['raw_score'] > 0
+        assert db.user_preference_scores.count_documents({'user_id': user['_id']}) == 1
+        checks.append('v4_preference_dry_run_apply_replay_with_strict_validator')
         # Two separately owned members compete for the final unit.
         buyers = [insert('users', password_hash=generate_password_hash(uuid4().hex)) for _ in range(2)]
         service = CartService(db, enable_checkout=True)
@@ -121,7 +134,7 @@ def smoke(db):
         created = db.users.find_one({'email': email}, {'_id': 1})
         if created and created['_id'] not in owned['users']:
             owned['users'].append(created['_id'])
-        for name in ('product_reviews', 'order_items', 'orders', 'carts', 'cart_events', 'behavior_events'):
+        for name in ('product_reviews', 'order_items', 'orders', 'carts', 'cart_events', 'behavior_events', 'user_preference_scores'):
             db[name].delete_many({'user_id': {'$in': owned['users']}})
         for name, ids in owned.items():
             db[name].delete_many({'_id': {'$in': ids}})

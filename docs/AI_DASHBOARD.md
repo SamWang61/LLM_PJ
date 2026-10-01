@@ -68,3 +68,7 @@ The ignored local profile contains the existing v4 connection. It is not a newly
 完整 6+4 推薦、排程衰減／計分與批次統計仍屬後續工作；本次完成的是 SAM 的後台、連線與既有整合驗收。BGE 真實推論、Claude API 及手機全站 UAT 尚未驗收，不能把規則退回稱為模型成功。未提供模型憑證時不呼叫付費 API。
 
 Live checks exercise real transactions with temporary owned fixtures. Real BGE/Claude providers and full scheduled recommendation processing remain outside the verified delivery. No migration or production deployment is performed.
+
+## SAM 後續計分交付 / Scoring follow-up
+
+2026-10-02：新增 v4 行為衰減計分服務及批次工具，通過 50 項離線測試與真實 Atlas 預覽／寫入／重跑驗證。尚未啟用排程或替換前台推薦。見 [計分操作](PREFERENCE_SCORING.md) 與 [SAM 執行清單](SAM_WORK_PLAN.md)。A runnable scoring service is now delivered; scheduled and storefront integration remain pending.

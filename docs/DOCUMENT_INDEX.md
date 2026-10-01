@@ -5,6 +5,9 @@
 | 文件 / Document | English scope |
 |---|---|
 | [10/02 合併與 Atlas 連線紀錄](MERGE_RECORD_2026-10-02.md) | Completed merges, CI evidence and private URI handling. |
+| [SAM 執行與接手清單](SAM_WORK_PLAN.md) | Ownership, completed scoring work and next dependencies. |
+| [v4 行為計分操作](PREFERENCE_SCORING.md) | Policy-based decay, bounded jobs and safe replay. |
+| [計分 Atlas 驗證](SAM_SCORING_VERIFICATION.json) | Live strict-validator and replay evidence; fixture cleanup verified. |
 | [SAM 後台與 v4 測試交接](AI_DASHBOARD.md) | SAM ownership, stacked branch, private profile and validation. |
 | [Atlas 驗證報告](V4_TEST_VERIFICATION.json) | Live schema, indexes and transaction checks; no credentials. |
 | [Flask／SKU／AI 串接](FLASK_SKU_AI_INTEGRATION.md) | v4 routes, LangGraph workflows, setup and UAT. |

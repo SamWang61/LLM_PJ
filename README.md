@@ -9,15 +9,17 @@ VibeCart AI builds on the MuscleCore sports store to explore personalized shoppi
 ## 目前狀態 / Current status
 
 - **新版資料層**：Complete Schema v4，含 SKU 購物車、訂單明細與評價服務。2026-10-02 重新讀回 27 集合、86 個索引（59 自訂）；真實交易與 Flask 驗證見 [SAM 交接文件](docs/AI_DASHBOARD.md)。
-- **展示網站**：`MuscleCore分析資料/website` 為 Flask + Jinja2 + MongoDB MVP；已完成可選 v4 路由、營運後台與 38 項離線測試，並通過既有 v4 Atlas 的交易與路由驗證。
+- **展示網站**：`MuscleCore分析資料/website` 為 Flask + Jinja2 + MongoDB MVP；已完成可選 v4 路由、營運後台；含新增計分服務共 50 項離線測試，並通過既有 v4 Atlas 的交易與路由驗證。
+- **SAM 新增交付**：[行為衰減計分與批次工具](docs/PREFERENCE_SCORING.md)，含去重、70／30 上限、可重跑預覽／寫入及真實 Atlas 驗證；尚未啟用排程或替換前台推薦。
 - **尚待完成**：完整 AI 推薦、排程計分、批次統計，以及真實模型與新版資料層整合驗收。規格中的 FastAPI／Firebase 部署是設計內容，不代表已部署。
 
-The Flask v4 adapter and dashboard pass 38 offline tests and live Atlas transaction checks. Real BGE/Claude providers, scheduled scoring and deployment remain unverified.
+The Flask v4 adapter and dashboard and scoring service pass 50 offline tests and live Atlas transaction checks. Real BGE/Claude providers, scheduled scoring and deployment remain unverified.
 
 ## 閱讀入口 / Start here
 
 | 入口 / Entry | 用途 / Purpose |
 |---|---|
+| [SAM 工作與接手清單](docs/SAM_WORK_PLAN.md) | 執行次序、責任與依賴 / SAM work plan |
 | [最新合併與連線紀錄](docs/MERGE_RECORD_2026-10-02.md) | PR #3／#2 已合併、驗證證據與 URI 保存 / Merge record |
 | [SAM 後台與測試連線](docs/AI_DASHBOARD.md) | 分支、啟動、驗證與限制 / Dashboard handoff |
 | [Flask／SKU／AI 串接](docs/FLASK_SKU_AI_INTEGRATION.md) | 啟用方式、LangGraph 架構與待驗收項目 / Integration and UAT |
