@@ -1,2 +1,25 @@
-{% extends 'base.html' %}{% block title %}VibeInsight 營運後台{% endblock %}{% block content %}<section class="admin-shell"><div class="admin-title"><div><span class="eyebrow">VIBEINSIGHT AI</span><h1>營運決策中心</h1></div><a class="button secondary" href="{{ url_for('admin.recommendations') }}">推薦模型監控</a></div><div class="metrics"><article><span>營業額</span><strong>NT$ {{ '{:,.0f}'.format(insights.revenue) }}</strong></article><article><span>有效訂單</span><strong>{{ insights.orders }}</strong></article><article><span>平均客單</span><strong>NT$ {{ '{:,.0f}'.format(insights.avg_order) }}</strong></article><article><span>低庫存品項</span><strong>{{ insights.low_stock|length }}</strong></article></div><div class="admin-grid"><section class="panel"><h2>AI 營運摘要</h2>{% for message in insights.messages %}<p class="insight">{{ message }}</p>{% endfor %}</section><section class="panel"><h2>熱銷排行</h2>{% for p in insights.best %}<div class="rank"><b>0{{ loop.index }}</b><span>{{ p.name }}</span><strong>{{ p.sales_count }} 件</strong></div>{% endfor %}</section></div><section class="panel"><h2>最近訂單</h2><div class="table-wrap"><table><thead><tr><th>訂單編號</th><th>狀態</th><th>金額</th></tr></thead><tbody>{% for o in recent_orders %}<tr><td>{{ o.order_no }}</td><td>{{ o.status }}</td><td>NT$ {{ '{:,.0f}'.format(o.total) }}</td></tr>{% else %}<tr><td colspan="3">尚無訂單資料</td></tr>{% endfor %}</tbody></table></div></section></section>{% endblock %}
-
+{% extends 'base.html' %}
+{% block title %}VibeInsight 營運後台{% endblock %}
+{% block content %}
+<section class="admin-shell">
+  <div class="admin-title"><div><span class="eyebrow">VIBEINSIGHT AI</span><h1>營運決策中心</h1><p>{{ insights.scope }} · {{ {'all':'包含示範訂單','exclude':'排除示範訂單','only':'僅示範訂單'}[insights.demo] }}</p></div><a class="button secondary" href="{{ url_for('admin.recommendations') }}">推薦行為監控</a></div>
+  <form class="panel dashboard-filters" method="get" action="{{ url_for('admin.dashboard') }}">
+    <label>開始日期（台北）<input type="date" name="start" value="{{ insights.start }}"></label>
+    <label>結束日期（含當日）<input type="date" name="end" value="{{ insights.end }}"></label>
+    {% if config.DATA_MODE == 'v4' %}<label>示範訂單<select name="demo">{% for value,label in [('all','全部'),('exclude','排除示範'),('only','僅示範')] %}<option value="{{ value }}" {% if insights.demo == value %}selected{% endif %}>{{ label }}</option>{% endfor %}</select></label>{% endif %}
+    <button class="button" type="submit">套用範圍</button><a href="{{ url_for('admin.dashboard') }}">重設</a>
+    <p>未選日期：最近 100 筆。指定區間：最多 366 天／5,000 筆，超限請縮小範圍。</p>
+  </form>
+  <div class="metrics"><article><span>有效營收</span><strong>NT$ {{ '{:,.2f}'.format(insights.revenue) }}</strong></article><article><span>有效訂單 / 範圍內訂單</span><strong>{{ insights.orders }} / {{ insights.sampled_orders }}</strong></article><article><span>平均客單</span><strong>NT$ {{ '{:,.2f}'.format(insights.avg_order) }}</strong></article><article><span>目前低庫存品項</span><strong>{{ insights.low_stock_count }}</strong></article></div>
+  <div class="admin-grid">
+    <section class="panel"><h2>營運摘要</h2><p>{{ 'Claude AI 摘要，請人工核對' if summary_source == 'claude' else '規則式摘要' }}</p>
+      {% if config.AI_SUMMARY_ENABLED %}<form method="post" action="{{ url_for('admin.summary', start=insights.start, end=insights.end, demo=insights.demo) }}"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><button class="button secondary" type="submit">產生此範圍的 AI 摘要</button></form>{% else %}<p>目前使用規則摘要；AI 尚未啟用。</p>{% endif %}
+      {% for message in insights.messages %}<p class="insight">{{ message }}</p>{% endfor %}
+    </section>
+    <section class="panel"><h2>{{ "範圍內熱銷排行" if insights.mode == "v4" else "累計商品熱銷排行" }}</h2>{% for p in insights.best %}<div class="rank"><b>{{ loop.index }}</b><span>{{ p.name }}</span><strong>{{ p.sales_count }} 件</strong></div>{% else %}<p>尚無符合條件的銷售明細。</p>{% endfor %}</section>
+  </div>
+  <section class="panel"><h2>每日有效營收</h2><p>僅顯示有有效訂單的台北日期；不推論成長率。{% if insights.undated_orders %}有 {{ insights.undated_orders }} 筆無日期訂單未列入每日表。{% endif %}</p><div class="table-wrap"><table><thead><tr><th>日期</th><th>有效訂單</th><th>營收</th></tr></thead><tbody>{% for row in insights.daily %}<tr><td>{{ row.date }}</td><td>{{ row.orders }}</td><td>NT$ {{ '{:,.2f}'.format(row.revenue) }}</td></tr>{% else %}<tr><td colspan="3">此範圍尚無有日期的有效訂單。</td></tr>{% endfor %}</tbody></table></div></section>
+  <section class="panel"><h2>目前低庫存明細</h2><p>即時庫存，不受訂單日期篩選影響；最多顯示 100 筆。</p><div class="table-wrap"><table><thead><tr><th>SKU / 商品</th><th>可售數量</th><th>安全庫存</th></tr></thead><tbody>{% for sku in insights.low_stock[:100] %}<tr><td>{{ sku.sku_code if config.DATA_MODE == 'v4' else sku.name }}</td><td>{{ sku.available_quantity if config.DATA_MODE == 'v4' else sku.stock }}</td><td>{{ sku.safety_stock if config.DATA_MODE == 'v4' else sku.low_stock_threshold }}</td></tr>{% else %}<tr><td colspan="3">沒有達補貨門檻的有效品項。</td></tr>{% endfor %}</tbody></table></div></section>
+  <section class="panel"><h2>範圍內最近訂單</h2><div class="table-wrap"><table><thead><tr><th>訂單編號</th><th>狀態</th><th>付款狀態</th><th>示範</th><th>金額</th></tr></thead><tbody>{% for o in recent_orders %}<tr><td>{{ o.order_no }}</td><td>{{ o.status }}</td><td>{{ o.payment_status|default('舊版未記錄') }}</td><td>{{ '是' if o.is_demo else '否' }}</td><td>NT$ {{ '{:,.2f}'.format(o.total) }}</td></tr>{% else %}<tr><td colspan="5">尚無訂單資料。</td></tr>{% endfor %}</tbody></table></div></section>
+</section>
+{% endblock %}

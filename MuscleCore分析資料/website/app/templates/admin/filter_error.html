@@ -1,0 +1,3 @@
+{% extends 'base.html' %}
+{% block title %}篩選條件有誤｜VibeInsight{% endblock %}
+{% block content %}<section class="admin-shell panel"><h1>請調整篩選條件</h1><p role="alert">{{ message }}</p><a class="button" href="{{ url_for('admin.dashboard') }}">返回營運後台</a></section>{% endblock %}

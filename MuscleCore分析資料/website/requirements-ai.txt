@@ -1,0 +1,3 @@
+-r requirements-llm.txt
+langchain-huggingface>=1,<2
+sentence-transformers>=5,<6

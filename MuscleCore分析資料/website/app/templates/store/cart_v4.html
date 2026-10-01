@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title %}SKU 購物車｜MuscleCore{% endblock %}
+{% block content %}
+<section class="narrow"><h1>購物車</h1>
+{% if items %}
+<div class="cart-list">
+{% for item in items %}
+<article><p>{{ item.product.name }} × {{ item.qty }}　NT$ {{ '{:,.2f}'.format(item.subtotal) }}</p>
+<form method="post" action="{{ url_for('store.update_cart', sku_id=item.sku_id) }}">
+<input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+<input type="hidden" name="operation_id" value="{{ operation_id() }}">
+<label>數量 <input name="quantity" type="number" min="1" max="99" value="{{ item.qty }}" required></label>
+<button class="button secondary" type="submit">更新數量</button></form>
+<form method="post" action="{{ url_for('store.remove_from_cart', sku_id=item.sku_id) }}">
+<input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+<input type="hidden" name="operation_id" value="{{ operation_id() }}">
+<button class="button secondary" type="submit">移除</button></form></article>
+{% endfor %}</div>
+<p>購物車估計合計：NT$ {{ '{:,.2f}'.format(total) }}；結帳時重新確認價格與庫存。</p>
+{% if checkout_enabled %}
+<form method="post" action="{{ url_for('store.checkout') }}">
+<input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+<input type="hidden" name="checkout_id" value="{{ operation_id() }}">
+<input type="hidden" name="cart_id" value="{{ cart._id }}">
+<input type="hidden" name="expected_revision" value="{{ cart.revision }}">
+<button class="button" type="submit">建立示範訂單（不收款）</button></form>
+{% else %}<p>示範結帳目前未啟用。</p>{% endif %}
+{% else %}<p>購物車目前是空的。</p>{% endif %}
+<a href="{{ url_for('store.home') }}">繼續選購</a></section>
+{% endblock %}

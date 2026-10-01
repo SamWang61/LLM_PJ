@@ -1,3 +1,11 @@
+# 現行分支決策 / Current branch decision
+
+2026-10-02：SAM 直接負責 `feature/ai-dashboard` 與 v4 Atlas 連線。後台分支基於 `feature/flask-sku-ai-integration`；PR 先指向此整合分支，再由整合分支合併 main。下方歷史四人分工與一律從 main 建分支的指引，在本功能由此決策取代。詳見 [SAM 交接文件](AI_DASHBOARD.md)。
+
+SAM owns the stacked dashboard feature and private test connection. The original plan below is retained for history.
+
+---
+
 建立 GitHub 儲存庫後，從分支規劃到建立協作機制的標準執行流程與步驟如下：
 
 ---

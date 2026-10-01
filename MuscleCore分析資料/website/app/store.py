@@ -3,7 +3,7 @@ from flask import Blueprint, abort, flash, redirect, render_template, request, s
 
 from .auth import login_required
 from .db import get_db, utcnow
-from .services.recommendation import recommend_products
+from .services.ai_workflows import storefront_recommendations
 
 bp = Blueprint("store", __name__)
 
@@ -18,9 +18,11 @@ def home():
     products = list(db.products.find(query).sort("sales_count", -1))
     categories = db.products.distinct("category", {"is_active": True})
     recommendations = []
+    events = []
     if session.get("user_id"):
         events = list(db.behavior_events.find({"user_id": ObjectId(session["user_id"])}).sort("created_at", -1).limit(50))
-        recommendations = recommend_products(products, events)
+    if events or request.args.get("q"):
+        recommendations = storefront_recommendations(products, events, request.args.get("q", "")[:200])["items"]
     return render_template("store/home.html", products=products, categories=categories,
                            selected_category=category, recommendations=recommendations)
 
@@ -94,4 +96,3 @@ def checkout():
     session["cart"] = {}
     flash(f"訂單 {order['order_no']} 已成立，感謝您的購買。", "success")
     return redirect(url_for("store.home"))
-

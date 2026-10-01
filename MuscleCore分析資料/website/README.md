@@ -75,3 +75,9 @@ MuscleCore/
 ## English summary
 
 This is the legacy Flask + MongoDB demonstration store. Create a virtual environment, install requirements, copy the example environment file, start local MongoDB, seed an isolated demo database, and run run.py. The two service tests run offline with pytest. Demo accounts are for local use only. The new v4 services in VibeCart_AI are not wired into this application.
+
+## 新版 SKU 與 AI 串接 / SKU and AI integration
+
+可選 `DATA_MODE=v4` 對接共享 SKU 購物車服務；前台 BGE 與後台 Claude 使用 LangGraph／LangChain。預設保留 legacy 與關閉 AI。啟用、測試及限制見 [整合指南](../../docs/FLASK_SKU_AI_INTEGRATION.md)。
+
+完整離線測試先安裝 `requirements-test.txt`，再執行 `.venv\Scripts\python.exe -m pytest tests -q -p no:cacheprovider`；`requirements-ai.txt` 另含 BGE 模型套件。All browser POST forms now require a session CSRF token; JSON clients send X-CSRF-Token.
