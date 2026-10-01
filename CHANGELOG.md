@@ -1,5 +1,12 @@
 # 變更紀錄 / Changelog
 
+## 2026-10-02 — 分工更正與資料庫測試 / Ownership and database checks
+
+- 現行責任：SAM 資料庫／測試、JEFF AI／後台、HEN 前台／RWD（10/6 再確認）；整合驗證待確認。See [ownership](docs/TEAM_OWNERSHIP.md).
+- PR #5 計分候選轉草稿，未合入 main；不列入本次 SAM 交付。The candidate scoring branch remains parked.
+- 新增只讀檢查器與 17 項回歸案例；既有真實資料庫測試 66 項通過，測試前後集合筆數一致。See [database evidence](docs/SAM_DATABASE_TESTING.md).
+- 不修改功能、Schema、migration、憑證或部署。No application, schema or credential changes.
+
 ## 2026-10-02 — 合併與連線紀錄 / Merge and connection record
 
 - PR #3 先合入 SAM 整合分支，PR #2 再合入 main；合併後 CI 通過。Both PRs merged in dependency order; main CI passed.

@@ -1,0 +1,293 @@
+{
+  "checked_at": "2026-10-01T20:59:49.924284+00:00",
+  "mode": "read_only",
+  "status": "passed",
+  "collections": [
+    {
+      "name": "users",
+      "issues": [],
+      "indexes": 4,
+      "documents": 0,
+      "conforming": 0
+    },
+    {
+      "name": "categories",
+      "issues": [],
+      "indexes": 3,
+      "documents": 0,
+      "conforming": 0
+    },
+    {
+      "name": "products",
+      "issues": [],
+      "indexes": 5,
+      "documents": 0,
+      "conforming": 0
+    },
+    {
+      "name": "carts",
+      "issues": [],
+      "indexes": 5,
+      "documents": 0,
+      "conforming": 0
+    },
+    {
+      "name": "orders",
+      "issues": [],
+      "indexes": 6,
+      "documents": 0,
+      "conforming": 0
+    },
+    {
+      "name": "user_events",
+      "issues": [],
+      "indexes": 5,
+      "documents": 0,
+      "conforming": 0
+    },
+    {
+      "name": "ai_requests",
+      "issues": [],
+      "indexes": 3,
+      "documents": 0,
+      "conforming": 0
+    },
+    {
+      "name": "product_embeddings",
+      "issues": [],
+      "indexes": 2,
+      "documents": 0,
+      "conforming": 0
+    },
+    {
+      "name": "recommendations",
+      "issues": [],
+      "indexes": 2,
+      "documents": 0,
+      "conforming": 0
+    },
+    {
+      "name": "ai_insights",
+      "issues": [],
+      "indexes": 2,
+      "documents": 0,
+      "conforming": 0
+    },
+    {
+      "name": "ai_usage",
+      "issues": [],
+      "indexes": 1,
+      "documents": 0,
+      "conforming": 0
+    },
+    {
+      "name": "request_limits",
+      "issues": [],
+      "indexes": 2,
+      "documents": 0,
+      "conforming": 0
+    },
+    {
+      "name": "schema_migrations",
+      "issues": [],
+      "indexes": 1,
+      "documents": 4,
+      "conforming": 4
+    },
+    {
+      "name": "cart_events",
+      "issues": [],
+      "indexes": 7,
+      "documents": 0,
+      "conforming": 0
+    },
+    {
+      "name": "brands",
+      "issues": [],
+      "indexes": 3,
+      "documents": 0,
+      "conforming": 0
+    },
+    {
+      "name": "product_skus",
+      "issues": [],
+      "indexes": 3,
+      "documents": 0,
+      "conforming": 0
+    },
+    {
+      "name": "product_reviews",
+      "issues": [],
+      "indexes": 3,
+      "documents": 0,
+      "conforming": 0
+    },
+    {
+      "name": "order_items",
+      "issues": [],
+      "indexes": 5,
+      "documents": 0,
+      "conforming": 0
+    },
+    {
+      "name": "behavior_events",
+      "issues": [],
+      "indexes": 6,
+      "documents": 0,
+      "conforming": 0
+    },
+    {
+      "name": "user_preference_scores",
+      "issues": [],
+      "indexes": 2,
+      "documents": 0,
+      "conforming": 0
+    },
+    {
+      "name": "product_repurchase_stats",
+      "issues": [],
+      "indexes": 2,
+      "documents": 0,
+      "conforming": 0
+    },
+    {
+      "name": "cross_category_rules",
+      "issues": [],
+      "indexes": 3,
+      "documents": 0,
+      "conforming": 0
+    },
+    {
+      "name": "product_purchase_sequences",
+      "issues": [],
+      "indexes": 2,
+      "documents": 0,
+      "conforming": 0
+    },
+    {
+      "name": "recommendation_pools",
+      "issues": [],
+      "indexes": 2,
+      "documents": 0,
+      "conforming": 0
+    },
+    {
+      "name": "first_member_recommendations",
+      "issues": [],
+      "indexes": 2,
+      "documents": 0,
+      "conforming": 0
+    },
+    {
+      "name": "recommendation_logs",
+      "issues": [],
+      "indexes": 3,
+      "documents": 0,
+      "conforming": 0
+    },
+    {
+      "name": "system_configs",
+      "issues": [],
+      "indexes": 2,
+      "documents": 1,
+      "conforming": 1
+    }
+  ],
+  "issues": [],
+  "relationships": [
+    {
+      "source": "products",
+      "field": "major_category_id",
+      "target": "categories",
+      "orphans": 0
+    },
+    {
+      "source": "products",
+      "field": "minor_category_id",
+      "target": "categories",
+      "orphans": 0
+    },
+    {
+      "source": "product_skus",
+      "field": "product_id",
+      "target": "products",
+      "orphans": 0
+    },
+    {
+      "source": "carts",
+      "field": "user_id",
+      "target": "users",
+      "orphans": 0
+    },
+    {
+      "source": "orders",
+      "field": "user_id",
+      "target": "users",
+      "orphans": 0
+    },
+    {
+      "source": "order_items",
+      "field": "order_id",
+      "target": "orders",
+      "orphans": 0
+    },
+    {
+      "source": "order_items",
+      "field": "user_id",
+      "target": "users",
+      "orphans": 0
+    },
+    {
+      "source": "order_items",
+      "field": "product_id",
+      "target": "products",
+      "orphans": 0
+    },
+    {
+      "source": "order_items",
+      "field": "sku_id",
+      "target": "product_skus",
+      "orphans": 0
+    },
+    {
+      "source": "product_reviews",
+      "field": "user_id",
+      "target": "users",
+      "orphans": 0
+    },
+    {
+      "source": "product_reviews",
+      "field": "order_item_id",
+      "target": "order_items",
+      "orphans": 0
+    },
+    {
+      "source": "product_reviews",
+      "field": "product_id",
+      "target": "products",
+      "orphans": 0
+    }
+  ],
+  "extra_collections_count": 0,
+  "expected_migrations": [
+    {
+      "id": "20260916_01_initial_schema_v2",
+      "succeeded": true
+    },
+    {
+      "id": "20260916_02_cart_state_events_v3",
+      "succeeded": true
+    },
+    {
+      "id": "20260918_03_schema_document_constraints",
+      "succeeded": true
+    },
+    {
+      "id": "20260918_04_complete_catalog_schema_v4",
+      "succeeded": true
+    }
+  ],
+  "extra_migrations_count": 0,
+  "active_recommendation_policies": 1,
+  "total_indexes": 86
+}
