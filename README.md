@@ -8,6 +8,9 @@ VibeCart AI builds on the MuscleCore sports store to explore personalized shoppi
 
 ## 目前狀態 / Current status
 
+現行分工：**SAM 資料庫與測試、JEFF AI／後台、HEN 前台／RWD（10/6 再確認）**；整合驗證待確認。見 [責任表](docs/TEAM_OWNERSHIP.md)。
+
+- **SAM 資料庫測試**：只讀查核及真實資料庫回歸 66 項通過，前後筆數一致；見 [本次證據](docs/SAM_DATABASE_TESTING.md)。
 - **新版資料層**：Complete Schema v4，含 SKU 購物車、訂單明細與評價服務。2026-10-02 重新讀回 27 集合、86 個索引（59 自訂）；真實交易與 Flask 驗證見 [SAM 交接文件](docs/AI_DASHBOARD.md)。
 - **展示網站**：`MuscleCore分析資料/website` 為 Flask + Jinja2 + MongoDB MVP；已完成可選 v4 路由、營運後台與 38 項離線測試，並通過既有 v4 Atlas 的交易與路由驗證。
 - **尚待完成**：完整 AI 推薦、排程計分、批次統計，以及真實模型與新版資料層整合驗收。規格中的 FastAPI／Firebase 部署是設計內容，不代表已部署。
@@ -19,7 +22,8 @@ The Flask v4 adapter and dashboard pass 38 offline tests and live Atlas transact
 | 入口 / Entry | 用途 / Purpose |
 |---|---|
 | [最新合併與連線紀錄](docs/MERGE_RECORD_2026-10-02.md) | PR #3／#2 已合併、驗證證據與 URI 保存 / Merge record |
-| [SAM 後台與測試連線](docs/AI_DASHBOARD.md) | 分支、啟動、驗證與限制 / Dashboard handoff |
+| [SAM 資料庫與測試](docs/SAM_DATABASE_TESTING.md) | 檢查工具、證據及操作 / Database testing |
+| [後台與測試連線](docs/AI_DASHBOARD.md) | 分支、啟動、驗證與限制 / Dashboard handoff |
 | [Flask／SKU／AI 串接](docs/FLASK_SKU_AI_INTEGRATION.md) | 啟用方式、LangGraph 架構與待驗收項目 / Integration and UAT |
 | [文件中心](docs/README.md) | 按主題閱讀 / Topic-based navigation |
 | [目錄與管理政策](docs/REPOSITORY_GUIDE.md) | 路徑、版本與附件政策 / Layout and lifecycle |

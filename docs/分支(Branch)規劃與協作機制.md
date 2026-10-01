@@ -1,10 +1,10 @@
 # 現行分支決策 / Current branch decision
 
-2026-10-02：SAM 直接負責 `feature/ai-dashboard` 與 v4 Atlas 連線。後台分支基於 `feature/flask-sku-ai-integration`；PR 先指向此整合分支，再由整合分支合併 main。下方歷史四人分工與一律從 main 建分支的指引，在本功能由此決策取代。詳見 [SAM 交接文件](AI_DASHBOARD.md)。
+2026-10-02 最新分工：**SAM＝資料庫與測試；JEFF＝AI／後台；HEN＝前台／RWD（10/6 再確認）**。會員／購物流程及整合驗證負責人待確認。詳見 [現行分工](TEAM_OWNERSHIP.md) 與 [SAM 資料庫測試](SAM_DATABASE_TESTING.md)。本段取代較早的 SAM AI 分工描述。
 
-完成狀態：PR #3 與 PR #2 已依序合併到 main，詳見 [合併紀錄](MERGE_RECORD_2026-10-02.md)。此處合併方向保留為本次相依分支的協作紀錄。
+SAM 本輪在 `codex/sam-database-tests` 從 main 補充檢查器、測試與文件；不修改 JEFF／HEN 的功能。PR #2／#3 已依序合併的歷史保留；PR #5 計分候選已轉草稿，不合入本次資料庫工作。
 
-SAM owns the stacked dashboard feature and private test connection. Both PRs are now merged. The original plan below is retained for history.
+Current ownership overrides the historical plan below. SAM handles database/testing; JEFF handles AI/admin; HEN provisionally handles frontend/RWD. Integration ownership remains pending.
 
 ---
 

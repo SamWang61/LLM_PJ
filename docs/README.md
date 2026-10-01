@@ -5,7 +5,9 @@
 | 主題 / Topic | 入口 / Entry |
 |---|---|
 | [10/02 合併與 Atlas 連線紀錄](MERGE_RECORD_2026-10-02.md) | Completed merges, CI evidence and private URI handling. |
-| [SAM 後台與 v4 測試交接](AI_DASHBOARD.md) | SAM ownership, stacked branch, private profile and validation. |
+| [現行分工](TEAM_OWNERSHIP.md) | SAM database/testing; JEFF AI/admin; HEN frontend/RWD pending confirmation. |
+| [SAM 資料庫與測試](SAM_DATABASE_TESTING.md) | Read-only checks, database regression evidence and limits. |
+| [後台與 v4 測試交接](AI_DASHBOARD.md) | Historical delivery, private profile and validation; current ownership is separate. |
 | [Atlas 驗證報告](V4_TEST_VERIFICATION.json) | Live schema, indexes and transaction checks; no credentials. |
 | [Flask／SKU／AI 串接](FLASK_SKU_AI_INTEGRATION.md) | v4 routes, LangGraph workflows, setup and UAT. |
 | 全部文件 / All documents | [逐份雙語索引](DOCUMENT_INDEX.md) |

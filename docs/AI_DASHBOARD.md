@@ -1,12 +1,14 @@
-# SAM 營運後台與 v4 測試交接 / Dashboard handoff
+# 營運後台與 v4 測試交接 / Dashboard handoff
+
+> 最新責任：AI／後台由 JEFF 負責；SAM 負責資料庫與測試。下文保留先前交付的技術與合併紀錄，不再代表現行分工。見 [現行分工](TEAM_OWNERSHIP.md)。Current ownership supersedes historical delivery attribution.
 
 ## 分支與負責人 / Branch ownership
 
-2026-10-02 決策：SAM 負責 AI 後台與 Atlas v4 連線。`feature/ai-dashboard` 建在 `feature/flask-sku-ai-integration` 之上；[PR #3](https://github.com/SamWang61/LLM_PJ/pull/3) 與 [PR #2](https://github.com/SamWang61/LLM_PJ/pull/2) 已依序合併，功能已進入 main；詳見 [合併與連線管理紀錄](MERGE_RECORD_2026-10-02.md)。這項決策優先於歷史四人分工表。
+先前交付紀錄：SAM 曾完成 AI 後台與 Atlas v4 連線交接。`feature/ai-dashboard` 建在 `feature/flask-sku-ai-integration` 之上；[PR #3](https://github.com/SamWang61/LLM_PJ/pull/3) 與 [PR #2](https://github.com/SamWang61/LLM_PJ/pull/2) 已依序合併，功能已進入 main；詳見 [合併與連線管理紀錄](MERGE_RECORD_2026-10-02.md)。現行責任以 TEAM_OWNERSHIP.md 為準。
 
 合併方向：`feature/ai-dashboard` → `feature/flask-sku-ai-integration` → `main`。本次起點為整合提交 `bbb8e9c`；不用重建分支、強制推送或覆蓋同學工作。父分支進展時先 fetch，再 merge 父分支並重跑測試。
 
-SAM owns this stacked feature. Both dependent PRs have been merged in order; the delivery is now on main.
+SAM previously delivered this stacked feature; current AI/admin ownership belongs to JEFF. Both dependent PRs have been merged in order; the delivery is now on main.
 
 ## 目錄責任 / File ownership
 

@@ -2,7 +2,7 @@
 
 先閱讀 [README](README.md) 與 [文件管理政策](docs/REPOSITORY_GUIDE.md)。Read the project overview and repository policy before changing code.
 
-1. **SAM 後台例外**：`feature/ai-dashboard` 基於 `feature/flask-sku-ai-integration`，PR 也指向父分支；詳見 [交接文件](docs/AI_DASHBOARD.md)。其餘功能從 `main` 建立 `feature/名稱`、`fix/名稱` 或 `docs/名稱` 分支。Create a focused branch from main.
+1. **歷史後台相依分支**：`feature/ai-dashboard` 基於 `feature/flask-sku-ai-integration`，PR 也指向父分支；詳見 [交接文件](docs/AI_DASHBOARD.md)。其餘功能從 `main` 建立 `feature/名稱`、`fix/名稱` 或 `docs/名稱` 分支。Create a focused branch from main.
 2. 保留既有模組路徑；Schema 修改以新版本遷移處理，勿改動已執行 migration 的 checksum。Preserve module paths and immutable migration history.
 3. 提交訊息使用 `feat:`、`fix:`、`docs:`、`test:`、`db:`，中文說明為主，可補英文。Use descriptive conventional commit prefixes.
 4. 文件用 UTF-8，先中文、後英文摘要；API 名稱、命令和檔案路徑保持原樣。Chinese is authoritative; keep identifiers unchanged.
@@ -20,3 +20,5 @@ Never commit credentials, real customer data, dependency caches, or large media.
 測試 Flask／AI 串接前，在 website 安裝 `requirements-test.txt`，離線測試不下載 BGE 權重、不呼叫 Claude API。Install the test requirements to execute real LangGraph workflows with fake model providers.
 
 只有 Git 檔案的 worktree 不得覆蓋含本機附件的歷史全量清冊；本次以 `docs/inventory/ai-dashboard.csv` 補充交付檔案雜湊。Use a scoped manifest for a partial checkout.
+
+現行人員責任見 [分工表](docs/TEAM_OWNERSHIP.md)；既有 PR 已合併，新工作從目前 main 起始，除非明確記錄新的相依分支。Current ownership supersedes historical author attribution.
