@@ -1,5 +1,7 @@
 # 現行分支決策 / Current branch decision
 
+SAM 擴充分工與逐項進度見 [執行清單](SAM_WORK_PLAN.md)。新增計分工作從已整合的 main 建立 `codex/sam-preference-scoring`；舊 AI 相依分支流程保留作歷史。SAM scoring builds on the integrated main branch.
+
 2026-10-02：SAM 直接負責 `feature/ai-dashboard` 與 v4 Atlas 連線。後台分支基於 `feature/flask-sku-ai-integration`；PR 先指向此整合分支，再由整合分支合併 main。下方歷史四人分工與一律從 main 建分支的指引，在本功能由此決策取代。詳見 [SAM 交接文件](AI_DASHBOARD.md)。
 
 完成狀態：PR #3 與 PR #2 已依序合併到 main，詳見 [合併紀錄](MERGE_RECORD_2026-10-02.md)。此處合併方向保留為本次相依分支的協作紀錄。

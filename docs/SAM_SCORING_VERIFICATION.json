@@ -1,0 +1,197 @@
+{
+  "checked_at": "2026-10-01T20:47:43.506703+00:00",
+  "database": "vibecart_ai",
+  "isolated_new_database": false,
+  "collections": [
+    {
+      "name": "users",
+      "count": 0,
+      "conforming": 0,
+      "indexes": 4
+    },
+    {
+      "name": "categories",
+      "count": 0,
+      "conforming": 0,
+      "indexes": 3
+    },
+    {
+      "name": "products",
+      "count": 0,
+      "conforming": 0,
+      "indexes": 5
+    },
+    {
+      "name": "carts",
+      "count": 0,
+      "conforming": 0,
+      "indexes": 5
+    },
+    {
+      "name": "orders",
+      "count": 0,
+      "conforming": 0,
+      "indexes": 6
+    },
+    {
+      "name": "user_events",
+      "count": 0,
+      "conforming": 0,
+      "indexes": 5
+    },
+    {
+      "name": "ai_requests",
+      "count": 0,
+      "conforming": 0,
+      "indexes": 3
+    },
+    {
+      "name": "product_embeddings",
+      "count": 0,
+      "conforming": 0,
+      "indexes": 2
+    },
+    {
+      "name": "recommendations",
+      "count": 0,
+      "conforming": 0,
+      "indexes": 2
+    },
+    {
+      "name": "ai_insights",
+      "count": 0,
+      "conforming": 0,
+      "indexes": 2
+    },
+    {
+      "name": "ai_usage",
+      "count": 0,
+      "conforming": 0,
+      "indexes": 1
+    },
+    {
+      "name": "request_limits",
+      "count": 0,
+      "conforming": 0,
+      "indexes": 2
+    },
+    {
+      "name": "schema_migrations",
+      "count": 4,
+      "conforming": 4,
+      "indexes": 1
+    },
+    {
+      "name": "cart_events",
+      "count": 0,
+      "conforming": 0,
+      "indexes": 7
+    },
+    {
+      "name": "brands",
+      "count": 0,
+      "conforming": 0,
+      "indexes": 3
+    },
+    {
+      "name": "product_skus",
+      "count": 0,
+      "conforming": 0,
+      "indexes": 3
+    },
+    {
+      "name": "product_reviews",
+      "count": 0,
+      "conforming": 0,
+      "indexes": 3
+    },
+    {
+      "name": "order_items",
+      "count": 0,
+      "conforming": 0,
+      "indexes": 5
+    },
+    {
+      "name": "behavior_events",
+      "count": 0,
+      "conforming": 0,
+      "indexes": 6
+    },
+    {
+      "name": "user_preference_scores",
+      "count": 0,
+      "conforming": 0,
+      "indexes": 2
+    },
+    {
+      "name": "product_repurchase_stats",
+      "count": 0,
+      "conforming": 0,
+      "indexes": 2
+    },
+    {
+      "name": "cross_category_rules",
+      "count": 0,
+      "conforming": 0,
+      "indexes": 3
+    },
+    {
+      "name": "product_purchase_sequences",
+      "count": 0,
+      "conforming": 0,
+      "indexes": 2
+    },
+    {
+      "name": "recommendation_pools",
+      "count": 0,
+      "conforming": 0,
+      "indexes": 2
+    },
+    {
+      "name": "first_member_recommendations",
+      "count": 0,
+      "conforming": 0,
+      "indexes": 2
+    },
+    {
+      "name": "recommendation_logs",
+      "count": 0,
+      "conforming": 0,
+      "indexes": 3
+    },
+    {
+      "name": "system_configs",
+      "count": 1,
+      "conforming": 1,
+      "indexes": 2
+    }
+  ],
+  "total_indexes": 86,
+  "smoke_checks": [
+    "v4_register_login_with_strict_validator",
+    "flask_cart_mutations_and_idempotent_transaction_checkout",
+    "live_admin_metrics_monitor_summary_and_revocation",
+    "v4_preference_dry_run_apply_replay_with_strict_validator",
+    "real_transaction_write_rollback",
+    "real_transaction_last_stock_concurrency"
+  ],
+  "fixture_counts_restored": true,
+  "migrations": [
+    {
+      "id": "20260916_01_initial_schema_v2",
+      "status": "succeeded"
+    },
+    {
+      "id": "20260916_02_cart_state_events_v3",
+      "status": "succeeded"
+    },
+    {
+      "id": "20260918_03_schema_document_constraints",
+      "status": "succeeded"
+    },
+    {
+      "id": "20260918_04_complete_catalog_schema_v4",
+      "status": "succeeded"
+    }
+  ]
+}
