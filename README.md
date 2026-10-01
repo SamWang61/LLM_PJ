@@ -18,6 +18,7 @@ The Flask v4 adapter and dashboard pass 38 offline tests and live Atlas transact
 
 | 入口 / Entry | 用途 / Purpose |
 |---|---|
+| [最新合併與連線紀錄](docs/MERGE_RECORD_2026-10-02.md) | PR #3／#2 已合併、驗證證據與 URI 保存 / Merge record |
 | [SAM 後台與測試連線](docs/AI_DASHBOARD.md) | 分支、啟動、驗證與限制 / Dashboard handoff |
 | [Flask／SKU／AI 串接](docs/FLASK_SKU_AI_INTEGRATION.md) | 啟用方式、LangGraph 架構與待驗收項目 / Integration and UAT |
 | [文件中心](docs/README.md) | 按主題閱讀 / Topic-based navigation |

@@ -1,5 +1,11 @@
 # 變更紀錄 / Changelog
 
+## 2026-10-02 — 合併與連線紀錄 / Merge and connection record
+
+- PR #3 先合入 SAM 整合分支，PR #2 再合入 main；合併後 CI 通過。Both PRs merged in dependency order; main CI passed.
+- [完整修改與合併紀錄](docs/MERGE_RECORD_2026-10-02.md) 說明提交、驗證與既有 v4 資料庫選擇。Documented commits, verification and the existing database decision.
+- 明確區分本機私有 URI、可提交範本與尚未配置的 GitHub Secrets；未提交帳密。Credentials remain outside Git.
+
 ## 2026-10-02 — SAM 後台與連線 / Dashboard and connection
 
 - 建立依賴整合分支的 AI 後台：台北日期、示範訂單、營收與推薦行為監測。Added scoped dashboard queries and summary caching.

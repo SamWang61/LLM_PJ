@@ -4,6 +4,7 @@
 
 | 文件 / Document | English scope |
 |---|---|
+| [10/02 合併與 Atlas 連線紀錄](MERGE_RECORD_2026-10-02.md) | Completed merges, CI evidence and private URI handling. |
 | [SAM 後台與 v4 測試交接](AI_DASHBOARD.md) | SAM ownership, stacked branch, private profile and validation. |
 | [Atlas 驗證報告](V4_TEST_VERIFICATION.json) | Live schema, indexes and transaction checks; no credentials. |
 | [Flask／SKU／AI 串接](FLASK_SKU_AI_INTEGRATION.md) | v4 routes, LangGraph workflows, setup and UAT. |
