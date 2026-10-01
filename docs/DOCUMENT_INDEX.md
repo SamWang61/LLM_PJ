@@ -4,6 +4,8 @@
 
 | 文件 / Document | English scope |
 |---|---|
+| [SAM 後台與 v4 測試交接](AI_DASHBOARD.md) | SAM ownership, stacked branch, private profile and validation. |
+| [Atlas 驗證報告](V4_TEST_VERIFICATION.json) | Live schema, indexes and transaction checks; no credentials. |
 | [Flask／SKU／AI 串接](FLASK_SKU_AI_INTEGRATION.md) | v4 routes, LangGraph workflows, setup and UAT. |
 | [分支規劃與協作機制](%E5%88%86%E6%94%AF%28Branch%29%E8%A6%8F%E5%8A%83%E8%88%87%E5%8D%94%E4%BD%9C%E6%A9%9F%E5%88%B6.md) | Original collaboration plan, branch ownership and actual repository paths. |
 | [VibeCart AI 專案總覽與 GitHub 推送整理](../PROJECT_OVERVIEW.md) | Historical project overview and original GitHub preparation notes. |

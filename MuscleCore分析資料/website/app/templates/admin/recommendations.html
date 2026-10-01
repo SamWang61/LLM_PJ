@@ -1,2 +1,7 @@
-{% extends 'base.html' %}{% block title %}推薦模型監控｜MuscleCore{% endblock %}{% block content %}<section class="admin-shell"><span class="eyebrow">MODEL OBSERVABILITY</span><h1>推薦行為監控</h1><p class="lead">MVP 採可解釋的加權推薦：瀏覽 1、收藏 3、購物車 4、購買 8；後續可切換 API 型 LLM 或 Hugging Face 模型做 A/B 比較。</p><section class="panel"><h2>近期事件統計</h2><div class="table-wrap"><table><thead><tr><th>商品 ID</th><th>行為</th><th>次數</th></tr></thead><tbody>{% for row in stats %}<tr><td>{{ row._id.product_id }}</td><td>{{ row._id.event_type }}</td><td>{{ row.count }}</td></tr>{% else %}<tr><td colspan="3">登入會員並瀏覽商品後，這裡會開始累積事件。</td></tr>{% endfor %}</tbody></table></div></section></section>{% endblock %}
-
+{% extends 'base.html' %}
+{% block title %}推薦行為監控｜VibeInsight{% endblock %}
+{% block content %}<section class="admin-shell"><span class="eyebrow">RECOMMENDATION OBSERVABILITY</span><h1>推薦行為監控</h1><a href="{{ url_for('admin.dashboard') }}">返回營運後台</a>
+<section class="panel"><h2>目前策略</h2><p>前台可啟用 BGE 語意排序；模型不可用時採規則基線。功能旗標不代表模型已成功載入。</p><p>BGE 旗標：{{ '已啟用' if config.AI_RECOMMENDATIONS_ENABLED else '未啟用' }}；Claude 摘要旗標：{{ '已啟用' if config.AI_SUMMARY_ENABLED else '未啟用' }}。</p>
+{% if config.DATA_MODE == 'v4' %}<p>v4 政策設定（不代表排程計分已執行）：</p>{% if policy.weights %}<ul>{% for action,weight in policy.weights.items() %}<li>{{ action }}：{{ weight }}</li>{% endfor %}</ul>{% else %}<p>尚未讀到有效的推薦政策。</p>{% endif %}<p>現有前台規則基線使用瀏覽 1、收藏 3、加購 4、購買 8；尚未接線 v4 的衰減計分與 6+4 推薦池。</p>{% else %}<p>舊版規則基線：瀏覽 1、收藏 3、加購 4、購買 8。</p>{% endif %}
+<p>事件次數不是推薦曝光或轉換率；缺少完整推薦歸因時不計算 CTR 或轉換率。</p></section>
+<section class="panel"><h2>最近 1,000 筆事件</h2><p>實際讀取 {{ event_count }} 筆，以下顯示次數最多的 20 組。</p><div class="table-wrap"><table><thead><tr><th>商品 ID</th><th>行為</th><th>次數</th></tr></thead><tbody>{% for row in stats %}<tr><td>{{ row.product_id }}</td><td>{{ row.event_type }}</td><td>{{ row.count }}</td></tr>{% else %}<tr><td colspan="3">尚無行為事件。</td></tr>{% endfor %}</tbody></table></div></section></section>{% endblock %}
