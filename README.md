@@ -8,7 +8,7 @@ VibeCart AI builds on the MuscleCore sports store to explore personalized shoppi
 
 ## 目前狀態 / Current status
 
-現行分工：**SAM 資料庫與測試、JEFF AI／後台、HEN 前台／RWD（10/6 再確認）**；整合驗證待確認。見 [責任表](docs/TEAM_OWNERSHIP.md)。
+現行分工：**SAM 資料庫與測試、JEFF AI／後台、HEN 會員／購物流程（feature/auth-order）**；前台／RWD 待重新分配，整合驗證待確認。見 [責任表](docs/TEAM_OWNERSHIP.md)。
 
 - **SAM 資料庫測試**：只讀查核及真實資料庫回歸 66 項通過，前後筆數一致；見 [本次證據](docs/SAM_DATABASE_TESTING.md)。
 - **新版資料層**：Complete Schema v4，含 SKU 購物車、訂單明細與評價服務。2026-10-02 重新讀回 27 集合、86 個索引（59 自訂）；真實交易與 Flask 驗證見 [SAM 交接文件](docs/AI_DASHBOARD.md)。

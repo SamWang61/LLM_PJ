@@ -5,7 +5,8 @@
 | 主題 / Topic | 入口 / Entry |
 |---|---|
 | [10/02 合併與 Atlas 連線紀錄](MERGE_RECORD_2026-10-02.md) | Completed merges, CI evidence and private URI handling. |
-| [現行分工](TEAM_OWNERSHIP.md) | SAM database/testing; JEFF AI/admin; HEN frontend/RWD pending confirmation. |
+| [HEN 會員／購物流程交接](HEN_AUTH_ORDER.md) | Confirmed option B, branch workflow and access status. |
+| [現行分工](TEAM_OWNERSHIP.md) | SAM database/testing; JEFF AI/admin; HEN auth/order; frontend/RWD awaits reassignment. |
 | [SAM 資料庫與測試](SAM_DATABASE_TESTING.md) | Read-only checks, database regression evidence and limits. |
 | [後台與 v4 測試交接](AI_DASHBOARD.md) | Historical delivery, private profile and validation; current ownership is separate. |
 | [Atlas 驗證報告](V4_TEST_VERIFICATION.json) | Live schema, indexes and transaction checks; no credentials. |
