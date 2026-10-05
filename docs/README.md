@@ -22,3 +22,5 @@
 | 完整檔案清冊 / File inventory | [CSV](inventory/files.csv)、[摘要](inventory/summary.json) |
 
 中文原稿是專題依據；英文摘要用於協助理解，不取代正式欄位定義。來源快照與原始報告不為了翻譯而覆寫。Chinese source specifications remain authoritative; English summaries do not replace field definitions or alter snapshots.
+
+- [Atlas／Compass 資料庫查詢手冊](../VibeCart_AI/MongoDB/19_Atlas與Compass資料庫查詢手冊.md) / Read-only database browsing and query guide for the team.

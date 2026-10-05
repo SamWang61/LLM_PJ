@@ -44,3 +44,5 @@
 | [VibeCart AI｜購買行為、補貨頻率與破圈推薦規格](../%E8%A8%8E%E8%AB%96%E7%9A%84%E7%9B%B8%E9%97%9C%E8%A8%98%E9%8C%84/VibeCart_AI_Recommendation_and_Cross_Category_Rules.md) | Repurchase timing and cross-category recommendation requirements. |
 | [VibeCart AI｜懂你想買、更懂怎麼賣！](../%E8%A8%8E%E8%AB%96%E7%9A%84%E7%9B%B8%E9%97%9C%E8%A8%98%E9%8C%84/VibeCart_AI_%E5%B0%88%E6%A1%88%E6%95%B4%E5%90%88%E8%A6%8F%E6%A0%BC_v1.1.md) | Integration scope, model fields, deployment roles and acceptance criteria. |
 | [MuscleCore｜Python + MongoDB 智慧運動商城](../MuscleCore%E5%88%86%E6%9E%90%E8%B3%87%E6%96%99/website/README.md) | Component entry point and usage guide. |
+
+- [Atlas／Compass 資料庫查詢手冊](../VibeCart_AI/MongoDB/19_Atlas與Compass資料庫查詢手冊.md) / Read-only database browsing and query guide for the team.
