@@ -14,6 +14,8 @@
 - 文件中的線框圖**不含任何示範數字**；`{欄位}` 表示由資料庫或執行結果帶入的值。
 - 實作一律讀取 v4 真實資料；資料為空時顯示空狀態，不以假資料填充。
 
+English summary: Finalized admin layout (sidebar navigation, Local AI and Cloud LLM panels, comparison, monitoring, and product/order/member management). Wireframes contain no sample values; section 7 maps each element to v4 collections and fields and lists the demo data the database still needs (D1–D5).
+
 ---
 
 ## 1. 設計目標
