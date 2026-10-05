@@ -1,5 +1,11 @@
 # 變更紀錄 / Changelog
 
+## 2026-10-05 — JEFF 管理後台設計規格 / Admin UI design
+
+- 新增 [管理後台設計規格 v1.0](docs/JEFF_ADMIN_UI_DESIGN.md)：左側欄導覽、AI 板塊 A／B、AI 比較、推薦監控及商品／訂單／會員管理版面與決策紀錄。Admin layout and decisions.
+- 線框圖不含示範數字；新增 v4 集合與欄位對照及資料需求 D1～D5，供資料庫對接。Field mapping replaces sample values.
+- 僅文件，不修改程式、Schema 或憑證。Documentation only.
+
 ## 2026-10-05 — HEN 選擇會員／購物流程 / HEN auth-order ownership
 
 - 仁千 HEN 已選 B，對應 `feature/auth-order`；前台／RWD 改為待重新分配。HEN now owns auth/order.
