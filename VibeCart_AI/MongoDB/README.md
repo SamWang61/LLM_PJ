@@ -15,6 +15,14 @@
 
 Atlas 外掛本次 OAuth 失效，使用先前授權的 PyMongo 連線完成實際變更與讀回。控制台部署中繼資料未重新核實；原始資訊見 [Cluster 設定](01_Cluster設定與狀態.md)。
 
+## Network Access 更新（2026-10-05）
+
+2026-10-05 網路設定更新：依專案負責人提供的資訊，Network Access 已新增 `0.0.0.0/0`，供網站後端及 Compass 從任意 IPv4 來源連線。本次 Atlas 外掛回覆需重新登入（UNAUTHORIZED），尚未讀回確認 Active 狀態、註解與到期設定；詳見 [Cluster 設定](01_Cluster設定與狀態.md)。
+
+`0.0.0.0/0` 生效期間，IPv4 出口改變不需逐一新增 `/32`；資料庫帳密、TLS 與角色權限仍需通過，連線字串僅置於後端秘密設定。
+
+English: The owner reports all-IPv4 access; Atlas activation and expiry remain unverified because reauthentication is required. Authentication, TLS and database permissions still apply.
+
 ## 現行文件與程式
 
 - [完整規格來源快照](13_完整Schema_v1.0_來源快照.md)
