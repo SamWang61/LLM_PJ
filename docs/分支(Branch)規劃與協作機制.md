@@ -1,10 +1,10 @@
 # 現行分支決策 / Current branch decision
 
-2026-10-02 最新分工：**SAM＝資料庫與測試；JEFF＝AI／後台；HEN＝前台／RWD（10/6 再確認）**。會員／購物流程及整合驗證負責人待確認。詳見 [現行分工](TEAM_OWNERSHIP.md) 與 [SAM 資料庫測試](SAM_DATABASE_TESTING.md)。本段取代較早的 SAM AI 分工描述。
+2026-10-05 最新分工：**SAM＝資料庫與測試；JEFF＝AI／後台；HEN＝會員／購物流程（feature/auth-order）**。前台／RWD 待重新分配，整合驗證負責人待確認。詳見 [現行分工](TEAM_OWNERSHIP.md) 與 [SAM 資料庫測試](SAM_DATABASE_TESTING.md)。本段取代較早的 SAM AI 分工描述。
 
 SAM 本輪在 `codex/sam-database-tests` 從 main 補充檢查器、測試與文件；不修改 JEFF／HEN 的功能。PR #2／#3 已依序合併的歷史保留；PR #5 計分候選已轉草稿，不合入本次資料庫工作。
 
-Current ownership overrides the historical plan below. SAM handles database/testing; JEFF handles AI/admin; HEN provisionally handles frontend/RWD. Integration ownership remains pending.
+Current ownership overrides the historical plan below. SAM handles database/testing; JEFF handles AI/admin; HEN owns auth/order; frontend/RWD awaits reassignment. Integration ownership remains pending.
 
 ---
 
@@ -34,7 +34,7 @@ Current ownership overrides the historical plan below. SAM handles database/test
 | 負責領域 | 建議分支名稱 | 核心權責與目錄範圍 |
 | :---- | :---- | :---- |
 | **1\. 前台與 RWD 介面** | feature/store-ui | 前台頁面切板、樣式優化 (templates/store/, static/css/) |
-| **2\. 會員與購物流程** | feature/auth-order | 會員註冊/登入、購物車與結帳邏輯 (auth.py, store.py) |
+| **2\. 會員與購物流程（HEN）** | feature/auth-order | 會員註冊/登入、購物車與結帳邏輯 (auth.py, store.py) |
 | **3\. 資料庫與測試** | feature/mongodb | MongoDB 連線、初始化腳本與測試 (db.py, seed\_mongodb.py, tests/) |
 | **4\. AI 與管理後台** | feature/ai-dashboard | 推薦引擎、營運分析與後台介面 (services/, admin.py, templates/admin/) |
 
@@ -95,7 +95,7 @@ Current ownership overrides the historical plan below. SAM handles database/test
 |---|---|
 | `main` | 穩定整合版本，功能修改透過 PR 審查與合併 |
 | `feature/store-ui` | `MuscleCore分析資料/website/app/templates/store/`、`MuscleCore分析資料/website/app/static/css/` |
-| `feature/auth-order` | `MuscleCore分析資料/website/app/auth.py`、`MuscleCore分析資料/website/app/store.py`；整合新版購物車與訂單時與資料庫負責人協調 |
+| `feature/auth-order` | `MuscleCore分析資料/website/app/auth.py`、`MuscleCore分析資料/website/app/store.py`、`app/store_v4.py`；HEN 負責；整合新版購物車與訂單時與資料庫負責人協調 |
 | `feature/mongodb` | `VibeCart_AI/MongoDB/`、`VibeCart_AI/services/`；展示網站的 `app/db.py`、`seed_mongodb.py`、`tests/` 均位於 `MuscleCore分析資料/website/` 下 |
 | `feature/ai-dashboard` | `MuscleCore分析資料/website/app/services/`、`MuscleCore分析資料/website/app/admin.py`、`MuscleCore分析資料/website/app/templates/admin/` |
 

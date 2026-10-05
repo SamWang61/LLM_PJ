@@ -1,5 +1,10 @@
 # 變更紀錄 / Changelog
 
+## 2026-10-05 — HEN 選擇會員／購物流程 / HEN auth-order ownership
+
+- 仁千 HEN 已選 B，對應 `feature/auth-order`；前台／RWD 改為待重新分配。HEN now owns auth/order.
+- 更新分工表、分支協作、首頁與 [HEN 交接文件](docs/HEN_AUTH_ORDER.md)。Access status is tracked separately from ownership.
+
 ## 2026-10-02 — 分工更正與資料庫測試 / Ownership and database checks
 
 - 現行責任：SAM 資料庫／測試、JEFF AI／後台、HEN 前台／RWD（10/6 再確認）；整合驗證待確認。See [ownership](docs/TEAM_OWNERSHIP.md).
