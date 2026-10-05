@@ -50,3 +50,5 @@ Atlas 外掛本次 OAuth 失效，使用先前授權的 PyMongo 連線完成實�
 ## English summary
 
 This directory preserves schema definitions, immutable migrations and dated Atlas evidence. Start with documents 15–17 for Complete Schema v4. The recorded 66 passing tests and 27 collections describe the September 19 validation, not a fresh run. Use sku_cart_service.py for the current SKU cart interface. Legacy tests target older schema versions. Do not run all historical migrations or tests against a populated production database without an explicit migration plan.
+
+- [Atlas／Compass 資料庫查詢手冊](19_Atlas與Compass資料庫查詢手冊.md)：連線、商品與 SKU 搜尋、分類、示範訂單及 Schema 查閱。
