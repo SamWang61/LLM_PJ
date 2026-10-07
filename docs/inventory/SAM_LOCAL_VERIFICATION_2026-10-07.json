@@ -1,0 +1,65 @@
+{
+  "checked_at": "2026-10-07T03:23:51.009911+00:00",
+  "code_sha": "edd34ce1d2a3e802a753dd7fb8a6c54e34ab13ce",
+  "offline": {
+    "website": 61,
+    "synthetic_fixture": 9,
+    "combined": 70,
+    "result": "passed",
+    "seconds": 14.03
+  },
+  "file_policy": {
+    "files_before_this_evidence": 186,
+    "errors": 0
+  },
+  "source_preservation": {
+    "modified_or_untracked_files_checked": 68,
+    "all_sha256_unchanged": true
+  },
+  "overlay_git_index_matches_source": true,
+  "credential_uri_scan": "passed",
+  "github_code_checks": {
+    "pr": "https://github.com/SamWang61/LLM_PJ/pull/11",
+    "state": "open",
+    "merged": false,
+    "mergeable": true,
+    "head_sha": "edd34ce1d2a3e802a753dd7fb8a6c54e34ab13ce",
+    "files": 65,
+    "commits": 2,
+    "runs": [
+      {
+        "id": 37566397555,
+        "url": "https://github.com/SamWang61/LLM_PJ/actions/runs/37566397555",
+        "event": "pull_request",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 37566369310,
+        "url": "https://github.com/SamWang61/LLM_PJ/actions/runs/37566369310",
+        "event": "push",
+        "status": "completed",
+        "conclusion": "success"
+      }
+    ],
+    "checks": [
+      {
+        "name": "offline",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/SamWang61/LLM_PJ/actions/runs/37566397555/job/112614995177"
+      },
+      {
+        "name": "offline",
+        "status": "completed",
+        "conclusion": "success",
+        "url": "https://github.com/SamWang61/LLM_PJ/actions/runs/37566369310/job/112614905018"
+      }
+    ]
+  },
+  "limits": [
+    "No new database writes",
+    "No browser/model/full-stack UAT",
+    "Contract proposal not yet accepted by JEFF/HEN"
+  ]
+}

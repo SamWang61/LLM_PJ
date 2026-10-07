@@ -6,8 +6,8 @@
 
 |項目|已核實|判讀|
 |---|---|---|
-|main|066e9da；最近main CI success|既有Flask/v4 adapter與後台基础已合併；本次SAM分支尚待合併|
-|已合併PR|#1/#2/#3/#4/#6/#7/#9|資料層/Flask SKU/AI workflow基础、後台基础、責任文件與查詢手冊；不能等同完整模型/全站驗收|
+|main|066e9da；最近main CI success|既有Flask/v4 adapter與後台基礎已合併；本次SAM分支尚待合併|
+|已合併PR|#1/#2/#3/#4/#6/#7/#9|資料層/Flask SKU/AI workflow基礎、後台基礎、責任文件與查詢手冊；不能等同完整模型/全站驗收|
 |JEFF #8|open、非draft、e7df815；4份Markdown，分支CI success|後台設計文件，沒有新功能實作；需JEFF更新資料口徑|
 |JEFF決定的#5|open、draft、dc3114d|計分候選未合併，不算SAM本次成果|
 |SAM #10|open、8a6edb1；分支CI success|Network Access說明待審查/合併，本輪不改Atlas權限|
@@ -22,15 +22,15 @@
 
 |模組|已有成果|未完成/未驗收|負責人|
 |---|---|---|---|
-|資料庫|27集合/86索引、SKU交易/評價服務、5筆migration；本次current checker與Atlas只讀通過|D4、D5稽核新migration、新增功能數據库回歸|SAM|
+|資料庫|27集合/86索引、SKU交易/評價服務、5筆migration；本次current checker與Atlas只讀通過|D4、D5稽核新migration、新增功能資料庫回歸|SAM|
 |測試商品/客戶/訂單 D1–D3|336/336、600停用、3000demo、8969明細與標準答案；本次工具/證據交付|不得當成真實客戶交易；私有登入與事件另批|SAM|
 |會員/購物|main既有auth與SKU購物車/checkout adapter；歷史Atlas交易證據保留|HEN新功能PR、active/撤權接口與私有帳號驗收、全流程UAT|HEN（SAM驗收）|
 |超市前台/RWD|本次完整分頁/分類/搜尋/圖像/來源/規格與本機入口|桌面/手機瀏覽UAT、登入/推薦接線、公開展示|SAM（HEN/JEFF先交對應功能）|
-|後台总览|main已有篩選/KPI/最近單/低庫存/摘要/事件監控|JEFF新sidebar版型、管理頁/寫入功能及當前資料對帳|JEFF|
-|AI工作流|已有LangGraph/BGE/Claude adapter與规则退回、離線替代模型測試|真實BGE/Claude、完整問答輸入、6+4推薦/排程計分/回購跨類統計、比較實測|JEFF|
+|後台總覽|main已有篩選/KPI/最近單/低庫存/摘要/事件監控|JEFF新sidebar版型、管理頁/寫入功能及當前資料對帳|JEFF|
+|AI工作流|已有LangGraph/BGE/Claude adapter與規則退回、離線替代模型測試|真實BGE/Claude、完整問答輸入、6+4推薦/排程計分/回購跨類統計、比較實測|JEFF|
 |資料契約|SAM D5/AI proposal已交付|JEFF/HEN確認後落實API/稽核/欄位；不能把提案稱已接受|JEFF/HEN各自確認，SAM追蹤與schema|
-|整合與展示|既有基础驗證、查詢手冊與CI|同批畫面/API對帳、部署目標/公网UAT、最终報告/演示|SAM|
-|維運/備份|BACKUP规范存在|秘密私有/加密、權限切换/恢復、雲端manifest核對|SAM|
+|整合與展示|既有基礎驗證、查詢手冊與CI|同批畫面/API對帳、部署目標/公開網路UAT、最終報告/演示|SAM|
+|維運/備份|BACKUP規範存在|秘密私有/加密、權限切換/恢復、雲端manifest核對|SAM|
 
 ## 全團隊執行順序（同階段可並行）
 
@@ -62,7 +62,7 @@
 
 ## 舊驗收表如何解讀
 
-docs/FLASK_SKU_AI_INTEGRATION.md 的舊待填交易項目，與後來 docs/AI_DASHBOARD.md、V4_TEST_VERIFICATION.json 的實際證據一起判讀：基础交易曾驗證，不重復稱全數沒做；HEN/JEFF的新功能仍需重做對應整合驗收。此次Atlas結構回讀没有重新跑付款、登入或並發寫入。
+docs/FLASK_SKU_AI_INTEGRATION.md 的舊待填交易項目，與後來 docs/AI_DASHBOARD.md、V4_TEST_VERIFICATION.json 的實際證據一起判讀：基礎交易曾驗證，不重複稱全數沒做；HEN/JEFF的新功能仍需重做對應整合驗收。此次Atlas結構回讀沒有重新跑付款、登入或並發寫入。
 
 ## 下午與晚上安排
 
