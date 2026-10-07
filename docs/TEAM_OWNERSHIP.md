@@ -1,16 +1,16 @@
 # 現行分工與確認項目 / Current team ownership
 
-更新日期：2026-10-05（Asia/Taipei）。以下依使用者最新決策，優先於舊四人分工表及先前的 SAM 後台交接描述。歷史提交的作者與合併事實不改寫。
+更新日期：2026-10-07（Asia/Taipei）。以下依使用者最新決策，優先於舊四人分工表及先前的 SAM 後台交接描述。歷史提交的作者與合併事實不改寫。
 
 | 範圍 / Area | 負責人 / Owner | 狀態與界線 / Status |
 |---|---|---|
 | 組長協調、資料庫與測試 | **SAM** | 已確認；目前執行 v4 檢查、資料庫回歸測試、驗證證據與文件 |
 | AI／管理後台 | **JEFF** | 已確認；功能、模型、計分、推薦池與後台需求由 JEFF 負責 |
-| 前台／RWD 介面 | 待重新分配 | HEN 已選擇 B：會員／購物流程，原暫定安排取消 |
+| 前台／RWD 介面 | **SAM** | 2026-10-07 組長指示：非 HEN/JEFF 範圍由 SAM 承接；本次交付超市瀏覽前台，完整手機驗收待辦 |
 | 會員／購物流程（B） | **仁千 HEN** | 2026-10-05 已確認；使用 `feature/auth-order`，見 [分支交接](HEN_AUTH_ORDER.md) |
-| 跨模組整合驗證與最終驗收 | 待確認 | SAM 尚需再確認；資料庫測試通過不等於全站整合驗收完成 |
+| 跨模組整合驗證與最終驗收 | **SAM** | 2026-10-07 指名；須等 JEFF/HEN 對應功能先交付，資料庫測試不等於全站驗收 |
 
-SAM owns database/testing and team coordination. JEFF owns AI/admin. HEN confirmed option B (auth/order) on October 5 and uses feature/auth-order. Frontend/RWD must be reassigned; integration acceptance ownership remains pending.
+SAM owns database/testing and team coordination. JEFF owns AI/admin. HEN confirmed option B (auth/order) on October 5 and uses feature/auth-order. As of October 7, SAM owns frontend/RWD and final integration acceptance under the team lead instruction.
 
 ## SAM 現在可執行 / SAM's current work
 
@@ -28,3 +28,7 @@ SAM owns database/testing and team coordination. JEFF owns AI/admin. HEN confirm
 - 2026-10-05 已由組長確認 HEN 選擇會員／購物流程；GitHub 存取狀態另見分支交接，分工確認不等於邀請已接受。
 
 Previously merged work remains intact. PR #5 is parked as an unmerged draft; HEN ownership is confirmed by the team lead, while GitHub invitation acceptance is tracked separately.
+
+## 2026-10-07 最新核對與待辦
+
+HEN（1dcvgieok4gm）及 JEFF（jeff841117）均已具 Write 權限，pending invitations 為零。此為目前狀態，舊 10/5 邀請紀錄保留。詳細先後順序與單一負責人見 [專案進度盤點](PROJECT_PROGRESS_2026-10-07.md) 與 [具名殘留問題](PROJECT_BLOCKERS_2026-10-07.md)。所有非 JEFF AI/後台、非 HEN 會員/購物的工作由 SAM 負責；跨組驗收由 SAM 統整，前置完成責任分別列出。

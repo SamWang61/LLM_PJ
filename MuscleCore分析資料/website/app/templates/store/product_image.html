@@ -1,0 +1,1 @@
+{% if p.image_urls %}<img src="{{ p.image_urls[0] }}" alt="{{ p.name }}" loading="lazy" referrerpolicy="no-referrer" onerror="this.onerror=null;this.src='{{ url_for('static', filename='img/product-placeholder.svg') }}'">{% else %}{{ p.category[:2] }}{% endif %}

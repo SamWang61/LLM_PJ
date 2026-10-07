@@ -59,14 +59,25 @@ def reply(document, target="store.cart"):
 def home():
     products = catalog(get_db())
     category = request.args.get("category", "")
-    categories = sorted({p["category"] for p in products})
-    shown = [p for p in products if not category or p["category"] == category]
+    major = request.args.get("major", "")
+    major_categories = sorted({p["major_category"] for p in products})
+    major_products = [p for p in products if not major or p["major_category"] == major]
+    categories = sorted({p["category"] for p in major_products})
+    query = request.args.get("q", "")[:200].strip()
+    shown = [p for p in major_products if (not category or p["category"] == category)
+             and (not query or query.casefold() in " ".join([p["name"], p.get("summary", ""),
+                  *[" ".join(s.get("variant_attributes", {}).values()) for s in p["skus"]]]).casefold())]
+    total = len(shown)
+    pages = max(1, (total + 23) // 24)
+    page = min(pages, max(1, request.args.get("page", 1, type=int)))
     events = []
     if session.get("user_id"):
         events = list(get_db().behavior_events.find({"user_id": oid(session["user_id"])}).sort("event_at", -1).limit(50))
-    result = storefront_recommendations(shown, events, request.args.get("q", "")[:200])
-    return render_template("store/home.html", products=shown, categories=categories,
-                           selected_category=category, recommendations=result["items"], recommendation_source=result["source"])
+    result = storefront_recommendations(shown, events, query)
+    return render_template("store/home.html", products=shown[(page-1)*24:page*24], categories=categories,
+                           selected_category=category, major_categories=major_categories, selected_major=major,
+                           page=page, pages=pages, total=total,
+                           recommendations=result["items"], recommendation_source=result["source"])
 
 
 @bp.get("/product/<product_id>")
@@ -85,7 +96,8 @@ def product_detail(product_id):
             "minor_category_id": product["minor_category_id"], "quantity": 1, "order_id": None, "cart_id": None,
             "search_query": None, "source": "organic", "recommendation_id": None, "event_at": now,
             "score_version": 1, "processed_at": None, "metadata": {}, "created_at": now})
-    return render_template("store/product.html", product=product_view(product, skus))
+    categories = {c["_id"]: c["name"] for c in db.categories.find({"_id": {"$in": [product["major_category_id"], product["minor_category_id"]]}})}
+    return render_template("store/product.html", product=product_view(product, skus, categories))
 
 
 @bp.post("/cart/add/<product_id>")

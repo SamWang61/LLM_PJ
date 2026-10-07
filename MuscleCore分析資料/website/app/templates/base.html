@@ -2,13 +2,13 @@
 <html lang="zh-Hant">
 <head>
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="MuscleCore 智慧運動商品購物平台">
+  <meta name="description" content="{{ 'VibeCart 超級市場教學測試平台' if config.DATA_MODE == 'v4' else 'MuscleCore 智慧運動商品購物平台' }}">
   <title>{% block title %}MuscleCore{% endblock %}</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
 </head>
 <body>
   <header class="site-header">
-    <a class="brand" href="{{ url_for('store.home') }}"><span>M</span> MuscleCore</a>
+    <a class="brand" href="{{ url_for('store.home') }}"><span>{{ "V" if config.DATA_MODE == "v4" else "M" }}</span> {{ "VibeCart 超級市場" if config.DATA_MODE == "v4" else "MuscleCore" }}</a>
     <nav aria-label="主要導覽">
       <a href="{{ url_for('store.home') }}">商城</a>
       {% if session.get('user_id') %}<a href="{{ url_for('store.cart') }}">購物車 {% if config.DATA_MODE == "legacy" %}<b>{{ session.get('cart', {})|length }}</b>{% endif %}</a>{% endif %}
@@ -19,7 +19,7 @@
   </header>
   {% with messages = get_flashed_messages(with_categories=true) %}{% if messages %}<div class="flash-stack">{% for category, message in messages %}<div class="flash {{ category }}">{{ message }}</div>{% endfor %}</div>{% endif %}{% endwith %}
   <main>{% block content %}{% endblock %}</main>
-  <footer>© 2026 MuscleCore · Python × MongoDB 智慧運動商城</footer>
+  <footer>© 2026 {{ "VibeCart 超級市場 · 教學測試用途" if config.DATA_MODE == "v4" else "MuscleCore · Python × MongoDB 智慧運動商城" }}</footer>
 </body>
 </html>
 

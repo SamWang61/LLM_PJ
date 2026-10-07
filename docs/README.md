@@ -24,3 +24,19 @@
 中文原稿是專題依據；英文摘要用於協助理解，不取代正式欄位定義。來源快照與原始報告不為了翻譯而覆寫。Chinese source specifications remain authoritative; English summaries do not replace field definitions or alter snapshots.
 
 - [Atlas／Compass 資料庫查詢手冊](../VibeCart_AI/MongoDB/19_Atlas與Compass資料庫查詢手冊.md) / Read-only database browsing and query guide for the team.
+
+## SAM 2026-10-07 交付入口
+
+- [現行上下文](CURRENT_CONTEXT.md)
+- [測試資料規範](TEST_DATA_SPEC.md)／[歷史匯入證據](TEST_DATA_IMPORT_2026-10-05.md)
+- [D5／AI 契約提案](SAM_DATA_CONTRACT_2026-10-07.md)
+- [本次交付結果](SAM_DELIVERY_2026-10-07.md)
+
+## 2026-10-07 最新團隊交付
+
+- [今日SAM工作清單](SAM_TODAY_CHECKLIST_2026-10-07.md)
+- [殘留問題與具名責任](PROJECT_BLOCKERS_2026-10-07.md)
+- [全專案進度與先後順序](PROJECT_PROGRESS_2026-10-07.md)
+- [發布紀錄](SAM_PUBLICATION_2026-10-07.md)
+
+本次最新分工：SAM資料/測試/前台RWD/整合驗收；JEFF AI/後台；HEN會員/購物。HEN/JEFF GitHub Write已核實，舊狀態依日期解讀。

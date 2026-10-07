@@ -155,3 +155,24 @@ def test_relationship_pipeline_finds_only_dangling_v4_references():
     result = audit(db, relationships=True)
     assert next(r for r in result['relationships'] if r['source'] == 'product_skus')['orphans'] == 1
     assert result['status'] == 'failed'
+
+
+def test_current_contract_requires_fifth_migration_and_overlay():
+    db = Database()
+    assert len(MIGRATIONS) == 5
+    db.schema_migrations.rows = [r for r in db.schema_migrations.rows
+        if r['_id'] != '20261005_05_synthetic_profile_v4']
+    assert 'missing_or_unsuccessful_migration' in audit(db)['issues']
+    from schema_complete_v4 import SCHEMAS as historical
+    db['users'].settings['validator'] = deepcopy(historical['users'])
+    result = audit(db)
+    assert 'validator' in next(r for r in result['collections'] if r['name'] == 'users')['issues']
+
+
+def test_overlay_keeps_batch_fields_for_orders_and_items():
+    db = Database()
+    for name in ('orders', 'order_items'):
+        del db[name].settings['validator']['$jsonSchema']['properties']['synthetic_batch_id']
+    result = audit(db)
+    assert all('validator' in r['issues'] for r in result['collections']
+               if r['name'] in ('orders', 'order_items'))

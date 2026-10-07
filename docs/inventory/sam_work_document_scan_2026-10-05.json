@@ -1,0 +1,1931 @@
+{
+  "excluded_trees": [
+    ".backup-state",
+    ".codex",
+    ".git",
+    ".pytest_cache",
+    ".venv",
+    "__pycache__",
+    "detail_cache",
+    "generated",
+    "node_modules",
+    "venv"
+  ],
+  "files": [
+    {
+      "path": "CHANGELOG.md",
+      "bytes": 946,
+      "inspection": "text_read",
+      "lines": 12
+    },
+    {
+      "path": "CODE_OF_CONDUCT.md",
+      "bytes": 489,
+      "inspection": "text_read",
+      "lines": 5
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "bytes": 2151,
+      "inspection": "text_read",
+      "lines": 20
+    },
+    {
+      "path": "Gemini 匯出 2026年9月30日 晚上7_19_25 [GMT+8].md",
+      "bytes": 3723,
+      "inspection": "text_read",
+      "lines": 72
+    },
+    {
+      "path": "PROJECT_OVERVIEW.md",
+      "bytes": 8696,
+      "inspection": "text_read",
+      "lines": 197
+    },
+    {
+      "path": "README.md",
+      "bytes": 4323,
+      "inspection": "text_read",
+      "lines": 66
+    },
+    {
+      "path": "SECURITY.md",
+      "bytes": 1242,
+      "inspection": "text_read",
+      "lines": 16
+    },
+    {
+      "path": "[MuscleCore運動用品電商網站_報告.pdf",
+      "bytes": 444610054,
+      "inspection": "image_only_pdf_no_text",
+      "lines": 0,
+      "pages": 36,
+      "characters": 35
+    },
+    {
+      "path": "（已壓縮）[MuscleCore運動用品電商網站_報告.pdf",
+      "bytes": 4036937,
+      "inspection": "image_only_pdf_no_text",
+      "lines": 0,
+      "pages": 36,
+      "characters": 35
+    },
+    {
+      "path": ".github/pull_request_template.md",
+      "bytes": 554,
+      "inspection": "text_read",
+      "lines": 13
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/bug_report.md",
+      "bytes": 339,
+      "inspection": "text_read",
+      "lines": 15
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/feature_request.md",
+      "bytes": 319,
+      "inspection": "text_read",
+      "lines": 13
+    },
+    {
+      "path": "docs/BACKUP.md",
+      "bytes": 4116,
+      "inspection": "text_read",
+      "lines": 41
+    },
+    {
+      "path": "docs/DOCUMENT_INDEX.md",
+      "bytes": 7391,
+      "inspection": "text_read",
+      "lines": 40
+    },
+    {
+      "path": "docs/FLASK_SKU_AI_INTEGRATION.md",
+      "bytes": 9922,
+      "inspection": "text_read",
+      "lines": 135
+    },
+    {
+      "path": "docs/JEFF_DEMO_REVIEW_2026-10-05.md",
+      "bytes": 5716,
+      "inspection": "text_read",
+      "lines": 66
+    },
+    {
+      "path": "docs/ORGANIZATION_REPORT.md",
+      "bytes": 2471,
+      "inspection": "text_read",
+      "lines": 25
+    },
+    {
+      "path": "docs/README.md",
+      "bytes": 1547,
+      "inspection": "text_read",
+      "lines": 18
+    },
+    {
+      "path": "docs/REPOSITORY_GUIDE.md",
+      "bytes": 3470,
+      "inspection": "text_read",
+      "lines": 37
+    },
+    {
+      "path": "docs/TEST_DATA_SPEC.md",
+      "bytes": 8436,
+      "inspection": "text_read",
+      "lines": 86
+    },
+    {
+      "path": "docs/分支(Branch)規劃與協作機制.md",
+      "bytes": 6696,
+      "inspection": "text_read",
+      "lines": 125
+    },
+    {
+      "path": "MuscleCore分析資料/MuscleCore_Python_MongoDB_v1.0.zip",
+      "bytes": 1908878,
+      "inspection": "binary_inventory_only",
+      "lines": 0
+    },
+    {
+      "path": "MuscleCore分析資料/website/README.md",
+      "bytes": 4059,
+      "inspection": "text_read",
+      "lines": 83
+    },
+    {
+      "path": "MuscleCore分析資料/website/requirements-ai.txt",
+      "bytes": 80,
+      "inspection": "text_read",
+      "lines": 3
+    },
+    {
+      "path": "MuscleCore分析資料/website/requirements-llm.txt",
+      "bytes": 87,
+      "inspection": "text_read",
+      "lines": 4
+    },
+    {
+      "path": "MuscleCore分析資料/website/requirements-test.txt",
+      "bytes": 41,
+      "inspection": "text_read",
+      "lines": 2
+    },
+    {
+      "path": "MuscleCore分析資料/website/requirements.txt",
+      "bytes": 81,
+      "inspection": "text_read",
+      "lines": 6
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/static/img/hero.png",
+      "bytes": 1898747,
+      "inspection": "binary_inventory_only",
+      "lines": 0
+    },
+    {
+      "path": "MuscleCore運動用品電商網站/13頁展示影片.mp4",
+      "bytes": 20933650,
+      "inspection": "binary_inventory_only",
+      "lines": 0
+    },
+    {
+      "path": "MuscleCore運動用品電商網站/14頁展示影片.mp4",
+      "bytes": 9479767,
+      "inspection": "binary_inventory_only",
+      "lines": 0
+    },
+    {
+      "path": "MuscleCore運動用品電商網站/15頁展示影片.mp4",
+      "bytes": 39994362,
+      "inspection": "binary_inventory_only",
+      "lines": 0
+    },
+    {
+      "path": "MuscleCore運動用品電商網站/16頁展示影片.mp4",
+      "bytes": 5904204,
+      "inspection": "binary_inventory_only",
+      "lines": 0
+    },
+    {
+      "path": "MuscleCore運動用品電商網站/README.md",
+      "bytes": 654,
+      "inspection": "text_read",
+      "lines": 7
+    },
+    {
+      "path": "MuscleCore運動用品電商網站/[第3組]運動用品電商網站_報告(亮點士林2025  JS全端開發).pdf",
+      "bytes": 444610055,
+      "inspection": "image_only_pdf_no_text",
+      "lines": 0,
+      "pages": 36,
+      "characters": 35
+    },
+    {
+      "path": "VibeCart_AI/README.md",
+      "bytes": 1010,
+      "inspection": "text_read",
+      "lines": 10
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/01_Cluster設定與狀態.md",
+      "bytes": 5487,
+      "inspection": "text_read",
+      "lines": 91
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/02_專案整合規格_v1.1_來源快照.md",
+      "bytes": 34328,
+      "inspection": "text_read",
+      "lines": 430
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/03_集合與索引建置.md",
+      "bytes": 7010,
+      "inspection": "text_read",
+      "lines": 125
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/04_連線與維運.md",
+      "bytes": 5775,
+      "inspection": "text_read",
+      "lines": 70
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/05_實際Schema與索引.md",
+      "bytes": 170627,
+      "inspection": "text_read",
+      "lines": 6116
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/06_實際驗證結果.md",
+      "bytes": 1793,
+      "inspection": "text_read",
+      "lines": 33
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/07_購物車更新規格_來源快照.md",
+      "bytes": 14372,
+      "inspection": "text_read",
+      "lines": 533
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/08_購物車更新前結構.md",
+      "bytes": 61265,
+      "inspection": "text_read",
+      "lines": 2449
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/09_購物車架構與API整合.md",
+      "bytes": 9650,
+      "inspection": "text_read",
+      "lines": 133
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/10_購物車更新驗證結果.md",
+      "bytes": 2279,
+      "inspection": "text_read",
+      "lines": 43
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/11_Schema完整性更新前結構.md",
+      "bytes": 81589,
+      "inspection": "text_read",
+      "lines": 2988
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/12_全部Schema文件對照與驗證.md",
+      "bytes": 16164,
+      "inspection": "text_read",
+      "lines": 351
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/13_完整Schema_v1.0_來源快照.md",
+      "bytes": 19491,
+      "inspection": "text_read",
+      "lines": 898
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/14_完整Schema更新前結構.md",
+      "bytes": 92664,
+      "inspection": "text_read",
+      "lines": 3356
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/15_完整Schema_v4架構與遷移.md",
+      "bytes": 9405,
+      "inspection": "text_read",
+      "lines": 125
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/16_完整Schema_v4驗證與欄位字典.md",
+      "bytes": 29068,
+      "inspection": "text_read",
+      "lines": 654
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/17_2026-09-19_MongoDB工作總結.md",
+      "bytes": 2907,
+      "inspection": "text_read",
+      "lines": 40
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/18_2026-10-05_Schema重建與超市商品匯入.md",
+      "bytes": 3487,
+      "inspection": "text_read",
+      "lines": 46
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/README.md",
+      "bytes": 4437,
+      "inspection": "text_read",
+      "lines": 52
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/supermarket/README.md",
+      "bytes": 6328,
+      "inspection": "text_read",
+      "lines": 74
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/supermarket/requirements.txt",
+      "bytes": 79,
+      "inspection": "text_read",
+      "lines": 4
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/supermarket/supermarket_336_2026-10-05.zip",
+      "bytes": 125469,
+      "inspection": "binary_inventory_only",
+      "lines": 0
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/supermarket/recovery_20261005/before/05_實際Schema與索引.md",
+      "bytes": 172406,
+      "inspection": "text_read",
+      "lines": 6192
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/supermarket/recovery_20261005/before/08_購物車更新前結構.md",
+      "bytes": 61265,
+      "inspection": "text_read",
+      "lines": 2449
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/supermarket/recovery_20261005/before/11_Schema完整性更新前結構.md",
+      "bytes": 81589,
+      "inspection": "text_read",
+      "lines": 2988
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/supermarket/recovery_20261005/before/14_完整Schema更新前結構.md",
+      "bytes": 92664,
+      "inspection": "text_read",
+      "lines": 3356
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/supermarket/recovery_20261005/before/16_完整Schema_v4驗證與欄位字典.md",
+      "bytes": 29068,
+      "inspection": "text_read",
+      "lines": 654
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/test_data/README.md",
+      "bytes": 982,
+      "inspection": "text_read",
+      "lines": 12
+    },
+    {
+      "path": "專題進度/LLM購物網站專題_2026-09-09_今日總結與下一步規劃_v1.0.md",
+      "bytes": 20512,
+      "inspection": "text_read",
+      "lines": 487
+    },
+    {
+      "path": "專題進度/LLM購物網站專題_四週進度跟蹤表.md",
+      "bytes": 17938,
+      "inspection": "text_read",
+      "lines": 272
+    },
+    {
+      "path": "專題進度/LLM購物網站專題_四週進度跟蹤表_v2.0.md",
+      "bytes": 27079,
+      "inspection": "text_read",
+      "lines": 753
+    },
+    {
+      "path": "專題進度/README.md",
+      "bytes": 524,
+      "inspection": "text_read",
+      "lines": 7
+    },
+    {
+      "path": "專題進度/第六組_專題製作方向和進度_2026-09-14.md",
+      "bytes": 10015,
+      "inspection": "text_read",
+      "lines": 182
+    },
+    {
+      "path": "討論的相關記錄/CONVENTIONS.md",
+      "bytes": 15147,
+      "inspection": "text_read",
+      "lines": 322
+    },
+    {
+      "path": "討論的相關記錄/CONVENTIONS.pdf",
+      "bytes": 713254,
+      "inspection": "pdf_text_extracted",
+      "lines": 0,
+      "pages": 15,
+      "characters": 8577
+    },
+    {
+      "path": "討論的相關記錄/mermaid-diagram.png",
+      "bytes": 107527,
+      "inspection": "binary_inventory_only",
+      "lines": 0
+    },
+    {
+      "path": "討論的相關記錄/README.md",
+      "bytes": 912,
+      "inspection": "text_read",
+      "lines": 9
+    },
+    {
+      "path": "討論的相關記錄/VibeCart_AI_MongoDB_Behavior_Weighted_Scoring.md",
+      "bytes": 9114,
+      "inspection": "text_read",
+      "lines": 381
+    },
+    {
+      "path": "討論的相關記錄/VibeCart_AI_MongoDB_Cart_Schema_Update.md",
+      "bytes": 14372,
+      "inspection": "text_read",
+      "lines": 533
+    },
+    {
+      "path": "討論的相關記錄/VibeCart_AI_MongoDB_Complete_Schema.md",
+      "bytes": 19491,
+      "inspection": "text_read",
+      "lines": 898
+    },
+    {
+      "path": "討論的相關記錄/VibeCart_AI_Recommendation_and_Cross_Category_Rules.md",
+      "bytes": 11218,
+      "inspection": "text_read",
+      "lines": 496
+    },
+    {
+      "path": "討論的相關記錄/VibeCart_AI_專案整合規格_v1.1.md",
+      "bytes": 34328,
+      "inspection": "text_read",
+      "lines": 430
+    },
+    {
+      "path": "討論的相關記錄/分工清單.jpg",
+      "bytes": 28248,
+      "inspection": "binary_inventory_only",
+      "lines": 0
+    },
+    {
+      "path": "討論的相關記錄/資料表欄位清單.jpg",
+      "bytes": 21110,
+      "inspection": "binary_inventory_only",
+      "lines": 0
+    },
+    {
+      "path": "討論的相關記錄/錄製內容 2026-09-09.mp4",
+      "bytes": 2053044661,
+      "inspection": "binary_inventory_only",
+      "lines": 0
+    }
+  ],
+  "extracted_documents": [
+    {
+      "path": "CHANGELOG.md",
+      "headings": [
+        "# 變更紀錄 / Changelog",
+        "## 2026-09-27 — 倉庫整理 / Repository organization",
+        "## 2026-09-19 — 既有里程碑 / Historical milestone"
+      ],
+      "evidence": [
+        "## 2026-09-27 — 倉庫整理 / Repository organization"
+      ]
+    },
+    {
+      "path": "CODE_OF_CONDUCT.md",
+      "headings": [
+        "# 協作守則 / Code of conduct"
+      ],
+      "evidence": []
+    },
+    {
+      "path": "CONTRIBUTING.md",
+      "headings": [
+        "# 貢獻指南 / Contributing"
+      ],
+      "evidence": []
+    },
+    {
+      "path": "Gemini 匯出 2026年9月30日 晚上7_19_25 [GMT+8].md",
+      "headings": [
+        "### **一、 準備基礎環境與專案主幹（Main Branch Setup）**",
+        "### ---",
+        "### ---",
+        "### ---",
+        "### ---"
+      ],
+      "evidence": []
+    },
+    {
+      "path": "PROJECT_OVERVIEW.md",
+      "headings": [
+        "# VibeCart AI 專案總覽與 GitHub 推送整理",
+        "## 2026-09-19 完整 Schema 更新（現行）",
+        "## 2026-09-17 購物車架構更新（歷史）",
+        "## 專案介紹",
+        "## 技術棧",
+        "## 主要功能",
+        "## 目前目錄整理",
+        "## 檔案用途說明",
+        "### `MuscleCore分析資料/website`",
+        "### `MuscleCore分析資料/MuscleCore_Python_MongoDB_v1.0.zip`",
+        "### `MuscleCore運動用品電商網站`",
+        "### `專題進度`",
+        "### `討論的相關記錄`",
+        "## GitHub 推送建議結構",
+        "## 推送前檢查清單",
+        "## 目前驗證結果"
+      ],
+      "evidence": [
+        "> 2026-09-27 整理註記：本文件保留歷史介紹。現行倉庫以 LLM_PJ 為根目錄，閱讀入口見 [README](README.md) 與 [文件中心](docs/README.md)。以下舊推送建議及測試數字依原日期解讀。",
+        "現行程式為 [SKU 購物車服務](VibeCart_AI/services/sku_cart_service.py) 與 [評價服務](VibeCart_AI/services/review_service.py)。完整欄位、遷移與測試證據集中在 [MongoDB 文件入口](VibeCart_AI/MongoDB/README.md)。舊 Flask 網站尚未切換至新資料結構；推薦生成、計分與統計排程尚未部署。"
+      ]
+    },
+    {
+      "path": "README.md",
+      "headings": [
+        "# LLM_PJ｜VibeCart AI 智慧購物與營運分析",
+        "## 目前狀態 / Current status",
+        "## 閱讀入口 / Start here",
+        "## 本機展示 / Run the demo",
+        "## 驗證 / Validation",
+        "## 授權 / Licensing"
+      ],
+      "evidence": [
+        "- **展示網站**：`MuscleCore分析資料/website` 為 Flask + Jinja2 + MongoDB MVP；已提供可選 v4 路由介接與離線測試；尚未完成真實資料庫整合驗收。",
+        "本倉庫尚未選定開源授權；公開可見不等同授予再散布或商業使用權。既有圖片、報告與第三方素材仍須遵守原權利人的條款。No open-source license has been selected. Public visibility does not grant a redistribution license; third-party assets retain their original terms."
+      ]
+    },
+    {
+      "path": "SECURITY.md",
+      "headings": [
+        "# 安全政策 / Security policy",
+        "## 通報 / Reporting",
+        "## 管理原則 / Handling"
+      ],
+      "evidence": []
+    },
+    {
+      "path": ".github/pull_request_template.md",
+      "headings": [
+        "## 問題與變更 / Problem and change",
+        "## 驗證 / Validation",
+        "## 限制與遷移 / Limits and migration"
+      ],
+      "evidence": []
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/bug_report.md",
+      "headings": [
+        "## 問題 / Problem",
+        "## 重現步驟 / Steps to reproduce",
+        "## 預期與實際結果 / Expected and actual behavior",
+        "## 環境與驗證 / Environment and evidence"
+      ],
+      "evidence": []
+    },
+    {
+      "path": ".github/ISSUE_TEMPLATE/feature_request.md",
+      "headings": [
+        "## 使用情境 / Use case",
+        "## 建議行為 / Proposed behavior",
+        "## 驗收標準 / Acceptance criteria",
+        "## 文件、資料與相容性 / Documentation, data and compatibility"
+      ],
+      "evidence": []
+    },
+    {
+      "path": "docs/BACKUP.md",
+      "headings": [
+        "# 每日備份 / Daily backup",
+        "## 固定需求 / Fixed requirements",
+        "## 已確認對應 / Verified mapping on 2026-09-27",
+        "## 前置條件與目前限制 / Prerequisites and limitations",
+        "## 執行與失敗處理 / Execution and recovery"
+      ],
+      "evidence": [
+        "## 已確認對應 / Verified mapping on 2026-09-27"
+      ]
+    },
+    {
+      "path": "docs/DOCUMENT_INDEX.md",
+      "headings": [
+        "# 全部文件索引 / Document catalog"
+      ],
+      "evidence": []
+    },
+    {
+      "path": "docs/FLASK_SKU_AI_INTEGRATION.md",
+      "headings": [
+        "# Flask × SKU 購物車 × LangGraph AI 串接",
+        "## 架構與分工",
+        "## 購物流程",
+        "## 前台 AI：LangGraph + BGE",
+        "## 後台 AI：LangGraph + LangChain + Claude",
+        "## 本機啟用",
+        "# 先驗證路由與真正的 LangGraph/Claude adapter，無模型下載",
+        "# 要使用本機 BGE 時，另安裝完整 AI 依賴（含較大的 PyTorch 依賴）",
+        "# 明確下載一次模型至本機套件快取",
+        "## 驗證結果與 UAT",
+        "## 培訓展示重點"
+      ],
+      "evidence": [
+        "實作日期：2026-09-30。此分支提供可執行的模組串接與離線測試；不是 Atlas 上线或模型品質驗收證明。",
+        "- 離線測試使用替代 Embeddings 驗證真實 LangGraph 執行；尚未下載與實測 BGE 權重、中文推薦品質或延遲。",
+        "- 尚未實作完整規格中的跨類別規則、會員首次推薦池、分數衰減排程與 recommendation_logs 歸因。",
+        "MONGO_DB=<已完成 v4 migration 的測試資料庫>",
+        "2026-09-30：離線測試 28 項通過，包含既有 2 項；`pip check` 無相依衝突。測試執行真實 LangGraph 與 LangChain chain、可建構 ChatAnthropic adapter，使用替代模型與 mongomock。測試用 CartService 僅在測試中以 callback(None) 代替 transaction；因此重送與欄位契約有測到，但不能證明 transaction rollback、併發與 Atlas validator。"
+      ]
+    },
+    {
+      "path": "docs/JEFF_DEMO_REVIEW_2026-10-05.md",
+      "headings": [
+        "# JEFF 後台原型檢視 / JEFF admin prototype review",
+        "## 對照依據 / References",
+        "## 實測結果 / Observed results",
+        "## 必須修正 / Required corrections",
+        "### P1：篩選顯示成功，但資料未同步 / Filters do not update displayed data",
+        "### P1：推薦包含下架商品 / Inactive product recommended",
+        "### P1：AI 資料預覽與問題不同步 / AI payload preview is stale",
+        "### P2：AI 解讀含無法由資料支持的推論 / Unsupported analytical claims",
+        "### P2：模型與量測標示 / Model and measurement labeling",
+        "## 整合驗收待辦 / Integration acceptance still required"
+      ],
+      "evidence": [
+        "檢查日期：2026-10-05。來源：https://claude.ai/artifact/4ZakrG9VZB98hmfdXsxdzz",
+        "| 日期檢核 | 起日 2026-10-04、迄日 2026-10-03，提交紀錄顯示錯誤「開始日期不可晚於結束日期」 |",
+        "| 推薦監控 | 標明最近 1,000 筆事件，次數非轉換率；歸因指標留空、衰減排程標示尚未接線，界線表達合理 |",
+        "重現：總覽起迄日期均設為 2026-10-03，示範訂單選「排除示範」，按套用。提交紀錄顯示成功，但 KPI 仍為 486,320、92 / 100；每日表仍列 9/20–10/3，最近訂單仍含示範訂單，頁首仍寫包含示範。已重現兩次。",
+        "2. SAM 驗證 v4 欄位契約、已付款／退款／取消口徑、日期邊界、零資料、366 天及 5,000 筆界線、金額精度。",
+        "5. JEFF 的會員／訂單後台操作需與 HEN 的會員／購物流程共用資料契約；分工不因此重新指派。跨模組驗收責任仍依 TEAM_OWNERSHIP.md 待確認。"
+      ]
+    },
+    {
+      "path": "docs/ORGANIZATION_REPORT.md",
+      "headings": [
+        "# 整理與驗證紀錄 / Organization and validation report",
+        "## 已完成 / Completed",
+        "## 本次驗證 / Validation performed",
+        "## 尚待完成 / Pending"
+      ],
+      "evidence": [
+        "日期：2026-09-27，Asia/Taipei。Date: September 27, 2026.",
+        "## 已完成 / Completed"
+      ]
+    },
+    {
+      "path": "docs/README.md",
+      "headings": [
+        "# 文件中心 / Documentation hub"
+      ],
+      "evidence": []
+    },
+    {
+      "path": "docs/REPOSITORY_GUIDE.md",
+      "headings": [
+        "# 目錄與文件管理 / Repository and document management",
+        "## 版本與重複檔 / Versions and duplicates",
+        "## Git 與附件 / Git and artifacts",
+        "## 清冊範圍 / Inventory scope"
+      ],
+      "evidence": []
+    },
+    {
+      "path": "docs/TEST_DATA_SPEC.md",
+      "headings": [
+        "# 網站客戶與訂單測試資料規範 / Customer and order test-data specification",
+        "## 目的與適用環境 / Purpose and target",
+        "## 資料量與人口欄位 / Population and fields",
+        "## 結構與關聯 / Schema and relationships",
+        "## 訂單狀態與金額 / States and money",
+        "## 生成與匯入順序 / Required sequence",
+        "## 重跑入口與產物 / Commands and artifacts",
+        "## 驗收與未包含項目 / Acceptance and limits"
+      ],
+      "evidence": [
+        "版本：1.0；日期：2026-10-05（Asia/Taipei）；負責：SAM（資料庫與測試）。",
+        "固定批次 `sam-synthetic-20261005-v1`，亂數種子 20261005，資料截止為台北 2026-10-05 08:00。每一筆會員、訂單、明細均有 `synthetic_batch_id`；所有訂單 `is_demo=true`。共享資料庫不放入偽裝為正式交易的 `is_demo=false` 測試訂單。排除示範時，本批應貢獻 0 筆、0 元；若需混合非示範情境，另用隔離測試庫。",
+        "|年齡層|18–24、25–34、35–44、45–54、55–64、65–79；以 2026-10-05 計算，每層 100 位|",
+        "|訂單|3,000 筆，2024-01-01 至 2026-10-05，涵蓋 34 個年月|",
+        "- 新遷移 `20261005_05_synthetic_profile_v4` 只擴充 users、orders、order_items 的可選批次欄位，以及 users 的可選 demographics。既有 required、索引、strict/error 規則保留；舊文件不需補假人口資料。",
+        "- 商品名稱、價格與分類採 2026-10-05 既有資料快照，用來構造合成歷史，**不是 2024／2025 的真實歷史售價或上架證據**。",
+        "歷史 verify_complete 與舊只讀工具使用原 v4 validator，會將此新增 overlay 判為差異。新增人口欄位後應使用本批 verify 作為目前結構驗證；不得把舊 migration 重新套用或改 checksum。後續統一全站 schema 入口列入 SAM 待辦。"
+      ]
+    },
+    {
+      "path": "docs/分支(Branch)規劃與協作機制.md",
+      "headings": [
+        "### **一、 準備基礎環境與專案主幹（Main Branch Setup）**",
+        "### ---",
+        "### ---",
+        "### ---",
+        "### ---",
+        "## LLM_PJ 實際採用方式（2026-09-30）",
+        "### 分支與目錄對照",
+        "### 使用已存在的遠端分支",
+        "### 基礎檔案與後續設定"
+      ],
+      "evidence": [
+        "## LLM_PJ 實際採用方式（2026-09-30）",
+        "四個功能分支皆由包含本文件的 main 起點建立；每個分支保有完整倉庫，下表是主要協作範圍，不是目錄存取限制。負責人的 GitHub 帳號尚未指定。",
+        "原文的 `git checkout -b` 適用於尚未建立分支時。遠端分支建立後，組員首次使用以下方式（以 store-ui 為例）："
+      ]
+    },
+    {
+      "path": "MuscleCore分析資料/website/README.md",
+      "headings": [
+        "# MuscleCore｜Python + MongoDB 智慧運動商城",
+        "## 已完成",
+        "## Windows 快速啟動",
+        "## 示範帳號",
+        "## 專題架構",
+        "## 雙模型專題呈現方式",
+        "## 建議四人 Git 分工",
+        "## English summary",
+        "## 新版 SKU 與 AI 串接 / SKU and AI integration"
+      ],
+      "evidence": [
+        "## 已完成"
+      ]
+    },
+    {
+      "path": "MuscleCore分析資料/website/requirements-ai.txt",
+      "headings": [],
+      "evidence": []
+    },
+    {
+      "path": "MuscleCore分析資料/website/requirements-llm.txt",
+      "headings": [],
+      "evidence": []
+    },
+    {
+      "path": "MuscleCore分析資料/website/requirements-test.txt",
+      "headings": [],
+      "evidence": []
+    },
+    {
+      "path": "MuscleCore分析資料/website/requirements.txt",
+      "headings": [],
+      "evidence": []
+    },
+    {
+      "path": "MuscleCore運動用品電商網站/README.md",
+      "headings": [
+        "# 舊站展示附件 / Legacy demo artifacts"
+      ],
+      "evidence": []
+    },
+    {
+      "path": "VibeCart_AI/README.md",
+      "headings": [
+        "# VibeCart AI 資料層 / Data layer"
+      ],
+      "evidence": [
+        "Flask 展示網站位於其他目錄，尚未接線本服務。不要直接對正式 Atlas 執行舊版 seed 或測試。The Flask demo is not wired to these services; do not run legacy seeds or tests against production Atlas."
+      ]
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/01_Cluster設定與狀態.md",
+      "headings": [
+        "# Cluster 實際設定與查核",
+        "## 身分與部署",
+        "## 連線位址（無密碼）",
+        "## 資料庫帳號",
+        "## Network Access",
+        "## Free 與 AI 配置",
+        "## 工具與驗證證據",
+        "## 歷史阻礙（已解除）",
+        "## 購物車更新",
+        "## 2026-09-18 Schema 完整性查核"
+      ],
+      "evidence": [
+        "|備份|Free 無 Atlas 雲端備份；人工備份尚未執行|",
+        "2026-09-17 查核另有 101.10.106.152/32（既有，註解空白）；本次因本機出口改變新增 180.177.10.68/32，註解 VibeCart development workstation cart validation 2026-09-17。原先兩筆保留，未撤銷他人設定。未放行全網。若本機出口 IP 改變需更新白名單；Cloud Run 出口尚未配置。"
+      ]
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/02_專案整合規格_v1.1_來源快照.md",
+      "headings": [
+        "# VibeCart AI｜懂你想買、更懂怎麼賣！",
+        "## 專案整合規格與表單欄位審查 v1.1",
+        "## 1\\. 審查結論與修正清單",
+        "## 2\\. 專案定位、範圍與目前進度",
+        "## 3\\. 資料模型總覽",
+        "## 4\\. 欄位共同規則",
+        "## 5\\. 核心集合欄位字典",
+        "### 5.1 users",
+        "### 5.2 categories",
+        "### 5.3 products",
+        "### 5.4 carts 與 carts.items\\[]",
+        "### 5.5 orders 與 orders.items\\[]",
+        "### 5.6 user\\_events",
+        "### 5.7 ai\\_requests",
+        "## 6\\. AI 與技術集合欄位補充",
+        "### 6.1 product\\_embeddings",
+        "### 6.2 recommendations",
+        "### 6.3 ai\\_insights",
+        "### 6.4 ai\\_usage、request\\_limits、schema\\_migrations",
+        "## 7\\. 網站表單、角色及資料歸屬",
+        "## 8\\. 索引、統計與一致性",
+        "## 9\\. v1.1 程式到目標 Schema 的遷移對照",
+        "## 10\\. 部署與命名規範整合",
+        "## 11\\. 驗收清單、分工與時程",
+        "## 12\\. 版本變更紀錄與文件優先序"
+      ],
+      "evidence": [
+        "|適用範圍|四人、四週專題；2026-09-05～2026-10-02|",
+        "|preferences.updated\\_at|Date/null|null|尚未填偏好時為 null|",
+        "個人化最低規格：登入者最近 30 天最多 100 筆商品瀏覽／加購／購買事件，權重暫定 1／3／5，建立有效商品向量加權平均，再套偏好預算、有效分類、上架與庫存篩選；無有效行為時使用偏好＋規則推薦。bge\\_similar 是商品相似，不能單憑此功能宣稱已完成使用者個人化。權重屬本版設計值，需以測試案例調整並記版本。",
+        "預計腳本：20260913\\_01\\_expand\\_schema.py、20260913\\_02\\_backfill.py、20260913\\_03\\_indexes.py、20260913\\_04\\_validate.py；這是實作工作清單，本次未交付或執行這些腳本。不得宣稱已完成一鍵初始化。回滾先停寫，恢復匹配的程式與資料備份；網站版本回退不等於資料庫回退。",
+        "|09/19～09/25，Week 3|兩個後台 AI 板塊、KPI、紀錄、部署測試|M3 外網展示、模型效能／成本紀錄|",
+        "|09/26～10/02，Week 4|凍結新增功能、整合驗收、簡報、彩排|M4 10 分鐘 Demo、阻斷問題清零、Release|"
+      ]
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/03_集合與索引建置.md",
+      "headings": [
+        "# 集合與索引建置",
+        "## 13 個目標集合",
+        "## 23 個自訂索引",
+        "## 驗證要點"
+      ],
+      "evidence": [
+        "// mongosh 範例，尚未執行。"
+      ]
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/04_連線與維運.md",
+      "headings": [
+        "# Flask 連線、權限與維運",
+        "## 憑證與使用方式",
+        "## Schema 重建與驗證",
+        "## Validator 範圍與服務層責任",
+        "## TTL、配額與資料保留",
+        "## 交易及網站驗收界線",
+        "## 備份與恢復",
+        "## 尚未執行的整合項目"
+      ],
+      "evidence": [
+        "每個程序共用 MongoClient，不在每個 HTTP request 建立；程序結束時 close。採 TLS，不關閉憑證驗證。保留現有 `MONGO_URI`／`MONGO_DB` 名稱；ENABLE_CHECKOUT=false。雲端正式秘密應存 Secret Manager，Cloud Run 網路與密鑰部署尚未執行。",
+        "Free 無 Atlas 雲端備份。本次新 DB 僅初始化紀錄，尚未執行備份還原演練。開始匯入舊資料前，停寫或建立一致性備份窗口，以 mongodump 匯出業務 DB；保留版本、筆數、金額總和、校驗值與 UTC 時間，存於受保護的專案外位置。mongorestore 先還原到測試副本比對，不能覆蓋正式資料。Free 不採依賴 oplog 的 PITR；僅回退網站不能回退 DB。",
+        "## 尚未執行的整合項目"
+      ]
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/05_實際Schema與索引.md",
+      "headings": [
+        "# Atlas 最新完整 Schema 與索引讀回"
+      ],
+      "evidence": [
+        "2026-10-05 重建及商品匯入後讀回；27 集合，來源為 verify_recovery.py。",
+        "  \"checked_at\": \"2026-10-05T07:29:43.121579+00:00\",",
+        "        \"$date\": \"2026-10-05T07:26:54.815Z\"",
+        "        \"$date\": \"2026-10-05T07:26:58.742Z\"",
+        "        \"$date\": \"2026-10-05T07:27:06.512Z\"",
+        "        \"$date\": \"2026-10-05T07:27:10.676Z\"",
+        "        \"$date\": \"2026-10-05T07:27:19.858Z\"",
+        "        \"$date\": \"2026-10-05T07:27:24.816Z\"",
+        "        \"$date\": \"2026-10-05T07:27:36.807Z\"",
+        "        \"$date\": \"2026-10-05T07:27:50.571Z\""
+      ]
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/06_實際驗證結果.md",
+      "headings": [
+        "# 資料庫實際驗證結果"
+      ],
+      "evidence": [
+        "這是資料庫層驗證，不是 Flask 完整結帳、兩使用者併發、AI 推薦品質、Claude 或網站部署验收。TTL 的定義已讀回，尚未等待背景清理器的實際刪除週期。"
+      ]
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/07_購物車更新規格_來源快照.md",
+      "headings": [
+        "# VibeCart AI｜MongoDB 未結單購物車資料結構更新規格",
+        "## 1. 本次資料庫設計決議",
+        "## 2. 為何不使用傳統 Form / Order 儲存",
+        "## 3. MongoDB Collection 架構",
+        "### Collection 職責",
+        "## 4. `carts` Collection",
+        "### 4.1 設計原則",
+        "### 4.2 建議 Schema",
+        "### 4.3 欄位定義",
+        "### 4.4 `price_snapshot` 用途",
+        "## 5. `cart_events` Collection",
+        "### 5.1 設計目的",
+        "### 5.2 建議 Schema",
+        "### 5.3 Event Type",
+        "### 5.4 建議欄位",
+        "## 6. 購物車生命週期",
+        "## 7. Cart → Order 轉換規則",
+        "## 8. MongoDB Index 建議",
+        "### `carts`",
+        "### `cart_events`",
+        "## 9. AI / VibeInsight 資料應用",
+        "### `carts`",
+        "### `cart_events`",
+        "## 10. Codex 實作任務",
+        "### Task 1：檢查現有 Schema"
+      ],
+      "evidence": []
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/08_購物車更新前結構.md",
+      "headings": [
+        "# 更新前實際結構"
+      ],
+      "evidence": []
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/09_購物車架構與API整合.md",
+      "headings": [
+        "# 購物車 v3 架構與服務整合",
+        "## 現行資料模型",
+        "### carts",
+        "### cart_events",
+        "## 索引差異",
+        "## Cart Service",
+        "# 完成 Flask 整合驗收後才設 enable_checkout=True；此服務只建立 Demo 付款。",
+        "## Flask API 接線契約",
+        "## AI 事件責任",
+        "## 遷移與重建"
+      ],
+      "evidence": [
+        "原網站仍使用 Session 購物車與 stock／name／order_no 等舊欄位；直接切換新 DB 會破壞既有頁面。此次提供新 Service 與下列 API 契約，**尚未註冊新的 Flask 路由或改動舊網站行為**。原網站全站 schema v2 登入／商品遷移是接線前提。"
+      ]
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/10_購物車更新驗證結果.md",
+      "headings": [
+        "# 購物車 v3 實際驗證結果",
+        "## 遷移與資料保全",
+        "## 初次測試與修正",
+        "## 範圍界線"
+      ],
+      "evidence": [
+        "通過的是新 CartService 與 Atlas 的整合驗證，包括真實併發、冪等、防越權、重新驗價、回滾及歷史保存。舊 Flask 網站仍未接線，HTTP／CSRF、訪客 Session 合併、UI、AI 報表、棄單排程尚未驗收。原 06 文件為初始 v2 歷史紀錄，不能當作 v3 的最新測試結果。"
+      ]
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/11_Schema完整性更新前結構.md",
+      "headings": [
+        "# Schema 完整性更新前結構"
+      ],
+      "evidence": [
+        "    \"$date\": \"2026-10-05T07:27:19.587Z\""
+      ]
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/12_全部Schema文件對照與驗證.md",
+      "headings": [
+        "# 全部 Schema 文件對照與實際查核",
+        "## 文件依據與優先序",
+        "## 集合完成清單",
+        "## 本次補強",
+        "## 明確採用的範圍解讀",
+        "## Schema 與應用服務界線",
+        "## 後續唯一現行驗證入口",
+        "## 逐欄位字典（由 Atlas 已吻合的現行定義輸出）",
+        "### users",
+        "### categories",
+        "### products",
+        "### carts",
+        "### orders",
+        "### user_events",
+        "### ai_requests",
+        "### product_embeddings",
+        "### recommendations",
+        "### ai_insights",
+        "### ai_usage",
+        "### request_limits",
+        "### schema_migrations",
+        "### cart_events"
+      ],
+      "evidence": [
+        "- 新資料環境使用 local 登入；Firebase 尚未啟用，local password_hash 必填。歷史訂單無商品、舊 AI 快取無請求關聯等例外屬舊資料遷移，不以放寬全部新文件 validator 代替；本次無此類既有資料。",
+        "此報告確認資料庫結構與可由 DB 驗證的規則；不代表全部網站或 AI 功能已完成。以下屬跨文件、來源真實性或流程規則，必須由應用服務保證：",
+        "- 舊 Flask 頁面與 Session 購物車尚未接線，不將 Schema 驗證通過宣稱為全站驗收。"
+      ]
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/13_完整Schema_v1.0_來源快照.md",
+      "headings": [
+        "# VibeCart AI｜MongoDB 完整資料結構規格",
+        "## 1. 系統範圍",
+        "## 2. Collection 總覽",
+        "## 3. `users`",
+        "## 4. `categories`",
+        "## 5. `products`",
+        "### 5.1 評價規則",
+        "### 5.2 重複購買率規則",
+        "## 6. `product_skus`",
+        "## 7. `product_reviews`",
+        "## 8. `orders` 與 `order_items`",
+        "### `orders`",
+        "### `order_items`",
+        "## 9. `carts` 與 `cart_events`",
+        "### `carts`",
+        "### `cart_events`",
+        "## 10. `behavior_events`",
+        "## 11. `user_preference_scores`",
+        "## 12. `product_repurchase_stats`",
+        "## 13. `cross_category_rules`",
+        "## 14. `product_purchase_sequences`",
+        "## 15. `recommendation_pools`",
+        "## 16. `first_member_recommendations`",
+        "## 17. `recommendation_logs`",
+        "## 18. 推薦流程"
+      ],
+      "evidence": [
+        "- 必須對應已完成或已送達訂單。"
+      ]
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/14_完整Schema更新前結構.md",
+      "headings": [
+        "# 完整 Schema 更新前結構"
+      ],
+      "evidence": [
+        "    \"$date\": \"2026-10-05T07:27:36.795Z\""
+      ]
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/15_完整Schema_v4架構與遷移.md",
+      "headings": [
+        "# Complete Schema v4 架構與遷移",
+        "## 文件優先序",
+        "## 目前架構",
+        "## 新舊結構對照",
+        "## 為何實際是27集合",
+        "## 型別與未定義細節的實作選擇",
+        "## 評價規則",
+        "## 推薦政策已保存的值",
+        "## 新服務與介面",
+        "## 遷移與驗證",
+        "## 尚未部署範圍"
+      ],
+      "evidence": [
+        "只建立一筆recommendation_policy配置，不建立假推薦池、首推結果或關聯統計。首次推薦快照user_id唯一；還需由後續生成服務在同一transaction中確認／寫入users.first_recommendation_generated_at。不能僅靠資料庫索引宣稱首推流程已完成。",
+        "- [ReviewService](../services/review_service.py)：create_review；驗證本人已完成／送達訂單明細並更新真實評價。",
+        "同商品多SKU的購買量合併為一筆PURCHASE，避免同訂單同商品被多次計分。ADD同步建立ADD_TO_CART，之後由behavior_events.processed_at與唯一event_id配合分數處理器；本次尚未部署該處理器。cart_events不再另外作相同權重的加總來源。",
+        "## 尚未部署範圍"
+      ]
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/16_完整Schema_v4驗證與欄位字典.md",
+      "headings": [
+        "# 完整 Schema v4 實際驗證與逐欄位字典",
+        "## 資料與遷移紀錄",
+        "## 本次驗證涵蓋",
+        "## 來源與界線",
+        "## 逐欄位定義",
+        "### users",
+        "### products",
+        "### product_skus",
+        "### product_reviews",
+        "### product_repurchase_stats",
+        "### categories",
+        "### brands",
+        "### orders",
+        "### order_items",
+        "### carts",
+        "### cart_events",
+        "### behavior_events",
+        "### user_preference_scores",
+        "### cross_category_rules",
+        "### product_purchase_sequences",
+        "### recommendation_pools",
+        "### first_member_recommendations",
+        "### recommendation_logs",
+        "### system_configs",
+        "### user_events"
+      ],
+      "evidence": [
+        "資料庫模型已更新；完整推薦候選產生、跨集合首推資格與marker交易、分數衰減批次、補貨統計批次、關聯規則探勘及排程尚未部署。Schema 約束只能驗證文件形狀與本文件內的計算，不能代替跨集合資格檢查、模型執行或排程。Flask原網站尚未接上新服務。"
+      ]
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/17_2026-09-19_MongoDB工作總結.md",
+      "headings": [
+        "# 2026-09-19 MongoDB 工作總結",
+        "## 建置目標與結果",
+        "## 主要架構更新",
+        "## 文件閱讀順序",
+        "## 完成範圍與後續"
+      ],
+      "evidence": [
+        "依據 VibeCart_AI_MongoDB_Complete_Schema.md 完成 Complete Schema v4 建置。本總結引用本日已完成的 Atlas 查核與測試，未額外重跑資料庫測試。查核時間為台灣時間 2026-09-19 00:07（報告記錄 UTC 2026-09-18 16:07）。",
+        "資料庫設計、實際建置及 SKU／評價服務驗證已完成。Flask 頁面接線、首推生成、6+4 排序、衰減計分、統計批次與排程尚未部署；ENABLE_CHECKOUT 保持 false。尚未匯入真實商品、會員或交易資料。"
+      ]
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/18_2026-10-05_Schema重建與超市商品匯入.md",
+      "headings": [
+        "# 2026-10-05 Schema 重建與超市商品匯入",
+        "## 建置結果",
+        "## 執行及驗證",
+        "## 證據與資料檔"
+      ],
+      "evidence": [
+        "# 2026-10-05 Schema 重建與超市商品匯入",
+        "- [本次完整 Schema 讀回](supermarket/recovery_20261005/schema_readback.json)",
+        "先前集合消失時的狀態、匯入／讀取證據，以及本次重建會更新的舊結構快照，另存於 supermarket/recovery_20261005/before。集合消失原因仍未知；本次是依使用者要求重建，不將原因推定為任何人的操作。"
+      ]
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/README.md",
+      "headings": [
+        "# VibeCart AI MongoDB 建置紀錄",
+        "## 現行文件與程式",
+        "## 執行與歷史版本",
+        "## 憑證與完成範圍",
+        "## English summary"
+      ],
+      "evidence": [
+        "更新：2026-10-05（Asia/Taipei）。已依使用者指示重建 Schema 並匯入超市測試資料；[最新重建與匯入報告](18_2026-10-05_Schema重建與超市商品匯入.md)。原 Schema 依據不變。依新增的 VibeCart_AI_MongoDB_Complete_Schema.md，已完成指定 Atlas 資料庫的 Complete Schema v4 更新與實際驗證。",
+        "商品主檔與 SKU 分離，SKU 保存價格與庫存；訂單主檔與明細分離。購物車操作改傳 sku_id，結帳交易同步扣庫存、建立明細與行為事件。評價需驗證本人已完成／送達的訂單明細，實際評價取代預設 4.0，顯示分數無條件進位至一位小數。推薦與統計集合、6+4 政策、70/30 分數上限及時間衰減設定已建立。",
+        "本次已完成資料庫、索引、驗證規則、政策設定與必要 SKU／評價服務。舊 Flask 網站尚未接線至新版；首推生成、6+4 排序、衰減計分、統計批次與排程尚未部署。ENABLE_CHECKOUT 保持 false；測試以明確啟用的服務實例驗證交易。資料結構完成不代表完整 AI 推薦及營運功能已上線。"
+      ]
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/supermarket/README.md",
+      "headings": [
+        "# 超級市場測試商品資料（2026-10-05）",
+        "## 交付結果",
+        "## 檔案與驗證證據",
+        "## 使用與重跑",
+        "# 預設只試寫並回滾；不永久新增",
+        "# 正式匯入；已經執行完成，通常無須再執行",
+        "# 用現有 Atlas 資料進行匿名唯讀網站驗證",
+        "# 啟動本機超市展示，網址 http://127.0.0.1:5000",
+        "## 交給組員的連線設定"
+      ],
+      "evidence": [
+        "# 超級市場測試商品資料（2026-10-05）",
+        "> **已於 2026-10-05 依使用者指示重建並重新匯入。** 目前 27 集合、336 商品、336 SKU、8 大類、24 小類；832 筆文件逐筆比對及 Flask 讀取通過。先前集合消失的歷史狀態已封存，最新結果見 [latest_status.json](latest_status.json) 與 [重建報告](../18_2026-10-05_Schema重建與超市商品匯入.md)。",
+        "- [本次重建後匯入報告](import_report.json)：重新提交 832 筆文件。先前新增 0 筆的重跑報告封存在 recovery_20261005/before/import_report.json。",
+        "網站 32 項自動測試通過，包括超過 200 項的分頁、搜尋、照片與來源連結，以及既有登入、CSRF、SKU 購物車與結帳控制。這是本機程式整合驗證，尚未取得公開網站網址，不能視為已部署或完成遠端瀏覽器驗收。"
+      ]
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/supermarket/requirements.txt",
+      "headings": [],
+      "evidence": []
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/supermarket/recovery_20261005/before/05_實際Schema與索引.md",
+      "headings": [
+        "# Atlas 最新完整 Schema 讀回"
+      ],
+      "evidence": []
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/supermarket/recovery_20261005/before/08_購物車更新前結構.md",
+      "headings": [
+        "# 更新前實際結構"
+      ],
+      "evidence": []
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/supermarket/recovery_20261005/before/11_Schema完整性更新前結構.md",
+      "headings": [
+        "# Schema 完整性更新前結構"
+      ],
+      "evidence": []
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/supermarket/recovery_20261005/before/14_完整Schema更新前結構.md",
+      "headings": [
+        "# 完整 Schema 更新前結構"
+      ],
+      "evidence": []
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/supermarket/recovery_20261005/before/16_完整Schema_v4驗證與欄位字典.md",
+      "headings": [
+        "# 完整 Schema v4 實際驗證與逐欄位字典",
+        "## 資料與遷移紀錄",
+        "## 本次驗證涵蓋",
+        "## 來源與界線",
+        "## 逐欄位定義",
+        "### users",
+        "### products",
+        "### product_skus",
+        "### product_reviews",
+        "### product_repurchase_stats",
+        "### categories",
+        "### brands",
+        "### orders",
+        "### order_items",
+        "### carts",
+        "### cart_events",
+        "### behavior_events",
+        "### user_preference_scores",
+        "### cross_category_rules",
+        "### product_purchase_sequences",
+        "### recommendation_pools",
+        "### first_member_recommendations",
+        "### recommendation_logs",
+        "### system_configs",
+        "### user_events"
+      ],
+      "evidence": [
+        "資料庫模型已更新；完整推薦候選產生、跨集合首推資格與marker交易、分數衰減批次、補貨統計批次、關聯規則探勘及排程尚未部署。Schema 約束只能驗證文件形狀與本文件內的計算，不能代替跨集合資格檢查、模型執行或排程。Flask原網站尚未接上新服務。"
+      ]
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/test_data/README.md",
+      "headings": [
+        "# 客戶與跨年訂單測試資料 / Synthetic customers and cross-year orders"
+      ],
+      "evidence": []
+    },
+    {
+      "path": "專題進度/LLM購物網站專題_2026-09-09_今日總結與下一步規劃_v1.0.md",
+      "headings": [
+        "# MuscleCore × Hybrid AI 購物網站專題",
+        "## 2026-09-09 今日總結與下一步規劃",
+        "## 0. 給組員的一分鐘摘要",
+        "## 1. 專題定位與名稱",
+        "### 1.1 專題基底",
+        "### 1.2 建議命名架構",
+        "### 1.3 尚待全組定案",
+        "## 2. 今日完成事項",
+        "### 2.1 架構與技術決策",
+        "### 2.2 已產出可執行 MVP",
+        "### 2.3 目前程式已涵蓋功能",
+        "### 2.4 初步驗證結果",
+        "## 3. 系統功能範圍",
+        "### 3.1 Customer／一般會員端",
+        "### 3.2 Admin／管理者端",
+        "### 3.3 本期不列為必要驗收",
+        "## 4. Hybrid AI 雙路線設計",
+        "### 4.1 三層實作策略",
+        "### 4.2 為何不購買 GPU 仍可完成",
+        "### 4.3 Demo 必須記錄的比較數據",
+        "## 5. MongoDB 資料庫整合結果",
+        "### 5.1 兩個版本必須分清楚",
+        "### 5.2 14 個 Collections 用途",
+        "### 5.3 資料庫命名",
+        "### 5.4 初始化腳本下一版要求"
+      ],
+      "evidence": [
+        "> 專案期間：2026-09-05～2026-10-02  ",
+        "目前已完成的程式骨架包含：",
+        "| Local Embedding | BGE 模型、商品向量、Cosine Similarity | ⬜ 尚未接入 |",
+        "| Cloud LLM | API 摘要、問答、推薦理由 | ⬜ 尚未接入 |",
+        "| 商品 CRUD | 後台新增、修改、下架 | ⬜ 尚未完成 |",
+        "| 會員／訂單管理 | 後台清單與查詢 | ⬜ 尚未完成 |",
+        "| 雲端部署 | 外部可存取測試站 | ⬜ 尚未完成 |",
+        "- 目前環境尚未安裝 `pytest`，因此本次未完成完整測試執行。",
+        "- 尚未在全新 Windows 電腦依 `start_windows.bat` 做端到端重建驗收。",
+        "- 尚未驗證 MongoDB Atlas、雲端 LLM API 與正式部署環境。",
+        "因此目前正確說法是：**可執行骨架已完成，完整系統與雙 AI 串接仍在進行中。**",
+        "| Local AI | BGE Embedding Top-N | 尚未接入 | 建立向量腳本與推薦 API |",
+        "| Cloud LLM | 摘要、問答、推薦理由 | 尚未接入 | 決定服務、Key、Prompt 與安全輸入格式 |",
+        "| 部署 | 外網測試站 | 未完成 | 09/19 前選平台，09/25 前上線 |",
+        "| GitHub 協作 | Repo、Branch、PR、Review | 尚待確認 | 立即建 Repo 與分派 Issue |",
+        "| Week 3 | 09/19～09/25 | 後台資料、Cloud LLM、比較實測、測試部署 | **M3：後台兩個 AI 板塊可由外網 Demo** |",
+        "| Week 4 | 09/26～10/02 | 整合測試、文件、簡報、正式部署、彩排 | **M4：10 分鐘內完成前台＋後台＋雙 AI 展示，Blocker=0** |",
+        "### 9.3 Week 3：09/19～09/25",
+        "### 9.4 Week 4：09/26～10/02",
+        "| 部署太晚 | 中／高 | 09/19 前定平台，09/25 前完成測試站 |"
+      ]
+    },
+    {
+      "path": "專題進度/LLM購物網站專題_四週進度跟蹤表.md",
+      "headings": [
+        "# LLM 購物網站專題｜四週進度跟蹤表",
+        "## 一、專案目標與範圍",
+        "### MVP 範圍（四週內必須完成）",
+        "## 二、專題名稱提案（2026-09-05 LINE 群組 2 決選）",
+        "### 建議決策",
+        "## 三、總進度跟蹤表",
+        "## 四、四週專案時程",
+        "### 關鍵路徑",
+        "## 五、四人派工建議（09/06 確認後生效）",
+        "### 工作量控制",
+        "## 六、GitHub 倉庫與分支規劃",
+        "### 建庫參數（待 09/05 名稱表決後建立）",
+        "### 分支與審查規則",
+        "### 建庫前仍需確認",
+        "## 七、Milestone 與組員互檢機制",
+        "### 每次互檢紀錄格式",
+        "## 八、部署平台選項",
+        "### 部署決策建議",
+        "### 官方參考",
+        "## 九、四次週三實體課與遠端備援",
+        "### 遠端出席 SOP",
+        "## 十、風險與管控",
+        "## 十一、本週六 LINE 群組 2 必須確認的七件事",
+        "### 可直接貼到 LINE 群組 2 的確認訊息",
+        "## 十二、決策紀錄"
+      ],
+      "evidence": [
+        "> 專案期間：2026-09-05～2026-10-02（四週）  ",
+        "狀態代碼：⬜ 未開始｜🟨 進行中｜🟦 待確認｜🟩 已完成｜🟥 阻塞",
+        "| P05 | 建立 GitHub 專題倉庫 | 09/05 | 倉庫管理者待確認 | Repository、README、Issues、Projects、Milestones | ⬜ | 待確認正式名稱、擁有者及公開性 |",
+        "| P13 | 完成推薦理由與營運摘要 | 09/25 | AI＋後端 | 至少各一個可展示情境 | ⬜ | Milestone 3 驗收 |",
+        "| P14 | 確認部署平台並建立測試站 | 09/25 | DevOps 負責人 | 測試網址可供全組外部存取 | ⬜ | 建議先 Render，Azure 為備選 |",
+        "| P15 | 整合測試、修正與文件補齊 | 09/29 | 全組 | 測試案例通過、README 可依步驟重建 | ⬜ | 不再新增 Could 功能 |",
+        "| Week 3 | 09/19～09/25 | 管理端與 AI 整合 | 商品 CRUD、推薦理由、營運摘要、測試部署 | M3：前後台與 AI 功能在測試站串接成功 |",
+        "| Week 4 | 09/26～10/02 | 品質、部署與簡報 | 整合測試、UX 修正、README、簡報／Demo、正式部署、封版 | M4：正式網址、文件、展示腳本及 v1.0.0 |",
+        "| C. 後端／MongoDB | 組員 3 待確認 | Flask Blueprint、API、MongoDB Schema、CRUD、安全設定 | AI API 與資料正確性 | Write；`feature/backend-db` |",
+        "| D. AI／測試／部署 | 組員 4 待確認 | 語意推薦、LLM 摘要、測試案例、雲端部署 | README 重建與整合測試 | Write；`feature/ai-deploy` |",
+        "| M3｜完整整合版 | 09/25 | 商品 CRUD、推薦理由、營運摘要、測試站 | 前端＋PM | 角色交叉測試＋PR Review | 前後台可用、外網可開啟 |",
+        "4. 最晚 09/19 完成平台選型，09/25 前必須有測試網址；不可拖到封版週才首次部署。",
+        "| 第 3 次 | 09/23（三） | 士林 | M3 前檢查：管理端、AI 整合、部署 | 由一位現場組員負責鏡頭／收音與同步畫面 |",
+        "| 第 4 次 | 09/30（三） | 士林 | M4 前檢查：正式站、簡報及彩排 | 遠端完成 Demo 演練；課後 30 分鐘內更新 Issues |",
+        "| 2026-09-19 | 部署平台 | 待填 | 待填 | 09/25 前建立測試站 |"
+      ]
+    },
+    {
+      "path": "專題進度/LLM購物網站專題_四週進度跟蹤表_v2.0.md",
+      "headings": [
+        "# LLM 購物網站專題｜四週進度跟蹤表 v2.0",
+        "## 0. 本次修訂摘要（v1.0 → v2.0）",
+        "### 本版六項核心修正",
+        "# 一、專案目標與定位",
+        "## 1.1 專題正式定位",
+        "## 1.2 專題價值",
+        "# 二、舊 MuscleCore 網站可利用的完整細節盤點",
+        "## 2.1 舊站可直接承接的使用流程",
+        "### A. 前台購物網站",
+        "### B. 管理後台",
+        "### C. 舊資料庫概念",
+        "## 2.2 舊技術架構與本專題重寫對照",
+        "## 2.3 舊站功能的「保留／簡化／延後」決策",
+        "# 三、帳戶、登入與權限設計",
+        "## 3.1 角色",
+        "## 3.2 建議資料結構",
+        "## 3.3 安全最低要求",
+        "# 四、兩大 AI 板塊：本專題的真正亮點",
+        "## 4.1 AI 板塊 A｜Local Recommendation Engine",
+        "### 定位",
+        "### 建議模型",
+        "### 為什麼適合本專題",
+        "### 建議輸入",
+        "### 建議輸出",
+        "### 後台畫面建議"
+      ],
+      "evidence": [
+        "> 專案期間：2026-09-05～2026-10-02（四週）  ",
+        "狀態代碼：⬜ 未開始｜🟨 進行中｜🟦 待確認｜🟩 已完成｜🟥 阻塞",
+        "| P01 | 名稱／口號提案 | 09/03 | Sam | VibeCart／InsightCart 方案 | 🟩 | 已完成 |",
+        "| P02 | 名稱與側重表決 | 09/05 | 全組 | LINE 決議 | 🟦 | 尚未取得本對話最終表決紀錄 |",
+        "| P04 | 舊站功能盤點 | 09/06 | Sam＋全組 | 可沿用／重寫／延後表 | 🟩 | 本文件第二節已完成 |",
+        "| P05 | GitHub 專題倉庫 | 09/08 | 待確認 | Repo＋README＋Issues＋Milestones | ⬜ | 正式名稱確認後立即建立 |",
+        "| P14 | 管理者訂單／會員資料 | 09/23 | 後端＋DB | 列表／查詢 | ⬜ | AI B 的資料來源 |",
+        "| P15 | AI B：Cloud LLM Insight | 09/25 | AI＋後端 | 營運摘要＋問答 | ⬜ | API 主線 |",
+        "| P16 | API vs Local 比較實測 | 09/25 | AI＋PM | 延遲／成本／隱私／限制表 | ⬜ | 老師要求的差異展示 |",
+        "| P17 | 測試站部署 | 09/25 | DevOps | 外網 URL | ⬜ | Render／Azure 擇一 |",
+        "| P18 | 整合測試／文件 | 09/29 | 全組 | README＋測試紀錄 | ⬜ | 停止新增 Could |",
+        "| Week 3 | 09/19～09/25 | 後台＋Cloud LLM | 商品 CRUD、訂單／會員、KPI、LLM Insight、測試部署 | **M3：後台兩個 AI 板塊都可 Demo** |",
+        "| Week 4 | 09/26～10/02 | 整合、比較、部署、成果呈現 | 測試、API vs Local 比較、簡報、正式站、封版 | **M4：10 分鐘內完整展示前台＋後台＋雙 AI** |",
+        "| M3｜Admin＋Cloud LLM | 09/25 | CRUD＋Order／Member＋AI Insight＋測試站 | 外網可登入後台並完成兩 AI 情境 |"
+      ]
+    },
+    {
+      "path": "專題進度/README.md",
+      "headings": [
+        "# 專題進度 / Project progress"
+      ],
+      "evidence": []
+    },
+    {
+      "path": "專題進度/第六組_專題製作方向和進度_2026-09-14.md",
+      "headings": [
+        "# 繳交作品製作方向和進度",
+        "## 一、作品基本資料",
+        "## 二、作品製作方向",
+        "### 製作重點",
+        "## 三、AI 應用與雙模型設計",
+        "## 四、系統與技術架構",
+        "## 五、預定功能範圍",
+        "### 1. 消費者端",
+        "### 2. 管理者端",
+        "### 3. 專題展示內容",
+        "## 六、目前製作進度（截至 2026 年 9 月 14 日）",
+        "### 階段性完成度說明",
+        "## 七、相關技術練習成果",
+        "## 八、後續里程碑與預定成果",
+        "## 九、小組分工草案",
+        "## 十、目前風險與因應方式",
+        "## 十一、預定繳交項目",
+        "## 十二、階段結論"
+      ],
+      "evidence": [
+        "| Cloud AI | Claude API | 彙整商品、訂單與 KPI，產生管理端營運洞察 | 串接規格已完成；實際模型 ID、額度及付費呼叫待驗證 |",
+        "| 本地生成式模型 PoC | `Qwen2.5-1.5B-Instruct`（規劃） | 與雲端 LLM 進行同題輸出比較 | 屬延伸驗證項目，尚未完成 |",
+        "| 專題名稱與核心定位 | 已完成 | 已確認名稱、口號、消費者端與管理端雙核心定位 |",
+        "| 專案需求與整合規格 | 已完成 | 已完成新版規格整理及表單／欄位需求檢視 |",
+        "| 系統架構規劃 | 已完成 | Flask、MongoDB Atlas、Firebase Hosting、Cloud Run 與 AI 分工已確定 |",
+        "| 資料庫與表單設計 | 已完成規劃 | 已規劃會員、商品、訂單、偏好、推薦及紀錄等資料集合；待建立實際資料與驗證 |",
+        "| Firebase 部署說明 | 已完成 | 已整理部署步驟、設定方式與檢查項目，靜態檢查共 7 項通過 |",
+        "| 購物網站前後端整合 | 進行中 | 已確定模組與路由方向；舊站功能移植及完整串接尚未完成 |",
+        "| GitHub 協作與正式分工 | 待確認 | 分工草案已提出，仍待組員姓名、帳號、倉庫與分支權限正式核定 |",
+        "目前已完成「需求定義、技術選型、架構設計、資料欄位規劃與部署文件」階段，正進入「程式整合與環境驗證」階段。若以最終可操作作品為 100%，目前保守估計整體進度約 **35%**。此比例不將尚未實際部署或尚未測試的項目列為完成，以確保進度資訊可被驗收。",
+        "上述項目主要用於驗證 Flask、外部 API、LLM、Firebase Hosting／Functions、錯誤回傳與部署流程，屬專題前置技術練習，不等同於 VibeCart AI 主系統已完成。",
+        "| M3 外網展示與驗證 | 09/19–09/25 | 串接 Atlas、部署 Cloud Run／Firebase、測量回應時間與 API 成本 | 可由外網操作的展示網址與測試紀錄 |",
+        "| M4 最終整合與繳交 | 09/26–10/02 | 權限、錯誤處理、跨模組測試、簡報、操作手冊、彩排與版本封存 | 完整作品、簡報、文件、展示流程及 GitHub Release |",
+        "| 組員分工尚未定案 | 工作重疊或遺漏 | 以 GitHub Issue、分支、里程碑及交叉驗收明確管理 |",
+        "本專題方向、系統架構與 AI 應用邏輯已明確，文件及部署規格亦已完成第一輪整合。目前主要任務是將既有規劃落實為可操作的端到端流程，優先完成「登入 → 商品搜尋 → AI 推薦 → 購物車／訂單 → 管理端洞察 → 外網展示」。後續將依里程碑逐項驗收，確保最終繳交成果不只具備概念說明，也能以實際操作證明學習成果。"
+      ]
+    },
+    {
+      "path": "討論的相關記錄/CONVENTIONS.md",
+      "headings": [
+        "# 專案共用命名與資料規範",
+        "## 1. 命名規範",
+        "## 2. 專案統一詞彙",
+        "## 3. Python／MongoDB 型別對照",
+        "## 4. Collection 欄位規範",
+        "### `users`",
+        "### `categories`",
+        "### `products`",
+        "### `carts`",
+        "### `orders`",
+        "### `orders.items[]` 訂單快照",
+        "### `user_events`",
+        "### `ai_requests`",
+        "## 5. 共用 Enum",
+        "## 6. MongoDB 建模規則",
+        "## 7. 索引命名與必要索引",
+        "## 8. Pydantic 與 Repository 命名",
+        "## 9. Firebase／部署元件分工",
+        "## 10. 環境變數",
+        "## 11. Git 與版本更新規則",
+        "## 12. Schema 版本規則",
+        "## 13. 禁止事項"
+      ],
+      "evidence": []
+    },
+    {
+      "path": "討論的相關記錄/README.md",
+      "headings": [
+        "# 規格與討論 / Specifications and discussions"
+      ],
+      "evidence": []
+    },
+    {
+      "path": "討論的相關記錄/VibeCart_AI_MongoDB_Behavior_Weighted_Scoring.md",
+      "headings": [
+        "# VibeCart AI｜MongoDB 行為權重計分實作規格",
+        "## 1. 文件目的",
+        "## 2. 行為權重",
+        "## 3. `behavior_events` Collection",
+        "### 3.1 建議文件結構",
+        "### 3.2 欄位規則",
+        "## 4. `user_preference_scores` Collection",
+        "### 4.1 建議文件結構",
+        "### 4.2 分數計算",
+        "## 5. 時間衰減",
+        "## 6. MongoDB Update 範例",
+        "### 6.1 商品行為計分",
+        "### 6.2 建議使用 aggregation pipeline 保護上限",
+        "## 7. 事件去重與處理器",
+        "## 8. 索引",
+        "## 9. 推薦候選分數",
+        "## 10. 驗收條件"
+      ],
+      "evidence": []
+    },
+    {
+      "path": "討論的相關記錄/VibeCart_AI_MongoDB_Cart_Schema_Update.md",
+      "headings": [
+        "# VibeCart AI｜MongoDB 未結單購物車資料結構更新規格",
+        "## 1. 本次資料庫設計決議",
+        "## 2. 為何不使用傳統 Form / Order 儲存",
+        "## 3. MongoDB Collection 架構",
+        "### Collection 職責",
+        "## 4. `carts` Collection",
+        "### 4.1 設計原則",
+        "### 4.2 建議 Schema",
+        "### 4.3 欄位定義",
+        "### 4.4 `price_snapshot` 用途",
+        "## 5. `cart_events` Collection",
+        "### 5.1 設計目的",
+        "### 5.2 建議 Schema",
+        "### 5.3 Event Type",
+        "### 5.4 建議欄位",
+        "## 6. 購物車生命週期",
+        "## 7. Cart → Order 轉換規則",
+        "## 8. MongoDB Index 建議",
+        "### `carts`",
+        "### `cart_events`",
+        "## 9. AI / VibeInsight 資料應用",
+        "### `carts`",
+        "### `cart_events`",
+        "## 10. Codex 實作任務",
+        "### Task 1：檢查現有 Schema"
+      ],
+      "evidence": []
+    },
+    {
+      "path": "討論的相關記錄/VibeCart_AI_MongoDB_Complete_Schema.md",
+      "headings": [
+        "# VibeCart AI｜MongoDB 完整資料結構規格",
+        "## 1. 系統範圍",
+        "## 2. Collection 總覽",
+        "## 3. `users`",
+        "## 4. `categories`",
+        "## 5. `products`",
+        "### 5.1 評價規則",
+        "### 5.2 重複購買率規則",
+        "## 6. `product_skus`",
+        "## 7. `product_reviews`",
+        "## 8. `orders` 與 `order_items`",
+        "### `orders`",
+        "### `order_items`",
+        "## 9. `carts` 與 `cart_events`",
+        "### `carts`",
+        "### `cart_events`",
+        "## 10. `behavior_events`",
+        "## 11. `user_preference_scores`",
+        "## 12. `product_repurchase_stats`",
+        "## 13. `cross_category_rules`",
+        "## 14. `product_purchase_sequences`",
+        "## 15. `recommendation_pools`",
+        "## 16. `first_member_recommendations`",
+        "## 17. `recommendation_logs`",
+        "## 18. 推薦流程"
+      ],
+      "evidence": [
+        "- 必須對應已完成或已送達訂單。"
+      ]
+    },
+    {
+      "path": "討論的相關記錄/VibeCart_AI_Recommendation_and_Cross_Category_Rules.md",
+      "headings": [
+        "# VibeCart AI｜購買行為、補貨頻率與破圈推薦規格",
+        "## 1. 文件目的",
+        "## 2. 行為權重",
+        "## 3. 會員首次推薦",
+        "### 3.1 觸發時機",
+        "### 3.2 推薦規則",
+        "### 3.3 評價條件的解釋",
+        "### 3.4 首次推薦文件",
+        "### 3.5 隨機選取方式",
+        "### 3.6 首次推薦池",
+        "## 4. 「猜你喜歡」6項推薦",
+        "### 4.1 個人偏好分數",
+        "### 4.2 候選流程",
+        "### 4.3 建議排序公式",
+        "## 5. 破圈推薦4項",
+        "### 5.1 破圈推薦定義",
+        "### 5.2 `cross_category_rules`",
+        "### 5.3 市場籃子指標",
+        "### 5.4 前後購買分析",
+        "### 5.5 破圈排序",
+        "### 5.6 4項輸出規則",
+        "## 6. 補貨與重複購買",
+        "### 6.1 兩個不同指標",
+        "### 6.2 商品週期類型",
+        "### 6.3 商品欄位"
+      ],
+      "evidence": [
+        "「第一次加入會員的首次推薦」應在會員完成註冊並建立 `user_id` 後觸發，而不是在尚未取得會員識別碼時觸發。"
+      ]
+    },
+    {
+      "path": "討論的相關記錄/VibeCart_AI_專案整合規格_v1.1.md",
+      "headings": [
+        "# VibeCart AI｜懂你想買、更懂怎麼賣！",
+        "## 專案整合規格與表單欄位審查 v1.1",
+        "## 1\\. 審查結論與修正清單",
+        "## 2\\. 專案定位、範圍與目前進度",
+        "## 3\\. 資料模型總覽",
+        "## 4\\. 欄位共同規則",
+        "## 5\\. 核心集合欄位字典",
+        "### 5.1 users",
+        "### 5.2 categories",
+        "### 5.3 products",
+        "### 5.4 carts 與 carts.items\\[]",
+        "### 5.5 orders 與 orders.items\\[]",
+        "### 5.6 user\\_events",
+        "### 5.7 ai\\_requests",
+        "## 6\\. AI 與技術集合欄位補充",
+        "### 6.1 product\\_embeddings",
+        "### 6.2 recommendations",
+        "### 6.3 ai\\_insights",
+        "### 6.4 ai\\_usage、request\\_limits、schema\\_migrations",
+        "## 7\\. 網站表單、角色及資料歸屬",
+        "## 8\\. 索引、統計與一致性",
+        "## 9\\. v1.1 程式到目標 Schema 的遷移對照",
+        "## 10\\. 部署與命名規範整合",
+        "## 11\\. 驗收清單、分工與時程",
+        "## 12\\. 版本變更紀錄與文件優先序"
+      ],
+      "evidence": [
+        "|適用範圍|四人、四週專題；2026-09-05～2026-10-02|",
+        "|preferences.updated\\_at|Date/null|null|尚未填偏好時為 null|",
+        "個人化最低規格：登入者最近 30 天最多 100 筆商品瀏覽／加購／購買事件，權重暫定 1／3／5，建立有效商品向量加權平均，再套偏好預算、有效分類、上架與庫存篩選；無有效行為時使用偏好＋規則推薦。bge\\_similar 是商品相似，不能單憑此功能宣稱已完成使用者個人化。權重屬本版設計值，需以測試案例調整並記版本。",
+        "預計腳本：20260913\\_01\\_expand\\_schema.py、20260913\\_02\\_backfill.py、20260913\\_03\\_indexes.py、20260913\\_04\\_validate.py；這是實作工作清單，本次未交付或執行這些腳本。不得宣稱已完成一鍵初始化。回滾先停寫，恢復匹配的程式與資料備份；網站版本回退不等於資料庫回退。",
+        "|09/19～09/25，Week 3|兩個後台 AI 板塊、KPI、紀錄、部署測試|M3 外網展示、模型效能／成本紀錄|",
+        "|09/26～10/02，Week 4|凍結新增功能、整合驗收、簡報、彩排|M4 10 分鐘 Demo、阻斷問題清零、Release|"
+      ]
+    },
+    {
+      "path": "[MuscleCore運動用品電商網站_報告.pdf",
+      "headings": [],
+      "evidence": []
+    },
+    {
+      "path": "（已壓縮）[MuscleCore運動用品電商網站_報告.pdf",
+      "headings": [],
+      "evidence": []
+    },
+    {
+      "path": "MuscleCore運動用品電商網站/[第3組]運動用品電商網站_報告(亮點士林2025  JS全端開發).pdf",
+      "headings": [],
+      "evidence": []
+    },
+    {
+      "path": "討論的相關記錄/CONVENTIONS.pdf",
+      "headings": [],
+      "evidence": [
+        "適用技術：Python、FastAPI、MongoDB、Firebase Authentication、Firebase Hosting、Cloud Run／Cloud Functions",
+        "MongoDB Collection 複數 snake_case users、order_items",
+        "MongoDB 欄位 snake_case created_at、total_amount",
+        "MongoDB 文件主鍵 _id _id: ObjectId(...)",
+        "3. Python／MongoDB 型別對照",
+        "資料用途 Python／Pydantic MongoDB BSON 規範",
+        "資料用途 Python／Pydantic MongoDB BSON 規範",
+        "_id ObjectId 是 Primary MongoDB 內部識別碼",
+        "6. MongoDB 建模規則",
+        "關聯完整性 MongoDB 不自動保證外鍵；由 Service 層檢查",
+        "文件大小 單一文件不得接近 MongoDB 16 MB 限制",
+        "使用 Pydantic，正式環境另設定 MongoDB JSON Schema ",
+        "Document MongoDB 文件模型 ProductDocument",
+        "Repository MongoDB 資料存取 ProductRepository",
+        "圖片與檔案 Firebase Storage MongoDB 只保存檔案 URL／Path"
+      ]
+    }
+  ],
+  "git_documents": [
+    {
+      "ref": "origin/main",
+      "path": "docs/AI_DASHBOARD.md",
+      "lines": 72,
+      "headings": [
+        "# 營運後台與 v4 測試交接 / Dashboard handoff",
+        "## 分支與負責人 / Branch ownership",
+        "## 目錄責任 / File ownership",
+        "## 已實作行為 / Implemented behavior",
+        "## 私有連線與啟動 / Private connection and launch",
+        "# 確認 SAM 私下配置的 .env.v4-test 已在本機，再啟動",
+        "## 驗證與剩餘界線 / Validation and limits"
+      ],
+      "evidence": [
+        "先前交付紀錄：SAM 曾完成 AI 後台與 Atlas v4 連線交接。`feature/ai-dashboard` 建在 `feature/flask-sku-ai-integration` 之上；[PR #3](https://github.com/SamWang61/LLM_PJ/pull/3) 與 [PR #2](https://github.com/SamWang61/LLM_PJ/pull/2) 已依序合併，功能已進入 main；詳見 [合併與連線管理紀錄](MERGE_RECORD_2026-10-02.md)。現行責任以 TEAM_OWNERSHIP.md 為準。",
+        "2026-10-02：38 項離線測試通過；真實 Atlas 的 27 集合、86 索引與五組整合檢查通過，測試資料筆數已恢復。離線測試涵蓋日期邊界、退款與取消排除、Decimal、空資料、超額查詢、CSRF、角色撤銷、摘要快取及輸出跳脫。真實 Atlas 結果以 [讀回報告](V4_TEST_VERIFICATION.json) 為準。"
+      ]
+    },
+    {
+      "ref": "origin/main",
+      "path": "docs/HEN_AUTH_ORDER.md",
+      "lines": 45,
+      "headings": [
+        "# 仁千 HEN：會員／購物流程（B） / Auth and order handoff",
+        "## 工作範圍 / Scope",
+        "## 分支與操作 / Branch workflow",
+        "## GitHub 存取狀態 / Access status"
+      ],
+      "evidence": [
+        "2026-10-05：組長確認 HEN 選擇 B，負責會員／購物流程，對應既有分支 `feature/auth-order`。此決策取代原前台／RWD 暫定安排；前台／RWD 待重新分配，整合驗證責任仍待確認。",
+        "2026-10-05：組長已確認 HEN 的 GitHub 帳號為 [@1dcvgieok4gm](https://github.com/1dcvgieok4gm)。GitHub 已有此帳號的 Write 邀請，目前仍待 HEN 接受；不重複發送邀請，也尚未標記為權限已生效。私人 Email 不寫入公開文件。",
+        "Collaborator write access is repository-wide; branch ownership is a workflow agreement, not a branch-only ACL. HEN is confirmed as @1dcvgieok4gm. An existing Write invitation is pending acceptance as of 2026-10-05; access is not yet active. [GitHub permissions](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/repository-access-and-collaboration/permission-lev"
+      ]
+    },
+    {
+      "ref": "origin/main",
+      "path": "docs/MERGE_RECORD_2026-10-02.md",
+      "lines": 58,
+      "headings": [
+        "# 2026-10-02 合併與 Atlas 連線管理紀錄 / Merge and connection record",
+        "## 合併結果 / Merge results",
+        "## 已交付修改 / Delivered changes",
+        "## 驗證證據 / Validation evidence",
+        "## Atlas URI 與資料庫決策 / Atlas URI and database decision"
+      ],
+      "evidence": [
+        "# 2026-10-02 合併與 Atlas 連線管理紀錄 / Merge and connection record",
+        "本紀錄使用 Asia/Taipei 時間，記錄已完成的 GitHub 合併、驗證證據與連線保存決策。中文為準，英文輔助。This record documents completed merges and credential handling; Chinese is authoritative.",
+        "| 2026-10-02 04:25:11 | [PR #3](https://github.com/SamWang61/LLM_PJ/pull/3)：`feature/ai-dashboard` → `feature/flask-sku-ai-integration` | 已合併；`1b6ea47618f8dda12d91f73098b6856c08c4df84` |",
+        "| 2026-10-02 04:25:53 | [PR #2](https://github.com/SamWang61/LLM_PJ/pull/2)：`feature/flask-sku-ai-integration` → `main` | 已合併；`4d972d5711817873020562bb2af5529767454189` |",
+        "以上是該次交付的時間點證據，不代表持續監測。BGE／Claude 真實模型、完整 6+4 推薦、排程計分及正式金流仍未完成驗收；合併不等於部署或啟用付費模型。These are dated verification results, not continuous monitoring or production certification."
+      ]
+    },
+    {
+      "ref": "origin/main",
+      "path": "docs/SAM_DATABASE_TESTING.md",
+      "lines": 60,
+      "headings": [
+        "# SAM 資料庫檢查與測試 / Database testing handoff",
+        "## 交付檔案 / Files",
+        "## 只讀查核 / Read-only audit",
+        "## 測試分層 / Test layers",
+        "## 解讀限制 / Limits",
+        "## 本次結果 / This run"
+      ],
+      "evidence": [
+        "| [檢查前證據](SAM_DATABASE_CHECK_2026-10-02.json) | validator、索引、遷移與 12 組關聯的讀回 |",
+        "| [測試摘要](SAM_DATABASE_TESTS_2026-10-02.json) | 資料庫專項測試結果與執行前後筆數比較 |",
+        "| [測試後證據](SAM_DATABASE_POSTCHECK_2026-10-02.json) | 資料庫測試完成後的只讀查核 |",
+        "- 確認四筆既有 migration succeeded、沒有額外／未完成 migration，以及唯一有效推薦政策。",
+        "2026-10-02：資料庫套件 **66 項通過**；前後 27 集合筆數一致，27 個 validator 與 86 個索引符合來源，12 組參照未發現孤兒。業務集合仍為空，保留的資料只有四筆 migration 與一筆政策。檢查器 17 項離線測試通過。"
+      ]
+    },
+    {
+      "ref": "origin/main",
+      "path": "docs/TEAM_OWNERSHIP.md",
+      "lines": 30,
+      "headings": [
+        "# 現行分工與確認項目 / Current team ownership",
+        "## SAM 現在可執行 / SAM's current work",
+        "## 已存在工作如何處理 / Existing work"
+      ],
+      "evidence": [
+        "更新日期：2026-10-05（Asia/Taipei）。以下依使用者最新決策，優先於舊四人分工表及先前的 SAM 後台交接描述。歷史提交的作者與合併事實不改寫。",
+        "| 會員／購物流程（B） | **仁千 HEN** | 2026-10-05 已確認；使用 `feature/auth-order`，見 [分支交接](HEN_AUTH_ORDER.md) |",
+        "| 跨模組整合驗證與最終驗收 | 待確認 | SAM 尚需再確認；資料庫測試通過不等於全站整合驗收完成 |",
+        "- PR #2／#3／#4 已合併的程式與文件保留，完成事實見 [合併紀錄](MERGE_RECORD_2026-10-02.md)。",
+        "- 2026-10-05 已由組長確認 HEN 選擇會員／購物流程；GitHub 存取狀態另見分支交接，分工確認不等於邀請已接受。"
+      ]
+    },
+    {
+      "ref": "origin/docs/jeff-admin-ui-design",
+      "path": "docs/AI_DASHBOARD.md",
+      "lines": 72,
+      "headings": [
+        "# 營運後台與 v4 測試交接 / Dashboard handoff",
+        "## 分支與負責人 / Branch ownership",
+        "## 目錄責任 / File ownership",
+        "## 已實作行為 / Implemented behavior",
+        "## 私有連線與啟動 / Private connection and launch",
+        "# 確認 SAM 私下配置的 .env.v4-test 已在本機，再啟動",
+        "## 驗證與剩餘界線 / Validation and limits"
+      ],
+      "evidence": [
+        "先前交付紀錄：SAM 曾完成 AI 後台與 Atlas v4 連線交接。`feature/ai-dashboard` 建在 `feature/flask-sku-ai-integration` 之上；[PR #3](https://github.com/SamWang61/LLM_PJ/pull/3) 與 [PR #2](https://github.com/SamWang61/LLM_PJ/pull/2) 已依序合併，功能已進入 main；詳見 [合併與連線管理紀錄](MERGE_RECORD_2026-10-02.md)。現行責任以 TEAM_OWNERSHIP.md 為準。",
+        "2026-10-02：38 項離線測試通過；真實 Atlas 的 27 集合、86 索引與五組整合檢查通過，測試資料筆數已恢復。離線測試涵蓋日期邊界、退款與取消排除、Decimal、空資料、超額查詢、CSRF、角色撤銷、摘要快取及輸出跳脫。真實 Atlas 結果以 [讀回報告](V4_TEST_VERIFICATION.json) 為準。"
+      ]
+    },
+    {
+      "ref": "origin/docs/jeff-admin-ui-design",
+      "path": "docs/HEN_AUTH_ORDER.md",
+      "lines": 45,
+      "headings": [
+        "# 仁千 HEN：會員／購物流程（B） / Auth and order handoff",
+        "## 工作範圍 / Scope",
+        "## 分支與操作 / Branch workflow",
+        "## GitHub 存取狀態 / Access status"
+      ],
+      "evidence": [
+        "2026-10-05：組長確認 HEN 選擇 B，負責會員／購物流程，對應既有分支 `feature/auth-order`。此決策取代原前台／RWD 暫定安排；前台／RWD 待重新分配，整合驗證責任仍待確認。",
+        "2026-10-05：組長已確認 HEN 的 GitHub 帳號為 [@1dcvgieok4gm](https://github.com/1dcvgieok4gm)。GitHub 已有此帳號的 Write 邀請，目前仍待 HEN 接受；不重複發送邀請，也尚未標記為權限已生效。私人 Email 不寫入公開文件。",
+        "Collaborator write access is repository-wide; branch ownership is a workflow agreement, not a branch-only ACL. HEN is confirmed as @1dcvgieok4gm. An existing Write invitation is pending acceptance as of 2026-10-05; access is not yet active. [GitHub permissions](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/repository-access-and-collaboration/permission-lev"
+      ]
+    },
+    {
+      "ref": "origin/docs/jeff-admin-ui-design",
+      "path": "docs/JEFF_ADMIN_UI_DESIGN.md",
+      "lines": 359,
+      "headings": [
+        "# JEFF｜管理後台 設計與版面規格 v1.0",
+        "## 0. 文件用途",
+        "## 1. 設計目標",
+        "## 2. 現況（main，2026-10-05）",
+        "## 3. 資訊架構",
+        "## 4. 共用版型",
+        "### 4.1 桌機（≥ 900px）",
+        "### 4.2 平板（620–899px）",
+        "### 4.3 手機（< 620px）",
+        "### 4.4 操作提示",
+        "## 5. AI 與營運頁面版面",
+        "### 5.1 營運總覽 `/admin/`",
+        "### 5.2 AI 板塊 A｜Local 推薦 `/admin/ai/recommendation`",
+        "### 5.3 AI 板塊 B｜雲端洞察 `/admin/ai/insight`",
+        "### 5.4 AI 比較 `/admin/ai/compare`",
+        "### 5.5 推薦監控 `/admin/recommendations`",
+        "## 6. 管理頁面版面",
+        "### 6.1 商品管理 `/admin/products`",
+        "### 6.2 訂單管理 `/admin/orders`",
+        "### 6.3 會員管理 `/admin/members`",
+        "## 7. 資料來源對照（供 SAM 對接）",
+        "### 7.1 營運總覽／AI 板塊 B 的 KPI",
+        "### 7.2 AI 板塊 A",
+        "### 7.3 推薦監控",
+        "### 7.4 管理頁面",
+        "### 7.5 需要資料庫提供的內容",
+        "## 8. 視覺規範（沿用 `app/static/css/main.css`）",
+        "## 9. 互動、狀態與無障礙",
+        "## 10. 決策紀錄",
+        "## 11. 實作檔案對應（相對 `MuscleCore分析資料/website/app/`）"
+      ],
+      "evidence": [
+        "> 建立：2026-10-03；定案：2026-10-05（Asia/Taipei）",
+        "English summary: Finalized admin layout (sidebar navigation, Local AI and Cloud LLM panels, comparison, monitoring, and product/order/member management). Wireframes contain no sample values; section 7 maps each element to v4 collections and fields and lists the demo data the database still needs (D1–D5).",
+        "## 2. 現況（main，2026-10-05）",
+        "| D1 | v4 示範資料：`categories`、`brands`、`products`、`product_skus`（建議 30 筆以上商品、跨多個大類別） | 目前業務集合為空，AI 板塊 A 無法計算、KPI 全為 0 |",
+        "| D2 | 部分商品填入 `image_urls` | 推薦結果顯示圖片 |",
+        "| D3 | 示範訂單 `orders`／`order_items`（`is_demo=true`，跨多個日期） | 營運總覽、每日營收、AI 板塊 B 需要資料 |",
+        "| D4 | 示範 `behavior_events` | 推薦監控與後續個人化推薦 |",
+        "| D5 | 確認後台寫入（商品、訂單狀態、會員狀態）的資料契約與權限 | 管理頁面的新增／編輯 |",
+        "| 2026-10-04 | 3-1 | AI 摘要兩處都保留：營運總覽按鈕＋AI 板塊 B 完整問答 | 共用 `services/ai_workflows.py` |",
+        "| 2026-10-04 | 3-1（路由） | 保留 `POST /admin/summary` 給營運總覽；B 使用自己的路由 | 現有測試不需修改 |",
+        "| 2026-10-04 | 3-2 | 商品／訂單／會員管理顯示於導覽，版面見第 6 節 | **待 SAM 確認**：寫入功能的實作分工與資料契約（D5） |",
+        "| 2026-10-04 | 4-1 | 左側欄；平板頂部分頁列、手機漢堡選單 | — |",
+        "| 2026-10-04 | 4-2 | 後台獨立頁首，不顯示前台購物車 | — |",
+        "| 2026-10-04 | 5.1-1 | 每日營收加長條圖（純 CSS／inline SVG），保留表格 | — |",
+        "| 2026-10-04 | 5.2-1 | 商品選擇用下拉選單 | 商品變多後再考慮搜尋框 |",
+        "| 2026-10-04 | 5.2-2 | Top 5 顯示商品圖片 | v4 已有 `products.image_urls`；需資料（D2），無圖時縮寫佔位 |",
+        "| 2026-10-04 | 5.3-1 | 快速提問 4 顆：本週主管摘要、該補貨、適合促銷、營收為什麼下滑 | — |",
+        "| 2026-10-04 | 5.3-2 | 不保留問答歷史 | — |",
+        "| 2026-10-04 | 5.3-3 | 不提供雲端模型切換 | — |",
+        "| 2026-10-04 | 6-1 | Cloud 識別色 `#7cc4ff` | — |",
+        "| 2026-10-04 | 6-2 | 後台樣式拆成 `static/css/admin.css` | 避免與前台 `main.css` 衝突 |",
+        "| 2026-10-04 | 4.4 | 懸浮提示：成功 3.5 秒、錯誤 6 秒、滑鼠移上暫停 | — |",
+        "| 2026-10-05 | — | 文件移除所有示範數字，改以欄位對照（第 7 節） | 便於以資料庫真實資料對接 |"
+      ]
+    },
+    {
+      "ref": "origin/docs/jeff-admin-ui-design",
+      "path": "docs/MERGE_RECORD_2026-10-02.md",
+      "lines": 58,
+      "headings": [
+        "# 2026-10-02 合併與 Atlas 連線管理紀錄 / Merge and connection record",
+        "## 合併結果 / Merge results",
+        "## 已交付修改 / Delivered changes",
+        "## 驗證證據 / Validation evidence",
+        "## Atlas URI 與資料庫決策 / Atlas URI and database decision"
+      ],
+      "evidence": [
+        "# 2026-10-02 合併與 Atlas 連線管理紀錄 / Merge and connection record",
+        "本紀錄使用 Asia/Taipei 時間，記錄已完成的 GitHub 合併、驗證證據與連線保存決策。中文為準，英文輔助。This record documents completed merges and credential handling; Chinese is authoritative.",
+        "| 2026-10-02 04:25:11 | [PR #3](https://github.com/SamWang61/LLM_PJ/pull/3)：`feature/ai-dashboard` → `feature/flask-sku-ai-integration` | 已合併；`1b6ea47618f8dda12d91f73098b6856c08c4df84` |",
+        "| 2026-10-02 04:25:53 | [PR #2](https://github.com/SamWang61/LLM_PJ/pull/2)：`feature/flask-sku-ai-integration` → `main` | 已合併；`4d972d5711817873020562bb2af5529767454189` |",
+        "以上是該次交付的時間點證據，不代表持續監測。BGE／Claude 真實模型、完整 6+4 推薦、排程計分及正式金流仍未完成驗收；合併不等於部署或啟用付費模型。These are dated verification results, not continuous monitoring or production certification."
+      ]
+    },
+    {
+      "ref": "origin/docs/jeff-admin-ui-design",
+      "path": "docs/SAM_DATABASE_TESTING.md",
+      "lines": 60,
+      "headings": [
+        "# SAM 資料庫檢查與測試 / Database testing handoff",
+        "## 交付檔案 / Files",
+        "## 只讀查核 / Read-only audit",
+        "## 測試分層 / Test layers",
+        "## 解讀限制 / Limits",
+        "## 本次結果 / This run"
+      ],
+      "evidence": [
+        "| [檢查前證據](SAM_DATABASE_CHECK_2026-10-02.json) | validator、索引、遷移與 12 組關聯的讀回 |",
+        "| [測試摘要](SAM_DATABASE_TESTS_2026-10-02.json) | 資料庫專項測試結果與執行前後筆數比較 |",
+        "| [測試後證據](SAM_DATABASE_POSTCHECK_2026-10-02.json) | 資料庫測試完成後的只讀查核 |",
+        "- 確認四筆既有 migration succeeded、沒有額外／未完成 migration，以及唯一有效推薦政策。",
+        "2026-10-02：資料庫套件 **66 項通過**；前後 27 集合筆數一致，27 個 validator 與 86 個索引符合來源，12 組參照未發現孤兒。業務集合仍為空，保留的資料只有四筆 migration 與一筆政策。檢查器 17 項離線測試通過。"
+      ]
+    },
+    {
+      "ref": "origin/docs/jeff-admin-ui-design",
+      "path": "docs/TEAM_OWNERSHIP.md",
+      "lines": 30,
+      "headings": [
+        "# 現行分工與確認項目 / Current team ownership",
+        "## SAM 現在可執行 / SAM's current work",
+        "## 已存在工作如何處理 / Existing work"
+      ],
+      "evidence": [
+        "更新日期：2026-10-05（Asia/Taipei）。以下依使用者最新決策，優先於舊四人分工表及先前的 SAM 後台交接描述。歷史提交的作者與合併事實不改寫。",
+        "| 會員／購物流程（B） | **仁千 HEN** | 2026-10-05 已確認；使用 `feature/auth-order`，見 [分支交接](HEN_AUTH_ORDER.md) |",
+        "| 跨模組整合驗證與最終驗收 | 待確認 | SAM 尚需再確認；資料庫測試通過不等於全站整合驗收完成 |",
+        "- PR #2／#3／#4 已合併的程式與文件保留，完成事實見 [合併紀錄](MERGE_RECORD_2026-10-02.md)。",
+        "- 2026-10-05 已由組長確認 HEN 選擇會員／購物流程；GitHub 存取狀態另見分支交接，分工確認不等於邀請已接受。"
+      ]
+    }
+  ]
+}
