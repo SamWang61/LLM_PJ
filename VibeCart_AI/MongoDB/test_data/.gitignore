@@ -1,0 +1,5 @@
+generated/dataset.extjson
+generated/catalog_snapshot.extjson
+generated/*_preview.csv
+generated/operation.lock
+__pycache__/

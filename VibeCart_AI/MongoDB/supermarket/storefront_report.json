@@ -1,0 +1,13 @@
+{
+  "checked_at": "2026-10-05T07:29:32.323902+00:00",
+  "mode": "Flask test client with real Atlas, anonymous read-only",
+  "products_accessible": 336,
+  "pages_checked": 14,
+  "major_filters_checked": 8,
+  "minor_filters_checked": 24,
+  "detail_pages_checked": 24,
+  "keyword_search": "passed",
+  "writes": 0,
+  "public_hosted_url": null,
+  "limitation": "Hosted deployment not verified; no public storefront URL supplied."
+}

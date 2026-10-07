@@ -1,0 +1,211 @@
+{
+  "batch": "sam-synthetic-20261005-v1",
+  "database": "vibecart_ai",
+  "checked_at": {
+    "$date": "2026-10-05T10:23:17.249Z"
+  },
+  "committed": true,
+  "before": {
+    "users": 600,
+    "categories": 32,
+    "products": 336,
+    "carts": 0,
+    "orders": 3000,
+    "user_events": 0,
+    "ai_requests": 0,
+    "product_embeddings": 0,
+    "recommendations": 0,
+    "ai_insights": 0,
+    "ai_usage": 0,
+    "request_limits": 0,
+    "schema_migrations": 5,
+    "cart_events": 0,
+    "brands": 128,
+    "product_skus": 336,
+    "product_reviews": 0,
+    "order_items": 8969,
+    "behavior_events": 0,
+    "user_preference_scores": 0,
+    "product_repurchase_stats": 0,
+    "cross_category_rules": 0,
+    "product_purchase_sequences": 0,
+    "recommendation_pools": 0,
+    "first_member_recommendations": 0,
+    "recommendation_logs": 0,
+    "system_configs": 1
+  },
+  "after": {
+    "users": 600,
+    "categories": 32,
+    "products": 336,
+    "carts": 0,
+    "orders": 3000,
+    "user_events": 0,
+    "ai_requests": 0,
+    "product_embeddings": 0,
+    "recommendations": 0,
+    "ai_insights": 0,
+    "ai_usage": 0,
+    "request_limits": 0,
+    "schema_migrations": 5,
+    "cart_events": 0,
+    "brands": 128,
+    "product_skus": 336,
+    "product_reviews": 0,
+    "order_items": 8969,
+    "behavior_events": 0,
+    "user_preference_scores": 0,
+    "product_repurchase_stats": 0,
+    "cross_category_rules": 0,
+    "product_purchase_sequences": 0,
+    "recommendation_pools": 0,
+    "first_member_recommendations": 0,
+    "recommendation_logs": 0,
+    "system_configs": 1
+  },
+  "inserted": {
+    "users": 0,
+    "orders": 0,
+    "order_items": 0
+  },
+  "catalog_unchanged": true,
+  "full_document_comparison": true,
+  "schema_readback": {
+    "users": {
+      "count": 600,
+      "conforming": 600,
+      "indexes": 4
+    },
+    "categories": {
+      "count": 32,
+      "conforming": 32,
+      "indexes": 3
+    },
+    "products": {
+      "count": 336,
+      "conforming": 336,
+      "indexes": 5
+    },
+    "carts": {
+      "count": 0,
+      "conforming": 0,
+      "indexes": 5
+    },
+    "orders": {
+      "count": 3000,
+      "conforming": 3000,
+      "indexes": 6
+    },
+    "user_events": {
+      "count": 0,
+      "conforming": 0,
+      "indexes": 5
+    },
+    "ai_requests": {
+      "count": 0,
+      "conforming": 0,
+      "indexes": 3
+    },
+    "product_embeddings": {
+      "count": 0,
+      "conforming": 0,
+      "indexes": 2
+    },
+    "recommendations": {
+      "count": 0,
+      "conforming": 0,
+      "indexes": 2
+    },
+    "ai_insights": {
+      "count": 0,
+      "conforming": 0,
+      "indexes": 2
+    },
+    "ai_usage": {
+      "count": 0,
+      "conforming": 0,
+      "indexes": 1
+    },
+    "request_limits": {
+      "count": 0,
+      "conforming": 0,
+      "indexes": 2
+    },
+    "schema_migrations": {
+      "count": 5,
+      "conforming": 5,
+      "indexes": 1
+    },
+    "cart_events": {
+      "count": 0,
+      "conforming": 0,
+      "indexes": 7
+    },
+    "brands": {
+      "count": 128,
+      "conforming": 128,
+      "indexes": 3
+    },
+    "product_skus": {
+      "count": 336,
+      "conforming": 336,
+      "indexes": 3
+    },
+    "product_reviews": {
+      "count": 0,
+      "conforming": 0,
+      "indexes": 3
+    },
+    "order_items": {
+      "count": 8969,
+      "conforming": 8969,
+      "indexes": 5
+    },
+    "behavior_events": {
+      "count": 0,
+      "conforming": 0,
+      "indexes": 6
+    },
+    "user_preference_scores": {
+      "count": 0,
+      "conforming": 0,
+      "indexes": 2
+    },
+    "product_repurchase_stats": {
+      "count": 0,
+      "conforming": 0,
+      "indexes": 2
+    },
+    "cross_category_rules": {
+      "count": 0,
+      "conforming": 0,
+      "indexes": 3
+    },
+    "product_purchase_sequences": {
+      "count": 0,
+      "conforming": 0,
+      "indexes": 2
+    },
+    "recommendation_pools": {
+      "count": 0,
+      "conforming": 0,
+      "indexes": 2
+    },
+    "first_member_recommendations": {
+      "count": 0,
+      "conforming": 0,
+      "indexes": 2
+    },
+    "recommendation_logs": {
+      "count": 0,
+      "conforming": 0,
+      "indexes": 3
+    },
+    "system_configs": {
+      "count": 1,
+      "conforming": 1,
+      "indexes": 2
+    }
+  },
+  "atlas_monthly_aggregation": "passed"
+}
