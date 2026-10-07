@@ -2,3 +2,6 @@
 
 /* Dashboard controls / 後台篩選與表格 */
 .dashboard-filters{display:flex;gap:16px;align-items:end;flex-wrap:wrap;margin:20px 0}.dashboard-filters label{display:grid;gap:8px;flex:1;min-width:170px}.dashboard-filters input,.dashboard-filters select{width:100%;padding:12px;color:var(--text);background:#101610;border:1px solid var(--line);border-radius:8px;color-scheme:dark}.dashboard-filters p{flex-basis:100%;margin:0;color:var(--muted);font-size:.85rem}.admin-shell>.panel{margin:18px 0}.table-wrap{overflow-x:auto}.insight{white-space:pre-wrap;overflow-wrap:anywhere}table td{overflow-wrap:anywhere}.admin-shell .metrics strong{font-variant-numeric:tabular-nums}@media(max-width:620px){.dashboard-filters label{flex-basis:100%}.dashboard-filters .button{width:100%}}
+
+/* Supermarket catalog: retain source image aspect ratio and mobile layout. */
+.product-visual img{width:100%;height:100%;object-fit:contain;background:#fff;min-height:0}.detail-visual img{width:100%;max-height:480px;object-fit:contain;background:#fff;border-radius:28px}.supermarket-hero{background:linear-gradient(120deg,#172d25,#35412a);min-height:420px}.supermarket-hero:after{display:none}.pagination{margin-top:30px}.filters{margin-bottom:14px}

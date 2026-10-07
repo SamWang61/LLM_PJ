@@ -69,3 +69,9 @@ D4 事件生成／匯入與私有登入帳號尚未交付；須完成推薦處�
 ?? docs/inventory/SAM_DATABASE_CURRENT_2026-10-07.json
 ?? 專題進度/至今SAM完成的工作與預計項目_2026-10-05.md
 ```
+
+## 後續同日發布補充
+
+本頁前段保留初次本機交付紀錄。後續依組長要求已整合 SAM 超市前台並建立今日清單／具名待辦／全專案盤點；因此「前台另批」及「未推送」以 [發布紀錄](SAM_PUBLICATION_2026-10-07.md) 的最新狀態為準。最終離線案例共70項，發布文件政策零錯誤；原目錄68個已修改／未追蹤檔案逐檔雜湊一致。
+
+本輪保留原目錄的 Gemini／Google Map 無關筆記、私有復原／migration_before快照、完整generated資料與ZIP／快取，不進公開倉庫。原目錄05/11/14等歷史schema讀回不覆寫main歷史報告；現行schema讀回已有SAM_DATABASE_CURRENT證據。Network Access文件已有PR #10，不混入本次PR或擅自合併。

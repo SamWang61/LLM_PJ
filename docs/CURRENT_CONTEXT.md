@@ -12,8 +12,8 @@
 
 - SAM：資料庫、測試、組長協調及交付文件。
 - JEFF：AI／管理後台；不把其設計或實作列為 SAM 成果。
-- HEN（@1dcvgieok4gm）：已選 B 會員／購物流程，使用 feature/auth-order。晚上確認及邀請接受尚未收到後續結果；**不是仍負責前台／RWD**。
-- 前台／RWD 待重新分配；最終整合驗收責任待確認。
+- HEN（@1dcvgieok4gm）：已選 B 會員／購物流程，使用 feature/auth-order。10/7 已核實 GitHub Write 生效，邀請待接受為零；**不是仍負責前台／RWD**。
+- 前台／RWD、最終整合驗收由 SAM 負責（2026-10-07 組長最新指示）。
 
 ## 已核實基線（10/7）
 
@@ -53,3 +53,9 @@ English: Start here; read only task-relevant evidence. Historical documents rema
 ## 本次接續入口
 
 2026-10-07 已在獨立 worktree 整理 SAM 本機資料，檢查器改用 schema_active_v4；詳見 [交付結果](SAM_DELIVERY_2026-10-07.md) 及 [契約提案](SAM_DATA_CONTRACT_2026-10-07.md)。此更新不代表 D4、登入或畫面驗收完成。
+
+## 最新交付與團隊執行入口（本次發布）
+
+本分支已補今日清單、具名殘留責任與GitHub全專案盤點，並整合SAM超市前台；新版資料checker/工具/證據已交付本分支，main合併狀態見 [發布紀錄](SAM_PUBLICATION_2026-10-07.md)。
+
+接續工作只讀 [專案進度](PROJECT_PROGRESS_2026-10-07.md)／[殘留責任](PROJECT_BLOCKERS_2026-10-07.md)，依編號處理，不重掃舊計畫。D4由SAM負責，入庫端到端需JEFF先確認事件消費隔離與HEN先確認觸發；私有登入由SAM配置，需HEN/JEFF先交授權/撤權接口；稽核新migration由SAM，需JEFF先確認D5。SAM午後AI時間留EDI，晚上上課才轉回LLM_PJ。

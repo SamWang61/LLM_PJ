@@ -8,7 +8,7 @@
 
 |操作|允許及驗證|交易／衝突規則|
 |---|---|---|
-|商品|name、description、status、is_ai_recommendable；分類必須存在，status 僅 active/inactive/draft|比對 updated_at；保留 ID、schema_version、評價與歷史快照|
+|商品|product_name、description、status、is_ai_recommendable；分類必須存在，status 僅 active/inactive/draft|比對 updated_at；保留 ID、schema_version、評價與歷史快照|
 |SKU|price、stock_quantity、status；TWD Decimal128 兩位，非負金額／整數庫存，合法 product_id|同交易重算 stock_status；庫存帳與補貨原因需 JEFF 確認，不能由歷史合成訂單重算庫存|
 |訂單|pending→confirmed→shipping→completed；pending/confirmed→cancelled；completed 為終態|confirmed 必須 paid，shipping 必須 shipped，completed 必須 delivered；取消退款是獨立付款確認，不能直接把 paid 改為 refunded 假裝退款成功|
 |會員停用|status=inactive、is_active=false；不刪除歷史訂單|撤銷 session／token；最後一位管理員與自己停用策略待 JEFF/HEN 確認|
@@ -25,8 +25,8 @@
 - current_range、comparison_range：台北日期起訖轉 UTC 半開區間；各 1–366 日、結束大於開始。比較期預設緊接前期等長，閏日按實際天數；相同篩選口徑。
 - totals：all_orders、valid_orders、revenue、average_order_value。all_orders 只套日期／demo；valid_orders 另套 paid 且非 cancelled；revenue 用 total_amount、Decimal 精算後字串兩位；零有效單客單為 null。比較基期為零時成長率 null。
 - daily：date、all_orders、valid_orders、revenue，補零日期；最多 366 列／期。
-- products：product_id、name、sku_id、price、stock_quantity、reorder_point、valid_sold_units、promotion_eligible。最多 100 列，排序與截斷必標示；補貨僅候選，不自動寫庫存。促銷資格若無可核實成本、效期、規則，傳 null，不推測毛利。
-- 候選須 product.status=active、is_ai_recommendable=true、SKU.status=active 且 stock_quantity>0；最低價只算这些可售 SKU。沒有可售 SKU 即排除。
+- products：product_id、name、sku_id、price、stock_quantity、safety_stock、valid_sold_units、promotion_eligible。最多 100 列，排序與截斷必標示；補貨僅候選，不自動寫庫存。促銷資格若無可核實成本、效期、規則，傳 null，不推測毛利。
+- 候選須 product.status=active、is_ai_recommendable=true、SKU.status=active 且 available_quantity>0；最低價只算这些可售 SKU。沒有可售 SKU 即排除。
 
 每期最大 5,000 訂單，超過回 range_too_large，不能靜默截斷營收；先計數再聚合。禁止 users、email、生日、婚姻、session、password_hash、原始訂單、付款／物流地址。自由問題改為 replenishment/promotion/revenue_change/period_compare 四個 intent 與受驗證參數；自由文字若日後啟用須另訂去識別化契約。
 
@@ -37,3 +37,5 @@ D1/D2：商品 336／SKU 336；D3：停用合成會員 600、demo 訂單 3,000�
 私有登入測試需單獨少量 customer/admin、不可啟用既有 600 人；隨機密碼只存私有密碼管理器、hash 入庫，測完停用並撤銷 session。現有角色授權／session 接口由 HEN/JEFF 確認後實作；本次不造出無法驗證撤權的帳號。
 
 待 API 接線後驗收：越權／CSRF、重送及不同 payload、雙人版本衝突、稽核失敗交易回滾、非法狀態跳躍、取消退款、停用後舊 session、100/101 批量、366/367 日、5000/5001 訂單、零資料／零基期、跨年／閏日、demo 排除為零、下架低價 SKU 不影響最低可售價。離線測試與 Atlas 結構檢查不等於此表已通過。
+
+欄位補充：API 可售量使用 `available_quantity=stock_quantity-reserved_quantity`；更新庫存不得小於 reserved_quantity。stock_status 依 available_quantity 與 safety_stock 算出，保留 schema 的既有約束。products payload 的 name 是顯示別名，來源為 products.product_name，不是可直接寫入的 DB 欄位。
