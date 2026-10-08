@@ -139,7 +139,7 @@ def summary_metrics(insights):
             "timezone": "Asia/Taipei", "demo": insights.get("demo", "all"),
             "data_mode": insights.get("mode", "v4"),
             "revenue": str(insights["revenue"]),
-            "paid_orders": insights["orders"], "average_order_value": str(insights["avg_order"]),
+            "paid_orders": insights["orders"], "average_order_value": None if insights["avg_order"] is None else str(insights["avg_order"]),
             "low_stock_skus": insights.get("low_stock_count", len(insights["low_stock"]))}
 
 

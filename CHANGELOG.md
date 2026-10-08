@@ -1,5 +1,11 @@
 # 變更紀錄 / Changelog
 
+## 2026-10-09 — JEFF 後台共用版型 / Admin shared layout (T1, R05)
+
+- 新增後台專用 `admin/layout.html`、`admin.css`、`admin.js`：側欄導覽、獨立頁首、系統狀態燈、平板分頁列、手機漢堡選單、懸浮提示；不修改前台 `base.html`／`main.css`。Added an admin-only layout.
+- 營運總覽 KPI 改「有效／全部訂單」，零有效單客單為 null；每日營收加 CSS 長條圖；推薦監控改讀 v4 權重政策。See [dashboard handoff](docs/AI_DASHBOARD.md).
+- 新增 11 項離線測試（共 66 項）。Offline tests only; no Atlas writes.
+
 ## 2026-10-05 — HEN 選擇會員／購物流程 / HEN auth-order ownership
 
 - 仁千 HEN 已選 B，對應 `feature/auth-order`；前台／RWD 改為待重新分配。HEN now owns auth/order.
