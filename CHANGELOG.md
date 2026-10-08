@@ -3,7 +3,7 @@
 ## 2026-10-09 — JEFF 設計規格 v1.1 與 D5／AI 契約回覆 / Design v1.1 and contract reply
 
 - 依 SAM 審查修正：KPI 分子／分母、可售 SKU 候選與最低價、模型離線範圍、D1～D3 現況。Review fixes.
-- 回覆 D5／AI 契約：接受白名單 v1；預設問題＋管理員自由輸入（防護待討論）；稽核保留 180 天；後台不能停用管理員；第一版寫入範圍不含退款；後台不提供硬刪除。Contract decisions.
+- 回覆 D5／AI 契約：接受白名單 v1；預設問題＋管理員自由輸入（防護待討論）；稽核保留 180 天；後台不能停用管理員；第一版寫入範圍不含退款。Contract decisions.
 - 僅文件。Documentation only.
 
 ## 2026-10-05 — JEFF 管理後台設計規格 / Admin UI design

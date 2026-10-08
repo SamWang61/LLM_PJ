@@ -15,7 +15,7 @@
 - 文件中的線框圖**不含任何示範數字**；`{欄位}` 表示由資料庫或執行結果帶入的值。
 - 實作一律讀取 v4 真實資料；資料為空時顯示空狀態，不以假資料填充。
 
-English summary: Finalized admin layout (sidebar navigation, Local AI and Cloud LLM panels, comparison, monitoring, and product/order/member management). Wireframes contain no sample values; section 7 maps each element to v4 collections and fields with explicit KPI numerator/denominator and sellable-SKU rules, and records current data readiness. Section 12 answers SAM's D5/AI contract proposal: accepted whitelist v1, preset intents plus internal free-text questions, audit fields with 180-day retention, no admin-to-admin deactivation, and no hard deletes.
+English summary: Finalized admin layout (sidebar navigation, Local AI and Cloud LLM panels, comparison, monitoring, and product/order/member management). Wireframes contain no sample values; section 7 maps each element to v4 collections and fields with explicit KPI numerator/denominator and sellable-SKU rules, and records current data readiness. Section 12 answers SAM's D5/AI contract proposal: accepted whitelist v1, preset intents plus internal free-text questions, audit fields with 180-day retention, and no admin-to-admin deactivation.
 
 ---
 
@@ -329,7 +329,6 @@ v4 集合與欄位依 `VibeCart_AI/MongoDB/schema_complete_v4.py`。
 - 伺服器端渲染（Flask + Jinja2），不引入前端框架；所有 POST 帶 `csrf_token`，所有後台路由 `@admin_required`。
 - 每個 AI 結果附來源（模型／規則）、耗時、資料範圍。
 - 空資料、模型未啟用、模型失敗、資料庫不可用各有明確文字；**不顯示空白卡片或假資料**。
-- **後台不提供任何硬刪除**：商品、SKU、會員一律以狀態停用；程式不得呼叫 `drop`、`deleteMany`、`deleteOne` 於業務集合（測試清理僅限測試自建資料）。
 - 數字格式：金額 `NT$ 1,234.00`；分數小數 2 位；耗時 < 1 秒用 ms，否則用秒（1 位小數）。
 - 側欄 `<nav aria-label="後台導覽">`；狀態燈有文字；表格有 `<thead>`；分數條附數值；錯誤 `role="alert"`。
 
@@ -362,7 +361,6 @@ v4 集合與欄位依 `VibeCart_AI/MongoDB/schema_complete_v4.py`。
 | 2026-10-09 | B | 稽核欄位採 SAM 提案，保留 180 天 | 第 12.3 節 |
 | 2026-10-09 | C | 後台**不能停用任何管理員帳號**；管理員停用只能由資料庫維護人員直接操作資料庫 | 第 12.3 節 |
 | 2026-10-09 | D | 第一版寫入範圍採 SAM 提案欄位；退款不做 | 第 12.3 節 |
-| 2026-10-09 | — | 後台不提供硬刪除 | 第 9 節 |
 
 ---
 
@@ -432,10 +430,10 @@ v4 集合與欄位依 `VibeCart_AI/MongoDB/schema_complete_v4.py`。
 
 | 資源 | 可修改 | 不做 |
 |---|---|---|
-| 商品 | `product_name`、`description`、`status`（active／inactive／draft）、`is_ai_recommendable` | 刪除、分類搬移、評價欄位 |
-| SKU | `price`、`stock_quantity`（不得小於 `reserved_quantity`）、`status`；同交易重算 `available_quantity`、`stock_status` | 刪除、成本價 |
+| 商品 | `product_name`、`description`、`status`（active／inactive／draft）、`is_ai_recommendable` | 分類搬移、評價欄位 |
+| SKU | `price`、`stock_quantity`（不得小於 `reserved_quantity`）、`status`；同交易重算 `available_quantity`、`stock_status` | 成本價 |
 | 訂單 | 狀態依合法順序：pending→confirmed→shipping→completed；pending／confirmed→cancelled | **退款**（列為後續）、修改金額／快照／`is_demo` |
-| 會員 | customer 停用 | 管理員停用、角色變更、刪除 |
+| 會員 | customer 停用 | 管理員停用、角色變更 |
 
 - 衝突、冪等、錯誤碼、批量上限依 SAM 提案（`request_id`、`expected_updated_at`、409／422／401／403／404、每批 100 筆）。
 
