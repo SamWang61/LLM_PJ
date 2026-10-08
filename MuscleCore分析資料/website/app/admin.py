@@ -1,9 +1,11 @@
 from datetime import datetime
+from decimal import Decimal
 from importlib.util import find_spec
-from flask import Blueprint, current_app, render_template, request
+from flask import Blueprint, abort, current_app, render_template, request, session
 from .auth import admin_required
 from .db import get_db
-from .services.ai_workflows import operational_summary
+from .services.ai_payload import InsightDataError, build_insight_payload, insight_ranges
+from .services.ai_workflows import FAILURE_LABELS, INTENTS, InsightRequestError, clean_question, insight_answer, operational_summary
 from .services.dashboard import TAIPEI, dashboard_filters, load_dashboard, recommendation_monitor, DashboardFilterError
 
 bp = Blueprint('admin', __name__, url_prefix='/admin')
@@ -39,7 +41,7 @@ def admin_context():
 
 @bp.app_template_filter('ntd')
 def ntd(value):
-    return "—" if value is None else f"NT$ {value:,.2f}"
+    return "—" if value is None else f"NT$ {Decimal(str(value)):,.2f}"
 
 
 @bp.errorhandler(DashboardFilterError)
@@ -72,3 +74,43 @@ def summary():
 def recommendations():
     result = recommendation_monitor(get_db(), current_app.config['DATA_MODE'])
     return render_template('admin/recommendations.html', **result)
+
+
+def insight_page(values, intent=None, answer=None, error=None, status=200):
+    db, mode = get_db(), current_app.config['DATA_MODE']
+    payload = None
+    try:
+        current, comparison = insight_ranges(db, values)
+        payload = build_insight_payload(db, mode, current, comparison, intent)
+    except InsightDataError as data_error:
+        error, status = {"code": data_error.code, "message": str(data_error)}, 400
+        current = {"start": values.get("start", ""), "end": values.get("end", ""), "demo": values.get("demo", "all")}
+    return render_template('admin/ai_insight.html', payload=payload, range=current, intents=INTENTS, answer=answer,
+                           error=error, failure_labels=FAILURE_LABELS), status
+
+
+@bp.get('/ai/insight')
+@admin_required
+def ai_insight():
+    return insight_page(request.args)
+
+
+@bp.post('/ai/insight')
+@admin_required
+def ai_insight_ask():
+    intent = request.form.get('intent', '')
+    if intent not in INTENTS:
+        abort(400, description="未知的提問類型。")
+    try:
+        # Preset buttons never forward the text box; only the free-question button does.
+        question = clean_question(request.form.get('question')) if intent == 'free_question' else None
+        current, comparison = insight_ranges(get_db(), request.form)
+        payload = build_insight_payload(get_db(), current_app.config['DATA_MODE'], current, comparison, intent)
+        answer = insight_answer(payload, intent, question, session['user_id'])
+    except InsightRequestError as request_error:
+        return insight_page(request.form, intent, error={"code": request_error.code, "message": str(request_error)},
+                            status=request_error.status)
+    except InsightDataError:
+        return insight_page(request.form, intent)
+    return render_template('admin/ai_insight.html', payload=payload, range=current, intents=INTENTS, answer=answer,
+                           error=None, failure_labels=FAILURE_LABELS)

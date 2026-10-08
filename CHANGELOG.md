@@ -1,5 +1,11 @@
 # 變更紀錄 / Changelog
 
+## 2026-10-09 — JEFF 雲端洞察 / Cloud insight (T2, R09)
+
+- 新增 `/admin/ai/insight`：依 AI 白名單 v1 由伺服器重新彙總本期與比較期資料；4 個預設 intent 加上有防護的自由提問（300 字、不可信輸入隔離、個資格式拒送、每分鐘限流）。Added the cloud insight page.
+- 回覆標示模型、耗時、token 與「請人工核對」；預覽就是同一次請求實際送出的 JSON；失敗時退回規則答案。總覽摘要與洞察共用 Claude 呼叫邏輯。See [dashboard handoff](docs/AI_DASHBOARD.md).
+- 新設定 `AI_INSIGHT_RATE_LIMIT`；新增 26 項離線測試（共 92 項）；真實模型尚未實測。
+
 ## 2026-10-09 — JEFF 後台共用版型 / Admin shared layout (T1, R05)
 
 - 新增後台專用 `admin/layout.html`、`admin.css`、`admin.js`：側欄導覽、獨立頁首、系統狀態燈、平板分頁列、手機漢堡選單、懸浮提示；不修改前台 `base.html`／`main.css`。Added an admin-only layout.

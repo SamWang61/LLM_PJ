@@ -25,6 +25,7 @@ def create_app(test_config=None):
         BGE_MODEL=os.getenv("BGE_MODEL", "BAAI/bge-small-zh-v1.5"),
         ANTHROPIC_API_KEY=os.getenv("ANTHROPIC_API_KEY", ""),
         CLAUDE_MODEL=os.getenv("CLAUDE_MODEL", ""),
+        AI_INSIGHT_RATE_LIMIT=int(os.getenv("AI_INSIGHT_RATE_LIMIT", "6")),
         MAX_CONTENT_LENGTH=64 * 1024,
         SESSION_COOKIE_HTTPONLY=True,
         SESSION_COOKIE_SAMESITE="Lax",

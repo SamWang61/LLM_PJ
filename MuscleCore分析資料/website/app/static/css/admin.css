@@ -127,3 +127,24 @@ code{font-family:ui-monospace,Consolas,monospace;font-size:.85em;color:#d9e6cf}
 @media(max-width:900px){.admin-main .admin-grid{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:899px){.admin-nav{scrollbar-width:thin;scrollbar-color:var(--line) transparent}}
 .admin-grid>*{min-width:0}
+
+/* Cloud insight (AI panel B) */
+.cloud-text{color:var(--cloud)}
+.up{color:var(--lime)}.down{color:var(--danger)}.muted-text{color:var(--muted)}
+.warn-line{border-left-color:var(--warn)}
+.intent-buttons{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:18px}
+.intent-buttons .button{margin-top:0}
+.ask-form label{display:block;margin-bottom:8px;color:var(--muted);font-size:.88rem}
+.question-row{display:flex;gap:10px;align-items:stretch}
+.question-row textarea{flex:1;min-width:0;padding:12px;border:1px solid var(--line);border-radius:8px;background:#101610;color:var(--ink);font:inherit;resize:vertical}
+.question-row textarea[aria-invalid="true"]{border-color:var(--danger)}
+.question-row .button{margin-top:0}
+.field-error{margin:8px 0 0;color:var(--danger);font-size:.88rem}
+.ai-answer{border-color:#2c4a60}
+.ai-question{margin:0 0 10px;color:var(--muted)}
+.ai-text{white-space:pre-wrap;overflow-wrap:anywhere;line-height:1.75}
+.ai-meta{display:flex;flex-wrap:wrap;gap:4px 14px;margin:16px 0 0;padding-top:12px;border-top:1px solid var(--line);color:var(--muted);font-size:.82rem}
+.needs-review{color:var(--warn);font-weight:800}
+.payload-preview summary{cursor:pointer;font-weight:700}
+.payload-preview pre{max-height:420px;margin:14px 0 0;padding:14px;overflow:auto;border-radius:10px;background:#0b0d0c;font-size:.78rem;line-height:1.5}
+@media(max-width:619px){.question-row{flex-direction:column}}
