@@ -8,6 +8,7 @@
 | [HEN 會員／購物流程交接](HEN_AUTH_ORDER.md) | Confirmed option B, branch workflow and access status. |
 | [現行分工](TEAM_OWNERSHIP.md) | SAM database/testing; JEFF AI/admin; HEN auth/order; frontend/RWD awaits reassignment. |
 | [SAM 資料庫與測試](SAM_DATABASE_TESTING.md) | Read-only checks, database regression evidence and limits. |
+| [JEFF 管理後台設計規格](JEFF_ADMIN_UI_DESIGN.md) | Admin layout v1.1, decisions, v4 field mapping and reply to the D5/AI data contract. |
 | [後台與 v4 測試交接](AI_DASHBOARD.md) | Historical delivery, private profile and validation; current ownership is separate. |
 | [Atlas 驗證報告](V4_TEST_VERIFICATION.json) | Live schema, indexes and transaction checks; no credentials. |
 | [Flask／SKU／AI 串接](FLASK_SKU_AI_INTEGRATION.md) | v4 routes, LangGraph workflows, setup and UAT. |
