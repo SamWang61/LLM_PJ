@@ -1,8 +1,9 @@
-# JEFF｜管理後台 設計與版面規格 v1.0
+# JEFF｜管理後台 設計與版面規格 v1.1
 
-> 建立：2026-10-03；定案：2026-10-05（Asia/Taipei）
+> 建立：2026-10-03；定案：2026-10-05；v1.1 修訂：2026-10-09（Asia/Taipei）
 > 負責人：JEFF（AI／管理後台，見 [TEAM_OWNERSHIP.md](TEAM_OWNERSHIP.md)）
-> 狀態：**版面已定案**（決策見第 10 節）；第 7 節資料來源對照供 SAM 對接 v4 資料庫。
+> 狀態：**版面已定案**（決策見第 10 節）；第 7 節資料來源對照、第 12 節 D5／AI 契約回覆供 SAM 對接 v4 資料庫。
+> v1.1 依 SAM 審查（PR #11 `docs/JEFF_PUSH_REVIEW_2026-10-07.md`）與契約提案（`docs/SAM_DATA_CONTRACT_2026-10-07.md`）修訂。
 > 配套文件：[AI_DASHBOARD.md](AI_DASHBOARD.md)（既有後台實作與驗證）。
 
 ---
@@ -14,7 +15,7 @@
 - 文件中的線框圖**不含任何示範數字**；`{欄位}` 表示由資料庫或執行結果帶入的值。
 - 實作一律讀取 v4 真實資料；資料為空時顯示空狀態，不以假資料填充。
 
-English summary: Finalized admin layout (sidebar navigation, Local AI and Cloud LLM panels, comparison, monitoring, and product/order/member management). Wireframes contain no sample values; section 7 maps each element to v4 collections and fields and lists the demo data the database still needs (D1–D5).
+English summary: Finalized admin layout (sidebar navigation, Local AI and Cloud LLM panels, comparison, monitoring, and product/order/member management). Wireframes contain no sample values; section 7 maps each element to v4 collections and fields with explicit KPI numerator/denominator and sellable-SKU rules, and records current data readiness. Section 12 answers SAM's D5/AI contract proposal: accepted whitelist v1, preset intents plus internal free-text questions, audit fields with 180-day retention, no admin-to-admin deactivation, and no hard deletes.
 
 ---
 
@@ -115,8 +116,8 @@ EYEBROW: VIBEINSIGHT AI
 {資料範圍} · {示範訂單篩選}
 ┌ 篩選列：開始日期 │ 結束日期 │ 示範訂單 ▼ │ [套用] 重設 ─────────┐
 ┌──────────┬──────────┬──────────┬──────────┐
-│ 有效營收   │ 有效訂單   │ 平均客單   │ 低庫存品項 │
-│ {revenue} │ {orders}  │ {avg}     │ {count}   │
+│ 有效營收   │ 有效／全部訂單 │ 平均客單 │ 低庫存品項 │
+│ {revenue} │ {valid}/{all} │ {avg}   │ {count}   │
 └──────────┴──────────┴──────────┴──────────┘
 ┌ 每日有效營收：長條圖＋表格 ─────────┬ 熱銷排行 Top 10 ─────┐
 └──────────────────────────────────┴─────────────────────┘
@@ -142,7 +143,8 @@ EYEBROW: LOCAL AI · 本機模型
 ┌ 說明：為什麼是本機模型 ─────────────────────────────────────────┐
 ```
 
-- 下拉選單列出可推薦商品；相似度以數值＋水平條顯示（條長＝分數）。
+- 下拉選單與 Top 5 只含**可推薦且可購買**商品：`products.status='active'`、`is_ai_recommendable=true`，且至少一個 `product_skus.status='active'` 並 `available_quantity>0`；基準商品本身排除。顯示價格為可售 SKU 的最低價。
+- 相似度以數值＋水平條顯示（條長＝分數）。
 - 商品圖片取 `products.image_urls[0]`；無圖片時以商品名稱縮寫佔位。
 - 狀態：模型未安裝 → 黃色提示＋安裝指令；無商品 → 空狀態「資料庫尚無可推薦商品」；不顯示假結果。
 
@@ -168,6 +170,9 @@ AI 營運洞察
 ┌ ▸ 送給模型的資料（<details>）：實際傳送的彙總 JSON ─────────────────┐
 ```
 
+- 提問方式：**預設問題＋自由輸入並存**（決策 A，見第 12.2 節）。預設問題對應固定 intent；自由輸入僅供後台管理員使用，防護機制待討論。
+- 不論哪種提問，送給模型的資料都由伺服器依第 12.2 節白名單重新聚合，不信任瀏覽器送來的數字；「送給模型的資料」預覽必須與該次請求為同一物件。
+- 數值由程式計算，模型只解讀；資料未提供的項目（例如來客數、流量、毛利）須回答無法判定，不得推論。
 - 單次問答，不保留歷史；不提供模型切換選單。
 - 「營收為什麼下滑？」：資料不足以判斷因果時，模型須回答資料不足，不得捏造原因。
 - 來源標籤：`Claude`（綠）／`規則退回`（黃）；失敗只顯示原因類型（未設定 Key／逾時／服務錯誤）。
@@ -183,13 +188,14 @@ Local AI vs Cloud LLM
 │ 實測延遲        │ {最近 N 次中位數}        │ {最近 N 次中位數}       │
 │ 每次成本        │ 本機 CPU，無 API 費用    │ 依 token 計費 {估算}    │
 │ 資料是否離開本機 │ 否                     │ 是（僅彙總數字）        │
-│ 網路依賴        │ 不需要                  │ 需要                  │
+│ 推論是否需網路   │ 否（模型已下載至本機）     │ 是                    │
 │ 擅長           │ 找相似、分類、排序        │ 摘要、解讀、自然語言問答  │
 │ 限制           │ 不會生成文字              │ 費用、延遲、可能幻覺     │
 └────────────────┴──────────────────────┴──────────────────────┘
 ```
 
 - 實測值來自 A、B 的實際呼叫紀錄；尚未量測時顯示「尚未量測，請先到 A／B 執行一次」。
+- 「推論不需網路」僅指 BGE 模型已下載後的本機推論；網站讀取 Atlas 資料與遠端商品圖片仍需網路，整站並非可離線運作。
 
 ### 5.5 推薦監控 `/admin/recommendations`
 
@@ -243,9 +249,11 @@ v4 集合與欄位依 `VibeCart_AI/MongoDB/schema_complete_v4.py`。
 
 | 畫面元素 | 來源 | 規則 |
 |---|---|---|
-| 有效營收 | `orders.total_amount`（Decimal128） | `payment_status='paid'` 且 `status!='cancelled'`；依 `ordered_at` 台北日期篩選；`is_demo` 依篩選 |
-| 有效訂單／範圍內訂單 | `orders` 筆數 | 同上 |
-| 平均客單 | 有效營收 ÷ 有效訂單 | — |
+| 範圍（共同條件） | `orders.ordered_at`、`is_demo` | 台北日期起訖轉 UTC 半開區間；`is_demo` 依篩選。以下所有訂單指標都先套用此條件 |
+| 全部訂單（分母） | `orders` 筆數 | **只套範圍條件**，包含所有付款與訂單狀態 |
+| 有效訂單（分子） | `orders` 筆數 | 範圍條件＋`payment_status='paid'` 且 `status!='cancelled'` |
+| 有效營收 | 有效訂單的 `total_amount`（Decimal128） | Decimal 精算，顯示兩位 |
+| 平均客單 | 有效營收 ÷ 有效訂單 | 有效訂單為 0 時顯示「—」（null），不除以零 |
 | 低庫存品項 | `product_skus` | `status='active'` 且 `available_quantity <= safety_stock` |
 | 熱銷排行 | `order_items` 依 `product_id` 加總 `quantity`，名稱取 `product_name_snapshot` | 只計有效訂單 |
 | 每日營收 | 有效訂單依 `ordered_at` 台北日期分組 | — |
@@ -255,10 +263,10 @@ v4 集合與欄位依 `VibeCart_AI/MongoDB/schema_complete_v4.py`。
 
 | 畫面元素 | 來源 | 規則 |
 |---|---|---|
-| 商品下拉選單／候選 | `products` | `status='active'`、`is_ai_recommendable=true`，且至少一個 `product_skus.available_quantity > 0` |
+| 商品下拉選單／候選 | `products`＋`product_skus` | `products.status='active'`、`is_ai_recommendable=true`，且至少一個 SKU `status='active'` 並 `available_quantity > 0`；沒有可售 SKU 的商品排除 |
 | 模型輸入文字 | `products.product_name`、`category_path`、`summary`、`description`、`product_tags` | 由程式組合 |
 | 商品圖片 | `products.image_urls[0]` | 選填；空陣列以縮寫佔位 |
-| 價格 | `product_skus.price` 最低值 | Decimal128 |
+| 價格 | 可售 SKU（`status='active'` 且 `available_quantity>0`）的 `price` 最低值 | Decimal128；下架或無庫存 SKU 的低價不得影響顯示 |
 | 分類名稱 | `categories.name`（`major_category_id`、`minor_category_id`） | — |
 
 ### 7.3 推薦監控
@@ -277,15 +285,19 @@ v4 集合與欄位依 `VibeCart_AI/MongoDB/schema_complete_v4.py`。
 | 訂單管理 | `orders`、`order_items` | `order_number`、`ordered_at`、`status`、`payment_status`、`shipping_status`、`is_demo`、`subtotal`、`discount_amount`、`shipping_fee`、`total_amount`；明細：`product_name_snapshot`、`unit_price`、`quantity`、`line_total` |
 | 會員管理 | `users` | `display_name`、`email`、`role`、`member_level`、`status`、`registered_at`、`last_login_at` |
 
-### 7.5 需要資料庫提供的內容
+### 7.5 資料準備狀態（2026-10-09 唯讀核對 Atlas `vibecart_ai`）
 
-| # | 需求 | 原因 |
+| # | 需求 | 狀態 |
 |---|---|---|
-| D1 | v4 示範資料：`categories`、`brands`、`products`、`product_skus`（建議 30 筆以上商品、跨多個大類別） | 目前業務集合為空，AI 板塊 A 無法計算、KPI 全為 0 |
-| D2 | 部分商品填入 `image_urls` | 推薦結果顯示圖片 |
-| D3 | 示範訂單 `orders`／`order_items`（`is_demo=true`，跨多個日期） | 營運總覽、每日營收、AI 板塊 B 需要資料 |
-| D4 | 示範 `behavior_events` | 推薦監控與後續個人化推薦 |
-| D5 | 確認後台寫入（商品、訂單狀態、會員狀態）的資料契約與權限 | 管理頁面的新增／編輯 |
+| D1 | 分類、品牌、商品、SKU | ✅ 已有：`categories` 32、`brands` 128、`products` 336、`product_skus` 336 |
+| D2 | 商品圖片 `image_urls` | ✅ 336／336 商品有圖片 |
+| — | 可推薦／可售 | 336 商品為 active 且可推薦；324 個 SKU 為 active 且 `available_quantity>0`；有效（已付款未取消）訂單 1,800 |
+| D3 | 示範訂單與明細 | ✅ 已有：`orders` 3,000（全部 `is_demo=true`）、`order_items` 8,969；`users` 600 位合成會員**全部停用**，不能登入 |
+| D4 | 行為事件 `behavior_events` | ⏳ 0 筆，SAM 待產生（新批次、可辨識 synthetic）；「猜你喜歡」與推薦監控依賴此項 |
+| D5 | 後台寫入契約與稽核 Schema | 📝 JEFF 已回覆（第 12.3 節）；稽核集合待 SAM 新增 migration |
+| D6 | 可登入的私有 customer／admin 測試帳號 | ⏳ SAM 待配置（需 HEN 登入／撤權介面；後台授權路徑見第 12.3 節） |
+
+匯入批次與證據見 PR #11 `docs/TEST_DATA_IMPORT_2026-10-05.md`、`VibeCart_AI/MongoDB/test_data/`。所有營運數字皆來自示範訂單，展示時須標示「示範資料」。
 
 ---
 
@@ -317,6 +329,7 @@ v4 集合與欄位依 `VibeCart_AI/MongoDB/schema_complete_v4.py`。
 - 伺服器端渲染（Flask + Jinja2），不引入前端框架；所有 POST 帶 `csrf_token`，所有後台路由 `@admin_required`。
 - 每個 AI 結果附來源（模型／規則）、耗時、資料範圍。
 - 空資料、模型未啟用、模型失敗、資料庫不可用各有明確文字；**不顯示空白卡片或假資料**。
+- **後台不提供任何硬刪除**：商品、SKU、會員一律以狀態停用；程式不得呼叫 `drop`、`deleteMany`、`deleteOne` 於業務集合（測試清理僅限測試自建資料）。
 - 數字格式：金額 `NT$ 1,234.00`；分數小數 2 位；耗時 < 1 秒用 ms，否則用秒（1 位小數）。
 - 側欄 `<nav aria-label="後台導覽">`；狀態燈有文字；表格有 `<thead>`；分數條附數值；錯誤 `role="alert"`。
 
@@ -341,6 +354,15 @@ v4 集合與欄位依 `VibeCart_AI/MongoDB/schema_complete_v4.py`。
 | 2026-10-04 | 6-2 | 後台樣式拆成 `static/css/admin.css` | 避免與前台 `main.css` 衝突 |
 | 2026-10-04 | 4.4 | 懸浮提示：成功 3.5 秒、錯誤 6 秒、滑鼠移上暫停 | — |
 | 2026-10-05 | — | 文件移除所有示範數字，改以欄位對照（第 7 節） | 便於以資料庫真實資料對接 |
+| 2026-10-09 | 審查 P2 | KPI 分子＝有效訂單、分母＝範圍內全部訂單；零有效單客單為 null | 第 7.1 節 |
+| 2026-10-09 | 審查 P2 | 推薦候選與最低價只計 active 且可售 SKU | 第 5.2、7.2 節 |
+| 2026-10-09 | 審查 P2 | 「不需網路」限定為本機模型推論 | 第 5.4 節 |
+| 2026-10-09 | 審查 P2 | D1～D3 已有資料，更新準備狀態 | 第 7.5 節 |
+| 2026-10-09 | A | 雲端洞察：預設問題＋自由輸入並存；自由輸入僅後台管理員使用，防護方式待討論 | 第 12.2 節 |
+| 2026-10-09 | B | 稽核欄位採 SAM 提案，保留 180 天 | 第 12.3 節 |
+| 2026-10-09 | C | 後台**不能停用任何管理員帳號**；管理員停用只能由資料庫維護人員直接操作資料庫 | 第 12.3 節 |
+| 2026-10-09 | D | 第一版寫入範圍採 SAM 提案欄位；退款不做 | 第 12.3 節 |
+| 2026-10-09 | — | 後台不提供硬刪除 | 第 9 節 |
 
 ---
 
@@ -357,3 +379,70 @@ v4 集合與欄位依 `VibeCart_AI/MongoDB/schema_complete_v4.py`。
 | 商品管理 | `admin.py` 新路由、`services/admin_catalog.py`（新）、`templates/admin/products.html`、`product_form.html`（新） |
 | 訂單管理 | `admin.py` 新路由、`templates/admin/orders.html`、`order_detail.html`（新） |
 | 會員管理 | `admin.py` 新路由、`templates/admin/members.html`（新） |
+
+---
+
+## 12. D5／AI 資料契約回覆（JEFF，2026-10-09）
+
+回覆對象：PR #11 `docs/SAM_DATA_CONTRACT_2026-10-07.md`（SAM 提案）。
+
+### 12.1 總結
+
+| 項目 | 回覆 |
+|---|---|
+| D5 寫入協定 | **接受**，並補充第 12.3 節決定 |
+| AI 白名單 v1 | **接受**資料形狀與上限；**修訂**提問方式（第 12.2 節） |
+| D4 事件 | 接受四權重 PURCHASE=4、ADD_TO_CART=3、SEARCH=2、PRODUCT_VIEW=1；synthetic 事件以 `metadata` 批次辨識，**不計入正式推薦歸因與成效**，後台監控頁須能依批次排除或標示 |
+| 測試帳號 | 後台授權路徑：`@admin_required`，每次請求重新讀取使用者 `role='admin'` 與有效狀態（現行 `app/auth.py`） |
+
+### 12.2 AI 提問方式（決策 A）
+
+- **預設問題**：四個 intent，參數由伺服器驗證。
+
+  | 按鈕 | intent |
+  |---|---|
+  | 產生本週主管摘要 | `period_compare`（本期 vs 緊接前期） |
+  | 哪些商品該補貨？ | `replenishment` |
+  | 哪些商品適合促銷？ | `promotion` |
+  | 營收為什麼下滑？ | `revenue_change` |
+
+- **自由輸入**：保留，**僅限已登入且有效的管理員**（內部使用者）。資料部分仍只送白名單 v1 彙總，不因問題內容擴大資料範圍。
+- **待討論的防護**（實作前與 SAM 確認，初步方向）：
+  1. 長度上限 300 字，去除控制字元。
+  2. System prompt 限定「只回答本店營運問題、只依提供資料」；非營運問題回覆固定拒答文字。
+  3. 使用者問題放在獨立欄位並明確標示為「不可信輸入」，不得覆寫系統指示。
+  4. 輸入前以規則偵測明顯個資（Email、電話、身分證格式）並拒絕送出。
+  5. 呼叫紀錄只記 intent／問題長度／耗時／token，不記問題全文（或另定去識別化保存規則）。
+  6. 每位管理員每分鐘呼叫次數上限，控制費用。
+- 模型輸出一律 HTML escape；數值以程式計算為準，模型不得產生未提供的數字。
+
+### 12.3 後台寫入決策（決策 B、C、D）
+
+**B｜稽核**
+- 欄位：`actor_id`、`request_id`、`resource_type`、`resource_id`、白名單欄位 `before`／`after`、`reason`、`result`、`created_at`（UTC）。不記密碼、token、URI。
+- **保留 180 天**（TTL index 於 `created_at`）。
+- 業務更新與稽核同一交易；稽核失敗則整筆回滾。
+
+**C｜會員停用**
+- 後台**只能停用 customer**，不能停用任何 `role='admin'` 帳號（包含自己）。介面上對管理員列不顯示停用操作，伺服器端亦拒絕（403）。
+- 管理員帳號的停用只能由資料庫維護人員直接操作資料庫完成。
+- 停用同時撤銷該會員的 session（依 HEN 的撤權機制）。
+
+**D｜第一版寫入範圍**
+
+| 資源 | 可修改 | 不做 |
+|---|---|---|
+| 商品 | `product_name`、`description`、`status`（active／inactive／draft）、`is_ai_recommendable` | 刪除、分類搬移、評價欄位 |
+| SKU | `price`、`stock_quantity`（不得小於 `reserved_quantity`）、`status`；同交易重算 `available_quantity`、`stock_status` | 刪除、成本價 |
+| 訂單 | 狀態依合法順序：pending→confirmed→shipping→completed；pending／confirmed→cancelled | **退款**（列為後續）、修改金額／快照／`is_demo` |
+| 會員 | customer 停用 | 管理員停用、角色變更、刪除 |
+
+- 衝突、冪等、錯誤碼、批量上限依 SAM 提案（`request_id`、`expected_updated_at`、409／422／401／403／404、每批 100 筆）。
+
+### 12.4 交給 SAM 的後續
+
+1. 依 12.3-B 新增稽核集合 migration（不改既有五筆）。
+2. 產生 D4 synthetic 行為事件（依 12.1）。
+3. 配置私有 admin／customer 測試帳號。
+4. 與 JEFF 討論 12.2 自由輸入防護方式。
+
