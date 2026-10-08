@@ -1,0 +1,71 @@
+{% extends 'admin/layout.html' %}
+{% set demo_labels = {'all': '包含示範訂單', 'exclude': '排除示範訂單', 'only': '僅示範訂單'} %}
+{% macro duration(ms) %}{{ '%d ms'|format(ms) if ms < 1000 else '%.1f 秒'|format(ms / 1000) }}{% endmacro %}
+{% macro pct(value) %}{% if value is none %}<span class="muted-text">無法計算</span>{% else %}<span class="{{ 'up' if not value.startswith('-') and value != '0.0' else 'down' if value.startswith('-') else '' }}">{{ '+' if not value.startswith('-') and value != '0.0' else '' }}{{ value }}%</span>{% endif %}{% endmacro %}
+{% block title %}雲端洞察｜VibeInsight 後台{% endblock %}
+{% block eyebrow %}<span class="cloud-text">CLOUD LLM · 雲端 API</span>{% endblock %}
+{% block heading %}AI 營運洞察{% endblock %}
+{% block meta %}<span>模型 {{ config.CLAUDE_MODEL or '未設定' }}</span><span>只傳送彙總數字，不含會員個資</span>{% if payload %}<span>{{ payload.current_range.start }} ～ {{ payload.current_range.end }}</span><span>{{ demo_labels[range.demo] }}</span>{% endif %}{% if payload and (payload.source.demo_orders.current or payload.source.demo_orders.comparison) %}<span class="source-badge warn">示範資料</span>{% endif %}{% endblock %}
+{% block content %}
+<form class="panel dashboard-filters" method="get" action="{{ url_for('admin.ai_insight') }}">
+  <label>本期開始（台北）<input type="date" name="start" value="{{ range.start }}"></label>
+  <label>本期結束（含當日）<input type="date" name="end" value="{{ range.end }}"></label>
+  <label>示範訂單<select name="demo">{% for value, label in [('all', '全部'), ('exclude', '排除示範'), ('only', '僅示範')] %}<option value="{{ value }}" {% if range.demo == value %}selected{% endif %}>{{ label }}</option>{% endfor %}</select></label>
+  <button class="button" type="submit">套用範圍</button><a class="button secondary" href="{{ url_for('admin.ai_insight') }}">重設</a>
+  <p>未選日期：以最近有訂單的日期往前 7 天。比較期自動取緊接在前、等長的期間。每期最多 366 天／5,000 筆。</p>
+</form>
+
+{% if error and error.code not in ('invalid_question', 'pii_detected') %}<section class="panel" id="answer"><p class="form-error" role="alert">{{ error.message }}</p></section>{% endif %}
+
+{% if payload %}
+{% set cur = payload.totals.current %}{% set base = payload.totals.comparison %}{% set change = payload.totals.change_pct %}
+<section class="panel" aria-labelledby="kpi-title">
+  <div class="panel-head"><h2 id="kpi-title">KPI 快照</h2><span class="source-badge muted">與營運總覽相同口徑</span></div>
+  <p class="panel-note">本期 {{ payload.current_range.start }} ～ {{ payload.current_range.end }}（{{ payload.current_range.days }} 天） · 比較期 {{ payload.comparison_range.start }} ～ {{ payload.comparison_range.end }}</p>
+  <div class="metrics">
+    <article><span>有效營收</span><strong>{{ cur.revenue|ntd }}</strong><small>比較期 {{ base.revenue|ntd }} · {{ pct(change.revenue) }}</small></article>
+    <article><span>有效／全部訂單</span><strong>{{ cur.valid_orders }} / {{ cur.all_orders }}</strong><small>比較期 {{ base.valid_orders }} / {{ base.all_orders }} · {{ pct(change.valid_orders) }}</small></article>
+    <article><span>平均客單</span><strong>{{ cur.average_order_value|ntd }}</strong><small>比較期 {{ base.average_order_value|ntd }} · {{ pct(change.average_order_value) }}</small></article>
+    <article><span>可售候選商品</span><strong>{{ payload.products_meta.total_candidates }}</strong><small>送出 {{ payload.products_meta.returned }} 筆{% if payload.products_meta.truncated %}（已截斷）{% endif %}</small></article>
+  </div>
+  {% for warning in payload.warnings %}<p class="insight warn-line">{{ warning }}</p>{% endfor %}
+</section>
+
+<section class="panel" aria-labelledby="ask-title">
+  <h2 id="ask-title">快速提問</h2>
+  <p class="panel-note">送給模型的資料一律由伺服器依白名單 v1 重新彙總；數字由程式計算，模型只負責解讀。</p>
+  <form method="post" action="{{ url_for('admin.ai_insight') }}#answer" class="ask-form">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <input type="hidden" name="start" value="{{ payload.current_range.start }}">
+    <input type="hidden" name="end" value="{{ payload.current_range.end }}">
+    <input type="hidden" name="demo" value="{{ range.demo }}">
+    <div class="intent-buttons">{% for key, item in intents.items() if key != 'free_question' %}<button class="button secondary" type="submit" name="intent" value="{{ key }}">{{ item.label }}</button>{% endfor %}</div>
+    <label for="question">自由提問（僅限本店營運問題，最多 300 字；請勿輸入個資）</label>
+    <div class="question-row">
+      <textarea id="question" name="question" maxlength="300" rows="3" placeholder="例如：本期哪一天營收最高？"{% if error and error.code in ('invalid_question', 'pii_detected') %} aria-invalid="true" aria-describedby="question-error"{% endif %}>{{ request.form.get('question', '') if request.method == 'POST' else '' }}</textarea>
+      <button class="button" type="submit" name="intent" value="free_question">送出</button>
+    </div>
+    {% if error and error.code in ('invalid_question', 'pii_detected') %}<div id="answer"><p class="field-error" id="question-error" role="alert">{{ error.message }}</p></div>{% endif %}
+  </form>
+</section>
+{% endif %}
+
+{% if answer %}
+<section class="panel ai-answer" id="answer" aria-labelledby="answer-title" aria-live="polite">
+  <div class="panel-head">
+    <h2 id="answer-title">AI 回覆</h2>
+    {% if answer.source == 'claude' %}<span class="source-badge cloud">Claude</span>{% else %}<span class="source-badge warn">規則退回 · {{ failure_labels[answer.reason] }}</span>{% endif %}
+  </div>
+  <p class="ai-question"><b>Q：</b>{{ answer.question or answer.label }}</p>
+  <div class="ai-text"><b>A：</b>{{ answer.text }}</div>
+  <p class="ai-meta">
+    {% if answer.call %}<span>{{ answer.call.model }}</span><span>{{ duration(answer.call.latency_ms) }}</span><span>輸入 {{ answer.call.input_tokens if answer.call.input_tokens is not none else '—' }}／輸出 {{ answer.call.output_tokens if answer.call.output_tokens is not none else '—' }} tokens</span>{% if answer.cached %}<span>快取結果（5 分鐘內相同請求）</span>{% endif %}{% else %}<span>規則計算，非 AI 分析</span>{% endif %}
+    <span>{{ payload.current_range.start }} ～ {{ payload.current_range.end }}</span><span class="needs-review">請人工核對</span>
+  </p>
+</section>
+<details class="panel payload-preview">
+  <summary>送給模型的資料 · {% if answer.cached %}快取：原始請求實際傳送的內容{% elif answer.source == 'claude' %}本次實際傳送{% elif answer.sent %}已送出但呼叫失敗，以下為傳送內容{% else %}未送出，以下為本應傳送的內容{% endif %}</summary>
+  <pre><code>{{ answer.request_json }}</code></pre>
+</details>
+{% endif %}
+{% endblock %}

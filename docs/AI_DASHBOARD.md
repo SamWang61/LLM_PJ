@@ -21,6 +21,8 @@ SAM previously delivered this stacked feature; current AI/admin ownership belong
 | `MuscleCore分析資料/website/app/static/css/admin.css`、`static/js/admin.js` | 後台專用樣式與互動（不改前台 `main.css`／`base.html`） / Admin-only assets |
 | `MuscleCore分析資料/website/tests/test_dashboard.py` | 範圍、權限與金額測試 / Offline tests |
 | `MuscleCore分析資料/website/tests/test_admin_layout.py` | 共用版型、KPI 口徑、篩選同步與推薦政策測試 / Layout tests |
+| `MuscleCore分析資料/website/app/services/ai_payload.py` | AI 白名單 v1 伺服器端彙總 / Whitelist v1 aggregation |
+| `MuscleCore分析資料/website/tests/test_ai_insight.py` | 雲端洞察：白名單、intent、防護、退回與量測測試 / Insight tests |
 | `scripts/verify_v4_test.py` | 真實 Atlas 讀回及可清理測試 / Live verification |
 
 保留原始架構、歷史報告與 migration；不改動已執行 migration 的 checksum。舊全量清冊保留為歷史快照；本次交付清冊另存 `docs/inventory/ai-dashboard.csv`，不把缺少本機大型附件的 worktree 當成全量來源。
@@ -46,6 +48,15 @@ Existing module paths and migration history are preserved. The scoped manifest s
 - 營運總覽：KPI 改為「有效／全部訂單」（分母只套日期與示範篩選）；零有效訂單時平均客單顯示「—」，送給摘要模型的 `average_order_value` 為 `null`。每日有效營收加純 CSS 長條圖（高度相對同一篩選結果的最高日），表格保留於下方。範圍內含示範訂單時頁首標示「示範資料 n 筆」。
 - 推薦監控：權重表改讀 v4 `recommendation_policy`，依權重排序並附中文名稱；明示前台規則基線尚未改用此政策（待 T7）。
 - `POST /admin/summary` 與既有測試不變；新增 11 項離線測試，共 66 項通過。瀏覽器以本機 mongomock 預覽檢查桌機／平板／手機版面，未連線或寫入 Atlas；以私有 admin 帳號登入真實資料的畫面驗收待 D6 帳號（R04）。
+
+### 2026-10-09 AI 板塊 B：雲端洞察 `/admin/ai/insight`（JEFF，T2／R09）
+
+- **資料**（`services/ai_payload.py`，依 SAM 白名單 v1）：伺服器重新彙總本期與緊接前期等長的比較期（各 1–366 台北日）。內容包含 totals（全部／有效訂單、有效營收、平均客單，零有效單為 `null`）、程式算好的變化率（基期為零時 `null`）、補零的 daily，以及 products（最多 100 筆，依 intent 排序並標示截斷）。products 每個商品一列，取最低價可售 SKU，欄位為白名單的 product_id、name、sku_id、price、stock_quantity、safety_stock、valid_sold_units、promotion_eligible（無成本資料一律 `null`），另加契約補充說明的 `available_quantity`。候選只計 active、可推薦，且 SKU active、`available_quantity>0` 的商品，被排除的數量寫入 warnings。每期先計數，超過 5,000 單回 `range_too_large`，不截斷統計。不含任何會員欄位或原始訂單。
+- **提問**：4 個預設 intent（`period_compare`、`replenishment`、`promotion`、`revenue_change`）加自由輸入。按預設問題時不會帶出輸入框文字。自由輸入已實作的防護（設計規格 12.2 待與 SAM 確認的 6 點）：(1) 300 字上限並去除控制字元；(2) system prompt 限定只回答本店營運、只依資料，非營運問題固定拒答；(3) 問題放在 `untrusted_question` 欄位並標示為不可信輸入；(4) 偵測 Email、手機／市話、身分證格式就拒送（422）；(5) 呼叫紀錄只記 intent、耗時與 token，不記問題全文；(6) 每位管理員每分鐘上限 `AI_INSIGHT_RATE_LIMIT`（預設 6 次，超過回 429）。
+- **輸出**：顯示模型、耗時、輸入／輸出 token、資料範圍與「請人工核對」，模型輸出一律 HTML escape。「送給模型的資料」`<details>` 顯示的就是送進 prompt 的同一個 JSON 字串，並依狀態標示：本次實際傳送、快取（原始請求內容）、已送出但呼叫失敗、未送出。相同請求 5 分鐘內走快取。
+- **退回**：未啟用、未設定 Key／模型、逾時、服務錯誤時，改用同一份 payload 算出的規則答案，標示「規則退回 · 原因類型」，不顯示例外內容。「營收為什麼下滑」的規則答案只列數字變化，並寫明無法判定原因。
+- **共用邏輯**：營運總覽的 AI 摘要與雲端洞察共用 `run_claude`（呼叫、量測 token／耗時、輸出驗證、失敗分類）。總覽摘要的資料仍是原本的 `summary_metrics`（支援「最近 100 筆」範圍）。程序內保留最近 100 次呼叫的量測，供 T4 比較頁使用。
+- 驗證：新增 26 項離線測試（假模型，共 92 項通過），涵蓋 366／367 日（閏年）、5,000 單上限（以 monkeypatch 縮小上限測邊界）、零資料、零基期、demo 排除、白名單不含個資、escape、預覽與實際送出內容相同、防護拒送不呼叫模型、CSRF、未知 intent、快取、限流與失敗退回。瀏覽器以 mongomock 加假模型預覽，未呼叫真實 API、未連線 Atlas。**真實 Claude 對 4 個 intent 的正確性尚未實測（T5）**。
 
 Taipei date filters and demo exclusions apply consistently to v4 revenue, daily totals, ranking and summaries. Inventory is current; recommendation events are bounded counts, not attribution metrics.
 
