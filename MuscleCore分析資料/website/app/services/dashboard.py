@@ -65,7 +65,7 @@ def load_dashboard(db, mode, filters):
             {"$group": {"_id": "$product_id", "name": {"$first": "$product_name_snapshot"}, "sales_count": {"$sum": "$quantity"}}},
             {"$sort": {"sales_count": -1, "_id": 1}}, {"$limit": 10}]))
         insights = {"revenue": revenue, "orders": len(paid),
-                    "avg_order": (revenue / len(paid)).quantize(Decimal("0.01")) if paid else Decimal("0"),
+                    "avg_order": (revenue / len(paid)).quantize(Decimal("0.01")) if paid else None,
                     "low_stock": low_stock, "low_stock_count": stock_count, "best": best}
         recent = [{**o, "order_no": o["order_number"], "total": money(o["total_amount"])} for o in orders[:10]]
     else:
@@ -77,6 +77,7 @@ def load_dashboard(db, mode, filters):
     demo_label = {"all": "包含示範訂單", "exclude": "排除示範訂單", "only": "僅示範訂單"}[filters["demo"]]
     insights.update(scope=scope, scope_key="date_range" if "after" in filters else "latest_100_orders",
                     start=filters["start"], end=filters["end"], demo=filters["demo"], sampled_orders=len(orders), mode=mode,
+                    demo_orders=sum(1 for o in orders if o.get("is_demo") is True),
                     messages=[f"{scope}，共 {len(orders)} 筆訂單，計入 {insights['orders']} 筆有效訂單。",
                               f"{demo_label}；目前 {insights['low_stock_count']} 個品項達補貨門檻。",
                               "v4 營收排除未付款、退款與取消訂單。" if mode == "v4" else "舊版統計依未取消訂單計算，並非付款確認報表。"])
