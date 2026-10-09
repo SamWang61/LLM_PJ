@@ -25,6 +25,8 @@ SAM previously delivered this stacked feature; current AI/admin ownership belong
 | `MuscleCore分析資料/website/tests/test_ai_insight.py` | 雲端洞察：白名單、intent、防護、退回與量測測試 / Insight tests |
 | `MuscleCore分析資料/website/app/services/local_ai.py` | Local BGE 相似商品與向量更新 / Local similar products |
 | `MuscleCore分析資料/website/tests/test_local_ai.py` | Local 推薦：排序、可售過濾、模型缺失、CSRF 測試 / Local AI tests |
+| `MuscleCore分析資料/website/app/services/ai_compare.py` | Local vs Cloud 實測比較 / Measured comparison |
+| `MuscleCore分析資料/website/tests/test_ai_compare.py` | AI 比較：中位數、未量測、成本設定測試 / Comparison tests |
 | `scripts/verify_v4_test.py` | 真實 Atlas 讀回及可清理測試 / Live verification |
 
 保留原始架構、歷史報告與 migration；不改動已執行 migration 的 checksum。舊全量清冊保留為歷史快照；本次交付清冊另存 `docs/inventory/ai-dashboard.csv`，不把缺少本機大型附件的 worktree 當成全量來源。
@@ -69,6 +71,16 @@ Existing module paths and migration history are preserved. The scoped manifest s
 - **模型不可用**：套件未安裝或模型檔案未下載時，顯示黃色提示與安裝／下載指令，**不顯示假結果**，也不顯示例外內容。這個後台頁面不受前台開關 `AI_RECOMMENDATIONS_ENABLED` 限制；狀態燈的 BGE 文字會同時標示前台是否啟用。
 - 每次相似計算與向量更新都記入程序內量測（provider `bge`），供 T4 比較頁使用。
 - 驗證：新增 12 項離線測試（假 Embeddings，共 104 項通過），涵蓋排序、Top 5、排除自己、下架／不可推薦／缺貨／停用 SKU 排除、最低可售價、快取命中、模型缺失與載入失敗、CSRF、空資料、權限。瀏覽器以 mongomock 加假 Embeddings 預覽版面。**真實 BGE 的相關性與延遲尚未實測（T5，需先安裝 `requirements-ai.txt`）**。
+
+### 2026-10-09 AI 比較 `/admin/ai/compare`（JEFF，T4／R09）
+
+- 比較表依設計規格第 5.4 節，比較延遲、成本、資料是否離開本機、推論是否需網路、擅長與限制。
+- **延遲**：每一側取最近 10 次成功呼叫的中位數。Local 只計「相似商品」計算，不計更新向量；Cloud 計雲端洞察與總覽 AI 摘要的實際 API 呼叫，快取命中與失敗都不計。
+- **成本**：Cloud 顯示最近幾次的平均輸入／輸出 token。只有設定 `CLAUDE_INPUT_USD_PER_MTOK`、`CLAUDE_OUTPUT_USD_PER_MTOK`（每百萬 token 美元單價，預設空值）時才估算每次金額，不內建任何價格。
+- **未量測**：顯示「尚未量測，請先到 A／B 執行一次」並附連結，不填示範數字。「推論不需網路」註明只指模型推論，網站讀 Atlas 與遠端圖片仍需網路。
+- **呼叫紀錄**：列出最近 20 筆，含類型、intent、模型、耗時、token、快取命中，不含問題內容。紀錄在程序記憶體中，重新啟動會清空，多個 worker 時各自獨立。
+- 新增共用 `duration` 篩選器（< 1 秒用 ms，否則用秒並取 1 位小數），取代 A、B 頁各自的 macro；手機寬度下頁首不換行，比較表改為橫向捲動。
+- 驗證：新增 11 項離線測試（共 115 項通過），涵蓋未量測狀態、最近 10 次中位數、Local／Cloud 分開計算、只有設定單價才估算、紀錄不含問題文字、從 A 頁實際呼叫到比較頁、時間格式、權限。**真實延遲與 token 待 T5 實測後才會出現**。
 
 Taipei date filters and demo exclusions apply consistently to v4 revenue, daily totals, ranking and summaries. Inventory is current; recommendation events are bounded counts, not attribution metrics.
 

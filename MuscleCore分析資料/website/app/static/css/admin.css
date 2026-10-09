@@ -173,3 +173,16 @@ code{font-family:ui-monospace,Consolas,monospace;font-size:.85em;color:#d9e6cf}
 .plain-list{margin:8px 0 0;padding-left:20px;color:var(--muted);display:grid;gap:6px}
 @media(max-width:1099px){.local-grid{grid-template-columns:minmax(0,1fr)}}
 @media(max-width:619px){.similar-row{grid-template-columns:20px 40px minmax(0,1fr) 40px}.similar-row .score-bar{grid-row:2;grid-column:3/5}.similar-row .score-value{grid-row:1;grid-column:4}.product-thumb.small{width:40px;height:40px}.base-product{flex-direction:column}}
+
+/* AI comparison */
+.compare-table th[scope="row"]{color:var(--ink);font-weight:700}
+.compare-table td,.compare-table th{white-space:normal;vertical-align:top}
+.compare-table td small{display:block;margin-top:2px;color:var(--muted);font-size:.76rem}
+.compare-table td strong{font-size:1.15rem;font-variant-numeric:tabular-nums}
+.compare-table .local-col{color:var(--lime)}
+.compare-table .cloud-col{color:var(--cloud)}
+.text-link{color:var(--lime);text-decoration:underline}
+.compare-table{min-width:560px}
+.compare-table th[scope="row"]{white-space:nowrap}
+.admin-header .brand,.admin-account a{white-space:nowrap}
+@media(max-width:419px){.admin-header .brand{font-size:.95rem}.admin-header .brand span{width:28px;height:28px;margin-right:6px}.admin-account{gap:10px;font-size:.82rem}}

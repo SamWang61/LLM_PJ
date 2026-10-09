@@ -1,5 +1,11 @@
 # 變更紀錄 / Changelog
 
+## 2026-10-09 — JEFF AI 比較 / AI comparison (T4, R09)
+
+- 新增 `/admin/ai/compare`：Local（BGE）與 Cloud（Claude）的延遲取最近 10 次實際呼叫的中位數，並顯示 Cloud 的平均 token；未量測時顯示「尚未量測」，不填示範數字。Added the measured comparison page.
+- 只有設定 token 單價（`CLAUDE_INPUT_USD_PER_MTOK`／`CLAUDE_OUTPUT_USD_PER_MTOK`）時才估算成本；呼叫紀錄不含問題內容。See [dashboard handoff](docs/AI_DASHBOARD.md).
+- 新增 11 項離線測試（共 115 項）。
+
 ## 2026-10-09 — JEFF Local 相似商品 / Local similar products (T3, R09)
 
 - 新增 `/admin/ai/recommendation`：選一個可推薦且可購買的商品，以本機 BGE 計算 Top 5 相似商品，顯示 cosine 分數條、處理時間與快取命中；「更新商品向量」需 POST 並驗證 CSRF。Added the local similarity page.

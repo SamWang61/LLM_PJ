@@ -1,5 +1,4 @@
 {% extends 'admin/layout.html' %}
-{% macro duration(ms) %}{{ '%d ms'|format(ms) if ms < 1000 else '%.1f 秒'|format(ms / 1000) }}{% endmacro %}
 {% macro thumb(product, size) %}{% if product.image %}<img class="product-thumb {{ size }}" src="{{ product.image }}" alt="{{ product.name }}" loading="lazy" referrerpolicy="no-referrer">{% else %}<span class="product-thumb {{ size }} placeholder" aria-hidden="true">{{ product.name[:2] }}</span>{% endif %}{% endmacro %}
 {% block title %}Local 推薦｜VibeInsight 後台{% endblock %}
 {% block eyebrow %}LOCAL AI · 本機模型{% endblock %}
@@ -55,7 +54,7 @@
       <strong class="score-value">{{ '%.2f'|format(item.score) }}</strong>
     </div>
     {% else %}<p class="empty-state">沒有其他可推薦商品可以比較。</p>{% endfor %}
-    <p class="ai-meta"><span>處理時間 {{ duration(result.latency_ms) }}</span><span>快取命中 {{ result.cache_hits }}/{{ result.total }}</span><span>cosine 相似度，越接近 1 越相似</span></p>
+    <p class="ai-meta"><span>處理時間 {{ result.latency_ms|duration }}</span><span>快取命中 {{ result.cache_hits }}/{{ result.total }}</span><span>cosine 相似度，越接近 1 越相似</span></p>
   </section>
 </div>
 {% elif not unavailable %}

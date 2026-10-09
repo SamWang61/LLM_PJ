@@ -4,6 +4,7 @@ from importlib.util import find_spec
 from flask import Blueprint, abort, current_app, flash, redirect, render_template, request, session, url_for
 from .auth import admin_required
 from .db import get_db
+from .services.ai_compare import comparison
 from .services.ai_payload import InsightDataError, build_insight_payload, insight_ranges
 from .services.ai_workflows import FAILURE_LABELS, INTENTS, InsightRequestError, clean_question, insight_answer, operational_summary
 from .services.local_ai import (LocalModelUnavailable, install_commands, refresh_vectors, sellable_products,
@@ -38,6 +39,12 @@ def system_status():
 def admin_context():
     return {"system_status": system_status(), "admin_endpoints": set(current_app.view_functions),
             "read_at": datetime.now(TAIPEI).strftime("%Y-%m-%d %H:%M")}
+
+
+@bp.app_template_filter('duration')
+def duration(ms):
+    """Design spec 9: under one second in ms, otherwise seconds with one decimal."""
+    return "—" if ms is None else (f"{ms:.0f} ms" if ms < 1000 else f"{ms / 1000:.1f} 秒")
 
 
 @bp.app_template_filter('ntd')
@@ -154,3 +161,9 @@ def ai_recommendation_refresh():
         except LocalModelUnavailable as error:
             flash(f"無法更新向量：{UNAVAILABLE_LABELS[error.reason]}。", "danger")
     return redirect(url_for('admin.ai_recommendation', product_id=selected or None))
+
+
+@bp.get('/ai/compare')
+@admin_required
+def ai_compare():
+    return render_template('admin/ai_compare.html', **comparison())
