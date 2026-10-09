@@ -1,5 +1,11 @@
 # 變更紀錄 / Changelog
 
+## 2026-10-09 — JEFF Local 相似商品 / Local similar products (T3, R09)
+
+- 新增 `/admin/ai/recommendation`：選一個可推薦且可購買的商品，以本機 BGE 計算 Top 5 相似商品，顯示 cosine 分數條、處理時間與快取命中；「更新商品向量」需 POST 並驗證 CSRF。Added the local similarity page.
+- 模型未安裝或未下載時顯示安裝指令，不顯示假結果。See [dashboard handoff](docs/AI_DASHBOARD.md).
+- 新增 12 項離線測試（共 104 項）；真實 BGE 待 T5 實測。
+
 ## 2026-10-09 — JEFF 雲端洞察 / Cloud insight (T2, R09)
 
 - 新增 `/admin/ai/insight`：依 AI 白名單 v1 由伺服器重新彙總本期與比較期資料；4 個預設 intent 加上有防護的自由提問（300 字、不可信輸入隔離、個資格式拒送、每分鐘限流）。Added the cloud insight page.

@@ -1,0 +1,75 @@
+{% extends 'admin/layout.html' %}
+{% macro duration(ms) %}{{ '%d ms'|format(ms) if ms < 1000 else '%.1f 秒'|format(ms / 1000) }}{% endmacro %}
+{% macro thumb(product, size) %}{% if product.image %}<img class="product-thumb {{ size }}" src="{{ product.image }}" alt="{{ product.name }}" loading="lazy" referrerpolicy="no-referrer">{% else %}<span class="product-thumb {{ size }} placeholder" aria-hidden="true">{{ product.name[:2] }}</span>{% endif %}{% endmacro %}
+{% block title %}Local 推薦｜VibeInsight 後台{% endblock %}
+{% block eyebrow %}LOCAL AI · 本機模型{% endblock %}
+{% block heading %}相似商品推薦{% endblock %}
+{% block meta %}<span>模型 {{ config.BGE_MODEL }}</span><span>CPU</span><span>資料不離開本機</span><span>向量快取 {{ vectors.cached }} 筆{% if vectors.refreshed_at %}／最後更新 {{ vectors.refreshed_at }}{% endif %}</span>{% endblock %}
+{% block actions %}{% if products %}<form method="post" action="{{ url_for('admin.ai_recommendation_refresh') }}"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><input type="hidden" name="product_id" value="{{ selected }}"><button class="button secondary" type="submit">更新商品向量</button></form>{% endif %}{% endblock %}
+{% block content %}
+{% if not products %}
+<section class="panel"><p class="empty-state">資料庫尚無可推薦商品（需為上架、可推薦，且至少一個 SKU 有可售庫存）。</p></section>
+{% else %}
+<form class="panel dashboard-filters" method="get" action="{{ url_for('admin.ai_recommendation') }}">
+  <label class="wide">選擇商品（{{ products|length }} 個可推薦且可購買）
+    <select name="product_id" required>
+      <option value="">— 請選擇 —</option>
+      {% for group in products|groupby('category') %}<optgroup label="{{ group.grouper or '未分類' }}">{% for p in group.list %}<option value="{{ p.id }}" {% if p.id == selected %}selected{% endif %}>{{ p.name }}</option>{% endfor %}</optgroup>{% endfor %}
+    </select>
+  </label>
+  <button class="button" type="submit">計算相似商品</button>
+  <p>候選只含上架、可推薦，且至少一個 SKU 為 active 並有可售庫存的商品；基準商品本身排除。價格為可售 SKU 最低價。</p>
+</form>
+
+{% if unavailable %}
+<section class="panel model-warning" role="alert">
+  <h2>本機模型無法使用：{{ unavailable_labels[unavailable] }}</h2>
+  <p>不顯示替代或示範結果。請在 <code>website</code> 目錄依序執行（PyTorch 檔案較大，第一次下載模型需要網路）：</p>
+  {% for command in install_commands %}<pre><code>{{ command }}</code></pre>{% endfor %}
+  <p class="panel-note">安裝與下載完成後重新啟動網站，再計算一次。</p>
+</section>
+{% endif %}
+
+{% if result %}
+<div class="admin-grid local-grid">
+  <section class="panel" aria-labelledby="base-title">
+    <h2 id="base-title">目前商品</h2>
+    <div class="base-product">
+      {{ thumb(result.base, 'large') }}
+      <div>
+        <strong>{{ result.base.name }}</strong>
+        <p class="panel-note">{{ result.base.category or '未分類' }} · {{ result.base.price|ntd }}</p>
+        {% if result.base.tags %}<p class="tag-list">{% for tag in result.base.tags %}<span>{{ tag }}</span>{% endfor %}</p>{% endif %}
+      </div>
+    </div>
+    <details class="table-details"><summary>模型輸入文字預覽</summary><pre class="text-preview">{{ result.base.text }}</pre></details>
+  </section>
+  <section class="panel" aria-labelledby="top-title">
+    <div class="panel-head"><h2 id="top-title">Top {{ result['items']|length }} 相似商品</h2><span class="source-badge local">BGE · 本機</span></div>
+    {% for item in result['items'] %}
+    <div class="similar-row">
+      <b class="similar-rank">{{ loop.index }}</b>
+      {{ thumb(item, 'small') }}
+      <div class="similar-info"><span>{{ item.name }}</span><small>{{ item.category or '未分類' }} · {{ item.price|ntd }}</small></div>
+      <div class="score-bar" role="meter" aria-valuemin="0" aria-valuemax="1" aria-valuenow="{{ item.score }}" aria-label="相似度 {{ '%.2f'|format(item.score) }}"><span style="width: {{ '%.1f'|format([item.score, 0]|max * 100) }}%"></span></div>
+      <strong class="score-value">{{ '%.2f'|format(item.score) }}</strong>
+    </div>
+    {% else %}<p class="empty-state">沒有其他可推薦商品可以比較。</p>{% endfor %}
+    <p class="ai-meta"><span>處理時間 {{ duration(result.latency_ms) }}</span><span>快取命中 {{ result.cache_hits }}/{{ result.total }}</span><span>cosine 相似度，越接近 1 越相似</span></p>
+  </section>
+</div>
+{% elif not unavailable %}
+<section class="panel"><p class="empty-state">請先選擇一個商品，再按「計算相似商品」。</p></section>
+{% endif %}
+{% endif %}
+
+<section class="panel" aria-labelledby="why-title">
+  <h2 id="why-title">為什麼用本機模型</h2>
+  <ul class="plain-list">
+    <li>BGE 把商品名稱、分類、摘要、描述與標籤轉成向量，用 cosine 相似度找出語意相近的商品；不會生成文字。</li>
+    <li>推論在本機 CPU 執行，商品資料不送到外部 API，也沒有 API 費用。</li>
+    <li>模型下載後推論不需網路；但網站讀取 Atlas 資料與遠端商品圖片仍需要網路。</li>
+    <li>向量依商品文字快取在記憶體；商品文字變更時會自動重新計算，「更新商品向量」會清除快取並全部重算。</li>
+  </ul>
+</section>
+{% endblock %}
