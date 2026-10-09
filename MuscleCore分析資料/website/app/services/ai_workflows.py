@@ -114,6 +114,14 @@ class CachedEmbeddings:
     def embed_query(self, text):
         return self.delegate.embed_query("为这个句子生成表示以用于检索相关文章：" + text)
 
+    def cached_count(self, texts):
+        with self.lock:
+            return sum(1 for t in texts if t in self.cache)
+
+    def clear(self):
+        with self.lock:
+            self.cache.clear()
+
 
 def bge_embeddings():
     if "bge_embeddings" not in current_app.extensions:

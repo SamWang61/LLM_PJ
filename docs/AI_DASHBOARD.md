@@ -23,6 +23,8 @@ SAM previously delivered this stacked feature; current AI/admin ownership belong
 | `MuscleCore分析資料/website/tests/test_admin_layout.py` | 共用版型、KPI 口徑、篩選同步與推薦政策測試 / Layout tests |
 | `MuscleCore分析資料/website/app/services/ai_payload.py` | AI 白名單 v1 伺服器端彙總 / Whitelist v1 aggregation |
 | `MuscleCore分析資料/website/tests/test_ai_insight.py` | 雲端洞察：白名單、intent、防護、退回與量測測試 / Insight tests |
+| `MuscleCore分析資料/website/app/services/local_ai.py` | Local BGE 相似商品與向量更新 / Local similar products |
+| `MuscleCore分析資料/website/tests/test_local_ai.py` | Local 推薦：排序、可售過濾、模型缺失、CSRF 測試 / Local AI tests |
 | `scripts/verify_v4_test.py` | 真實 Atlas 讀回及可清理測試 / Live verification |
 
 保留原始架構、歷史報告與 migration；不改動已執行 migration 的 checksum。舊全量清冊保留為歷史快照；本次交付清冊另存 `docs/inventory/ai-dashboard.csv`，不把缺少本機大型附件的 worktree 當成全量來源。
@@ -57,6 +59,16 @@ Existing module paths and migration history are preserved. The scoped manifest s
 - **退回**：未啟用、未設定 Key／模型、逾時、服務錯誤時，改用同一份 payload 算出的規則答案，標示「規則退回 · 原因類型」，不顯示例外內容。「營收為什麼下滑」的規則答案只列數字變化，並寫明無法判定原因。
 - **共用邏輯**：營運總覽的 AI 摘要與雲端洞察共用 `run_claude`（呼叫、量測 token／耗時、輸出驗證、失敗分類）。總覽摘要的資料仍是原本的 `summary_metrics`（支援「最近 100 筆」範圍）。程序內保留最近 100 次呼叫的量測，供 T4 比較頁使用。
 - 驗證：新增 26 項離線測試（假模型，共 92 項通過），涵蓋 366／367 日（閏年）、5,000 單上限（以 monkeypatch 縮小上限測邊界）、零資料、零基期、demo 排除、白名單不含個資、escape、預覽與實際送出內容相同、防護拒送不呼叫模型、CSRF、未知 intent、快取、限流與失敗退回。瀏覽器以 mongomock 加假模型預覽，未呼叫真實 API、未連線 Atlas。**真實 Claude 對 4 個 intent 的正確性尚未實測（T5）**。
+
+### 2026-10-09 AI 板塊 A：Local 相似商品 `/admin/ai/recommendation`（JEFF，T3／R09）
+
+- **選商品**：下拉選單與 Top 5 只包含上架、可推薦，且至少一個 SKU 為 active、`available_quantity>0` 的商品，並依分類分組。基準商品本身排除。價格取可售 SKU 的最低價，下架或沒庫存的 SKU 價格不影響顯示。
+- **模型輸入**：商品名稱、大／小類別名稱、摘要、描述與標籤，沿用 `product_text`，可在頁面「模型輸入文字預覽」展開查看。`category_path` 存的是分類代碼，對語意比對沒有幫助，所以改從 `categories` 讀取分類名稱。
+- **相似度**：同一個 BGE 模型為每個商品產生向量，再算基準商品與其他商品的 cosine 相似度，顯示 Top 5 的數值與水平條（`role="meter"`）。另顯示處理時間與快取命中數（沿用 `CachedEmbeddings`，新增 `cached_count`、`clear`）。圖片取 `image_urls[0]`，沒有圖片時用商品名稱前兩字佔位。
+- **「更新商品向量」**：POST 並驗證 CSRF，清除快取後全部重算，以懸浮提示回報筆數與耗時，再導回原本選的商品。
+- **模型不可用**：套件未安裝或模型檔案未下載時，顯示黃色提示與安裝／下載指令，**不顯示假結果**，也不顯示例外內容。這個後台頁面不受前台開關 `AI_RECOMMENDATIONS_ENABLED` 限制；狀態燈的 BGE 文字會同時標示前台是否啟用。
+- 每次相似計算與向量更新都記入程序內量測（provider `bge`），供 T4 比較頁使用。
+- 驗證：新增 12 項離線測試（假 Embeddings，共 104 項通過），涵蓋排序、Top 5、排除自己、下架／不可推薦／缺貨／停用 SKU 排除、最低可售價、快取命中、模型缺失與載入失敗、CSRF、空資料、權限。瀏覽器以 mongomock 加假 Embeddings 預覽版面。**真實 BGE 的相關性與延遲尚未實測（T5，需先安裝 `requirements-ai.txt`）**。
 
 Taipei date filters and demo exclusions apply consistently to v4 revenue, daily totals, ranking and summaries. Inventory is current; recommendation events are bounded counts, not attribution metrics.
 

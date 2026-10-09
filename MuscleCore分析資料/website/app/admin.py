@@ -1,11 +1,13 @@
 from datetime import datetime
 from decimal import Decimal
 from importlib.util import find_spec
-from flask import Blueprint, abort, current_app, render_template, request, session
+from flask import Blueprint, abort, current_app, flash, redirect, render_template, request, session, url_for
 from .auth import admin_required
 from .db import get_db
 from .services.ai_payload import InsightDataError, build_insight_payload, insight_ranges
 from .services.ai_workflows import FAILURE_LABELS, INTENTS, InsightRequestError, clean_question, insight_answer, operational_summary
+from .services.local_ai import (LocalModelUnavailable, install_commands, refresh_vectors, sellable_products,
+                                similar_products, vector_status)
 from .services.dashboard import TAIPEI, dashboard_filters, load_dashboard, recommendation_monitor, DashboardFilterError
 
 bp = Blueprint('admin', __name__, url_prefix='/admin')
@@ -16,14 +18,13 @@ def system_status():
     config = current_app.config
     # Admin pages only render after admin_required has read the users collection.
     lights = [{"name": "資料庫", "state": "ok", "label": f"已連線（{config['DATA_MODE']}）"}]
-    if not config["AI_RECOMMENDATIONS_ENABLED"]:
-        lights.append({"name": "BGE", "state": "off", "label": "未啟用"})
-    elif "bge_embeddings" in current_app.extensions or config.get("EMBEDDINGS_FACTORY"):
-        lights.append({"name": "BGE", "state": "ok", "label": "已載入"})
+    storefront = "前台已啟用" if config["AI_RECOMMENDATIONS_ENABLED"] else "前台未啟用"
+    if "bge_embeddings" in current_app.extensions or config.get("EMBEDDINGS_FACTORY"):
+        lights.append({"name": "BGE", "state": "ok", "label": f"已載入（{storefront}）"})
     elif find_spec("langchain_huggingface") is None:
-        lights.append({"name": "BGE", "state": "warn", "label": "未安裝，退回規則"})
+        lights.append({"name": "BGE", "state": "warn", "label": f"未安裝，退回規則（{storefront}）"})
     else:
-        lights.append({"name": "BGE", "state": "warn", "label": "尚未載入"})
+        lights.append({"name": "BGE", "state": "off", "label": f"尚未載入（{storefront}）"})
     if not config["AI_SUMMARY_ENABLED"]:
         lights.append({"name": "雲端 LLM", "state": "off", "label": "未啟用"})
     elif config.get("CLAUDE_FACTORY") or (config["ANTHROPIC_API_KEY"] and config["CLAUDE_MODEL"]):
@@ -114,3 +115,42 @@ def ai_insight_ask():
         return insight_page(request.form, intent)
     return render_template('admin/ai_insight.html', payload=payload, range=current, intents=INTENTS, answer=answer,
                            error=None, failure_labels=FAILURE_LABELS)
+
+
+UNAVAILABLE_LABELS = {"not_installed": "本機模型套件尚未安裝", "model_missing": "模型檔案尚未下載或無法載入"}
+
+
+@bp.get('/ai/recommendation')
+@admin_required
+def ai_recommendation():
+    products = sellable_products(get_db())
+    selected = request.args.get('product_id', '')
+    result, unavailable, status = None, None, 200
+    if selected:
+        try:
+            result = similar_products(products, selected)
+        except KeyError:
+            flash("找不到這個商品，或它目前不可推薦／沒有可售 SKU。", "danger")
+            status = 404
+        except LocalModelUnavailable as error:
+            unavailable = error.reason
+    return render_template('admin/ai_recommendation.html', products=products, selected=selected, result=result,
+                           unavailable=unavailable, unavailable_labels=UNAVAILABLE_LABELS,
+                           install_commands=install_commands(), vectors=vector_status()), status
+
+
+@bp.post('/ai/recommendation/refresh')
+@admin_required
+def ai_recommendation_refresh():
+    products = sellable_products(get_db())
+    selected = request.form.get('product_id', '')
+    if not products:
+        flash("資料庫尚無可推薦商品，沒有向量需要更新。", "warning")
+    else:
+        try:
+            outcome = refresh_vectors(products)
+            seconds = outcome["latency_ms"] / 1000
+            flash(f"已更新 {outcome['count']} 筆商品向量，耗時 {seconds:.1f} 秒。", "success")
+        except LocalModelUnavailable as error:
+            flash(f"無法更新向量：{UNAVAILABLE_LABELS[error.reason]}。", "danger")
+    return redirect(url_for('admin.ai_recommendation', product_id=selected or None))
