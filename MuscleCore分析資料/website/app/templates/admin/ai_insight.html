@@ -1,6 +1,5 @@
 {% extends 'admin/layout.html' %}
 {% set demo_labels = {'all': '包含示範訂單', 'exclude': '排除示範訂單', 'only': '僅示範訂單'} %}
-{% macro duration(ms) %}{{ '%d ms'|format(ms) if ms < 1000 else '%.1f 秒'|format(ms / 1000) }}{% endmacro %}
 {% macro pct(value) %}{% if value is none %}<span class="muted-text">無法計算</span>{% else %}<span class="{{ 'up' if not value.startswith('-') and value != '0.0' else 'down' if value.startswith('-') else '' }}">{{ '+' if not value.startswith('-') and value != '0.0' else '' }}{{ value }}%</span>{% endif %}{% endmacro %}
 {% block title %}雲端洞察｜VibeInsight 後台{% endblock %}
 {% block eyebrow %}<span class="cloud-text">CLOUD LLM · 雲端 API</span>{% endblock %}
@@ -59,7 +58,7 @@
   <p class="ai-question"><b>Q：</b>{{ answer.question or answer.label }}</p>
   <div class="ai-text"><b>A：</b>{{ answer.text }}</div>
   <p class="ai-meta">
-    {% if answer.call %}<span>{{ answer.call.model }}</span><span>{{ duration(answer.call.latency_ms) }}</span><span>輸入 {{ answer.call.input_tokens if answer.call.input_tokens is not none else '—' }}／輸出 {{ answer.call.output_tokens if answer.call.output_tokens is not none else '—' }} tokens</span>{% if answer.cached %}<span>快取結果（5 分鐘內相同請求）</span>{% endif %}{% else %}<span>規則計算，非 AI 分析</span>{% endif %}
+    {% if answer.call %}<span>{{ answer.call.model }}</span><span>{{ answer.call.latency_ms|duration }}</span><span>輸入 {{ answer.call.input_tokens if answer.call.input_tokens is not none else '—' }}／輸出 {{ answer.call.output_tokens if answer.call.output_tokens is not none else '—' }} tokens</span>{% if answer.cached %}<span>快取結果（5 分鐘內相同請求）</span>{% endif %}{% else %}<span>規則計算，非 AI 分析</span>{% endif %}
     <span>{{ payload.current_range.start }} ～ {{ payload.current_range.end }}</span><span class="needs-review">請人工核對</span>
   </p>
 </section>
