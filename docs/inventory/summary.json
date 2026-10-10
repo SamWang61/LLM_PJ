@@ -1,7 +1,8 @@
 {
-  "files": 183,
-  "bytes": 5350030,
+  "files": 188,
+  "bytes": 5375593,
   "excluded_trees": [
+    ".codex",
     ".pytest_cache",
     "MuscleCore分析資料/website/.pytest_cache",
     "MuscleCore分析資料/website/app/__pycache__",
