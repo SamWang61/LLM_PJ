@@ -9,9 +9,11 @@
 | R12-A/B/C | AI／D5／數據／synthetic驗收矩陣交付；JEFF #15 head 9d38712 獨立115項離線測試通過 | 合併SAM與JEFF的整合測試、真模型、畫面/API對帳、交易與撤權驗收 |
 | R11 | Chrome實際瀏覽336項／14頁分頁、空搜尋、商品SKU；修正手機長選項造成的橫向溢出 | 圖片故障注入、完整無障礙、已登入購物與推薦流程 |
 | R14 | 即時確認PR #10仍open；文件差異已讀，清楚區分owner回報與未讀回CIDR狀態 | Atlas管理連接器重登入後核對Active／註解／到期；審查合併 |
-| R18 | 新測試納入GitHub Actions完整test_data路徑；發布檢查與清單更新 | PR與CI最終狀態見總表／聊天回報，不用舊SHA代替最終head |
+| R18 | 新測試納入GitHub Actions完整test_data路徑；發布檢查通過、已推送並建立PR #16 | 最終head CI見即時回讀與聊天回報；PR未合併 |
 
 ## 本機與 Atlas 驗證
+
+GitHub：[PR #16](https://github.com/SamWang61/LLM_PJ/pull/16)，[分支](https://github.com/SamWang61/LLM_PJ/tree/codex/sam-jeff-followup-20261011)，base為 `codex/sam-delivery-20261007`（PR #11）。功能提交2c3b482；最後文件提交SHA由GitHub回讀，CI紀錄不以自我引用產生無限文件更新。
 
 - SAM 分支：26項test_data＋61項網站＝87項離線通過；新D4測試已包含在26項內。JEFF分支115項是獨立結果，不與87項相加當作整合總數。
 - Atlas：27集合、86索引、12關聯、五筆succeeded，現行五筆契約通過。沒有修改既有checker契約或历史checksum。
