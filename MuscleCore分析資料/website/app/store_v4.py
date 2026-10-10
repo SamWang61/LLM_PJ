@@ -8,6 +8,7 @@ from .auth import login_required
 from .db import get_db, utcnow
 from .services.sku_gateway import cart_service, catalog, product_view, money, oid, CartError, CartConflict
 from .services.ai_workflows import storefront_recommendations
+from .services.behavior_scope import production_behavior_query
 
 bp = Blueprint("store", __name__)
 
@@ -72,7 +73,7 @@ def home():
     page = min(pages, max(1, request.args.get("page", 1, type=int)))
     events = []
     if session.get("user_id"):
-        events = list(get_db().behavior_events.find({"user_id": oid(session["user_id"])}).sort("event_at", -1).limit(50))
+        events = list(get_db().behavior_events.find(production_behavior_query({"user_id": oid(session["user_id"])})).sort("event_at", -1).limit(50))
     result = storefront_recommendations(shown, events, query)
     return render_template("store/home.html", products=shown[(page-1)*24:page*24], categories=categories,
                            selected_category=category, major_categories=major_categories, selected_major=major,

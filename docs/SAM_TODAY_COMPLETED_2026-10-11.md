@@ -48,3 +48,6 @@ GitHub：[PR #16](https://github.com/SamWang61/LLM_PJ/pull/16)，[分支](https:
 - R17 PR #11：open；本輪發布為stacked PR，先審查本輪差異，不自動合併#11或JEFF的PR。
 
 English: Marks today's completed tools, audit proposal, acceptance matrix, isolated offline checks and browser overflow fix. Atlas transaction rehearsal was rolled back; no persisted data/schema/account update is claimed. GitHub publication and final-head CI are reported separately.
+# 本輪接續：synthetic 隔離
+
+使用者選擇「先完成並部署隔離，再正式匯入」。**今日完成**後台監控、v4／legacy會員推薦、規則／BGE服務程式隔離與7項新增測試；完整離線回歸94項通過。最新Atlas preflight仍為既有0／缺少1,240／正式新增0。部署目標及評分／歸因外部消費者待確認；沒有將本機或GitHub成果標為正式部署。詳見 [隔離修正與前置](SYNTHETIC_ISOLATION_2026-10-11.md)。下方較早87項測試與工作紀錄依原輪次解讀。
