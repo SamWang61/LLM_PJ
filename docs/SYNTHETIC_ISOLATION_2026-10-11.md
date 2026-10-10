@@ -21,6 +21,6 @@
 
 [最新正式匯入前檢查](inventory/D4_FORMAL_PREFLIGHT_2026-10-11.json)：預期 1,240 筆、已存在 0、缺少 1,240、committed=false。沒有正式匯入。Atlas 管理插件需要重新登入；既有私有 PyMongo 連線可讀回資料。
 
-尚未取得正式網站網址、部署主機／服務與排程位置，已向使用者詢問。部署前須核對實际啟動版本、所有使用同一 `vibecart_ai` 的消費者及未部署服務是否確實停用。SAM 驗證各路徑後才產生真實 isolation evidence、執行 gated apply、verify 與重送冪等驗證。稽核 migration 草案仍未定案，不隨 D4 匯入部署。
+使用者已指定Firebase專案vibecart-llmai；Hosting site已讀回但無發布紀錄，Cloud Run與asia-east1排程API未啟用。Flask後端服務及實際排程／歸因位置仍待建立或核對。部署前須核對實际啟動版本、所有使用同一 `vibecart_ai` 的消費者及未部署服務是否確實停用。SAM 驗證各路徑後才產生真實 isolation evidence、執行 gated apply、verify 與重送冪等驗證。稽核 migration 草案仍未定案，不隨 D4 匯入部署。
 
 主責：SAM 接續修正、部署驗證、匯入及工作總表；前置責任：JEFF 提供評分／歸因消費者，部署位置由 SAM／使用者確認。保留歷史 migration、D1～D3 與庫存。

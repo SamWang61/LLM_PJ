@@ -1,3 +1,26 @@
+# SAM 今日完成與發布證據｜2026-10-11（最新更新）
+
+本節為最新狀態；後面的較早輪次記錄保留作歷史證據，不作目前部署完成依據。
+
+| 項目 | 今日完成證據 | 仍待完成 |
+|---|---|---|
+| R03-b synthetic隔離 | SAM補後台監控、v4／legacy會員推薦、規則與BGE服務；3種測試標記於查詢排序／limit前排除 | 正式部署、外部評分／歸因consumer核對、遠端驗證 |
+| 離線回歸 | 完整網站＋test_data共94項passed；最後圖形調整後新增7項再次passed | 真模型／登入／交易／排程／遠端整合驗收 |
+| R18 GitHub發布 | 功能commit0f6fc27，最終head f16799f；push與PR兩組CI皆success | PR #16審查與合併 |
+| R13 Firebase目標 | 使用者指定vibecart-llmai；控制台Blaze；CLI成功讀回Hosting site；releases管理API200且空清單 | Flask Cloud Run服務、Hosting rewrite、私有配置及部署 |
+| Firebase後端／排程 | Cloud Run查詢與asia-east1排程查詢返回403 SERVICE_DISABLED | 啟用與配置；不能据此宣稱所有consumer已停用 |
+| Atlas D4 | 正式preflight passed：預期1,240、existing0、missing1,240、committed=false | 隔離部署驗證通過後正式apply、verify、重送冪等 |
+
+Firebase使用者依提供截圖：SAM cashsam@gmail.com、JEFF jeff841117@gmail.com、HEN chen2000401@gmail.com均標示擁有者；未變更IAM或憑證。Atlas正式新增0、schema更新0、私有帳號新增0，歷史五筆migration與庫存不變。
+
+來源：[PR #16](https://github.com/SamWang61/LLM_PJ/pull/16)、[push CI](https://github.com/SamWang61/LLM_PJ/actions/runs/38095908477/job/114341631684)、[PR CI](https://github.com/SamWang61/LLM_PJ/actions/runs/38095911210/job/114341640007)、[Firebase檢查](inventory/FIREBASE_PREFLIGHT_2026-10-11.json)、[最新D4檢查](inventory/D4_FORMAL_PREFLIGHT_2026-10-11.json)、[隔離說明](SYNTHETIC_ISOLATION_2026-10-11.md)、[SAM總表](SAM_OUTSTANDING_2026-10-11.md)。
+
+下一步主責SAM：完成Firebase後端與隔離部署驗證，再匯入D4；前置JEFF：核對評分／歸因消費者及稽核語義；前置HEN：登入撤權與購物／事件觸發接口。稽核草案未定案，不當作第六筆migration。
+
+通知依使用者授權寄給SAM／JEFF／HEN，附最新兩份文件及GitHub連結；寄送結果另外以Gmail SENT驗證，不預先寫為寄送成功。
+
+## 較早輪次完成證據（歷史記錄）
+
 # SAM 今日完成與發布證據｜2026-10-11
 
 台北日期10/11。GitHub／Atlas本輪即時核對；原來源工作目錄保留。所有新工作在 `codex/sam-jeff-followup-20261011`，基底 SAM PR #11（e80d251），JEFF 功能分支另以獨立唯讀工作樹測試。

@@ -2,6 +2,8 @@
 
 ## 2026-10-11 接續入口
 
+**Firebase與通知最新更新**：使用者指定vibecart-llmai；依貼圖SAM／JEFF／HEN均為擁有者。CLI讀回Hosting site，release清單為空，Cloud Run與asia-east1排程API未啟用。隔離程式已推送PR #16，f16799f的push／PR CI通過；正式部署／D4持久新增仍為0。最新狀態以[SAM總表](SAM_OUTSTANDING_2026-10-11.md)與[今日完成證據](SAM_TODAY_COMPLETED_2026-10-11.md)最上方為準。使用者已授權寄送三人通知。
+
 **最新使用者決策**：先完成並部署 synthetic 隔離，再正式匯入 D4。本輪已補監控、v4／legacy 前台、規則／BGE 服務隔離與7項回歸測試；部署目標與評分／歸因外部消費者仍待核對。Atlas正式新增仍為0，見 [隔離修正與部署前置](SYNTHETIC_ISOLATION_2026-10-11.md)。此段優先於下方較早的「JEFF先交隔離」安排；SAM已依使用者授權接續補程式。
 
 **今日更新**：SAM成果已推送 [PR #16](https://github.com/SamWang61/LLM_PJ/pull/16)，base為PR #11分支。D4匯入工具、稽核草案、驗收矩陣與手機溢出修正已交付；SAM87項／JEFF分支獨立115項離線通過。Atlas27集合／86索引／12關聯唯讀通過，1,240事件交易試寫已回滾；未正式入庫／新增migration／帳號。今日紀錄見 [完成證據](SAM_TODAY_COMPLETED_2026-10-11.md)，總表「今日完成」欄優先於下方較早狀態。
