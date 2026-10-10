@@ -1,5 +1,7 @@
 # JEFF 回覆核對與 SAM 合併工作清單
 
+後續執行請用 [SAM 尚未完成工作總表](SAM_OUTSTANDING_2026-10-11.md)，已逐項合併原 R 編號與本輪 GitHub／Atlas 未發布狀態；本頁保留核對證據。
+
 核對：2026-10-11，Asia/Taipei。郵件為 JEFF 2026-10-09 03:54:28 的 PR #8 通知；[原回覆](https://github.com/SamWang61/LLM_PJ/pull/8#issuecomment-6067889418)。Gmail 全串與 GitHub 畫面回覆一致。依即時 Git fetch 核對分支原始碼，未改寫同學分支、未寄信、未合併或寫入 Atlas。
 
 ## 已核對的變更
