@@ -4,6 +4,7 @@ from datetime import date, datetime, time, timedelta, timezone
 from decimal import Decimal
 from .analytics import build_insights
 from .sku_gateway import money
+from .behavior_scope import production_behavior_query
 
 TAIPEI = timezone(timedelta(hours=8))
 MAX_RANGE_ORDERS = 5000
@@ -94,7 +95,7 @@ def load_dashboard(db, mode, filters):
 
 def recommendation_monitor(db, mode):
     field = "event_at" if mode == "v4" else "created_at"
-    events = list(db.behavior_events.find({}, {"product_id": 1, "event_type": 1}).sort([(field, -1), ("_id", -1)]).limit(1000))
+    events = list(db.behavior_events.find(production_behavior_query(), {"product_id": 1, "event_type": 1}).sort([(field, -1), ("_id", -1)]).limit(1000))
     counts = Counter((str(e.get("product_id") or "—"), e.get("event_type", "UNKNOWN")) for e in events)
     stats = [{"product_id": key[0], "event_type": key[1], "count": count} for key, count in counts.most_common(20)]
     policy = db.system_configs.find_one({"config_key": "recommendation_policy", "status": "active"}) if mode == "v4" else None

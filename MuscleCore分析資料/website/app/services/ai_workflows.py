@@ -13,6 +13,7 @@ from time import monotonic
 from typing import TypedDict
 from flask import current_app
 from .recommendation import recommend_products
+from .behavior_scope import production_events
 
 logger = logging.getLogger(__name__)
 
@@ -84,9 +85,10 @@ def build_recommendation_graph(embeddings):
     from langgraph.graph import StateGraph, START, END
 
     def baseline(state):
+        clean_events = list(production_events(state["events"]))
         products = [p for p in state["products"] if p.get("is_ai_recommendable", True) and p.get("stock", 0) > 0]
-        events = [{**e, "event_type": {"PRODUCT_VIEW": "view", "ADD_TO_CART": "cart", "PURCHASE": "purchase"}.get(e.get("event_type"), e.get("event_type"))} for e in state["events"]]
-        return {"products": products, "items": recommend_products(products, events), "source": "rules"}
+        events = [{**e, "event_type": {"PRODUCT_VIEW": "view", "ADD_TO_CART": "cart", "PURCHASE": "purchase"}.get(e.get("event_type"), e.get("event_type"))} for e in clean_events]
+        return {"products": products, "events": clean_events, "items": recommend_products(products, events), "source": "rules"}
 
     def rank(state):
         if not state["products"]:
@@ -121,6 +123,7 @@ def build_recommendation_graph(embeddings):
 
 
 def storefront_recommendations(products, events, query=""):
+    events = list(production_events(events))
     if current_app.config["AI_RECOMMENDATIONS_ENABLED"]:
         try:
             graph = build_recommendation_graph(current_app.config.get("EMBEDDINGS_FACTORY", bge_embeddings))

@@ -19,4 +19,4 @@ jobs:
         run: python -m pytest tests -q -p no:cacheprovider
       - name: 合成資料離線回歸 / Synthetic fixture regression
         working-directory: MuscleCore分析資料/website
-        run: python -m pytest ../../VibeCart_AI/MongoDB/test_data/test_workflow.py -q -p no:cacheprovider
+        run: python -m pytest ../../VibeCart_AI/MongoDB/test_data -q -p no:cacheprovider
