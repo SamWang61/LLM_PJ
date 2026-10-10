@@ -4,6 +4,7 @@
 
 | 文件 / Document | English scope |
 |---|---|
+| [10/11 JEFF 回覆核對與 SAM 合併清單](JEFF_REPLY_SAM_PLAN_2026-10-11.md) | Current PR evidence, remaining contract gaps, owners and offline D4 delivery. |
 | [10/02 合併與 Atlas 連線紀錄](MERGE_RECORD_2026-10-02.md) | Completed merges, CI evidence and private URI handling. |
 | [HEN 會員／購物流程交接](HEN_AUTH_ORDER.md) | Confirmed option B, branch workflow and access status. |
 | [現行分工](TEAM_OWNERSHIP.md) | SAM database/testing; JEFF AI/admin; HEN auth/order; frontend/RWD awaits reassignment. |

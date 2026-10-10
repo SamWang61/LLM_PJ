@@ -1,11 +1,14 @@
 {
-  "files": 135,
-  "bytes": 3185151,
+  "files": 182,
+  "bytes": 5342248,
   "excluded_trees": [
+    ".pytest_cache",
+    "MuscleCore分析資料/website/.pytest_cache",
     "MuscleCore分析資料/website/app/__pycache__",
     "MuscleCore分析資料/website/app/services/__pycache__",
     "MuscleCore分析資料/website/tests/__pycache__",
     "VibeCart_AI/MongoDB/__pycache__",
+    "VibeCart_AI/MongoDB/test_data/__pycache__",
     "VibeCart_AI/services/__pycache__",
     "scripts/__pycache__"
   ],

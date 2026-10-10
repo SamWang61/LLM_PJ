@@ -10,3 +10,7 @@
 - `generated/apply_report.json`／`verify_report.json`：實際匯入與後續讀回證據；以文件比對、結構及聚合驗證結果判定完成。
 
 All generated orders are demo; test accounts cannot log in. No existing catalog or stock is changed. Generation and import success do not establish frontend or real AI acceptance.
+
+## D4 行為事件（2026-10-11）
+
+`behavior_fixture.py` 提供離線 `build(data, catalog)`、`validate`、`expected`；新批次 `sam-behavior-20261011-v1`。`test_behavior_fixture.py` 驗證重現性與參照、時序、隔離、数量、重複等拒絕案例。無資料庫連線／匯入功能；正式入庫前需 JEFF 完成所有事件消費者的 synthetic 隔離。合併清單見 [JEFF 回覆與 SAM 工作](../../../docs/JEFF_REPLY_SAM_PLAN_2026-10-11.md)。
