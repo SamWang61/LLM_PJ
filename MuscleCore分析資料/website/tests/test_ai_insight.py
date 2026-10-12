@@ -127,6 +127,8 @@ def test_products_sorted_per_intent_and_truncation_marked(admin, monkeypatch):
     monkeypatch.setattr("app.services.ai_payload.MAX_PRODUCTS", 1)
     low = db.products.insert_one({"product_name": "快缺貨", "status": "active", "is_ai_recommendable": True}).inserted_id
     db.product_skus.insert_one({"product_id": low, "status": "active", "price": Decimal128("5.00"), "available_quantity": 1, "stock_quantity": 1, "safety_stock": 4})
+    lower = db.products.insert_one({"product_name": "更缺貨", "status": "active", "is_ai_recommendable": True}).inserted_id
+    db.product_skus.insert_one({"product_id": lower, "status": "active", "price": Decimal128("5.00"), "available_quantity": 1, "stock_quantity": 1, "safety_stock": 2})
     payload = payload_for(db, "2026-10-01", "2026-10-07", intent="replenishment")
     assert payload["products"][0]["name"] == "快缺貨" and payload["products_meta"]["truncated"]
     assert payload["products_meta"]["sort"] == "available_minus_safety_asc" and any("只列前 1 筆" in w for w in payload["warnings"])
@@ -262,3 +264,41 @@ def test_nav_links_insight_page(admin):
     _, client, _, _, _, _ = admin
     html = client.get("/admin/").get_data(as_text=True)
     assert 'href="/admin/ai/insight"' in html
+
+
+def test_summary_intents_send_fewer_products(admin, monkeypatch):
+    _, _, db, _, _, _ = admin
+    monkeypatch.setitem(__import__("app.services.ai_payload", fromlist=["x"]).INTENT_PRODUCT_LIMITS, "period_compare", 1)
+    db.products.insert_one({"product_name": "第二個", "status": "active", "is_ai_recommendable": True})
+    second = db.products.find_one({"product_name": "第二個"})["_id"]
+    db.product_skus.insert_one({"product_id": second, "status": "active", "price": Decimal128("5.00"), "available_quantity": 3, "stock_quantity": 3, "safety_stock": 1})
+    summary = payload_for(db, "2026-10-01", "2026-10-07", intent="period_compare")
+    assert len(summary["products"]) == 1 and summary["products_meta"]["limit"] == 1 and summary["products_meta"]["truncated"]
+    assert len(payload_for(db, "2026-10-01", "2026-10-07", intent="free_question")["products"]) == 2
+
+
+def test_truncated_answer_is_flagged(admin):
+    app, client, _, _, _, _ = admin
+    def respond(prompt):
+        return AIMessage(content="被截斷的回", usage_metadata={"input_tokens": 1, "output_tokens": 1200, "total_tokens": 1201},
+                         response_metadata={"stop_reason": "max_tokens"})
+    app.config.update(AI_SUMMARY_ENABLED=True, CLAUDE_MODEL="test-model", CLAUDE_FACTORY=lambda: RunnableLambda(respond))
+    assert "回覆達到長度上限" in ask(client, "period_compare").get_data(as_text=True)
+
+
+def test_insight_default_model_allows_longer_answers(admin):
+    app, _, _, _, _, _ = admin
+    from app.services.ai_workflows import INSIGHT_MAX_TOKENS, INSIGHT_TIMEOUT, claude_model
+    app.config.update(ANTHROPIC_API_KEY="offline-placeholder", CLAUDE_MODEL="test-model")
+    with app.app_context():
+        model = claude_model(INSIGHT_MAX_TOKENS, INSIGHT_TIMEOUT)
+    assert model.max_tokens == 1200 and INSIGHT_TIMEOUT > 20
+
+
+def test_replenishment_sends_only_program_selected_candidates(admin):
+    _, _, db, _, _, sid = admin
+    payload = payload_for(db, "2026-10-01", "2026-10-07", intent="replenishment")
+    assert payload["products"] == [] and payload["products_meta"]["filter"] == "available_quantity<=safety_stock"
+    db.product_skus.update_one({"_id": sid}, {"$set": {"available_quantity": 2}})
+    payload = payload_for(db, "2026-10-01", "2026-10-07", intent="replenishment")
+    assert [p["available_quantity"] for p in payload["products"]] == [2] and any("補貨候選，共 1 筆" in w for w in payload["warnings"])

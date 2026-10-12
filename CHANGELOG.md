@@ -1,5 +1,11 @@
 # 變更紀錄 / Changelog
 
+## 2026-10-12 — JEFF 真實模型實測 / Real model validation (T5, R09)
+
+- BGE：324 筆可售商品，模型載入 5.0 秒、全部向量化 7.6 秒，相似查詢中位數 26.5 ms；Top 5 共 40 筆全部同大類、37 筆同小類。Measured on CPU with read-only Atlas data.
+- Claude：4 個 intent 各實測 2 回。修正回覆截斷（`max_tokens` 1200 並標示截斷）、輸入 token 由約 1.8 萬降到 0.5～1 萬（依 intent 限量商品、縮排 1）、日期照抄；補貨候選改由程式篩選，並禁止模型自行計算。See [dashboard handoff](docs/AI_DASHBOARD.md).
+- 新增 4 項離線測試（共 119 項）；最後一輪補貨修正尚未以真實 Claude 再驗證。
+
 ## 2026-10-09 — JEFF AI 比較 / AI comparison (T4, R09)
 
 - 新增 `/admin/ai/compare`：Local（BGE）與 Cloud（Claude）的延遲取最近 10 次實際呼叫的中位數，並顯示 Cloud 的平均 token；未量測時顯示「尚未量測」，不填示範數字。Added the measured comparison page.
