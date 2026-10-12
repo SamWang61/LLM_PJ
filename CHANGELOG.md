@@ -1,5 +1,29 @@
 # 變更紀錄 / Changelog
 
+## 2026-10-09 — JEFF AI 比較 / AI comparison (T4, R09)
+
+- 新增 `/admin/ai/compare`：Local（BGE）與 Cloud（Claude）的延遲取最近 10 次實際呼叫的中位數，並顯示 Cloud 的平均 token；未量測時顯示「尚未量測」，不填示範數字。Added the measured comparison page.
+- 只有設定 token 單價（`CLAUDE_INPUT_USD_PER_MTOK`／`CLAUDE_OUTPUT_USD_PER_MTOK`）時才估算成本；呼叫紀錄不含問題內容。See [dashboard handoff](docs/AI_DASHBOARD.md).
+- 新增 11 項離線測試（共 115 項）。
+
+## 2026-10-09 — JEFF Local 相似商品 / Local similar products (T3, R09)
+
+- 新增 `/admin/ai/recommendation`：選一個可推薦且可購買的商品，以本機 BGE 計算 Top 5 相似商品，顯示 cosine 分數條、處理時間與快取命中；「更新商品向量」需 POST 並驗證 CSRF。Added the local similarity page.
+- 模型未安裝或未下載時顯示安裝指令，不顯示假結果。See [dashboard handoff](docs/AI_DASHBOARD.md).
+- 新增 12 項離線測試（共 104 項）；真實 BGE 待 T5 實測。
+
+## 2026-10-09 — JEFF 雲端洞察 / Cloud insight (T2, R09)
+
+- 新增 `/admin/ai/insight`：依 AI 白名單 v1 由伺服器重新彙總本期與比較期資料；4 個預設 intent 加上有防護的自由提問（300 字、不可信輸入隔離、個資格式拒送、每分鐘限流）。Added the cloud insight page.
+- 回覆標示模型、耗時、token 與「請人工核對」；預覽就是同一次請求實際送出的 JSON；失敗時退回規則答案。總覽摘要與洞察共用 Claude 呼叫邏輯。See [dashboard handoff](docs/AI_DASHBOARD.md).
+- 新設定 `AI_INSIGHT_RATE_LIMIT`；新增 26 項離線測試（共 92 項）；真實模型尚未實測。
+
+## 2026-10-09 — JEFF 後台共用版型 / Admin shared layout (T1, R05)
+
+- 新增後台專用 `admin/layout.html`、`admin.css`、`admin.js`：側欄導覽、獨立頁首、系統狀態燈、平板分頁列、手機漢堡選單、懸浮提示；不修改前台 `base.html`／`main.css`。Added an admin-only layout.
+- 營運總覽 KPI 改「有效／全部訂單」，零有效單客單為 null；每日營收加 CSS 長條圖；推薦監控改讀 v4 權重政策。See [dashboard handoff](docs/AI_DASHBOARD.md).
+- 新增 11 項離線測試（共 66 項）。Offline tests only; no Atlas writes.
+
 ## 2026-10-05 — HEN 選擇會員／購物流程 / HEN auth-order ownership
 
 - 仁千 HEN 已選 B，對應 `feature/auth-order`；前台／RWD 改為待重新分配。HEN now owns auth/order.

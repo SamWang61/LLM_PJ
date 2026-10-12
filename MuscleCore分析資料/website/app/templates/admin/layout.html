@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="zh-Hant" class="no-js">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="robots" content="noindex">
+  <title>{% block title %}VibeInsight 後台{% endblock %}</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+  <script src="{{ url_for('static', filename='js/admin.js') }}" defer></script>
+</head>
+<body class="admin-body">
+{# Pages not yet implemented stay visible but disabled, so the navigation never links to a 404. #}
+{% set nav_groups = [
+  (none, [('admin.dashboard', '營運總覽', '')]),
+  ('AI', [('admin.ai_recommendation', 'Local 推薦', '◆'), ('admin.ai_insight', '雲端洞察', '☁'), ('admin.ai_compare', 'AI 比較', '⇄')]),
+  ('監控', [('admin.recommendations', '推薦監控', '')]),
+  ('管理', [('admin.products', '商品管理', ''), ('admin.orders', '訂單管理', ''), ('admin.members', '會員管理', '')]),
+] %}
+{% macro status_list(extra_class) %}
+  <section class="admin-status {{ extra_class }}" aria-label="系統狀態">
+    <h2>系統狀態</h2>
+    <ul>{% for light in system_status %}<li><span class="status-dot {{ light.state }}" aria-hidden="true"></span>{{ light.name }}<small>{{ light.label }}</small></li>{% endfor %}</ul>
+  </section>
+{% endmacro %}
+<header class="admin-header">
+  <button class="admin-menu-toggle" type="button" aria-controls="admin-nav" aria-expanded="false"><span aria-hidden="true">☰</span><span class="visually-hidden">開啟後台導覽</span></button>
+  <a class="brand" href="{{ url_for('admin.dashboard') }}"><span>M</span> VibeInsight 後台</a>
+  <nav class="admin-account" aria-label="帳號">
+    <span class="member">管理員：{{ session.get('name') or '—' }}</span>
+    <a href="{{ url_for('store.home') }}">回商城</a>
+    <a href="{{ url_for('auth.logout') }}">登出</a>
+  </nav>
+</header>
+<div class="admin-layout">
+  <aside class="admin-sidebar">
+    <nav class="admin-nav" id="admin-nav" aria-label="後台導覽">
+      {% for group, items in nav_groups %}
+        {% if group %}<p class="admin-nav-group">{{ group }}</p>{% endif %}
+        {% for endpoint, label, icon in items %}
+          {% if endpoint in admin_endpoints %}
+            <a href="{{ url_for(endpoint) }}"{% if request.endpoint == endpoint %} aria-current="page"{% endif %}>{% if icon %}<i aria-hidden="true">{{ icon }}</i>{% endif %}{{ label }}</a>
+          {% else %}
+            <span class="admin-nav-disabled" aria-disabled="true">{% if icon %}<i aria-hidden="true">{{ icon }}</i>{% endif %}{{ label }}<small>尚未開放</small></span>
+          {% endif %}
+        {% endfor %}
+      {% endfor %}
+    </nav>
+    {{ status_list('in-sidebar') }}
+  </aside>
+  <main class="admin-main" id="main">
+    <div class="admin-page-head">
+      <div>
+        <span class="eyebrow">{% block eyebrow %}VIBEINSIGHT AI{% endblock %}</span>
+        <h1>{% block heading %}{% endblock %}</h1>
+        <p class="admin-meta">{% block meta %}{% endblock %}<span>模式 {{ config.DATA_MODE }}</span><span>讀取時間 {{ read_at }}（台北）</span></p>
+      </div>
+      <div class="admin-actions">{% block actions %}{% endblock %}</div>
+    </div>
+    {% block content %}{% endblock %}
+  </main>
+</div>
+<footer class="admin-footer">
+  {{ status_list('in-footer') }}
+  <p>VibeInsight 後台 · 數字皆由資料庫即時計算，AI 輸出請人工核對</p>
+</footer>
+{% with messages = get_flashed_messages(with_categories=true) %}
+<div class="toast-stack" aria-live="polite">{% for category, message in messages %}
+  <div class="toast {{ 'error' if category in ('danger', 'error') else category }}" role="{{ 'alert' if category in ('danger', 'error') else 'status' }}" data-timeout="{{ 6000 if category in ('danger', 'error') else 3500 }}">{{ message }}<button type="button" class="toast-close" aria-label="關閉提示">×</button></div>
+{% endfor %}</div>
+{% endwith %}
+</body>
+</html>
