@@ -1,5 +1,11 @@
 # 最新專案上下文 / Current project context
 
+## 2026-10-12 最新接續
+
+先讀 [SAM 10/12 交付與剩餘工作](SAM_DELIVERY_2026-10-12.md)。SAM／JEFF 四功能已在整合分支合流；163 項離線測試通過。Firebase／Cloud Run 匿名商品展示已部署並通過各 9 項遠端 HTTP 檢查，網址 https://vibecart-llmai.web.app 。會員／後台／購物写入未開放；D4 仍未匯入、稽核 migration／私有帳號未新增。
+
+SAM 負責前台／RWD、部署與整合；JEFF AI／後台、HEN 會員／購物。JEFF 的 consumer／稽核語義與 HEN 的撤權／交易接口仍是後續前置。下面 10/7 基線保留，GitHub 合併／權限等動態狀態以新交付及即時回讀為準。
+
 ## 2026-10-11 接續入口
 
 **Firebase與通知最新更新**：使用者指定vibecart-llmai；依貼圖SAM／JEFF／HEN均為擁有者。CLI讀回Hosting site，release清單為空，Cloud Run與asia-east1排程API未啟用。隔離程式已推送PR #16，f16799f的push／PR CI通過；正式部署／D4持久新增仍為0。最新狀態以[SAM總表](SAM_OUTSTANDING_2026-10-11.md)與[今日完成證據](SAM_TODAY_COMPLETED_2026-10-11.md)最上方為準。使用者已授權寄送三人通知。

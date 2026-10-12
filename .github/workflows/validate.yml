@@ -20,3 +20,7 @@ jobs:
       - name: 合成資料離線回歸 / Synthetic fixture regression
         working-directory: MuscleCore分析資料/website
         run: python -m pytest ../../VibeCart_AI/MongoDB/test_data -q -p no:cacheprovider
+      - name: 備份清冊與復原比對工具 / Backup manifest contracts
+        run: python -m pytest scripts/test_backup_manifest.py -q -p no:cacheprovider
+      - name: 雲端來源白名單封裝 / Cloud source allowlist
+        run: python scripts/prepare_cloud_source.py --output "$RUNNER_TEMP/vibecart-source.tar.gz"

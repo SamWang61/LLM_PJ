@@ -8,3 +8,6 @@
 
 /* Long SKU option labels must not expand the mobile detail grid. */
 .detail>*{min-width:0}.detail{overflow-wrap:anywhere}.detail select,.detail input[type=number]{width:100%;max-width:100%;min-width:0;font:inherit}.detail select{padding:10px;background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:8px}
+
+/* Keyboard access and reduced motion. */
+.skip-link{position:fixed;left:16px;top:-100px;z-index:100;padding:12px 18px;background:var(--lime);color:#10130e;border-radius:8px}.skip-link:focus{top:12px}a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--lime);outline-offset:4px}#main-content:focus{outline:none}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.product-card{transition:none}.product-card:hover{transform:none}}
