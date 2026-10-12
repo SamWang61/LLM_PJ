@@ -1,0 +1,11 @@
+{
+  "status": 200,
+  "releases": [
+    {
+      "name": "sites/vibecart-llmai/releases/1791811536863000",
+      "releaseTime": "2026-10-12T13:25:36.863Z",
+      "version": "sites/vibecart-llmai/versions/dba3fd0b643c86b4",
+      "type": "DEPLOY"
+    }
+  ]
+}
