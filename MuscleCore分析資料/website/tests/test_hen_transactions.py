@@ -12,7 +12,7 @@ import pytest
 from bson import ObjectId, Decimal128
 from pymongo import MongoClient
 from app.services.sku_gateway import CartService, CartError, CartConflict
-from app.services.member_sessions import advance_generation, generation, revoke_user_sessions
+from app.services.member_sessions import revoke_user_sessions
 
 
 @pytest.fixture
@@ -92,21 +92,13 @@ def test_real_concurrent_last_stock_cannot_oversell(replica):
     assert db.product_skus.find_one()["available_quantity"] == 0
 
 
-def test_real_concurrent_login_generations_are_distinct(replica):
-    db, uid, _, _ = replica
-    with ThreadPoolExecutor(max_workers=4) as pool:
-        values = list(pool.map(lambda _: generation(advance_generation(db, uid)["last_login_at"]), range(4)))
-    assert len(set(values)) == 4
-    assert generation(db.users.find_one({"_id": uid})["last_login_at"]) == max(values)
-
-
 def test_real_admin_transaction_can_rollback_revocation(replica):
     db, uid, _, _ = replica
-    before = generation(advance_generation(db, uid)["last_login_at"])
+    db.auth_sessions.insert_one({"user_id": uid})
     with db.client.start_session() as mongo_session:
         mongo_session.start_transaction()
-        assert revoke_user_sessions(db, uid, mongo_session=mongo_session)
+        assert revoke_user_sessions(db, uid, mongo_session=mongo_session) == 1
         db.users.update_one({"_id": uid}, {"$set": {"status": "inactive", "is_active": False}}, session=mongo_session)
         mongo_session.abort_transaction()
-    user = db.users.find_one({"_id": uid})
-    assert generation(user["last_login_at"]) == before and user["is_active"] is True
+    assert db.auth_sessions.count_documents({"user_id": uid}) == 1
+    assert db.users.find_one({"_id": uid})["is_active"] is True

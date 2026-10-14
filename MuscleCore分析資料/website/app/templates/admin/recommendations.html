@@ -1,7 +1,38 @@
-{% extends 'base.html' %}
-{% block title %}推薦行為監控｜VibeInsight{% endblock %}
-{% block content %}<section class="admin-shell"><span class="eyebrow">RECOMMENDATION OBSERVABILITY</span><h1>推薦行為監控</h1><a href="{{ url_for('admin.dashboard') }}">返回營運後台</a>
-<section class="panel"><h2>目前策略</h2><p>前台可啟用 BGE 語意排序；模型不可用時採規則基線。功能旗標不代表模型已成功載入。</p><p>BGE 旗標：{{ '已啟用' if config.AI_RECOMMENDATIONS_ENABLED else '未啟用' }}；Claude 摘要旗標：{{ '已啟用' if config.AI_SUMMARY_ENABLED else '未啟用' }}。</p>
-{% if config.DATA_MODE == 'v4' %}<p>v4 政策設定（不代表排程計分已執行）：</p>{% if policy.weights %}<ul>{% for action,weight in policy.weights.items() %}<li>{{ action }}：{{ weight }}</li>{% endfor %}</ul>{% else %}<p>尚未讀到有效的推薦政策。</p>{% endif %}<p>現有前台規則基線使用瀏覽 1、收藏 3、加購 4、購買 8；尚未接線 v4 的衰減計分與 6+4 推薦池。</p>{% else %}<p>舊版規則基線：瀏覽 1、收藏 3、加購 4、購買 8。</p>{% endif %}
-<p>事件次數不是推薦曝光或轉換率；缺少完整推薦歸因時不計算 CTR 或轉換率。</p></section>
-<section class="panel"><h2>最近 1,000 筆事件</h2><p>實際讀取 {{ event_count }} 筆，以下顯示次數最多的 20 組。</p><div class="table-wrap"><table><thead><tr><th>商品 ID</th><th>行為</th><th>次數</th></tr></thead><tbody>{% for row in stats %}<tr><td>{{ row.product_id }}</td><td>{{ row.event_type }}</td><td>{{ row.count }}</td></tr>{% else %}<tr><td colspan="3">尚無行為事件。</td></tr>{% endfor %}</tbody></table></div></section></section>{% endblock %}
+{% extends 'admin/layout.html' %}
+{% set event_labels = {'PURCHASE': '購買', 'ADD_TO_CART': '加入購物車', 'SEARCH': '搜尋', 'PRODUCT_VIEW': '瀏覽商品'} %}
+{% block title %}推薦監控｜VibeInsight 後台{% endblock %}
+{% block eyebrow %}RECOMMENDATION OBSERVABILITY{% endblock %}
+{% block heading %}推薦監控{% endblock %}
+{% block meta %}<span>最近 1,000 筆行為事件</span>{% endblock %}
+{% block content %}
+<div class="admin-grid even">
+  <section class="panel" aria-labelledby="policy-title">
+    <h2 id="policy-title">行為權重政策</h2>
+    {% if config.DATA_MODE == 'v4' %}
+      <p class="panel-note">來源：<code>system_configs</code> 的 <code>recommendation_policy</code>（status = active）。此為設定值，不代表排程計分已執行。</p>
+      {% if policy.weights %}
+      <div class="table-wrap"><table><thead><tr><th>行為</th><th>代碼</th><th>權重</th></tr></thead><tbody>
+        {% for action, weight in policy.weights|dictsort(by='value', reverse=true) %}<tr><td>{{ event_labels.get(action, action) }}</td><td><code>{{ action }}</code></td><td>{{ weight }}</td></tr>{% endfor %}
+      </tbody></table></div>
+      {% else %}<p class="empty-state">尚未讀到有效的推薦政策。</p>{% endif %}
+      <p class="insight">前台規則基線尚未改讀此政策（仍為舊權重，待後續修正）；v4 衰減計分與 6+4 推薦池尚未接線。</p>
+    {% else %}
+      <p class="panel-note">舊版規則基線：瀏覽 1、收藏 3、加購 4、購買 8。</p>
+    {% endif %}
+  </section>
+  <section class="panel" aria-labelledby="flag-title">
+    <h2 id="flag-title">目前策略</h2>
+    <p>前台可啟用 BGE 語意排序；模型不可用時採規則基線。功能旗標不代表模型已成功載入。</p>
+    <ul class="flag-list">
+      <li><span class="status-dot {{ 'ok' if config.AI_RECOMMENDATIONS_ENABLED else 'off' }}" aria-hidden="true"></span>BGE 推薦旗標：{{ '已啟用' if config.AI_RECOMMENDATIONS_ENABLED else '未啟用' }}</li>
+      <li><span class="status-dot {{ 'ok' if config.AI_SUMMARY_ENABLED else 'off' }}" aria-hidden="true"></span>Claude 摘要旗標：{{ '已啟用' if config.AI_SUMMARY_ENABLED else '未啟用' }}</li>
+    </ul>
+    <p class="panel-note">事件次數不是推薦曝光或轉換率；缺少完整推薦歸因（<code>recommendation_logs</code>）前不計算 CTR 或轉換率。曝光／點擊／加購／購買將於推薦紀錄上線後顯示。</p>
+  </section>
+</div>
+<section class="panel" aria-labelledby="events-title">
+  <h2 id="events-title">最近 1,000 筆事件</h2>
+  <p class="panel-note">實際讀取 {{ event_count }} 筆，以下顯示次數最多的 20 組（商品 × 行為）。</p>
+  <div class="table-wrap"><table><thead><tr><th>商品 ID</th><th>行為</th><th>次數</th></tr></thead><tbody>{% for row in stats %}<tr><td><code>{{ row.product_id }}</code></td><td>{{ event_labels.get(row.event_type, row.event_type) }}（{{ row.event_type }}）</td><td>{{ row.count }}</td></tr>{% else %}<tr><td colspan="3" class="empty-cell">尚無行為事件。</td></tr>{% endfor %}</tbody></table></div>
+</section>
+{% endblock %}

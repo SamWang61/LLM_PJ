@@ -2,3 +2,12 @@
 
 /* Dashboard controls / 後台篩選與表格 */
 .dashboard-filters{display:flex;gap:16px;align-items:end;flex-wrap:wrap;margin:20px 0}.dashboard-filters label{display:grid;gap:8px;flex:1;min-width:170px}.dashboard-filters input,.dashboard-filters select{width:100%;padding:12px;color:var(--text);background:#101610;border:1px solid var(--line);border-radius:8px;color-scheme:dark}.dashboard-filters p{flex-basis:100%;margin:0;color:var(--muted);font-size:.85rem}.admin-shell>.panel{margin:18px 0}.table-wrap{overflow-x:auto}.insight{white-space:pre-wrap;overflow-wrap:anywhere}table td{overflow-wrap:anywhere}.admin-shell .metrics strong{font-variant-numeric:tabular-nums}@media(max-width:620px){.dashboard-filters label{flex-basis:100%}.dashboard-filters .button{width:100%}}
+
+/* Supermarket catalog: retain source image aspect ratio and mobile layout. */
+.product-visual img{width:100%;height:100%;object-fit:contain;background:#fff;min-height:0}.detail-visual img{width:100%;max-height:480px;object-fit:contain;background:#fff;border-radius:28px}.supermarket-hero{background:linear-gradient(120deg,#172d25,#35412a);min-height:420px}.supermarket-hero:after{display:none}.pagination{margin-top:30px}.filters{margin-bottom:14px}
+
+/* Long SKU option labels must not expand the mobile detail grid. */
+.detail>*{min-width:0}.detail{overflow-wrap:anywhere}.detail select,.detail input[type=number]{width:100%;max-width:100%;min-width:0;font:inherit}.detail select{padding:10px;background:var(--panel);color:var(--ink);border:1px solid var(--line);border-radius:8px}
+
+/* Keyboard access and reduced motion. */
+.skip-link{position:fixed;left:16px;top:-100px;z-index:100;padding:12px 18px;background:var(--lime);color:#10130e;border-radius:8px}.skip-link:focus{top:12px}a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--lime);outline-offset:4px}#main-content:focus{outline:none}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.product-card{transition:none}.product-card:hover{transform:none}}

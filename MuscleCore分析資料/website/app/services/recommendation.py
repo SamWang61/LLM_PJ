@@ -1,4 +1,5 @@
 from collections import Counter
+from .behavior_scope import production_events
 
 
 def recommend_products(products, events, limit=4):
@@ -8,7 +9,7 @@ def recommend_products(products, events, limit=4):
     action_weight = {"view": 1, "favorite": 3, "cart": 4, "purchase": 8}
     product_by_id = {str(p["_id"]): p for p in products}
 
-    for event in events:
+    for event in production_events(events):
         weight = action_weight.get(event.get("event_type"), 1)
         pid = str(event.get("product_id", ""))
         product_weights[pid] += weight

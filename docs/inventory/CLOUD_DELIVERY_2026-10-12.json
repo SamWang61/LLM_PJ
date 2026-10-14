@@ -1,0 +1,33 @@
+{
+  "project": "vibecart-llmai",
+  "region": "asia-east1",
+  "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web:20261012-r3",
+  "repository_create": {
+    "operation": "projects/vibecart-llmai/locations/asia-east1/operations/9ee88c36-ade1-4ac7-9302-74735e53f8e9"
+  },
+  "build": {
+    "id": "fce940aa-76f9-4ff2-893d-c6b0d9afddde",
+    "status": "SUCCESS",
+    "logUrl": "https://console.cloud.google.com/cloud-build/builds;region=asia-east1/fce940aa-76f9-4ff2-893d-c6b0d9afddde?project=278483818008",
+    "images": [
+      {
+        "name": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web:20261012-r3",
+        "digest": "sha256:3beb33dea617f19877ed1d8f7390cedb608c8c2f041294def5dd564aeb22abd9"
+      }
+    ]
+  },
+  "runtime": {
+    "service": "vibecart-web",
+    "uri": "https://vibecart-web-m44ncgz5ta-de.a.run.app",
+    "ready": "CONDITION_SUCCEEDED",
+    "revision": "projects/vibecart-llmai/locations/asia-east1/services/vibecart-web/revisions/vibecart-web-00003-gb5",
+    "readOnly": true,
+    "maxInstances": 1
+  },
+  "preview_access": {
+    "publicReadOnly": true
+  },
+  "recovered_transient_error": {
+    "message": "fetch failed"
+  }
+}

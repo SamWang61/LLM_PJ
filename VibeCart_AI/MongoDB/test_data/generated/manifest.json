@@ -1,0 +1,14 @@
+{
+  "batch": "sam-synthetic-20261005-v1",
+  "seed": 20261005,
+  "as_of": "2026-10-05",
+  "counts": {
+    "users": 600,
+    "orders": 3000,
+    "order_items": 8969
+  },
+  "dataset_sha256": "5a1e6bf89cd5d731ca363a1531fdef9173bd9e72846d3ebcecaa57e63a3005fa",
+  "catalog_sha256": "9bd0b793a00b5477aeaf93338641487cf821f36c4e5abfad747170d873b5b731",
+  "all_synthetic": true,
+  "all_orders_demo": true
+}

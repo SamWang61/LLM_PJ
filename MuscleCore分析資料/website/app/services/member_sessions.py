@@ -1,45 +1,49 @@
-"""v4 single-login generation using the existing last_login_at BSON date.
-
-Trusted admin callers may pass their MongoDB transaction session to revoke.
-No bearer token, additional user field, or new collection is introduced.
-"""
-from datetime import datetime, timedelta, timezone
+"""Independent v4 device sessions; only a digest is stored on the server."""
+from datetime import timedelta
+import hashlib
+import hmac
+import secrets
 from bson import ObjectId
-from pymongo import ReturnDocument
-from pymongo.errors import PyMongoError
+from flask import current_app
 from ..db import utcnow
 
 
-def generation(value):
-    if not isinstance(value, datetime):
+def token_digest(token):
+    if not isinstance(token, str) or not 32 <= len(token) <= 128:
         return None
-    return (value.replace(tzinfo=timezone.utc) - datetime(1970, 1, 1, tzinfo=timezone.utc)) // timedelta(milliseconds=1)
+    return hashlib.sha256(token.encode()).hexdigest()
 
 
-def advance_generation(db, user_id, *, active_only=False, mongo_session=None):
-    uid = ObjectId(user_id)
-    query = {"_id": uid, "schema_version": 4}
-    if active_only:
-        query.update(status="active", is_active=True)
-    for _ in range(8):
-        user = db.users.find_one(query, session=mongo_session)
-        if not user:
-            return None
-        previous = user.get("last_login_at")
-        now = utcnow().replace(tzinfo=timezone.utc)
-        if isinstance(previous, datetime):
-            now = max(now, previous.replace(tzinfo=timezone.utc) + timedelta(milliseconds=1))
-        # Match the generation and credentials/role read before this update.
-        match = {**query, "last_login_at": previous, "role": user.get("role"),
-                 "password_hash": user.get("password_hash")}
-        updated = db.users.find_one_and_update(match,
-            {"$set": {"last_login_at": now, "updated_at": now}},
-            return_document=ReturnDocument.AFTER, session=mongo_session)
-        if updated:
-            return updated
-    raise PyMongoError("Member session generation contention")
+def fingerprint(user):
+    content = str(user.get("password_hash", ""))
+    return hmac.new(current_app.secret_key.encode(), content.encode(), hashlib.sha256).hexdigest()
+
+
+def create_member_session(db, user):
+    token = secrets.token_urlsafe(32)
+    now = utcnow()
+    db.auth_sessions.insert_one({"_id": token_digest(token), "schema_version": 4,
+        "user_id": user["_id"], "auth_fingerprint": fingerprint(user),
+        "created_at": now, "expires_at": now + timedelta(days=30)})
+    db.users.update_one({"_id": user["_id"]}, {"$set": {"last_login_at": now}})
+    return token
+
+
+def valid_member_session(db, user, token):
+    digest = token_digest(token)
+    if not digest:
+        return False
+    row = db.auth_sessions.find_one({"_id": digest, "user_id": user["_id"],
+        "expires_at": {"$gt": utcnow()}})
+    return bool(row and hmac.compare_digest(row["auth_fingerprint"], fingerprint(user)))
+
+
+def revoke_device_session(db, user_id, token):
+    digest = token_digest(token)
+    if digest:
+        db.auth_sessions.delete_one({"_id": digest, "user_id": ObjectId(user_id)})
 
 
 def revoke_user_sessions(db, user_id, *, mongo_session=None):
-    """Trusted server interface; caller must authorize the admin action first."""
-    return advance_generation(db, user_id, mongo_session=mongo_session) is not None
+    """Trusted admin interface; share the transaction with disable/role changes."""
+    return db.auth_sessions.delete_many({"user_id": ObjectId(user_id)}, session=mongo_session).deleted_count

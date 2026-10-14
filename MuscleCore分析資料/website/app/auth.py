@@ -7,7 +7,7 @@ from pymongo.errors import PyMongoError, DuplicateKeyError
 from werkzeug.security import check_password_hash, generate_password_hash
 
 from .db import get_db, utcnow
-from .services.member_sessions import advance_generation, generation, revoke_user_sessions
+from .services.member_sessions import create_member_session, valid_member_session, revoke_device_session
 
 bp = Blueprint("auth", __name__, url_prefix="/auth")
 
@@ -29,8 +29,7 @@ def current_member():
     user = get_db().users.find_one(query)
     if (not user or user.get("role") not in {"admin", "customer"}
             or (current_app.config["DATA_MODE"] == "v4" and
-                (session.get("login_generation") is None or
-                 session["login_generation"] != generation(user.get("last_login_at"))))):
+                not valid_member_session(get_db(), user, session.get("member_session")))):
         session.clear()
         return None
     session.update(role=user["role"], name=user.get("display_name", user.get("name", "")))
@@ -39,15 +38,18 @@ def current_member():
 
 
 def start_member_session(user):
+    token = None
     if current_app.config["DATA_MODE"] == "v4":
-        updated = advance_generation(get_db(), user["_id"], active_only=True)
-        if not updated or updated.get("password_hash") != user.get("password_hash"):
+        current = get_db().users.find_one({"_id": user["_id"], "schema_version": 4,
+            "status": "active", "is_active": True})
+        if not current or current.get("password_hash") != user.get("password_hash"):
             return False
-        user = updated
+        user = current
+        token = create_member_session(get_db(), user)
     session.clear()
     session.update(user_id=str(user["_id"]), name=user.get("display_name", user.get("name", "")), role=user["role"])
     if current_app.config["DATA_MODE"] == "v4":
-        session["login_generation"] = generation(user["last_login_at"])
+        session["member_session"] = token
     return True
 
 
@@ -145,7 +147,7 @@ def logout():
         return render_template("auth/logout.html")
     user = current_member()
     if user and current_app.config["DATA_MODE"] == "v4":
-        revoke_user_sessions(get_db(), user["_id"])
+        revoke_device_session(get_db(), user["_id"], session.get("member_session"))
     session.clear()
     flash("您已安全登出。", "success")
     return redirect(url_for("store.home"))

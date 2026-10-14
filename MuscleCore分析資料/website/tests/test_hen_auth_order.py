@@ -3,7 +3,7 @@ from datetime import datetime, timezone
 import pytest
 from bson import ObjectId, Decimal128
 from test_v4_routes import shop, post
-from app.services.member_sessions import revoke_user_sessions, generation
+from app.services.member_sessions import revoke_user_sessions, create_member_session
 
 
 def cookie(client):
@@ -35,14 +35,20 @@ def test_logout_csrf_and_copied_cookie_cannot_replay(shop):
     assert replay(app, old).get("/cart").status_code == 302
 
 
-def test_new_login_invalidates_old_cookie_and_explicit_revoke(shop):
+def test_two_devices_can_login_and_logout_independently(shop):
     app, client, db, uid, _, _ = shop
     old = cookie(client)
-    assert login(client).status_code == 302
-    assert replay(app, old).get("/cart").status_code == 302
-    latest = cookie(client)
+    second = app.test_client()
+    assert login(second).status_code == 302
+    assert replay(app, old).get("/cart").status_code == 200
+    second_cookie = cookie(second)
+    with second.session_transaction() as state:
+        state["csrf_token"] = "test-csrf"
+    assert post(second, "/auth/logout").status_code == 302
+    assert replay(app, second_cookie).get("/cart").status_code == 302
+    assert replay(app, old).get("/cart").status_code == 200
     assert revoke_user_sessions(db, uid)
-    assert replay(app, latest).get("/cart").status_code == 302
+    assert replay(app, old).get("/cart").status_code == 302
 
 
 def test_disabled_then_reenabled_does_not_restore_revoked_cookie(shop):
@@ -64,6 +70,7 @@ def test_role_is_live_and_forged_cookie_role_cannot_authorize(shop):
         state["role"] = "admin"
     assert client.get("/admin/").status_code == 302
     db.users.update_one({"_id": uid}, {"$set": {"role": "admin"}})
+    assert login(client).status_code == 302
     assert client.get("/admin/").status_code == 200
     old = cookie(client)
     db.users.update_one({"_id": uid}, {"$set": {"role": "customer"}})
@@ -76,10 +83,10 @@ def test_role_is_live_and_forged_cookie_role_cannot_authorize(shop):
 def test_pre_generation_and_malformed_identity_fail_closed(shop):
     app, client, db, uid, _, _ = shop
     with client.session_transaction() as state:
-        state.pop("login_generation")
+        state.pop("member_session")
     assert client.get("/cart").status_code == 302
     with client.session_transaction() as state:
-        state.update(user_id="not-an-id", login_generation=1)
+        state.update(user_id="not-an-id", member_session="invalid")
     assert client.get("/").status_code == 200
 
 
@@ -137,15 +144,15 @@ def test_v4_login_does_not_publish_legacy_demo_credentials(shop):
     assert "Demo123!" not in page.text and "Admin123!" not in page.text
 
 
-def test_same_millisecond_generation_never_reuses_cookie(shop, monkeypatch):
-    _, _, db, uid, _, _ = shop
-    from app.services import member_sessions
-    fixed = datetime(2026, 10, 14, tzinfo=timezone.utc)
-    monkeypatch.setattr(member_sessions, "utcnow", lambda: fixed)
-    db.users.update_one({"_id": uid}, {"$set": {"last_login_at": fixed}})
-    first = member_sessions.advance_generation(db, uid)
-    second = member_sessions.advance_generation(db, uid)
-    assert generation(second["last_login_at"]) == generation(first["last_login_at"]) + 1
+def test_session_expiry_and_digest_only_storage(shop):
+    from datetime import timedelta
+    app, client, db, uid, _, _ = shop
+    with client.session_transaction() as state:
+        token = state["member_session"]
+    row = db.auth_sessions.find_one()
+    assert row["_id"] != token and token not in str(row)
+    db.auth_sessions.update_one({"_id": row["_id"]}, {"$set": {"expires_at": datetime.now(timezone.utc)-timedelta(seconds=1)}})
+    assert client.get("/cart").status_code == 302
 
 
 def test_auth_database_failure_is_sanitized(shop, monkeypatch):

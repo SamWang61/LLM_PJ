@@ -21,9 +21,3 @@ def record_read_event(user, kind, *, product=None, query=None):
         "order_id": None, "cart_id": None, "search_query": query, "source": "organic",
         "recommendation_id": None, "event_at": now, "score_version": 1,
         "processed_at": None, "metadata": behavior_metadata(), "created_at": now})
-
-
-def production_behavior_query(query):
-    return {"$and": [query, {"metadata.synthetic": {"$ne": True}},
-        {"metadata.synthetic_batch_id": {"$in": [None, ""]}},
-        {"metadata.exclude_from_attribution": {"$ne": True}}]}

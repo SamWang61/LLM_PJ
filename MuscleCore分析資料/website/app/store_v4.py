@@ -4,10 +4,11 @@ from functools import wraps
 from flask import Blueprint, abort, current_app, flash, jsonify, redirect, render_template, request, session, url_for
 from pymongo.errors import PyMongoError
 from .auth import login_required, current_member
-from .services.member_events import record_read_event, production_behavior_query
+from .services.member_events import record_read_event
 from .db import get_db
 from .services.sku_gateway import cart_service, catalog, product_view, money, oid, CartError, CartConflict
 from .services.ai_workflows import storefront_recommendations
+from .services.behavior_scope import production_behavior_query
 
 bp = Blueprint("store", __name__)
 
@@ -64,8 +65,17 @@ def home():
     member = current_member()
     products = catalog(get_db())
     category = request.args.get("category", "")
-    categories = sorted({p["category"] for p in products})
-    shown = [p for p in products if not category or p["category"] == category]
+    major = request.args.get("major", "")
+    major_categories = sorted({p["major_category"] for p in products})
+    major_products = [p for p in products if not major or p["major_category"] == major]
+    categories = sorted({p["category"] for p in major_products})
+    query = request.args.get("q", "")[:200].strip()
+    shown = [p for p in major_products if (not category or p["category"] == category)
+             and (not query or query.casefold() in " ".join([p["name"], p.get("summary", ""),
+                  *[" ".join(s.get("variant_attributes", {}).values()) for s in p["skus"]]]).casefold())]
+    total = len(shown)
+    pages = max(1, (total + 23) // 24)
+    page = min(pages, max(1, request.args.get("page", 1, type=int)))
     events = []
     query = request.args.get("q", "")[:200].strip()
     if member:
@@ -73,8 +83,10 @@ def home():
             record_read_event(member, "SEARCH", query=query)
         events = list(get_db().behavior_events.find(production_behavior_query({"user_id": member["_id"]})).sort("event_at", -1).limit(50))
     result = storefront_recommendations(shown, events, query)
-    return render_template("store/home.html", products=shown, categories=categories,
-                           selected_category=category, recommendations=result["items"], recommendation_source=result["source"])
+    return render_template("store/home.html", products=shown[(page-1)*24:page*24], categories=categories,
+                           selected_category=category, major_categories=major_categories, selected_major=major,
+                           page=page, pages=pages, total=total,
+                           recommendations=result["items"], recommendation_source=result["source"])
 
 
 @bp.get("/product/<product_id>")
@@ -88,7 +100,8 @@ def product_detail(product_id):
     skus = list(db.product_skus.find({"product_id": product["_id"], "status": "active"}))
     if member:
         record_read_event(member, "PRODUCT_VIEW", product=product)
-    return render_template("store/product.html", product=product_view(product, skus))
+    categories = {c["_id"]: c["name"] for c in db.categories.find({"_id": {"$in": [product["major_category_id"], product["minor_category_id"]]}})}
+    return render_template("store/product.html", product=product_view(product, skus, categories))
 
 
 @bp.post("/cart/add/<product_id>")

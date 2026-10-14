@@ -4,6 +4,10 @@
 
 | 文件 / Document | English scope |
 |---|---|
+| [10/11 SAM 今日完成與發布證據](SAM_TODAY_COMPLETED_2026-10-11.md) | Today’s tools, live rollback evidence, isolated tests and browser fix. |
+| [10/11 SAM 驗收矩陣與稽核草案](SAM_ACCEPTANCE_2026-10-11.md) | AI/D5/data acceptance cases, undeployed audit schema and D4 operation guide. |
+| [10/11 SAM 尚未完成工作總表](SAM_OUTSTANDING_2026-10-11.md) | Consolidated SAM backlog, delivery states, prerequisites and completion criteria. |
+| [10/11 JEFF 回覆核對與 SAM 合併清單](JEFF_REPLY_SAM_PLAN_2026-10-11.md) | Current PR evidence, remaining contract gaps, owners and offline D4 delivery. |
 | [10/02 合併與 Atlas 連線紀錄](MERGE_RECORD_2026-10-02.md) | Completed merges, CI evidence and private URI handling. |
 | [HEN 會員／購物流程交接](HEN_AUTH_ORDER.md) | Confirmed option B, branch workflow and access status. |
 | [現行分工](TEAM_OWNERSHIP.md) | SAM database/testing; JEFF AI/admin; HEN auth/order; frontend/RWD awaits reassignment. |
@@ -46,3 +50,19 @@
 | [MuscleCore｜Python + MongoDB 智慧運動商城](../MuscleCore%E5%88%86%E6%9E%90%E8%B3%87%E6%96%99/website/README.md) | Component entry point and usage guide. |
 
 - [Atlas／Compass 資料庫查詢手冊](../VibeCart_AI/MongoDB/19_Atlas與Compass資料庫查詢手冊.md) / Read-only database browsing and query guide for the team.
+
+## SAM 2026-10-07 交付入口
+
+- [現行上下文](CURRENT_CONTEXT.md)
+- [測試資料規範](TEST_DATA_SPEC.md)／[歷史匯入證據](TEST_DATA_IMPORT_2026-10-05.md)
+- [D5／AI 契約提案](SAM_DATA_CONTRACT_2026-10-07.md)
+- [本次交付結果](SAM_DELIVERY_2026-10-07.md)
+
+## 2026-10-07 最新團隊交付
+
+- [今日SAM工作清單](SAM_TODAY_CHECKLIST_2026-10-07.md)
+- [殘留問題與具名責任](PROJECT_BLOCKERS_2026-10-07.md)
+- [全專案進度與先後順序](PROJECT_PROGRESS_2026-10-07.md)
+- [發布紀錄](SAM_PUBLICATION_2026-10-07.md)
+
+本次最新分工：SAM資料/測試/前台RWD/整合驗收；JEFF AI/後台；HEN會員/購物。HEN/JEFF GitHub Write已核實，舊狀態依日期解讀。

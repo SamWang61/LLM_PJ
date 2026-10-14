@@ -12,3 +12,6 @@
 *.pdf binary
 *.mp4 binary
 *.zip binary
+
+# Migration checksum depends on original overlay bytes; disable EOL conversion.
+VibeCart_AI/MongoDB/test_data/schema_test_profile.py -text

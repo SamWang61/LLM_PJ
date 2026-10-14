@@ -1,0 +1,107 @@
+{
+  "base": "https://vibecart-llmai.web.app",
+  "checked_at": "2026-10-14T13:06:22.976753+00:00",
+  "checks": [
+    {
+      "name": "Atlas schema and references",
+      "passed": true
+    },
+    {
+      "name": "/health/live",
+      "passed": true
+    },
+    {
+      "name": "/health/live private cache",
+      "passed": true
+    },
+    {
+      "name": "/health/ready",
+      "passed": true
+    },
+    {
+      "name": "/health/ready private cache",
+      "passed": true
+    },
+    {
+      "name": "/",
+      "passed": true
+    },
+    {
+      "name": "/ private cache",
+      "passed": true
+    },
+    {
+      "name": "/auth/login",
+      "passed": true
+    },
+    {
+      "name": "/auth/login private cache",
+      "passed": true
+    },
+    {
+      "name": "/auth/register",
+      "passed": true
+    },
+    {
+      "name": "/auth/register private cache",
+      "passed": true
+    },
+    {
+      "name": "GET /auth/register",
+      "passed": true
+    },
+    {
+      "name": "register",
+      "passed": true
+    },
+    {
+      "name": "GET /auth/login",
+      "passed": true
+    },
+    {
+      "name": "second device login",
+      "passed": true
+    },
+    {
+      "name": "first device survives second login",
+      "passed": true
+    },
+    {
+      "name": "second device cart",
+      "passed": true
+    },
+    {
+      "name": "GET /auth/logout",
+      "passed": true
+    },
+    {
+      "name": "device logout",
+      "passed": true
+    },
+    {
+      "name": "old device cookie rejected",
+      "passed": true
+    },
+    {
+      "name": "other device stays logged in",
+      "passed": true
+    },
+    {
+      "name": "disabled member rejected",
+      "passed": true
+    }
+  ],
+  "database": {
+    "collections": 28,
+    "indexes": 89,
+    "migrations": 6,
+    "status": "passed"
+  },
+  "status": "passed",
+  "test_customer": {
+    "created": true,
+    "disabled": true,
+    "sessions_revoked": true,
+    "orders_created": 0
+  }
+}

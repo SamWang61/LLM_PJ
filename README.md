@@ -70,3 +70,12 @@ CI runs offline checks and demo unit tests without contacting Atlas. Secrets, en
 ## 授權 / Licensing
 
 本倉庫尚未選定開源授權；公開可見不等同授予再散布或商業使用權。既有圖片、報告與第三方素材仍須遵守原權利人的條款。No open-source license has been selected. Public visibility does not grant a redistribution license; third-party assets retain their original terms.
+
+## 2026-10-07 最新團隊交付
+
+- [今日SAM工作清單](docs/SAM_TODAY_CHECKLIST_2026-10-07.md)
+- [殘留問題與具名責任](docs/PROJECT_BLOCKERS_2026-10-07.md)
+- [全專案進度與先後順序](docs/PROJECT_PROGRESS_2026-10-07.md)
+- [發布紀錄](docs/SAM_PUBLICATION_2026-10-07.md)
+
+本次最新分工：SAM資料/測試/前台RWD/整合驗收；JEFF AI/後台；HEN會員/購物。HEN/JEFF GitHub Write已核實，舊狀態依日期解讀。

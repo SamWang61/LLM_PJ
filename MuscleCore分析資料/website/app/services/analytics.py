@@ -1,7 +1,7 @@
 def build_insights(orders, products):
     revenue = sum(float(o.get("total", 0)) for o in orders if o.get("status") != "cancelled")
     paid_orders = [o for o in orders if o.get("status") != "cancelled"]
-    avg_order = revenue / len(paid_orders) if paid_orders else 0
+    avg_order = revenue / len(paid_orders) if paid_orders else None
     low_stock = [p for p in products if int(p.get("stock", 0)) <= int(p.get("low_stock_threshold", 5))]
     best = sorted(products, key=lambda p: p.get("sales_count", 0), reverse=True)[:3]
     messages = []

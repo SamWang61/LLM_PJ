@@ -1,0 +1,98 @@
+{
+  "base": "https://vibecart-web-m44ncgz5ta-de.a.run.app",
+  "checked_at": "2026-10-12T13:24:27.907Z",
+  "scope": "anonymous-read-only",
+  "checks": [
+    {
+      "method": "GET",
+      "path": "/health/live",
+      "expected": 200,
+      "status": 200,
+      "cache_control": "private, no-store",
+      "marker_present": true,
+      "attempt": 1,
+      "passed": true
+    },
+    {
+      "method": "GET",
+      "path": "/health/ready",
+      "expected": 200,
+      "status": 200,
+      "cache_control": "private, no-store",
+      "marker_present": true,
+      "attempt": 1,
+      "passed": true
+    },
+    {
+      "method": "GET",
+      "path": "/",
+      "expected": 200,
+      "status": 200,
+      "cache_control": "private, no-store",
+      "marker_present": true,
+      "attempt": 1,
+      "passed": true
+    },
+    {
+      "method": "GET",
+      "path": "/auth/login",
+      "expected": 403,
+      "status": 403,
+      "cache_control": "private, no-store",
+      "marker_present": true,
+      "attempt": 1,
+      "passed": true
+    },
+    {
+      "method": "GET",
+      "path": "/product/007b9fa91f1e7f506cb21d54",
+      "expected": 200,
+      "status": 200,
+      "cache_control": "private, no-store",
+      "marker_present": true,
+      "attempt": 1,
+      "passed": true
+    },
+    {
+      "method": "GET",
+      "path": "/?q=SAM_NO_MATCH_20261012",
+      "expected": 200,
+      "status": 200,
+      "cache_control": "private, no-store",
+      "marker_present": true,
+      "attempt": 1,
+      "passed": true
+    },
+    {
+      "method": "POST",
+      "path": "/checkout",
+      "expected": 403,
+      "status": 403,
+      "cache_control": "private, no-store",
+      "marker_present": true,
+      "attempt": 1,
+      "passed": true
+    },
+    {
+      "method": "GET",
+      "path": "/admin/",
+      "expected": 403,
+      "status": 403,
+      "cache_control": "private, no-store",
+      "marker_present": true,
+      "attempt": 1,
+      "passed": true
+    },
+    {
+      "method": "GET",
+      "path": "/cart",
+      "expected": 403,
+      "status": 403,
+      "cache_control": "private, no-store",
+      "marker_present": true,
+      "attempt": 1,
+      "passed": true
+    }
+  ],
+  "passed": true
+}
