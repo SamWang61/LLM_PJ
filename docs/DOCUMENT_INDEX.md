@@ -4,6 +4,7 @@
 
 | 文件 / Document | English scope |
 |---|---|
+| [SAM CI、文件版本與真交易驗收](SAM_CI_TRANSACTION_ACCEPTANCE_2026-10-15.md) | October 15 policy/link repair and isolated real MongoDB transaction evidence. |
 | [Flask／SKU／AI 串接](FLASK_SKU_AI_INTEGRATION.md) | v4 routes, LangGraph workflows, setup and UAT. |
 | [分支規劃與協作機制](%E5%88%86%E6%94%AF%28Branch%29%E8%A6%8F%E5%8A%83%E8%88%87%E5%8D%94%E4%BD%9C%E6%A9%9F%E5%88%B6.md) | Original collaboration plan, branch ownership and actual repository paths. |
 | [VibeCart AI 專案總覽與 GitHub 推送整理](../PROJECT_OVERVIEW.md) | Historical project overview and original GitHub preparation notes. |

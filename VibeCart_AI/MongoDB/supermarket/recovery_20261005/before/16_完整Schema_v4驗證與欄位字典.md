@@ -6,7 +6,7 @@
 
 TTL 僅：ai_insights, request_limits。新事件、評價、首推快照及統計集合不自動刪除。
 
-新版測試：66 passed，耗時 58.969 秒；[JUnit XML](complete_v4_test_results.xml)。此結果是 Complete Schema v4 測試，不是之前的同數量 v2/v3 測試。
+新版測試：66 passed，耗時 58.969 秒；[JUnit XML](../../../complete_v4_test_results.xml)。此結果是 Complete Schema v4 測試，不是之前的同數量 v2/v3 測試。
 
 ## 資料與遷移紀錄
 
@@ -61,7 +61,7 @@ TTL 僅：ai_insights, request_limits。新事件、評價、首推快照及統�
 
 ## 來源與界線
 
-依據 [完整規格來源](13_完整Schema_v1.0_來源快照.md)，SHA-256：`760d2639b828d614d46d264efcd77ec3b1789451e75bd09dd63231f01d9f6686`。
+依據 [完整規格來源](../../../13_完整Schema_v1.0_來源快照.md)，SHA-256：`760d2639b828d614d46d264efcd77ec3b1789451e75bd09dd63231f01d9f6686`。
 
 資料庫模型已更新；完整推薦候選產生、跨集合首推資格與marker交易、分數衰減批次、補貨統計批次、關聯規則探勘及排程尚未部署。Schema 約束只能驗證文件形狀與本文件內的計算，不能代替跨集合資格檢查、模型執行或排程。Flask原網站尚未接上新服務。
 
