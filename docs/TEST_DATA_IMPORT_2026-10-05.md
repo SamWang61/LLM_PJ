@@ -25,13 +25,13 @@ English: Imported 600 synthetic customers, 3,000 demo orders and 8,969 order ite
 
 ## 證據 / Evidence
 
-- [生成清冊與雜湊](../VibeCart_AI/MongoDB/test_data/generated/manifest.json)
-- [每日／每月／熱銷／人口標準答案](../VibeCart_AI/MongoDB/test_data/generated/expected_metrics.json)
-- [交易試寫回滾](../VibeCart_AI/MongoDB/test_data/generated/dry-run_report.json)
-- [正式匯入與完整讀回](../VibeCart_AI/MongoDB/test_data/generated/apply_report.json)
-- [再次唯讀核對](../VibeCart_AI/MongoDB/test_data/generated/verify_report.json)：全數通過，新增 0 筆，未重複匯入。
-- [遷移前結構](../VibeCart_AI/MongoDB/test_data/generated/migration_before.json)
-- [遷移後結構驗證](../VibeCart_AI/MongoDB/test_data/generated/migration_after.json)
+- [生成清冊與雜湊](https://github.com/SamWang61/LLM_PJ/blob/a0fcad01acc0a5cb5672dbe55bd55236d0d89bd2/VibeCart_AI/MongoDB/test_data/generated/manifest.json)
+- [每日／每月／熱銷／人口標準答案](https://github.com/SamWang61/LLM_PJ/blob/a0fcad01acc0a5cb5672dbe55bd55236d0d89bd2/VibeCart_AI/MongoDB/test_data/generated/expected_metrics.json)
+- [交易試寫回滾](https://github.com/SamWang61/LLM_PJ/blob/a0fcad01acc0a5cb5672dbe55bd55236d0d89bd2/VibeCart_AI/MongoDB/test_data/generated/dry-run_report.json)
+- [正式匯入與完整讀回](https://github.com/SamWang61/LLM_PJ/blob/a0fcad01acc0a5cb5672dbe55bd55236d0d89bd2/VibeCart_AI/MongoDB/test_data/generated/apply_report.json)
+- [再次唯讀核對](https://github.com/SamWang61/LLM_PJ/blob/a0fcad01acc0a5cb5672dbe55bd55236d0d89bd2/VibeCart_AI/MongoDB/test_data/generated/verify_report.json)：全數通過，新增 0 筆，未重複匯入。
+- 遷移前結構（本機封存，未納入 Git：`../VibeCart_AI/MongoDB/test_data/generated/migration_before.json`）
+- [遷移後結構驗證](https://github.com/SamWang61/LLM_PJ/blob/a0fcad01acc0a5cb5672dbe55bd55236d0d89bd2/VibeCart_AI/MongoDB/test_data/generated/migration_after.json)
 
 CSV 預覽及完整 Extended JSON 位於 `VibeCart_AI/MongoDB/test_data/generated/`，另以目錄的 .gitignore 排除大型輸出；會員 CSV 只含合成識別與人口欄位，沒有登入密碼。
 

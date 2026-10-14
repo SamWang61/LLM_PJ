@@ -6,6 +6,7 @@
 
 | 主題 / Topic | 入口 / Entry |
 |---|---|
+| SAM 最新 CI 與交易驗收 | [2026-10-15 修復與測試紀錄](SAM_CI_TRANSACTION_ACCEPTANCE_2026-10-15.md) |
 | [Flask／SKU／AI 串接](FLASK_SKU_AI_INTEGRATION.md) | v4 routes, LangGraph workflows, setup and UAT. |
 | 全部文件 / All documents | [逐份雙語索引](DOCUMENT_INDEX.md) |
 | 目錄管理 / Repository management | [管理政策](REPOSITORY_GUIDE.md) |

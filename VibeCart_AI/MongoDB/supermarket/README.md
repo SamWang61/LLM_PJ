@@ -1,6 +1,6 @@
 # 超級市場測試商品資料（2026-10-05）
 
-> **已於 2026-10-05 依使用者指示重建並重新匯入。** 目前 27 集合、336 商品、336 SKU、8 大類、24 小類；832 筆文件逐筆比對及 Flask 讀取通過。先前集合消失的歷史狀態已封存，最新結果見 [latest_status.json](latest_status.json) 與 [重建報告](../18_2026-10-05_Schema重建與超市商品匯入.md)。
+> **已於 2026-10-05 依使用者指示重建並重新匯入。** 目前 27 集合、336 商品、336 SKU、8 大類、24 小類；832 筆文件逐筆比對及 Flask 讀取通過。先前集合消失的歷史狀態已封存，最新結果見 latest_status.json（本機封存，未納入 Git：`latest_status.json`） 與 [重建報告](../18_2026-10-05_Schema重建與超市商品匯入.md)。
 
 已匯入指定 Atlas `vibecart-ai-free` 的 `vibecart_ai`，採用既有 Complete Schema v4，未修改 validators、索引或歷史遷移。
 
@@ -34,12 +34,12 @@
 ## 檔案與驗證證據
 
 - [商品預覽 CSV](catalog_preview.csv)：UTF-8 BOM，可用試算表查看名稱、分類、規格、價格、來源與圖片。
-- [來源清單 JSON](source_catalog.json)：336 筆經逐頁核對的來源事實與時間。
-- [v4 MongoDB Extended JSON](catalog_v4.extjson)：依集合分類，保留 ObjectId、Decimal128、BSON 日期型別；建議以匯入腳本寫入，而非直接整檔 mongoimport。
-- [驗證報告](validation_report.json)：先在 Atlas 交易內試寫 32 分類、128 品牌、336 商品、336 SKU，全部通過後回滾，原資料數不變。
-- [首次匯入歷史報告](initial_import_report.json)：集合消失前的交易一次提交 832 筆文件。
-- [本次重建後匯入報告](import_report.json)：重新提交 832 筆文件。先前新增 0 筆的重跑報告封存在 recovery_20261005/before/import_report.json。
-- [Flask 實際讀取報告](storefront_report.json)：連到真實 Atlas，336 項皆可透過 14 頁讀取，8 大類／24 小類篩選、24 個代表商品詳情、照片及來源連結、關鍵字搜尋通過。匿名唯讀，不新增使用者或行為事件。
+- 來源清單 JSON（本機封存，未納入 Git：`source_catalog.json`）：336 筆經逐頁核對的來源事實與時間。
+- v4 MongoDB Extended JSON（本機封存，未納入 Git：`catalog_v4.extjson`）：依集合分類，保留 ObjectId、Decimal128、BSON 日期型別；建議以匯入腳本寫入，而非直接整檔 mongoimport。
+- 驗證報告（本機封存，未納入 Git：`validation_report.json`）：先在 Atlas 交易內試寫 32 分類、128 品牌、336 商品、336 SKU，全部通過後回滾，原資料數不變。
+- 首次匯入歷史報告（本機封存，未納入 Git：`initial_import_report.json`）：集合消失前的交易一次提交 832 筆文件。
+- 本次重建後匯入報告（本機封存，未納入 Git：`import_report.json`）：重新提交 832 筆文件。先前新增 0 筆的重跑報告封存在 recovery_20261005/before/import_report.json。
+- Flask 實際讀取報告（本機封存，未納入 Git：`storefront_report.json`）：連到真實 Atlas，336 項皆可透過 14 頁讀取，8 大類／24 小類篩選、24 個代表商品詳情、照片及來源連結、關鍵字搜尋通過。匿名唯讀，不新增使用者或行為事件。
 
 網站 32 項自動測試通過，包括超過 200 項的分頁、搜尋、照片與來源連結，以及既有登入、CSRF、SKU 購物車與結帳控制。這是本機程式整合驗證，尚未取得公開網站網址，不能視為已部署或完成遠端瀏覽器驗收。
 

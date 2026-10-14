@@ -11,11 +11,11 @@
 | JEFF／SAM 整合 R12-C | SAM（整合）；原 AI／後台功能為 JEFF 成果 | JEFF #15 `9d38712` 包含 #12～#15 四提交，合入 SAM #16 的 `a418d08`，保留 synthetic 過濾；整合 merge `f05f2d7` | 不是原 PR 全部已合併 main，也不是 JEFF 真模型／D5 驗收 |
 | 離線回歸 R12 | SAM | 最終同一整合工作樹 **163 passed**＝網站／test_data 160＋備份工具 3；不是將兩個舊分支測試數相加 | MongoDB transaction／並發、真模型、會員登入／撤權與 D5 仍需前置 |
 | 前台 R11 | SAM | skip link、focus-visible、reduced motion、current-page 標示、無圖替代圖；本機 HTML 故障注入，Chrome 圖片實際載入 placeholder、主內容焦點成功 | 完整無障礙評估及登入購物／推薦仍待驗 |
-| 遠端前台 R11／R13 | SAM | Chrome Hosting 首頁 336 項；390×844，scrollWidth=375；第 2/14 頁與 aria-current=2；空搜尋畫面確認；最後已恢復視窗；[首頁截圖](inventory/HOSTING_HOME_2026-10-12.png) | 不作購物／管理後台／個人化推薦簽收 |
+| 遠端前台 R11／R13 | SAM | Chrome Hosting 首頁 336 項；390×844，scrollWidth=375；第 2/14 頁與 aria-current=2；空搜尋畫面確認；最後已恢復視窗；[首頁截圖](https://github.com/SamWang61/LLM_PJ/blob/a0fcad01acc0a5cb5672dbe55bd55236d0d89bd2/docs/inventory/HOSTING_HOME_2026-10-12.png) | 不作購物／管理後台／個人化推薦簽收 |
 | 容器與秘密 R13 | SAM | allowlist archive、非 root Gunicorn、shared services 打包、Cloud Build 容器 boot smoke；Secret Manager＋專用 runtime account；__session secure cookie；預覽路由阻擋寫入 | 應用層唯讀，不宣稱已將 Atlas 帳號改成只讀 |
-| Firebase／Cloud Run R13 | SAM | API 已啟用；Cloud Run `vibecart-web-00003-gb5` Ready；Hosting release 於 **10/12 21:25:36** 台灣時間成功；[部署 metadata](inventory/CLOUD_DELIVERY_2026-10-12.json)、[Hosting release](inventory/HOSTING_RELEASE_2026-10-12.json) | Scheduler API／全部外部 consumer／遠端登入寫入仍未驗 |
-| 遠端 HTTP R13 | SAM | Cloud Run 與 Hosting **各 9/9**，活性／readiness／首頁／明細／空搜尋／auth／admin／cart／checkout 拒絕及 private,no-store；[Run 最終檢查](inventory/CLOUD_RUN_FINAL_SMOKE_2026-10-12.json)、[Hosting 檢查](inventory/HOSTING_SMOKE_2026-10-12.json) | HTTP checks 與 Chrome 基礎瀏覽各自列證據，不延伸為 UAT 全通過 |
-| Atlas 唯讀 R03／資料檢查 | SAM | 今天重新核對 27 集合、86 索引、12 關聯、五 migration；[資料庫結果](inventory/SAM_DATABASE_CURRENT_2026-10-12.json) passed；[D4 preflight](inventory/D4_PREFLIGHT_2026-10-12.json) expected 1,240／existing 0／missing 1,240／committed=false／inserted=0 | 正式 D4 仍未匯入；schema／帳號／庫存未更新 |
+| Firebase／Cloud Run R13 | SAM | API 已啟用；Cloud Run `vibecart-web-00003-gb5` Ready；Hosting release 於 **10/12 21:25:36** 台灣時間成功；[部署 metadata](https://github.com/SamWang61/LLM_PJ/blob/a0fcad01acc0a5cb5672dbe55bd55236d0d89bd2/docs/inventory/CLOUD_DELIVERY_2026-10-12.json)、[Hosting release](https://github.com/SamWang61/LLM_PJ/blob/a0fcad01acc0a5cb5672dbe55bd55236d0d89bd2/docs/inventory/HOSTING_RELEASE_2026-10-12.json) | Scheduler API／全部外部 consumer／遠端登入寫入仍未驗 |
+| 遠端 HTTP R13 | SAM | Cloud Run 與 Hosting **各 9/9**，活性／readiness／首頁／明細／空搜尋／auth／admin／cart／checkout 拒絕及 private,no-store；[Run 最終檢查](https://github.com/SamWang61/LLM_PJ/blob/a0fcad01acc0a5cb5672dbe55bd55236d0d89bd2/docs/inventory/CLOUD_RUN_FINAL_SMOKE_2026-10-12.json)、[Hosting 檢查](https://github.com/SamWang61/LLM_PJ/blob/a0fcad01acc0a5cb5672dbe55bd55236d0d89bd2/docs/inventory/HOSTING_SMOKE_2026-10-12.json) | HTTP checks 與 Chrome 基礎瀏覽各自列證據，不延伸為 UAT 全通過 |
+| Atlas 唯讀 R03／資料檢查 | SAM | 今天重新核對 27 集合、86 索引、12 關聯、五 migration；[資料庫結果](https://github.com/SamWang61/LLM_PJ/blob/a0fcad01acc0a5cb5672dbe55bd55236d0d89bd2/docs/inventory/SAM_DATABASE_CURRENT_2026-10-12.json) passed；[D4 preflight](https://github.com/SamWang61/LLM_PJ/blob/a0fcad01acc0a5cb5672dbe55bd55236d0d89bd2/docs/inventory/D4_PREFLIGHT_2026-10-12.json) expected 1,240／existing 0／missing 1,240／committed=false／inserted=0 | 正式 D4 仍未匯入；schema／帳號／庫存未更新 |
 | 備份準備 R15 | SAM | 全量 hashing／restore compare 工具及 3 案例測試；原來源 **10,533 檔案** scan 與原來源比對通過；清冊存在 repo 外的私有本機報告目錄，未加入 Git／Drive | 原來源比對不是實際復原測試；沒有雲端備份、ACL 切換或私有／加密方案定案 |
 | 進度與 HEN 操作文件 | SAM | 19:00 表與 HEN 提示詞指南一併纳入本輪交付 | 未自動寄信或傳訊息 |
 
@@ -26,8 +26,8 @@
 - Hosting version `dba3fd0b643c86b4`、release `1791811536863000`；所有動態路徑 rewrite 至同一 Cloud Run。
 - 已啟用 Run、Artifact Registry、Secret Manager、IAM、Cloud Build、Storage；沒有建立 Scheduler jobs。
 - 私有 build bucket uniform access＋7 天物件 lifecycle。build account 只新增本 repository writer 與 build bucket objectAdmin；runtime account 只新增兩個 secrets 的 accessor。秘密值、密碼與 URI 不進報告／映像／PR。
-- 第一版漏共用服務無法啟動，已補打包與容器 smoke；第二版外部 `/healthz` 被平台回 404，最終改 `/health/live`、`/health/ready`。較早 [HTTP 檢查](inventory/CLOUD_RUN_SMOKE_2026-10-12.json) 保留為失敗輪次，不能當最終成功證據。Cloud Run 建議避開以 z 結尾的保留路徑：[官方說明](https://docs.cloud.google.com/run/docs/known-issues)。
-- 建置與操作說明：[deploy README](../deploy/README.md)。具體 HTTP 檢查工具：`node scripts/verify_preview.cjs <HTTPS_BASE> <新的報告路徑>`。
+- 第一版漏共用服務無法啟動，已補打包與容器 smoke；第二版外部 `/healthz` 被平台回 404，最終改 `/health/live`、`/health/ready`。較早 [HTTP 檢查](https://github.com/SamWang61/LLM_PJ/blob/a0fcad01acc0a5cb5672dbe55bd55236d0d89bd2/docs/inventory/CLOUD_RUN_SMOKE_2026-10-12.json) 保留為失敗輪次，不能當最終成功證據。Cloud Run 建議避開以 z 結尾的保留路徑：[官方說明](https://docs.cloud.google.com/run/docs/known-issues)。
+- 建置與操作說明：[deploy README](https://github.com/SamWang61/LLM_PJ/blob/a0fcad01acc0a5cb5672dbe55bd55236d0d89bd2/deploy/README.md)。具體 HTTP 檢查工具：`node scripts/verify_preview.cjs <HTTPS_BASE> <新的報告路徑>`。
 
 ## 尚未完成：單一主責與前置
 
