@@ -18,3 +18,5 @@
 *.txt -text !eol
 *.rst -text !eol
 *.csv -text !eol
+docs/inventory/mongodb_query_manual_checks_2026-10-05.json -text !eol
+docs/inventory/sam_work_document_scan_2026-10-05.json -text !eol
