@@ -13,6 +13,21 @@ from .services.behavior_scope import production_behavior_query
 bp = Blueprint("store", __name__)
 
 
+def browsing_context():
+    return {"major": request.args.get("major", ""),
+            "category": request.args.get("category", ""),
+            "q": request.args.get("q", "")[:200].strip()}
+
+
+def filtered_products(products, context):
+    return [p for p in products
+            if (not context["major"] or p["major_category"] == context["major"])
+            and (not context["category"] or p["category"] == context["category"])
+            and (not context["q"] or context["q"].casefold() in " ".join(
+                [p["name"], p.get("summary", ""),
+                 *[" ".join(s.get("variant_attributes", {}).values()) for s in p["skus"]]]).casefold())]
+
+
 def handled(view):
     @wraps(view)
     def wrapped(*args, **kwargs):
@@ -69,10 +84,9 @@ def home():
     major_categories = sorted({p["major_category"] for p in products})
     major_products = [p for p in products if not major or p["major_category"] == major]
     categories = sorted({p["category"] for p in major_products})
-    query = request.args.get("q", "")[:200].strip()
-    shown = [p for p in major_products if (not category or p["category"] == category)
-             and (not query or query.casefold() in " ".join([p["name"], p.get("summary", ""),
-                  *[" ".join(s.get("variant_attributes", {}).values()) for s in p["skus"]]]).casefold())]
+    context = browsing_context()
+    query = context["q"]
+    shown = filtered_products(products, context)
     total = len(shown)
     pages = max(1, (total + 23) // 24)
     page = min(pages, max(1, request.args.get("page", 1, type=int)))
@@ -101,7 +115,19 @@ def product_detail(product_id):
     if member:
         record_read_event(member, "PRODUCT_VIEW", product=product)
     categories = {c["_id"]: c["name"] for c in db.categories.find({"_id": {"$in": [product["major_category_id"], product["minor_category_id"]]}})}
-    return render_template("store/product.html", product=product_view(product, skus, categories))
+    context = browsing_context()
+    shown = filtered_products(catalog(db), context)
+    index = next((i for i, p in enumerate(shown) if p["_id"] == product["_id"]), None)
+    previous_url = next_url = None
+    if index is not None:
+        if index > 0:
+            previous_url = url_for("store.product_detail", product_id=shown[index - 1]["_id"], **context)
+        if index + 1 < len(shown):
+            next_url = url_for("store.product_detail", product_id=shown[index + 1]["_id"], **context)
+    return render_template("store/product.html", product=product_view(product, skus, categories),
+                           product_navigation={"previous_url": previous_url, "next_url": next_url,
+                               "list_url": url_for("store.home", page=index // 24 + 1 if index is not None else 1,
+                                                   _anchor="products", **context)})
 
 
 @bp.post("/cart/add/<product_id>")
