@@ -1,6 +1,8 @@
 # 來源與交付盤點
 
-盤點：2026-10-15；遠端 main 基線 7d10f7e。此次是文件／Git 檔案存在性核對，未重跑整站測試、Atlas 或部署驗收。
+首次盤點：2026-10-15；當時遠端 main 基線 7d10f7e。首次盤點僅核對文件／Git 檔案存在性；後續 CI 與交易測試另見下方更新。
+
+後續同日版本：main `0d04dd8141c78a04b29eca684dacea31981ae8fa` 已合併 [SAM CI／文件修復 #20](https://github.com/SamWang61/LLM_PJ/pull/20)。HEN 真交易測試在其獨立 commit `5053993` 驗證，不把兩個 SHA 混寫成同版整站驗收。[SAM 紀錄](../docs/SAM_CI_TRANSACTION_ACCEPTANCE_2026-10-15.md) 含詳細結果與 JUnit 連結。
 
 | 同學要求 | 來源與版本 | 目前可用素材 | 待補／負責人 |
 |---|---|---|---|
@@ -8,7 +10,7 @@
 | 架構圖 | [本目錄架構](ARCHITECTURE.md)、[串接說明](../docs/FLASK_SKU_AI_INTEGRATION.md) | 模組及雲端拓樸草稿 | JEFF／HEN 確認接口，SAM 定稿 |
 | setup | 根／網站 README、[網站環境範例](../MuscleCore分析資料/website/.env.example) | Python 3.11、venv、依賴、DB、run.py | SAM 在乾淨環境驗 final SHA；不得對既有 Atlas 重跑 seed |
 | screenshots | [操作截圖清單](screenshots/README.md) | S01 本輪實拍；其餘按場景收集 | HEN購物、JEFF後台AI、SAM整合與證據 |
-| 測試 | 網站 tests、[CI](../.github/workflows/validate.yml) | main 的離線驗證工作流 | SAM 保存最終 run／SHA／數字與測試範圍 |
+| 測試 | 網站 tests、[CI](../.github/workflows/validate.yml)、[SAM 10/15 紀錄](../docs/SAM_CI_TRANSACTION_ACCEPTANCE_2026-10-15.md) | main 的離線驗證工作流；HEN 版本隔離真交易 166 passed | SAM 保存最終 run／SHA／數字與測試範圍 |
 | Dockerfile | [整合分支 deploy](https://github.com/SamWang61/LLM_PJ/tree/a0fcad0/deploy) | 分支有部署容器資料；main 無 Dockerfile | SAM 對最終交付版本做 build／boot smoke |
 | docker-compose | [compose](../MuscleCore分析資料/website/docker-compose.yml) | mongo:8、持久 volume、healthcheck；僅 DB | SAM 明確列 DB 容器與本機 Flask 分開啟動 |
 | CI | .github/workflows/validate.yml | 檔案政策＋Python 3.11 網站離線 pytest | 最新 Actions 結果待附，不推定綠燈 |
