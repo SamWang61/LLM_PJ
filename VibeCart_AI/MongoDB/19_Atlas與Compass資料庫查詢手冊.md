@@ -18,6 +18,8 @@
 
 Atlas 是雲端管理網站，Compass 是安裝在電腦上的資料庫工具；兩者連到上述同一個 Cluster／Database 時，查看的是同一份資料，不需要把資料再複製一份。`localhost:27017` 是本機 MongoDB，並非本專案 Atlas。
 
+2026-10-05 網路設定更新：依專案負責人提供的資訊，Network Access 已新增 `0.0.0.0/0`，供網站後端及 Compass 從任意 IPv4 來源連線。本次 Atlas 外掛回覆需重新登入（UNAUTHORIZED），尚未讀回確認 Active 狀態、註解與到期設定；詳見 [Cluster 設定](01_Cluster設定與狀態.md)。
+
 連線前需要：Atlas 網站登入與適當專案角色；使用 Compass 時，另需要資料庫帳號與密碼，以及符合 Atlas Network Access 設定的網路來源。Atlas 網站登入帳號和 Database User 是不同用途，不能直接互換密碼。僅查閱資料時請由管理員提供適當唯讀存取。[官方：Atlas 資料存取角色](https://www.mongodb.com/docs/atlas/atlas-ui/)、[Compass 連線](https://www.mongodb.com/docs/compass/connect/)。
 
 ## 2. 用 Atlas 網站找到資料庫
@@ -196,7 +198,7 @@ db.orders.countDocuments({synthetic_batch_id: "sam-synthetic-20261005-v1"})
 |---|---|
 |看不到 Organization／Project|Atlas 登入帳號、專案邀請與角色；請 SAM 核對存取資格|
 |Compass Authentication failed|Database User／密碼、authSource=admin、URI 編碼；不要使用 Atlas 網站密碼代替|
-|連線逾時／server selection timeout|Atlas Network Access 是否涵蓋目前出口 IP、網路是否可用、Cluster 是否可連；交由管理員核對，勿為排錯自行開放全網|
+|連線逾時／server selection timeout|先核對使用者回報的 `0.0.0.0/0` 已 Active 且未到期；生效期間 IPv4 出口改變不需另加 `/32`。再查 DNS/SRV、伺服器對外連線、防火牆、TLS 與 Cluster 狀態|
 |只看到 admin、local 或 0 集合|確認指定 host、vibecart_ai、重新整理與權限；將結果回報 SAM，不自行建同名庫|
 |查詢 0 筆|先用 `{}`、核對集合、欄位拼字、ObjectId 型別；也可能是正常空結果|
 |商品沒有 price／stock|到 product_skus，以 product_id 關聯查看|
@@ -240,3 +242,5 @@ Use Atlas Data Explorer or MongoDB Compass to inspect the same `vibecart_ai` dat
 The read-only snapshot on 2026-10-05 contains 27 collections, 336 products, 336 SKUs, 8 major and 24 minor categories, 128 brands, 600 synthetic users, 3,000 demo orders and 8,969 order items. These counts are dated observations, not permanent invariants. All example searches are read-only; Filter takes a query object, while shell commands belong in mongosh.
 
 Products contain names, rewritten summaries, image URLs and the source-page link inside description. Prices, variants and inventory belong to product_skus and join through ObjectId product_id. Synthetic order statuses are not real payments, and inactive synthetic users are not login accounts. Schema analysis samples data; Validation shows enforced rules. This guide does not authorize destructive actions or certify a public website deployment.
+
+Network update (2026-10-05): The owner reports `0.0.0.0/0` for all IPv4 sources. Atlas read-back requires reauthentication, so activation and expiry remain unverified. Database credentials, TLS and roles are still required.
