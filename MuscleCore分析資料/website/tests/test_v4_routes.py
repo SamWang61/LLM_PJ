@@ -7,6 +7,7 @@ from flask import g
 from werkzeug.security import generate_password_hash
 from app import create_app
 from app.services.sku_gateway import CartService
+from app.services.member_sessions import create_member_session
 
 
 class OfflineCart(CartService):
@@ -36,8 +37,12 @@ def shop():
         g.db = db
 
     client = app.test_client()
+    from app.services.member_sessions import create_member_session
+    with app.app_context():
+        token = create_member_session(db, db.users.find_one({"_id": uid}))
     with client.session_transaction() as state:
-        state.update(user_id=str(uid), role="customer", csrf_token="test-csrf")
+        state.update(user_id=str(uid), role="customer", csrf_token="test-csrf",
+                     member_session=token)
     return app, client, db, uid, pid, sid
 
 
@@ -101,9 +106,12 @@ def test_checkout_does_not_accept_other_users_cart(shop):
     post(client, f"/cart/add/{pid}", sku_id=str(sid), quantity=1, operation_id="add")
     cart = db.carts.find_one()
     other = ObjectId()
-    db.users.insert_one({"_id": other, "schema_version": 4, "status": "active", "is_active": True})
+    db.users.insert_one({"_id": other, "schema_version": 4, "status": "active", "is_active": True, "role": "customer"})
     with client.session_transaction() as state:
         state["user_id"] = str(other)
+        from app.services.member_sessions import create_member_session
+        with app.app_context():
+            state["member_session"] = create_member_session(db, db.users.find_one({"_id": other}))
     app.config["ENABLE_CHECKOUT"] = True
     assert post(client, "/checkout", cart_id=str(cart["_id"]), expected_revision=1, checkout_id="steal").status_code == 409
     assert db.orders.count_documents({}) == 0
@@ -133,11 +141,13 @@ def test_v4_login_and_registration(shop):
 
 
 def test_revoked_member_and_admin_permissions(shop):
-    _, client, db, uid, _, _ = shop
+    app, client, db, uid, _, _ = shop
     with client.session_transaction() as state:
         state["role"] = "admin"
     assert client.get("/admin/").status_code == 302
     db.users.update_one({"_id": uid}, {"$set": {"role": "admin"}})
+    with app.app_context(), client.session_transaction() as state:
+        state["member_session"] = create_member_session(db, db.users.find_one({"_id": uid}))
     assert client.get("/admin/").status_code == 200
     db.users.update_one({"_id": uid}, {"$set": {"status": "inactive", "is_active": False}})
     assert client.get("/cart").status_code == 302
@@ -152,8 +162,10 @@ def test_form_submission_and_missing_operation_key(shop):
 
 
 def test_admin_v4_decimal_metrics_and_summary_post(shop):
-    _, client, db, uid, _, _ = shop
+    app, client, db, uid, _, _ = shop
     db.users.update_one({"_id": uid}, {"$set": {"role": "admin"}})
+    with app.app_context(), client.session_transaction() as state:
+        state["member_session"] = create_member_session(db, db.users.find_one({"_id": uid}))
     for payment, amount in [("paid", "123.45"), ("unpaid", "999.99"), ("refunded", "888.88")]:
         db.orders.insert_one({"order_number": payment, "payment_status": payment, "total_amount": Decimal128(amount), "status": "confirmed"})
     response = post(client, "/admin/summary")

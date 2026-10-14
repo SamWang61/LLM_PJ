@@ -23,7 +23,7 @@ def create_cloud_app():
         "DATA_MODE": "v4", "MONGO_URI": uri, "MONGO_DB": "vibecart_ai",
         "SECRET_KEY": secret, "SESSION_COOKIE_NAME": "__session",
         "SESSION_COOKIE_SECURE": True,
-        "ENABLE_CHECKOUT": False, "AI_RECOMMENDATIONS_ENABLED": False,
+        "ENABLE_CHECKOUT": preview == "false" and os.environ.get("ENABLE_CHECKOUT", "false").lower() == "true", "AI_RECOMMENDATIONS_ENABLED": False,
         "AI_SUMMARY_ENABLED": False, "AI_INSIGHT_FREE_TEXT_ENABLED": False,
     })
     app.config["CLOUD_PREVIEW_READ_ONLY"] = preview == "true"

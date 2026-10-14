@@ -6,7 +6,12 @@ This folder preserves the September 2026 four-week plans, revisions and submissi
 
 逐份介紹見 [文件索引](../docs/DOCUMENT_INDEX.md)。See the document catalog for individual summaries.
 
-## 最新進度（2026-10-07）
+## 最新進度
+
+- [HEN 今日工作清單（2026-10-14）](HEN_今日工作清單_2026-10-14.md)
+- [HEN 多裝置登入與部署證據](../docs/HEN_MULTIDEVICE_DEPLOY_2026-10-14.md)
+
+## 既有進度（2026-10-07）
 
 - [今日 SAM 工作](../docs/SAM_TODAY_CHECKLIST_2026-10-07.md)
 - [全專案先後順序與負責人](../docs/PROJECT_PROGRESS_2026-10-07.md)

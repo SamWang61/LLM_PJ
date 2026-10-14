@@ -11,7 +11,7 @@ from app.services.ai_workflows import summary_metrics
 @pytest.fixture
 def admin(shop):
     app, client, db, uid, pid, sid = shop
-    db.users.update_one({"_id": uid}, {"$set": {"role": "admin"}})
+    db.users.update_one({"_id": uid}, {"$set": {"role": "admin", "display_name": "測試管理員"}})
     with client.session_transaction() as state:
         state.update(role="admin", name="測試管理員")
     return app, client, db, uid, pid, sid

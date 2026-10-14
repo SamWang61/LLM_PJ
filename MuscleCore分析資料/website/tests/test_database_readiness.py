@@ -60,7 +60,7 @@ class Database:
 def test_current_schema_passes_read_only_without_any_write_api():
     report = audit(Database(), relationships=True)
     assert report['status'] == 'passed'
-    assert len(report['collections']) == 27 and report['total_indexes'] == 86
+    assert len(report['collections']) == 28 and report['total_indexes'] == 89
     assert len(report['relationships']) == 12
 
 
@@ -159,7 +159,7 @@ def test_relationship_pipeline_finds_only_dangling_v4_references():
 
 def test_current_contract_requires_fifth_migration_and_overlay():
     db = Database()
-    assert len(MIGRATIONS) == 5
+    assert len(MIGRATIONS) == 6
     db.schema_migrations.rows = [r for r in db.schema_migrations.rows
         if r['_id'] != '20261005_05_synthetic_profile_v4']
     assert 'missing_or_unsuccessful_migration' in audit(db)['issues']

@@ -13,11 +13,13 @@ from VibeCart_AI.services.cart_service import CartError, CartConflict, oid as pa
 from bson import ObjectId
 from flask import current_app
 from ..db import get_db
+from .member_events import behavior_metadata
 
 
 def cart_service():
     factory = current_app.config.get("CART_SERVICE_FACTORY", CartService)
-    return factory(get_db(), enable_checkout=current_app.config["ENABLE_CHECKOUT"])
+    return factory(get_db(), enable_checkout=current_app.config["ENABLE_CHECKOUT"],
+                   behavior_metadata=behavior_metadata())
 
 
 def oid(value):
