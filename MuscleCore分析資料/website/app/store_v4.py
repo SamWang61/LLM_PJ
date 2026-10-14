@@ -1,11 +1,11 @@
 """Opt-in v4 routes; endpoint names preserve the existing storefront navigation."""
 from decimal import Decimal
 from functools import wraps
-from uuid import uuid4
 from flask import Blueprint, abort, current_app, flash, jsonify, redirect, render_template, request, session, url_for
 from pymongo.errors import PyMongoError
-from .auth import login_required
-from .db import get_db, utcnow
+from .auth import login_required, current_member
+from .services.member_events import record_read_event, production_behavior_query
+from .db import get_db
 from .services.sku_gateway import cart_service, catalog, product_view, money, oid, CartError, CartConflict
 from .services.ai_workflows import storefront_recommendations
 
@@ -54,17 +54,25 @@ def reply(document, target="store.cart"):
     return redirect(url_for(target), code=303)
 
 
+def revision(data):
+    return integer(data, "expected_revision") if "expected_revision" in data else None
+
+
 @bp.get("/")
 @handled
 def home():
+    member = current_member()
     products = catalog(get_db())
     category = request.args.get("category", "")
     categories = sorted({p["category"] for p in products})
     shown = [p for p in products if not category or p["category"] == category]
     events = []
-    if session.get("user_id"):
-        events = list(get_db().behavior_events.find({"user_id": oid(session["user_id"])}).sort("event_at", -1).limit(50))
-    result = storefront_recommendations(shown, events, request.args.get("q", "")[:200])
+    query = request.args.get("q", "")[:200].strip()
+    if member:
+        if query:
+            record_read_event(member, "SEARCH", query=query)
+        events = list(get_db().behavior_events.find(production_behavior_query({"user_id": member["_id"]})).sort("event_at", -1).limit(50))
+    result = storefront_recommendations(shown, events, query)
     return render_template("store/home.html", products=shown, categories=categories,
                            selected_category=category, recommendations=result["items"], recommendation_source=result["source"])
 
@@ -72,19 +80,14 @@ def home():
 @bp.get("/product/<product_id>")
 @handled
 def product_detail(product_id):
+    member = current_member()
     db = get_db()
     product = db.products.find_one({"_id": oid(product_id), "schema_version": 4, "status": "active"})
     if not product:
         abort(404)
     skus = list(db.product_skus.find({"product_id": product["_id"], "status": "active"}))
-    if session.get("user_id"):
-        now = utcnow()
-        db.behavior_events.insert_one({"schema_version": 4, "event_id": "view:" + str(uuid4()),
-            "user_id": oid(session["user_id"]), "anonymous_id": None, "session_id": session.setdefault("event_session", str(uuid4())),
-            "event_type": "PRODUCT_VIEW", "product_id": product["_id"], "major_category_id": product["major_category_id"],
-            "minor_category_id": product["minor_category_id"], "quantity": 1, "order_id": None, "cart_id": None,
-            "search_query": None, "source": "organic", "recommendation_id": None, "event_at": now,
-            "score_version": 1, "processed_at": None, "metadata": {}, "created_at": now})
+    if member:
+        record_read_event(member, "PRODUCT_VIEW", product=product)
     return render_template("store/product.html", product=product_view(product, skus))
 
 
@@ -97,7 +100,7 @@ def add_to_cart(product_id):
     if not get_db().product_skus.find_one({"_id": sid, "product_id": oid(product_id), "status": "active"}):
         abort(404)
     return reply(cart_service().add_item(session["user_id"], sid, integer(data, "quantity", 1),
-                                         operation_id=data.get("operation_id")))
+                                         operation_id=data.get("operation_id"), expected_revision=revision(data)))
 
 
 @bp.post("/cart/update/<sku_id>")
@@ -106,14 +109,16 @@ def add_to_cart(product_id):
 def update_cart(sku_id):
     data = payload()
     return reply(cart_service().update_quantity(session["user_id"], sku_id, integer(data, "quantity"),
-                                                operation_id=data.get("operation_id")))
+                                                operation_id=data.get("operation_id"), expected_revision=revision(data)))
 
 
 @bp.post("/cart/remove/<sku_id>")
 @login_required
 @handled
 def remove_from_cart(sku_id):
-    return reply(cart_service().remove_item(session["user_id"], sku_id, operation_id=payload().get("operation_id")))
+    data = payload()
+    return reply(cart_service().remove_item(session["user_id"], sku_id,
+        operation_id=data.get("operation_id"), expected_revision=revision(data)))
 
 
 @bp.get("/cart")

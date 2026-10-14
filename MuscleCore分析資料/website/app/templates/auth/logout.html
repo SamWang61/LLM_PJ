@@ -1,0 +1,4 @@
+{% extends 'base.html' %}
+{% block content %}<section class="narrow"><h1>登出</h1>
+<form method="post"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+<button class="button" type="submit">確認登出</button></form></section>{% endblock %}

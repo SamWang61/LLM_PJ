@@ -36,8 +36,11 @@ def shop():
         g.db = db
 
     client = app.test_client()
+    from app.services.member_sessions import advance_generation, generation
+    member = advance_generation(db, uid, active_only=True)
     with client.session_transaction() as state:
-        state.update(user_id=str(uid), role="customer", csrf_token="test-csrf")
+        state.update(user_id=str(uid), role="customer", csrf_token="test-csrf",
+                     login_generation=generation(member["last_login_at"]))
     return app, client, db, uid, pid, sid
 
 
@@ -101,9 +104,11 @@ def test_checkout_does_not_accept_other_users_cart(shop):
     post(client, f"/cart/add/{pid}", sku_id=str(sid), quantity=1, operation_id="add")
     cart = db.carts.find_one()
     other = ObjectId()
-    db.users.insert_one({"_id": other, "schema_version": 4, "status": "active", "is_active": True})
+    db.users.insert_one({"_id": other, "schema_version": 4, "status": "active", "is_active": True, "role": "customer"})
     with client.session_transaction() as state:
         state["user_id"] = str(other)
+        from app.services.member_sessions import advance_generation, generation
+        state["login_generation"] = generation(advance_generation(db, other)["last_login_at"])
     app.config["ENABLE_CHECKOUT"] = True
     assert post(client, "/checkout", cart_id=str(cart["_id"]), expected_revision=1, checkout_id="steal").status_code == 409
     assert db.orders.count_documents({}) == 0
