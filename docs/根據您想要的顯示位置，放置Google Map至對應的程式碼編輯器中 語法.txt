@@ -1,0 +1,7 @@
+根據您想要的顯示位置，將程式碼貼至對應的程式碼編輯器中，然後視需要調整 width 和 height 屬性。
+
+<iframe src="https://storage.googleapis.com/maps-solutions-oubp097f4j/address-selection/ocgw/address-selection.html"
+  width="100%" height="100%"
+  style="border:0;"
+  loading="lazy">
+</iframe>

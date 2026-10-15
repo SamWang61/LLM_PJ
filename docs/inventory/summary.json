@@ -1,18 +1,13 @@
 {
-  "files": 131,
-  "bytes": 3028341899,
+  "files": 135,
+  "bytes": 3185151,
   "excluded_trees": [
-    ".backup-state",
-    ".codex",
-    ".git",
-    ".pytest_cache",
-    "MuscleCore分析資料/website/.pytest_cache",
-    "MuscleCore分析資料/website/.venv",
     "MuscleCore分析資料/website/app/__pycache__",
     "MuscleCore分析資料/website/app/services/__pycache__",
     "MuscleCore分析資料/website/tests/__pycache__",
     "VibeCart_AI/MongoDB/__pycache__",
-    "VibeCart_AI/services/__pycache__"
+    "VibeCart_AI/services/__pycache__",
+    "scripts/__pycache__"
   ],
   "errors": [],
   "identical_files": [

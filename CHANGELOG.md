@@ -1,9 +1,15 @@
 # 變更紀錄 / Changelog
 
+## 2026-10-16 — 管理後台規格 v1.2 契約補定 / Admin contract decisions
+
+- 專案負責人定案自由提問的獨立預設關閉旗標、權限與遠端驗收條件；四個固定 intent 可分開交付。Free questions remain gated until accepted.
+- 稽核與獨立重送紀錄各保留 180 天；定義單筆、原子及逐筆批量 `request_id` 與重送規則。Audit retention does not substitute for idempotency records.
+- 將 JEFF 設計規格重新對齊現行 `main` 文件入口；此為文件契約更新，不代表 D5 寫入或真模型已完成。
+
 ## 2026-10-09 — JEFF 設計規格 v1.1 與 D5／AI 契約回覆 / Design v1.1 and contract reply
 
 - 依 SAM 審查修正：KPI 分子／分母、可售 SKU 候選與最低價、模型離線範圍、D1～D3 現況。Review fixes.
-- 回覆 D5／AI 契約：接受白名單 v1；預設問題＋管理員自由輸入（防護待討論）；稽核保留 180 天；後台不能停用管理員；第一版寫入範圍不含退款。Contract decisions.
+- 回覆 D5／AI 契約：接受白名單 v1；預設問題＋管理員自由輸入（當時防護待討論，10/16 已補定）；稽核保留 180 天；後台不能停用管理員；第一版寫入範圍不含退款。Contract decisions.
 - 僅文件。Documentation only.
 
 ## 2026-10-05 — JEFF 管理後台設計規格 / Admin UI design

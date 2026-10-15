@@ -1,0 +1,63 @@
+# 最新專案上下文 / Current project context
+
+更新：2026-10-16（Asia/Taipei）。[JEFF 管理後台設計規格 v1.2](JEFF_ADMIN_UI_DESIGN.md) 已補定自由提問的獨立啟用／驗收條件、稽核與重送紀錄的 180 天保存及批量 request_id 規則。這是文件契約；D5 寫入、自由提問遠端真模型驗收與 D4 正式匯入仍須按各自門檻完成。下方歷史版本狀態依原日期解讀。
+
+更新：2026-10-15（Asia/Taipei）。先看 [SAM 的 CI、文件版本與真交易驗收](SAM_CI_TRANSACTION_ACCEPTANCE_2026-10-15.md)；下方 10/7 摘要保留為歷史，不作現行分支、部署或資料庫狀態。
+
+- 分工：SAM 負責資料庫、測試、前台／RWD、整合與交付；JEFF 負責 AI／後台；HEN 負責登入、撤權、購物車與訂單。跨組項目仍按前置交付逐項簽收。
+- GitHub `main` 在修復起點為 `7d10f7e`，僅有文件同步，File policy 原有 35 項錯誤；本輪修復分支須以遠端 CI 成功再算完成。HEN PR #18 的 `5053993` 與簡報 PR #19 的 `58b1427` 尚未合併。
+- HEN `5053993` 在隔離 localhost MongoDB replica set 完成 166 passed、0 skipped，含三項真交易／並發測試；這是該分支的本機驗收，不能當成 `main` 已整合或正式 Atlas 全流程驗收。
+- 10/15 最近一次唯讀核對：Atlas 28 集合、89 索引、6 筆 succeeded migrations；336 商品、336 SKU。D4 指定批次仍 0 筆。Firebase Hosting 可瀏覽，Cloud Run 最新 Ready revision 為 `vibecart-web-00007-m9k`，checkout 已啟用；真模型、所有 consumer 遠端隔離、D4 正式匯入與全站簽收仍未完成。
+- 10/5、10/12 交付文件保留當時的數字與限制；如需現況，重新核對 GitHub、Cloud Run 與 Atlas，不沿用舊部署 revision 或唯讀設定。
+
+## 2026-10-07 歷史摘要
+
+更新：2026-10-07（Asia/Taipei）。這是後續工作的精簡入口，取代舊狀態摘要；舊文件、程式與遷移全部保留。動態狀態以下次實際核對為準。
+
+## 讀取原則
+
+接續 SAM 工作時，另讀 [2026-10-07 交接摘要](HANDOFF_SAM_2026-10-07.md)。切換對話前僅完成工作目錄檢查，未新增功能、提交 GitHub 或更動 Atlas；此次只補交接文件。
+
+先讀本頁，再按任務讀一份必要文件。不要每次重掃全專案、舊週計畫或舊聊天。優先順序：使用者最新決策 → 即時驗證 → 本摘要／最新專項文件 → 歷史資料。只核對本次會影響操作的 Git、資料庫或權限狀態；查歷史、追錯或核對 migration 才開舊版本。
+
+## 現行分工
+
+- SAM：資料庫、測試、組長協調及交付文件。
+- JEFF：AI／管理後台；不把其設計或實作列為 SAM 成果。
+- HEN（@1dcvgieok4gm）：已選 B 會員／購物流程，使用 feature/auth-order。晚上確認及邀請接受尚未收到後續結果；**不是仍負責前台／RWD**。
+- 前台／RWD 待重新分配；最終整合驗收責任待確認。
+
+## 已核實基線（10/7）
+
+- Atlas vibecart_ai：336 商品、336 SKU、600 合成客戶、3,000 訂單、8,969 明細。
+- 測試批次 sam-synthetic-20261005-v1；跨 2024～2026 年；全部訂單 is_demo=true，600 客戶停用，不可登入。67 人無訂單。
+- 27 集合、86 索引為 10/5 完整驗證結果；10/7 核對 5 筆 migration 全部 succeeded、users 有 demographics。現行契約是原 v4 加 test_data/schema_test_profile.py overlay，**不是僅四筆 migration 的原 v4**。
+- behavior_events、product_embeddings、ai_requests、recommendation_logs 在 10/7 均為 0；不據此推定記憶體快取狀態。
+- 政策：PURCHASE=4、ADD_TO_CART=3、SEARCH=2、PRODUCT_VIEW=1；2 分不是收藏。
+- 10/5 資料生成、交易試寫回滾、正式匯入、完整讀回及每月金額比對已通過；不重複生成／匯入，不重設庫存。這不是模型、登入或全站 UAT 完成證據。
+
+## GitHub／本機界線（10/7）
+
+- main：066e9da，PR #9 查詢手冊已合併；PR #1／2／3／4／6／7 已合併。
+- JEFF PR #8：e7df815，4 份文件、無功能程式；檢查通過、可合併但未合併。
+- PR #5 計分候選仍為草稿，由 JEFF 決定；PR #10 Network Access 文件未合併。
+- 本機有超市前台、測試資料生成器／overlay／證據、SAM 工作文件等未提交工作。**Atlas 已匯入，不代表 GitHub 已交付**。不可混入他人的異動、強制覆蓋或直接切換髒工作目錄。
+
+## SAM 下一步（依序）
+
+1. 整理並提交上述本機交付，補最新文件入口。
+2. 更新現行 schema 檢查器；main 仍按舊 validator／四筆 migration，會對現在資料庫報差異。保留歷史 migration checksum。
+3. 與 JEFF／HEN 定義後台寫入契約 D5，以及補貨／促銷／期間比較的 AI 白名單資料。
+4. 補 D4 行為事件測試資料、少量私有登入測試帳號。
+5. 以同批標準答案完成畫面/API 對帳及邊界測試。
+
+JEFF 規格須補：有效訂單分子／全部範圍訂單分母、有效可售 SKU／最低價條件、更新 D1～D3 已有資料狀態，以及本機推論與整站網路依賴的區別。現有 summary_metrics 不足以支援完整商品與趋势問答。
+
+## 按需查閱
+
+- [最新推送審查與 SAM 缺口](JEFF_PUSH_REVIEW_2026-10-07.md)
+- [測試資料規範](TEST_DATA_SPEC.md)／[匯入證據](TEST_DATA_IMPORT_2026-10-05.md)
+- [SAM 工作與預計項目](../專題進度/至今SAM完成的工作與預計項目_2026-10-05.md)
+- 備份任務才讀 [BACKUP](BACKUP.md)：機密私有／加密方案仍待決定；未核實共用切換及雲端完成前不得複製。固定連結不變；同一阻礙不重複通知。
+
+English: Start here; read only task-relevant evidence. Historical documents remain intact. Distinguish local work, GitHub delivery, Atlas data, and acceptance. Recheck mutable state before acting; never reinterpret historical plans as completed work.

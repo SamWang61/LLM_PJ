@@ -1,6 +1,6 @@
 # VibeCart AI MongoDB 建置紀錄
 
-更新：2026-09-19（Asia/Taipei）。依新增的 VibeCart_AI_MongoDB_Complete_Schema.md，已完成指定 Atlas 資料庫的 Complete Schema v4 更新與實際驗證。
+更新：2026-10-05（Asia/Taipei）。已依使用者指示重建 Schema 並匯入超市測試資料；[最新重建與匯入報告](18_2026-10-05_Schema重建與超市商品匯入.md)。原 Schema 依據不變。依新增的 VibeCart_AI_MongoDB_Complete_Schema.md，已完成指定 Atlas 資料庫的 Complete Schema v4 更新與實際驗證。
 
 |項目|實際結果|
 |---|---|
@@ -10,10 +10,18 @@
 |方案／地區|原建置 Free，AWS AP_SOUTHEAST_1；本次未變更部署方案|
 |資料結構|19 個新版核心 v4 集合 + 8 個保留集合，共 27 個 strict/error validators|
 |索引|59 個自訂索引 + 27 個 _id_，共 86 個；24 個自訂唯一索引、2 個 TTL|
-|資料|schema_migrations 4 筆 succeeded，system_configs 1 筆，其餘集合 0 筆；測試資料已清除|
-|驗證|新版 66 項 Atlas 整合測試通過；遷移重跑及唯讀查核成功|
+|資料|商品 336、SKU 336、分類 32、品牌 128；schema_migrations 4 筆 succeeded、system_configs 1 筆；其餘集合 0 筆|
+|驗證|歷史 v4 66 項測試通過；本次完整 Schema 讀回、832 筆文件精確比對與 Flask 336 商品讀取通過|
 
 Atlas 外掛本次 OAuth 失效，使用先前授權的 PyMongo 連線完成實際變更與讀回。控制台部署中繼資料未重新核實；原始資訊見 [Cluster 設定](01_Cluster設定與狀態.md)。
+
+## Network Access 更新（2026-10-05）
+
+2026-10-05 網路設定更新：依專案負責人提供的資訊，Network Access 已新增 `0.0.0.0/0`，供網站後端及 Compass 從任意 IPv4 來源連線。本次 Atlas 外掛回覆需重新登入（UNAUTHORIZED），尚未讀回確認 Active 狀態、註解與到期設定；詳見 [Cluster 設定](01_Cluster設定與狀態.md)。
+
+`0.0.0.0/0` 生效期間，IPv4 出口改變不需逐一新增 `/32`；資料庫帳密、TLS 與角色權限仍需通過，連線字串僅置於後端秘密設定。
+
+English: The owner reports all-IPv4 access; Atlas activation and expiry remain unverified because reauthentication is required. Authentication, TLS and database permissions still apply.
 
 ## 現行文件與程式
 
@@ -50,3 +58,5 @@ Atlas 外掛本次 OAuth 失效，使用先前授權的 PyMongo 連線完成實�
 ## English summary
 
 This directory preserves schema definitions, immutable migrations and dated Atlas evidence. Start with documents 15–17 for Complete Schema v4. The recorded 66 passing tests and 27 collections describe the September 19 validation, not a fresh run. Use sku_cart_service.py for the current SKU cart interface. Legacy tests target older schema versions. Do not run all historical migrations or tests against a populated production database without an explicit migration plan.
+
+- [Atlas／Compass 資料庫查詢手冊](19_Atlas與Compass資料庫查詢手冊.md)：連線、商品與 SKU 搜尋、分類、示範訂單及 Schema 查閱。

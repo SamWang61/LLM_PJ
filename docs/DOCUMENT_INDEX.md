@@ -4,13 +4,8 @@
 
 | 文件 / Document | English scope |
 |---|---|
-| [10/02 合併與 Atlas 連線紀錄](MERGE_RECORD_2026-10-02.md) | Completed merges, CI evidence and private URI handling. |
-| [HEN 會員／購物流程交接](HEN_AUTH_ORDER.md) | Confirmed option B, branch workflow and access status. |
-| [現行分工](TEAM_OWNERSHIP.md) | SAM database/testing; JEFF AI/admin; HEN auth/order; frontend/RWD awaits reassignment. |
-| [SAM 資料庫與測試](SAM_DATABASE_TESTING.md) | Read-only checks, database regression evidence and limits. |
-| [JEFF 管理後台設計規格](JEFF_ADMIN_UI_DESIGN.md) | Admin layout v1.1, decisions, v4 field mapping and reply to the D5/AI data contract. |
-| [後台與 v4 測試交接](AI_DASHBOARD.md) | Historical delivery, private profile and validation; current ownership is separate. |
-| [Atlas 驗證報告](V4_TEST_VERIFICATION.json) | Live schema, indexes and transaction checks; no credentials. |
+| [JEFF 管理後台設計規格 v1.2](JEFF_ADMIN_UI_DESIGN.md) | Admin layout, v4 field map, gated free questions, 180-day audit and idempotency retention, batch request semantics. |
+| [SAM CI、文件版本與真交易驗收](SAM_CI_TRANSACTION_ACCEPTANCE_2026-10-15.md) | October 15 policy/link repair and isolated real MongoDB transaction evidence. |
 | [Flask／SKU／AI 串接](FLASK_SKU_AI_INTEGRATION.md) | v4 routes, LangGraph workflows, setup and UAT. |
 | [分支規劃與協作機制](%E5%88%86%E6%94%AF%28Branch%29%E8%A6%8F%E5%8A%83%E8%88%87%E5%8D%94%E4%BD%9C%E6%A9%9F%E5%88%B6.md) | Original collaboration plan, branch ownership and actual repository paths. |
 | [VibeCart AI 專案總覽與 GitHub 推送整理](../PROJECT_OVERVIEW.md) | Historical project overview and original GitHub preparation notes. |
@@ -45,3 +40,6 @@
 | [VibeCart AI｜購買行為、補貨頻率與破圈推薦規格](../%E8%A8%8E%E8%AB%96%E7%9A%84%E7%9B%B8%E9%97%9C%E8%A8%98%E9%8C%84/VibeCart_AI_Recommendation_and_Cross_Category_Rules.md) | Repurchase timing and cross-category recommendation requirements. |
 | [VibeCart AI｜懂你想買、更懂怎麼賣！](../%E8%A8%8E%E8%AB%96%E7%9A%84%E7%9B%B8%E9%97%9C%E8%A8%98%E9%8C%84/VibeCart_AI_%E5%B0%88%E6%A1%88%E6%95%B4%E5%90%88%E8%A6%8F%E6%A0%BC_v1.1.md) | Integration scope, model fields, deployment roles and acceptance criteria. |
 | [MuscleCore｜Python + MongoDB 智慧運動商城](../MuscleCore%E5%88%86%E6%9E%90%E8%B3%87%E6%96%99/website/README.md) | Component entry point and usage guide. |
+
+- [測試資料規範](TEST_DATA_SPEC.md)：600 位合成客戶、跨年訂單、生成順序與 Atlas 驗收。
+- [SAM 工作紀錄](../專題進度/至今SAM完成的工作與預計項目_2026-10-05.md)：9/23～10/5 交付與待辦。
