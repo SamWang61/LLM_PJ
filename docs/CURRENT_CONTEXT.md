@@ -1,5 +1,7 @@
 # 最新專案上下文 / Current project context
 
+更新：2026-10-16（Asia/Taipei）。SAM 正在以 `main` 的 `0d04dd8` 與導覽分支 `1caf854` 整理同版程式，來源、局部驗證和未完成門檻見 [SAM 整合基線](SAM_INTEGRATION_BASELINE_2026-10-16.md)。本輪整合尚未部署或簽收；下方 10/15 記錄保留其當時的版本界線。
+
 更新：2026-10-15（Asia/Taipei）。先看 [SAM 的 CI、文件版本與真交易驗收](SAM_CI_TRANSACTION_ACCEPTANCE_2026-10-15.md)；下方 10/7 摘要保留為歷史，不作現行分支、部署或資料庫狀態。
 
 - 分工：SAM 負責資料庫、測試、前台／RWD、整合與交付；JEFF 負責 AI／後台；HEN 負責登入、撤權、購物車與訂單。跨組項目仍按前置交付逐項簽收。

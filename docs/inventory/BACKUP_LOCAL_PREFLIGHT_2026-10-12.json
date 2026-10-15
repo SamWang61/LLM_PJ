@@ -1,0 +1,10 @@
+{
+  "source_manifest_complete": true,
+  "cloud_copy_performed": false,
+  "scope": "local-source-hashing-and-comparison-only",
+  "acl_changed": false,
+  "original_source_comparison_passed": true,
+  "checked_at": "2026-10-12T13:28:22Z",
+  "actual_restore_performed": false,
+  "source_files": 10533
+}

@@ -1,0 +1,137 @@
+{
+  "users": {
+    "count": 0,
+    "conforming": 0,
+    "indexes": 4
+  },
+  "categories": {
+    "count": 32,
+    "conforming": 32,
+    "indexes": 3
+  },
+  "products": {
+    "count": 336,
+    "conforming": 336,
+    "indexes": 5
+  },
+  "carts": {
+    "count": 0,
+    "conforming": 0,
+    "indexes": 5
+  },
+  "orders": {
+    "count": 0,
+    "conforming": 0,
+    "indexes": 6
+  },
+  "user_events": {
+    "count": 0,
+    "conforming": 0,
+    "indexes": 5
+  },
+  "ai_requests": {
+    "count": 0,
+    "conforming": 0,
+    "indexes": 3
+  },
+  "product_embeddings": {
+    "count": 0,
+    "conforming": 0,
+    "indexes": 2
+  },
+  "recommendations": {
+    "count": 0,
+    "conforming": 0,
+    "indexes": 2
+  },
+  "ai_insights": {
+    "count": 0,
+    "conforming": 0,
+    "indexes": 2
+  },
+  "ai_usage": {
+    "count": 0,
+    "conforming": 0,
+    "indexes": 1
+  },
+  "request_limits": {
+    "count": 0,
+    "conforming": 0,
+    "indexes": 2
+  },
+  "schema_migrations": {
+    "count": 5,
+    "conforming": 5,
+    "indexes": 1
+  },
+  "cart_events": {
+    "count": 0,
+    "conforming": 0,
+    "indexes": 7
+  },
+  "brands": {
+    "count": 128,
+    "conforming": 128,
+    "indexes": 3
+  },
+  "product_skus": {
+    "count": 336,
+    "conforming": 336,
+    "indexes": 3
+  },
+  "product_reviews": {
+    "count": 0,
+    "conforming": 0,
+    "indexes": 3
+  },
+  "order_items": {
+    "count": 0,
+    "conforming": 0,
+    "indexes": 5
+  },
+  "behavior_events": {
+    "count": 0,
+    "conforming": 0,
+    "indexes": 6
+  },
+  "user_preference_scores": {
+    "count": 0,
+    "conforming": 0,
+    "indexes": 2
+  },
+  "product_repurchase_stats": {
+    "count": 0,
+    "conforming": 0,
+    "indexes": 2
+  },
+  "cross_category_rules": {
+    "count": 0,
+    "conforming": 0,
+    "indexes": 3
+  },
+  "product_purchase_sequences": {
+    "count": 0,
+    "conforming": 0,
+    "indexes": 2
+  },
+  "recommendation_pools": {
+    "count": 0,
+    "conforming": 0,
+    "indexes": 2
+  },
+  "first_member_recommendations": {
+    "count": 0,
+    "conforming": 0,
+    "indexes": 2
+  },
+  "recommendation_logs": {
+    "count": 0,
+    "conforming": 0,
+    "indexes": 3
+  },
+  "system_configs": {
+    "count": 1,
+    "conforming": 1,
+    "indexes": 2
+  }
+}

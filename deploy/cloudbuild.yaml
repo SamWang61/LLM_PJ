@@ -1,0 +1,21 @@
+steps:
+  - name: gcr.io/cloud-builders/docker
+    args: [build, -t, '${_IMAGE}', .]
+  - name: gcr.io/cloud-builders/docker
+    args:
+      - run
+      - --rm
+      - -e
+      - MONGO_URI=mongodb+srv://vibecart-ai-free.odqe25w.mongodb.net/
+      - -e
+      - SECRET_KEY=cloud-build-isolated-test-secret-32-chars
+      - --entrypoint
+      - python
+      - '${_IMAGE}'
+      - -c
+      - 'from cloud_runtime import create_cloud_app; a=create_cloud_app(); assert a.test_client().get("/health/live").status_code==200; print("container-boot-ok")'
+images: ['${_IMAGE}']
+timeout: 900s
+options:
+  logging: GCS_ONLY
+# The caller sets serviceAccount and logsBucket; no credentials belong here.

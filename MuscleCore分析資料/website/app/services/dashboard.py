@@ -4,6 +4,7 @@ from datetime import date, datetime, time, timedelta, timezone
 from decimal import Decimal
 from .analytics import build_insights
 from .sku_gateway import money
+from .behavior_scope import production_behavior_query
 
 TAIPEI = timezone(timedelta(hours=8))
 MAX_RANGE_ORDERS = 5000
@@ -65,7 +66,7 @@ def load_dashboard(db, mode, filters):
             {"$group": {"_id": "$product_id", "name": {"$first": "$product_name_snapshot"}, "sales_count": {"$sum": "$quantity"}}},
             {"$sort": {"sales_count": -1, "_id": 1}}, {"$limit": 10}]))
         insights = {"revenue": revenue, "orders": len(paid),
-                    "avg_order": (revenue / len(paid)).quantize(Decimal("0.01")) if paid else Decimal("0"),
+                    "avg_order": (revenue / len(paid)).quantize(Decimal("0.01")) if paid else None,
                     "low_stock": low_stock, "low_stock_count": stock_count, "best": best}
         recent = [{**o, "order_no": o["order_number"], "total": money(o["total_amount"])} for o in orders[:10]]
     else:
@@ -77,6 +78,7 @@ def load_dashboard(db, mode, filters):
     demo_label = {"all": "包含示範訂單", "exclude": "排除示範訂單", "only": "僅示範訂單"}[filters["demo"]]
     insights.update(scope=scope, scope_key="date_range" if "after" in filters else "latest_100_orders",
                     start=filters["start"], end=filters["end"], demo=filters["demo"], sampled_orders=len(orders), mode=mode,
+                    demo_orders=sum(1 for o in orders if o.get("is_demo") is True),
                     messages=[f"{scope}，共 {len(orders)} 筆訂單，計入 {insights['orders']} 筆有效訂單。",
                               f"{demo_label}；目前 {insights['low_stock_count']} 個品項達補貨門檻。",
                               "v4 營收排除未付款、退款與取消訂單。" if mode == "v4" else "舊版統計依未取消訂單計算，並非付款確認報表。"])
@@ -94,7 +96,7 @@ def load_dashboard(db, mode, filters):
 
 def recommendation_monitor(db, mode):
     field = "event_at" if mode == "v4" else "created_at"
-    events = list(db.behavior_events.find({}, {"product_id": 1, "event_type": 1}).sort([(field, -1), ("_id", -1)]).limit(1000))
+    events = list(db.behavior_events.find(production_behavior_query(), {"product_id": 1, "event_type": 1}).sort([(field, -1), ("_id", -1)]).limit(1000))
     counts = Counter((str(e.get("product_id") or "—"), e.get("event_type", "UNKNOWN")) for e in events)
     stats = [{"product_id": key[0], "event_type": key[1], "count": count} for key, count in counts.most_common(20)]
     policy = db.system_configs.find_one({"config_key": "recommendation_policy", "status": "active"}) if mode == "v4" else None

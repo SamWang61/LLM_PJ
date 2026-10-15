@@ -7,11 +7,13 @@
 {% for item in items %}
 <article><p>{{ item.product.name }} × {{ item.qty }}　NT$ {{ '{:,.2f}'.format(item.subtotal) }}</p>
 <form method="post" action="{{ url_for('store.update_cart', sku_id=item.sku_id) }}">
+<input type="hidden" name="expected_revision" value="{{ cart.revision }}">
 <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
 <input type="hidden" name="operation_id" value="{{ operation_id() }}">
 <label>數量 <input name="quantity" type="number" min="1" max="99" value="{{ item.qty }}" required></label>
 <button class="button secondary" type="submit">更新數量</button></form>
 <form method="post" action="{{ url_for('store.remove_from_cart', sku_id=item.sku_id) }}">
+<input type="hidden" name="expected_revision" value="{{ cart.revision }}">
 <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
 <input type="hidden" name="operation_id" value="{{ operation_id() }}">
 <button class="button secondary" type="submit">移除</button></form></article>

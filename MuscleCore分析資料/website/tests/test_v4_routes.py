@@ -7,6 +7,7 @@ from flask import g
 from werkzeug.security import generate_password_hash
 from app import create_app
 from app.services.sku_gateway import CartService
+from app.services.member_sessions import create_member_session
 
 
 class OfflineCart(CartService):
@@ -36,8 +37,12 @@ def shop():
         g.db = db
 
     client = app.test_client()
+    from app.services.member_sessions import create_member_session
+    with app.app_context():
+        token = create_member_session(db, db.users.find_one({"_id": uid}))
     with client.session_transaction() as state:
-        state.update(user_id=str(uid), role="customer", csrf_token="test-csrf")
+        state.update(user_id=str(uid), role="customer", csrf_token="test-csrf",
+                     member_session=token)
     return app, client, db, uid, pid, sid
 
 
@@ -101,9 +106,12 @@ def test_checkout_does_not_accept_other_users_cart(shop):
     post(client, f"/cart/add/{pid}", sku_id=str(sid), quantity=1, operation_id="add")
     cart = db.carts.find_one()
     other = ObjectId()
-    db.users.insert_one({"_id": other, "schema_version": 4, "status": "active", "is_active": True})
+    db.users.insert_one({"_id": other, "schema_version": 4, "status": "active", "is_active": True, "role": "customer"})
     with client.session_transaction() as state:
         state["user_id"] = str(other)
+        from app.services.member_sessions import create_member_session
+        with app.app_context():
+            state["member_session"] = create_member_session(db, db.users.find_one({"_id": other}))
     app.config["ENABLE_CHECKOUT"] = True
     assert post(client, "/checkout", cart_id=str(cart["_id"]), expected_revision=1, checkout_id="steal").status_code == 409
     assert db.orders.count_documents({}) == 0
@@ -133,11 +141,13 @@ def test_v4_login_and_registration(shop):
 
 
 def test_revoked_member_and_admin_permissions(shop):
-    _, client, db, uid, _, _ = shop
+    app, client, db, uid, _, _ = shop
     with client.session_transaction() as state:
         state["role"] = "admin"
     assert client.get("/admin/").status_code == 302
     db.users.update_one({"_id": uid}, {"$set": {"role": "admin"}})
+    with app.app_context(), client.session_transaction() as state:
+        state["member_session"] = create_member_session(db, db.users.find_one({"_id": uid}))
     assert client.get("/admin/").status_code == 200
     db.users.update_one({"_id": uid}, {"$set": {"status": "inactive", "is_active": False}})
     assert client.get("/cart").status_code == 302
@@ -152,8 +162,10 @@ def test_form_submission_and_missing_operation_key(shop):
 
 
 def test_admin_v4_decimal_metrics_and_summary_post(shop):
-    _, client, db, uid, _, _ = shop
+    app, client, db, uid, _, _ = shop
     db.users.update_one({"_id": uid}, {"$set": {"role": "admin"}})
+    with app.app_context(), client.session_transaction() as state:
+        state["member_session"] = create_member_session(db, db.users.find_one({"_id": uid}))
     for payment, amount in [("paid", "123.45"), ("unpaid", "999.99"), ("refunded", "888.88")]:
         db.orders.insert_one({"order_number": payment, "payment_status": payment, "total_amount": Decimal128(amount), "status": "confirmed"})
     response = post(client, "/admin/summary")
@@ -189,3 +201,91 @@ def test_legacy_mode_still_renders_with_csrf():
     assert client.get("/").status_code == 200
     assert b"csrf_token" in client.get("/auth/login").data
     assert client.post("/auth/register", data={}).status_code == 400
+
+
+def test_supermarket_catalog_beyond_200_paginates_filters_and_shows_source(shop):
+    from copy import deepcopy
+    import re
+    app, client, db, uid, pid, sid = shop
+    template = db.products.find_one({'_id': pid})
+    products, skus = [], []
+    for i in range(305):
+        product = deepcopy(template)
+        product.update(_id=ObjectId(), product_code=f'CF-{i:04d}', product_name=f'超市測試{i:04d}',
+                       image_urls=['https://example.com/product.jpg'], summary='分類測試商品',
+                       description='測試摘要\n商品來源：https://online.uni-prosperity.com.tw/zh/123.html')
+        products.append(product)
+        skus.append({'_id': ObjectId(), 'product_id': product['_id'], 'sku_code': f'SKU-{i}',
+                     'status': 'active', 'price': Decimal128('12.50'), 'available_quantity': 5,
+                     'variant_attributes': {'規格': '500ml'}})
+    db.products.insert_many(products)
+    db.product_skus.insert_many(skus)
+    with client.session_transaction() as state:
+        state.pop('user_id', None)
+    seen = set()
+    for page in range(1, 14):
+        response = client.get('/', query_string={'page': page})
+        assert response.status_code == 200
+        ids = re.findall(r'<article class="product-card"><a class="product-visual" href="/product/([a-f0-9]+)(?:\?[^\"]*)?"', response.text)
+        assert len(ids) == (24 if page < 13 else 18)
+        assert not seen.intersection(ids)
+        seen.update(ids)
+    assert len(seen) == 306
+    response = client.get('/', query_string={'q': '超市測試0304'})
+    assert '共 1 項商品' in response.text and '超市測試0304' in response.text
+    response = client.get('/', query_string={'major': 'missing'})
+    assert '共 0 項商品' in response.text
+    response = client.get(f'/product/{products[-1]["_id"]}')
+    assert 'https://example.com/product.jpg' in response.text
+    assert 'href="https://online.uni-prosperity.com.tw/zh/123.html"' in response.text
+    assert '500ml' in response.text
+
+
+@pytest.mark.parametrize('page', ['invalid', '-5', '9999999'])
+def test_supermarket_page_parameter_is_bounded(shop, page):
+    _, client, _, _, _, _ = shop
+    response = client.get('/', query_string={'page': page})
+    assert response.status_code == 200 and '第 1 / 1 頁' in response.text
+
+
+def test_product_navigation_order_filters_boundaries_and_page_return(shop):
+    from copy import deepcopy
+    from html import unescape
+    import re
+    _, client, db, _, pid, sid = shop
+    template = db.products.find_one({"_id": pid})
+    sku_template = db.product_skus.find_one({"_id": sid})
+    ids = [pid]
+    for i in range(26):
+        product = deepcopy(template)
+        product.update(_id=ObjectId(), product_name=f"Browse {i:02d}")
+        db.products.insert_one(product)
+        sku = deepcopy(sku_template)
+        sku.update(_id=ObjectId(), product_id=product["_id"])
+        db.product_skus.insert_one(sku)
+        ids.append(product["_id"])
+    ids.sort()
+    with client.session_transaction() as state:
+        state.pop("user_id", None)
+    def navigation(pid, **params):
+        response = client.get(f"/product/{pid}", query_string=params)
+        assert response.status_code == 200
+        return unescape(response.text.split('<nav class="product-navigation"')[1])
+    first = navigation(ids[0])
+    assert 'rel="prev"' not in first and 'disabled' in first
+    assert f'/product/{ids[1]}' in first
+    middle = navigation(ids[24])
+    assert f'/product/{ids[23]}' in middle and f'/product/{ids[25]}' in middle
+    assert 'page=2' in middle
+    last = navigation(ids[-1])
+    assert 'rel="next"' not in last and 'disabled' in last
+    only = navigation(ids[-1], q="Browse 25", major="sport", category="weight")
+    assert 'rel="prev"' not in only and 'rel="next"' not in only
+    assert 'q=Browse+25' in only and 'major=sport' in only and 'category=weight' in only
+    filtered = navigation(ids[-2], q="Browse 2")
+    next_url = re.search(r'rel="next" href="([^"]+)"', filtered).group(1)
+    assert 'q=Browse+2' in next_url and client.get(next_url).status_code == 200
+    listing = client.get('/', query_string={"q": "Browse 2", "major": "sport", "category": "weight"})
+    assert 'q=Browse+2' in unescape(listing.text)
+    db.products.update_one({"_id": ids[-1]}, {"$set": {"status": "inactive"}})
+    assert 'rel="next"' not in navigation(ids[-2])

@@ -5,6 +5,10 @@ from .cart_service import CartService as LegacyCartService,CartError,CartConflic
 
 
 class CartService(LegacyCartService):
+    def __init__(self, db, *, enable_checkout=False, behavior_metadata=None):
+        super().__init__(db, enable_checkout=enable_checkout)
+        self.behavior_metadata = dict(behavior_metadata or {})
+
     def _user(self,uid,session=None):
         if not self.db.users.find_one({'_id':uid,'schema_version':4,'status':'active','is_active':True},session=session):
             raise CartError('Active schema v4 user required')
@@ -28,11 +32,18 @@ class CartService(LegacyCartService):
             'session_id':'cart:'+str(cart_id),'event_type':kind,'product_id':product['_id'],
             'major_category_id':product['major_category_id'],'minor_category_id':product['minor_category_id'],
             'quantity':qty,'order_id':order_id,'cart_id':cart_id,'search_query':None,'source':'organic',
-            'recommendation_id':None,'event_at':now,'score_version':1,'processed_at':None,'metadata':{},'created_at':now}
+            'recommendation_id':None,'event_at':now,'score_version':1,'processed_at':None,'metadata':{
+                **self.behavior_metadata,
+                **({'demo_checkout':True,'exclude_from_attribution':True} if kind=='PURCHASE' else {})},'created_at':now}
 
-    def _mutate(self,user_id,sku_id,qty,operation_id,kind):
+    def _mutate(self,user_id,sku_id,qty,operation_id,kind,expected_revision=None):
         uid,sid=oid(user_id),oid(sku_id)
-        operation_id=key(operation_id); request_hash=fingerprint([kind,str(sid),qty])
+        if expected_revision is not None and (type(expected_revision) is not int or expected_revision<0):
+            raise CartError('Non-negative cart revision required')
+        operation_id=key(operation_id)
+        content=[kind,str(sid),qty]
+        if expected_revision is not None: content.append(expected_revision)
+        request_hash=fingerprint(content)
         def action(s):
             self._user(uid,s)
             prior=self._replay(uid,operation_id,request_hash,s)
@@ -40,10 +51,13 @@ class CartService(LegacyCartService):
             now=utcnow()
             cart=self.db.carts.find_one({'user_id':uid,'status':'active'},session=s)
             if not cart:
+                if expected_revision not in (None,0): raise CartConflict('Cart changed')
                 if kind!='ADD': raise CartError('No active cart')
                 cart={'_id':ObjectId(),'schema_version':4,'user_id':uid,'status':'active','revision':0,
                       'items':[],'created_at':now,'updated_at':now}
                 self.db.carts.insert_one(cart,session=s)
+            if expected_revision is not None and cart['revision']!=expected_revision:
+                raise CartConflict('Cart changed')
             item=next((i for i in cart['items'] if i['sku_id']==sid),None)
             before=item['quantity'] if item else 0
             if kind!='ADD' and not item: raise CartError('SKU not in cart')
@@ -73,14 +87,14 @@ class CartService(LegacyCartService):
             return cart
         return self._run(action)
 
-    def add_item(self,user_id,sku_id,quantity_value,*,operation_id):
-        return self._mutate(user_id,sku_id,quantity(quantity_value),operation_id,'ADD')
+    def add_item(self,user_id,sku_id,quantity_value,*,operation_id,expected_revision=None):
+        return self._mutate(user_id,sku_id,quantity(quantity_value),operation_id,'ADD',expected_revision)
 
-    def update_quantity(self,user_id,sku_id,quantity_value,*,operation_id):
-        return self._mutate(user_id,sku_id,quantity(quantity_value),operation_id,'QTY_CHANGE')
+    def update_quantity(self,user_id,sku_id,quantity_value,*,operation_id,expected_revision=None):
+        return self._mutate(user_id,sku_id,quantity(quantity_value),operation_id,'QTY_CHANGE',expected_revision)
 
-    def remove_item(self,user_id,sku_id,*,operation_id):
-        return self._mutate(user_id,sku_id,None,operation_id,'REMOVE')
+    def remove_item(self,user_id,sku_id,*,operation_id,expected_revision=None):
+        return self._mutate(user_id,sku_id,None,operation_id,'REMOVE',expected_revision)
 
     def checkout_cart(self,user_id,*,checkout_id,cart_id,expected_revision):
         if not self.enable_checkout: raise CartError('Demo checkout disabled')

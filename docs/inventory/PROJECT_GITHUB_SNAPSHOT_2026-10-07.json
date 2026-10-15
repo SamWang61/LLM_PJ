@@ -1,0 +1,324 @@
+{
+  "checked_at": "2026-10-07T03:16:38.325246+00:00",
+  "repository": "SamWang61/LLM_PJ",
+  "pull_requests": [
+    {
+      "number": 10,
+      "title": "docs: 同步 MongoDB Network Access 為 0.0.0.0/0",
+      "url": "https://github.com/SamWang61/LLM_PJ/pull/10",
+      "state": "open",
+      "draft": false,
+      "merged_at": null,
+      "updated_at": "2026-10-05T11:09:57Z",
+      "author": "SamWang61",
+      "head_ref": "codex/mongodb-network-access",
+      "head_sha": "8a6edb1a4f6e5e7e21ce40350d30c6eec1ae44c6",
+      "base_ref": "main"
+    },
+    {
+      "number": 9,
+      "title": "docs: 新增 Atlas／Compass 資料庫查詢手冊",
+      "url": "https://github.com/SamWang61/LLM_PJ/pull/9",
+      "state": "closed",
+      "draft": false,
+      "merged_at": "2026-10-05T10:58:00Z",
+      "updated_at": "2026-10-05T10:58:01Z",
+      "author": "SamWang61",
+      "head_ref": "docs/mongodb-atlas-compass-guide",
+      "head_sha": "8d33da8a96052ef4357223e64acaed92b0d6666b",
+      "base_ref": "main"
+    },
+    {
+      "number": 8,
+      "title": "docs: 新增 JEFF 管理後台設計規格 v1.0",
+      "url": "https://github.com/SamWang61/LLM_PJ/pull/8",
+      "state": "open",
+      "draft": false,
+      "merged_at": null,
+      "updated_at": "2026-10-05T07:57:54Z",
+      "author": "jeff841117",
+      "head_ref": "docs/jeff-admin-ui-design",
+      "head_sha": "e7df81549b1ac13eb1c2b54256df117c54c29fa2",
+      "base_ref": "main"
+    },
+    {
+      "number": 7,
+      "title": "docs: 確認 HEN 會員／購物流程分工與 GitHub 存取狀態",
+      "url": "https://github.com/SamWang61/LLM_PJ/pull/7",
+      "state": "closed",
+      "draft": false,
+      "merged_at": "2026-10-05T02:35:46Z",
+      "updated_at": "2026-10-05T02:35:46Z",
+      "author": "SamWang61",
+      "head_ref": "codex/hen-auth-order",
+      "head_sha": "cf5d76e3e995015bb8f46c9a1f066b025b817855",
+      "base_ref": "main"
+    },
+    {
+      "number": 6,
+      "title": "test: SAM 資料庫查核、回歸證據與現行分工",
+      "url": "https://github.com/SamWang61/LLM_PJ/pull/6",
+      "state": "closed",
+      "draft": false,
+      "merged_at": "2026-10-01T21:03:17Z",
+      "updated_at": "2026-10-01T21:04:44Z",
+      "author": "SamWang61",
+      "head_ref": "codex/sam-database-tests",
+      "head_sha": "7ab4ab8f63a27d38cfa5dc5ec60f2a71ceb83d89",
+      "base_ref": "main"
+    },
+    {
+      "number": 5,
+      "title": "draft: 行為計分候選實作（AI／後台由 JEFF 負責）",
+      "url": "https://github.com/SamWang61/LLM_PJ/pull/5",
+      "state": "open",
+      "draft": true,
+      "merged_at": null,
+      "updated_at": "2026-10-01T20:54:55Z",
+      "author": "SamWang61",
+      "head_ref": "codex/sam-preference-scoring",
+      "head_sha": "dc3114de7de0cd72b370610a1bdd6e2a707d8940",
+      "base_ref": "main"
+    },
+    {
+      "number": 4,
+      "title": "docs: 補齊 PR 合併紀錄與 Atlas 私有連線說明",
+      "url": "https://github.com/SamWang61/LLM_PJ/pull/4",
+      "state": "closed",
+      "draft": false,
+      "merged_at": "2026-10-01T20:40:27Z",
+      "updated_at": "2026-10-01T20:40:27Z",
+      "author": "SamWang61",
+      "head_ref": "codex/document-merge-record",
+      "head_sha": "fbffdc6e26ebdb7a103e0f332e35cb8992aa9863",
+      "base_ref": "main"
+    },
+    {
+      "number": 3,
+      "title": "feat: SAM 營運後台、v4 測試連線與 Atlas 整合驗證",
+      "url": "https://github.com/SamWang61/LLM_PJ/pull/3",
+      "state": "closed",
+      "draft": false,
+      "merged_at": "2026-10-01T20:25:11Z",
+      "updated_at": "2026-10-01T20:25:11Z",
+      "author": "SamWang61",
+      "head_ref": "feature/ai-dashboard",
+      "head_sha": "03518363e199e9a9d8c076445c4c6d53d61e87ce",
+      "base_ref": "feature/flask-sku-ai-integration"
+    },
+    {
+      "number": 2,
+      "title": "feat: Flask 對接 SKU 購物車與 LangGraph 前後台 AI",
+      "url": "https://github.com/SamWang61/LLM_PJ/pull/2",
+      "state": "closed",
+      "draft": false,
+      "merged_at": "2026-10-01T20:25:53Z",
+      "updated_at": "2026-10-01T20:25:53Z",
+      "author": "SamWang61",
+      "head_ref": "feature/flask-sku-ai-integration",
+      "head_sha": "1b6ea47618f8dda12d91f73098b6856c08c4df84",
+      "base_ref": "main"
+    },
+    {
+      "number": 1,
+      "title": "docs: 整理四人分支規劃與協作文件",
+      "url": "https://github.com/SamWang61/LLM_PJ/pull/1",
+      "state": "closed",
+      "draft": false,
+      "merged_at": "2026-09-30T14:14:09Z",
+      "updated_at": "2026-09-30T14:18:41Z",
+      "author": "SamWang61",
+      "head_ref": "docs/branch-collaboration",
+      "head_sha": "420695759e0489d6d805436c7fb5d75febcc848d",
+      "base_ref": "main"
+    }
+  ],
+  "open_issues": [],
+  "branches": [
+    {
+      "name": "codex/document-merge-record",
+      "sha": "fbffdc6e26ebdb7a103e0f332e35cb8992aa9863",
+      "protected": false
+    },
+    {
+      "name": "codex/hen-auth-order",
+      "sha": "cf5d76e3e995015bb8f46c9a1f066b025b817855",
+      "protected": false
+    },
+    {
+      "name": "codex/mongodb-network-access",
+      "sha": "8a6edb1a4f6e5e7e21ce40350d30c6eec1ae44c6",
+      "protected": false
+    },
+    {
+      "name": "codex/sam-database-tests",
+      "sha": "7ab4ab8f63a27d38cfa5dc5ec60f2a71ceb83d89",
+      "protected": false
+    },
+    {
+      "name": "codex/sam-preference-scoring",
+      "sha": "dc3114de7de0cd72b370610a1bdd6e2a707d8940",
+      "protected": false
+    },
+    {
+      "name": "docs/branch-collaboration",
+      "sha": "420695759e0489d6d805436c7fb5d75febcc848d",
+      "protected": false
+    },
+    {
+      "name": "docs/jeff-admin-ui-design",
+      "sha": "e7df81549b1ac13eb1c2b54256df117c54c29fa2",
+      "protected": false
+    },
+    {
+      "name": "docs/mongodb-atlas-compass-guide",
+      "sha": "8d33da8a96052ef4357223e64acaed92b0d6666b",
+      "protected": false
+    },
+    {
+      "name": "feature/ai-dashboard",
+      "sha": "03518363e199e9a9d8c076445c4c6d53d61e87ce",
+      "protected": false
+    },
+    {
+      "name": "feature/auth-order",
+      "sha": "e66e06c28f74c8d429b01ab8393a2c243976020b",
+      "protected": false
+    },
+    {
+      "name": "feature/flask-sku-ai-integration",
+      "sha": "1b6ea47618f8dda12d91f73098b6856c08c4df84",
+      "protected": false
+    },
+    {
+      "name": "feature/mongodb",
+      "sha": "5ee398beb3b455170844a5bf29612dc41018157c",
+      "protected": false
+    },
+    {
+      "name": "feature/store-ui",
+      "sha": "5ee398beb3b455170844a5bf29612dc41018157c",
+      "protected": false
+    },
+    {
+      "name": "main",
+      "sha": "066e9da5c88e97b9d71b41c793d4bc9c95ee26e7",
+      "protected": false
+    }
+  ],
+  "collaborators": [
+    {
+      "login": "jeff841117",
+      "permissions": {
+        "admin": false,
+        "maintain": false,
+        "push": true,
+        "triage": true,
+        "pull": true
+      }
+    },
+    {
+      "login": "SamWang61",
+      "permissions": {
+        "admin": true,
+        "maintain": true,
+        "push": true,
+        "triage": true,
+        "pull": true
+      }
+    },
+    {
+      "login": "1dcvgieok4gm",
+      "permissions": {
+        "admin": false,
+        "maintain": false,
+        "push": true,
+        "triage": true,
+        "pull": true
+      }
+    }
+  ],
+  "pending_invitations": [],
+  "recent_actions": [
+    {
+      "id": 37301176372,
+      "url": "https://github.com/SamWang61/LLM_PJ/actions/runs/37301176372",
+      "head_sha": "8a6edb1a4f6e5e7e21ce40350d30c6eec1ae44c6",
+      "branch": "codex/mongodb-network-access",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 37301127833,
+      "url": "https://github.com/SamWang61/LLM_PJ/actions/runs/37301127833",
+      "head_sha": "8a6edb1a4f6e5e7e21ce40350d30c6eec1ae44c6",
+      "branch": "codex/mongodb-network-access",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 37299912426,
+      "url": "https://github.com/SamWang61/LLM_PJ/actions/runs/37299912426",
+      "head_sha": "066e9da5c88e97b9d71b41c793d4bc9c95ee26e7",
+      "branch": "main",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 37298018775,
+      "url": "https://github.com/SamWang61/LLM_PJ/actions/runs/37298018775",
+      "head_sha": "8d33da8a96052ef4357223e64acaed92b0d6666b",
+      "branch": "docs/mongodb-atlas-compass-guide",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 37297941937,
+      "url": "https://github.com/SamWang61/LLM_PJ/actions/runs/37297941937",
+      "head_sha": "8d33da8a96052ef4357223e64acaed92b0d6666b",
+      "branch": "docs/mongodb-atlas-compass-guide",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 37280723084,
+      "url": "https://github.com/SamWang61/LLM_PJ/actions/runs/37280723084",
+      "head_sha": "e7df81549b1ac13eb1c2b54256df117c54c29fa2",
+      "branch": "docs/jeff-admin-ui-design",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 37280467207,
+      "url": "https://github.com/SamWang61/LLM_PJ/actions/runs/37280467207",
+      "head_sha": "e7df81549b1ac13eb1c2b54256df117c54c29fa2",
+      "branch": "docs/jeff-admin-ui-design",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 37278801309,
+      "url": "https://github.com/SamWang61/LLM_PJ/actions/runs/37278801309",
+      "head_sha": "25c28cea19b4f30a4818985f99291b85a3759003",
+      "branch": "docs/jeff-admin-ui-design",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 37256056645,
+      "url": "https://github.com/SamWang61/LLM_PJ/actions/runs/37256056645",
+      "head_sha": "e66e06c28f74c8d429b01ab8393a2c243976020b",
+      "branch": "feature/auth-order",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 37256025437,
+      "url": "https://github.com/SamWang61/LLM_PJ/actions/runs/37256025437",
+      "head_sha": "e66e06c28f74c8d429b01ab8393a2c243976020b",
+      "branch": "main",
+      "status": "completed",
+      "conclusion": "success"
+    }
+  ]
+}
