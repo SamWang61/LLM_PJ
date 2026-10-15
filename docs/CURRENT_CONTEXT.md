@@ -1,6 +1,8 @@
 # 最新專案上下文 / Current project context
 
-更新：2026-10-16（Asia/Taipei）。SAM 正在以 `main` 的 `0d04dd8` 與導覽分支 `1caf854` 整理同版程式，來源、局部驗證和未完成門檻見 [SAM 整合基線](SAM_INTEGRATION_BASELINE_2026-10-16.md)。本輪整合尚未部署或簽收；下方 10/15 記錄保留其當時的版本界線。
+更新：2026-10-16（Asia/Taipei）。GitHub `main` 的 `00a1d21` 已合併 JEFF [PR #8](https://github.com/SamWang61/LLM_PJ/pull/8)，[同版 CI](https://github.com/SamWang61/LLM_PJ/actions/runs/38825012234) 成功。[JEFF 管理後台設計規格 v1.2](JEFF_ADMIN_UI_DESIGN.md) 已明定自由提問啟用與驗收、180 天稽核／冪等收據保存，以及批量 request_id 規則；這是文件契約，未代表 D5 寫入、真模型或 D4 正式匯入已驗收。
+
+SAM 的 [同版整合基線](SAM_INTEGRATION_BASELINE_2026-10-16.md) 與 [PR #21](https://github.com/SamWang61/LLM_PJ/pull/21) 整理 HEN／JEFF／商品導覽來源，仍是草稿，未部署或簽收。下方 10/15 及 10/7 狀態保留為歷史，不當作當前 GitHub、部署或資料庫狀態。
 
 更新：2026-10-15（Asia/Taipei）。先看 [SAM 的 CI、文件版本與真交易驗收](SAM_CI_TRANSACTION_ACCEPTANCE_2026-10-15.md)；下方 10/7 摘要保留為歷史，不作現行分支、部署或資料庫狀態。
 

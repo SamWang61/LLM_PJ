@@ -2,6 +2,10 @@
 
 本頁記錄同一工作樹可審查的程式來源與驗證。最終展示版仍須完成跨角色、遠端資料與畫面驗收；本頁不是簽收紀錄。
 
+## 10/16 GitHub `main` 同步
+
+JEFF 文件 [PR #8](https://github.com/SamWang61/LLM_PJ/pull/8) 已合併，`main` 為 `00a1d21d9613b2b916cf3de8ce7e215eddaa5a9a`，[同版 push CI](https://github.com/SamWang61/LLM_PJ/actions/runs/38825012234) 成功。本整合分支保留原有功能來源，並合入該 `main`，使 v1.2 管理後台契約、文件入口及清冊同版供審查。PR #21 仍為草稿；下方 `0d04dd8` 是原整合起點，不代表目前 `main`。此同步不構成後台寫入、自由提問、D4、部署或全站驗收。
+
 ## 來源與順序
 
 | 來源 | 版本 | 本輪處理 |
