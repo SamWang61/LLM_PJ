@@ -19,10 +19,11 @@
 - `python scripts/check_repository.py`：279 files、261 UTF-8 texts、0 errors。
 - `git diff --cached --check`：通過。
 - 在 `MuscleCore分析資料/website` 執行 `python -m pytest tests -q -p no:cacheprovider`：164 passed、3 skipped。三項真 MongoDB 交易測試須使用隔離 localhost replica set；[10/15 已在 HEN `5053993` 取得 166 passed、0 skipped](SAM_CI_TRANSACTION_ACCEPTANCE_2026-10-15.md)，但本輪新整合 SHA 尚未重跑該環境。
-- 本輪尚未驗證新 SHA 的 Docker boot、遠端 CI、Cloud Run 部署、Atlas 正式交易、真模型或人工瀏覽器／手機流程。不得把舊部署 revision 當成本分支。
+- 整合提交 `527e544` 的 [PR CI](https://github.com/SamWang61/LLM_PJ/actions/runs/38820366573) 與 [push CI](https://github.com/SamWang61/LLM_PJ/actions/runs/38820349885) 均成功。PR 的 offline job 包含檔案政策、網站離線測試、合成資料回歸、備份工具及雲端來源封裝；未包含 Docker boot 或遠端業務驗收。
+- 本輪尚未驗證新 SHA 的 Docker boot、Cloud Run 部署、Atlas 正式交易、真模型或人工瀏覽器／手機流程。不得把舊部署 revision 當成本分支。
 
 ## 接續順序
 
-1. 取得本整合 SHA 的遠端 CI 成功及容器 build／boot 結果，確認 README、setup、環境範例與實際部署來源一致。
+1. 核對容器 build／boot，確認 README、setup、環境範例與實際部署來源一致。
 2. 依 PR 相依鏈審查功能與文件差異，確認 HEN／JEFF 功能主責的接口；再決定合併順序。此分支供審查，不替代各主責簽收。
 3. 以同一展示 revision 完成角色權限、購物交易與庫存、商品資料對帳、RWD、S01～S12 證據；D4 必須先完成全部 consumer 的遠端 synthetic 隔離驗證。
