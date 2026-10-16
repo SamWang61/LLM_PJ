@@ -1,6 +1,8 @@
 # VibeCart Cloud Run／Firebase 展示部署
 
-2026-10-16 已在 [PR #21 整合來源](../docs/SAM_PR21_ACCEPTANCE_2026-10-16.md) 完成本機白名單 Docker build／boot 與隔離交易測試。下方 10/12 配置與唯讀部署敘述保留歷史版本界線；本次尚未部署 PR #21 到 Cloud Run／Hosting。
+目前部署方式分開閱讀：[Firebase Hosting／Cloud Run 判定與操作](FIREBASE_CLOUD_RUN_DEPLOYMENT.md)、[Render 準備與驗收](RENDER_DEPLOYMENT.md)。
+
+2026-10-16 已在 [PR #21 整合來源](../docs/SAM_PR21_ACCEPTANCE_2026-10-16.md) 完成本機白名單 Docker build／boot、隔離交易測試與零流量 Cloud Run 唯讀預覽；Hosting 尚未發布此版。下方 10/12 配置與唯讀部署敘述保留歷史版本界線。
 
 主責 SAM。先交付匿名商品瀏覽，再依 JEFF／HEN 功能及 SAM 驗收接線完整流程。這份設定不匯入資料、不建立會員、不跑 migration；D4 仍須所有 consumer 的遠端隔離驗證通過才可 apply。
 
