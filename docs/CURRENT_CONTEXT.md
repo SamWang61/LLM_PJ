@@ -4,7 +4,7 @@
 
 SAM 的 [同版整合基線](SAM_INTEGRATION_BASELINE_2026-10-16.md) 與 [PR #21](https://github.com/SamWang61/LLM_PJ/pull/21) 整理 HEN／JEFF／商品導覽來源，仍是草稿，未部署或簽收。下方 10/15 及 10/7 狀態保留為歷史，不當作當前 GitHub、部署或資料庫狀態。
 
-10/16 同版 [PR #21 本機驗證](SAM_PR21_ACCEPTANCE_2026-10-16.md)：Docker 白名單建置與啟動通過，無憑證 localhost replica set 的網站測試 167 passed、0 skipped；遠端同版部署、資料與角色驗收仍未完成。
+10/16 同版 [PR #21 本機驗證](SAM_PR21_ACCEPTANCE_2026-10-16.md)：Docker 白名單建置與啟動通過；修正自由提問預設關閉閘門後，無憑證 localhost replica set 的網站測試 171 passed、0 skipped。遠端同版部署、資料、角色與真模型驗收仍未完成。
 
 更新：2026-10-15（Asia/Taipei）。先看 [SAM 的 CI、文件版本與真交易驗收](SAM_CI_TRANSACTION_ACCEPTANCE_2026-10-15.md)；下方 10/7 摘要保留為歷史，不作現行分支、部署或資料庫狀態。
 
