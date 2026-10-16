@@ -2,9 +2,9 @@
 
 更新：2026-10-16（Asia/Taipei）。GitHub `main` 的 `00a1d21` 已合併 JEFF [PR #8](https://github.com/SamWang61/LLM_PJ/pull/8)，[同版 CI](https://github.com/SamWang61/LLM_PJ/actions/runs/38825012234) 成功。[JEFF 管理後台設計規格 v1.2](JEFF_ADMIN_UI_DESIGN.md) 已明定自由提問啟用與驗收、180 天稽核／冪等收據保存，以及批量 request_id 規則；這是文件契約，未代表 D5 寫入、真模型或 D4 正式匯入已驗收。
 
-SAM 的 [同版整合基線](SAM_INTEGRATION_BASELINE_2026-10-16.md) 與 [PR #21](https://github.com/SamWang61/LLM_PJ/pull/21) 整理 HEN／JEFF／商品導覽來源，仍是草稿，未部署或簽收。下方 10/15 及 10/7 狀態保留為歷史，不當作當前 GitHub、部署或資料庫狀態。
+SAM 的 [同版整合基線](SAM_INTEGRATION_BASELINE_2026-10-16.md) 與 [PR #21](https://github.com/SamWang61/LLM_PJ/pull/21) 整理 HEN／JEFF／商品導覽來源，仍是草稿，未完成最終簽收。10/16 已以該來源建立 Cloud Run 零流量唯讀預覽修訂 `vibecart-web-00008-5bw`，詳見[同版驗證紀錄](SAM_PR21_ACCEPTANCE_2026-10-16.md)；正式流量仍由 `vibecart-web-00007-m9k` 承接 100%。下方 10/15 及 10/7 狀態保留為歷史，不當作當前 GitHub、部署或資料庫狀態。
 
-10/16 同版 [PR #21 本機驗證](SAM_PR21_ACCEPTANCE_2026-10-16.md)：Docker 白名單建置與啟動通過；修正自由提問預設關閉閘門後，無憑證 localhost replica set 的網站測試 171 passed、0 skipped。遠端同版部署、資料、角色與真模型驗收仍未完成。
+10/16 同版 [PR #21 驗證](SAM_PR21_ACCEPTANCE_2026-10-16.md)：Docker 白名單建置與啟動通過；修正自由提問預設關閉閘門後，無憑證 localhost replica set 的網站測試 171 passed、0 skipped。零流量預覽的 Cloud Run revision、映像 digest 與 HTTP 唯讀閘門已讀回；Hosting 尚未發布此版，遠端交易、角色、真模型、全部 consumer 隔離及全站驗收仍未完成。
 
 更新：2026-10-15（Asia/Taipei）。先看 [SAM 的 CI、文件版本與真交易驗收](SAM_CI_TRANSACTION_ACCEPTANCE_2026-10-15.md)；下方 10/7 摘要保留為歷史，不作現行分支、部署或資料庫狀態。
 
