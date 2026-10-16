@@ -23,6 +23,7 @@ def create_app(test_config=None):
         BEHAVIOR_SYNTHETIC_BATCH=os.getenv("BEHAVIOR_SYNTHETIC_BATCH", ""),
         AI_RECOMMENDATIONS_ENABLED=os.getenv("AI_RECOMMENDATIONS_ENABLED", "false").lower() == "true",
         AI_SUMMARY_ENABLED=os.getenv("AI_SUMMARY_ENABLED", "false").lower() == "true",
+        AI_FREE_QUESTION_ENABLED=os.getenv("AI_FREE_QUESTION_ENABLED", "false").lower() == "true",
         BGE_MODEL=os.getenv("BGE_MODEL", "BAAI/bge-small-zh-v1.5"),
         ANTHROPIC_API_KEY=os.getenv("ANTHROPIC_API_KEY", ""),
         CLAUDE_MODEL=os.getenv("CLAUDE_MODEL", ""),

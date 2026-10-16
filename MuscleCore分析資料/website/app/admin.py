@@ -94,7 +94,15 @@ def insight_page(values, intent=None, answer=None, error=None, status=200):
         error, status = {"code": data_error.code, "message": str(data_error)}, 400
         current = {"start": values.get("start", ""), "end": values.get("end", ""), "demo": values.get("demo", "all")}
     return render_template('admin/ai_insight.html', payload=payload, range=current, intents=INTENTS, answer=answer,
-                           error=error, failure_labels=FAILURE_LABELS), status
+                           error=error, failure_labels=FAILURE_LABELS,
+                           free_question_enabled=free_question_enabled()), status
+
+
+def free_question_enabled():
+    config = current_app.config
+    return (config.get('AI_FREE_QUESTION_ENABLED', False)
+            and config.get('AI_SUMMARY_ENABLED', False)
+            and config.get('DATA_MODE') == 'v4')
 
 
 @bp.get('/ai/insight')
@@ -109,6 +117,8 @@ def ai_insight_ask():
     intent = request.form.get('intent', '')
     if intent not in INTENTS:
         abort(400, description="未知的提問類型。")
+    if intent == 'free_question' and not free_question_enabled():
+        abort(403, description="自由提問尚未啟用。")
     try:
         # Preset buttons never forward the text box; only the free-question button does.
         question = clean_question(request.form.get('question')) if intent == 'free_question' else None
@@ -121,7 +131,8 @@ def ai_insight_ask():
     except InsightDataError:
         return insight_page(request.form, intent)
     return render_template('admin/ai_insight.html', payload=payload, range=current, intents=INTENTS, answer=answer,
-                           error=None, failure_labels=FAILURE_LABELS)
+                           error=None, failure_labels=FAILURE_LABELS,
+                           free_question_enabled=free_question_enabled())
 
 
 UNAVAILABLE_LABELS = {"not_installed": "本機模型套件尚未安裝", "model_missing": "模型檔案尚未下載或無法載入"}

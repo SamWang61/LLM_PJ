@@ -62,7 +62,8 @@ def test_recent_calls_table_has_no_question_text(admin):
     app, client, _, _ = admin
     def respond(prompt):
         return AIMessage(content="回覆", usage_metadata={"input_tokens": 10, "output_tokens": 5, "total_tokens": 15})
-    app.config.update(AI_SUMMARY_ENABLED=True, CLAUDE_MODEL="test-model", CLAUDE_FACTORY=lambda: RunnableLambda(respond))
+    app.config.update(AI_SUMMARY_ENABLED=True, AI_FREE_QUESTION_ENABLED=True,
+                      CLAUDE_MODEL="test-model", CLAUDE_FACTORY=lambda: RunnableLambda(respond))
     client.post("/admin/ai/insight", data={"csrf_token": "test-csrf", "intent": "free_question", "question": "機密的問題文字",
                                            "start": "2026-10-01", "end": "2026-10-07", "demo": "all"})
     html = page(client)

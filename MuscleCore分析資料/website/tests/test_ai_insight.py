@@ -28,7 +28,8 @@ def fake_claude(app, reply="本期營收如資料所示。", calls=None):
     def respond(prompt):
         calls.append(prompt.to_string())
         return AIMessage(content=reply, usage_metadata={"input_tokens": 120, "output_tokens": 30, "total_tokens": 150})
-    app.config.update(AI_SUMMARY_ENABLED=True, CLAUDE_MODEL="test-model", CLAUDE_FACTORY=lambda: RunnableLambda(respond))
+    app.config.update(AI_SUMMARY_ENABLED=True, AI_FREE_QUESTION_ENABLED=True,
+                      CLAUDE_MODEL="test-model", CLAUDE_FACTORY=lambda: RunnableLambda(respond))
     return calls
 
 
@@ -162,6 +163,28 @@ def test_free_question_isolated_as_untrusted_input(admin):
     calls = fake_claude(app)
     assert ask(client, "free_question", question="本期哪一天營收最高？\x07").status_code == 200
     assert "不可信" in calls[0] and '"untrusted_question": "本期哪一天營收最高？"' in calls[0]
+
+
+@pytest.mark.parametrize("free_flag,summary_flag,mode", [
+    (False, True, "v4"), (True, False, "v4"), (True, True, "legacy")
+])
+def test_free_question_requires_independent_release_gate(admin, free_flag, summary_flag, mode):
+    app, client, _, _, _, _ = admin
+    calls = fake_claude(app)
+    app.config.update(AI_FREE_QUESTION_ENABLED=free_flag, AI_SUMMARY_ENABLED=summary_flag, DATA_MODE=mode)
+    html = client.get("/admin/ai/insight").get_data(as_text=True)
+    assert 'name="intent" value="free_question"' not in html
+    assert 'id="question"' not in html
+    assert ask(client, "free_question", question="本期哪一天營收最高？").status_code == 403
+    assert not calls
+
+
+def test_preset_remains_available_when_free_question_is_off(admin):
+    app, client, _, _, _, _ = admin
+    calls = fake_claude(app)
+    app.config["AI_FREE_QUESTION_ENABLED"] = False
+    response = ask(client, "revenue_change")
+    assert response.status_code == 200 and len(calls) == 1
 
 
 @pytest.mark.parametrize("question,code", [
