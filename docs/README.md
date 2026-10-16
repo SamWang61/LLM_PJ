@@ -7,6 +7,7 @@
 | 主題 / Topic | 入口 / Entry |
 |---|---|
 | SAM 同版整合基線 | [2026-10-16 來源與驗證](SAM_INTEGRATION_BASELINE_2026-10-16.md) |
+| SAM PR #21 本機驗證與最終缺口 | [2026-10-16 Docker／交易與遠端待驗](SAM_PR21_ACCEPTANCE_2026-10-16.md) |
 | JEFF 管理後台設計與 D5／AI 契約 | [v1.2 設計規格與 10/16 啟用門檻](JEFF_ADMIN_UI_DESIGN.md) |
 | SAM 最新 CI 與交易驗收 | [2026-10-15 修復與測試紀錄](SAM_CI_TRANSACTION_ACCEPTANCE_2026-10-15.md) |
 | [Flask／SKU／AI 串接](FLASK_SKU_AI_INTEGRATION.md) | v4 routes, LangGraph workflows, setup and UAT. |
