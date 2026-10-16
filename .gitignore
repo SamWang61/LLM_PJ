@@ -45,3 +45,4 @@ credentials*.json
 token*.json
 desktop.ini
 *.log
+deploy/firebase/.firebase/

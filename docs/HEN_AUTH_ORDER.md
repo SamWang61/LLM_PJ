@@ -43,3 +43,7 @@ git push origin feature/auth-order
 本倉庫屬個人帳號，協作者 Write 是倉庫層級，可對倉庫推送；分配 `feature/auth-order` 不會自動限制成「只准修改此分支」。本次不授予管理員權限、不移轉倉庫或改動其他人的權限。正式生效需邀請對象接受，或回讀確認已是協作者。
 
 Collaborator write access is repository-wide; branch ownership is a workflow agreement, not a branch-only ACL. HEN is confirmed as @1dcvgieok4gm. An existing Write invitation is pending acceptance as of 2026-10-05; access is not yet active. [GitHub permissions](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/repository-access-and-collaboration/permission-levels-for-a-personal-account-repository).
+
+## 2026-10-07 狀態更新
+
+GitHub 即時核對：1dcvgieok4gm 已是具 Write 權限的協作者，無待接受邀請；不再以存取權限作為阻礙。feature/auth-order 沒有超出當前 main 的新提交；需 HEN 更新至最新 main 並交付會員／購物流程驗收。前台/RWD 與最終整合由 SAM 承接。具體清單見 [進度盤點](PROJECT_PROGRESS_2026-10-07.md)。

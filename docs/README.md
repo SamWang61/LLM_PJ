@@ -1,15 +1,16 @@
 # 文件中心 / Documentation hub
 
+**後續工作先讀：[最新專案上下文](CURRENT_CONTEXT.md)。** 舊文件保留供追溯，日常作業不需反覆全量閱讀。Start with the compact current context, then consult only task-relevant references.
+
 本目錄提供跨模組索引與管理規則；原文件保留在既有目錄，以維持引用、來源快照與遷移可追溯性。This hub consolidates navigation while preserving original paths and historical evidence.
 
 | 主題 / Topic | 入口 / Entry |
 |---|---|
-| [10/02 合併與 Atlas 連線紀錄](MERGE_RECORD_2026-10-02.md) | Completed merges, CI evidence and private URI handling. |
-| [HEN 會員／購物流程交接](HEN_AUTH_ORDER.md) | Confirmed option B, branch workflow and access status. |
-| [現行分工](TEAM_OWNERSHIP.md) | SAM database/testing; JEFF AI/admin; HEN auth/order; frontend/RWD awaits reassignment. |
-| [SAM 資料庫與測試](SAM_DATABASE_TESTING.md) | Read-only checks, database regression evidence and limits. |
-| [後台與 v4 測試交接](AI_DASHBOARD.md) | Historical delivery, private profile and validation; current ownership is separate. |
-| [Atlas 驗證報告](V4_TEST_VERIFICATION.json) | Live schema, indexes and transaction checks; no credentials. |
+| SAM 同版整合基線 | [2026-10-16 來源與驗證](SAM_INTEGRATION_BASELINE_2026-10-16.md) |
+| SAM PR #21 本機驗證與最終缺口 | [2026-10-16 Docker／交易與遠端待驗](SAM_PR21_ACCEPTANCE_2026-10-16.md) |
+| 部署方式 | [Firebase Hosting／Cloud Run](../deploy/FIREBASE_CLOUD_RUN_DEPLOYMENT.md)、[Render](../deploy/RENDER_DEPLOYMENT.md) |
+| JEFF 管理後台設計與 D5／AI 契約 | [v1.2 設計規格與 10/16 啟用門檻](JEFF_ADMIN_UI_DESIGN.md) |
+| SAM 最新 CI 與交易驗收 | [2026-10-15 修復與測試紀錄](SAM_CI_TRANSACTION_ACCEPTANCE_2026-10-15.md) |
 | [Flask／SKU／AI 串接](FLASK_SKU_AI_INTEGRATION.md) | v4 routes, LangGraph workflows, setup and UAT. |
 | 全部文件 / All documents | [逐份雙語索引](DOCUMENT_INDEX.md) |
 | 目錄管理 / Repository management | [管理政策](REPOSITORY_GUIDE.md) |
@@ -23,4 +24,5 @@
 
 中文原稿是專題依據；英文摘要用於協助理解，不取代正式欄位定義。來源快照與原始報告不為了翻譯而覆寫。Chinese source specifications remain authoritative; English summaries do not replace field definitions or alter snapshots.
 
-- [Atlas／Compass 資料庫查詢手冊](../VibeCart_AI/MongoDB/19_Atlas與Compass資料庫查詢手冊.md) / Read-only database browsing and query guide for the team.
+- [客戶／訂單測試資料規範](TEST_DATA_SPEC.md) / Synthetic test-data specification.
+- [SAM 完成工作與預計項目](../專題進度/至今SAM完成的工作與預計項目_2026-10-05.md) / SAM delivery and next work.

@@ -39,12 +39,12 @@
     <input type="hidden" name="end" value="{{ payload.current_range.end }}">
     <input type="hidden" name="demo" value="{{ range.demo }}">
     <div class="intent-buttons">{% for key, item in intents.items() if key != 'free_question' %}<button class="button secondary" type="submit" name="intent" value="{{ key }}">{{ item.label }}</button>{% endfor %}</div>
-    <label for="question">自由提問（僅限本店營運問題，最多 300 字；請勿輸入個資）</label>
+    {% if free_question_enabled %}<label for="question">自由提問（僅限本店營運問題，最多 300 字；請勿輸入個資）</label>
     <div class="question-row">
       <textarea id="question" name="question" maxlength="300" rows="3" placeholder="例如：本期哪一天營收最高？"{% if error and error.code in ('invalid_question', 'pii_detected') %} aria-invalid="true" aria-describedby="question-error"{% endif %}>{{ request.form.get('question', '') if request.method == 'POST' else '' }}</textarea>
       <button class="button" type="submit" name="intent" value="free_question">送出</button>
     </div>
-    {% if error and error.code in ('invalid_question', 'pii_detected') %}<div id="answer"><p class="field-error" id="question-error" role="alert">{{ error.message }}</p></div>{% endif %}
+    {% if error and error.code in ('invalid_question', 'pii_detected') %}<div id="answer"><p class="field-error" id="question-error" role="alert">{{ error.message }}</p></div>{% endif %}{% endif %}
   </form>
 </section>
 {% endif %}

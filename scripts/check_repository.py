@@ -21,7 +21,13 @@ def main():
         name = p.name.lower()
         if (name.startswith('.env') and name != '.env.example') or any(part in {'.venv', '__pycache__', '.codex', '.backup-state', 'node_modules'} for part in rel.parts):
             errors.append(f'{rel}: forbidden private/generated path')
-        if p.suffix.lower() in {'.pem', '.key', '.p12', '.mp4', '.pdf', '.zip'} or p.stat().st_size >= 100 * 1024 * 1024:
+        lfs_pdf = False
+        if p.suffix.lower() == '.pdf':
+            attr = subprocess.check_output(['git', 'check-attr', 'filter', '--', rel.as_posix()], cwd=ROOT)
+            lfs_pdf = attr.decode('utf-8', errors='replace').rstrip().endswith(': lfs')
+        if (p.suffix.lower() in {'.pem', '.key', '.p12', '.mp4', '.zip'}
+                or (p.suffix.lower() == '.pdf' and not lfs_pdf)
+                or (p.stat().st_size >= 100 * 1024 * 1024 and not lfs_pdf)):
             errors.append(f'{rel}: private or externally managed artifact')
         if p.suffix.lower() not in {'.md', '.py', '.html', '.css', '.yml', '.yaml', '.json', '.xml', '.txt', '.bat', '.csv'} and not name.startswith('.'):
             continue

@@ -1,5 +1,7 @@
 # MuscleCore｜Python + MongoDB 智慧運動商城
 
+2026-10-16 的整合狀態與 Docker／隔離 MongoDB 驗證見 [SAM PR #21 驗收紀錄](../../docs/SAM_PR21_ACCEPTANCE_2026-10-16.md)。下方快速啟動與示範帳號屬原有本機展示流程；不能據此推定目前 Cloud Run revision、Atlas 或最終 UAT 已驗收。
+
 本專案把原運動商品購物網站重構成可展示的 Python MVP，採 Flask Blueprint 分層、MongoDB 文件資料庫與角色權限。前台為 `VibeCart AI` 個人化推薦；後台為 `VibeInsight AI` 營運洞察。
 
 ## 已完成

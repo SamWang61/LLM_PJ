@@ -1,119 +1,10 @@
-# Atlas 最新完整 Schema 讀回
+# Atlas 最新完整 Schema 與索引讀回
 
-新版核心 19 集合 v4，另保留 8 集合。
+2026-10-05 重建及商品匯入後讀回；27 集合，來源為 verify_recovery.py。
 
 ```json
 {
-  "checked_at": {
-    "$date": "2026-09-18T16:07:10.833Z"
-  },
-  "database": "vibecart_ai",
-  "core_collections": [
-    "users",
-    "products",
-    "product_skus",
-    "product_reviews",
-    "product_repurchase_stats",
-    "categories",
-    "brands",
-    "orders",
-    "order_items",
-    "carts",
-    "cart_events",
-    "behavior_events",
-    "user_preference_scores",
-    "cross_category_rules",
-    "product_purchase_sequences",
-    "recommendation_pools",
-    "first_member_recommendations",
-    "recommendation_logs",
-    "system_configs"
-  ],
-  "preserved_collections": [
-    "user_events",
-    "ai_requests",
-    "product_embeddings",
-    "recommendations",
-    "ai_insights",
-    "ai_usage",
-    "request_limits",
-    "schema_migrations"
-  ],
-  "extra_collections": [],
-  "migrations": [
-    {
-      "_id": "20260916_01_initial_schema_v2",
-      "schema_version": 2,
-      "checksum": "3478559fd54fbc72d3ba095eb22163600aa988a870cc31c1d29241206c59de5d",
-      "status": "succeeded",
-      "started_at": {
-        "$date": "2026-09-16T02:52:38.287Z"
-      },
-      "completed_at": {
-        "$date": "2026-09-16T02:52:42.945Z"
-      },
-      "counts": {
-        "source": 0,
-        "target": 0,
-        "errors": 0
-      },
-      "error_code": null
-    },
-    {
-      "_id": "20260916_02_cart_state_events_v3",
-      "schema_version": 2,
-      "checksum": "12728b76700f6d26ab29f6df9cdbcbf4bf1dad725608c4a7a7dc3455f71fcf4c",
-      "status": "succeeded",
-      "started_at": {
-        "$date": "2026-09-16T14:02:43.918Z"
-      },
-      "completed_at": {
-        "$date": "2026-09-16T14:02:50.391Z"
-      },
-      "counts": {
-        "source": 0,
-        "target": 0,
-        "errors": 0
-      },
-      "error_code": null
-    },
-    {
-      "_id": "20260918_03_schema_document_constraints",
-      "schema_version": 2,
-      "checksum": "29aa95e0c03db30c3c4891dbe6712ff21f7c7364de4ae40eb2eabccbcf862e05",
-      "status": "succeeded",
-      "started_at": {
-        "$date": "2026-09-18T11:37:23.988Z"
-      },
-      "completed_at": {
-        "$date": "2026-09-18T11:37:28.449Z"
-      },
-      "counts": {
-        "source": 0,
-        "target": 0,
-        "errors": 0
-      },
-      "error_code": null
-    },
-    {
-      "_id": "20260918_04_complete_catalog_schema_v4",
-      "schema_version": 2,
-      "checksum": "543eb3d495f9e5a3cef51ad38fda18a3d89b51a0659526b822ce4df37fd3e676",
-      "status": "succeeded",
-      "started_at": {
-        "$date": "2026-09-18T15:58:10.194Z"
-      },
-      "completed_at": {
-        "$date": "2026-09-18T15:58:25.664Z"
-      },
-      "counts": {
-        "source": 0,
-        "target": 1,
-        "errors": 0
-      },
-      "error_code": null
-    }
-  ],
+  "checked_at": "2026-10-05T07:29:43.121579+00:00",
   "collections": [
     {
       "collection": "users",
@@ -431,8 +322,8 @@
     },
     {
       "collection": "categories",
-      "count": 0,
-      "conforming_documents": 0,
+      "count": 32,
+      "conforming_documents": 32,
       "options": {
         "validator": {
           "$jsonSchema": {
@@ -589,8 +480,8 @@
     },
     {
       "collection": "products",
-      "count": 0,
-      "conforming_documents": 0,
+      "count": 336,
+      "conforming_documents": 336,
       "options": {
         "validator": {
           "$jsonSchema": {
@@ -3806,8 +3697,8 @@
     },
     {
       "collection": "brands",
-      "count": 0,
-      "conforming_documents": 0,
+      "count": 128,
+      "conforming_documents": 128,
       "options": {
         "validator": {
           "$jsonSchema": {
@@ -3895,8 +3786,8 @@
     },
     {
       "collection": "product_skus",
-      "count": 0,
-      "conforming_documents": 0,
+      "count": 336,
+      "conforming_documents": 336,
       "options": {
         "validator": {
           "$jsonSchema": {
@@ -6147,45 +6038,78 @@
       ]
     }
   ],
-  "system_configs": [
+  "migrations": [
     {
-      "_id": {
-        "$oid": "6aad5f98bb50ad73772cfe86"
+      "_id": "20260916_01_initial_schema_v2",
+      "schema_version": 2,
+      "checksum": "3478559fd54fbc72d3ba095eb22163600aa988a870cc31c1d29241206c59de5d",
+      "status": "succeeded",
+      "started_at": {
+        "$date": "2026-10-05T07:26:54.815Z"
       },
-      "schema_version": 4,
-      "config_key": "recommendation_policy",
-      "version": 1,
-      "status": "active",
-      "created_at": {
-        "$date": "2026-09-18T15:58:16.708Z"
+      "completed_at": {
+        "$date": "2026-10-05T07:26:58.742Z"
       },
-      "updated_at": {
-        "$date": "2026-09-18T15:58:16.708Z"
+      "counts": {
+        "source": 0,
+        "target": 0,
+        "errors": 0
       },
-      "settings": {
-        "weights": {
-          "PURCHASE": 4,
-          "ADD_TO_CART": 3,
-          "SEARCH": 2,
-          "PRODUCT_VIEW": 1
-        },
-        "half_life_days": {
-          "PURCHASE": 365,
-          "ADD_TO_CART": 180,
-          "SEARCH": 90,
-          "PRODUCT_VIEW": 30
-        },
-        "major_score_cap": 70,
-        "minor_score_cap": 30,
-        "personalized_count": 6,
-        "cross_category_count": 4,
-        "first_member_min_rating": 4.5,
-        "default_product_rating": 4.0,
-        "cross_min_customers": 500,
-        "cross_min_co_purchases": 50,
-        "cross_min_confidence": 0.05,
-        "cross_min_lift": 1.2
-      }
+      "error_code": null
+    },
+    {
+      "_id": "20260916_02_cart_state_events_v3",
+      "schema_version": 2,
+      "checksum": "12728b76700f6d26ab29f6df9cdbcbf4bf1dad725608c4a7a7dc3455f71fcf4c",
+      "status": "succeeded",
+      "started_at": {
+        "$date": "2026-10-05T07:27:06.512Z"
+      },
+      "completed_at": {
+        "$date": "2026-10-05T07:27:10.676Z"
+      },
+      "counts": {
+        "source": 0,
+        "target": 0,
+        "errors": 0
+      },
+      "error_code": null
+    },
+    {
+      "_id": "20260918_03_schema_document_constraints",
+      "schema_version": 2,
+      "checksum": "29aa95e0c03db30c3c4891dbe6712ff21f7c7364de4ae40eb2eabccbcf862e05",
+      "status": "succeeded",
+      "started_at": {
+        "$date": "2026-10-05T07:27:19.858Z"
+      },
+      "completed_at": {
+        "$date": "2026-10-05T07:27:24.816Z"
+      },
+      "counts": {
+        "source": 0,
+        "target": 0,
+        "errors": 0
+      },
+      "error_code": null
+    },
+    {
+      "_id": "20260918_04_complete_catalog_schema_v4",
+      "schema_version": 2,
+      "checksum": "543eb3d495f9e5a3cef51ad38fda18a3d89b51a0659526b822ce4df37fd3e676",
+      "status": "succeeded",
+      "started_at": {
+        "$date": "2026-10-05T07:27:36.807Z"
+      },
+      "completed_at": {
+        "$date": "2026-10-05T07:27:50.571Z"
+      },
+      "counts": {
+        "source": 0,
+        "target": 1,
+        "errors": 0
+      },
+      "error_code": null
     }
   ]
 }
