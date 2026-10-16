@@ -18,14 +18,14 @@
 - 線框圖不含示範數字；新增 v4 集合與欄位對照及資料需求 D1～D5，供資料庫對接。Field mapping replaces sample values.
 - 僅文件，不修改程式、Schema 或憑證。Documentation only.
 
-## 2026-10-05 — HEN 選擇會員／購物流程 / HEN auth-order ownership
+## 2026-10-05 — REN 選擇會員／購物流程 / REN auth-order ownership
 
-- 仁千 HEN 已選 B，對應 `feature/auth-order`；前台／RWD 改為待重新分配。HEN now owns auth/order.
-- 更新分工表、分支協作、首頁與 [HEN 交接文件](docs/HEN_AUTH_ORDER.md)。Access status is tracked separately from ownership.
+- 仁千 REN 已選 B，對應 `feature/auth-order`；前台／RWD 改為待重新分配。REN now owns auth/order.
+- 更新分工表、分支協作、首頁與 [REN 交接文件](docs/REN_AUTH_ORDER.md)。Access status is tracked separately from ownership.
 
 ## 2026-10-02 — 分工更正與資料庫測試 / Ownership and database checks
 
-- 現行責任：SAM 資料庫／測試、JEFF AI／後台、HEN 前台／RWD（10/6 再確認）；整合驗證待確認。See [ownership](docs/TEAM_OWNERSHIP.md).
+- 現行責任：SAM 資料庫／測試、JEFF AI／後台、REN 前台／RWD（10/6 再確認）；整合驗證待確認。See [ownership](docs/TEAM_OWNERSHIP.md).
 - PR #5 計分候選轉草稿，未合入 main；不列入本次 SAM 交付。The candidate scoring branch remains parked.
 - 新增只讀檢查器與 17 項回歸案例；既有真實資料庫測試 66 項通過，測試前後集合筆數一致。See [database evidence](docs/SAM_DATABASE_TESTING.md).
 - 不修改功能、Schema、migration、憑證或部署。No application, schema or credential changes.

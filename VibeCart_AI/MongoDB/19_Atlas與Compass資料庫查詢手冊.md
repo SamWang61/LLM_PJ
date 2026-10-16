@@ -1,6 +1,6 @@
 # MongoDB Atlas 與 Compass 資料庫查詢手冊
 
-版本：1.0｜日期：2026-10-05（Asia/Taipei）｜對象：SAM、HEN、JEFF 與專題測試同學。
+版本：1.0｜日期：2026-10-05（Asia/Taipei）｜對象：SAM、REN、JEFF 與專題測試同學。
 
 本手冊說明如何連到 VibeCart AI 的既有資料庫、搜尋商品與規格、查看分類、圖片、訂單、Schema 及索引。所有範例均為讀取；不需要重建集合、重新匯入或執行歷史遷移。本文按官方介面文件整理，資料筆數與查詢範例以 PyMongo 唯讀核對；不宣稱逐一操作過每位同學的 Atlas／Compass 畫面。
 

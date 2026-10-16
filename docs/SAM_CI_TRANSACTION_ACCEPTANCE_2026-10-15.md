@@ -1,6 +1,6 @@
 # SAM：CI、文件版本與真交易驗收｜2026-10-15
 
-範圍：以 GitHub `main` 的 `7d10f7e358152ed90a419f40d26e2bca529c568e` 為文件修復起點；交易測試使用 HEN `feature/auth-order` 的 `505399313ca4c09b49d77484e98df806b3b30f58`。這兩條分支尚未整合成單一部署版本，驗收結果依來源版本分列。
+範圍：以 GitHub `main` 的 `7d10f7e358152ed90a419f40d26e2bca529c568e` 為文件修復起點；交易測試使用 REN `feature/auth-order` 的 `505399313ca4c09b49d77484e98df806b3b30f58`。這兩條分支尚未整合成單一部署版本，驗收結果依來源版本分列。
 
 ## CI 與文件
 
@@ -21,10 +21,10 @@
 
 SAM 使用 MongoDB Community Server **8.0.20**，在 `127.0.0.1:27029` 啟動單節點 replica set `rsSAM20261015`。測試夾具僅接受無帳密 localhost URI，為每個案例建立隨機 `hen_acceptance_*` 資料庫並於結束刪除；未使用專案 `.env` 或 Atlas。
 
-在 HEN commit `5053993` 的 `MuscleCore分析資料/website` 執行 `python -m pytest tests -q -p no:cacheprovider`，帶入 `HEN_TEST_MONGO_URI=mongodb://127.0.0.1:27029/?replicaSet=rsSAM20261015`：**166 passed、0 skipped**。其中先前跳過的三項真交易案例：
+在 REN commit `5053993` 的 `MuscleCore分析資料/website` 執行 `python -m pytest tests -q -p no:cacheprovider`，帶入 `REN_TEST_MONGO_URI=mongodb://127.0.0.1:27029/?replicaSet=rsSAM20261015`：**166 passed、0 skipped**。其中先前跳過的三項真交易案例：
 
 1. 結帳寫入後故意拋錯，確認訂單、明細、庫存與購物車一併回滾；成功重試及相同 checkout ID 重送只產生一筆訂單與一筆 PURCHASE 事件。
 2. 兩個會員同時結帳最後一件庫存，結果一筆成功、一筆被拒；庫存歸零且不超賣。
 3. 管理員撤權與停用會員放在同一交易後 abort；兩項改動都回滾。
 
-[JUnit 測試紀錄](inventory/SAM_HEN_TRANSACTION_2026-10-15.xml) 保存同一版本完整測試結果。這項驗收覆蓋本機真 MongoDB 交易與並發；測試夾具沒有安裝全套正式 Atlas validators，也沒有做遠端付款、完整後台或正式 D4 匯入。D4 仍須先完成所有 consumer 的部署隔離與遠端讀回。
+[JUnit 測試紀錄](inventory/SAM_REN_TRANSACTION_2026-10-15.xml) 保存同一版本完整測試結果。這項驗收覆蓋本機真 MongoDB 交易與並發；測試夾具沒有安裝全套正式 Atlas validators，也沒有做遠端付款、完整後台或正式 D4 匯入。D4 仍須先完成所有 consumer 的部署隔離與遠端讀回。

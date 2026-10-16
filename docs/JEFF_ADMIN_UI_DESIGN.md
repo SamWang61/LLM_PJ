@@ -60,7 +60,7 @@ English summary: Admin layout and v4 field mapping with explicit KPI and sellabl
 ```
 
 - AI 摘要**兩處都保留**：營運總覽的「產生此範圍的 AI 摘要」沿用 `POST /admin/summary`；AI 板塊 B 使用自己的路由。兩者共用 `services/ai_workflows.py` 的摘要邏輯。
-- 商品／訂單／會員管理**顯示於導覽**；路由未交付時須顯示「尚未開放」，不得連到 404。版面由本文件定義；JEFF 負責後台寫入功能，SAM 負責資料契約、migration 與驗收，HEN 提供登入撤權及訂單／庫存接口（見第 12.3 節）。
+- 商品／訂單／會員管理**顯示於導覽**；路由未交付時須顯示「尚未開放」，不得連到 404。版面由本文件定義；JEFF 負責後台寫入功能，SAM 負責資料契約、migration 與驗收，REN 提供登入撤權及訂單／庫存接口（見第 12.3 節）。
 
 ---
 
@@ -296,7 +296,7 @@ v4 集合與欄位依 `VibeCart_AI/MongoDB/schema_complete_v4.py`。
 | D3 | 示範訂單與明細 | ✅ 已有：`orders` 3,000（全部 `is_demo=true`）、`order_items` 8,969；`users` 600 位合成會員**全部停用**，不能登入 |
 | D4 | 行為事件 `behavior_events` | ⏳ 0 筆，SAM 待產生（新批次、可辨識 synthetic）；「猜你喜歡」與推薦監控依賴此項 |
 | D5 | 後台寫入契約與稽核 Schema | 📝 JEFF 已回覆（第 12.3 節）；稽核集合待 SAM 新增 migration |
-| D6 | 可登入的私有 customer／admin 測試帳號 | ⏳ SAM 待配置（需 HEN 登入／撤權介面；後台授權路徑見第 12.3 節） |
+| D6 | 可登入的私有 customer／admin 測試帳號 | ⏳ SAM 待配置（需 REN 登入／撤權介面；後台授權路徑見第 12.3 節） |
 
 匯入批次與證據見 PR #11 `docs/TEST_DATA_IMPORT_2026-10-05.md`、`VibeCart_AI/MongoDB/test_data/`。所有營運數字皆來自示範訂單，展示時須標示「示範資料」。
 
@@ -424,7 +424,7 @@ v4 集合與欄位依 `VibeCart_AI/MongoDB/schema_complete_v4.py`。
 **C｜會員停用**
 - 後台**只能停用 customer**，不能停用任何 `role='admin'` 帳號（包含自己）。介面上對管理員列不顯示停用操作，伺服器端亦拒絕（403）。
 - 管理員帳號的停用只能由資料庫維護人員直接操作資料庫完成。
-- 停用同時撤銷該會員的 session（依 HEN 的撤權機制）。
+- 停用同時撤銷該會員的 session（依 REN 的撤權機制）。
 
 **D｜第一版寫入範圍**
 
@@ -435,7 +435,7 @@ v4 集合與欄位依 `VibeCart_AI/MongoDB/schema_complete_v4.py`。
 | 訂單 | 狀態依合法順序：pending→confirmed→shipping→completed；pending／confirmed→cancelled | **退款**（列為後續）、修改金額／快照／`is_demo` |
 | 會員 | customer 停用 | 管理員停用、角色變更 |
 
-- 版本衝突、錯誤碼依 SAM 提案（`expected_updated_at`、409／422／401／403／404）；重送保存及批量 ID 依 12.3-B。付款／退款與取消庫存語義仍需在實作前依 HEN 接口核對，本文不宣稱已交付 D5 寫入 API。
+- 版本衝突、錯誤碼依 SAM 提案（`expected_updated_at`、409／422／401／403／404）；重送保存及批量 ID 依 12.3-B。付款／退款與取消庫存語義仍需在實作前依 REN 接口核對，本文不宣稱已交付 D5 寫入 API。
 
 ### 12.4 交給 SAM 的後續
 
