@@ -115,7 +115,7 @@ Existing module paths and migration history are preserved. The scoped manifest s
 - **第 2 回後的修正**：
   - 補貨候選改由程式篩選，只送「可售量 ≤ 安全庫存」的商品。實際資料共 29 筆，可售量都是 3。
   - system prompt 明文禁止自行加減乘除產生新數字。
-  - 這一輪修正已通過離線測試，**尚未再以真實 Claude 驗證**。
+  - 2026-10-17 第 3 回以真實 Claude 驗證（只問補貨 1 次）：範圍自動移到 10/09～10/15，因 Atlas 新增 2 筆 10/14 的示範訂單，共 3,002 筆。延遲 20.6 秒，輸入 6,726、輸出 1,186 tokens，未截斷。回覆中的 29 筆候選、可售量 3、安全庫存 10、本期銷量皆為 0，以及點名的 9 個商品，全部與送出資料一致，**不再以偏概全，也不再自行計算差額**。仍有 1 處小瑕疵：說「其餘 23 項」，是 29−6 自行相減，數字正確但違反「不自行計算」。另外回覆長度超出 prompt 要求的 400 字，接近 1200 tokens 上限。
 - **結論**：模型會正確引用程式算好的數字，但仍可能抄錯日期、以偏概全或自行計算，所以畫面上的「請人工核對」必須保留。請模型做「判斷或篩選」的部分，應盡量改由程式先做好。
 
 Taipei date filters and demo exclusions apply consistently to v4 revenue, daily totals, ranking and summaries. Inventory is current; recommendation events are bounded counts, not attribution metrics.
