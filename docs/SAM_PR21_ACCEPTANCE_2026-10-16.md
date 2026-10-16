@@ -8,13 +8,15 @@
 |---|---|---|
 | GitHub | `main=00a1d21d9613b2b916cf3de8ce7e215eddaa5a9a`；PR #21 程式修正 `7798bc5d682fbf85408b74e6f07bf60ed7dfbfa9`，仍為草稿；該提交的 [PR CI](https://github.com/SamWang61/LLM_PJ/actions/runs/38844059373) 成功。 | CI 不含遠端交易及人工畫面驗收；後續文件提交也須另核對 CI。 |
 | 文件政策與附件 | `python scripts/check_repository.py`：281 files、263 UTF-8 texts、0 errors；`git lfs fsck` 通過，四個 PDF 由 LFS 管理。 | 已核對本地 LFS 物件；遠端發布後須再核對可讀性。 |
-| 白名單封裝 | `python scripts/prepare_cloud_source.py` 封裝 47 個檔案，修正後該次 tar SHA-256=`a60a0af34ac9e4c4948cdc41dc7e8b84803c43996f2dc716236de64eb24fc075`。 | tar 雜湊屬本次建置產物，不代表遠端映像 digest。 |
-| Docker build／boot | 使用封裝內容執行 `docker build --pull` 成功；修正後本地映像 ID=`sha256:6449c8b324457b67d7dd2960355df77ecd3e273bc5e6a7cda09d206bc51a66b7`。容器以假 URI／假 session key 啟動，`/health/live` 為 200、`{"status":"ok"}`；唯讀模式 `/auth/login` 為 403。 | 假 URI 不連 Atlas；未以此測 `/health/ready`、商品資料或真實登入。容器已停止。 |
+| 白名單封裝 | `python scripts/prepare_cloud_source.py` 封裝 47 個檔案；將獨立工作樹的換行與 Git 提交位元組對齊後，tar SHA-256=`1ed8b875194e3eff9b9d4e74e32350193d690f0e8af1cd50d6b837bce4dedf94`。 | tar 雜湊屬本次建置產物，不代表遠端映像 digest。 |
+| Docker build／boot | 使用上述封裝內容執行 `docker build --pull` 成功；本地映像 ID=`sha256:c608f42c439eeb720b922480881d2f6aafd5b50772262bc39ec3ac7039ea8161`。容器以假 URI／假 session key 啟動，`/health/live` 為 200、`{"status":"ok"}`；唯讀模式 `/auth/login` 為 403。 | 假 URI 不連 Atlas；未以此測 `/health/ready`、商品資料或真實登入。容器已停止。 |
 | 網站與交易 | 在無憑證的一次性 localhost MongoDB replica set 執行完整 `pytest tests -q -p no:cacheprovider`：**171 passed、0 skipped**，含 rollback、最後庫存並發、撤權回滾與自由提問啟用閘門。測試使用隨機 `hen_acceptance_*` DB，結束後刪除；容器已停止。 | 僅證明本機隔離環境與此 SHA；不等於 Atlas 或展示站交易驗收。 |
 
 ## 本輪修正
 
 審查發現原程式在管理員 AI 頁面顯示自由提問，伺服器也接受 `free_question`，未遵守 v1.2 的獨立預設關閉條件。`7798bc5` 增加 `AI_FREE_QUESTION_ENABLED=false` 預設值；只有該旗標、`AI_SUMMARY_ENABLED` 與 `DATA_MODE=v4` 同時成立時才顯示輸入欄並接受 POST。關閉時伺服器回 403，固定 intent 保持可用。這只修復啟用閘門；遠端真模型、安全與同版畫面驗收前仍維持關閉。
+
+Windows 工作樹起初有 28 份文字檔為 CRLF，Git 提交與遠端為 LF；已在獨立乾淨工作樹把這些純換行差異校正，對 PR 相對 `main` 的 146 個變更路徑逐一確認來源、提交及遠端原始位元組相同，再使用該工作樹重新封裝和建置。原 `C:\LLM\LLM_PJ` 工作目錄未改動。
 
 ## 尚未達到的最終驗收條件
 
