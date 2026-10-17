@@ -1,0 +1,381 @@
+{
+  "checked_at": "2026-10-17T19:22:33.279977+00:00",
+  "main": "c1ce5cc38727a7077013e0a6452d561ee10ecd67",
+  "open_prs_including_current": 11,
+  "excluded_current_pr": 61,
+  "method": "Compare each open head with main by ancestry and exact Git blob on merge-base..head changed paths; no automatic merge/close and no semantic equivalence claim",
+  "rows": [
+    {
+      "pr": 5,
+      "title": "draft: 行為計分候選實作（AI／後台由 JEFF 負責）",
+      "url": "https://github.com/SamWang61/LLM_PJ/pull/5",
+      "head": "dc3114de7de0cd72b370610a1bdd6e2a707d8940",
+      "base_branch": "main",
+      "head_ancestor_of_main": false,
+      "merge_base": "f49105775b5cf8981d3288541c18684edbaef7cd",
+      "changed_paths": 14,
+      "exact_matches": 0,
+      "different_paths": 14,
+      "paths": [
+        {
+          "path": "CHANGELOG.md",
+          "head_blob": "887f94f94889aa82750d9bb498fa162f7b4e6089",
+          "main_blob": "5879fa13c54fe2a671eec560ff657aced43c8d20",
+          "exact_match": false
+        },
+        {
+          "path": "MuscleCore分析資料/website/tests/test_preference_scores.py",
+          "head_blob": "a43b48970e3b4b63b57aec295d6a01efbcd4c2ab",
+          "main_blob": null,
+          "exact_match": false
+        },
+        {
+          "path": "README.md",
+          "head_blob": "07bb58c8cae1fc189bd3e703ce2f6979d63fb6db",
+          "main_blob": "7e963b6852200a8918ba02d5af27419d3e4d8046",
+          "exact_match": false
+        },
+        {
+          "path": "VibeCart_AI/services/preference_service.py",
+          "head_blob": "75da976606ed7ac54d6e59642699f4b8001ea6ac",
+          "main_blob": null,
+          "exact_match": false
+        },
+        {
+          "path": "docs/AI_DASHBOARD.md",
+          "head_blob": "00aae2a99619aca1e0990963b848c6cababeca97",
+          "main_blob": "5531c8e71299327e9c0975b48a10675d552394ca",
+          "exact_match": false
+        },
+        {
+          "path": "docs/DOCUMENT_INDEX.md",
+          "head_blob": "28dde4e0ad78a5802a47f05266e817ae4c6cf455",
+          "main_blob": "d391201cb628283346ef1790823709190b9db7bb",
+          "exact_match": false
+        },
+        {
+          "path": "docs/PREFERENCE_SCORING.md",
+          "head_blob": "0f96f14fc5d4b0fe591cc0b05259b1d76656d690",
+          "main_blob": null,
+          "exact_match": false
+        },
+        {
+          "path": "docs/README.md",
+          "head_blob": "8333f7c3d3b0aaef9d94f8fc099f00b1f8450c43",
+          "main_blob": "7459da98def2fa5d07c840df3f0a4d3bd582e3a8",
+          "exact_match": false
+        },
+        {
+          "path": "docs/SAM_SCORING_VERIFICATION.json",
+          "head_blob": "13fb10f79116852af0172631c12d84b1d2f06fa7",
+          "main_blob": null,
+          "exact_match": false
+        },
+        {
+          "path": "docs/SAM_WORK_PLAN.md",
+          "head_blob": "2a119ddf99842c1031124d64a9ccc512b3f497c5",
+          "main_blob": null,
+          "exact_match": false
+        },
+        {
+          "path": "docs/inventory/sam-scoring.csv",
+          "head_blob": "9c92183336abc7455eaa3585e5f1f03211f53296",
+          "main_blob": null,
+          "exact_match": false
+        },
+        {
+          "path": "docs/分支(Branch)規劃與協作機制.md",
+          "head_blob": "61f4aebca61a909283e3c83fb43ea8ea161766c8",
+          "main_blob": "8f1491be2fc803adfe70d63e074a709fc387415a",
+          "exact_match": false
+        },
+        {
+          "path": "scripts/rebuild_preference_scores.py",
+          "head_blob": "27133f93cf1844674ac2bd7fca82b07c464b2caa",
+          "main_blob": null,
+          "exact_match": false
+        },
+        {
+          "path": "scripts/verify_v4_test.py",
+          "head_blob": "f5b8c54c4545cfb4c157e1c6da3a17981f48ffca",
+          "main_blob": "905c2ec1d6416154a6b68f96762d9ef76e985a5d",
+          "exact_match": false
+        }
+      ],
+      "conclusion": "Different history or blobs require semantic review; differences are not proof of missing functionality"
+    },
+    {
+      "pr": 10,
+      "title": "docs: 同步 MongoDB Network Access 為 0.0.0.0/0",
+      "url": "https://github.com/SamWang61/LLM_PJ/pull/10",
+      "head": "8a6edb1a4f6e5e7e21ce40350d30c6eec1ae44c6",
+      "base_branch": "main",
+      "head_ancestor_of_main": false,
+      "merge_base": "066e9da5c88e97b9d71b41c793d4bc9c95ee26e7",
+      "changed_paths": 6,
+      "exact_matches": 0,
+      "different_paths": 6,
+      "paths": [
+        {
+          "path": "VibeCart_AI/MongoDB/01_Cluster設定與狀態.md",
+          "head_blob": "3098503ddceb8bbfb60cdd55b463e84b44d00602",
+          "main_blob": "0e3b06d65e143338048223356ff816e2aa088e79",
+          "exact_match": false
+        },
+        {
+          "path": "VibeCart_AI/MongoDB/04_連線與維運.md",
+          "head_blob": "4610061b7221bc98ffb6496108efe2d54a9c43a9",
+          "main_blob": "cc98ceff5ee80b89a17bd5a93fb1688ec04e34db",
+          "exact_match": false
+        },
+        {
+          "path": "VibeCart_AI/MongoDB/19_Atlas與Compass資料庫查詢手冊.md",
+          "head_blob": "eda6c84af4e27e51b43c05db4ce2da20effbb70d",
+          "main_blob": "a89f51a49d8d2ee589f194b5fb5308ed2ee907f9",
+          "exact_match": false
+        },
+        {
+          "path": "VibeCart_AI/MongoDB/README.md",
+          "head_blob": "c99b2c3664654d4e092a93df7da354f0f10f0456",
+          "main_blob": "21ef7b31db009fdccdee5166e2f200bc06b0a710",
+          "exact_match": false
+        },
+        {
+          "path": "docs/inventory/files.csv",
+          "head_blob": "a0b4c596989e2f400dcf75c616950839b07e96aa",
+          "main_blob": "d5c3f9a2a6450466d5656f235146dccc95d053f9",
+          "exact_match": false
+        },
+        {
+          "path": "docs/inventory/summary.json",
+          "head_blob": "6e71ed620badb884e52180b5196c4f4360566887",
+          "main_blob": "e3b86f7c92de9dd4ff2097f8b223ba224aa80761",
+          "exact_match": false
+        }
+      ],
+      "conclusion": "Different history or blobs require semantic review; differences are not proof of missing functionality"
+    },
+    {
+      "pr": 13,
+      "title": "feat: AI 板塊 B 雲端洞察 /admin/ai/insight（T2／R09）",
+      "url": "https://github.com/SamWang61/LLM_PJ/pull/13",
+      "head": "f1b85174186acfd8f4e47ce66d25ad368122e1d9",
+      "base_branch": "feature/jeff-admin-ai",
+      "head_ancestor_of_main": true,
+      "merge_base": "f1b85174186acfd8f4e47ce66d25ad368122e1d9",
+      "changed_paths": 0,
+      "exact_matches": 0,
+      "different_paths": 0,
+      "paths": [],
+      "conclusion": "Whole head included in main"
+    },
+    {
+      "pr": 14,
+      "title": "feat: AI 板塊 A Local 相似商品 /admin/ai/recommendation（T3／R09）",
+      "url": "https://github.com/SamWang61/LLM_PJ/pull/14",
+      "head": "b9297388c207a52a976761ceea31b67322371886",
+      "base_branch": "feature/jeff-ai-insight",
+      "head_ancestor_of_main": true,
+      "merge_base": "b9297388c207a52a976761ceea31b67322371886",
+      "changed_paths": 0,
+      "exact_matches": 0,
+      "different_paths": 0,
+      "paths": [],
+      "conclusion": "Whole head included in main"
+    },
+    {
+      "pr": 15,
+      "title": "feat: AI 比較頁 /admin/ai/compare（T4／R09）",
+      "url": "https://github.com/SamWang61/LLM_PJ/pull/15",
+      "head": "9d38712f66148482688d5a185cbeb7e36909d0b1",
+      "base_branch": "feature/jeff-local-ai",
+      "head_ancestor_of_main": true,
+      "merge_base": "9d38712f66148482688d5a185cbeb7e36909d0b1",
+      "changed_paths": 0,
+      "exact_matches": 0,
+      "different_paths": 0,
+      "paths": [],
+      "conclusion": "Whole head included in main"
+    },
+    {
+      "pr": 16,
+      "title": "SAM：D4 synthetic 隔離、匯入工具與 10/11 工作清單",
+      "url": "https://github.com/SamWang61/LLM_PJ/pull/16",
+      "head": "a418d0853dc22d91cb70a73f433c45c1d78c1246",
+      "base_branch": "codex/sam-delivery-20261007",
+      "head_ancestor_of_main": true,
+      "merge_base": "a418d0853dc22d91cb70a73f433c45c1d78c1246",
+      "changed_paths": 0,
+      "exact_matches": 0,
+      "different_paths": 0,
+      "paths": [],
+      "conclusion": "Whole head included in main"
+    },
+    {
+      "pr": 17,
+      "title": "SAM：整合 JEFF AI後台、Firebase唯讀展示與10/12驗證",
+      "url": "https://github.com/SamWang61/LLM_PJ/pull/17",
+      "head": "a0fcad01acc0a5cb5672dbe55bd55236d0d89bd2",
+      "base_branch": "codex/sam-jeff-followup-20261011",
+      "head_ancestor_of_main": true,
+      "merge_base": "a0fcad01acc0a5cb5672dbe55bd55236d0d89bd2",
+      "changed_paths": 0,
+      "exact_matches": 0,
+      "different_paths": 0,
+      "paths": [],
+      "conclusion": "Whole head included in main"
+    },
+    {
+      "pr": 18,
+      "title": "REN：會員多裝置登入與 SKU 購物接口",
+      "url": "https://github.com/SamWang61/LLM_PJ/pull/18",
+      "head": "505399313ca4c09b49d77484e98df806b3b30f58",
+      "base_branch": "codex/sam-integration-deploy-20261012",
+      "head_ancestor_of_main": true,
+      "merge_base": "505399313ca4c09b49d77484e98df806b3b30f58",
+      "changed_paths": 0,
+      "exact_matches": 0,
+      "different_paths": 0,
+      "paths": [],
+      "conclusion": "Whole head included in main"
+    },
+    {
+      "pr": 19,
+      "title": "docs: 建立簡報文件目錄與10/18展示驗收素材",
+      "url": "https://github.com/SamWang61/LLM_PJ/pull/19",
+      "head": "d401c4e2c2c79222f7224005537f29d999461a38",
+      "base_branch": "main",
+      "head_ancestor_of_main": false,
+      "merge_base": "0d04dd8141c78a04b29eca684dacea31981ae8fa",
+      "changed_paths": 7,
+      "exact_matches": 0,
+      "different_paths": 7,
+      "paths": [
+        {
+          "path": "簡報文件/ARCHITECTURE.md",
+          "head_blob": "6fb361d9e7e3fb1e5ea7691464363c8a431c90bc",
+          "main_blob": null,
+          "exact_match": false
+        },
+        {
+          "path": "簡報文件/DELIVERY_PLAN.md",
+          "head_blob": "8fd455707237dd56a43aadcc1282ffe1bfb3064a",
+          "main_blob": null,
+          "exact_match": false
+        },
+        {
+          "path": "簡報文件/README.md",
+          "head_blob": "163cc95b5b3bc1e031b48d7c75d5df365188f9bc",
+          "main_blob": null,
+          "exact_match": false
+        },
+        {
+          "path": "簡報文件/SLIDE_CONTENT.md",
+          "head_blob": "1cb0465a3c4bab5db3859a4c36f1c70f37149ce3",
+          "main_blob": null,
+          "exact_match": false
+        },
+        {
+          "path": "簡報文件/SOURCE_REGISTER.md",
+          "head_blob": "412c784cacad7ae389d001a687aae0478ec8beaa",
+          "main_blob": null,
+          "exact_match": false
+        },
+        {
+          "path": "簡報文件/screenshots/README.md",
+          "head_blob": "c8ac94bf4ee69560dfd230ebd052b7fe220e4221",
+          "main_blob": null,
+          "exact_match": false
+        },
+        {
+          "path": "簡報文件/screenshots/S01-home.png",
+          "head_blob": "89f0100b60a56a114352f9e3b22aebaad4521647",
+          "main_blob": null,
+          "exact_match": false
+        }
+      ],
+      "conclusion": "Different history or blobs require semantic review; differences are not proof of missing functionality"
+    },
+    {
+      "pr": 65,
+      "title": "docs: 補齊交接來源並完成 N03 版本與路由核對",
+      "url": "https://github.com/SamWang61/LLM_PJ/pull/65",
+      "head": "6c5a3334e6ccbd1293c4e991711b61fc83618e2a",
+      "base_branch": "main",
+      "head_ancestor_of_main": false,
+      "merge_base": "c1ce5cc38727a7077013e0a6452d561ee10ecd67",
+      "changed_paths": 11,
+      "exact_matches": 0,
+      "different_paths": 11,
+      "paths": [
+        {
+          "path": ".gitattributes",
+          "head_blob": "02ea8da09796cc723011b19b6f1d3090efb5f77b",
+          "main_blob": "c7c9891a68d4bb0b0d351f8fc9352b4afaaeef5b",
+          "exact_match": false
+        },
+        {
+          "path": "docs/CURRENT_CONTEXT.md",
+          "head_blob": "4542363a4e772623a8b5c7e6890c82321968aa74",
+          "main_blob": "a54f8da31ebff2649852f93e644b11f905c36af7",
+          "exact_match": false
+        },
+        {
+          "path": "docs/DOCUMENT_INDEX.md",
+          "head_blob": "253ca9d773f09fe253846cf78eedbccab368d68b",
+          "main_blob": "d391201cb628283346ef1790823709190b9db7bb",
+          "exact_match": false
+        },
+        {
+          "path": "docs/README.md",
+          "head_blob": "00e58d846483119dc39466708a55ae6b685befd7",
+          "main_blob": "7459da98def2fa5d07c840df3f0a4d3bd582e3a8",
+          "exact_match": false
+        },
+        {
+          "path": "docs/SAM_V1_DELIVERY_SCOPE_2026-10-18.md",
+          "head_blob": "fd486f52064eccf648eeab9085a38f781a051494",
+          "main_blob": null,
+          "exact_match": false
+        },
+        {
+          "path": "docs/SAM_VERSION_MAP_2026-10-18.md",
+          "head_blob": "f32e9f406ccafacaf23b4090b41af013963144b7",
+          "main_blob": null,
+          "exact_match": false
+        },
+        {
+          "path": "docs/inventory/sam-delivery-cloud-20261018-0300.json",
+          "head_blob": "fe0ddcde90e27114e9a35af7bcbc18b3242a56d3",
+          "main_blob": null,
+          "exact_match": false
+        },
+        {
+          "path": "docs/inventory/sam-delivery-cloud-auth-gap-20261018-0300.json",
+          "head_blob": "238a11dc2354c58e2a233af4a02f4f97074b9236",
+          "main_blob": null,
+          "exact_match": false
+        },
+        {
+          "path": "docs/inventory/sam-delivery-reconciliation-20261018-0300.json",
+          "head_blob": "1e978f6d8eef60c1d5be3593ca7055198625fc1c",
+          "main_blob": null,
+          "exact_match": false
+        },
+        {
+          "path": "docs/inventory/sam-version-lock-20261018-0307.json",
+          "head_blob": "b48ea2893b7e42166c0804fc8be8cdd3eec86ce7",
+          "main_blob": null,
+          "exact_match": false
+        },
+        {
+          "path": "專題進度/專案未完成工作清單_2026-10-18.md",
+          "head_blob": "33f56787f67d37b85a3621101c04fa8a4b587087",
+          "main_blob": "57864df68aa79080cae50e42c64fab2dfffed70c",
+          "exact_match": false
+        }
+      ],
+      "conclusion": "Different history or blobs require semantic review; differences are not proof of missing functionality"
+    }
+  ]
+}

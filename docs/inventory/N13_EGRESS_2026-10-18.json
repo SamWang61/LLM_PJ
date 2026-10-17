@@ -1,0 +1,50 @@
+{
+  "checked_at": "2026-10-17T19:22:53.897Z",
+  "source": "Cloud Run v2 service read-only",
+  "services": [
+    {
+      "service": "vibecart-web",
+      "template_vpc_access": null,
+      "traffic": [
+        {
+          "revision": "vibecart-web-00007-m9k"
+        },
+        {
+          "revision": "vibecart-web-00008-5bw"
+        },
+        {
+          "revision": "vibecart-web-00009-xfq"
+        },
+        {
+          "revision": "vibecart-web-00010-q8l"
+        },
+        {
+          "revision": "vibecart-web-00012-85f"
+        },
+        {
+          "revision": "vibecart-web-00013-ds5"
+        },
+        {
+          "revision": "vibecart-web-00014-kq8"
+        },
+        {
+          "revision": "vibecart-web-00015-nlk",
+          "percent": 100
+        }
+      ]
+    },
+    {
+      "service": "vibecart-acceptance-pr21",
+      "template_vpc_access": null,
+      "traffic": [
+        {
+          "revision": "vibecart-acceptance-pr21-00005-5j5",
+          "percent": 100
+        }
+      ]
+    }
+  ],
+  "fixed_egress_verified": false,
+  "conclusion": "No configured VPC access on these service templates; no static NAT egress demonstrated. Do not replace Atlas anywhere rule using workstation addresses alone.",
+  "changed": false
+}
