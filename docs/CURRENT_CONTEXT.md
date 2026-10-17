@@ -1,5 +1,7 @@
 # 最新專案上下文 / Current project context
 
+更新：**2026-10-17 13:39（Asia/Taipei）**。[PR #21](https://github.com/SamWang61/LLM_PJ/pull/21) 已依使用者要求合併至 `main`，merge SHA `2fd43557bac0148e02fa427163a9657a13c7ae23`，[合併後 CI](https://github.com/SamWang61/LLM_PJ/actions/runs/39006863627) success。同版映像已建立 Cloud Run 正式服務的**零流量唯讀**修訂 `vibecart-web-00011-dx2`；舊 `00007-m9k` 仍為 100% 流量。Atlas 獨立驗收帳號仍未建立，驗收 Mongo URI secret 仍無版本；連接器建立帳號動作因缺少操作確認而未執行。遠端交易、Atlas 持久化與正式流量切換**尚未完成**；D4 閘門未解除。詳見[最新驗收紀錄](SAM_REMOTE_TRANSACTION_ACCEPTANCE_2026-10-17.md)。以下舊段落均按各自日期作歷史快照。
+
 更新：2026-10-17（Asia/Taipei）。SAM 代理 REN 的[獨立遠端交易驗收紀錄](SAM_REMOTE_TRANSACTION_ACCEPTANCE_2026-10-17.md)已讀回私有 Cloud Run 服務的同版映像、Ready、專用 IAM、匿名 403 與正式流量不變；初始服務仍是假 URI、唯讀，ready 503 為預期。Atlas 專用帳號需連接器額外確認，尚未建立，沒有遠端交易或 Atlas 寫入。PR #21 仍為草稿，D4 不得 apply。
 
 更新：2026-10-17（Asia/Taipei）。PR #21 已加入[隔離交易驗收啟動防護與前置清單](SAM_REMOTE_TRANSACTION_PREFLIGHT_2026-10-17.md)：指定私有 Cloud Run 服務、顯式旗標及 `vibecart_acceptance_` 資料庫名稱才可選獨立 DB；本機隔離 MongoDB 完整測試 180 passed／0 skipped。私有可寫入服務、最小權限 MongoDB 憑證、測試資料與遠端交易驗收仍未建立；不得把此程式防護列為遠端角色／交易通過。

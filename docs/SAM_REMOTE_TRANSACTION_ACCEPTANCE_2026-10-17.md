@@ -33,3 +33,10 @@ REN 的 R08 重新登入修正、事件驗證，以及 D4 未部署 consumer 門
 使用者回報 Atlas 驗收帳號與密鑰已建立，但本輪以兩個 Atlas 連接讀回專案 `6aa9bd20af3f21039447a5c0`，仍只有原 3 個資料庫帳號，未見 `sam_pr21_acceptance_20261017`；Google Secret Manager `vibecart-pr21-acceptance-mongo-uri` 亦讀回 **0 個版本**。已請使用者核對專案及最後儲存步驟，不將回報取代遠端讀回。驗收資料庫未連接，角色、交易、畫面與 D4 consumer 遠端隔離尚未通過；PR #21 仍維持草稿，不合併 main。
 
 完成唯讀預覽核對後，已撤回操作者對驗收服務身分的臨時 `roles/iam.serviceAccountTokenCreator`，IAM 讀回此角色綁定為 0。待隔離帳號與密鑰確實可讀後，須再以授權測試身分恢復短期測試權限，完成驗收後再次撤回。
+
+## 13:39 合併與正式服務零流量修訂（2026-10-17，台灣時間）
+
+- 使用者明確要求合併、部署與遠端驗收。[PR #21](https://github.com/SamWang61/LLM_PJ/pull/21) head `f4fc3c7cf48dd358a855663063e5d2d19904e106` 的兩次 CI success；相對上述 `5da34e6` 受測程式僅有文件變更。另以一次性、無憑證 localhost MongoDB replica set 重跑該程式版本，完整網站測試 **183 passed／0 skipped**。PR 已合併，`main` merge SHA `2fd43557bac0148e02fa427163a9657a13c7ae23`，[同版 main CI](https://github.com/SamWang61/LLM_PJ/actions/runs/39006863627) success。main 與 PR head 在 Cloud Run 封裝範圍內無程式差異。
+- Cloud Run 正式服務新增標籤 `main-2fd4355` 的**零流量唯讀**修訂 `vibecart-web-00011-dx2`。管理端讀回 Ready、source SHA label `2fd43557bac0148e02fa427163a9657a13c7ae23`、amd64 image manifest `sha256:d933a5d8bf3f9264beac3bc9738e2bb84d11cf92e1b8ce097b0cd3000be40b91`；`CLOUD_PREVIEW_READ_ONLY=true`、`ENABLE_CHECKOUT=false`，Mongo URI／session key 仍是 Secret Manager 參照。舊 `vibecart-web-00007-m9k` 保持 **100%** 正式流量。標籤網址的 `/health/live`、`/health/ready` 回 200，`/auth/login`、`/admin/` 與登入 POST 回 403；這是預覽隔離證據，不是交易簽收。
+- Atlas 專案 `6aa9bd20af3f21039447a5c0` 唯讀重查仍只有原 3 個資料庫使用者，沒有 `sam_pr21_acceptance_20261017`；`vibecart_acceptance_pr21` 尚不存在，正式 `vibecart_ai` 的 D1～D3 訂單 3,000、額外 demo 訂單 2、D4 指定事件 0。Secret Manager `vibecart-pr21-acceptance-mongo-uri` 仍為 **0 個版本**。嘗試以最小權限 `readWrite@vibecart_acceptance_pr21` 建立專用 Atlas 使用者，連接器回覆「User did not confirm」，操作**未執行**；已請使用者完成該連接器確認。不得改用正式庫帳號或 Atlas admin 憑證代替。
+- **仍未完成**：獨立驗收 DB 的少量資料及寫後讀回、私有服務可寫修訂、角色／跨裝置／SKU cart／checkout／事件遠端交易、測後撤權與清理、正式流量切換及具名簽收。待專用帳號與 secret 可讀後，按上方前置清單繼續；D4 全部 consumer 遠端隔離前不得 apply，D1～D3 不重匯。
