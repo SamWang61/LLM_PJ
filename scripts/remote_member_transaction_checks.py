@@ -34,8 +34,8 @@ def persisted_counts(db, user_ids, sku_ids):
         {'user_id': {'$in': user_ids}}, {'_id': 1})]
     queries = {
         'orders': {'user_id': {'$in': user_ids}},
-        # order_items has order_id/sku_id, not user_id. SKU ownership also
-        # catches a partial item whose parent order was rolled back or missing.
+        # Current checkout writes user_id too. SKU ownership additionally
+        # catches an anomalous item missing user_id or its parent order.
         'order_items': {'sku_id': {'$in': sku_ids}},
         'behavior_events': {'user_id': {'$in': user_ids}},
         'cart_events': {'cart_id': {'$in': cart_ids}},

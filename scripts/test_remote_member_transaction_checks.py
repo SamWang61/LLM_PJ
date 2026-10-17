@@ -51,8 +51,8 @@ def test_rollback_readback_detects_items_without_user_or_parent_and_cart_events(
     db.cart_events.insert_one({'cart_id':cart_id})
     before = probe.persisted_counts(db, [user_id], [sku_id])
     assert before['order_items'] == 1 and before['cart_events'] == 1
-    # A partial write can have no parent order and no user_id. The old query
-    # silently counted zero and could report rollback success in both states.
+    # Exercise anomalous partial rows, not the normal checkout line (which
+    # includes user_id). User-only queries do not see these extra rows.
     db.order_items.insert_one({'order_id':ObjectId(), 'sku_id':sku_id})
     db.cart_events.insert_one({'cart_id':cart_id})
     db.order_items.insert_one({'order_id':ObjectId(), 'sku_id':ObjectId()})
