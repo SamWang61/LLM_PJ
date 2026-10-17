@@ -1,0 +1,74 @@
+{
+  "source_pdf_sha256": "c5555c2a54d8a4200fd79fb8073d0fa5af691b40b13a4e031ddf9f8f6dc4535d",
+  "renderer": "pypdfium2",
+  "scale": 0.7,
+  "pages": 13,
+  "files": [
+    {
+      "file": "page-01.png",
+      "bytes": 153331,
+      "sha256": "b718a6d2aa8d7a51226281ae77e74cccf6d8d78dc82081bbdf8ddd696502d44c"
+    },
+    {
+      "file": "page-02.png",
+      "bytes": 83808,
+      "sha256": "94c4daed1e58fd42b5a1c824be68be7e85fca8b9b5c9faa9e77c2d755b775b7d"
+    },
+    {
+      "file": "page-03.png",
+      "bytes": 47209,
+      "sha256": "aa2edc6c88d53356b6333fd19c7b614dec4d7027135b197cba775a765b88f167"
+    },
+    {
+      "file": "page-04.png",
+      "bytes": 60738,
+      "sha256": "ae21c0a44332f24c3a90bd6e497b289b082c9f9afc33cfe75939d8f3a0e8e461"
+    },
+    {
+      "file": "page-05.png",
+      "bytes": 83058,
+      "sha256": "02c7d468ab10626bd00bf53b94d7c17f5199bed686d29812a04497752892a082"
+    },
+    {
+      "file": "page-06.png",
+      "bytes": 53901,
+      "sha256": "d13a56ba515711fbbc06c5aa9e11e2496332c3a7996aafe66f8d652d7190e918"
+    },
+    {
+      "file": "page-07.png",
+      "bytes": 54161,
+      "sha256": "fafd96e3797017041fa63eb91d81320a2e219d1e921dbbdbd3af6a7c37cef7d0"
+    },
+    {
+      "file": "page-08.png",
+      "bytes": 50685,
+      "sha256": "ec98c1e87e7f6ccfa06c55d28f42456d36b2ed0ce7298999dc3a1950451a5d48"
+    },
+    {
+      "file": "page-09.png",
+      "bytes": 53780,
+      "sha256": "5a6aaa355bd981416193b1c393370c672a7ad3a322be699e5c7b72a86ab5d2f1"
+    },
+    {
+      "file": "page-10.png",
+      "bytes": 50691,
+      "sha256": "79dcf19519b4aa0769ead9ab90860d4f8ae30168d7fe212f88fb3519a46c2b3b"
+    },
+    {
+      "file": "page-11.png",
+      "bytes": 77117,
+      "sha256": "5750efebd328113992d0e1befe545ee1d870d1e1a2d85619612873b1b7c423b0"
+    },
+    {
+      "file": "page-12.png",
+      "bytes": 68842,
+      "sha256": "89440d1fb9652fb6d662a12055faa37f2f48b86f12e574ccbaf9ce0679b01f83"
+    },
+    {
+      "file": "page-13.png",
+      "bytes": 169955,
+      "sha256": "637f58280371e0dd08df6fcc7bfccce128331cfde0706b23c4c876a507d18145"
+    }
+  ],
+  "scope": "Render only; PDF and PPTX unchanged"
+}

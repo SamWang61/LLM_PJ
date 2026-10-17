@@ -1,13 +1,15 @@
 # 最新專案上下文 / Current project context
 
-更新：2026/10/18 06:50（Asia/Taipei）。
+更新：2026/10/18 06:55（Asia/Taipei）。
 
-**06:50優先驗收更新**：[REN 09:00展示帳號與故障驗收](../專題進度/REN_0900展示帳號與故障驗收_2026-10-18.md)記錄兩個短期角色帳號已啟用、DPAPI私有交付，以及同映像私有測試的兩類受控資料庫錯誤回滾、交易中session撤權／會員停用回滾。該遠端測試在06:36～06:38完成；06:50唯讀回查顯示正式revision `vibecart-web-00019-phf` 與私有 `vibecart-acceptance-pr21-00010-9zg` 均為來源 `e000d95` 的同digest、各100%流量，Hosting仍導向正式服務。健康GET僅是路由證據。**正式服務來源目前不在main，PR #74仍未合併**；兩個PR CI check success。06:47唯讀fault preflight發現私有服務暫時barrier command已移除，沒有冒稱重新執行。N04待REN具名接收、現場登入及展示後清理；N06待具名接受與更廣範圍outage評估。本輪清單仍2/14完成，N07～N10完全排除。部署讀回：[JSON](inventory/REN_DEPLOYMENT_READBACK_2026-10-18.json)。
+**06:55優先驗收更新**：[REN 09:00展示帳號與故障驗收](../專題進度/REN_0900展示帳號與故障驗收_2026-10-18.md)記錄兩個短期角色帳號已啟用、DPAPI私有交付，以及同映像私有測試的兩類受控資料庫錯誤回滾、交易中session撤權／會員停用回滾。該遠端測試在06:36～06:38完成；06:50唯讀回查顯示正式revision `vibecart-web-00019-phf` 與私有 `vibecart-acceptance-pr21-00010-9zg` 均為來源 `e000d95` 的同digest、各100%流量，Hosting仍導向正式服務。健康GET僅是路由證據。**正式服務來源目前不在main，PR #74仍未合併**；main已前進至`cea52e2`（PR #75離線備援）。06:47唯讀fault preflight發現私有服務暫時barrier command已移除，沒有冒稱重新執行。N04待REN具名接收、現場登入及展示後清理；N06待具名接受與更廣範圍outage評估。本輪清單仍2/14完成，N07～N10完全排除。部署讀回：[JSON](inventory/REN_DEPLOYMENT_READBACK_2026-10-18.json)。
+
+**06:50 SAM N17 補強**：[V5 離線備援與還原](SAM_V5_OFFLINE_REHEARSAL_2026-10-18.md)完成40檔、雙建包相同雜湊、全新目錄還原差異0及18項安全回歸；補13頁無PDF外掛圖片閱讀版。原PPTX／PDF不變；實體斷網、第二台電腦／投影及真人計時仍待驗，14關卡仍2完成／12待結案。
 
 **現行入口：[V5本輪工作清單](../專題進度/專案未完成工作清單_2026-10-18.md)、[09:00 REN逐項接回](../專題進度/REN_0900逐項交接清單_2026-10-18.md)、[版本／部署證據](SAM_V5_DELIVERY_EVIDENCE_2026-10-18.md)、[S01～S12同版素材](../簡報文件/screenshots/S01-S12_同版取證_2026-10-18.md)。**
 
 - 依使用者與V5第12頁決定：真模型／受控自由提問、D5後台維護／180天審計與冪等收據／批量request_id、金流／物流及既定6+4擴充屬下一階段，不計本輪未完成分子與分母。本輪14關卡：2完成、12待結案；不沿用61/88或30.7%跨階段歷史數字。
-- 現行部署來源為 PR #74 的 `e000d952d22a64b568903641893f4ffdc71accd3`；06:50正式 `vibecart-web-00019-phf`、私有 `vibecart-acceptance-pr21-00010-9zg` 同pinned digest、各100%。PR #74 head `7818a5d`兩個CI check success；**main仍為`b595cf9`，PR尚未合併**。06:50六公開health GET為200、私有匿名403；這些只是路由／invoker證據。
+- 現行部署來源為 PR #74 的 `e000d952d22a64b568903641893f4ffdc71accd3`；06:50正式 `vibecart-web-00019-phf`、私有 `vibecart-acceptance-pr21-00010-9zg` 同pinned digest、各100%。PR #74仍開啟；GitHub main已到`cea52e2`，PR #74尚未合併。06:50六公開health GET為200、私有匿名403；這些只是路由／invoker證據。
 - #65 P2已修正合併，#67／#69已整合；#72發布簡報目錄44實際文件，main基線 `625f70347e56f9fccb2ab9a27babfceae6dcce76`。V5 PPTX13頁及SAM手動封面／深淺頁尾／封底保持原bytes。
 - PR #74來源本機一次性replica set 208 passed／0 skipped；同映像私有正常交易、兩種受控DB錯誤回滾、PURCHASE中session撤銷／會員停用回滾、期限登入拒絕與consumer normal／synthetic對照有遠端報告。**尚未覆蓋真實Atlas網路中斷／全部資料庫錯誤，REN具名交接、最終展示登入及全站簽收未完成**；me-central2政策拒絕未核實。
 - S01～S12主圖已補入專案；會員／後台透過同映像私有環境取證，九範圍清理0、臨時IAM撤回、獨立三根marker0。390px窄視窗不是手機實機；逐圖待人員具名核對。
