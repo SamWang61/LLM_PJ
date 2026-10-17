@@ -1,5 +1,7 @@
 # SAM PR #21 同版驗證與最終驗收缺口｜2026-10-16
 
+**10/17 更新**：JEFF T5 PR #23 已以 `6e401ef459b4ca5e002c22ee225cb4c63375ec3a` 合併入本 PR；下方 10/16 的 Docker／Cloud Run 證據屬 T5 前的 `88dca3b` 映像，不能延伸為 T5 同版遠端驗收。新合併提交的 [push CI](https://github.com/SamWang61/LLM_PJ/actions/runs/38991253680) 與 [PR CI](https://github.com/SamWang61/LLM_PJ/actions/runs/38991257679) 通過。完整新範圍、consumer 審查與展示決定見[10/17 交付核對](SAM_JEFF_1017_HANDOFF.md)；PR 仍為草稿、`main` 未合併。
+
 本紀錄針對 [PR #21](https://github.com/SamWang61/LLM_PJ/pull/21) 的修正後程式來源 `7798bc5d682fbf85408b74e6f07bf60ed7dfbfa9`；預覽映像取自含驗證文件的同版提交 `88dca3b8bbec5d5510fedaa37b6231c6f125220c`，程式內容未再修改。驗證在獨立工作樹執行；原 `C:\LLM\LLM_PJ` 的未提交修改未變更。本輪完成本機封裝、容器啟動、隔離交易測試與零流量遠端唯讀預覽；**最終驗收尚未完成**。
 
 ## 已核實的同版證據

@@ -4,6 +4,7 @@
 
 | 文件 / Document | English scope |
 |---|---|
+| [10/17 JEFF 交付核對與 SAM 決定](SAM_JEFF_1017_HANDOFF.md) | PR #23 merge, consumer audit, demonstration decisions and remaining remote gates. |
 | [JEFF 管理後台設計規格 v1.2](JEFF_ADMIN_UI_DESIGN.md) | Admin layout, v4 field map, gated free questions, 180-day audit and idempotency retention, batch request semantics. |
 | [SAM PR #21 同版驗證與最終驗收缺口](SAM_PR21_ACCEPTANCE_2026-10-16.md) | Docker build and boot, isolated transaction suite, and outstanding remote acceptance. |
 | [Firebase Hosting／Cloud Run 部署判定與操作](../deploy/FIREBASE_CLOUD_RUN_DEPLOYMENT.md) | Current Hosting routing, Cloud Run preview and release gates. |

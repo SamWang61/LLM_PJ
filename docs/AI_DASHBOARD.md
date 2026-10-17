@@ -152,4 +152,4 @@ The ignored local profile contains the existing v4 connection. It is not a newly
 
 完整 6+4 推薦、排程衰減／計分與批次統計仍屬後續工作；本次完成的是 SAM 的後台、連線與既有整合驗收。BGE 真實推論與 Claude API 已於 2026-10-12 實測（見上方 T5 小節）；手機全站 UAT 尚未驗收，不能把規則退回稱為模型成功。未提供模型憑證時不呼叫付費 API。
 
-Live checks exercise real transactions with temporary owned fixtures. Real BGE/Claude providers and full scheduled recommendation processing remain outside the verified delivery. No migration or production deployment is performed.
+Earlier live checks exercised transactions with temporary owned fixtures. The T5 section above records JEFF's local real BGE and Claude calls against read-only Atlas data; same-revision Cloud Run administrator/model acceptance and scheduled recommendation processing remain unverified. No migration or production deployment was performed for T5.

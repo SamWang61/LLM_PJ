@@ -1,5 +1,7 @@
 # 最新專案上下文 / Current project context
 
+更新：2026-10-17（Asia/Taipei）。JEFF [PR #23](https://github.com/SamWang61/LLM_PJ/pull/23) 的 T5 六檔已合併進 SAM [PR #21](https://github.com/SamWang61/LLM_PJ/pull/21)，合併提交 `6e401ef459b4ca5e002c22ee225cb4c63375ec3a`；合併後 push／PR CI 成功，`main` 尚未合併。[10/17 交付核對與決定](SAM_JEFF_1017_HANDOFF.md)列出 consumer 程式稽核、離線測試、線上 Claude／BGE 展示決定及未滿足的遠端驗收。T5 的真模型數據來自 JEFF 本機 Atlas 唯讀實測；PR #21 的零流量預覽仍是較早的 88dca3b 映像，不能代表 T5 已線上發布。D4 閘門維持，D1～D3 不重匯。
+
 更新：2026-10-16（Asia/Taipei）。GitHub `main` 的 `00a1d21` 已合併 JEFF [PR #8](https://github.com/SamWang61/LLM_PJ/pull/8)，[同版 CI](https://github.com/SamWang61/LLM_PJ/actions/runs/38825012234) 成功。[JEFF 管理後台設計規格 v1.2](JEFF_ADMIN_UI_DESIGN.md) 已明定自由提問啟用與驗收、180 天稽核／冪等收據保存，以及批量 request_id 規則；這是文件契約，未代表 D5 寫入、真模型或 D4 正式匯入已驗收。
 
 SAM 的 [同版整合基線](SAM_INTEGRATION_BASELINE_2026-10-16.md) 與 [PR #21](https://github.com/SamWang61/LLM_PJ/pull/21) 整理 HEN／JEFF／商品導覽來源，仍是草稿，未完成最終簽收。10/16 已以該來源建立 Cloud Run 零流量唯讀預覽修訂 `vibecart-web-00008-5bw`，詳見[同版驗證紀錄](SAM_PR21_ACCEPTANCE_2026-10-16.md)；正式流量仍由 `vibecart-web-00007-m9k` 承接 100%。下方 10/15 及 10/7 狀態保留為歷史，不當作當前 GitHub、部署或資料庫狀態。
