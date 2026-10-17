@@ -1,5 +1,7 @@
 # 最新專案上下文 / Current project context
 
+更新：**2026-10-17 19:14（Asia/Taipei）**。SAM 已留存 [S02 商品清單／搜尋實際畫面](../簡報文件/screenshots/S02-catalog-evidence.md)：公開桌面瀏覽器顯示 336 件／14 頁、商品卡片，按鈕搜尋刷樂牙刷得 1 件／NT$79／庫存 95，鍵盤 Enter 的無結果提示正確。三張原始 PNG 的 SHA-256 已逐張記錄。Cloud Run revision／digest 本次無法即時讀回，手機畫面與最終簽收仍待補；D4 閘門不變。以下為較早快照。
+
 更新：**2026-10-17 19:05（Asia/Taipei）**。SAM 的[商品／SKU 與公開頁面唯讀對帳](SAM_LIVE_CATALOG_AUDIT_2026-10-17.md)已逐頁核對 336 商品、336 active SKU、14 頁清單、336 頁詳情及四筆搜尋，所測價格／庫存／SKU 與 Atlas 差異 0；報告在 `docs/inventory/`。Cloud Run revision 本次未即時讀回，工作清單 #06 的同版部署與手機／最終畫面簽收仍待補；D4 閘門不變。下方較早快照依各自時間解讀。
 
 更新：**2026-10-17 18:45（Asia/Taipei）**。SAM 已在正式 Atlas `vibecart_ai` 執行 [v4 schema／migration／參照唯讀核對](SAM_SCHEMA_AUDIT_2026-10-17.md)：28 集合、89 索引、六筆 checksum 符合 Git 原始檔、12 項參照孤兒 0；報告已保存於 `docs/inventory/`。此為工作清單 #04 的資料層快照，沒有資料庫寫入或重新匯入。D4 consumer 遠端閘門與全站簽收仍未完成；下方 18:44 與更早狀態按各自時間解讀。
