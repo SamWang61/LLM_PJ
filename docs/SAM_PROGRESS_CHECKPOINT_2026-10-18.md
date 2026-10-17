@@ -35,3 +35,7 @@
 - Cloud Run 管理端讀回：正式 `vibecart-web-00013-ds5` 仍承接 **100%**；新修訂 `vibecart-web-00015-nlk` Ready、標籤 `pr56-1d2abf2` 承接 **0%**，映像 digest `sha256:1686638380b8cb8dc792423b059918b292e94f095d68c623ea9136da1ff9813b`。其 `/`、`/auth/login`、`/health/live`、`/health/ready` 均回 200；320／375／768／1280 px 雲端 Chrome 模擬皆無水平溢出，截圖與來源見 [S02 紀錄](../簡報文件/screenshots/S02-tablet-layout-20261018.md)。新映像尚欠 D4 consumer 同版隔離與正式交易驗收，故未切流量。
 - 舊[簡報 PR #19](https://github.com/SamWang61/LLM_PJ/pull/19)仍 draft。其七個檔案包含獨立架構、交付計畫、來源盤點與 S01 截圖，但內容停在 10/15～10/17，仍宣稱最終 PPTX 未產生及 D4 未匯入；不可整包合併為目前事實，須按最新 main 核對、保留有用素材並校正後再整合。
 - 私有備份仍停在清冊與目標 ACL 檢查；尚未上傳。Atlas Network Access 仍有 `0.0.0.0/0`。上述兩項均不能標完成。
+
+## 01:58 正式升版後續
+
+[PR #57](https://github.com/SamWang61/LLM_PJ/pull/57) 已合併為 `7affe59`。第 10 項換映像 D4 consumer 閘門：同映像私有隔離探針、清理、IAM 撤權與獨立 Atlas marker 讀回通過，見[正式升版紀錄](SAM_RELEASE_2026-10-18.md)及[報告](inventory/sam-catalog-release-d4-20261018.json)。第 15、17 項中的**部署與 S02 排版**已進展：正式 `vibecart-web-00015-nlk` 讀回 100%，Hosting 四路由 200，四種 Chrome viewport 無水平溢出。第 07～09 項的**新正式版本真登入／交易／回滾遠端驗收**、第 12～14 項 JEFF 真模型及 D5、實機與具名簽收仍未完成；不能因上述部署成功而改標完成。

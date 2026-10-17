@@ -1,5 +1,7 @@
 # 最新專案上下文 / Current project context
 
+更新：**2026-10-18 01:58（Asia/Taipei）**。[PR #56](https://github.com/SamWang61/LLM_PJ/pull/56) 商品標題 RWD 已合併；同映像私有 D4 consumer 對照、逐項清理、獨立 Atlas marker 查核及 IAM 撤權通過後，Cloud Run `vibecart-web-00015-nlk` 讀回 **100%** 正式流量，舊 `00013-ds5` 保留零流量回退標籤。[部署、映像與正式站畫面](SAM_RELEASE_2026-10-18.md)已留證。Firebase Hosting 公開路由 200，320／375／768／1280 px Chrome 商品標題橫排、無水平溢出。[最新 22 項檢查點](SAM_PROGRESS_CHECKPOINT_2026-10-18.md)仍把遠端真登入／交易、JEFF 真模型／D5、實機與具名簽收列為未完成；下方 01:30 與更早快照按各自時間解讀。
+
 更新：**2026-10-18 01:30（Asia/Taipei）**。[22 項進度檢查點](SAM_PROGRESS_CHECKPOINT_2026-10-18.md)按主責與前置順序列出最新已驗、部分及阻礙。PR #52～#54 已合併，主線 `32587e9` 的 CI success；47 檔部署白名單來源與正式映像相同，本機 Docker build／boot 通過，12 頁離線進度簡報草案已交付。正式同版角色／交易、真模型、D5、手機與具名簽收仍待補；Drive 備份目標仍可由持連結者讀取，尚未上傳含機密來源。下方較早紀錄依各自日期解讀。
 
 更新：**2026-10-18 00:41（Asia/Taipei）**。SAM 完成 [D4 正式庫合成批次匯入與驗收](D4_IMPORT_ACCEPTANCE_2026-10-18.md)：全專案 global 清單已補足盤點，來源 `80513a9` 的同映像 consumer 遠端對照與不可變證據通過；首次 apply 1,240、verify 缺漏 0、同批次重送新增 0。獨立 Atlas 讀回四事件各 310、全部 synthetic／exclude_from_attribution=true、漏標 0；D1～D3 3,000 訂單／8,969 明細與額外 demo 2 保留。#11 此批次完成，不等於真模型、D5、付款或全站最終簽收；以下「D4 0／未 apply」是較早快照。

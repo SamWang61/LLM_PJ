@@ -8,7 +8,7 @@ VibeCart AI builds on the MuscleCore sports store to explore personalized shoppi
 
 ## 目前狀態 / Current status
 
-截至 2026-10-18，PR #21 已合併。正式網站的已記錄來源為 `80513a9`，Cloud Run `vibecart-web-00013-ds5` 承接 100% 流量，Firebase Hosting 可瀏覽；[建置、CI、revision、公開路由與限制](docs/SAM_RELEASE_2026-10-18.md)分別留證。其後 `main` 合併了 D4 驗收文件與 REN 命名修正；這些較新的 Git 提交不能直接當作已重新部署的映像 SHA。D4 批次 1,240 筆已完成 apply、verify 與重送讀回，詳見 [D4 驗收](docs/D4_IMPORT_ACCEPTANCE_2026-10-18.md)。
+截至 2026-10-18 01:58，PR #21 與商品標題 RWD [PR #56](https://github.com/SamWang61/LLM_PJ/pull/56) 均已合併。正式網站的部署來源標籤為 `1d2abf2`，Cloud Run `vibecart-web-00015-nlk` 承接 100% 流量，Firebase Hosting 可瀏覽；[建置、同映像 D4 隔離探針、流量、公開路由與限制](docs/SAM_RELEASE_2026-10-18.md)分別留證。部署標籤是封裝來源，後續文件合併使 `main` SHA 較新，不能把文件提交視為新映像。D4 批次 1,240 筆已完成 apply、verify 與重送讀回，詳見 [D4 驗收](docs/D4_IMPORT_ACCEPTANCE_2026-10-18.md)。
 
 - **新版資料層**：Complete Schema v4，含 SKU 購物車、訂單明細與評價服務；[10/17 Atlas 唯讀核對](docs/SAM_SCHEMA_AUDIT_2026-10-17.md)為 28 集合、89 索引、六筆 migration checksum 一致、12 項參照孤兒 0。D1～D3 原資料保留，不重新匯入。
 - **正式網站**：`MuscleCore分析資料/website` 的 Flask + Jinja2 + MongoDB 程式已由 Cloud Run 提供服務、Hosting rewrite 導流；公開頁面檢查通過。早期隔離 Atlas 的會員／交易驗收與目前正式修訂的同版登入、跨裝置、交易簽收仍須區分。

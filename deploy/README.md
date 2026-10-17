@@ -2,7 +2,7 @@
 
 目前部署方式分開閱讀：[Firebase Hosting／Cloud Run 判定與操作](FIREBASE_CLOUD_RUN_DEPLOYMENT.md)、[Render 準備與驗收](RENDER_DEPLOYMENT.md)。
 
-截至 2026-10-18，正式 `vibecart-web-00013-ds5` 已承接 100% 流量，Hosting rewrite 指向 `vibecart-web`。[部署讀回](../docs/SAM_RELEASE_2026-10-18.md)記錄來源 `80513a9`、映像 digest、Cloud Build、Hosting 與公開路由；[D4 匯入](../docs/D4_IMPORT_ACCEPTANCE_2026-10-18.md)已完成指定批次。下列唯讀預覽步驟是新版本切換前的操作流程，不能代表目前正式服務仍在唯讀模式。
+截至 2026-10-18 01:58，正式 `vibecart-web-00015-nlk` 已承接 100% 流量，Hosting rewrite 指向 `vibecart-web`。[部署讀回](../docs/SAM_RELEASE_2026-10-18.md)記錄來源 `1d2abf2`、映像 digest、Cloud Build、同映像 D4 隔離探針、Hosting 與公開路由；[D4 匯入](../docs/D4_IMPORT_ACCEPTANCE_2026-10-18.md)已完成指定批次。下列唯讀預覽步驟是新版本切換前的操作流程，不能代表目前正式服務仍在唯讀模式。
 
 主責 SAM。正式修訂已開放結帳；同版登入／交易、真模型、D5 與最終畫面簽收仍依工作清單逐項驗收。這份部署設定不匯入資料、不建立會員、不跑 migration；新 consumer 或新映像上線後，須重新驗證 D4 synthetic 排除條件。
 
