@@ -1,0 +1,64 @@
+{
+  "checked_at": "2026-10-17T16:35:03.187Z",
+  "project_id": "vibecart-llmai",
+  "source_commit": "80513a951d0dff67fd47a153a45918522b5ffbb5",
+  "inventory_scopes": [
+    "cloud_run_services",
+    "cloud_run_jobs",
+    "cloud_scheduler",
+    "cloud_functions",
+    "pubsub_subscriptions"
+  ],
+  "global_services": {
+    "names": [
+      "vibecart-acceptance-pr21",
+      "vibecart-web"
+    ],
+    "unreachable": []
+  },
+  "global_jobs": {
+    "names": [],
+    "unreachable": []
+  },
+  "global_worker_pools": {
+    "names": [],
+    "unreachable": []
+  },
+  "deployments": [
+    {
+      "service": "vibecart-web",
+      "revision": "vibecart-web-00013-ds5",
+      "percent": 100,
+      "image_digest": "sha256:57c8fd038d7c231a4e417471a66b9c7996c296efd2d7b1ff70302c46a45f0fab",
+      "source_commit": "80513a951d0dff67fd47a153a45918522b5ffbb5"
+    },
+    {
+      "service": "vibecart-acceptance-pr21",
+      "revision": "vibecart-acceptance-pr21-00004-9qr",
+      "percent": 100,
+      "image_digest": "sha256:57c8fd038d7c231a4e417471a66b9c7996c296efd2d7b1ff70302c46a45f0fab",
+      "source_commit": "80513a951d0dff67fd47a153a45918522b5ffbb5"
+    }
+  ],
+  "worker_apis": {
+    "cloudscheduler.googleapis.com": false,
+    "cloudfunctions.googleapis.com": false,
+    "workflows.googleapis.com": false,
+    "cloudtasks.googleapis.com": false
+  },
+  "topics": [],
+  "subscriptions": [],
+  "hosting": {
+    "release": "sites/vibecart-llmai/releases/1791982222797000",
+    "rewrites": [
+      {
+        "glob": "**",
+        "run": {
+          "serviceId": "vibecart-web",
+          "region": "asia-east1"
+        }
+      }
+    ]
+  },
+  "regional_diagnostic": "me-central2 LOCATION_POLICY_VIOLATED retained in prior regional report; global v1 lists have no unreachable or pending pages"
+}
