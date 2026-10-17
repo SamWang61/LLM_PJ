@@ -1,5 +1,7 @@
 # 最新專案上下文 / Current project context
 
+更新：2026-10-17（Asia/Taipei）。SAM 的 [Atlas 唯讀對帳](SAM_ATLAS_READONLY_ACCEPTANCE_2026-10-17.md)讀回 28 集合、6 筆 succeeded migration 且 checksum 與 Git 原始碼一致、336 active 商品與 SKU、原 D1～D3 訂單／明細 3,000／8,969、孤兒 SKU／明細 0；D4 仍 0。Network Access 有一筆 `0.0.0.0/0` 規則，需在正式上線前查來源與收斂方案；目前未變更資料庫或白名單。這些是資料層快照，不等於角色／交易或最終簽收。
+
 更新：2026-10-17（Asia/Taipei）。SAM PR #21 的 `3842893904e54e638e1fc88346c85d90e5beb22b` 已建立 Cloud Run 無流量唯讀修訂 `vibecart-web-00009-xfq`；47/47 建置來源與 Git blob 一致，映像、revision label、Ready、100% 舊版流量與 Atlas 唯讀計數均已讀回。新修訂的匿名首頁／搜尋／商品與寫入拒絕通過所測遠端檢查；角色、交易、模型、Hosting、所有 consumer 隔離及最終畫面驗收仍缺證據。完整結果與界線見 [PR #21 同版遠端預覽](SAM_PR21_REMOTE_PREVIEW_2026-10-17.md)。D4 不得 apply，PR #21 保持草稿。
 
 更新：**2026-10-17 11:10（Asia/Taipei）**。REN 因軟體設定問題，原會員／購物／事件觸發及 S03～S05 工作由 SAM 暫代 24 小時，至 **2026-10-18 11:10**；JEFF 的 AI／後台與 consumer 責任不變。現行責任、22 項待辦及 10/18 20:00 交付順序以 [專案工作清單](../專題進度/專案工作清單_2026-10-17.md) 和 [分工表](TEAM_OWNERSHIP.md) 為準。下方早期分工、SHA、CI、部署及 Atlas 數字是各日期的歷史快照，不當作目前狀態。
