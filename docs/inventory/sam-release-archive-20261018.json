@@ -1,0 +1,243 @@
+{
+  "sourceSha": "80513a951d0dff67fd47a153a45918522b5ffbb5",
+  "archiveSha256": "3a9a175bdc145a8202e98366b86e310266571f063e8b0a210821a085b9069721",
+  "count": 47,
+  "mismatches": 0,
+  "files": [
+    {
+      "archivePath": "Dockerfile",
+      "sourcePath": "MuscleCore分析資料/website/Dockerfile",
+      "sha256": "20c8da5e991be8b8e3400430361b1352732bb7b8f47b3379bd8ec245c08df35a"
+    },
+    {
+      "archivePath": ".dockerignore",
+      "sourcePath": "MuscleCore分析資料/website/.dockerignore",
+      "sha256": "e5bd828bf62cd6ce4cadef8793079af3415346c8ee777a247d1297823d37a4d0"
+    },
+    {
+      "archivePath": "requirements-cloud.txt",
+      "sourcePath": "MuscleCore分析資料/website/requirements-cloud.txt",
+      "sha256": "2630f9296f68b7e8e80828ec5d9fee8673665ed2e15a3df8fc8df9c5603d37f0"
+    },
+    {
+      "archivePath": "cloud_runtime.py",
+      "sourcePath": "MuscleCore分析資料/website/cloud_runtime.py",
+      "sha256": "9822e40c8b2cb0bc2a9b17b63e1feff7e18d0c9c2c001b0c3f5e6a06fcd45d99"
+    },
+    {
+      "archivePath": "app/__init__.py",
+      "sourcePath": "MuscleCore分析資料/website/app/__init__.py",
+      "sha256": "48c19b3ba9d217fb68ec093317be4a7c9725d55578b28b5727887c01f3c9675e"
+    },
+    {
+      "archivePath": "app/admin.py",
+      "sourcePath": "MuscleCore分析資料/website/app/admin.py",
+      "sha256": "f7db8ca32ed05e48506c98de533d0ba4c3f5430154462cc8974761cc4415b18e"
+    },
+    {
+      "archivePath": "app/auth.py",
+      "sourcePath": "MuscleCore分析資料/website/app/auth.py",
+      "sha256": "f58024bf9fa4443dba13cb98193dbd69a3b480c7dbfb69e403daa1a126ee1a16"
+    },
+    {
+      "archivePath": "app/db.py",
+      "sourcePath": "MuscleCore分析資料/website/app/db.py",
+      "sha256": "e429461ecbcf683f551df962c66f765025472be033dac84f86c76a9a5eec2e88"
+    },
+    {
+      "archivePath": "app/security.py",
+      "sourcePath": "MuscleCore分析資料/website/app/security.py",
+      "sha256": "90a920e1a3e70e6b968252d3fa8ba5bcf160c7d6ef3b04caa4ea16f03515f394"
+    },
+    {
+      "archivePath": "app/services/__init__.py",
+      "sourcePath": "MuscleCore分析資料/website/app/services/__init__.py",
+      "sha256": "ad99f2d924998782cb45c4afff9971baa500c70ab753ad2afbb4ad3c63c365d8"
+    },
+    {
+      "archivePath": "app/services/ai_compare.py",
+      "sourcePath": "MuscleCore分析資料/website/app/services/ai_compare.py",
+      "sha256": "d4c0e5a428b05e5aa7b731f80a5f5a22fd33066e9684401e50c758b094dbfa73"
+    },
+    {
+      "archivePath": "app/services/ai_payload.py",
+      "sourcePath": "MuscleCore分析資料/website/app/services/ai_payload.py",
+      "sha256": "bf2ff4d1f0ce8c2402c666b18ee86ef17a8e7051b914cb0fd74ebf298f53a178"
+    },
+    {
+      "archivePath": "app/services/ai_workflows.py",
+      "sourcePath": "MuscleCore分析資料/website/app/services/ai_workflows.py",
+      "sha256": "da27c6b475ad5c0e4b40c04f6775c15a6cebbad9a50bf3d96b06b1779d556693"
+    },
+    {
+      "archivePath": "app/services/analytics.py",
+      "sourcePath": "MuscleCore分析資料/website/app/services/analytics.py",
+      "sha256": "fd47fc513b71a961d4ecc5c1f1045d14cd1674baebde1b76cd58c9f3ac6c056b"
+    },
+    {
+      "archivePath": "app/services/behavior_scope.py",
+      "sourcePath": "MuscleCore分析資料/website/app/services/behavior_scope.py",
+      "sha256": "4cc48c37388f4f09710f0450071619f5f6758af6441409ed6491f315ae240068"
+    },
+    {
+      "archivePath": "app/services/dashboard.py",
+      "sourcePath": "MuscleCore分析資料/website/app/services/dashboard.py",
+      "sha256": "a89a2b61ee1a53656ecd78ee3cb02d6fa07e1f76d9006c328a6b81784558b5c6"
+    },
+    {
+      "archivePath": "app/services/local_ai.py",
+      "sourcePath": "MuscleCore分析資料/website/app/services/local_ai.py",
+      "sha256": "1b88d118e75a3a908ca75363e0b86cf425b1ab098a7bf74196a7f8f2add8efa1"
+    },
+    {
+      "archivePath": "app/services/member_events.py",
+      "sourcePath": "MuscleCore分析資料/website/app/services/member_events.py",
+      "sha256": "3c5c69dc30f0f5cf46b7eabcad718597b4f3ec570ad8999364e63e2efc93454f"
+    },
+    {
+      "archivePath": "app/services/member_sessions.py",
+      "sourcePath": "MuscleCore分析資料/website/app/services/member_sessions.py",
+      "sha256": "54d088d060018ee0289e1d4326af3f2b2da2aa3ce5066ca1c0487d393054e787"
+    },
+    {
+      "archivePath": "app/services/recommendation.py",
+      "sourcePath": "MuscleCore分析資料/website/app/services/recommendation.py",
+      "sha256": "fec347df4e2080203e617d85ad0af0db8b96a40242d2f226230e21a8a6790d52"
+    },
+    {
+      "archivePath": "app/services/sku_gateway.py",
+      "sourcePath": "MuscleCore分析資料/website/app/services/sku_gateway.py",
+      "sha256": "7cb615e55bb0e0ef09caf056947cb88e67e193bfa445dd477d234f91f2b55c45"
+    },
+    {
+      "archivePath": "app/static/css/admin.css",
+      "sourcePath": "MuscleCore分析資料/website/app/static/css/admin.css",
+      "sha256": "130bdc8a96e1a1b6cece9a96049b5f328b6914b31604a6eb5dd378892835eb92"
+    },
+    {
+      "archivePath": "app/static/css/main.css",
+      "sourcePath": "MuscleCore分析資料/website/app/static/css/main.css",
+      "sha256": "0e08a6da542bdbe29c5fcd9dee3b5d6faa203bfae7280734f2e6de696fbbbd35"
+    },
+    {
+      "archivePath": "app/static/img/hero.png",
+      "sourcePath": "MuscleCore分析資料/website/app/static/img/hero.png",
+      "sha256": "a0ef2f0fee2b163b02edee7102c975668d5f78286786a575b4d42ef81e05633e"
+    },
+    {
+      "archivePath": "app/static/img/product-placeholder.svg",
+      "sourcePath": "MuscleCore分析資料/website/app/static/img/product-placeholder.svg",
+      "sha256": "50cfb1ca36a0122d85ec6d51b1913b685c9885064c5a8701e5aa7d841b44dee3"
+    },
+    {
+      "archivePath": "app/static/js/admin.js",
+      "sourcePath": "MuscleCore分析資料/website/app/static/js/admin.js",
+      "sha256": "c537c86942d7bb8ef6fecaa9c991fa992f18ba7b69a235e22e9507e0dd255115"
+    },
+    {
+      "archivePath": "app/store.py",
+      "sourcePath": "MuscleCore分析資料/website/app/store.py",
+      "sha256": "e0a5fa4ced669b7b76ef32201e19d1bf2a7fca3d426d04fc1394530a92a3c982"
+    },
+    {
+      "archivePath": "app/store_v4.py",
+      "sourcePath": "MuscleCore分析資料/website/app/store_v4.py",
+      "sha256": "20923f8e13e42f3edebafef7b5e644615061e47e719b3e250c6007061f2a93d8"
+    },
+    {
+      "archivePath": "app/templates/admin/ai_compare.html",
+      "sourcePath": "MuscleCore分析資料/website/app/templates/admin/ai_compare.html",
+      "sha256": "4de1c694a0c29bc1b383575b086df85ae8932a3c5169c8c93d046e0473590aa9"
+    },
+    {
+      "archivePath": "app/templates/admin/ai_insight.html",
+      "sourcePath": "MuscleCore分析資料/website/app/templates/admin/ai_insight.html",
+      "sha256": "d0d3f8f9e062acaa06c7135082a3de59a964e0ba281bf8dfeb8c422f0c87f82b"
+    },
+    {
+      "archivePath": "app/templates/admin/ai_recommendation.html",
+      "sourcePath": "MuscleCore分析資料/website/app/templates/admin/ai_recommendation.html",
+      "sha256": "c10ec9b065ca6aaa14058881665369ce19162a87cc8021044f308d4c7dc77c0a"
+    },
+    {
+      "archivePath": "app/templates/admin/dashboard.html",
+      "sourcePath": "MuscleCore分析資料/website/app/templates/admin/dashboard.html",
+      "sha256": "97f803ec91a1025e006e54ca77513bd2ffea88dae252b97746beff987c8b8754"
+    },
+    {
+      "archivePath": "app/templates/admin/filter_error.html",
+      "sourcePath": "MuscleCore分析資料/website/app/templates/admin/filter_error.html",
+      "sha256": "46f5b44fb119ea3654c24cd43ba82023b0378913127869f3fda17d865f1ea46a"
+    },
+    {
+      "archivePath": "app/templates/admin/layout.html",
+      "sourcePath": "MuscleCore分析資料/website/app/templates/admin/layout.html",
+      "sha256": "68eecd71b1cfaa7fb6354dee0721f2989bb68d8db92fbcc2024ae74eec98fd59"
+    },
+    {
+      "archivePath": "app/templates/admin/recommendations.html",
+      "sourcePath": "MuscleCore分析資料/website/app/templates/admin/recommendations.html",
+      "sha256": "9d991b0bb4dc90413e31d98b28c88d1638c77bc562d997d1beaebf28d6c6a540"
+    },
+    {
+      "archivePath": "app/templates/auth/login.html",
+      "sourcePath": "MuscleCore分析資料/website/app/templates/auth/login.html",
+      "sha256": "58665c254c71d5ecd605ba7f12ea7f3f2aa18b661412b9b25a7d93725d32cc17"
+    },
+    {
+      "archivePath": "app/templates/auth/logout.html",
+      "sourcePath": "MuscleCore分析資料/website/app/templates/auth/logout.html",
+      "sha256": "deab381fd88da90b5ae550d911a05eb2be834402cd4af7efa43c2b348f63f5f5"
+    },
+    {
+      "archivePath": "app/templates/auth/register.html",
+      "sourcePath": "MuscleCore分析資料/website/app/templates/auth/register.html",
+      "sha256": "fda8ddff3433ccfc32540e7e407b5c436bba7f321acaa6bb538d5eba58283c5b"
+    },
+    {
+      "archivePath": "app/templates/base.html",
+      "sourcePath": "MuscleCore分析資料/website/app/templates/base.html",
+      "sha256": "30bfbc6039f4441a4dda12a303f21e7a28430efdad243796782202479e737c4f"
+    },
+    {
+      "archivePath": "app/templates/store/cart.html",
+      "sourcePath": "MuscleCore分析資料/website/app/templates/store/cart.html",
+      "sha256": "0e84d915c6d754329ede42dab21163a0de12438d5b120a870bbe3e3a5d30f496"
+    },
+    {
+      "archivePath": "app/templates/store/cart_v4.html",
+      "sourcePath": "MuscleCore分析資料/website/app/templates/store/cart_v4.html",
+      "sha256": "04827dfee303764c4db1ae0a5aeadac184aed4f11d071d15a94cded8f5a867df"
+    },
+    {
+      "archivePath": "app/templates/store/home.html",
+      "sourcePath": "MuscleCore分析資料/website/app/templates/store/home.html",
+      "sha256": "873536fa42a48c9f4878982a38964918842e04669ed2dacd03d6ecfa550c2f7b"
+    },
+    {
+      "archivePath": "app/templates/store/product.html",
+      "sourcePath": "MuscleCore分析資料/website/app/templates/store/product.html",
+      "sha256": "1d5a8398db5aa8b0c4010b946a7a49937c76f0c52e1ffd4a3a073a7acdd07fcb"
+    },
+    {
+      "archivePath": "app/templates/store/product_image.html",
+      "sourcePath": "MuscleCore分析資料/website/app/templates/store/product_image.html",
+      "sha256": "e1b2a30da50de5623f5210f76701760d2292c3c6cf1274d473d9a7eee836b0bf"
+    },
+    {
+      "archivePath": "app/templates/store/sku_fields.html",
+      "sourcePath": "MuscleCore分析資料/website/app/templates/store/sku_fields.html",
+      "sha256": "c4d4efd786c02dafdd5d0c52333d317c6e3b7ec26eee60dc56d6085347a0c070"
+    },
+    {
+      "archivePath": "VibeCart_AI/services/cart_service.py",
+      "sourcePath": "VibeCart_AI/services/cart_service.py",
+      "sha256": "5e416e6d4945d391ec633845ea493fd152262abf6d5b489b503160db6d58457f"
+    },
+    {
+      "archivePath": "VibeCart_AI/services/sku_cart_service.py",
+      "sourcePath": "VibeCart_AI/services/sku_cart_service.py",
+      "sha256": "53a7bae24c07135db8fc02bb036d0b45881ab3ba499fa67116c4da5262167179"
+    }
+  ]
+}
