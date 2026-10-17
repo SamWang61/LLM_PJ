@@ -11,8 +11,8 @@
 - [x] 保持歷史 migration 與 overlay 原始位元不變；.gitattributes 關閉 overlay 換行轉換，保護 checksum。
 - [x] Atlas 唯讀核對通過：27 集合、86 索引、12 項關聯、五筆 succeeded；第五筆 checksum 相符，前後筆數一致。沒有執行資料庫生成、migration、匯入或回寫。
 - [x] 補 D5／AI 白名單資料契約提案：權限、CSRF、狀態轉移、版本衝突、冪等、稽核與交易／外部退款界線、期間比較、零分母與資料上限；核對實際 product_name、available_quantity、safety_stock 欄位。
-- [x] 三方分工更新：JEFF=AI/後台；HEN=會員/購物；其餘（含前台/RWD、部署協調、資料測試、整合驗收）=SAM。
-- [x] 即時查證 HEN/JEFF 均具 GitHub Write，無待接受邀請；不再以 HEN 未接受邀請當作阻礙。
+- [x] 三方分工更新：JEFF=AI/後台；REN=會員/購物；其餘（含前台/RWD、部署協調、資料測試、整合驗收）=SAM。
+- [x] 即時查證 REN/JEFF 均具 GitHub Write，無待接受邀請；不再以 REN 未接受邀請當作阻礙。
 - [x] 整合 SAM 超市前台本機差異：超過200商品完整分頁（24/頁）、大/小類篩選、搜尋、SKU規格、圖片與來源、替代圖片、本機入口。採差異合併保留 main 後台 CSS；未將其他人的 AI/會員新功能算入 SAM 成果。
 - [x] 補五筆 migration／舊 validator 回退回歸案例；網站61項＋獨立 fixture 9項，共70項離線案例通過（以本次最終執行為準）。既有專項28項含重疊，不另加總。
 - [x] 補齊必要 SAM 審查／清冊文件，修復私有快照的失效連結；文檔不宣稱快照已公開。
@@ -30,6 +30,6 @@
 
 ## 今日資源安排
 
-依 SAM 指示：今天中午過後，SAM 將今日 AI 時間先留給 EDI 專案；晚上上課時才開始將 AI 資源轉回 LLM_PJ。本文件不是自動排程或晚上完成時限承諾。HEN/JEFF 可先處理自己的前置項目，SAM 晚上接續整合與驗收。
+依 SAM 指示：今天中午過後，SAM 將今日 AI 時間先留給 EDI 專案；晚上上課時才開始將 AI 資源轉回 LLM_PJ。本文件不是自動排程或晚上完成時限承諾。REN/JEFF 可先處理自己的前置項目，SAM 晚上接續整合與驗收。
 
 English: SAM completed the local data/document delivery, current five-migration checker, read-only audit, contract proposal, storefront integration, tests and team inventory. Afternoon AI time is reserved for EDI; LLM_PJ resumes during the evening class. Remaining acceptance is tracked separately.
