@@ -70,15 +70,17 @@ async function readDeployment(api, name) {
   const base = 'https://run.googleapis.com/v2/projects/' + PROJECT
     + '/locations/' + LOCATION + '/services/' + name;
   const service = await api(base, {}, 'service');
-  const revision = selectedRevision(service);
+  const candidate = name === 'vibecart-web' && process.env.REN_CANDIDATE_SOURCE;
+  const revision = candidate ? service.latestCreatedRevision?.split('/').pop() : selectedRevision(service);
   const details = await api(base + '/revisions/' + revision, {}, 'revision');
   const policy = await api(base + ':getIamPolicy?options.requestedPolicyVersion=3', {}, 'invoker');
-  return { name, uri: service.uri, revision, image: details.containers?.[0]?.image,
+  if (candidate) requireValue(details.labels?.['codex-source-sha'] === candidate, 'Candidate source mismatch');
+  return { traffic_percent: candidate ? ((service.trafficStatuses || []).find(t => t.revision === revision)?.percent || 0) : 100, name, uri: service.uri, revision, image: details.containers?.[0]?.image,
     source_sha: details.labels?.['codex-source-sha'] || null,
     serviceAccount: details.serviceAccount, env: details.containers?.[0]?.env, command: details.containers?.[0]?.command, args: details.containers?.[0]?.args, policy };
 }
 function publicDeployment(d) {
-  return { service: d.name, revision: d.revision, traffic_percent: 100,
+  return { service: d.name, revision: d.revision, traffic_percent: d.traffic_percent,
     image: d.image, source_sha: d.source_sha };
 }
 async function listAll(api, url, key) {
