@@ -29,3 +29,7 @@
 私有 Cloud Run `vibecart-acceptance-pr21-00003-8hr` 已引用上述 secret、設定 `CLOUD_ACCEPTANCE_MODE=true`、`CLOUD_ACCEPTANCE_DB=vibecart_acceptance_pr21`、唯讀關閉及 demo checkout 開啟；授權 `/health/live` 與 `/health/ready` 均為 200，匿名 `/health/live` 為 403。驗收庫已有少量測試商品及部分集合，其他工作正進行遠端交易驗收；本次只讀取集合與筆數，未增刪其資料。正式服務仍由 `vibecart-web-00007-m9k` 承接 100% 流量，新 main 修訂仍為零流量唯讀。D4 指定 batch 的正式庫 `behavior_events` 唯讀計數仍是 **0**。
 
 本次再查 Cloud Run 全區服務僅正式與私有驗收兩項；`asia-east1` Jobs、Pub/Sub 訂閱／主題為空，Scheduler／Functions API 停用。這只更新了部分部署範圍；正式流量 consumer 的同版 synthetic／正常事件對照、輸出讀回和完整資產清單仍未完成。**D4 閘門維持關閉，不得 apply。**
+
+## 16:05 資料層 preflight
+
+[正式庫唯讀 preflight 紀錄](REN_D4_PREFLIGHT_2026-10-17.md)已確認 D4 validator、索引及 D1～D3 來源參照可用，以最多 100 筆來源訂單規劃 **1,240 筆**事件；`existing=0`、`missing=1240`、`committed=false`、`inserted=0`。事後 Atlas 唯讀計數 D4 仍為 0，原批訂單／明細仍為 3,000／8,969。這只解除資料層前置疑點，**沒有**解除遠端 consumer 隔離閘門；正式 apply 仍禁止。
