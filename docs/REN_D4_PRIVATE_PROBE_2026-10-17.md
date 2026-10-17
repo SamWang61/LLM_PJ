@@ -20,6 +20,25 @@
 
 目前完成的是同版隔離驗收、盤點與回滾預演；下一步將不可變 GitHub 證據填入正式 `consumer_checks`、重查部署範圍及受限區說明，再依閘門進行 apply／verify／重送。**本次未執行 D4 apply，也未將此結果當作真模型、付款或全站最終簽收。**
 
+## 較早的舊映像驗收紀錄
+
+以下保留另一輪 d933 映像的原始紀錄；其正式升版後的缺口已由前節 57c8 同版對照補驗。各自的時間、探針與資料集分別留存。
+
+## 10/18 00:05～00:10 遠端結果（Asia/Taipei）
+
+使用者明確允許臨時授予 `cashsam@gmail.com` 對驗收 service account 的 `roles/iam.serviceAccountTokenCreator`、最長 30 分鐘並於測後撤銷。本次設定 25 分鐘到期條件（00:30:36），00:05:36 開始，00:07:23 完成並撤銷；最後讀回直接 token creator 授權 **0**。憑證僅在記憶體傳遞。
+
+- 私有 revision `vibecart-acceptance-pr21-00003-8hr`，映像 `sha256:d933a5d8bf3f9264beac3bc9738e2bb84d11cf92e1b8ce097b0cd3000be40b91`；正式 100% 流量 revision `vibecart-web-00012-85f` 使用同一映像。
+- `probe_id=ren-d4-52ff2f677fe5bf8b`；管理監控基線 **13**，一筆正常事件後 **14**，再加入 **1,001** 筆較新 synthetic 事件後仍 **14**。會員前台推薦在正常事件後改變、目標商品居首；synthetic 加入後結果不變。
+- 刪除本次事件 **1,002**、session／users／SKU／products 各 **2**，各集合讀回殘留 **0**、`verified=true`。隨後 Atlas 連接器獨立查詢上述 probe marker 及隔離庫 session，均為 **0**；商品查詢首次連接器內部錯誤，重試後確認 0。
+- 完整無憑證輸出見 [探針與撤權報告](inventory/D4_PRIVATE_PROBE_2026-10-18.json)；[部署盤點](inventory/D4_CONSUMER_INVENTORY_2026-10-18.json) 與 [43 區 Jobs 盤點](inventory/D4_CLOUD_JOBS_2026-10-18.json) 同步留存。
+
+00:10 盤點發現新零流量候選 `vibecart-web-00013-ds5`（來源 `80513a951d0dff67fd47a153a45918522b5ffbb5`、映像 `sha256:57c8fd038d7c231a4e417471a66b9c7996c296efd2d7b1ff70302c46a45f0fab`），當時正式 100% 仍為已受測的 `00012`。本次通過證據只對上述 `d933…` 映像負責；若正式版切換，需對最終版本重核。Cloud Run v1 全專案 services 清單只有上述兩個服務，Job／worker pool 清單皆空，三者均沒有 unreachable 或後續分頁。43 區 Jobs 查詢為 42 區空、`me-central2` 因 `LOCATION_POLICY_VIOLATED` 回 403；v2 全區服務查詢另列 5 個 unreachable location，均保留在診斷報告，並以 v1 全專案成功清單補足盤點。Scheduler／Functions／Workflows／Cloud Tasks API 未啟用，Pub/Sub topic／subscription 空。**本輪沒有執行正式 D4 dry-run／apply。**
+
+**00:13:54 更新**：[正式流量重查](inventory/D4_PRODUCTION_CHANGE_2026-10-18.json) 已讀回 `00013-ds5` 承接 100%，映像為上述 `57c8…`；00:10 的零流量狀態已被取代。D4 尚欠新正式映像的同版隔離對照及最終證據整理，不能沿用 `00012` 的 image digest 聲稱新版本已通過。另一個 SAM 對話同時接續 PR #47 的驗收工作，本對話已先保存完成的結果並請求跨對話協調授權，避免重複部署及正式匯入。
+
+**00:15:50 正式庫唯讀 preflight**：[報告](inventory/D4_PREFLIGHT_2026-10-18.json) 以 `80513a9` 的匯入程式執行 `action=preflight`，schema／索引與來源參照核對通過。預期 **1,240**（四種事件各 310），`existing=0`、`missing=1240`、`inserted=0`、`committed=false`、`database_writes=0`；dataset SHA-256 仍為 `da6998425bc80746902b407336489f43bfcc77bc7f092d9ece5e3b02d1d0edea`。D1～D3 訂單／明細讀回 **3,000／8,969**。Mongo URI 只在記憶體取得與傳遞，使用正式應用程式帳號連線；這次沒有執行交易 dry-run 或 apply。
+
 ## 目標與資料範圍
 
 本探針只允許連至 `vibecart-ai-free.odqe25w.mongodb.net/vibecart_acceptance_pr21`，帳號須為只對該庫具 `readWrite` 的 `sam_pr21_acceptance_20261017`；HTTP 目標只允許 `vibecart-acceptance-pr21-*.a.run.app` 私有服務。腳本在程序記憶體接收短期 ID token 與 Mongo URI，不接受正式 `vibecart_ai` URI，也不將憑證寫入檔案、命令列或輸出。

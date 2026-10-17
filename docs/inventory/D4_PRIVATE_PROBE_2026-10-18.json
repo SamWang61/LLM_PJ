@@ -1,0 +1,47 @@
+{
+  "started_at": "2026-10-17T16:05:36.821Z",
+  "authorization_expires": "2026-10-17T16:30:36.821Z",
+  "granted": true,
+  "exit_code": 0,
+  "probe": {
+    "probe_id": "ren-d4-52ff2f677fe5bf8b",
+    "service_revision": "vibecart-acceptance-pr21-00003-8hr",
+    "service_image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:d933a5d8bf3f9264beac3bc9738e2bb84d11cf92e1b8ce097b0cd3000be40b91",
+    "status": "passed",
+    "baseline_admin_count": 13,
+    "after_normal_admin_count": 14,
+    "after_synthetic_admin_count": 14,
+    "normal_visible": true,
+    "synthetic_excluded": true,
+    "synthetic_inserted": 1001,
+    "product_ids": [
+      "6ad39d1a66bf52893e090f12",
+      "6ad39d1a66bf52893e090f13"
+    ],
+    "cleanup": {
+      "events": 1002,
+      "sessions": 2,
+      "users": 2,
+      "skus": 2,
+      "products": 2,
+      "events_remaining": 0,
+      "sessions_remaining": 0,
+      "users_remaining": 0,
+      "skus_remaining": 0,
+      "products_remaining": 0,
+      "verified": true
+    }
+  },
+  "iam_revoked": true,
+  "remaining_direct_token_creator_grants": 0,
+  "finished_at": "2026-10-17T16:07:23.559Z",
+  "independent_atlas_readback": {
+    "probe_id": "ren-d4-52ff2f677fe5bf8b",
+    "events": 0,
+    "users": 0,
+    "products": 0,
+    "skus": 0,
+    "all_acceptance_sessions": 0,
+    "products_query_retried_after_connector_internal_error": true
+  }
+}
