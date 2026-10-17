@@ -70,14 +70,18 @@ def test_direct_graph_does_not_seed_embeddings_from_synthetic_history():
     assert result["source"] == "rules" and result["events"] == []
 
 
-def test_legacy_writes_keep_server_synthetic_batch_on_all_events():
+@pytest.mark.parametrize("batch,expected", [
+    ("legacy-offline-batch", "legacy-offline-batch"),
+    ("", "legacy-demo"),
+])
+def test_legacy_writes_keep_server_synthetic_batch_on_all_events(batch, expected):
     db = mongomock.MongoClient().legacy
     uid, pid = ObjectId(), ObjectId()
     db.users.insert_one({"_id": uid, "is_active": True, "role": "customer"})
     db.products.insert_one({"_id": pid, "name": "測試商品", "is_active": True,
                             "category": "測試", "price": 10, "stock": 2, "sales_count": 0})
     app = create_app({"TESTING": True, "SECRET_KEY": "test", "DATA_MODE": "legacy",
-                      "BEHAVIOR_SYNTHETIC_BATCH": "legacy-offline-batch"})
+                      "BEHAVIOR_SYNTHETIC_BATCH": batch})
 
     @app.before_request
     def inject_database():
@@ -92,7 +96,7 @@ def test_legacy_writes_keep_server_synthetic_batch_on_all_events():
     events = list(db.behavior_events.find())
     assert {event["event_type"] for event in events} == {"view", "cart", "purchase"}
     assert all(event["metadata"] == {"synthetic": True,
-        "synthetic_batch_id": "legacy-offline-batch", "exclude_from_attribution": True}
+        "synthetic_batch_id": expected, "exclude_from_attribution": True}
         for event in events)
     assert list(production_events(events)) == []
 

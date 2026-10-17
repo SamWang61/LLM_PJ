@@ -1,6 +1,6 @@
 # 最新專案上下文 / Current project context
 
-更新：2026-10-17（Asia/Taipei）。PR #21 已修補 legacy synthetic 事件標記、示範 PURCHASE 歸因條件及 D4 匯入證據格式；網站離線測試 174 passed／3 skipped，D4 定向測試 17 passed。詳見 [D4 遠端閘門](D4_REMOTE_GATE_2026-10-17.md)。現行結帳仍全部建立示範訂單，因此購買事件仍排除歸因；D4 尚缺所有實際部署 consumer 的同版遠端隔離讀回，不得正式匯入。PR #21 保持草稿，線上 Claude、BGE、自由提問仍關閉；D5 為規格，D1～D3 與額外兩筆示範訂單保留。
+更新：2026-10-17（Asia/Taipei）。PR #21 已修補 legacy synthetic 事件標記、示範 PURCHASE 歸因條件及 D4 匯入證據格式；網站離線測試 175 passed／3 skipped，D4 定向測試 17 passed。詳見 [D4 遠端閘門](D4_REMOTE_GATE_2026-10-17.md)。現行結帳仍全部建立示範訂單，因此購買事件仍排除歸因；D4 尚缺所有實際部署 consumer 的同版遠端隔離讀回，不得正式匯入。PR #21 保持草稿，線上 Claude、BGE、自由提問仍關閉；D5 為規格，D1～D3 與額外兩筆示範訂單保留。
 
 同日 main 已合併 REN 文件名稱、人名與頁腳修正的 PR #22；本分支已整合其文件與頁腳，保留新版前台鍵盤焦點。詳見 [文件同步紀錄](DOCUMENT_SYNC_2026-10-17.md)。本輪尚未重新驗證部署或 Atlas 寫入。
 

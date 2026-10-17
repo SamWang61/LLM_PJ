@@ -4,8 +4,10 @@ from flask import current_app, session
 from ..db import get_db, utcnow
 
 
-def behavior_metadata():
-    batch = current_app.config.get("BEHAVIOR_SYNTHETIC_BATCH")
+def behavior_metadata(*, legacy_default=False):
+    batch = current_app.config.get("BEHAVIOR_SYNTHETIC_BATCH") or (
+        "legacy-demo" if legacy_default else ""
+    )
     return ({"synthetic": True, "synthetic_batch_id": batch,
              "exclude_from_attribution": True} if batch else {})
 

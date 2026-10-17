@@ -40,7 +40,7 @@ def product_detail(product_id):
     if session.get("user_id"):
         get_db().behavior_events.insert_one({"user_id": ObjectId(session["user_id"]),
             "product_id": product["_id"], "event_type": "view", "created_at": utcnow(),
-            "metadata": behavior_metadata()})
+            "metadata": behavior_metadata(legacy_default=True)})
     return render_template("store/product.html", product=product)
 
 
@@ -55,7 +55,7 @@ def add_to_cart(product_id):
     session["cart"] = cart
     get_db().behavior_events.insert_one({"user_id": ObjectId(session["user_id"]),
         "product_id": product["_id"], "event_type": "cart", "created_at": utcnow(),
-        "metadata": behavior_metadata()})
+        "metadata": behavior_metadata(legacy_default=True)})
     flash(f"已將「{product['name']}」加入購物車。", "success")
     return redirect(request.referrer or url_for("store.home"))
 
@@ -97,7 +97,7 @@ def checkout():
         db.products.update_one({"_id": item["product_id"]}, {"$inc": {"stock": -item["quantity"], "sales_count": item["quantity"]}})
         db.behavior_events.insert_one({"user_id": ObjectId(session["user_id"]), "product_id": item["product_id"],
                                       "event_type": "purchase", "created_at": utcnow(),
-                                      "metadata": behavior_metadata()})
+                                      "metadata": behavior_metadata(legacy_default=True)})
     session["cart"] = {}
     flash(f"訂單 {order['order_no']} 已成立，感謝您的購買。", "success")
     return redirect(url_for("store.home"))

@@ -4,7 +4,7 @@
 
 ## 程式原因與本輪修正
 
-1. legacy `app/store.py` 的瀏覽、加購、結帳事件原先都沒有 `metadata`。本輪讓三個寫入點使用伺服器端的 `behavior_metadata()`；有 `BEHAVIOR_SYNTHETIC_BATCH` 時，一律附上 synthetic、batch ID 與歸因排除。legacy 路徑不在現行 Cloud Run `DATA_MODE=v4` 的服務流量上，但本機或舊版部署不得再漏標。
+1. legacy `app/store.py` 的瀏覽、加購、結帳事件原先都沒有 `metadata`。本輪讓三個寫入點使用伺服器端的 synthetic metadata；有 `BEHAVIOR_SYNTHETIC_BATCH` 時使用指定批次，沒有設定時使用 `legacy-demo`，一律排除正式歸因。legacy 路徑不在現行 Cloud Run `DATA_MODE=v4` 的服務流量上，但本機或舊版部署不得再漏標。
 2. v4 `sku_cart_service.py` 原先按 `event_type=PURCHASE` 一律排除歸因。本輪改成按結帳產生的 `order.is_demo` 決定。**現行 checkout 仍固定建立 `is_demo=true` 訂單**，所以所有由此路徑產生的購買事件仍排除歸因；不得把這次改動寫成正式購買歸因已啟用。未來若要正式訂單，須另定付款、庫存、退款、稽核及權限契約並驗收。
 3. `behavior_import.py` 原本接受四個 consumer 的純 `passed` 字串。本輪要求每項留下來源完整 SHA、映像 digest、revision、遠端證據網址、檢查時間、合成輸入數、合成可見數 0 與正常事件可見數。格式檢查只防止空泛的完成聲明，**不能取代實際遠端讀回或人工核對**。
 
@@ -25,4 +25,4 @@
 3. 對未部署的計分／歸因工作，保存 Cloud Run Job、Scheduler 與相關服務清單的管理端讀回，並在正式啟用時重新驗收。任何新 consumer 都要納入盤點。
 4. 將每項通過的證據填入 `behavior_import.py` 所需的 `consumer_checks`，由 SAM 核對網址內容、revision、digest、source SHA、時間及部署清單後，才可考慮 D4 preflight、交易 dry-run、apply 與正式讀回。只改 JSON 不能視為驗收。
 
-本輪本機測試：網站 `174 passed, 3 skipped`（跳過項需本機 replica set）；D4 匯入／fixture 定向測試 `17 passed`。目前只完成程式修正與離線驗證；**未部署新修訂、未建立示範帳號、未向 Atlas 寫入 D4、未驗真 Claude/BGE、未啟用自由提問**。D5 繼續標為規格，PR #21 保持草稿。
+本輪本機測試：網站 `175 passed, 3 skipped`（跳過項需本機 replica set）；D4 匯入／fixture 定向測試 `17 passed`。目前只完成程式修正與離線驗證；**未部署新修訂、未建立示範帳號、未向 Atlas 寫入 D4、未驗真 Claude/BGE、未啟用自由提問**。D5 繼續標為規格，PR #21 保持草稿。
