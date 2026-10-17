@@ -2,6 +2,8 @@
 
 本頁記錄 PR #21 的程式缺口、已修範圍及正式匯入前的遠端證據。**目前不得執行 D4 apply**。D1～D3 的 600 位停用合成會員、3,000 筆示範訂單與 8,969 筆明細保留，不重匯；額外兩筆示範訂單也保留。
 
+2026-10-17 10:49（Asia/Taipei）以 MongoDB Atlas 連接器唯讀聚合讀回：指定 D4 batch 的 `behavior_events` 為 **0**；原 D1～D3 batch 的 `orders` 為 **3,000**；不屬原 batch 且 `is_demo=true` 的 `orders` 為 **2**。此查詢未寫入資料，也沒有證明 consumer 隔離。
+
 ## 程式原因與本輪修正
 
 1. legacy `app/store.py` 的瀏覽、加購、結帳事件原先都沒有 `metadata`。本輪讓三個寫入點使用伺服器端的 synthetic metadata；有 `BEHAVIOR_SYNTHETIC_BATCH` 時使用指定批次，沒有設定時使用 `legacy-demo`，一律排除正式歸因。legacy 路徑不在現行 Cloud Run `DATA_MODE=v4` 的服務流量上，但本機或舊版部署不得再漏標。
@@ -25,4 +27,4 @@
 3. 對未部署的計分／歸因工作，保存 Cloud Run Job、Scheduler 與相關服務清單的管理端讀回，並在正式啟用時重新驗收。任何新 consumer 都要納入盤點。
 4. 將每項通過的證據填入 `behavior_import.py` 所需的 `consumer_checks`，由 SAM 核對網址內容、revision、digest、source SHA、時間及部署清單後，才可考慮 D4 preflight、交易 dry-run、apply 與正式讀回。只改 JSON 不能視為驗收。
 
-本輪本機測試：網站 `175 passed, 3 skipped`（跳過項需本機 replica set）；D4 匯入／fixture 定向測試 `17 passed`。目前只完成程式修正與離線驗證；**未部署新修訂、未建立示範帳號、未向 Atlas 寫入 D4、未驗真 Claude/BGE、未啟用自由提問**。D5 繼續標為規格，PR #21 保持草稿。
+本輪本機測試：網站 `175 passed, 3 skipped`（跳過項需本機 replica set）；D4 匯入／fixture 完整測試 `26 passed`。目前只完成程式修正、離線驗證及上述 Atlas 唯讀計數；**未部署新修訂、未建立示範帳號、未向 Atlas 寫入 D4、未驗真 Claude/BGE、未啟用自由提問**。D5 繼續標為規格，PR #21 保持草稿。
