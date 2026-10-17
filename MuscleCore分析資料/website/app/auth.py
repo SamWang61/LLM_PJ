@@ -40,12 +40,20 @@ def current_member():
 def start_member_session(user):
     token = None
     if current_app.config["DATA_MODE"] == "v4":
+        prior_user_id = session.get("user_id")
+        prior_token = session.get("member_session")
         current = get_db().users.find_one({"_id": user["_id"], "schema_version": 4,
             "status": "active", "is_active": True})
         if not current or current.get("password_hash") != user.get("password_hash"):
             return False
         user = current
         token = create_member_session(get_db(), user)
+        if prior_user_id and prior_token:
+            try:
+                revoke_device_session(get_db(), prior_user_id, prior_token)
+            except (TypeError, ValueError, InvalidId):
+                # A malformed former cookie cannot prevent a valid new login.
+                pass
     session.clear()
     session.update(user_id=str(user["_id"]), name=user.get("display_name", user.get("name", "")), role=user["role"])
     if current_app.config["DATA_MODE"] == "v4":

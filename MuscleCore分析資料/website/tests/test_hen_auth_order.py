@@ -51,6 +51,26 @@ def test_two_devices_can_login_and_logout_independently(shop):
     assert replay(app, old).get("/cart").status_code == 302
 
 
+def test_same_browser_relogin_retires_previous_cookie_only(shop):
+    app, client, db, uid, _, _ = shop
+    previous_cookie = cookie(client)
+    second_device = app.test_client()
+    assert login(second_device).status_code == 302
+    second_cookie = cookie(second_device)
+
+    assert login(client).status_code == 302
+    current_cookie = cookie(client)
+    assert current_cookie != previous_cookie
+    assert replay(app, previous_cookie).get("/cart").status_code == 302
+    assert replay(app, current_cookie).get("/cart").status_code == 200
+    assert replay(app, second_cookie).get("/cart").status_code == 200
+    with client.session_transaction() as state:
+        state["csrf_token"] = "test-csrf"
+    assert post(client, "/auth/logout").status_code == 302
+    assert replay(app, current_cookie).get("/cart").status_code == 302
+    assert replay(app, second_cookie).get("/cart").status_code == 200
+
+
 def test_disabled_then_reenabled_does_not_restore_revoked_cookie(shop):
     app, client, db, uid, pid, _ = shop
     old = cookie(client)
