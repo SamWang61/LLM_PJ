@@ -1,5 +1,7 @@
 # 操作截圖與完成標準
 
+**10/17 決定**：S06～S08 保留在本 PR #19 的素材流程。JEFF T5 已併入 [SAM PR #21](https://github.com/SamWang61/LLM_PJ/pull/21)，但該版尚無可登入後台的同版 Cloud Run 驗收。若先用本機拍攝，逐張標示「本機執行」、來源 commit SHA、日期時間、角色與資料範圍；S08 另標示規則／BGE／Claude 的實際啟用狀態。JEFF 的本機模型量測與 [10/17 交付決定](https://github.com/SamWang61/LLM_PJ/blob/codex/sam-final-baseline-20261016/docs/SAM_JEFF_1017_HANDOFF.md)可作文字來源，不能充當 S06～S08 操作截圖。截圖與同版資料核對完成前，三項維持待驗。
+
 每張圖記錄：編號、日期與台灣時間、URL、Git SHA／部署 revision（未知寫待補）、角色、測試資料範圍、操作步驟、預期／實際結果、證據連結與核對人。PNG 原圖用於簡報；不得使用假介面冒充操作截圖。避免帳密、token、真實個資；必要裁切須說明且保留原證據於私有位置。
 
 | ID／檔名 | 操作與預期 | 主責／前置 | 目前狀態 |

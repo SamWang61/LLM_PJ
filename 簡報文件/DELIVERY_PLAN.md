@@ -1,5 +1,7 @@
 # 10/18 交付準備計畫
 
+**10/17 狀態**：JEFF T5 的 PR #23 已合併進 SAM PR #21；S06～S08 依[截圖規範](screenshots/README.md)留在本簡報 PR #19。雲端預覽仍封鎖後台，線上 Claude／BGE 維持關閉；T5 本機模型數值須以來源 SHA 與執行環境標示。D5、6+4 推薦、排程及 D4 正式匯入仍未完成，不能以規格或 CI 取代操作驗收。詳見 [10/17 核對](https://github.com/SamWang61/LLM_PJ/blob/codex/sam-final-baseline-20261016/docs/SAM_JEFF_1017_HANDOFF.md)。
+
 以下為提議時程，尚非各組員已承諾的完成時間。指導講師為 [簡志璁 Alvin](mailto:fcaibialvin@gmail.com)；報告時長、評分規則與最終簽收人待補。
 
 | 日期 | 主責 | 先決條件／提供人 | 產物與完成條件 |
