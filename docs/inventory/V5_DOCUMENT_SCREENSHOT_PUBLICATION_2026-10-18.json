@@ -91,8 +91,8 @@
     },
     {
       "path": "簡報文件/screenshots/README.md",
-      "bytes": 3680,
-      "sha256": "14f06558d92cf300f991736578f05b1178b95ac103d34bdf863449de3e7ef11b"
+      "bytes": 3741,
+      "sha256": "cecc5e59cfda652409150db3457a4f2d6c3baf7b6f73227847e747a73811601d"
     },
     {
       "path": "簡報文件/screenshots/S01-S12_取證索引_2026-10-18.json",
@@ -210,7 +210,7 @@
       "sha256": "8bf3f8d12816fc1708b736e7fb5d65da50fb1b8d08e4d839fe45a8ca4f368144"
     },
     {
-      "path": "簡報文件/screenshots/history-20261017/S01-home.png",
+      "path": "簡報文件/screenshots/history-20261017/S01-home.jpg",
       "bytes": 36808,
       "sha256": "39b8b45376cebf770811abe6602bf333349e0d2e9383f0cbcb9c25f6b4fa9f18"
     },
