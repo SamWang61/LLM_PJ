@@ -1,0 +1,25 @@
+{
+  "checked_at_utc": "2026-10-17T17:58:00.805430+00:00",
+  "source_sha": "7affe59b23582940a2b83085c023c4b3b8b7d1e9",
+  "scope": "Credential-free localhost MongoDB only; no .env or Atlas used",
+  "container": "sam-monitor-d3ef3475f4",
+  "container_removed": true,
+  "pytest_exit_code": 0,
+  "junit": {
+    "name": "pytest",
+    "errors": "0",
+    "failures": "0",
+    "skipped": "0",
+    "tests": "186",
+    "time": "37.104",
+    "timestamp": "2026-10-18T01:58:06.263011+08:00",
+    "hostname": "ASUS-VIVO-SAM"
+  },
+  "junit_sha256": "584ea16de2ea5f49f842de042df1b7e97978aafb162cbc92b4c9ff0966644bf4",
+  "remaining_databases": [
+    "admin",
+    "config",
+    "local"
+  ],
+  "status": "passed"
+}
