@@ -4,6 +4,8 @@
 
 本頁記錄 PR #21 的程式缺口、已修範圍及正式匯入前的遠端證據。**目前不得執行 D4 apply**。D1～D3 的 600 位停用合成會員、3,000 筆示範訂單與 8,969 筆明細保留，不重匯；額外兩筆示範訂單也保留。
 
+**11:40 更新**：SAM 已代盤點 [實際部署 consumer 與排程](D4_DEPLOYED_CONSUMER_INVENTORY_2026-10-17.md)：正式流量仍由較舊 `vibecart-web-00007-m9k` 承接；Cloud Run Jobs、Pub/Sub 訂閱為空，Scheduler／Functions 等 API 未啟用。計分排程與正式歸因目前未部署；本輪調整匯入證據格式，允許這兩項以有範圍和檔案雜湊的 `not_deployed` 雲端盤點記錄，但管理員監控與前台推薦仍須同版遠端合成／正常事件對照。正式 revision 來源與此對照仍缺，**閘門維持未通過**。
+
 2026-10-17 10:49（Asia/Taipei）以 MongoDB Atlas 連接器唯讀聚合讀回：指定 D4 batch 的 `behavior_events` 為 **0**；原 D1～D3 batch 的 `orders` 為 **3,000**；不屬原 batch 且 `is_demo=true` 的 `orders` 為 **2**。此查詢未寫入資料，也沒有證明 consumer 隔離。
 
 ## 程式原因與本輪修正
