@@ -1,5 +1,10 @@
 # 變更紀錄 / Changelog
 
+## 2026-10-18 — D4 同版隔離與合成批次驗收 / Synthetic event acceptance
+
+- 修復 PR #47 的限時 ID token 授權與 IAM 傳播等待，完成同映像 consumer 遠端對照、探針清理與撤權。
+- 以不可變 GitHub 證據通過正式閘門，匯入 D4 合成事件 1,240 筆；verify 缺漏 0、重送新增 0，D1～D3 與額外 demo 訂單保留。詳見 [驗收紀錄](docs/D4_IMPORT_ACCEPTANCE_2026-10-18.md)。
+
 ## 2026-10-16 — 管理後台規格 v1.2 契約補定 / Admin contract decisions
 
 - 專案負責人定案自由提問的獨立預設關閉旗標、權限與遠端驗收條件；四個固定 intent 可分開交付。Free questions remain gated until accepted.

@@ -1,0 +1,35 @@
+{
+  "scope": "D4 final acceptance reports; excludes this manifest itself",
+  "files": [
+    {
+      "path": "docs/inventory/sam-d4-final-inventory-20261018.json",
+      "sha256": "83a58a05f1207b3bbe20e9197ef6014f1b8a75439a3ab2268e379c9537b1e045",
+      "bytes": 1780
+    },
+    {
+      "path": "docs/inventory/sam-d4-isolation-evidence-20261018.json",
+      "sha256": "ada565b8520d01b201d78a659265866a8488d3a7e675515d1e806eb8b4903dea",
+      "bytes": 3079
+    },
+    {
+      "path": "docs/inventory/sam-d4-formal-apply-20261018.json",
+      "sha256": "affd2710f5a1ab3b0996a93908454c465ec330d3e4096ecbe3d4d710d472a1a8",
+      "bytes": 1046
+    },
+    {
+      "path": "docs/inventory/sam-d4-formal-verify-20261018.json",
+      "sha256": "0d1c53894e774d045371cb15a1bdfff602e3c93345356e473fc7e6fd9aa421ac",
+      "bytes": 983
+    },
+    {
+      "path": "docs/inventory/sam-d4-formal-replay-20261018.json",
+      "sha256": "ea1490b933f08e142c60653254ddef66ce65ef9f50ad3d2964c57c31c95d163d",
+      "bytes": 1043
+    },
+    {
+      "path": "docs/inventory/sam-d4-final-readback-20261018.json",
+      "sha256": "8c4fbded7aa80ebde477b8f3a0e91d1270c680b159d07aa48f1f6d2acdf555df",
+      "bytes": 1616
+    }
+  ]
+}

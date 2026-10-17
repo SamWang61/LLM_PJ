@@ -1,5 +1,7 @@
 # D4 實際部署 consumer 盤點｜2026-10-17
 
+**2026-10-18 00:41 最新結果：**[全專案 v1 global 盤點](inventory/sam-d4-final-inventory-20261018.json)已補核 services／Jobs／worker pools，均無 unreachable 或未讀分頁；已部署兩服務同映像、無其他 worker，排程 API 與 Pub/Sub 狀態亦重查。D4 的 [apply／verify／冪等重送](D4_IMPORT_ACCEPTANCE_2026-10-18.md)已完成 1,240 筆，重送新增 0。以下區域拒絕與未 apply 狀態依各自時間解讀。
+
 **2026-10-18 00:15～00:23（Asia/Taipei）更新：**[同版私有對照與清理](REN_D4_PRIVATE_PROBE_2026-10-17.md)已完成，正式 `vibecart-web-00013-ds5` 與私有 `vibecart-acceptance-pr21-00004-9qr` 同為 source `80513a951d0dff67fd47a153a45918522b5ffbb5`、digest `sha256:57c8fd038d7c231a4e417471a66b9c7996c296efd2d7b1ff70302c46a45f0fab`。兩個已部署網站 consumer 已在同映像隔離資料庫驗證：正常事件可見、1,001 synthetic 不影響前台推薦或管理監控；測後全部探針資料與臨時 IAM binding 清除。
 
 本次逐區查 43 個 Cloud Run location：42 區完成 services／jobs 查詢；`me-central2` 回明確 `LOCATION_POLICY_VIOLATED`，保留為專案不可存取區，沒有冒記讀取成功。可讀區只有上述兩服務，Job 為 0；Pub/Sub topic／subscription 為 0；Scheduler、Functions、Workflows、Tasks API 未啟用。[原始管理端清單](inventory/sam-d4-consumer-probe-20261018.json)包含逐區名稱、受限區及兩個服務的來源。正式 D4 preflight／abort dry-run 已通過，仍未 apply；應在填寫正式匯入證據時保留受限區範圍並重查。本頁以下 10/17 內容是歷史快照。

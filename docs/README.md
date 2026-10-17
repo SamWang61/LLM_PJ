@@ -14,7 +14,7 @@
 | SAM Atlas 資料對帳 | [10/17 migration、商品／訂單關聯與 Network Access 唯讀核對](SAM_ATLAS_READONLY_ACCEPTANCE_2026-10-17.md) |
 | SAM 遠端交易前置 | [10/17 隔離資料庫與私有驗收服務閘門](SAM_REMOTE_TRANSACTION_PREFLIGHT_2026-10-17.md) |
 | SAM 遠端交易紀錄 | [10/17 私有服務、IAM、同版映像與未通過項目](SAM_REMOTE_TRANSACTION_ACCEPTANCE_2026-10-17.md) |
-| D4 匯入閘門 | [10/17 程式修正與遠端驗收缺口](D4_REMOTE_GATE_2026-10-17.md) |
+| D4 匯入驗收 | [10/18 同版隔離、1,240 筆合成事件與冪等重送](D4_IMPORT_ACCEPTANCE_2026-10-18.md)；[閘門歷史](D4_REMOTE_GATE_2026-10-17.md) |
 | REN 會員／購物接口 | [R02 路由、session、交易與事件交接](REN_R02_INTERFACE_2026-10-17.md) |
 | SAM 同版整合基線 | [2026-10-16 來源與驗證](SAM_INTEGRATION_BASELINE_2026-10-16.md) |
 | SAM PR #21 本機驗證與最終缺口 | [2026-10-16 Docker／交易與遠端待驗](SAM_PR21_ACCEPTANCE_2026-10-16.md) |
