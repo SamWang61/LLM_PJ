@@ -1,3 +1,24 @@
+# N03｜版本對應與交付核對｜2026-10-18 05:15 更新
+
+執行：[SAM](mailto:cashsam@gmail.com)。本次修正 PR #65 的 P2：原 03:00 的 `f53d39c` / 60 檔證據僅屬歷史快照，不代表後續 main；以下重新從實際遠端 main 取得來源並封裝。
+
+## 05:15 本輪可核證據
+
+- 不可變 main：`9ee4ec8b7b59d04d43148f51a0f729f6ab7dcf4a`。包含 PR #69 與 PR #67；盤點前／後 `refs/heads/main` 完全相同，`remote_head_stable=true`。若 main 再前進，本報告保留為此時間快照，必須重跑工具，不能改標籤冒充新版本。
+- 相較 `24920d5` 的 **102 個現存變更檔**，逐檔 main Git blob／不可變 GitHub 內容 SHA-256 相同，差異 0；本輪不宣稱髒工作目錄與 main 全檔一致。
+- **51 個部署來源**兩次封裝位元組一致，逐檔 archive／Git blob 差異 0；SHA-256 `9929a10c51ee1302369a3a9f14a4b21f4a35d4ef7cea9b6ab83c37643582169b`。包含新版頁尾 CSS 與三張照片，不沿用舊 47 檔計數。與目前映像來源 `13199110305691910f2e235d6dca4d9d605672d2` 的來源集合及 blob 差異 0。
+- [來源與封裝證據](inventory/sam-delivery-reconciliation-20261018-current.json)；[05:14 控制平面與公開路由讀回](inventory/sam-delivery-cloud-20261018-current.json)。[可重現工具](../scripts/audit_delivery_source.py)核對遠端 main 前後鎖定，主線移動即失敗，不再從目前 checkout HEAD 猜測 main。
+- 正式 `vibecart-web-00017-5xb` 100%；私有 `vibecart-acceptance-pr21-00006-cb6` 100%，同 digest `sha256:8bf5ee37923b61faad488fcf4406de2d647f0ea2a8e5eccc86a54689e13995a5`。私有只允許專用 SA invoker、隔離庫 `vibecart_acceptance_pr21`；正式映射 `vibecart_ai`。
+- Hosting 既有 release `1791982222797000`／version `c3772dcc7c906211` 仍將 `**` 導向 `asia-east1/vibecart-web`。六個公開 GET 200、私有匿名 live 403；保留 `00013-ds5` 零流量回退。本輪沒有重部署或修改 Hosting。
+- PR #67 已於台灣時間 **05:14:05** 合併 main `9ee4ec8`，PR #69 已合併 `f7b95ea`。目前映像的私有交易／帳號證據見[整合報告](SAM_PR67_PR69_MERGE_2026-10-18.md)；不把健康 GET 或本文件當全站簽收。
+- 防漂移與封裝回歸 **5 passed／0 skipped**；本輪沒有重新驗證大型 LFS payload，03:00 的四物件 prefix/length 驗證仍僅屬歷史證據。
+
+重跑：`python scripts/audit_delivery_source.py --baseline 24920d538cfe2cd4f9674bacb340cdc6b933ef56 --deployed-source 13199110305691910f2e235d6dca4d9d605672d2 --output <report.json>`。
+
+以下保留各時間歷史快照；新版證據優先，具名交接、實機、consumer 重驗及最終簽收依主工作清單追蹤。
+
+---
+
 # N03｜版本對應與交付核對｜2026-10-18 03:07
 
 主責：[SAM](mailto:cashsam@gmail.com)。使用者重新登入後，**03:07 的本輪 N03 版本／路由／配置對應已完成讀回**；這個快照供 N04～N06 驗收使用，不是 N18 最終凍結或全站簽收。
