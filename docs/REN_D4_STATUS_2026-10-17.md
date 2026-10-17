@@ -33,3 +33,11 @@
 ## 16:05 資料層 preflight
 
 [正式庫唯讀 preflight 紀錄](REN_D4_PREFLIGHT_2026-10-17.md)已確認 D4 validator、索引及 D1～D3 來源參照可用，以最多 100 筆來源訂單規劃 **1,240 筆**事件；`existing=0`、`missing=1240`、`committed=false`、`inserted=0`。事後 Atlas 唯讀計數 D4 仍為 0，原批訂單／明細仍為 3,000／8,969。這只解除資料層前置疑點，**沒有**解除遠端 consumer 隔離閘門；正式 apply 仍禁止。
+
+## 18:44 接續核對與下一關（台灣時間）
+
+[PR #38 正式部署／隔離交易紀錄](SAM_PR21_LIVE_ACCEPTANCE_2026-10-17.md)已合併 `main`，本地 `origin/main` 為 `9afd5fb372c24346b1f98232792f2740a1e1f73c`。該紀錄於 16:06 讀回正式 Cloud Run `vibecart-web-00012-85f` 承接 **100%** 流量、映像 digest `sha256:d933a5d8bf3f9264beac3bc9738e2bb84d11cf92e1b8ce097b0cd3000be40b91`，來源為 PR #21 merge SHA `2fd43557bac0148e02fa427163a9657a13c7ae23`；私有驗收 `vibecart-acceptance-pr21-00003-8hr` 使用同一映像，隔離 Atlas 的遠端登入、角色、demo checkout、重送及庫存交易已留下讀回證據。上文 13:39 的 `00007` 正式流量與 14:17 的帳號缺失都是**歷史快照**。本次僅在 Google Cloud 控制台再次看見兩項 Cloud Run 服務可用，沒有重新讀回正式 revision 流量分配，故以 #38 的 16:06 證據標明時間，不把它寫成 18:44 即時流量驗證。
+
+這個部署進展讓正式與私有服務可比對相同映像，但 **D4 仍不可匯入**。缺的是同版私有服務對管理員推薦監控與會員前台推薦的實際 HTTP 對照：先讀正常事件，再加入超過監控 1,000 筆與前台 50 筆 limit 的合成事件，確認正常事件仍可見且 synthetic 不影響兩端輸出，最後只清除本次探針資料並讀回 0。私有驗收庫在 #38 留有一件 active 商品，其他測試商品已停用；對照推薦排序時須在隔離庫增建第二件完整、可清理的 active 商品／SKU，不能暫時改動其他人的夾具。先前供遠端交易測試使用的 `serviceAccountTokenCreator` 已在 #38 完成後撤銷；本機 Firebase CLI 當前沒有登入帳號，故本次未取得私有服務 ID token，也**未寫入任何測試事件或帳號**。不以本機模擬或 200 健康檢查冒充這項遠端驗收。
+
+下一次取得短期授權後，先重查服務 revision／digest、IAM 與全部部署 consumer；於獨立驗收庫完成上述正常／合成對照與清理，再核對正式服務同版行為及最新資產清單，產出帶時間、SHA、HTTP 輸出、資料讀回及 GitHub 文件位置的正式隔離證據。只有所有已部署 consumer 通過，才填入 D4 閘門欄位，依序執行交易 dry-run、apply、讀回與重送冪等；不重匯 D1～D3。
