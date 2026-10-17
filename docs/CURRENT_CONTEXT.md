@@ -1,5 +1,7 @@
 # 最新專案上下文 / Current project context
 
+更新：2026-10-17（Asia/Taipei）。REN 草稿 PR #24 的 R02 交接文件已併入 SAM PR #21 審查分支；只有文件，沒有新功能程式。SAM 依此接手同版隔離交易及遠端跨角色驗收；目前本機 Docker daemon 未啟動，本輪未重跑 replica set 的 3 個交易測試。詳見 [REN R02 接口交接](REN_R02_INTERFACE_2026-10-17.md)。PR #21 仍為草稿，main 未合併，D4 閘門維持。
+
 更新：2026-10-17（Asia/Taipei）。PR #21 已修補 legacy synthetic 事件標記、示範 PURCHASE 歸因條件及 D4 匯入證據格式；網站離線測試 175 passed／3 skipped，D4 定向測試 17 passed。詳見 [D4 遠端閘門](D4_REMOTE_GATE_2026-10-17.md)。現行結帳仍全部建立示範訂單，因此購買事件仍排除歸因；D4 尚缺所有實際部署 consumer 的同版遠端隔離讀回，不得正式匯入。PR #21 保持草稿，線上 Claude、BGE、自由提問仍關閉；D5 為規格，D1～D3 與額外兩筆示範訂單保留。
 
 同日 main 已合併 REN 文件名稱、人名與頁腳修正的 PR #22；本分支已整合其文件與頁腳，保留新版前台鍵盤焦點。詳見 [文件同步紀錄](DOCUMENT_SYNC_2026-10-17.md)。10:49 Atlas 唯讀讀回 D4 指定批次 0、原 D1～D3 訂單 3,000、額外示範訂單 2；未重新驗證部署，未向 Atlas 寫入。

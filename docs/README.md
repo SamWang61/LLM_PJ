@@ -9,6 +9,7 @@
 |---|---|
 | 10/17 JEFF 交付與 SAM 決定 | [PR #23 合併、D4 consumer 稽核及展示邊界](SAM_JEFF_1017_HANDOFF.md) |
 | D4 匯入閘門 | [10/17 程式修正與遠端驗收缺口](D4_REMOTE_GATE_2026-10-17.md) |
+| REN 會員／購物接口 | [R02 路由、session、交易與事件交接](REN_R02_INTERFACE_2026-10-17.md) |
 | D4 匯入閘門 | [10/17 程式修正與遠端驗收缺口](D4_REMOTE_GATE_2026-10-17.md) |
 | SAM 同版整合基線 | [2026-10-16 來源與驗證](SAM_INTEGRATION_BASELINE_2026-10-16.md) |
 | SAM PR #21 本機驗證與最終缺口 | [2026-10-16 Docker／交易與遠端待驗](SAM_PR21_ACCEPTANCE_2026-10-16.md) |

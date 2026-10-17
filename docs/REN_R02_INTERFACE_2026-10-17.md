@@ -2,6 +2,8 @@
 
 日期：2026-10-17（Asia/Taipei）。核對來源為 PR #21 的 `1d60914d95eca924c8a1c5f4edfecf22ef443283`。本頁記錄該版程式目前的接口與剩餘決策；舊版 `HEN_R02_CONTRACT_2026-10-14.md` 的單一登入草稿已被多裝置實作取代。PR #21 仍是草稿，尚未合併 `main`。
 
+**SAM 10/17 接手更新**：REN 草稿 [PR #24](https://github.com/SamWang61/LLM_PJ/pull/24) 僅新增本交接文件，提交 `6e005456da39a3938fb633c2d58368974958d461`；已併入 PR #21 審查分支，未合併 main。本頁後述 172 passed／3 skipped 是交接當時的 T5 紀錄；現行 PR #21 在本輪程式修正後，離線網站測試為 **175 passed／3 skipped**。3 個跳過項仍需本機無憑證 replica set 重驗；目前 Docker daemon 未啟動，本輪未拿舊提交的 171 passed／0 skipped 代替同版真交易證據。D4 現況與 Atlas 唯讀讀回見 [D4 遠端閘門](D4_REMOTE_GATE_2026-10-17.md)。
+
 ## 1. 現行接口
 
 | 範圍與位置 | 現行行為 | 呼叫者與驗證重點 |
@@ -26,5 +28,5 @@
 
 1. **R02／REN → SAM、JEFF**：以本頁作實際函式／路由交接。JEFF 須確認後台停用、降權、最後管理員與自停用規則，並在受權、CSRF、稽核及交易完善的寫入流程接 `revoke_user_sessions()`；目前沒有可驗收的後台全裝置撤權頁面。
 2. **R08／REN → SAM**：會員與購物程式已交；SAM 以 PR #21 同版、獨立測試環境重驗跨裝置、角色、舊 cookie、購物版本衝突、checkout 重送、庫存／明細與 rollback，並補人工瀏覽器及手機證據。測後停用私有帳號並撤權，不啟用 600 位合成會員。
-3. **事件／JEFF、SAM**：REN 的四種觸發已交。JEFF 明列實際部署的 consumer／排程及正式購買歸因政策；SAM 遠端逐一讀回 synthetic 排除後，才考慮 D4 正式匯入。
+3. **事件／JEFF、SAM**：REN 的四種觸發已交。現行 demo checkout 的 PURCHASE 依訂單示範狀態排除歸因；正式付款與歸因仍無已驗收流程。SAM 須先取得雲端所有實際 consumer／排程清單，逐一讀回 synthetic 排除後，才考慮 D4 正式匯入。
 4. **付款／取消**：目前只有 demo checkout。真正付款、退款、取消後的庫存補回及稽核由 JEFF／SAM 定案後另實作；不能依現有 `paid` 欄位推定已付款。
