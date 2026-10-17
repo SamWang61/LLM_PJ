@@ -1,0 +1,168 @@
+{
+  "sourceSha": "80513a951d0dff67fd47a153a45918522b5ffbb5",
+  "revision": "vibecart-web-00013-ds5",
+  "timeUTC": "2026-10-17T16:11:53.118581+00:00",
+  "passed": true,
+  "checks": [
+    {
+      "host": "https://vibecart-web-m44ncgz5ta-de.a.run.app",
+      "path": "/health/live",
+      "status": 200,
+      "passed": true,
+      "cacheControl": "private, no-store",
+      "location": null
+    },
+    {
+      "host": "https://vibecart-web-m44ncgz5ta-de.a.run.app",
+      "path": "/health/ready",
+      "status": 200,
+      "passed": true,
+      "cacheControl": "private, no-store",
+      "location": null
+    },
+    {
+      "host": "https://vibecart-web-m44ncgz5ta-de.a.run.app",
+      "path": "/",
+      "status": 200,
+      "passed": true,
+      "cacheControl": "private, no-store",
+      "location": null
+    },
+    {
+      "host": "https://vibecart-web-m44ncgz5ta-de.a.run.app",
+      "path": "/auth/login?next=/cart",
+      "status": 200,
+      "passed": true,
+      "cacheControl": "private, no-store",
+      "location": null
+    },
+    {
+      "host": "https://vibecart-web-m44ncgz5ta-de.a.run.app",
+      "path": "/auth/register",
+      "status": 200,
+      "passed": true,
+      "cacheControl": "private, no-store",
+      "location": null
+    },
+    {
+      "host": "https://vibecart-web-m44ncgz5ta-de.a.run.app",
+      "path": "/product/007b9fa91f1e7f506cb21d54",
+      "status": 200,
+      "passed": true,
+      "cacheControl": "private, no-store",
+      "location": null
+    },
+    {
+      "host": "https://vibecart-web-m44ncgz5ta-de.a.run.app",
+      "path": "/?q=%E9%AE%AE%E4%B9%B3",
+      "status": 200,
+      "passed": true,
+      "cacheControl": "private, no-store",
+      "location": null
+    },
+    {
+      "host": "https://vibecart-web-m44ncgz5ta-de.a.run.app",
+      "path": "/?q=zzzxNoMatchingProduct80513",
+      "status": 200,
+      "passed": true,
+      "cacheControl": "private, no-store",
+      "location": null
+    },
+    {
+      "host": "https://vibecart-web-m44ncgz5ta-de.a.run.app",
+      "path": "/cart",
+      "status": 302,
+      "passed": true,
+      "cacheControl": "private, no-store",
+      "location": "/auth/login?next=/cart"
+    },
+    {
+      "host": "https://vibecart-web-m44ncgz5ta-de.a.run.app",
+      "path": "/admin/",
+      "status": 302,
+      "passed": true,
+      "cacheControl": "private, no-store",
+      "location": "/auth/login?next=/admin/"
+    },
+    {
+      "host": "https://vibecart-llmai.web.app",
+      "path": "/health/live",
+      "status": 200,
+      "passed": true,
+      "cacheControl": "private, no-store",
+      "location": null
+    },
+    {
+      "host": "https://vibecart-llmai.web.app",
+      "path": "/health/ready",
+      "status": 200,
+      "passed": true,
+      "cacheControl": "private, no-store",
+      "location": null
+    },
+    {
+      "host": "https://vibecart-llmai.web.app",
+      "path": "/",
+      "status": 200,
+      "passed": true,
+      "cacheControl": "private, no-store",
+      "location": null
+    },
+    {
+      "host": "https://vibecart-llmai.web.app",
+      "path": "/auth/login?next=/cart",
+      "status": 200,
+      "passed": true,
+      "cacheControl": "private, no-store",
+      "location": null
+    },
+    {
+      "host": "https://vibecart-llmai.web.app",
+      "path": "/auth/register",
+      "status": 200,
+      "passed": true,
+      "cacheControl": "private, no-store",
+      "location": null
+    },
+    {
+      "host": "https://vibecart-llmai.web.app",
+      "path": "/product/007b9fa91f1e7f506cb21d54",
+      "status": 200,
+      "passed": true,
+      "cacheControl": "private, no-store",
+      "location": null
+    },
+    {
+      "host": "https://vibecart-llmai.web.app",
+      "path": "/?q=%E9%AE%AE%E4%B9%B3",
+      "status": 200,
+      "passed": true,
+      "cacheControl": "private, no-store",
+      "location": null
+    },
+    {
+      "host": "https://vibecart-llmai.web.app",
+      "path": "/?q=zzzxNoMatchingProduct80513",
+      "status": 200,
+      "passed": true,
+      "cacheControl": "private, no-store",
+      "location": null
+    },
+    {
+      "host": "https://vibecart-llmai.web.app",
+      "path": "/cart",
+      "status": 302,
+      "passed": true,
+      "cacheControl": "private, no-store",
+      "location": "/auth/login?next=/cart"
+    },
+    {
+      "host": "https://vibecart-llmai.web.app",
+      "path": "/admin/",
+      "status": 302,
+      "passed": true,
+      "cacheControl": "private, no-store",
+      "location": "/auth/login?next=/admin/"
+    }
+  ]
+}
