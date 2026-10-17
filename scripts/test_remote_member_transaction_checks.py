@@ -2,6 +2,7 @@
 from unittest.mock import MagicMock
 import pytest
 import requests
+import mongomock
 from bson import ObjectId
 import remote_member_transaction_checks as probe
 
@@ -39,3 +40,23 @@ def test_production_config_is_rejected_before_fixture_or_connection_use():
     with pytest.raises(RuntimeError,match='scope mismatch'):
         probe.run(db,config,'marker',None,None,None,'unused','unused',[],[],{})
     db.__getitem__.assert_not_called()
+
+
+def test_rollback_readback_detects_items_without_user_or_parent_and_cart_events():
+    db = mongomock.MongoClient()['vibecart_acceptance_pr21']
+    user_id, sku_id, cart_id, order_id = (ObjectId() for _ in range(4))
+    db.carts.insert_one({'_id':cart_id, 'user_id':user_id})
+    db.orders.insert_one({'_id':order_id, 'user_id':user_id})
+    db.order_items.insert_one({'order_id':order_id, 'sku_id':sku_id})
+    db.cart_events.insert_one({'cart_id':cart_id})
+    before = probe.persisted_counts(db, [user_id], [sku_id])
+    assert before['order_items'] == 1 and before['cart_events'] == 1
+    # A partial write can have no parent order and no user_id. The old query
+    # silently counted zero and could report rollback success in both states.
+    db.order_items.insert_one({'order_id':ObjectId(), 'sku_id':sku_id})
+    db.cart_events.insert_one({'cart_id':cart_id})
+    db.order_items.insert_one({'order_id':ObjectId(), 'sku_id':ObjectId()})
+    db.cart_events.insert_one({'cart_id':ObjectId()})
+    after = probe.persisted_counts(db, [user_id], [sku_id])
+    assert after['order_items'] == 2 and after['cart_events'] == 2
+    assert before != after and after['orders'] == before['orders'] == 1
