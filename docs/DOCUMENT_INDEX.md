@@ -1,5 +1,7 @@
 # 全部文件索引 / Document catalog
 
+[10/18逐項工作與今日證據](WORK_EXECUTION_2026-10-18.md)；[下一階段D5本機演練](SAM_D5_LOCAL_REHEARSAL_2026-10-18.md)；[舊PR差異盤點](OPEN_PR_RESIDUALS_2026-10-18.md)。
+
 中文標題連到原稿；英文欄說明用途。歷史報告依原日期解讀，原始快照保持不變。Chinese titles link to original documents; English summaries explain their scope. Historical evidence remains dated.
 
 | 文件 / Document | English scope |
