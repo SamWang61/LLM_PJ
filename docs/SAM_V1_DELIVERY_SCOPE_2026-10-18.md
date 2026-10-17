@@ -1,26 +1,18 @@
-# N02｜v1 展示範圍與交接包｜2026-10-18 03:00
+# N02｜交接來源與核對補充｜2026-10-18 03:05
 
-執行：[SAM](mailto:cashsam@gmail.com)。依專案負責人「由本對話接手，不再等待其他人確認」的既有授權，整理可執行交接；沿用[10/17 已記錄的決定](SAM_JEFF_1017_HANDOFF.md)，沒有重新要求其他成員核准。
+執行：[SAM](mailto:cashsam@gmail.com)。本頁補齊可查證的交接來源與待件，依專案負責人由本對話接手處理的既有授權執行。
 
-本包以 main `f53d39c5fed91ba5b3815f9b92165e8d33d5325e` 與[最新未完成清單](../專題進度/專案未完成工作清單_2026-10-18.md)為基線。**原 22 項／88 核對點及 10/18 20:00 完整交付目標保留；此文件沒有新增完成點，仍為 56／88。** 展示時如實說明功能現況，未實作需求繼續留在待辦。
+**今日 v1 範圍以 [N02 現行範圍／跨組交接頁](SAM_N02_V1_SCOPE_HANDOFF_2026-10-18.md)為準。** 本輪已跟上 [PR #63](https://github.com/SamWang61/LLM_PJ/pull/63) 與 [PR #64](https://github.com/SamWang61/LLM_PJ/pull/64)：真實付款為下一階段，10/18 v1 後台唯讀；D5 管理寫入及交易式稽核移至下一階段。這些是主線已記錄的範圍決定，本頁不重複要求確認。
 
-## 沿用的範圍決定
+最終模型展示、自由提問、6+4／排程、退款及具名交回仍依現行頁的待件處理。[10/17 決定](SAM_JEFF_1017_HANDOFF.md)保留為歷史參考；本輪沒有改啟用旗標、採用 PR #5 或承諾未驗功能。D1～D3 與額外兩筆示範訂單保留，D4 指定批次不重新匯入。
 
-| 主題 | 今日展示與執行界線 | 仍須完成的驗收 |
-|---|---|---|
-| 商品、會員、SKU cart、demo checkout | 使用既有 v4 程式；同映像隔離庫已取得部分登入、購物與重送讀回。 | N03～N06 的版本對應、最終帳號、舊 cookie／全撤權及故障回滾／最後庫存併發；實機與具名簽認。 |
-| BGE | 沿用僅本機展示的既定決定，線上旗標保持關閉；來源與本機環境須列明。 | N10 的最終展示環境量測、缺模型退回及素材；本機 T5 不轉列為雲端通過。 |
-| Claude／自由提問 | 線上 Claude 暫不開啟；自由提問關閉，使用四個固定問題。展示 T5 時標示本機 Atlas 唯讀與來源 SHA。 | N10 的真模型、退回、耗時／用量及資料範圍對帳；若後續改啟用，另驗依賴、密鑰、權限、費用與回退。 |
-| D5／180 天稽核／冪等 | 現況說明為規格，服務與畫面未驗完成；沿用 v1.2 已定 request_id、批量與保存條款。 | N07～N09 的可執行契約、schema／migration、交易式服務、權限與遠端驗收；沒有因展示策略移除需求。 |
-| 6+4／計分／衰減／排程 | PR #5 截止前不採用；其他尚為規格的功能按實際狀態說明。 | 如另有採用決定，先列變更範圍、consumer 與驗收，不直接把候選程式合併。 |
-| 付款、退款、取消、刪除 | demo checkout 不宣稱真付款或出貨；取消／退款與刪除沿用既定 v1 不做的界線。 | 後續有正式付款或取消需求時，另定庫存、授權與稽核契約。 |
-| D1～D4 | 保留 D1～D3 與額外兩筆示範訂單；D4 指定批次首次匯入已完成。 | 新映像／consumer 再驗隔離，D4 僅核對，不重新匯入或重設庫存。 |
+完整專案需求仍可用原 22 項／88 點作歷史對照；本頁沒有新增完成點，現有 56／88 分數沒有因範圍移至後續而自動重算。今日 v1 的最終核對母數須隨 N02 範圍結案一併明列。
 
 ## 可交接來源與尚缺的具名紀錄
 
 | 範圍與原主責 | 來源與目前可用交付 | 接收／尚缺 |
 |---|---|---|
-| [JEFF](mailto:jeff841117@gmail.com)：AI／後台 | PR #23 `caa88d9bac9bb71baa58dd5d1cd7b70cc4136704` 的 T5 來源與既有規格；整合後目前映像來源為 `1d2abf2cfa7465636e49474062e11f6aca571dda`。 | SAM 可接續整合核對；尚缺最終模型／D5 可驗成果與 S06～S08 具名素材。這不是 JEFF 新簽收。 |
+| [JEFF](mailto:jeff841117@gmail.com)：AI／後台 | PR #23 `caa88d9bac9bb71baa58dd5d1cd7b70cc4136704` 的 T5 來源與既有規格；既有已記錄映像來源為 `1d2abf2cfa7465636e49474062e11f6aca571dda`。 | SAM 可接續整合核對；本期仍缺唯讀後台／模型展示證據與 S06～S08 具名素材，D5 留後續介面交接。這不是 JEFF 新簽收。 |
 | [REN](mailto:chen2000401@gmail.com)：會員／購物 | PR #18 `505399313ca4c09b49d77484e98df806b3b30f58` 與既有 R02／R08 交接；[PR #60 同映像私有交易](SAM_REMOTE_TRANSACTION_2026-10-18.md)已補雙 session、checkout／重送／409 與清理。 | 尚未取得新的可重現環境恢復、差異清單及接回確認；不得標為已交回。 |
 | SAM：資料／測試／整合 | [N03 版本對應及交付核對](SAM_VERSION_MAP_2026-10-18.md)，含來源封裝與剩餘遠端讀回。 | 憑證保留在受控環境；具名全站簽收仍須有實際紀錄。 |
 
@@ -28,6 +20,6 @@ REN 暫代窗口維持 **10/18 11:10 到期**。到期逐項列已交 SHA、測�
 
 ## 接續執行
 
-N02 的範圍與交接包已備妥，具名接回仍缺；N03 的原始碼／封裝核對可獨立進行。最新 Cloud Run／Hosting 控制平面讀回目前因本機 Firebase CLI 無登入帳號而待補，已請使用者重新登入。登入與讀回完成後，按 N04～N06 準備受控帳號、撤權及剩餘交易案例；沒有重新詢問已定範圍。
+N02 交接來源補充已備妥，現行頁列出的範圍待件與具名接回仍缺；N03 的原始碼／封裝核對已獨立進行。最新 Cloud Run／Hosting 控制平面讀回目前因本機 Firebase CLI 無登入帳號而待補，已請使用者重新登入。登入與讀回完成後，按 N04～N06 準備受控帳號、撤權及剩餘交易案例。
 
-English: This packet carries forward the owner's existing demonstration decisions while preserving the full 22-item acceptance backlog. REN's environment recovery and named handback remain unconfirmed; no completion score or signature is invented.
+English: This evidence supplement points to the current N02 scope page, including the recorded decisions to defer real payments and D5 writes. Remaining scope decisions and named handback are unconfirmed; no completion score or signature is invented.

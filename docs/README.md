@@ -9,7 +9,7 @@
 
 | 主題 / Topic | 入口 / Entry |
 |---|---|
-| N02 範圍與具名交接 | [10/18 既定 v1 展示界線、交接來源與待件](SAM_V1_DELIVERY_SCOPE_2026-10-18.md) |
+| N02 具名交接證據補充 | [10/18 交接來源、主線範圍決定與待件](SAM_V1_DELIVERY_SCOPE_2026-10-18.md) |
 | N03 交付／版本核對 | [60 檔 SHA-256、LFS、精確封裝與控制平面缺口](SAM_VERSION_MAP_2026-10-18.md) |
 | SAM 新推送驗證 | [10/18 來源位元組、186/0 回歸、部署讀回與剩餘驗收](SAM_PUSH_VALIDATION_2026-10-18.md) |
 | 10/17 JEFF 交付與 SAM 決定 | [PR #23 合併、D4 consumer 稽核及展示邊界](SAM_JEFF_1017_HANDOFF.md) |

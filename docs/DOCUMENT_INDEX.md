@@ -4,7 +4,7 @@
 
 | 文件 / Document | English scope |
 |---|---|
-| [N02 v1 展示範圍與交接包](SAM_V1_DELIVERY_SCOPE_2026-10-18.md) | Existing owner decisions, retained acceptance scope, source SHAs and unconfirmed named handback. |
+| [N02 交接來源與核對補充](SAM_V1_DELIVERY_SCOPE_2026-10-18.md) | Current scope-page reference, recorded deferrals, source SHAs and unconfirmed named handback. |
 | [N03 版本對應與交付核對](SAM_VERSION_MAP_2026-10-18.md) | Sixty-file source/commit/remote equality, LFS readability, deterministic committed-source packaging and missing live control-plane evidence. |
 | [SAM 10/18 新推送驗證](SAM_PUSH_VALIDATION_2026-10-18.md) | Immutable source/commit/GitHub equality, current-image source map, 186 local passes, Cloud Run readback and CSS line-ending repair; remote transactions remain open. |
 | [D4 合成事件正式庫匯入與驗收](D4_IMPORT_ACCEPTANCE_2026-10-18.md) | Same-image remote consumer isolation, project inventory, 1,240 synthetic events, canonical readback and zero-insert replay; not payment or final project acceptance. |
