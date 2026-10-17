@@ -9,6 +9,7 @@
 
 | 主題 / Topic | 入口 / Entry |
 |---|---|
+| SAM 新推送驗證 | [10/18 來源位元組、186/0 回歸、部署讀回與剩餘驗收](SAM_PUSH_VALIDATION_2026-10-18.md) |
 | 10/17 JEFF 交付與 SAM 決定 | [PR #23 合併、D4 consumer 稽核及展示邊界](SAM_JEFF_1017_HANDOFF.md) |
 | SAM PR #21 同版遠端預覽 | [10/17 無流量修訂、Atlas 唯讀盤點與剩餘驗收](SAM_PR21_REMOTE_PREVIEW_2026-10-17.md) |
 | SAM Atlas 資料對帳 | [10/17 migration、商品／訂單關聯與 Network Access 唯讀核對](SAM_ATLAS_READONLY_ACCEPTANCE_2026-10-17.md) |
