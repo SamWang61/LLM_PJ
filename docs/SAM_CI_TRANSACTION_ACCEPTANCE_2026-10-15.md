@@ -19,7 +19,7 @@
 
 ## 本機真交易驗收
 
-SAM 使用 MongoDB Community Server **8.0.20**，在 `127.0.0.1:27029` 啟動單節點 replica set `rsSAM20261015`。測試夾具僅接受無帳密 localhost URI，為每個案例建立隨機 `hen_acceptance_*` 資料庫並於結束刪除；未使用專案 `.env` 或 Atlas。
+SAM 使用 MongoDB Community Server **8.0.20**，在 `127.0.0.1:27029` 啟動單節點 replica set `rsSAM20261015`。測試夾具僅接受無帳密 localhost URI，為每個案例建立隨機 `ren_acceptance_*` 資料庫並於結束刪除；未使用專案 `.env` 或 Atlas。
 
 在 REN commit `5053993` 的 `MuscleCore分析資料/website` 執行 `python -m pytest tests -q -p no:cacheprovider`，帶入 `REN_TEST_MONGO_URI=mongodb://127.0.0.1:27029/?replicaSet=rsSAM20261015`：**166 passed、0 skipped**。其中先前跳過的三項真交易案例：
 

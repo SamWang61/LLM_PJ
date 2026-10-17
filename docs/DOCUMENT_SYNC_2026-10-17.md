@@ -5,18 +5,18 @@
 ## 完成項目 / Completed
 
 - [PR #22](https://github.com/SamWang61/LLM_PJ/pull/22) 已合併，合併提交 `71f75be225611d2f150b34a9010475d978df7ef4`。
-- 四個原 HEN 檔名改為 REN，保留 Git 歷史；相關文件內的人名與路徑一併修正。
+- 四個舊稱檔名改為 REN，保留 Git 歷史；相關文件內的人名與路徑一併修正。
 - 本機同步下列 18 份有差異或缺少的既有 GitHub 文件。原有版本先保存在本機私有 `.codex/doc-sync-20261017/before/`，未發布。
 - 本機舊分支及其他未提交程式、資料、私密設定維持原狀；此輪沒有資料庫寫入或網站部署。PR #22 已含先前完成的網站頁尾變更，合併不等於部署。
 
 ## 改名對應 / Renames
 
-| 原檔名 | 現行檔名 |
+| 項目 | 現行檔名 |
 | --- | --- |
-| docs/HEN_AUTH_ORDER.md | docs/REN_AUTH_ORDER.md |
-| docs/inventory/SAM_HEN_TRANSACTION_2026-10-15.xml | docs/inventory/SAM_REN_TRANSACTION_2026-10-15.xml |
-| 專題進度/HEN_AI操作與提示詞指南_2026-10-12.md | 專題進度/REN_AI操作與提示詞指南_2026-10-12.md |
-| 討論的相關記錄/HEN_AI操作與提示詞指南_2026-10-12.md | 討論的相關記錄/REN_AI操作與提示詞指南_2026-10-12.md |
+| 登入購物文件 | docs/REN_AUTH_ORDER.md |
+| SAM 真交易測試紀錄 | docs/inventory/SAM_REN_TRANSACTION_2026-10-15.xml |
+| 專題進度提示詞指南 | 專題進度/REN_AI操作與提示詞指南_2026-10-12.md |
+| 討論紀錄提示詞指南 | 討論的相關記錄/REN_AI操作與提示詞指南_2026-10-12.md |
 
 Git 分支名稱、歷史 commit 與既有環境變數等技術識別不因人名改稱而改寫。本表中的舊名稱僅供追溯，不是現行連結。
 

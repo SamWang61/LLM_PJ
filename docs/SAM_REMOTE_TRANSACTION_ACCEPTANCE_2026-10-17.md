@@ -28,7 +28,7 @@ REN 的 R08 重新登入修正、事件驗證，以及 D4 未部署 consumer 門
 
 使用者回報 Docker 已啟動；本輪讀回 Docker Engine `29.6.1`。以 PR #21 提交 `5da34e6f748c31fa9410082fdd943a86ef54297a` 封裝，47/47 個白名單檔案與 Git blob 位元組相同，tar SHA-256 為 `c0f9d1e621575a34d006f86515ef73adf2e60d95084835fc3146779965be5664`。Docker build 成功，映像 OCI index digest `sha256:f680bb4afc2401d2e4fe1c230c088341d5554f8e9e04abda58f4322371894815`；同 tag 已推送 Artifact Registry。使用無憑證假 URI 與本機專用測試密鑰進行唯讀容器 boot，`/health/live` 200、`/health/ready` 503（預期尚無資料庫）、`/auth/login` 403、`/admin/` 403；容器已停止。
 
-以一次性 localhost MongoDB 8 replica set `rsSAMpr21final`，設定 `HEN_TEST_MONGO_URI=mongodb://127.0.0.1:27017/?replicaSet=rsSAMpr21final`，在網站目錄重跑完整測試，結果 **183 passed、0 skipped（42.42 秒）**。測後資料庫只剩 `admin`、`config`、`local`，容器已停止。這是本機真交易與回歸證據，並非 Atlas 或遠端角色簽收。
+以一次性 localhost MongoDB 8 replica set `rsSAMpr21final`，設定 `REN_TEST_MONGO_URI=mongodb://127.0.0.1:27017/?replicaSet=rsSAMpr21final`，在網站目錄重跑完整測試，結果 **183 passed、0 skipped（42.42 秒）**。測後資料庫只剩 `admin`、`config`、`local`，容器已停止。這是本機真交易與回歸證據，並非 Atlas 或遠端角色簽收。
 
 私有 Cloud Run 服務已改用同版映像，管理端讀回修訂 `vibecart-acceptance-pr21-00002-n5g` Ready、source SHA 標籤與上述提交相同。此獨立服務仍唯讀且使用假 URI：授權請求 `/health/live` 200、`/health/ready` 503、`/auth/login` 與 `/admin/` 均 403；匿名 `/health/live` 403。服務 IAM 的 `run.invoker` 僅授予驗收服務身分。正式 `vibecart-web-00007-m9k` 仍承接主站 100% 流量。
 

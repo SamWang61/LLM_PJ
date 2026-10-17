@@ -1,8 +1,8 @@
 """Opt-in transactions on a local, disposable replica set only.
 
-Set HEN_TEST_MONGO_URI to mongodb://127.0.0.1:<port>/?replicaSet=<name>.
+Set REN_TEST_MONGO_URI to mongodb://127.0.0.1:<port>/?replicaSet=<name>.
 This suite never uses .env or the production database. It drops only its own
-randomly generated hen_acceptance_* database after the test.
+randomly generated ren_acceptance_* database after the test.
 """
 import os
 from concurrent.futures import ThreadPoolExecutor
@@ -17,9 +17,9 @@ from app.services.member_sessions import revoke_user_sessions
 
 @pytest.fixture
 def replica():
-    uri = os.getenv("HEN_TEST_MONGO_URI")
+    uri = os.getenv("REN_TEST_MONGO_URI")
     if not uri:
-        pytest.skip("HEN_TEST_MONGO_URI absent; local replica set required")
+        pytest.skip("REN_TEST_MONGO_URI absent; local replica set required")
     parsed = urlsplit(uri)
     if (parsed.scheme != "mongodb" or parsed.hostname not in {"localhost", "127.0.0.1"}
             or parsed.username or parsed.password or "," in parsed.netloc or parsed.path not in {"", "/"}):
@@ -27,7 +27,7 @@ def replica():
     client = MongoClient(uri, serverSelectionTimeoutMS=3000)
     hello = client.admin.command("hello")
     assert hello.get("setName"), "Replica set required; standalone cannot verify transactions"
-    name = "hen_acceptance_" + uuid4().hex
+    name = "ren_acceptance_" + uuid4().hex
     db = client[name]
     # Existing idempotency indexes, without installing production migrations.
     db.carts.create_index([("user_id", 1)], unique=True, partialFilterExpression={"status": "active"})
@@ -43,7 +43,7 @@ def replica():
     try:
         yield db, uid, pid, sid
     finally:
-        assert name.startswith("hen_acceptance_") and len(name) == len("hen_acceptance_") + 32
+        assert name.startswith("ren_acceptance_") and len(name) == len("ren_acceptance_") + 32
         client.drop_database(name)
         client.close()
 
