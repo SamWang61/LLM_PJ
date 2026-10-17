@@ -1,6 +1,6 @@
 # 最新專案上下文 / Current project context
 
-更新：2026-10-17（Asia/Taipei）。REN 草稿 PR #24 的 R02 交接文件已併入 SAM PR #21 審查分支；只有文件，沒有新功能程式。SAM 接手後在一次性、無憑證的 localhost MongoDB replica set 對 PR #21 完整程式重跑網站測試，**178 passed／0 skipped**，含交易回滾、最後庫存並發及撤權回滾；測試方法見[同版驗證紀錄](SAM_PR21_ACCEPTANCE_2026-10-16.md)。這是本機證據，遠端跨角色、交易與全部 consumer 隔離仍待驗。詳見 [REN R02 接口交接](REN_R02_INTERFACE_2026-10-17.md)。PR #21 仍為草稿，main 未合併，D4 閘門維持。
+更新：2026-10-17（Asia/Taipei）。REN PR #24 已合併到 SAM PR #21 審查分支，其 R02 交接只有文件，沒有新功能程式。SAM 接手後在一次性、無憑證的 localhost MongoDB replica set 對 PR #21 完整程式重跑網站測試，**178 passed／0 skipped**，含交易回滾、最後庫存並發及撤權回滾；測試方法見[同版驗證紀錄](SAM_PR21_ACCEPTANCE_2026-10-16.md)。這是本機證據，遠端跨角色、交易與全部 consumer 隔離仍待驗。詳見 [REN R02 接口交接](REN_R02_INTERFACE_2026-10-17.md)。PR #21 仍為草稿，main 未合併，D4 閘門維持。
 
 更新：2026-10-17（Asia/Taipei）。PR #21 已修補 legacy synthetic 事件標記、示範 PURCHASE 歸因條件及 D4 匯入證據格式；網站離線測試 175 passed／3 skipped，D4 定向測試 17 passed。詳見 [D4 遠端閘門](D4_REMOTE_GATE_2026-10-17.md)。現行結帳仍全部建立示範訂單，因此購買事件仍排除歸因；D4 尚缺所有實際部署 consumer 的同版遠端隔離讀回，不得正式匯入。PR #21 保持草稿，線上 Claude、BGE、自由提問仍關閉；D5 為規格，D1～D3 與額外兩筆示範訂單保留。
 
