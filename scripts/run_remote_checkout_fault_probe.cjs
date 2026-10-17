@@ -153,12 +153,11 @@ async function revoke(api, binding) {
 }
 function probeMode(args) {
   requireValue(args.length <= 1 && (!args.length
-    || ['--run-isolated', '--run-accounts-isolated'].includes(args[0])),
-    'Usage: node scripts/run_remote_transaction_acceptance_probe.cjs [--run-isolated|--run-accounts-isolated]');
-  const accounts = args[0] === '--run-accounts-isolated';
-  return { run: args.length === 1, accounts,
+    || args[0] === '--run-isolated'),
+    'Usage: node scripts/run_remote_checkout_fault_probe.cjs [--run-isolated]');
+  return { run: args.length === 1,
     python: 'remote_checkout_fault_probe.py',
-    prefix: accounts ? 'sam-accounts-' : 'sam-txn-' };
+    prefix: 'sam-fault-' };
 }
 async function runPython(config, pythonFile) {
   const child = spawn(process.env.REN_PYTHON || 'python',
@@ -181,7 +180,7 @@ async function main() {
   const mode = probeMode(args);
   const api = googleApi(await credentials());
   const report = { checked_at: new Date().toISOString(), mode: args.length ? 'isolated-probe' : 'read-only',
-    purpose: mode.accounts ? 'account-lifecycle' : 'transaction', project: PROJECT, status: 'failed' };
+    purpose: 'checkout-fault-and-inflight-revocation', project: PROJECT, status: 'failed' };
   const [production, acceptance] = await Promise.all([
     readDeployment(api, 'vibecart-web'), readDeployment(api, SERVICE),
   ]);

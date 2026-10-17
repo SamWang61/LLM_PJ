@@ -20,6 +20,7 @@ jobs:
           python -m pytest scripts/test_remote_d4_consumer_probe.py -q -p no:cacheprovider
           python -m pytest scripts/test_remote_member_transaction_checks.py -q -p no:cacheprovider
           node --test scripts/test_remote_account_runner.cjs
+          node --test scripts/test_remote_checkout_fault_runner.cjs
           python -m pytest scripts/test_remote_account_acceptance_probe.py -q -p no:cacheprovider
       - name: 網站離線測試 / Offline demo tests
         working-directory: MuscleCore分析資料/website
