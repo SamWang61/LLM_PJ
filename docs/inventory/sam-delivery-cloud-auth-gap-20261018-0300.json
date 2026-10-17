@@ -1,0 +1,79 @@
+{
+  "checked_at_utc": "2026-10-17T19:00:36.544425+00:00",
+  "control_plane": {
+    "status": "not_read_authentication_unavailable",
+    "expected_cli_account": "cashsam@gmail.com",
+    "cached_cli_accounts": 0,
+    "google_api_requests_sent": 0
+  },
+  "public_gets": [
+    {
+      "url": "https://vibecart-llmai.web.app/",
+      "status": 200
+    },
+    {
+      "url": "https://vibecart-llmai.web.app/health/live",
+      "status": 200
+    },
+    {
+      "url": "https://vibecart-llmai.web.app/health/ready",
+      "status": 200
+    },
+    {
+      "url": "https://vibecart-web-m44ncgz5ta-de.a.run.app/",
+      "status": 200
+    },
+    {
+      "url": "https://vibecart-web-m44ncgz5ta-de.a.run.app/health/live",
+      "status": 200
+    },
+    {
+      "url": "https://vibecart-web-m44ncgz5ta-de.a.run.app/health/ready",
+      "status": 200
+    },
+    {
+      "url": "https://vibecart-acceptance-pr21-m44ncgz5ta-de.a.run.app/health/live",
+      "status": 403
+    }
+  ],
+  "repository_hosting_config": {
+    "hosting": {
+      "site": "vibecart-llmai",
+      "public": "public",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "run": {
+            "serviceId": "vibecart-web",
+            "region": "asia-east1"
+          }
+        }
+      ]
+    }
+  },
+  "historical_deployment_evidence": {
+    "path": "docs/inventory/sam-remote-transaction-20261018.json",
+    "checked_at": "2026-10-17T18:08:35.945Z",
+    "production": {
+      "service": "vibecart-web",
+      "revision": "vibecart-web-00015-nlk",
+      "traffic_percent": 100,
+      "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:1686638380b8cb8dc792423b059918b292e94f095d68c623ea9136da1ff9813b",
+      "source_sha": "1d2abf2cfa7465636e49474062e11f6aca571dda"
+    },
+    "acceptance": {
+      "service": "vibecart-acceptance-pr21",
+      "revision": "vibecart-acceptance-pr21-00005-5j5",
+      "traffic_percent": 100,
+      "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:1686638380b8cb8dc792423b059918b292e94f095d68c623ea9136da1ff9813b",
+      "source_sha": "1d2abf2cfa7465636e49474062e11f6aca571dda"
+    }
+  },
+  "claim_boundary": "Public HTTP status and repository config do not prove the current revision, traffic allocation, IAM, rewrite release, or database persistence. N03 remains partially verified.",
+  "no_remote_mutations": true
+}
