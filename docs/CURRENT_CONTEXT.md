@@ -1,5 +1,7 @@
 # 最新專案上下文 / Current project context
 
+**2026-10-18 03:00 補充（Asia/Taipei）**：[N02 v1 範圍／交接包](SAM_V1_DELIVERY_SCOPE_2026-10-18.md)沿用已記錄的負責人決定，具名接回仍待資料；[N03 交付與版本核對](SAM_VERSION_MAP_2026-10-18.md)完成 60 檔工作樹／提交／GitHub 一致、4 個 LFS 遠端可讀及 47 檔可重現 Git blob 封裝。`.cjs` 的 checkout 換行已固定為 LF。main `f53d39c` CI success；本輪公開健康檢查通過，但 Firebase CLI 查無登入帳號，最新 revision／IAM／Hosting rewrite 尚未重讀，N02／N03 不列結案，原 56／88 分數不變。已請使用者重新登入，沒有部署、合併 PR 或寫遠端資料庫。
+
 **2026-10-18 02:48（Asia/Taipei）最新入口**：[專案未完成工作清單](../專題進度/專案未完成工作清單_2026-10-18.md)。N01 的 Git blob 來源封裝修正已在 [PR #59](https://github.com/SamWang61/LLM_PJ/pull/59) 通過 CI、解決 P2 並合併至 main `77a19d6`；下一件為 N02 交付範圍與跨組具名交接。進度依清單的 56／88 核對點計算，未完成約 36%。未因本次程式修正重新部署或重跑遠端交易。
 
 更新：**2026-10-18 02:10（Asia/Taipei）**。正式／私有同映像的[私有遠端真交易驗收](SAM_REMOTE_TRANSACTION_2026-10-18.md)通過：兩裝置獨立登入、會員後台拒絕、Atlas 示範訂單／明細與庫存減 1、相同 checkout ID 重送冪等、改 revision 409、單裝置登出後另一裝置仍可用。九範圍測試資料清理讀回 0，獨立 Atlas marker 查核 0、臨時 IAM 角色撤銷讀回 0。正式 Cloud Run `vibecart-web-00015-nlk` 仍 100%；此次未寫正式業務庫，也未重跑新映像遠端故障注入／最後庫存併發。真模型、D5、實機及具名簽收仍按[22 項檢查點](SAM_PROGRESS_CHECKPOINT_2026-10-18.md)追蹤。
