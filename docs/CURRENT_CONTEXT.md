@@ -1,5 +1,7 @@
 # 最新專案上下文 / Current project context
 
+更新：**2026-10-17 18:45（Asia/Taipei）**。SAM 已在正式 Atlas `vibecart_ai` 執行 [v4 schema／migration／參照唯讀核對](SAM_SCHEMA_AUDIT_2026-10-17.md)：28 集合、89 索引、六筆 checksum 符合 Git 原始檔、12 項參照孤兒 0；報告已保存於 `docs/inventory/`。此為工作清單 #04 的資料層快照，沒有資料庫寫入或重新匯入。D4 consumer 遠端閘門與全站簽收仍未完成；下方 18:44 與更早狀態按各自時間解讀。
+
 更新：**2026-10-17 18:44（Asia/Taipei）**。GitHub `main`=`9afd5fb372c24346b1f98232792f2740a1e1f73c`，同版 [CI #39016249576](https://github.com/SamWang61/LLM_PJ/actions/runs/39016249576) success。PR #21 已合併且正式服務於 16:04 切至 `vibecart-web-00012-85f` 100% 流量；詳見 [同版部署與隔離 Atlas 驗收](SAM_PR21_LIVE_ACCEPTANCE_2026-10-17.md)。本次公開 Hosting 首頁、live、ready、登入均 200；Cloud Run 管理端本次未重讀。D4 全 consumer 遠端隔離、真模型／自由提問、D5、S01～S12 同版素材、最終 PPTX／離線備援／排練與具名全站簽收仍待完成。[工作清單](../專題進度/專案工作清單_2026-10-17.md) 首段列最新優先順序及 REN 代班交回點；下文為歷史快照。
 
 更新：**2026-10-17 16:06（Asia/Taipei）**。[PR #21](https://github.com/SamWang61/LLM_PJ/pull/21) 已合併，正式 Cloud Run `vibecart-web-00012-85f` 現承接 **100%** 流量；Cloud Run 與 Firebase Hosting 的首頁／ready 均回 200。Atlas 驗收帳號已收斂至單一驗收庫與叢集；私有服務的遠端雙裝置／角色／購物車／demo checkout、Atlas 回滾與最後庫存併發已讀回，測試帳號全停用且 session 清空。正式 D1～D3 3,000 筆訂單、額外 demo 2 筆、指定 D4 事件 0 維持不變。這是部署與**隔離驗收**，仍非真付款、真模型、D4 全 consumer 或最終簡報簽收。完整版本、交易及殘項見[正式部署與遠端驗收紀錄](SAM_PR21_LIVE_ACCEPTANCE_2026-10-17.md)；下方較早狀態均為歷史快照。
