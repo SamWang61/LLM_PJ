@@ -1,0 +1,479 @@
+{
+  "checked_at_utc": "2026-10-17T21:11:57.506913+00:00",
+  "execution_source_sha": "1a6561d3e3dab7e5ed6fa8ad2477d4b9b47cb143",
+  "pull_requests": {
+    "67": "https://github.com/SamWang61/LLM_PJ/pull/67",
+    "69": {
+      "url": "https://github.com/SamWang61/LLM_PJ/pull/69",
+      "merged_sha": "f7b95ea2d5a3426a731010ae52124c8f961930a0"
+    }
+  },
+  "review_fixes": [
+    "order_items cleanup and zero readback use order IDs OR fixture SKU IDs, including orphan items",
+    "removed duplicate CI test invocation",
+    "integrated current main into PR67 without reverting footer or progress history"
+  ],
+  "local_transaction_gate": {
+    "checked_at": "2026-10-17T21:02:09.697948+00:00",
+    "status": "passed",
+    "target": "disposable credential-free localhost replica set",
+    "container_removed": true,
+    "tests": {
+      "tests": 201,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "remaining_databases": [
+      "admin",
+      "config",
+      "local"
+    ],
+    "fixtures_removed": true
+  },
+  "probe_safety_tests": {
+    "python_passed": 23,
+    "node_passed": 5,
+    "failed": 0
+  },
+  "private_alignment": {
+    "started_at": "2026-10-17T21:03:31.938Z",
+    "private_service": "vibecart-acceptance-pr21",
+    "previous_revision": "vibecart-acceptance-pr21-00005-5j5",
+    "production_revision": "vibecart-web-00017-5xb",
+    "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:8bf5ee37923b61faad488fcf4406de2d647f0ea2a8e5eccc86a54689e13995a5",
+    "operation": "projects/vibecart-llmai/locations/asia-east1/operations/7a339099-34fa-461c-a971-8ad4c70b5108",
+    "status": "passed",
+    "completed_at": "2026-10-17T21:03:48.481Z",
+    "private_revision": "vibecart-acceptance-pr21-00006-cb6",
+    "production_unchanged": true,
+    "private_iam_unchanged": true,
+    "database": "vibecart_acceptance_pr21",
+    "source_sha": "13199110305691910f2e235d6dca4d9d605672d2"
+  },
+  "post_run_cloud_readback": {
+    "checked_at": "2026-10-17T21:10:57.671Z",
+    "mode": "read-only",
+    "services": [
+      {
+        "service": "vibecart-web",
+        "uri": "https://vibecart-web-m44ncgz5ta-de.a.run.app",
+        "revision": "vibecart-web-00017-5xb",
+        "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:8bf5ee37923b61faad488fcf4406de2d647f0ea2a8e5eccc86a54689e13995a5",
+        "source_sha": "13199110305691910f2e235d6dca4d9d605672d2",
+        "flags": {
+          "CLOUD_PREVIEW_READ_ONLY": "false",
+          "ENABLE_CHECKOUT": "true"
+        },
+        "runtime_identity": "vibecart-web@vibecart-llmai.iam.gserviceaccount.com",
+        "invokers": [
+          {
+            "role": "roles/run.invoker",
+            "members": [
+              "allUsers"
+            ]
+          }
+        ]
+      },
+      {
+        "service": "vibecart-acceptance-pr21",
+        "uri": "https://vibecart-acceptance-pr21-m44ncgz5ta-de.a.run.app",
+        "revision": "vibecart-acceptance-pr21-00006-cb6",
+        "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:8bf5ee37923b61faad488fcf4406de2d647f0ea2a8e5eccc86a54689e13995a5",
+        "source_sha": "13199110305691910f2e235d6dca4d9d605672d2",
+        "flags": {
+          "CLOUD_PREVIEW_READ_ONLY": "false",
+          "CLOUD_ACCEPTANCE_MODE": "true",
+          "CLOUD_ACCEPTANCE_DB": "vibecart_acceptance_pr21",
+          "ENABLE_CHECKOUT": "true"
+        },
+        "runtime_identity": "vibecart-pr21-acceptance@vibecart-llmai.iam.gserviceaccount.com",
+        "invokers": [
+          {
+            "role": "roles/run.invoker",
+            "members": [
+              "serviceAccount:vibecart-pr21-acceptance@vibecart-llmai.iam.gserviceaccount.com"
+            ]
+          }
+        ]
+      }
+    ],
+    "same_image": true
+  },
+  "post_run_iam_and_anonymous_readback": {
+    "checked_at": "2026-10-17T21:10:55.871Z",
+    "temporary_iam_conditions_remaining": 0,
+    "condition_titles": [
+      "sam-txn-ca0581e1-7e98-46fd-aa31-adbe692dbe76",
+      "sam-accounts-f12eda53-2eb5-430c-88c7-09d6ecbb75d7"
+    ],
+    "private_anonymous_http": 403
+  },
+  "independent_atlas_readback": {
+    "database": "vibecart_acceptance_pr21",
+    "method": "separate Atlas connector aggregation after both probes",
+    "transaction_marker": "ren-txn-44adf3463b5bbd9a",
+    "accounts_marker": "sam-accounts-0abc95c94f8d62c8",
+    "counts": {
+      "users_acceptance_run_markers": 0,
+      "products_transaction_marker": 0,
+      "product_skus_transaction_marker": 0,
+      "orders_checkout_id_prefix": 0,
+      "auth_sessions_account_user_ids": 0
+    },
+    "limits": "Dependent collection nine-scope cleanup counts are runner evidence; independent queries cover only the named five predicates. Products/orders connector internal errors retried with group aggregation; no result inferred from errors."
+  },
+  "runtime_source_equivalence": {
+    "count": 51,
+    "mismatches": 0,
+    "git_source": "1a6561d3e3dab7e5ed6fa8ad2477d4b9b47cb143",
+    "deployed_git_source": "13199110305691910f2e235d6dca4d9d605672d2",
+    "scope": "deployment whitelist runtime Git objects"
+  },
+  "executed_tool_hashes": [
+    {
+      "path": "scripts/remote_account_acceptance_probe.py",
+      "sha256": "6bf1206fc71c2a85b69608f58b871c03b3dca44922bd2f225165097621e4c027"
+    },
+    {
+      "path": "scripts/remote_member_transaction_checks.py",
+      "sha256": "ab25e4eb6f1d7a49e00d6e78756e1628c35168616deee7fe26702d12a1d3d86e"
+    },
+    {
+      "path": "scripts/remote_transaction_acceptance_probe.py",
+      "sha256": "2d348fd039c0d49a876ca6956921c5f5c24d928fbf59f98ed8740e170734ae61"
+    },
+    {
+      "path": "scripts/run_remote_transaction_acceptance_probe.cjs",
+      "sha256": "080d8e8aeecd1c639f44fcbb145b92afcb52898ddac6fc4bf1d96941c2d3a1e4"
+    }
+  ],
+  "transaction": {
+    "checked_at": "2026-10-17T21:04:49.368Z",
+    "mode": "isolated-probe",
+    "purpose": "transaction",
+    "project": "vibecart-llmai",
+    "status": "passed",
+    "production": {
+      "service": "vibecart-web",
+      "revision": "vibecart-web-00017-5xb",
+      "traffic_percent": 100,
+      "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:8bf5ee37923b61faad488fcf4406de2d647f0ea2a8e5eccc86a54689e13995a5",
+      "source_sha": "13199110305691910f2e235d6dca4d9d605672d2"
+    },
+    "acceptance": {
+      "service": "vibecart-acceptance-pr21",
+      "revision": "vibecart-acceptance-pr21-00006-cb6",
+      "traffic_percent": 100,
+      "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:8bf5ee37923b61faad488fcf4406de2d647f0ea2a8e5eccc86a54689e13995a5",
+      "source_sha": "13199110305691910f2e235d6dca4d9d605672d2"
+    },
+    "inventory": {
+      "services": [
+        "projects/vibecart-llmai/locations/asia-east1/services/vibecart-acceptance-pr21",
+        "projects/vibecart-llmai/locations/asia-east1/services/vibecart-web"
+      ],
+      "jobs": [],
+      "job_regions_checked": [
+        "africa-south1",
+        "asia-east1",
+        "asia-east2",
+        "asia-northeast1",
+        "asia-northeast2",
+        "asia-northeast3",
+        "asia-south1",
+        "asia-south2",
+        "asia-southeast1",
+        "asia-southeast2",
+        "asia-southeast3",
+        "australia-southeast1",
+        "australia-southeast2",
+        "europe-central2",
+        "europe-north1",
+        "europe-north2",
+        "europe-southwest1",
+        "europe-west1",
+        "europe-west10",
+        "europe-west12",
+        "europe-west2",
+        "europe-west3",
+        "europe-west4",
+        "europe-west6",
+        "europe-west8",
+        "europe-west9",
+        "me-central1",
+        "me-central2",
+        "me-west1",
+        "northamerica-northeast1",
+        "northamerica-northeast2",
+        "northamerica-south1",
+        "southamerica-east1",
+        "southamerica-west1",
+        "us-central1",
+        "us-east1",
+        "us-east4",
+        "us-east5",
+        "us-south1",
+        "us-west1",
+        "us-west2",
+        "us-west3",
+        "us-west4"
+      ],
+      "restricted_regions": [
+        "me-central2"
+      ],
+      "restricted_reason": "LOCATION_POLICY_VIOLATED",
+      "topics": [],
+      "subscriptions": [],
+      "enabled_worker_apis": []
+    },
+    "iam": {
+      "role": "roles/iam.serviceAccountOpenIdTokenCreator",
+      "member": "user:cashsam@gmail.com",
+      "expires": "request.time < timestamp(\"2026-10-17T21:25:10.448Z\")",
+      "title": "sam-txn-ca0581e1-7e98-46fd-aa31-adbe692dbe76",
+      "revoked": true,
+      "id_token_attempts": 6
+    },
+    "probe": {
+      "probe_id": "ren-txn-44adf3463b5bbd9a",
+      "service_revision": "vibecart-acceptance-pr21-00006-cb6",
+      "service_image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:8bf5ee37923b61faad488fcf4406de2d647f0ea2a8e5eccc86a54689e13995a5",
+      "status": "passed",
+      "add_http": 200,
+      "two_device_sessions": true,
+      "customer_admin_denied": true,
+      "add_to_cart": true,
+      "checkout_persisted": true,
+      "retry_same_order": true,
+      "conflict_409": true,
+      "stock_after_checkout": 1,
+      "per_device_logout": true,
+      "role_checks": {
+        "active_admin_200": true,
+        "missing_csrf_400": true,
+        "inactive_admin_denied": true
+      },
+      "session_security": {
+        "same_browser_relogin": true,
+        "old_cookie_denied": true,
+        "other_device_preserved": true,
+        "maintainer_revoke_all_denied": true,
+        "inactive_customer_both_devices_denied": true,
+        "d5_ui_tested": false
+      },
+      "last_stock_concurrency": {
+        "parallel_clients": 2,
+        "http_statuses": [
+          200,
+          400
+        ],
+        "successful_checkouts": 1,
+        "stock_remaining": 0,
+        "orders_total_including_original": 2
+      },
+      "stock_failure_rollback": {
+        "second_sku_unavailable_http": 400,
+        "first_sku_stock_preserved": true,
+        "cart_revision_preserved": true,
+        "order_item_event_counts_unchanged": true,
+        "cart_event_counts_unchanged": true,
+        "persisted_before": {
+          "orders": 2,
+          "order_items": 2,
+          "behavior_events": 6,
+          "cart_events": 6
+        },
+        "persisted_after": {
+          "orders": 2,
+          "order_items": 2,
+          "behavior_events": 6,
+          "cart_events": 6
+        },
+        "order_items_scope": "fixture sku_id including orphan items",
+        "arbitrary_fault_injection_tested": false
+      },
+      "cleanup": {
+        "order_items": 2,
+        "order_items_remaining": 0,
+        "orders": 2,
+        "orders_remaining": 0,
+        "cart_events": 6,
+        "cart_events_remaining": 0,
+        "carts": 3,
+        "carts_remaining": 0,
+        "behavior_events": 6,
+        "behavior_events_remaining": 0,
+        "auth_sessions": 3,
+        "auth_sessions_remaining": 0,
+        "users": 3,
+        "users_remaining": 0,
+        "product_skus": 2,
+        "product_skus_remaining": 0,
+        "products": 1,
+        "products_remaining": 0,
+        "verified": true
+      }
+    }
+  },
+  "accounts": {
+    "checked_at": "2026-10-17T21:07:14.937Z",
+    "mode": "isolated-probe",
+    "purpose": "account-lifecycle",
+    "project": "vibecart-llmai",
+    "status": "passed",
+    "production": {
+      "service": "vibecart-web",
+      "revision": "vibecart-web-00017-5xb",
+      "traffic_percent": 100,
+      "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:8bf5ee37923b61faad488fcf4406de2d647f0ea2a8e5eccc86a54689e13995a5",
+      "source_sha": "13199110305691910f2e235d6dca4d9d605672d2"
+    },
+    "acceptance": {
+      "service": "vibecart-acceptance-pr21",
+      "revision": "vibecart-acceptance-pr21-00006-cb6",
+      "traffic_percent": 100,
+      "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:8bf5ee37923b61faad488fcf4406de2d647f0ea2a8e5eccc86a54689e13995a5",
+      "source_sha": "13199110305691910f2e235d6dca4d9d605672d2"
+    },
+    "inventory": {
+      "services": [
+        "projects/vibecart-llmai/locations/asia-east1/services/vibecart-acceptance-pr21",
+        "projects/vibecart-llmai/locations/asia-east1/services/vibecart-web"
+      ],
+      "jobs": [],
+      "job_regions_checked": [
+        "africa-south1",
+        "asia-east1",
+        "asia-east2",
+        "asia-northeast1",
+        "asia-northeast2",
+        "asia-northeast3",
+        "asia-south1",
+        "asia-south2",
+        "asia-southeast1",
+        "asia-southeast2",
+        "asia-southeast3",
+        "australia-southeast1",
+        "australia-southeast2",
+        "europe-central2",
+        "europe-north1",
+        "europe-north2",
+        "europe-southwest1",
+        "europe-west1",
+        "europe-west10",
+        "europe-west12",
+        "europe-west2",
+        "europe-west3",
+        "europe-west4",
+        "europe-west6",
+        "europe-west8",
+        "europe-west9",
+        "me-central1",
+        "me-central2",
+        "me-west1",
+        "northamerica-northeast1",
+        "northamerica-northeast2",
+        "northamerica-south1",
+        "southamerica-east1",
+        "southamerica-west1",
+        "us-central1",
+        "us-east1",
+        "us-east4",
+        "us-east5",
+        "us-south1",
+        "us-west1",
+        "us-west2",
+        "us-west3",
+        "us-west4"
+      ],
+      "restricted_regions": [
+        "me-central2"
+      ],
+      "restricted_reason": "LOCATION_POLICY_VIOLATED",
+      "topics": [],
+      "subscriptions": [],
+      "enabled_worker_apis": []
+    },
+    "iam": {
+      "role": "roles/iam.serviceAccountOpenIdTokenCreator",
+      "member": "user:cashsam@gmail.com",
+      "expires": "request.time < timestamp(\"2026-10-17T21:27:33.528Z\")",
+      "title": "sam-accounts-f12eda53-2eb5-430c-88c7-09d6ecbb75d7",
+      "revoked": true,
+      "id_token_attempts": 1
+    },
+    "probe": {
+      "probe_id": "sam-accounts-0abc95c94f8d62c8",
+      "database": "vibecart_acceptance_pr21",
+      "service_revision": "vibecart-acceptance-pr21-00006-cb6",
+      "service_image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:8bf5ee37923b61faad488fcf4406de2d647f0ea2a8e5eccc86a54689e13995a5",
+      "accounts": [
+        {
+          "role": "admin",
+          "id": "6ad3e3993a679c8854c6ebab"
+        },
+        {
+          "role": "customer",
+          "id": "6ad3e3993a679c8854c6ebac"
+        }
+      ],
+      "status": "passed",
+      "checks": {
+        "anonymous_member_admin_denied": true,
+        "admin_read_pages": true,
+        "customer_two_sessions_admin_denied": true,
+        "same_browser_relogin_old_cookie_denied_second_device_live": true,
+        "all_customer_sessions_revoked_admin_unaffected": true,
+        "disabled_accounts_login_and_all_devices_denied": true,
+        "reenable_requires_new_login_old_cookies_stay_invalid": true
+      },
+      "credentials_persisted": false,
+      "retirement_before_cleanup": {
+        "disabled": true,
+        "sessions_revoked": true,
+        "accounts_present": 2,
+        "sessions_deleted": 3,
+        "sessions_remaining": 0,
+        "verified": true
+      },
+      "cleanup": {
+        "retirement": {
+          "disabled": true,
+          "sessions_revoked": true,
+          "accounts_present": 2,
+          "sessions_deleted": 1,
+          "sessions_remaining": 0,
+          "verified": true
+        },
+        "users_deleted": 2,
+        "users_remaining": 0,
+        "verified": true
+      }
+    }
+  },
+  "delivery_policy": {
+    "planned_scoped_paths": 20,
+    "canonical_paths": 17,
+    "preserved_custom_entry_paths": [
+      "docs/CURRENT_CONTEXT.md",
+      "docs/DOCUMENT_INDEX.md",
+      "docs/README.md"
+    ],
+    "rule": "After merge recheck source baseline; back up old bytes; update only known-history or absent files; insert a marked current entry into custom documents. Do not publish unrelated local changes."
+  },
+  "remaining": [
+    "arbitrary remote database fault injection",
+    "authorization revocation during an in-flight remote checkout",
+    "event-window account and named final acceptance",
+    "real-device, full visual and accessibility acceptance",
+    "N11 current-image D4 consumer control evidence and N12-N18 project closeout as applicable"
+  ],
+  "not_claimed": [
+    "final N18 project signoff",
+    "D5 production writes",
+    "live model or real payment acceptance",
+    "production deployment or traffic change",
+    "D1-D4 reimport"
+  ]
+}

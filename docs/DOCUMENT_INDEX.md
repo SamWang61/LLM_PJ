@@ -1,11 +1,14 @@
 # 全部文件索引 / Document catalog
 
+**2026-10-18 05:12（Asia/Taipei）本輪整合**：#69 已修正 P2 並合併；#67 已完成衝突整合、本機 201 passed／0 skipped 與目前同映像私有交易／七項帳號驗收，最新文件 CI 通過後按使用者授權合併。正式 `00017-5xb` 100% 不變，私有已對齊 `00006-cb6`；清理 0、臨時 IAM 0、匿名 403。[PR #67／#69 驗收與同步紀錄](SAM_PR67_PR69_MERGE_2026-10-18.md)為本輪入口；下方舊修訂／待整合狀態按原時間解讀。N11 其餘 consumer 證據、N12～N18 及具名簽認仍待辦，不重複計分。
+
 [10/18逐項工作與今日證據](WORK_EXECUTION_2026-10-18.md)；[下一階段D5本機演練](SAM_D5_LOCAL_REHEARSAL_2026-10-18.md)；[舊PR差異盤點](OPEN_PR_RESIDUALS_2026-10-18.md)。
 
 中文標題連到原稿；英文欄說明用途。歷史報告依原日期解讀，原始快照保持不變。Chinese titles link to original documents; English summaries explain their scope. Historical evidence remains dated.
 
 | 文件 / Document | English scope |
 |---|---|
+| [SAM 私有帳號與撤權驗收](SAM_ACCOUNT_ACCEPTANCE_2026-10-18.md) | Isolated two-role lifecycle, relogin, disable/reenable and independent cleanup; event-window accounts and final signoff remain open. |
 | [2026-10-18 專案未完成工作清單與下一步](../專題進度/專案未完成工作清單_2026-10-18.md) | Primary dependency-ordered work queue, owners, 22-item milestone estimate and next task N01. |
 | [2026-10-18 全部60個PR核對清冊](PR_AUDIT_2026-10-18.md) | Complete PR states, heads/bases, supersession, unresolved reviews and evidence scope; machine-readable snapshot in inventory. |
 | [SAM 10/18 新推送驗證](SAM_PUSH_VALIDATION_2026-10-18.md) | Immutable source/commit/GitHub equality, current-image source map, 186 local passes, Cloud Run readback and CSS line-ending repair; remote transactions remain open. |
