@@ -1,5 +1,6 @@
 """Cloud-only factory. No database seeds, accounts or migrations at startup."""
 import os
+import re
 from urllib.parse import urlparse
 
 from flask import abort, request, session
@@ -19,8 +20,17 @@ def create_cloud_app():
     preview = os.environ.get("CLOUD_PREVIEW_READ_ONLY", "true").lower()
     if preview not in {"true", "false"}:
         raise RuntimeError("CLOUD_PREVIEW_READ_ONLY must be true or false")
+    acceptance_db = os.environ.get("CLOUD_ACCEPTANCE_DB", "")
+    if acceptance_db:
+        if (os.environ.get("K_SERVICE") != "vibecart-acceptance-pr21"
+                or os.environ.get("CLOUD_ACCEPTANCE_MODE") != "true"
+                or preview != "false"
+                or not re.fullmatch(r"vibecart_acceptance_[a-z0-9_]+", acceptance_db)):
+            raise RuntimeError("CLOUD_ACCEPTANCE_DB requires the isolated acceptance service")
+    elif os.environ.get("CLOUD_ACCEPTANCE_MODE") == "true":
+        raise RuntimeError("CLOUD_ACCEPTANCE_MODE requires CLOUD_ACCEPTANCE_DB")
     app = create_app({
-        "DATA_MODE": "v4", "MONGO_URI": uri, "MONGO_DB": "vibecart_ai",
+        "DATA_MODE": "v4", "MONGO_URI": uri, "MONGO_DB": acceptance_db or "vibecart_ai",
         "SECRET_KEY": secret, "SESSION_COOKIE_NAME": "__session",
         "SESSION_COOKIE_SECURE": True,
         "ENABLE_CHECKOUT": preview == "false" and os.environ.get("ENABLE_CHECKOUT", "false").lower() == "true", "AI_RECOMMENDATIONS_ENABLED": False,

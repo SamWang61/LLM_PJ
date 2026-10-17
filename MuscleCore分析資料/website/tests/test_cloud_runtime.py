@@ -76,6 +76,33 @@ def test_cloud_refuses_ambiguous_preview_flag(cloud_env, monkeypatch):
         create_cloud_app()
 
 
+def test_acceptance_database_requires_dedicated_service_and_explicit_mode(cloud_env, monkeypatch):
+    monkeypatch.setenv("CLOUD_ACCEPTANCE_DB", "vibecart_acceptance_pr21")
+    with pytest.raises(RuntimeError, match="isolated acceptance service"):
+        create_cloud_app()
+    monkeypatch.setenv("K_SERVICE", "vibecart-acceptance-pr21")
+    monkeypatch.setenv("CLOUD_ACCEPTANCE_MODE", "true")
+    with pytest.raises(RuntimeError, match="isolated acceptance service"):
+        create_cloud_app()  # Still read-only; a write-enabled run needs its own approval.
+    monkeypatch.setenv("CLOUD_PREVIEW_READ_ONLY", "false")
+    app = create_cloud_app()
+    assert app.config["MONGO_DB"] == "vibecart_acceptance_pr21"
+    assert app.config["AI_RECOMMENDATIONS_ENABLED"] is False
+    monkeypatch.setenv("CLOUD_ACCEPTANCE_DB", "vibecart_ai")
+    with pytest.raises(RuntimeError, match="isolated acceptance service"):
+        create_cloud_app()
+    monkeypatch.setenv("CLOUD_ACCEPTANCE_DB", "vibecart_acceptance_pr21")
+    monkeypatch.setenv("K_SERVICE", "vibecart-web")
+    with pytest.raises(RuntimeError, match="isolated acceptance service"):
+        create_cloud_app()
+
+
+def test_acceptance_mode_without_database_fails_closed(cloud_env, monkeypatch):
+    monkeypatch.setenv("CLOUD_ACCEPTANCE_MODE", "true")
+    with pytest.raises(RuntimeError, match="requires CLOUD_ACCEPTANCE_DB"):
+        create_cloud_app()
+
+
 def test_preview_product_page_offers_browsing_without_disabled_account_flows(cloud_env, shop):
     _, _, db, _, pid, _ = shop
     app = create_cloud_app()
