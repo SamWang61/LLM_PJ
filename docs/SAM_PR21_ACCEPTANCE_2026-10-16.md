@@ -1,5 +1,7 @@
 # SAM PR #21 同版驗證與最終驗收缺口｜2026-10-16
 
+**10/17 最新同版交易測試**：在 PR #21 程式 `c678133be5cdaa89acdf9c18cd7fb97f2dd44d60` 的乾淨工作樹，以 Docker `mongo:8` 建立一次性、無憑證且只繫結 `127.0.0.1:27017` 的 replica set `rsSAM20261017`；測試環境設 `HEN_TEST_MONGO_URI=mongodb://127.0.0.1:27017/?replicaSet=rsSAM20261017`，於 `MuscleCore分析資料/website` 執行 `python -m pytest tests -q -p no:cacheprovider`，結果 **178 passed、0 skipped（38.92 秒）**。測試 fixture 只建隨機 `hen_acceptance_*` 資料庫並在結束後刪除；涵蓋 rollback、最後庫存並發、checkout 重送與管理員撤權 rollback。沒有使用 `.env`、正式 Atlas 或線上帳號。容器測後停止並移除。此結果對應該程式版；後續文件提交不改程式，仍須分別核對 CI 與遠端文件位元組。本機真交易測試不構成線上角色、交易或 D4 consumer 最終驗收。
+
 **10/17 更新**：JEFF T5 PR #23 已以 `6e401ef459b4ca5e002c22ee225cb4c63375ec3a` 合併入本 PR；下方 10/16 的 Docker／Cloud Run 證據屬 T5 前的 `88dca3b` 映像，不能延伸為 T5 同版遠端驗收。新合併提交的 [push CI](https://github.com/SamWang61/LLM_PJ/actions/runs/38991253680) 與 [PR CI](https://github.com/SamWang61/LLM_PJ/actions/runs/38991257679) 通過。完整新範圍、consumer 審查與展示決定見[10/17 交付核對](SAM_JEFF_1017_HANDOFF.md)；PR 仍為草稿、`main` 未合併。
 
 **10/17 D4 後續**：程式原因、修正與遠端隔離證據缺口見 [D4 遠端閘門](D4_REMOTE_GATE_2026-10-17.md)。新增離線測試通過不改變下方最終驗收缺口；新程式尚未有同版 Cloud Run／Hosting／consumer 讀回。

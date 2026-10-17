@@ -27,4 +27,4 @@
 3. 對未部署的計分／歸因工作，保存 Cloud Run Job、Scheduler 與相關服務清單的管理端讀回，並在正式啟用時重新驗收。任何新 consumer 都要納入盤點。
 4. 將每項通過的證據填入 `behavior_import.py` 所需的 `consumer_checks`，由 SAM 核對網址內容、revision、digest、source SHA、時間及部署清單後，才可考慮 D4 preflight、交易 dry-run、apply 與正式讀回。只改 JSON 不能視為驗收。
 
-本輪本機測試：網站 `175 passed, 3 skipped`（跳過項需本機 replica set）；D4 匯入／fixture 完整測試 `26 passed`。目前只完成程式修正、離線驗證及上述 Atlas 唯讀計數；**未部署新修訂、未建立示範帳號、未向 Atlas 寫入 D4、未驗真 Claude/BGE、未啟用自由提問**。D5 繼續標為規格，PR #21 保持草稿。
+本輪本機測試：最初未啟動 replica set 時網站 `175 passed, 3 skipped`；啟動無憑證、一次性 localhost MongoDB replica set 後，同版完整網站測試為 **`178 passed, 0 skipped`**，含交易回滾、最後庫存並發及撤權回滾；D4 匯入／fixture 完整測試 `26 passed`。測試命令與環境見 [PR #21 同版驗證紀錄](SAM_PR21_ACCEPTANCE_2026-10-16.md)。目前只完成程式修正、本機驗證及上述 Atlas 唯讀計數；**未部署新修訂、未建立示範帳號、未向 Atlas 寫入 D4、未驗真 Claude/BGE、未啟用自由提問**。D5 繼續標為規格，PR #21 保持草稿。

@@ -2,7 +2,7 @@
 
 日期：2026-10-17（Asia/Taipei）。核對來源為 PR #21 的 `1d60914d95eca924c8a1c5f4edfecf22ef443283`。本頁記錄該版程式目前的接口與剩餘決策；舊版 `HEN_R02_CONTRACT_2026-10-14.md` 的單一登入草稿已被多裝置實作取代。PR #21 仍是草稿，尚未合併 `main`。
 
-**SAM 10/17 接手更新**：REN 草稿 [PR #24](https://github.com/SamWang61/LLM_PJ/pull/24) 僅新增本交接文件，提交 `6e005456da39a3938fb633c2d58368974958d461`；已併入 PR #21 審查分支，未合併 main。本頁後述 172 passed／3 skipped 是交接當時的 T5 紀錄；現行 PR #21 在本輪程式修正後，離線網站測試為 **175 passed／3 skipped**。3 個跳過項仍需本機無憑證 replica set 重驗；目前 Docker daemon 未啟動，本輪未拿舊提交的 171 passed／0 skipped 代替同版真交易證據。D4 現況與 Atlas 唯讀讀回見 [D4 遠端閘門](D4_REMOTE_GATE_2026-10-17.md)。
+**SAM 10/17 接手更新**：REN 草稿 [PR #24](https://github.com/SamWang61/LLM_PJ/pull/24) 僅新增本交接文件，提交 `6e005456da39a3938fb633c2d58368974958d461`；已併入 PR #21 審查分支，未合併 main。本頁後述 172 passed／3 skipped 是交接當時的 T5 紀錄；PR #21 程式修正後先得到 175 passed／3 skipped，後在一次性、無憑證 localhost replica set 重跑同版完整網站測試，**178 passed／0 skipped**，含 3 項真交易測試。詳細命令與界線見 [PR #21 同版驗證紀錄](SAM_PR21_ACCEPTANCE_2026-10-16.md)。D4 現況與 Atlas 唯讀讀回見 [D4 遠端閘門](D4_REMOTE_GATE_2026-10-17.md)。
 
 ## 1. 現行接口
 
