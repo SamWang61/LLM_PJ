@@ -1,6 +1,6 @@
 # MuscleCore｜Python + MongoDB 智慧運動商城
 
-2026-10-16 的整合狀態與 Docker／隔離 MongoDB 驗證見 [SAM PR #21 驗收紀錄](../../docs/SAM_PR21_ACCEPTANCE_2026-10-16.md)。下方快速啟動與示範帳號屬原有本機展示流程；不能據此推定目前 Cloud Run revision、Atlas 或最終 UAT 已驗收。
+目前正式網站由 Cloud Run `vibecart-web-00013-ds5` 提供服務，Firebase Hosting 導流；[2026-10-18 部署紀錄](../../docs/SAM_RELEASE_2026-10-18.md)記錄來源 `80513a9`、映像 digest、CI、公開路由與限制。[D4 驗收](../../docs/D4_IMPORT_ACCEPTANCE_2026-10-18.md)另記錄已匯入批次。下方快速啟動與示範帳號只適用隔離本機展示；正式修訂的會員／交易、真模型與 D5 仍需分別驗收。
 
 本專案把原運動商品購物網站重構成可展示的 Python MVP，採 Flask Blueprint 分層、MongoDB 文件資料庫與角色權限。前台為 `VibeCart AI` 個人化推薦；後台為 `VibeInsight AI` 營運洞察。
 
@@ -76,7 +76,7 @@ MuscleCore/
 
 ## English summary
 
-This is the legacy Flask + MongoDB demonstration store. Create a virtual environment, install requirements, copy the example environment file, start local MongoDB, seed an isolated demo database, and run run.py. The two service tests run offline with pytest. Demo accounts are for local use only. The new v4 services in VibeCart_AI are not wired into this application.
+This Flask + MongoDB storefront is deployed through Cloud Run and Firebase Hosting. For a local demo, create a virtual environment, install requirements, copy the example environment file, start an isolated MongoDB, seed only that demo database, and run `run.py`. The v4 SKU integration is opt-in; current-revision authenticated flows and live AI still need acceptance.
 
 ## 新版 SKU 與 AI 串接 / SKU and AI integration
 

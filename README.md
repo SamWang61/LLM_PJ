@@ -8,13 +8,13 @@ VibeCart AI builds on the MuscleCore sports store to explore personalized shoppi
 
 ## 目前狀態 / Current status
 
-2026-10-16 同版整合正在 [SAM PR #21](https://github.com/SamWang61/LLM_PJ/pull/21) 草稿審查；[本機 Docker 與交易驗證](docs/SAM_PR21_ACCEPTANCE_2026-10-16.md) 已完成，遠端部署、Atlas 讀回、跨角色與真模型驗收仍待完成。以下條列保留原版本界線。
+截至 2026-10-18，PR #21 已合併。正式網站的已記錄來源為 `80513a9`，Cloud Run `vibecart-web-00013-ds5` 承接 100% 流量，Firebase Hosting 可瀏覽；[建置、CI、revision、公開路由與限制](docs/SAM_RELEASE_2026-10-18.md)分別留證。其後 `main` 合併了 D4 驗收文件與 REN 命名修正；這些較新的 Git 提交不能直接當作已重新部署的映像 SHA。D4 批次 1,240 筆已完成 apply、verify 與重送讀回，詳見 [D4 驗收](docs/D4_IMPORT_ACCEPTANCE_2026-10-18.md)。
 
-- **新版資料層**：Complete Schema v4，含 SKU 購物車、訂單明細與評價服務。2026-09-19 保存的證據為 27 集合、59 自訂索引、66 項整合測試通過；這是歷史證據，並非本次重新驗證 Atlas。
-- **展示網站**：`MuscleCore分析資料/website` 為 Flask + Jinja2 + MongoDB MVP；已提供可選 v4 路由介接與離線測試；尚未完成真實資料庫整合驗收。
-- **尚待完成**：完整 AI 推薦、排程計分、批次統計，以及真實模型與新版資料層整合驗收。規格中的 FastAPI／Firebase 部署是設計內容，不代表已部署。
+- **新版資料層**：Complete Schema v4，含 SKU 購物車、訂單明細與評價服務；[10/17 Atlas 唯讀核對](docs/SAM_SCHEMA_AUDIT_2026-10-17.md)為 28 集合、89 索引、六筆 migration checksum 一致、12 項參照孤兒 0。D1～D3 原資料保留，不重新匯入。
+- **正式網站**：`MuscleCore分析資料/website` 的 Flask + Jinja2 + MongoDB 程式已由 Cloud Run 提供服務、Hosting rewrite 導流；公開頁面檢查通過。早期隔離 Atlas 的會員／交易驗收與目前正式修訂的同版登入、跨裝置、交易簽收仍須區分。
+- **尚待驗收**：正式修訂的完整角色與交易流程、真 BGE／Claude 與自由提問、D5 後台寫入及稽核、跨裝置 RWD／無障礙、S01～S12 素材與最終簽收。依[22 項工作清單](專題進度/專案工作清單_2026-10-17.md)逐項核對。
 
-The Flask demo now has an opt-in v4 adapter and LangGraph workflows; live integration remains unverified. Historical Atlas test reports are retained; AI ranking, scheduled scoring, deployment, and application integration are not represented as complete.
+The Flask storefront is live through Cloud Run and Firebase Hosting. Public route checks and the D4 batch have recorded evidence; authenticated acceptance on the current revision, live AI models, and D5 administration remain open.
 
 ## 閱讀入口 / Start here
 
@@ -26,6 +26,8 @@ The Flask demo now has an opt-in v4 adapter and LangGraph workflows; live integr
 | [全部文件索引](docs/DOCUMENT_INDEX.md) | 逐份文件的中英文定位 / Bilingual document catalog |
 | [MongoDB 文件](VibeCart_AI/MongoDB/README.md) | 現行與歷史 Schema / Current and historical schemas |
 | [展示網站](MuscleCore分析資料/website/README.md) | 本機啟動 / Local demo setup |
+| [部署紀錄](docs/SAM_RELEASE_2026-10-18.md) | 已驗 revision、digest、公開檢查與驗收界線 / Release evidence |
+| [主線／映像來源核對](docs/SAM_SOURCE_RECONCILIATION_2026-10-18.md) | 47 檔 Git blob 與部署 manifest 的雜湊比較 / Source equality |
 | [備份作業規範](docs/BACKUP.md) | 每日 23:30 需求與設定狀態 / Backup requirements and status |
 | [檔案清冊](docs/inventory/files.csv) | 路徑、大小、雜湊與讀取範圍 / Files, sizes, hashes and inspection scope |
 | [貢獻指南](CONTRIBUTING.md) | 分支、提交、雙語文件 / Contribution workflow |
