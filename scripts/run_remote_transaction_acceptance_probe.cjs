@@ -148,9 +148,18 @@ async function revoke(api, binding) {
     'Temporary IAM grant still present');
   return true;
 }
-async function runPython(config) {
+function probeMode(args) {
+  requireValue(args.length <= 1 && (!args.length
+    || ['--run-isolated', '--run-accounts-isolated'].includes(args[0])),
+    'Usage: node scripts/run_remote_transaction_acceptance_probe.cjs [--run-isolated|--run-accounts-isolated]');
+  const accounts = args[0] === '--run-accounts-isolated';
+  return { run: args.length === 1, accounts,
+    python: accounts ? 'remote_account_acceptance_probe.py' : 'remote_transaction_acceptance_probe.py',
+    prefix: accounts ? 'sam-accounts-' : 'sam-txn-' };
+}
+async function runPython(config, pythonFile) {
   const child = spawn(process.env.REN_PYTHON || 'python',
-    [path.join(__dirname, 'remote_transaction_acceptance_probe.py')], { stdio: ['pipe', 'pipe', 'pipe'] });
+    [path.join(__dirname, pythonFile)], { stdio: ['pipe', 'pipe', 'pipe'] });
   let output = '';
   child.stdout.on('data', chunk => { output += chunk.toString(); });
   child.stderr.on('data', () => {}); // Never echo credential-related tracebacks.
@@ -166,11 +175,10 @@ async function runPython(config) {
 }
 async function main() {
   const args = process.argv.slice(2);
-  requireValue(args.length <= 1 && (!args.length || args[0] === '--run-isolated'),
-    'Usage: node scripts/run_remote_d4_consumer_probe.cjs [--run-isolated]');
+  const mode = probeMode(args);
   const api = googleApi(await credentials());
   const report = { checked_at: new Date().toISOString(), mode: args.length ? 'isolated-probe' : 'read-only',
-    project: PROJECT, status: 'failed' };
+    purpose: mode.accounts ? 'account-lifecycle' : 'transaction', project: PROJECT, status: 'failed' };
   const [production, acceptance] = await Promise.all([
     readDeployment(api, 'vibecart-web'), readDeployment(api, SERVICE),
   ]);
@@ -178,8 +186,8 @@ async function main() {
   report.production = publicDeployment(production);
   report.acceptance = publicDeployment(acceptance);
   report.inventory = await inventory(api);
-  if (!args.length) { report.status = 'preflight-passed'; console.log(JSON.stringify(report)); return; }
-  const binding = temporaryBinding('sam-txn-' + randomUUID(),
+  if (!mode.run) { report.status = 'preflight-passed'; console.log(JSON.stringify(report)); return; }
+  const binding = temporaryBinding(mode.prefix + randomUUID(),
     new Date(Date.now() + 20 * 60000).toISOString());
   report.iam = { role: ROLE, member: MEMBER, expires: binding.condition.expression,
     title: binding.condition.title, revoked: false };
@@ -210,7 +218,7 @@ async function main() {
       + '/secrets/vibecart-pr21-acceptance-mongo-uri/versions/1:access', {}, 'secret');
     requireValue(secret.payload?.data, 'Acceptance Mongo URI unavailable');
     const result = await runPython({ mongo_uri: Buffer.from(secret.payload.data, 'base64').toString('utf8'),
-      id_token: identity.token, service_url: acceptance.uri, revision: acceptance.revision, image: acceptance.image });
+      id_token: identity.token, service_url: acceptance.uri, revision: acceptance.revision, image: acceptance.image }, mode.python);
     report.probe = result.report;
     requireValue(result.code === 0 && result.report.status === 'passed'
       && result.report.cleanup?.verified === true, 'Remote probe or cleanup failed');
@@ -231,7 +239,7 @@ async function main() {
   }
   if (report.status !== 'passed') process.exitCode = 1;
 }
-module.exports = { selectedRevision, assertDeployment, temporaryBinding, removeOurBinding };
+module.exports = { selectedRevision, assertDeployment, temporaryBinding, removeOurBinding, probeMode };
 if (require.main === module) main().catch(error => {
   console.error(error.message); process.exitCode = 1;
 });

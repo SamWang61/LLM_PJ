@@ -4,6 +4,7 @@
 
 | 文件 / Document | English scope |
 |---|---|
+| [SAM 私有帳號與撤權驗收](SAM_ACCOUNT_ACCEPTANCE_2026-10-18.md) | Same-image admin/customer fixture lifecycle, relogin and all-device revocation, independent cleanup; event-window accounts, browser evidence and named signoff remain open. |
 | [SAM 10/18 新推送驗證](SAM_PUSH_VALIDATION_2026-10-18.md) | Immutable source/commit/GitHub equality, current-image source map, 186 local passes, Cloud Run readback and CSS line-ending repair; remote transactions remain open. |
 | [D4 合成事件正式庫匯入與驗收](D4_IMPORT_ACCEPTANCE_2026-10-18.md) | Same-image remote consumer isolation, project inventory, 1,240 synthetic events, canonical readback and zero-insert replay; not payment or final project acceptance. |
 | [10/17 JEFF 交付核對與 SAM 決定](SAM_JEFF_1017_HANDOFF.md) | PR #23 merge, consumer audit, demonstration decisions and remaining remote gates. |
