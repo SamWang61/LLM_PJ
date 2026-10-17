@@ -26,8 +26,8 @@
     },
     {
       "path": "docs/SAM_V5_DELIVERY_EVIDENCE_2026-10-18.md",
-      "bytes": 4500,
-      "sha256": "95170befbac1b414a728bc92cc58c4783973497a2a4522900cf013eab14c2232"
+      "bytes": 4698,
+      "sha256": "1b74ee6f7e5e845933a88d14753cdf6afa5420ca6bab459cba668613c331b6e8"
     },
     {
       "path": "docs/TEAM_OWNERSHIP.md",
@@ -91,38 +91,38 @@
     },
     {
       "path": "簡報文件/screenshots/README.md",
-      "bytes": 3562,
-      "sha256": "40a0a3fea9811977cd3f296a8158feb745643970effe0c5f9c75b7ee5ae07605"
+      "bytes": 3680,
+      "sha256": "14f06558d92cf300f991736578f05b1178b95ac103d34bdf863449de3e7ef11b"
     },
     {
       "path": "簡報文件/screenshots/S01-S12_取證索引_2026-10-18.json",
-      "bytes": 20834,
-      "sha256": "33e700f62b3d5b53c7cdca5de862affbe323afe531f2929136bea6ba9bd287ab"
+      "bytes": 27531,
+      "sha256": "afb434145273109bfa49a2e0a78b9ccb0ece6ef7461e56a620eb9749be0332eb"
     },
     {
       "path": "簡報文件/screenshots/S01-S12_同版取證_2026-10-18.md",
-      "bytes": 6153,
-      "sha256": "f07a3979b009b95b619b90de9420f722b9316dfce4728fdfb64cbf7b3742cc4e"
+      "bytes": 6302,
+      "sha256": "241dfb91032dcf8b2b4df7d9418c8abdfc5802d9f178ab987f0c89dd3659bd28"
     },
     {
       "path": "簡報文件/screenshots/S01-home.png",
-      "bytes": 60014,
-      "sha256": "24f5842d6f0aa9e04389564f740cc5a984b949a7b07bb8e1cd87837cd824b929"
+      "bytes": 275598,
+      "sha256": "0210eb126786b584a1c508113ed76fb7a65750bfccc3a81c1f7ca133b5912b10"
     },
     {
       "path": "簡報文件/screenshots/S02-empty.png",
-      "bytes": 107373,
-      "sha256": "6e9b3f419bfd2599a0e224748b7577852ad51d849293fc6339c6222a47eb4d87"
+      "bytes": 510368,
+      "sha256": "bacf2d5043b91cf9ca0fe43d33d2310f395869783a9b0f79e62adb0ba2ea4a8b"
     },
     {
       "path": "簡報文件/screenshots/S02-search-result.png",
-      "bytes": 156677,
-      "sha256": "b5fc7839d88a94ff8ce37c8e118c6119dd419ca876d840b457137e47eae51675"
+      "bytes": 723820,
+      "sha256": "41803982fde236998f7433db23c1e74f1513a115dc5f0b981dafdf0a82e51d36"
     },
     {
       "path": "簡報文件/screenshots/S02-search.png",
-      "bytes": 66203,
-      "sha256": "d911e3be27a31859b1d896e635183f720325e0b4fca2071dd16893023026fd84"
+      "bytes": 310255,
+      "sha256": "904f3d8594f1a568fcc0d96176160a948ee27837c53a58fcc1c39532dfc3d197"
     },
     {
       "path": "簡報文件/screenshots/S03-product-evidence.md",
@@ -131,83 +131,83 @@
     },
     {
       "path": "簡報文件/screenshots/S03-product.png",
-      "bytes": 91063,
-      "sha256": "0932ee7ceb8a532f24f49b1df2b18f4c4564c35064d121db635ac506783c67a2"
+      "bytes": 445498,
+      "sha256": "ca49bf8499e877167a82032d55eaa639e4b4cfad5eeaa957c5a90f29fcf50cc4"
     },
     {
       "path": "簡報文件/screenshots/S04-auth.png",
-      "bytes": 30974,
-      "sha256": "60f562e8a4860d44ae230508252eb10bb4c5624636da209cc608a0f7e9268392"
+      "bytes": 115304,
+      "sha256": "c2fa624ee36b6e91b1d101f81967ab7a6ea22fc3a7dbf347e51de005458675bc"
     },
     {
       "path": "簡報文件/screenshots/S04-customer-admin-denied.png",
-      "bytes": 48582,
-      "sha256": "3696ebbe5926d9810e3ae2fedaebd76a26d8201504d3696a3df62c9a462254dc"
+      "bytes": 212626,
+      "sha256": "026a416d7d2601f4be0b8480d9fe4e760fa76fc8504171363888af4947d254ce"
     },
     {
       "path": "簡報文件/screenshots/S05-cart.png",
-      "bytes": 36582,
-      "sha256": "16bbe64401befede1f149e3b42b01e44d0fa5701b47086ca50bc2139cf76dd6c"
+      "bytes": 146816,
+      "sha256": "31c10381ce6c8bb79ff77527552beb24381ccbea3f514a506cc8b9989a1a2382"
     },
     {
       "path": "簡報文件/screenshots/S05-order.png",
-      "bytes": 53177,
-      "sha256": "d273d9cf4b17dbad9643c1643ee1d510ffbb3b76570a9a78b50f75bb6e994ab1"
+      "bytes": 231517,
+      "sha256": "f42ef272bd3fa16178585e55207bedc9e91677cc1119c122234c1ce7fd8b8986"
     },
     {
       "path": "簡報文件/screenshots/S06-admin.png",
-      "bytes": 73142,
-      "sha256": "8d28c917ba35814a02644fcc3bd585bf5150c1c63227c62ce945a9aa4c99961f"
+      "bytes": 315182,
+      "sha256": "16f373acaa241fe2adf6c8d93f42798ddacd5cd888b84ab7e65e785e91866af7"
     },
     {
       "path": "簡報文件/screenshots/S07-recommend.png",
-      "bytes": 76759,
-      "sha256": "67880ef27e2f8a28f7ee400dc8273441e01f1e7b20c202c38de3d50e8e8d9089"
+      "bytes": 370448,
+      "sha256": "15915ddd1ab7a65b6b5a7f500001b1f39803c13cb18cee54e6b737aaae63ca33"
     },
     {
       "path": "簡報文件/screenshots/S08-ai-compare.png",
-      "bytes": 74084,
-      "sha256": "0ee2ba5773bbb5ce10c7257e257367859cca24e0c7611919485bc44175b98cee"
+      "bytes": 335432,
+      "sha256": "b525d790a614d4e5d79590138e80b3993e3d5b02c640ff95d89be9e9cf888c64"
     },
     {
       "path": "簡報文件/screenshots/S08-ai.png",
-      "bytes": 70643,
-      "sha256": "ff8f6e395cd66ce9b6b6c4e43f0be0a2992d9b83bae98f5ddbbfc4a5eba44cde"
+      "bytes": 301630,
+      "sha256": "5aec96513975b908771065fd38eec87bef6a59e3a51a9d23ee280cfeed96ca31"
     },
     {
       "path": "簡報文件/screenshots/S09-ci.png",
-      "bytes": 86271,
-      "sha256": "c539c89c33b628791ebb06986633f24a9ef0bed547f1e89c3a569150c9d7d793"
+      "bytes": 314174,
+      "sha256": "4ce79047472ddb2f3fa7d3efad235732a31ae4dea0f04f3ce2bbaac64250c423"
     },
     {
       "path": "簡報文件/screenshots/S10-data.png",
-      "bytes": 41784,
-      "sha256": "d5a9c78f0d8dddd274c19f8cf145a2e34f80751785f0d33da2de26b7ec1b89a1"
+      "bytes": 161648,
+      "sha256": "0888ce88b79be96233ae8a643cf03f62285e4d73c0cd32261ec2ae582079fa00"
     },
     {
       "path": "簡報文件/screenshots/S11-deploy.png",
-      "bytes": 94891,
-      "sha256": "9ac4670914d5ffc60d3d9ea2b79224cd6c3ebf4918cc624328653d458f351d5d"
+      "bytes": 393811,
+      "sha256": "1a26d56c68561e8e5528c060f58339adf4e1d39b1a0db2654fca668e902d6b93"
     },
     {
       "path": "簡報文件/screenshots/S11-health.png",
-      "bytes": 10526,
-      "sha256": "c9575fcb236eef1df9a3aea62bc96660f527305cadc405404af9fb49bf683f61"
+      "bytes": 15492,
+      "sha256": "83e1bca9caa95657642e02400b5c4b2ecc16f4df703424cab87f8e5dca55e0bf"
     },
     {
       "path": "簡報文件/screenshots/S12-mobile-admin.png",
-      "bytes": 38258,
-      "sha256": "31876ad6ae22e3fdca2e7041ddc7cd4add232bd584bab98699e9ac36f883bd06"
+      "bytes": 170980,
+      "sha256": "90d6b56b0902ba6296b443c858d458900a021f6da9c2e478f3368e46a75df9a2"
     },
     {
       "path": "簡報文件/screenshots/S12-mobile-cart.png",
-      "bytes": 29129,
-      "sha256": "197327812cd4fbb788dbb0d72a266df58ee431ac17badb0d7d47abd0807f7ef8"
+      "bytes": 137910,
+      "sha256": "2458ede3f80e57a62f9c7d132e4bb9c86adb7ff1521cef38612086fe5cc6eee4"
     },
     {
       "path": "簡報文件/screenshots/S12-mobile.png",
-      "bytes": 36383,
-      "sha256": "bb07344354cd7fbb6a9493d17066c5e347ef070daff68d2cb05a78732ce4a1f0"
+      "bytes": 187419,
+      "sha256": "8bf3f8d12816fc1708b736e7fb5d65da50fb1b8d08e4d839fe45a8ca4f368144"
     },
     {
       "path": "簡報文件/screenshots/history-20261017/S01-home.png",

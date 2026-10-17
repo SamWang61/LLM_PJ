@@ -23,6 +23,8 @@ ff65eae本機localhost MongoDB replica set **201 passed／0 skipped**。新映�
 
 ## 同版瀏覽器素材與清理
 
+PR #73 P2發現工具回傳JPEG而副檔名為PNG，已將20張轉碼為真正PNG，原始JPEG私有保留；逐張驗PNG magic bytes、尺寸及解碼後RGB像素完全相同，未修改畫面。
+
 [S01～S12原圖／資訊](../簡報文件/screenshots/S01-S12_同版取證_2026-10-18.md)公開圖走Hosting；會員／購物／後台圖經僅綁127.0.0.1的臨時代理，**實際上游是同映像私有Cloud Run07，非本機重製UI**。代理僅在記憶體持有IAM與驗收庫憑證，未改HTML／CSS、未寫正式庫、未將憑證存圖或Git。私有資料量不同於正式，必須保留圖說。
 
 [取證及清理報告](inventory/sam-screenshot-proxy-final.json)：
