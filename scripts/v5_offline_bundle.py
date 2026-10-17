@@ -19,6 +19,7 @@ PPTX_SHA256 = '43374f71c5e42fdc1725f38a8ac69ea0e2ccc696f6238ebb06425e58e00d7203'
 PDF_SHA256 = 'c5555c2a54d8a4200fd79fb8073d0fa5af691b40b13a4e031ddf9f8f6dc4535d'
 INDEX = '簡報文件/screenshots/S01-S12_取證索引_2026-10-18.json'
 RUNBOOK = '簡報文件/離線備援/README.md'
+PAGES = '簡報文件/離線備援/投影片/'
 MAX_BYTES = 50 * 1024 * 1024
 MAX_FILES = 40
 STAMP = (1980, 1, 1, 0, 0, 0)
@@ -89,7 +90,7 @@ a{color:#006b50}a:focus-visible{outline:3px solid #a45e00;outline-offset:4px}
 nav{display:flex;gap:24px;flex-wrap:wrap}article{border-top:1px solid #abc;padding:20px 0}img{max-width:100%;height:auto}p{overflow-wrap:anywhere}code{word-break:break-all}
 </style><h1>VibeCart V5 離線備援</h1>
 <p>這是已記錄畫面的離線閱讀包，沒有網站、帳號、資料庫或付款功能。截圖保留各自取證版本；不是目前線上畫面或最終簽收。V5 手動封面、頁尾與封底原樣保留。</p>
-<nav><a href="presentation.pdf">PDF 閱讀版</a><a href="presentation.pptx">原始 PowerPoint</a><a href="README.md">故障替代流程與排練表</a><a href="manifest.json">檔案核對清冊</a></nav>
+<nav><a href="slides.html">13 頁圖片閱讀版</a><a href="presentation.pdf">PDF 閱讀版</a><a href="presentation.pptx">原始 PowerPoint</a><a href="README.md">故障替代流程與排練表</a><a href="manifest.json">檔案核對清冊</a></nav>
 <p>內容來源提交：<code>''' + html.escape(commit) + '</code></p>' + ''.join(cards) + '</html>\n').encode('utf-8')
 
 
@@ -120,6 +121,20 @@ def source_files(root, commit):
             raise ValueError('Screenshot provenance integrity failed')
         files['screenshots/' + name] = data
     files['index.html'] = html_index(commit, rows)
+    page_index = committed_bytes(root, commit, PAGES + 'pages.json')
+    pages = json.loads(page_index)
+    names = [f'page-{i:02d}.png' for i in range(1, 14)]
+    if pages.get('source_pdf_sha256') != PDF_SHA256 or [r['file'] for r in pages['files']] != names:
+        raise ValueError('Rendered PDF page contract mismatch')
+    for row in pages['files']:
+        data = committed_bytes(root, commit, PAGES + row['file'])
+        if not data.startswith(b'\x89PNG\r\n\x1a\n') or sha256(data) != row['sha256'] or len(data) != row['bytes']:
+            raise ValueError('Rendered PDF page integrity failed')
+        files['slides/' + row['file']] = data
+    files['slides/pages.json'] = page_index
+    links = ' '.join(f'<a href="#page-{i}">{i}</a>' for i in range(1, 14))
+    slides = ''.join(f'<section id="page-{i}"><h2>第 {i} 頁</h2><img src="slides/page-{i:02d}.png" alt="V5 第 {i} 頁"></section>' for i in range(1, 14))
+    files['slides.html'] = ('''<!doctype html><html lang="zh-Hant"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>V5 13頁圖片閱讀版</title><style>body{margin:20px;background:#f7f6ee;color:#153a37;font:18px/1.5 system-ui,sans-serif}nav{position:sticky;top:0;background:#f7f6ee;padding:12px}a{color:#006b50;margin-right:12px}img{width:100%;height:auto}section{max-width:1280px;margin:auto}a:focus-visible{outline:3px solid #a45e00}</style><h1>V5 13頁圖片閱讀版</h1><p>由原 PDF 逐頁渲染；不需 PDF 外掛，沒有即時網站操作。</p><nav><a href="index.html">回索引</a>''' + links + '</nav>' + slides + '</html>\n').encode('utf-8')
     return files
 
 

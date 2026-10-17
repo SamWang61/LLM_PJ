@@ -4,7 +4,7 @@
 
 ## 建立與還原
 
-於乾淨交付 checkout 先完成 `git lfs pull`，確認 V5 PDF 的實體內容已下載，再進入離線環境。使用 Python 標準函式庫即可建包，建包過程不下載、不連資料庫、不讀環境檔或密鑰。封裝只讀指定提交的 V5 PPTX、PDF、20 張截圖及取證索引；PPTX 固定 SHA-256，手動封面、深淺頁尾與封底不變。
+於乾淨交付 checkout 先完成 `git lfs pull`，確認 V5 PDF 的實體內容已下載，再進入離線環境。使用 Python 標準函式庫即可建包，建包過程不下載、不連資料庫、不讀環境檔或密鑰。封裝只讀指定提交的 V5 PPTX、PDF、20 張截圖、13 張 PDF 渲染圖及各自索引；PPTX／PDF 固定 SHA-256，手動封面、深淺頁尾與封底不變。
 
 ```powershell
 python scripts/v5_offline_bundle.py build --commit HEAD --output "$env:TEMP/VibeCart_V5_offline_20261018.zip"
@@ -13,7 +13,7 @@ python scripts/v5_offline_bundle.py restore --archive "$env:TEMP/VibeCart_V5_off
 
 輸出 ZIP 必須是新檔，還原目錄必須不存在。驗證失敗時不寫入還原目錄；成功後所有檔案均再讀回雜湊。將 ZIP 放入展示電腦與另一份離線儲存裝置；兩份 SHA-256 須與交付紀錄一致。ZIP 是本機交付產物，依專案檔案政策不提交 GitHub；工具、清單、流程與驗證結果才進版控。
 
-還原後直接開 `index.html`，其中圖片、PDF、PPTX 與索引全部是相對路徑，不需要網站或外部 CDN。PDF 為主要閱讀備援，PPTX 需 PowerPoint 或相容軟體。原 PDF 的數字與畫面保留原日期版本，不把歷史 186 passed 改稱目前完整測試數；目前程式／部署另依現行證據。
+還原後直接開 `index.html`，其中圖片、PDF、PPTX 與索引全部是相對路徑，不需要網站或外部 CDN。優先開 13 頁圖片閱讀版；PDF 外掛不可用時仍能看完整逐頁渲染，PPTX 需 PowerPoint 或相容軟體。原 PDF 的數字與畫面保留原日期版本，不把歷史 186 passed 改稱目前完整測試數；目前程式／部署另依現行證據。
 
 ## 現場排練與替代流程
 
@@ -22,7 +22,7 @@ python scripts/v5_offline_bundle.py restore --archive "$env:TEMP/VibeCart_V5_off
 | 網路中斷／網站失效 | 停止網站操作，開本機 `index.html`、PDF；依 S01～S12 展示已記錄畫面 | 清楚說明離線錄存、取證時間與正式／私有範圍；不能稱當下線上即時資料 |
 | 模型未設定／逾時 | 開 S08 原圖、說明現行未啟用與規則退回；按 V5 p12 講下一階段 | 不編造模型輸出、耗時或 token，也不為展示打開旗標 |
 | 資料庫／checkout 錯誤 | 停止反覆送出，記錄時間／錯誤；開 S05 原圖和取證索引說明已驗示範單 | 不寫正式庫補假單、不重設庫存；恢復後先查同 checkout ID 再決定處理 |
-| PowerPoint 無法啟動 | 開 PDF，必要時用同包截圖說明流程 | PDF 13 頁可讀；不能說已驗證另一台電腦的 PowerPoint |
+| PowerPoint／PDF 閱讀器無法啟動 | 開 `slides.html` 的 13 頁圖片閱讀版，再用同包截圖說明流程 | 原 PDF 13 頁渲染可讀；不能說已驗證另一台電腦的 PowerPoint |
 | 帳號到期／角色被拒 | 停止登入重試，改用對應角色錄存圖 | 不沿用已回收探針、不啟用合成會員、不把私有畫面冒充正式帳號 |
 
 ## 13 頁計時表（目標 12 分鐘；仍須真人計時）
