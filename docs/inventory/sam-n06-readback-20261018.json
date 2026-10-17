@@ -1,0 +1,195 @@
+{
+  "checked_at": "2026-10-17T20:06:16.679Z",
+  "mode": "isolated-probe",
+  "project": "vibecart-llmai",
+  "status": "passed",
+  "production": {
+    "service": "vibecart-web",
+    "revision": "vibecart-web-00015-nlk",
+    "traffic_percent": 100,
+    "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:1686638380b8cb8dc792423b059918b292e94f095d68c623ea9136da1ff9813b",
+    "source_sha": "1d2abf2cfa7465636e49474062e11f6aca571dda"
+  },
+  "acceptance": {
+    "service": "vibecart-acceptance-pr21",
+    "revision": "vibecart-acceptance-pr21-00005-5j5",
+    "traffic_percent": 100,
+    "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:1686638380b8cb8dc792423b059918b292e94f095d68c623ea9136da1ff9813b",
+    "source_sha": "1d2abf2cfa7465636e49474062e11f6aca571dda"
+  },
+  "inventory": {
+    "services": [
+      "projects/vibecart-llmai/locations/asia-east1/services/vibecart-acceptance-pr21",
+      "projects/vibecart-llmai/locations/asia-east1/services/vibecart-web"
+    ],
+    "jobs": [],
+    "job_regions_checked": [
+      "africa-south1",
+      "asia-east1",
+      "asia-east2",
+      "asia-northeast1",
+      "asia-northeast2",
+      "asia-northeast3",
+      "asia-south1",
+      "asia-south2",
+      "asia-southeast1",
+      "asia-southeast2",
+      "asia-southeast3",
+      "australia-southeast1",
+      "australia-southeast2",
+      "europe-central2",
+      "europe-north1",
+      "europe-north2",
+      "europe-southwest1",
+      "europe-west1",
+      "europe-west10",
+      "europe-west12",
+      "europe-west2",
+      "europe-west3",
+      "europe-west4",
+      "europe-west6",
+      "europe-west8",
+      "europe-west9",
+      "me-central1",
+      "me-central2",
+      "me-west1",
+      "northamerica-northeast1",
+      "northamerica-northeast2",
+      "northamerica-south1",
+      "southamerica-east1",
+      "southamerica-west1",
+      "us-central1",
+      "us-east1",
+      "us-east4",
+      "us-east5",
+      "us-south1",
+      "us-west1",
+      "us-west2",
+      "us-west3",
+      "us-west4"
+    ],
+    "restricted_regions": [
+      "me-central2"
+    ],
+    "restricted_reason": "LOCATION_POLICY_VIOLATED",
+    "topics": [],
+    "subscriptions": [],
+    "enabled_worker_apis": []
+  },
+  "iam": {
+    "role": "roles/iam.serviceAccountOpenIdTokenCreator",
+    "member": "user:cashsam@gmail.com",
+    "expires": "request.time < timestamp(\"2026-10-17T20:26:38.146Z\")",
+    "title": "sam-txn-964ad5ce-f09f-4fb4-89cb-529e05cce9f8",
+    "revoked": true,
+    "id_token_attempts": 9
+  },
+  "probe": {
+    "probe_id": "ren-txn-e845fb610a46030c",
+    "service_revision": "vibecart-acceptance-pr21-00005-5j5",
+    "service_image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:1686638380b8cb8dc792423b059918b292e94f095d68c623ea9136da1ff9813b",
+    "status": "passed",
+    "add_http": 200,
+    "two_device_sessions": true,
+    "customer_admin_denied": true,
+    "add_to_cart": true,
+    "checkout_persisted": true,
+    "retry_same_order": true,
+    "conflict_409": true,
+    "stock_after_checkout": 1,
+    "per_device_logout": true,
+    "role_checks": {
+      "active_admin_200": true,
+      "missing_csrf_400": true,
+      "inactive_admin_denied": true
+    },
+    "session_security": {
+      "same_browser_relogin": true,
+      "old_cookie_denied": true,
+      "other_device_preserved": true,
+      "maintainer_revoke_all_denied": true,
+      "inactive_customer_both_devices_denied": true,
+      "d5_ui_tested": false
+    },
+    "last_stock_concurrency": {
+      "parallel_clients": 2,
+      "http_statuses": [
+        400,
+        200
+      ],
+      "successful_checkouts": 1,
+      "stock_remaining": 0,
+      "orders_total_including_original": 2
+    },
+    "stock_failure_rollback": {
+      "second_sku_unavailable_http": 400,
+      "first_sku_stock_preserved": true,
+      "cart_revision_preserved": true,
+      "order_item_event_counts_unchanged": true,
+      "cart_event_counts_unchanged": true,
+      "persisted_before": {
+        "orders": 2,
+        "order_items": 2,
+        "behavior_events": 6,
+        "cart_events": 6
+      },
+      "persisted_after": {
+        "orders": 2,
+        "order_items": 2,
+        "behavior_events": 6,
+        "cart_events": 6
+      },
+      "order_items_scope": "fixture sku_id including orphan items",
+      "arbitrary_fault_injection_tested": false
+    },
+    "cleanup": {
+      "order_items": 2,
+      "order_items_remaining": 0,
+      "orders": 2,
+      "orders_remaining": 0,
+      "cart_events": 6,
+      "cart_events_remaining": 0,
+      "carts": 3,
+      "carts_remaining": 0,
+      "behavior_events": 6,
+      "behavior_events_remaining": 0,
+      "auth_sessions": 3,
+      "auth_sessions_remaining": 0,
+      "users": 3,
+      "users_remaining": 0,
+      "product_skus": 2,
+      "product_skus_remaining": 0,
+      "products": 1,
+      "products_remaining": 0,
+      "verified": true
+    }
+  },
+  "independent_readback": {
+    "checked_at": "2026-10-17T20:11:10.846Z",
+    "temporary_binding_title": "sam-txn-964ad5ce-f09f-4fb4-89cb-529e05cce9f8",
+    "temporary_bindings_remaining": 0,
+    "private_anonymous_http": 403,
+    "atlas_independent": {
+      "probe_id": "ren-txn-e845fb610a46030c",
+      "database": "vibecart_acceptance_pr21",
+      "users": 0,
+      "products": 0,
+      "product_skus": 0,
+      "orders_checkout_prefix": 0,
+      "source": "Four Atlas connector aggregations after runner completion",
+      "limitation": "Dependent collection readbacks are runner evidence, not independent nine-scope verification"
+    }
+  },
+  "probe_source_commit": "f09ff0c5634690b3c90dcb21629a73239a28714a",
+  "probe_source_sha256": {
+    "scripts/remote_member_transaction_checks.py": "e4149bc56dd9bbb455612bbf557621f8610464519a01b957c76a2c385a874f80",
+    "scripts/remote_transaction_acceptance_probe.py": "00b892078180310ae833c6e43fb82824ef929dccc165956df682e09c0032a208",
+    "scripts/run_remote_transaction_acceptance_probe.cjs": "45b9298bbca9703650f600bb9dbdb80eb3adb62164ec7fca975fab4bdca087b9"
+  },
+  "offline_tests": {
+    "python_safety_passed": 10,
+    "node_safety_passed": 3,
+    "skipped": 0
+  },
+  "limitation": "Controlled second-SKU stock failure, not arbitrary DB fault or mid-checkout revocation; not final named acceptance"
+}
