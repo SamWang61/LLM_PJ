@@ -32,7 +32,7 @@ asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:ae3dbfbd9863e1264df
 2. 設定執行期環境變數與秘密。這些值由有權限的人在 Render 私有設定中填入，不從 Cloud Run 讀出秘密明文，也不隨 PR 提交。預覽維持唯讀；不要先啟用 checkout、會員與後台。
 3. 設 HTTP health check path 為 `/health/ready`，因它會檢查 Atlas ping 與 active v4 商品。只有 `live` 通過而 `ready` 失敗時，先檢查 Atlas 網路／資料身分，不把它當作部署成功。[Render health check 規則](https://render.com/docs/health-checks)。
 4. 手動部署後讀回 deploy 狀態、image digest、日誌與設定。測 `GET /health/live`、`/health/ready`、首頁、商品明細／搜尋，以及登入、後台、cart、checkout、POST 寫入在唯讀模式均被拒絕；檢查 `private, no-store` 與瀏覽器手機／鍵盤流程。
-5. 對照 Atlas 商品／SKU 價格庫存及事件／訂單副作用，再由 HEN／JEFF／SAM 完成各自主責的角色、交易、AI 與所有 consumer 驗收。D4 不得在未證明遠端 synthetic 隔離前匯入；D1～D3 不重匯。
+5. 對照 Atlas 商品／SKU 價格庫存及事件／訂單副作用，再由 REN／JEFF／SAM 完成各自主責的角色、交易、AI 與所有 consumer 驗收。D4 不得在未證明遠端 synthetic 隔離前匯入；D1～D3 不重匯。
 6. 只有在 Render 版本、權限、資料與回退都驗收後才討論正式網域切換。保留 Cloud Run／Hosting 原入口及映像 digest，先制定 DNS 回退和 session cookie／domain 變更測試。
 
 ## 若要改用 GitHub 自動建置

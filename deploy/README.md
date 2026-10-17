@@ -4,7 +4,7 @@
 
 2026-10-16 已在 [PR #21 整合來源](../docs/SAM_PR21_ACCEPTANCE_2026-10-16.md) 完成本機白名單 Docker build／boot、隔離交易測試與零流量 Cloud Run 唯讀預覽；Hosting 尚未發布此版。下方 10/12 配置與唯讀部署敘述保留歷史版本界線。
 
-主責 SAM。先交付匿名商品瀏覽，再依 JEFF／HEN 功能及 SAM 驗收接線完整流程。這份設定不匯入資料、不建立會員、不跑 migration；D4 仍須所有 consumer 的遠端隔離驗證通過才可 apply。
+主責 SAM。先交付匿名商品瀏覽，再依 JEFF／REN 功能及 SAM 驗收接線完整流程。這份設定不匯入資料、不建立會員、不跑 migration；D4 仍須所有 consumer 的遠端隔離驗證通過才可 apply。
 
 ## 配置與目前邊界
 
@@ -39,7 +39,7 @@
 
 ## 後續功能開放
 
-JEFF 先確認全部評分／歸因／推薦／排程 consumer 及 AI 契約；HEN 先交登入／撤權／購物／事件接口。SAM 整合、建立少量私有測試帳號、驗角色與舊 session，再以新的已測 revision 開放功能；不要直接關掉 preview flag 冒充功能交付。
+JEFF 先確認全部評分／歸因／推薦／排程 consumer 及 AI 契約；REN 先交登入／撤權／購物／事件接口。SAM 整合、建立少量私有測試帳號、驗角色與舊 session，再以新的已測 revision 開放功能；不要直接關掉 preview flag 冒充功能交付。
 
 遠端 consumer 的 synthetic 排除、D4 apply／verify／重送、真模型與交易驗收各自列證據。沒有執行的 Scheduler 不可標為排程已驗。首次展示不等於最終簽收。
 

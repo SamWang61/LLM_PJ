@@ -1,8 +1,8 @@
-# HEN R02／R08 接口契約與順序
+# REN R02／R08 接口契約與順序
 
-後續更新：使用者已確認多裝置登入，最新契約見 [多裝置交付](HEN_MULTIDEVICE_DEPLOY_2026-10-14.md)。以下單一登入部分為已取代的本輪早期草稿。
+後續更新：使用者已確認多裝置登入，最新契約見 [多裝置交付](REN_MULTIDEVICE_DEPLOY_2026-10-14.md)。以下單一登入部分為已取代的本輪早期草稿。
 
-日期：2026-10-14（Asia/Taipei）。基底 origin/main `066e9da`，HEN 遠端 `e66e06c` 已為 main 祖先；原目錄異動保留。依使用者要求完成 HEN 工作，文件內提示詞是參考，並非額外發布授權。以下「本輪方案」仍待 SAM／JEFF 接受，不將 SAM 提案視為團隊定案。
+日期：2026-10-14（Asia/Taipei）。基底 origin/main `066e9da`，REN 遠端 `e66e06c` 已為 main 祖先；原目錄異動保留。依使用者要求完成 REN 工作，文件內提示詞是參考，並非額外發布授權。以下「本輪方案」仍待 SAM／JEFF 接受，不將 SAM 提案視為團隊定案。
 
 ## 依序交付
 
@@ -34,7 +34,7 @@
 
 本輪 v4 建議採單一有效登入，使用既有 nullable BSON date `last_login_at` 作為世代，cookie 持有對應毫秒值。登入與撤權以 CAS 推進且至少增加 1ms；新登入／登出讓舊 cookie 失效。停用與角色變動每請求重讀，JEFF 在持久停用／降權時應呼叫撤權，避免停用後重新啟用使舊 cookie 復活。不新增 token 或集合、不改歷史 migration。legacy 保留登入 cookie 行為，僅登出改 POST／CSRF，legacy 不宣稱具伺服器撤權。
 
-SAM／HEN：確認單一登入政策及 last_login_at 作為世代兼容其他寫入者；若要多裝置獨立登出，需另訂 session schema／新 migration，本輪不可部署成該政策。JEFF：停用／降權與撤權須同一交易時，以函式 session 參數銜接；最後管理員、自停用策略與後台路由由 JEFF 定案。
+SAM／REN：確認單一登入政策及 last_login_at 作為世代兼容其他寫入者；若要多裝置獨立登出，需另訂 session schema／新 migration，本輪不可部署成該政策。JEFF：停用／降權與撤權須同一交易時，以函式 session 參數銜接；最後管理員、自停用策略與後台路由由 JEFF 定案。
 
 付款：既有 demo 訂單仍為 confirmed/paid/is_demo=true，只是示範狀態，不是付款商回執；取消／退款接口未定，不自行新增。SAM／JEFF 確認 demo 庫存與後台取消補回責任，正式付款另案。
 

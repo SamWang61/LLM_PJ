@@ -1,14 +1,14 @@
-# HEN 交付回報｜2026-10-14
+# REN 交付回報｜2026-10-14
 
-後續更新：使用者已确认多裝置同時登入並授權發布，最新結果見 [多裝置與部署交付](HEN_MULTIDEVICE_DEPLOY_2026-10-14.md)。本頁以下保留較早本機單一登入草稿歷史，不能作為目前登入政策。
+後續更新：使用者已确认多裝置同時登入並授權發布，最新結果見 [多裝置與部署交付](REN_MULTIDEVICE_DEPLOY_2026-10-14.md)。本頁以下保留較早本機單一登入草稿歷史，不能作為目前登入政策。
 
 ## 結果與工作順序
 
-本輪依提供的進度表／HEN 指南完成可獨立進行的本機工作，原 `C:/LLM/LLM_PJ` 髒目錄保留。使用乾淨工作樹 `C:/Users/USER/.codex/worktrees/hen-r08/LLM_PJ`，分支 `codex/hen-r02-r08-20261014`。10/14 核對遠端 main `066e9da`、HEN `e66e06c`，後者已包含於 main。沒有混入 SAM／JEFF 未合併分支。
+本輪依提供的進度表／REN 指南完成可獨立進行的本機工作，原 `C:/LLM/LLM_PJ` 髒目錄保留。使用乾淨工作樹 `C:/Users/USER/.codex/worktrees/hen-r08/LLM_PJ`，分支 `codex/hen-r02-r08-20261014`。10/14 核對遠端 main `066e9da`、REN `e66e06c`，後者已包含於 main。沒有混入 SAM／JEFF 未合併分支。
 
 |順序|工作|本輪成果|交付狀態|
 |---|---|---|---|
-|1 R02|接口契約|[契約與未決事項](HEN_R02_CONTRACT_2026-10-14.md)，現有路由／輸入／錯誤／重送／主責|草稿完成，單一登入政策尚待確認|
+|1 R02|接口契約|[契約與未決事項](REN_R02_CONTRACT_2026-10-14.md)，現有路由／輸入／錯誤／重送／主責|草稿完成，單一登入政策尚待確認|
 |2 R08 會員|註冊／登入／登出／撤權|輸入與重複 email、固定 customer、即時 active/role、v4 登入世代、POST/CSRF 登出、JEFF 可信撤權函式|本機實作／離線測試完成；不是已部署接口|
 |3 R08 購物|SKU 購物車／checkout|沿用原交易層；表單 revision、同鍵重送／不同內容衝突、後端重新計價與庫存檢查|本機／離線／瀏覽器示範完成；真交易待驗|
 |4 事件|四事件與隔離|補 SEARCH、驗證瀏覽會員；加購／購買保留同交易去重；demo PURCHASE 排除歸因；伺服器 synthetic 設定，前台查詢先排除再 sort/limit|本機測試完成；所有遠端消費者需 JEFF／SAM 驗證|
@@ -32,7 +32,7 @@
 
 ## SAM／JEFF 接續順序與前置
 
-1. **SAM／HEN 先確認 R02 撤權政策**：本輪實作 v4 單一有效登入，既有 last_login_at 作登入世代；新登入、登出、撤權使全部舊 cookie 失效。last_login_at 在撤權時也會推進，因此須確認其他讀寫者接受此語義。若需要多裝置独立 session，另訂 schema/migration，不能直接按本輪方案部署。legacy 不宣稱伺服器撤權。
+1. **SAM／REN 先確認 R02 撤權政策**：本輪實作 v4 單一有效登入，既有 last_login_at 作登入世代；新登入、登出、撤權使全部舊 cookie 失效。last_login_at 在撤權時也會推進，因此須確認其他讀寫者接受此語義。若需要多裝置独立 session，另訂 schema/migration，不能直接按本輪方案部署。legacy 不宣稱伺服器撤權。
 2. **JEFF 接停用／降權**：在已驗 admin 身分與 CSRF 的寫入服務呼叫 `app.services.member_sessions.revoke_user_sessions(db, user_id, mongo_session=...)`；可與停用／角色改動使用同一 transaction。只改 inactive 會暫拒絕，但重新啟用前必須撤權，否則未推進世代的舊 cookie 仍可能恢復；最後管理員／自己停用由 JEFF 定案。函式不是公開 API。
 3. **SAM 提供獨立 localhost replica set**：Docker CLI 存在但引擎未啟動；未發現 mongod。4 項 opt-in 測試跳過原因是 HEN_TEST_MONGO_URI 未設定。測試只接受無帳密 localhost mongodb URI，建立隨機 hen_acceptance_* 庫，最後只刪除自身庫；不讀 .env、不連正式 Atlas。涵蓋真 rollback、最後庫存並發、登入 CAS 並發、撤權 transaction abort。其測試未安裝完整 validators，SAM 仍須以現行 v4＋overlay 驗證文件／索引；不改歷史 migration。
 
