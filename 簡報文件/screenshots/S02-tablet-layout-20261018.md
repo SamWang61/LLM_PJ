@@ -6,4 +6,8 @@
 
 1280×844 的桌面瀏覽器有相同問題：正式標題 **64×253 px**，見[桌面原始畫面](S02-desktop-before-20261018.png)，SHA-256 `EC9D9D66ECE2D055C3FA583C41DB1337E1F47B1E8578AD27AD0ACF00A7EA69AF`；注入修正 CSS 後為 **1152×63 px**，見[桌面 CSS 預覽](S02-desktop-css-preview-20261018.png)，SHA-256 `EADC29E9B80E9CCD93B8922C78D8C0E74B356A3BC8D9333A4E16166A79DE157A`，水平溢出 0。
 
-修正只對 `#products .section-head` 改為上下排列，涵蓋各寬度而不影響其他區塊。320、375、768、1280 px 的公開首頁及商品錨點，本輪瀏覽器模擬於載入穩定後均無水平溢出。上列「CSS 預覽」是**本機注入**；零流量 Cloud Run `vibecart-web-00014-kq8` 尚是僅修正平板的第一版映像，桌面仍逐字換行。最終 CSS 需新建映像與修訂、重讀回四個 viewport，並依 D4 閘門驗 consumer 隔離後才可切正式流量；手機／平板實機及具名簽收仍未完成。
+修正只對 `#products .section-head` 改為上下排列，涵蓋各寬度而不影響其他區塊。上列「CSS 預覽」是**本機注入**；零流量 Cloud Run `vibecart-web-00014-kq8` 是僅修正平板的第一版映像，桌面仍逐字換行。
+
+**01:45–01:48 雲端預覽覆核：**最終來源 `1d2abf2cfa7465636e49474062e11f6aca571dda` 的 Cloud Build `f0f1fbc2-2980-477e-8a77-d9eb467ad503` 成功，映像 digest 為 `sha256:1686638380b8cb8dc792423b059918b292e94f095d68c623ea9136da1ff9813b`。Cloud Run `vibecart-web-00015-nlk` Ready，標籤 `pr56-1d2abf2` 承接 **0%**；正式 `vibecart-web-00013-ds5` 仍承接 **100%**。[零流量預覽](https://pr56-1d2abf2---vibecart-web-m44ncgz5ta-de.a.run.app/)的 `/`、`/auth/login`、`/health/live`、`/health/ready` 均回 200。GitHub [CI](https://github.com/SamWang61/LLM_PJ/actions/runs/39055003280) 對相同 head 成功。
+
+在預覽本身點「瀏覽商品」，Chrome 模擬 320、375、768、1280 px 四種 viewport 均回 200，`scrollWidth=innerWidth`；標題寬×高依序為 288×42、338×42、691×42、1152×63 px。檢視[768 px 雲端畫面](S02-tablet-cloud-preview-20261018.png) SHA-256 `C223F0D89A530DBAA31AABABA300DA751F361C3336CD6CA5158D3DECD25A4545` 與[1280 px 雲端畫面](S02-desktop-cloud-preview-20261018.png) SHA-256 `E7C534B36E4F855F64523FFB6D2DA4DC310E70418A93C81C0B5DA93B1D35D28D`，標題皆位於篩選列上方且橫排。手機／平板實機與具名簽收尚未完成；正式切流量前仍須依 D4 閘門處理新映像 consumer 同版隔離核對。
