@@ -1,0 +1,122 @@
+{
+  "checked_at": "2026-10-17T20:00:59.513771+00:00",
+  "published_commit": "0aba5445a84731fcddeed15e082cf81d5c7155aa",
+  "pr": 61,
+  "branch": "codex/pr-backlog-20261018",
+  "remote_head_matches": true,
+  "source_commit_remote_files": 19,
+  "ci_passed": true,
+  "checks": [
+    {
+      "name": "offline",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/SamWang61/LLM_PJ/actions/runs/39064792952/job/117490064049"
+    },
+    {
+      "name": "offline",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/SamWang61/LLM_PJ/actions/runs/39064790572/job/117490057323"
+    }
+  ],
+  "files": [
+    {
+      "path": "專題進度/專案未完成工作清單_2026-10-18.md",
+      "sha256": "a775a269ca30c611a279796c4172e919ba4eb3ec4e655dc490831e0eac2e7edd",
+      "source_commit_remote_equal": true
+    },
+    {
+      "path": "docs/WORK_EXECUTION_2026-10-18.md",
+      "sha256": "5f361bc3b0032d635d4f8ab130403fa58e030cce09e53cf99c8eec8959227952",
+      "source_commit_remote_equal": true
+    },
+    {
+      "path": "docs/PR_AUDIT_2026-10-18.md",
+      "sha256": "add3e6b665b302a40630b57b2d8df01844eb5924fcdf71c2be6b01481e2ae991",
+      "source_commit_remote_equal": true
+    },
+    {
+      "path": "docs/SAM_D5_LOCAL_REHEARSAL_2026-10-18.md",
+      "sha256": "3e4249aa61d32760129e1965662e1e9042931401184e729eee6559623f79490c",
+      "source_commit_remote_equal": true
+    },
+    {
+      "path": "docs/OPEN_PR_RESIDUALS_2026-10-18.md",
+      "sha256": "9494a9b00dec79d383e711bcdc5ebdcf76fb5b984df8a98d1a2ac4a54cd86021",
+      "source_commit_remote_equal": true
+    },
+    {
+      "path": "docs/inventory/N01_EXECUTION_2026-10-18.json",
+      "sha256": "48c81d13c1d1b2cd0ae2a6bd8d2bdf6b4a7931ee781d62b68e7d045770bf518e",
+      "source_commit_remote_equal": true
+    },
+    {
+      "path": "docs/inventory/N03_EXECUTION_2026-10-18.json",
+      "sha256": "51c6261cd9fa2ef4be321f485f4c489b3c6b8044717ae105bf98b918c60d2051",
+      "source_commit_remote_equal": true
+    },
+    {
+      "path": "docs/inventory/N04_N06_ATLAS_READBACK_2026-10-18.json",
+      "sha256": "cbd39ea9fd9c5b0fb7c84b2eaab6fdc92325a8cd311d6664b91e2286f258cb1e",
+      "source_commit_remote_equal": true
+    },
+    {
+      "path": "docs/inventory/N04_N06_IAM_READBACK_2026-10-18.json",
+      "sha256": "7e1bcd7a63c59f804f7bd9cd42d31034a7fe0d99ab7494e23fad5404347f1aa1",
+      "source_commit_remote_equal": true
+    },
+    {
+      "path": "docs/inventory/N04_N06_REMOTE_2026-10-18.json",
+      "sha256": "3a9bed0fb6835d99e2d910742fe24c6f84717c4a8ce868ddd84d8bfda1dc2b40",
+      "source_commit_remote_equal": true
+    },
+    {
+      "path": "docs/inventory/N04_N06_REMOTE_RETRY1_2026-10-18.json",
+      "sha256": "d0c99dc65253b66fa8e5c16d2471432f5349c4120cb1c7a0d4c099e98d3cef57",
+      "source_commit_remote_equal": true
+    },
+    {
+      "path": "docs/inventory/N08_LOCAL_2026-10-18.json",
+      "sha256": "da0860ca605ae5d6e41ff48daacc35f390d5ccb055841aae92c20c0e5de0a283",
+      "source_commit_remote_equal": true
+    },
+    {
+      "path": "docs/inventory/N08_LOCAL_RETRY1_2026-10-18.json",
+      "sha256": "ee488e5c0fe98c571e3b996b1ac8c33db13f679c854a18ae6c55f4660a2226b9",
+      "source_commit_remote_equal": true
+    },
+    {
+      "path": "docs/inventory/N11_RUNTIME_IMPACT_2026-10-18.json",
+      "sha256": "bc3ee1ae44414d18043ab25ab499102340ca90461206c240b49d4b005016be33",
+      "source_commit_remote_equal": true
+    },
+    {
+      "path": "docs/inventory/N13_EGRESS_2026-10-18.json",
+      "sha256": "3ce2bce604514ee36722c3bd07fdd1f033f205914fa3ed4180ded462e3446948",
+      "source_commit_remote_equal": true
+    },
+    {
+      "path": "docs/inventory/N13_NETWORK_READBACK_2026-10-18.json",
+      "sha256": "74cabf756646269405f85fbc7dc2a7d20517a284b65812b975b299644051b946",
+      "source_commit_remote_equal": true
+    },
+    {
+      "path": "docs/inventory/N15_OPEN_PR_RESIDUALS_2026-10-18.json",
+      "sha256": "e71a9eea01cf26bc0de42e58946f164964d17429836890129653e47a01e5d467",
+      "source_commit_remote_equal": true
+    },
+    {
+      "path": "docs/inventory/N08_LOCAL_RETRY1_2026-10-18.xml",
+      "sha256": "2cb7c2e1dd7534b41431dd5376092c0f06f6dda71e6bd322232e257af640bf53",
+      "source_commit_remote_equal": true
+    },
+    {
+      "path": "docs/inventory/PR_AUDIT_2026-10-18.json",
+      "sha256": "6030d6bbb38e7a81a6f81c3ba7a68ac4b9335f6cef6484b6319ade0465b14208",
+      "source_commit_remote_equal": true
+    }
+  ],
+  "production_deployment": false,
+  "atlas_apply": false
+}

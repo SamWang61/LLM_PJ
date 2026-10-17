@@ -1,5 +1,7 @@
 # LLM_PJ｜VibeCart AI 智慧購物與營運分析
 
+**下一輪工作入口（2026-10-18）**：[依全部PR整理的未完成工作清單](專題進度/專案未完成工作清單_2026-10-18.md)，先做N01；[60筆PR完整核對清冊](docs/PR_AUDIT_2026-10-18.md)。驗收里程碑估算未完成度約38%，計算與範圍見清單。
+
 中文為主，英文為輔。Chinese is authoritative; English summaries support collaboration.
 
 VibeCart AI 承接 MuscleCore 運動用品電商，研究個人化購物推薦與營運洞察。本倉庫集中管理新版 MongoDB 結構與服務、舊 Flask 展示網站，以及規格、進度與驗證文件。

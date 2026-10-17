@@ -1,0 +1,15 @@
+{
+  "checked_at": "2026-10-17T18:54:00.730508+00:00",
+  "task": "N01",
+  "status": "passed",
+  "head": "bed1db5b002603ecfaafc516c265de013882ff74",
+  "verified_main": "77a19d6d3c887430830892d2bb6a8a4a10cd0058",
+  "pr": 59,
+  "review_resolved": true,
+  "regression": "1 passed; original test reexecuted",
+  "archive_files": 47,
+  "git_blob_mismatches": 0,
+  "deployed_source_sha": "1d2abf2cfa7465636e49474062e11f6aca571dda",
+  "deployed_source_mismatches": 0,
+  "archive_sha256": "a2847952b6f0ab957df614fd31abb693d1efba543896196c6bfe142db1b8d563"
+}
