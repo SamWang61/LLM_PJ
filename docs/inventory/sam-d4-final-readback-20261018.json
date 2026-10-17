@@ -1,0 +1,80 @@
+{
+  "checked_at": "2026-10-17T16:40:58.870Z",
+  "provider": "MongoDB Atlas connector",
+  "database": "vibecart_ai",
+  "batch": "sam-behavior-20261011-v1",
+  "checks": [
+    {
+      "check": 0,
+      "result": {
+        "documents": [
+          {
+            "_id": "ADD_TO_CART",
+            "count": 310,
+            "not_synthetic": 0,
+            "not_excluded": 0
+          },
+          {
+            "_id": "PRODUCT_VIEW",
+            "count": 310,
+            "not_synthetic": 0,
+            "not_excluded": 0
+          },
+          {
+            "_id": "PURCHASE",
+            "count": 310,
+            "not_synthetic": 0,
+            "not_excluded": 0
+          },
+          {
+            "_id": "SEARCH",
+            "count": 310,
+            "not_synthetic": 0,
+            "not_excluded": 0
+          }
+        ],
+        "count": 4,
+        "appliedLimits": []
+      }
+    },
+    {
+      "check": 1,
+      "result": {
+        "count": 3000
+      }
+    },
+    {
+      "check": 2,
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "tool call error: tool call failed for `codex_apps/mongodb_atlas.count`\n\nCaused by:\n    Mcp error: -32603: Internal error"
+          }
+        ],
+        "isError": true
+      }
+    },
+    {
+      "check": 3,
+      "result": {
+        "documents": [
+          {
+            "source_items": 8969
+          }
+        ],
+        "count": 1,
+        "appliedLimits": []
+      }
+    }
+  ],
+  "demo_orders_retry": {
+    "documents": [
+      {
+        "demo_orders": 2
+      }
+    ],
+    "count": 1,
+    "appliedLimits": []
+  }
+}

@@ -1,5 +1,7 @@
 # 最新專案上下文 / Current project context
 
+更新：**2026-10-18 00:41（Asia/Taipei）**。SAM 完成 [D4 正式庫合成批次匯入與驗收](D4_IMPORT_ACCEPTANCE_2026-10-18.md)：全專案 global 清單已補足盤點，來源 `80513a9` 的同映像 consumer 遠端對照與不可變證據通過；首次 apply 1,240、verify 缺漏 0、同批次重送新增 0。獨立 Atlas 讀回四事件各 310、全部 synthetic／exclude_from_attribution=true、漏標 0；D1～D3 3,000 訂單／8,969 明細與額外 demo 2 保留。#11 此批次完成，不等於真模型、D5、付款或全站最終簽收；以下「D4 0／未 apply」是較早快照。
+
 更新：**2026-10-18 00:23（Asia/Taipei）**。SAM 已修復 [PR #47 私有 D4 探針](REN_D4_PRIVATE_PROBE_2026-10-17.md)的 ID token 授權與等待問題；正式 `vibecart-web-00013-ds5`／私有 `vibecart-acceptance-pr21-00004-9qr` 同為 main `80513a951d0dff67fd47a153a45918522b5ffbb5` 的 pinned 映像。管理監控 13→14→14，1,001 synthetic 不改變前台推薦；探針五集合殘留 0、臨時窄 IAM role 已撤。全區盤點 42 區可讀、1 區政策拒絕；formal D4 preflight／abort dry-run 的 1,240 規劃事件通過，但 D4 batch 仍 0，D1～D3 及額外 2 demo 訂單保留。正式匯入證據發布／覆核與 apply／verify／重送仍待完成；以下為歷史快照。
 
 更新：**2026-10-18 00:12（Asia/Taipei）**。main `80513a9` 的 [CI #39047572571](https://github.com/SamWang61/LLM_PJ/actions/runs/39047572571) success；同版本機 **186 passed／0 skipped**、47 個 Git blob 精確封裝及 Cloud Build boot 通過。正式 **`vibecart-web-00013-ds5` 100%**，舊 `00012-85f` 保留回退；Hosting／Run 切換後 20 項公開路由檢查通過，JEFF mailto 與 VibeCart 會員頁名稱已線上讀回。正式 Atlas 唯讀仍為原批次訂單 3,000、額外 demo 2、D4 0。完整 [部署讀回與限制](SAM_RELEASE_2026-10-18.md)含 digest、manifest、JUnit、HTTP 與瀏覽器證據；新修訂未重跑登入成功／遠端交易，不能當全站簽收。D4／真模型／D5、素材／PPTX／備援／排練及 **10/18 11:10 REN 交回**仍待辦。下方舊版本按各自日期解讀。

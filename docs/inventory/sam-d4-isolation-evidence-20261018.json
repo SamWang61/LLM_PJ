@@ -1,0 +1,64 @@
+{
+  "database": "vibecart_ai",
+  "batch": "sam-behavior-20261011-v1",
+  "deployment_ref": "80513a951d0dff67fd47a153a45918522b5ffbb5",
+  "checked_at": "2026-10-17T16:35:03.187Z",
+  "consumer_checks": {
+    "admin_monitor": {
+      "status": "passed",
+      "source_commit": "80513a951d0dff67fd47a153a45918522b5ffbb5",
+      "checked_at": "2026-10-17T16:15:44.754Z",
+      "image_digest": "sha256:57c8fd038d7c231a4e417471a66b9c7996c296efd2d7b1ff70302c46a45f0fab",
+      "revision": "vibecart-acceptance-pr21-00004-9qr",
+      "production_revision": "vibecart-web-00013-ds5",
+      "remote_evidence_url": "https://raw.githubusercontent.com/SamWang61/LLM_PJ/f513b32b2774c092b5cee1fb4f35f858a1473c01/docs/inventory/sam-d4-consumer-probe-20261018.json",
+      "remote_evidence_sha256": "c9717b917146fe1f1fe5fcddc234a4c0aca6da56169e6a547ed0ac56286c8d98",
+      "synthetic_input_count": 1001,
+      "synthetic_visible_count": 0,
+      "normal_visible_count": 1
+    },
+    "storefront_recommendation": {
+      "status": "passed",
+      "source_commit": "80513a951d0dff67fd47a153a45918522b5ffbb5",
+      "checked_at": "2026-10-17T16:15:44.754Z",
+      "image_digest": "sha256:57c8fd038d7c231a4e417471a66b9c7996c296efd2d7b1ff70302c46a45f0fab",
+      "revision": "vibecart-acceptance-pr21-00004-9qr",
+      "production_revision": "vibecart-web-00013-ds5",
+      "remote_evidence_url": "https://raw.githubusercontent.com/SamWang61/LLM_PJ/f513b32b2774c092b5cee1fb4f35f858a1473c01/docs/inventory/sam-d4-consumer-probe-20261018.json",
+      "remote_evidence_sha256": "c9717b917146fe1f1fe5fcddc234a4c0aca6da56169e6a547ed0ac56286c8d98",
+      "synthetic_input_count": 1001,
+      "synthetic_visible_count": 0,
+      "normal_visible_count": 1
+    },
+    "scoring_scheduler": {
+      "status": "not_deployed",
+      "source_commit": "80513a951d0dff67fd47a153a45918522b5ffbb5",
+      "checked_at": "2026-10-17T16:35:03.187Z",
+      "project_id": "vibecart-llmai",
+      "inventory_evidence_url": "https://raw.githubusercontent.com/SamWang61/LLM_PJ/810b32483cc74cba003762860ecbef4b4fa256a1/docs/inventory/sam-d4-final-inventory-20261018.json",
+      "inventory_sha256": "83a58a05f1207b3bbe20e9197ef6014f1b8a75439a3ab2268e379c9537b1e045",
+      "inventory_scopes": [
+        "cloud_run_services",
+        "cloud_run_jobs",
+        "cloud_scheduler",
+        "cloud_functions",
+        "pubsub_subscriptions"
+      ]
+    },
+    "production_attribution": {
+      "status": "not_deployed",
+      "source_commit": "80513a951d0dff67fd47a153a45918522b5ffbb5",
+      "checked_at": "2026-10-17T16:35:03.187Z",
+      "project_id": "vibecart-llmai",
+      "inventory_evidence_url": "https://raw.githubusercontent.com/SamWang61/LLM_PJ/810b32483cc74cba003762860ecbef4b4fa256a1/docs/inventory/sam-d4-final-inventory-20261018.json",
+      "inventory_sha256": "83a58a05f1207b3bbe20e9197ef6014f1b8a75439a3ab2268e379c9537b1e045",
+      "inventory_scopes": [
+        "cloud_run_services",
+        "cloud_run_jobs",
+        "cloud_scheduler",
+        "cloud_functions",
+        "pubsub_subscriptions"
+      ]
+    }
+  }
+}
