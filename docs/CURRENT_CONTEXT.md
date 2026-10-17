@@ -4,6 +4,8 @@
 
 更新：**2026-10-18 02:10（Asia/Taipei）**。正式／私有同映像的[私有遠端真交易驗收](SAM_REMOTE_TRANSACTION_2026-10-18.md)通過：兩裝置獨立登入、會員後台拒絕、Atlas 示範訂單／明細與庫存減 1、相同 checkout ID 重送冪等、改 revision 409、單裝置登出後另一裝置仍可用。九範圍測試資料清理讀回 0，獨立 Atlas marker 查核 0、臨時 IAM 角色撤銷讀回 0。正式 Cloud Run `vibecart-web-00015-nlk` 仍 100%；此次未寫正式業務庫，也未重跑新映像遠端故障注入／最後庫存併發。真模型、D5、實機及具名簽收仍按[22 項檢查點](SAM_PROGRESS_CHECKPOINT_2026-10-18.md)追蹤。
 
+更新：**2026-10-18 02:05（Asia/Taipei）**。[SAM 新推送驗證](SAM_PUSH_VALIDATION_2026-10-18.md)已核對 main `85cb40a`：44 個交付檔的工作樹／提交／GitHub 位元組一致，47 個部署來源與新映像相同，本機完整回歸 **186 passed／0 skipped**、main CI success。獨立讀回正式 `00015-nlk` 100% 與私有 `00005-5j5` 同 digest；CSS 的 Windows CRLF／LF 差異已校正並新增 LF 規則。當時下一項為私有角色／雙裝置／交易驗收，後續結果以上方 02:10 更新為準。
+
 更新：**2026-10-18 01:58（Asia/Taipei）**。[PR #56](https://github.com/SamWang61/LLM_PJ/pull/56) 商品標題 RWD 已合併；同映像私有 D4 consumer 對照、逐項清理、獨立 Atlas marker 查核及 IAM 撤權通過後，Cloud Run `vibecart-web-00015-nlk` 讀回 **100%** 正式流量，舊 `00013-ds5` 保留零流量回退標籤。[部署、映像與正式站畫面](SAM_RELEASE_2026-10-18.md)已留證。Firebase Hosting 公開路由 200，320／375／768／1280 px Chrome 商品標題橫排、無水平溢出。[最新 22 項檢查點](SAM_PROGRESS_CHECKPOINT_2026-10-18.md)仍把遠端真登入／交易、JEFF 真模型／D5、實機與具名簽收列為未完成；下方 01:30 與更早快照按各自時間解讀。
 
 更新：**2026-10-18 01:30（Asia/Taipei）**。[22 項進度檢查點](SAM_PROGRESS_CHECKPOINT_2026-10-18.md)按主責與前置順序列出最新已驗、部分及阻礙。PR #52～#54 已合併，主線 `32587e9` 的 CI success；47 檔部署白名單來源與正式映像相同，本機 Docker build／boot 通過，12 頁離線進度簡報草案已交付。正式同版角色／交易、真模型、D5、手機與具名簽收仍待補；Drive 備份目標仍可由持連結者讀取，尚未上傳含機密來源。下方較早紀錄依各自日期解讀。

@@ -27,4 +27,6 @@ jobs:
       - name: 備份清冊與復原比對工具 / Backup manifest contracts
         run: python -m pytest scripts/test_backup_manifest.py -q -p no:cacheprovider
       - name: 雲端來源白名單封裝 / Cloud source allowlist
-        run: python scripts/prepare_cloud_source.py --output "$RUNNER_TEMP/vibecart-source.tar.gz"
+        run: |
+          python -m pytest scripts/test_prepare_cloud_source.py -q -p no:cacheprovider
+          python scripts/prepare_cloud_source.py --output "$RUNNER_TEMP/vibecart-source.tar.gz"

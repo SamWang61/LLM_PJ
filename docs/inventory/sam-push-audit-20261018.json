@@ -1,0 +1,784 @@
+{
+  "checked_at_utc": "2026-10-17T18:04:54.751266+00:00",
+  "baseline_main": "24920d538cfe2cd4f9674bacb340cdc6b933ef56",
+  "audited_main": "85cb40a78949003a56255ae48369968c1c501f36",
+  "previous_monitor_utc": "2026-10-17T16:52:12.156341+00:00",
+  "refs": {
+    "refs/heads/codex/1017-delivery-status": "8c056800e1323763fa5031d2a5c9b09192145eba",
+    "refs/heads/codex/d4-access-ready-1558": "3c88ea8c7b989f3a0b8599c5d6c23c0ef75c2c48",
+    "refs/heads/codex/d4-deployed-consumer-gate": "27f867e41bbbbdb05f1cec0eef523be7edca96dd",
+    "refs/heads/codex/d4-private-consumer-probe": "c84b882e1d4acc956ae4f7362de3bdb13726cdb4",
+    "refs/heads/codex/d4-readonly-preflight-1605": "d9923651744f9f0953e0b706b8d43f2c1dbb49ee",
+    "refs/heads/codex/d4-remote-consumer-probe": "8a105a79bbabd0e1364c833ba1c08fcfbeb0f14a",
+    "refs/heads/codex/d4-status-1417": "1747b059041dc334e68f63c05d4176d608e102cd",
+    "refs/heads/codex/document-merge-record": "fbffdc6e26ebdb7a103e0f332e35cb8992aa9863",
+    "refs/heads/codex/fix-jeff-contact": "35b1dfb11f825f91bd8d93a6fca3fcfe3262c63f",
+    "refs/heads/codex/hen-auth-order": "cf5d76e3e995015bb8f46c9a1f066b025b817855",
+    "refs/heads/codex/mongodb-network-access": "8a6edb1a4f6e5e7e21ce40350d30c6eec1ae44c6",
+    "refs/heads/codex/pr21-atlas-role-gate": "a389940f5135c9c909ce2867ceeab8d45f0248ba",
+    "refs/heads/codex/pr21-docker-reverify": "4bc83f2d67e1ac5cb23f58c812c531df4fec0ea9",
+    "refs/heads/codex/pr21-live-acceptance": "924499c9eed07b5602d0d011561b7e8d0cf930e3",
+    "refs/heads/codex/pr21-merge-deploy-status": "c05e1c4d2e6a7c911390c44b47fd9a67c538eae4",
+    "refs/heads/codex/presentation-prep-20261015": "d401c4e2c2c79222f7224005537f29d999461a38",
+    "refs/heads/codex/product-navigation-integrated": "1caf8549cc173df59a9976321130540970a8827a",
+    "refs/heads/codex/progress-baseline-1015": "346121cd15a480f2b608e88900475f6e8937f6f1",
+    "refs/heads/codex/release-20261018": "cb822473424608f5336d97d6b374138d37c88f0c",
+    "refs/heads/codex/ren-24h-worklist": "caf1229d96d07108c344116fb917cb35ef20126b",
+    "refs/heads/codex/ren-all-20261018": "ca9ecb5b2277a68deeaea5fcedcc45c788668319",
+    "refs/heads/codex/ren-auth-return-v4": "49800e146966d310ed503f7a5ceee090f7063f62",
+    "refs/heads/codex/ren-docs-footer-20261016": "39eb7a6db59dfc0b187c4cb1931d7adeaa10369f",
+    "refs/heads/codex/ren-events-verification": "0c687a04d5fb433e20ea85dc3fe5bedfb301317d",
+    "refs/heads/codex/ren-r02-interface": "6e005456da39a3938fb633c2d58368974958d461",
+    "refs/heads/codex/ren-r08-verification": "d4bcec485d1ce9e4de0bef03c094d007e1f5a543",
+    "refs/heads/codex/ren-s03-product-evidence": "e773e0eec13a06d1b4020749a1fd9df1d7ac3d22",
+    "refs/heads/codex/ren-sam-24h-handoff": "40529768a8d71b8c8d9e198e466d1ba9ea48bffc",
+    "refs/heads/codex/sam-catalog-acceptance-20261017": "64731b9d0267b2caa1222ca41b3e82237a028ba9",
+    "refs/heads/codex/sam-ci-docs-20261015": "0a2569231bbdd163e18fd391af63d93d8d5f37ef",
+    "refs/heads/codex/sam-context-sync-20261017": "88cb5e9547d5eb905712066de664b20fb5e07fb9",
+    "refs/heads/codex/sam-d4-final-gate-20261018": "d077f5012aeaab66f408b25f95be53605dc4047d",
+    "refs/heads/codex/sam-database-tests": "7ab4ab8f63a27d38cfa5dc5ec60f2a71ceb83d89",
+    "refs/heads/codex/sam-delivery-20261007": "e80d25179ee3b6688473c315644b39068f3f4193",
+    "refs/heads/codex/sam-final-baseline-20261016": "f4fc3c7cf48dd358a855663063e5d2d19904e106",
+    "refs/heads/codex/sam-final-readme-20261018": "7d424c9299809cd24cd6a6689e0efb7fd0f55dad",
+    "refs/heads/codex/sam-handoff-1300": "fb59363ce8c325307472efd888f713b8b1e37336",
+    "refs/heads/codex/sam-integration-deploy-20261012": "a0fcad01acc0a5cb5672dbe55bd55236d0d89bd2",
+    "refs/heads/codex/sam-jeff-followup-20261011": "a418d0853dc22d91cb70a73f433c45c1d78c1246",
+    "refs/heads/codex/sam-preference-scoring": "dc3114de7de0cd72b370610a1bdd6e2a707d8940",
+    "refs/heads/codex/sam-presentation-20261018": "ac7ca1b1851266c979490817080f9408b7f66130",
+    "refs/heads/codex/sam-progress-20261018": "f6d60d7af302f52214fb6f46c6532bcba06a381a",
+    "refs/heads/codex/sam-progress-20261018-0149": "20f52160434a169ba65e9d8cd9e2ddd991fc2d38",
+    "refs/heads/codex/sam-release-rwd-20261018": "11adc5978f29beeae41f3544f487f81c8981198c",
+    "refs/heads/codex/sam-s02-browser-evidence-20261017": "263d4cf04a5ea72251d59b682f9cbc7b56e914a3",
+    "refs/heads/codex/sam-s02-mobile-evidence-20261017": "b540b3446215ea2e7374d8e223b3958b7dfa31fb",
+    "refs/heads/codex/sam-schema-audit-20261017": "7f7f44fd3851fa209e39828a53ba28744e52a629",
+    "refs/heads/codex/sam-tablet-catalog-20261018": "f03bb34d53c5827ddcc5b4e67215d7aa3a31ff6b",
+    "refs/heads/docs/branch-collaboration": "420695759e0489d6d805436c7fb5d75febcc848d",
+    "refs/heads/docs/jeff-admin-ui-design": "2da47ef87da0c2dea6ce16a142fabf3f5a082a21",
+    "refs/heads/docs/mongodb-atlas-compass-guide": "8d33da8a96052ef4357223e64acaed92b0d6666b",
+    "refs/heads/feature/ai-dashboard": "03518363e199e9a9d8c076445c4c6d53d61e87ce",
+    "refs/heads/feature/auth-order": "505399313ca4c09b49d77484e98df806b3b30f58",
+    "refs/heads/feature/flask-sku-ai-integration": "1b6ea47618f8dda12d91f73098b6856c08c4df84",
+    "refs/heads/feature/jeff-admin-ai": "042ba98f6a0e5f1efb653730705f7603a33ac852",
+    "refs/heads/feature/jeff-ai-compare": "9d38712f66148482688d5a185cbeb7e36909d0b1",
+    "refs/heads/feature/jeff-ai-insight": "f1b85174186acfd8f4e47ce66d25ad368122e1d9",
+    "refs/heads/feature/jeff-ai-validation": "caa88d9bac9bb71baa58dd5d1cd7b70cc4136704",
+    "refs/heads/feature/jeff-local-ai": "b9297388c207a52a976761ceea31b67322371886",
+    "refs/heads/feature/mongodb": "5ee398beb3b455170844a5bf29612dc41018157c",
+    "refs/heads/feature/store-ui": "5ee398beb3b455170844a5bf29612dc41018157c",
+    "refs/heads/main": "85cb40a78949003a56255ae48369968c1c501f36"
+  },
+  "ref_changes": {
+    "refs/heads/codex/ren-all-20261018": {
+      "before": null,
+      "now": "ca9ecb5b2277a68deeaea5fcedcc45c788668319"
+    },
+    "refs/heads/codex/sam-final-readme-20261018": {
+      "before": null,
+      "now": "7d424c9299809cd24cd6a6689e0efb7fd0f55dad"
+    },
+    "refs/heads/codex/sam-presentation-20261018": {
+      "before": null,
+      "now": "ac7ca1b1851266c979490817080f9408b7f66130"
+    },
+    "refs/heads/codex/sam-progress-20261018": {
+      "before": null,
+      "now": "f6d60d7af302f52214fb6f46c6532bcba06a381a"
+    },
+    "refs/heads/codex/sam-progress-20261018-0149": {
+      "before": null,
+      "now": "20f52160434a169ba65e9d8cd9e2ddd991fc2d38"
+    },
+    "refs/heads/codex/sam-release-rwd-20261018": {
+      "before": null,
+      "now": "11adc5978f29beeae41f3544f487f81c8981198c"
+    },
+    "refs/heads/codex/sam-tablet-catalog-20261018": {
+      "before": null,
+      "now": "f03bb34d53c5827ddcc5b4e67215d7aa3a31ff6b"
+    },
+    "refs/heads/main": {
+      "before": "24920d538cfe2cd4f9674bacb340cdc6b933ef56",
+      "now": "85cb40a78949003a56255ae48369968c1c501f36"
+    }
+  },
+  "changed_existing_files": 44,
+  "source_commit_remote_mismatches": 0,
+  "checkout_line_ending_repairs": [
+    {
+      "path": "MuscleCore分析資料/website/app/static/css/main.css",
+      "kind": "CRLF/LF checkout conversion only",
+      "before_sha256": "68e7014064720898b1dab59811b5bbb59ce86fc88ec460390db5c70aa94175d7",
+      "after_sha256": "f265290cfae92e005ac92b68e5b286d21fa8f2bf55212eb2215c1fde95ac77aa"
+    }
+  ],
+  "changed_lfs_objects": 0,
+  "lfs_fsck": "OK",
+  "files": [
+    {
+      "path": "MuscleCore分析資料/website/README.md",
+      "bytes": 4556,
+      "sha256": "c350d963f229c18fac98f3219ae49ba9223ffa50056d01b579449f3e781e59d8",
+      "source_commit_remote_equal": true,
+      "lfs_pointer": false
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/static/css/main.css",
+      "bytes": 9182,
+      "sha256": "f265290cfae92e005ac92b68e5b286d21fa8f2bf55212eb2215c1fde95ac77aa",
+      "source_commit_remote_equal": true,
+      "lfs_pointer": false
+    },
+    {
+      "path": "MuscleCore分析資料/website/tests/run_ren_demo.py",
+      "bytes": 336,
+      "sha256": "e01cd17790a76e402203022df4f2f68d06550951f8b7fe2c0f63878c9048c627",
+      "source_commit_remote_equal": true,
+      "lfs_pointer": false
+    },
+    {
+      "path": "MuscleCore分析資料/website/tests/test_ren_auth_order.py",
+      "bytes": 13921,
+      "sha256": "a1d4a0868b2cb0df82c4d78faed9f4e9e2e080e3e43c54c3e2238099aabab59f",
+      "source_commit_remote_equal": true,
+      "lfs_pointer": false
+    },
+    {
+      "path": "MuscleCore分析資料/website/tests/test_ren_transactions.py",
+      "bytes": 5507,
+      "sha256": "a11c7b850f9fa988886ba8cb608c988f6934dbc94beaf08ef5e85ffba177f3dd",
+      "source_commit_remote_equal": true,
+      "lfs_pointer": false
+    },
+    {
+      "path": "README.md",
+      "bytes": 5434,
+      "sha256": "1fe58997cbaae45c33653315177e00215ddef9e30f5e8a0c3a9f0d88cabfc071",
+      "source_commit_remote_equal": true,
+      "lfs_pointer": false
+    },
+    {
+      "path": "deploy/README.md",
+      "bytes": 5591,
+      "sha256": "e1390f51870f1e77c5d5368c03d9db8c7ea8cdcd112545efada0a9d6b9372352",
+      "source_commit_remote_equal": true,
+      "lfs_pointer": false
+    },
+    {
+      "path": "docs/CURRENT_CONTEXT.md",
+      "bytes": 20640,
+      "sha256": "4a995cbeff194cabc895344fa3be70ba96f53fdcdc10ddaaa1c1c536d460ef4c",
+      "source_commit_remote_equal": true,
+      "lfs_pointer": false
+    },
+    {
+      "path": "docs/DOCUMENT_SYNC_2026-10-17.md",
+      "bytes": 2436,
+      "sha256": "937c1d93f252b15efbb0731d70fabe56c571f2195630ac5b1f72631b62b9bec0",
+      "source_commit_remote_equal": true,
+      "lfs_pointer": false
+    },
+    {
+      "path": "docs/REN_DELIVERY_2026-10-14.md",
+      "bytes": 7118,
+      "sha256": "058d5cc85b23c860673d1bc7e56e0703c250c1fa9b29796ddae9425cd39191d1",
+      "source_commit_remote_equal": true,
+      "lfs_pointer": false
+    },
+    {
+      "path": "docs/REN_EVENTS_HANDOFF_2026-10-17.md",
+      "bytes": 3608,
+      "sha256": "440daf5ced9171b3d0c689650e7dbcc251f5e30528b0116bafcaf3e8be7f7a17",
+      "source_commit_remote_equal": true,
+      "lfs_pointer": false
+    },
+    {
+      "path": "docs/REN_MULTIDEVICE_DEPLOY_2026-10-14.md",
+      "bytes": 3686,
+      "sha256": "35bc3fc6f9b48b5626a29d0f7f6ce5cfe4f141275d38c62a2053efc503703c7b",
+      "source_commit_remote_equal": true,
+      "lfs_pointer": false
+    },
+    {
+      "path": "docs/REN_R08_SAM_VERIFICATION_2026-10-17.md",
+      "bytes": 7010,
+      "sha256": "eeaf95ba1d24bd1452bf7a0f1483881b2473bff610eabf5ecf715b66dee3e322",
+      "source_commit_remote_equal": true,
+      "lfs_pointer": false
+    },
+    {
+      "path": "docs/SAM_CI_TRANSACTION_ACCEPTANCE_2026-10-15.md",
+      "bytes": 3159,
+      "sha256": "da51f463e0e7d6acf7928bacfe2fb3103d9d2e98fb8432451379ccb76b3c50c5",
+      "source_commit_remote_equal": true,
+      "lfs_pointer": false
+    },
+    {
+      "path": "docs/SAM_PR21_ACCEPTANCE_2026-10-16.md",
+      "bytes": 8728,
+      "sha256": "23b4260551265076f2b0e6a2fb80498f25a32bbeb61521930e87f825f05dc7e1",
+      "source_commit_remote_equal": true,
+      "lfs_pointer": false
+    },
+    {
+      "path": "docs/SAM_PROGRESS_CHECKPOINT_2026-10-18.md",
+      "bytes": 6862,
+      "sha256": "a053e9f91c94816798e5497e0687d7cbab5f1001584647d772f9efb84e6e3cf7",
+      "source_commit_remote_equal": true,
+      "lfs_pointer": false
+    },
+    {
+      "path": "docs/SAM_RELEASE_2026-10-18.md",
+      "bytes": 7274,
+      "sha256": "88db385ba0a99820c157766d3e06781eea094bc13b568e0d5426f44ffdd66c3d",
+      "source_commit_remote_equal": true,
+      "lfs_pointer": false
+    },
+    {
+      "path": "docs/SAM_REMOTE_TRANSACTION_ACCEPTANCE_2026-10-17.md",
+      "bytes": 9311,
+      "sha256": "a4c9b801b06a0b98ee5bc1e546bd82f30cd5136d7a12941e3b0201b4b2f64ad4",
+      "source_commit_remote_equal": true,
+      "lfs_pointer": false
+    },
+    {
+      "path": "docs/SAM_SOURCE_RECONCILIATION_2026-10-18.md",
+      "bytes": 1932,
+      "sha256": "c289b2960c7dd718673257d7ee5265849b8c144cea122e21487f0b9546d0c1fa",
+      "source_commit_remote_equal": true,
+      "lfs_pointer": false
+    },
+    {
+      "path": "docs/inventory/PROJECT_GITHUB_SNAPSHOT_2026-10-07.json",
+      "bytes": 10089,
+      "sha256": "244a97e13ef7d273d324990e208096d0ca9bafab277219c4f450029f7b26c105",
+      "source_commit_remote_equal": true,
+      "lfs_pointer": false
+    },
+    {
+      "path": "docs/inventory/SAM_LOCAL_VERIFICATION_2026-10-07.json",
+      "bytes": 1781,
+      "sha256": "50754a0ee29ec12bc415a1d3edb8c1fa1b320533f649fbeac0ddb7dd2a291fd4",
+      "source_commit_remote_equal": true,
+      "lfs_pointer": false
+    },
+    {
+      "path": "docs/inventory/SAM_REN_TRANSACTION_2026-10-15.xml",
+      "bytes": 21168,
+      "sha256": "aa5e02129dbf50af36a2a6d9c3c16bf131c725ad13711ed6687241e99a97234a",
+      "source_commit_remote_equal": true,
+      "lfs_pointer": false
+    },
+    {
+      "path": "docs/inventory/ren_20261014/cart.png",
+      "bytes": 34880,
+      "sha256": "e4f3032cefcd3f95c9b52547e99a90eb5df1947416d7b7897e64209ce09dd131",
+      "source_commit_remote_equal": true,
+      "lfs_pointer": false
+    },
+    {
+      "path": "docs/inventory/ren_20261014/checkout.png",
+      "bytes": 137000,
+      "sha256": "98549175b2922afd05c684b9714669c384e25b11788c23af1ea626da4f1e3477",
+      "source_commit_remote_equal": true,
+      "lfs_pointer": false
+    },
+    {
+      "path": "docs/inventory/ren_20261014/logout.png",
+      "bytes": 145022,
+      "sha256": "4512f36f9cc2a0ad8aa857a47904a6801bda9a07dcd005bd6c59c2674e03cc68",
+      "source_commit_remote_equal": true,
+      "lfs_pointer": false
+    },
+    {
+      "path": "docs/inventory/ren_20261014/multidevice-tests.xml",
+      "bytes": 21996,
+      "sha256": "1fbead5bc592b8ab4ceb188cb7a5bef6e7efc7d86aeddc5a7fb915ed56e6827d",
+      "source_commit_remote_equal": true,
+      "lfs_pointer": false
+    },
+    {
+      "path": "docs/inventory/ren_20261014/offline-tests.xml",
+      "bytes": 11493,
+      "sha256": "6d069d493cc5da2b1ec5215fc7e88dab30218c02a9f1f1490cebe866b1bf58ac",
+      "source_commit_remote_equal": true,
+      "lfs_pointer": false
+    },
+    {
+      "path": "docs/inventory/ren_20261014/remote-qa.json",
+      "bytes": 1930,
+      "sha256": "2f6ab902302d70551710fd7dc4993d86a72b8e4d4b8261449863c358c07b7dda",
+      "source_commit_remote_equal": true,
+      "lfs_pointer": false
+    },
+    {
+      "path": "docs/inventory/sam-catalog-release-d4-20261018.json",
+      "bytes": 2407,
+      "sha256": "0627bd7011b86afd16ffe28999534535fbd51643b51dafbbd3a905c5a8217c39",
+      "source_commit_remote_equal": true,
+      "lfs_pointer": false
+    },
+    {
+      "path": "docs/inventory/sam-release-80513a9-tests.xml",
+      "bytes": 23725,
+      "sha256": "963d8e456b9ebbf5a898c2708ae08810b364943ada62a09b7037ab2db3c3597f",
+      "source_commit_remote_equal": true,
+      "lfs_pointer": false
+    },
+    {
+      "path": "docs/log/REN_NAMING_2026-10-18.md",
+      "bytes": 3165,
+      "sha256": "de698d8b8cffa003a3a2418203e37a455801086c9e52eefc4e1cef9b573a212e",
+      "source_commit_remote_equal": true,
+      "lfs_pointer": false
+    },
+    {
+      "path": "專題進度/REN_今日工作清單_2026-10-14.md",
+      "bytes": 4470,
+      "sha256": "8a21eb991515554a458e2feb8b778cd4532a2f292020398585c9c54be98d824b",
+      "source_commit_remote_equal": true,
+      "lfs_pointer": false
+    },
+    {
+      "path": "專題進度/專案工作清單_2026-10-17.md",
+      "bytes": 22464,
+      "sha256": "3a0863f522c9ef8c59380009eb6ec89621b8a8ae9cb00de586bc76ab8b4fcd5c",
+      "source_commit_remote_equal": true,
+      "lfs_pointer": false
+    },
+    {
+      "path": "簡報文件/screenshots/S02-desktop-before-20261018.png",
+      "bytes": 235235,
+      "sha256": "ec9d9d66ece2d055c3fa583c41db1337e1f47b1e8578ad27ad0acf00a7ea69af",
+      "source_commit_remote_equal": true,
+      "lfs_pointer": false
+    },
+    {
+      "path": "簡報文件/screenshots/S02-desktop-cloud-preview-20261018.png",
+      "bytes": 163342,
+      "sha256": "e7c534b36e4f855f64523ffb6d2da4dc310e70418a93c81c0b5da93b1d35d28d",
+      "source_commit_remote_equal": true,
+      "lfs_pointer": false
+    },
+    {
+      "path": "簡報文件/screenshots/S02-desktop-css-preview-20261018.png",
+      "bytes": 253175,
+      "sha256": "eadc29e9b80e9ccd93b8922c78d8c0e74b356a3bc8d9333a4e16166a79de157a",
+      "source_commit_remote_equal": true,
+      "lfs_pointer": false
+    },
+    {
+      "path": "簡報文件/screenshots/S02-desktop-live-20261018.png",
+      "bytes": 223270,
+      "sha256": "b834974a3faeca8e209cb9f2e9580244b37910dc63f87bdbb78a08c4a63adf98",
+      "source_commit_remote_equal": true,
+      "lfs_pointer": false
+    },
+    {
+      "path": "簡報文件/screenshots/S02-tablet-before-20261018.png",
+      "bytes": 142086,
+      "sha256": "fe7e2deac61864e9752915c7b3b5bea3f54cdf71b3a422ddd0e9e4ed526e2922",
+      "source_commit_remote_equal": true,
+      "lfs_pointer": false
+    },
+    {
+      "path": "簡報文件/screenshots/S02-tablet-cloud-preview-20261018.png",
+      "bytes": 144579,
+      "sha256": "c223f0d89a530dbaa31aababa300da751f361c3336cd6ca5158d3decd25a4545",
+      "source_commit_remote_equal": true,
+      "lfs_pointer": false
+    },
+    {
+      "path": "簡報文件/screenshots/S02-tablet-css-preview-20261018.png",
+      "bytes": 124899,
+      "sha256": "4683516604f123e2603548fa8ad9bd98dc6e31978b4dbc1c1a3f419afe729c54",
+      "source_commit_remote_equal": true,
+      "lfs_pointer": false
+    },
+    {
+      "path": "簡報文件/screenshots/S02-tablet-layout-20261018.md",
+      "bytes": 3591,
+      "sha256": "d2a28592007bb3304db33f2473785762639cb70d25760ae09365bc3538ab70f0",
+      "source_commit_remote_equal": true,
+      "lfs_pointer": false
+    },
+    {
+      "path": "簡報文件/screenshots/S02-tablet-live-20261018.png",
+      "bytes": 144579,
+      "sha256": "c223f0d89a530dbaa31aababa300da751f361c3336cd6ca5158d3decd25a4545",
+      "source_commit_remote_equal": true,
+      "lfs_pointer": false
+    },
+    {
+      "path": "簡報文件/交付/README.md",
+      "bytes": 1107,
+      "sha256": "aa640aeae362a3795cda1bc5c8d734605b01efa40e5d476e1e77684c990c020a",
+      "source_commit_remote_equal": true,
+      "lfs_pointer": false
+    },
+    {
+      "path": "簡報文件/交付/VibeCart_AI_進度簡報_2026-10-18_v2.pptx",
+      "bytes": 637122,
+      "sha256": "c3108d68c6aca68e48031c57c7e4fadff2998b4643c5fe553b2dd8c5965c3a72",
+      "source_commit_remote_equal": true,
+      "lfs_pointer": false
+    }
+  ],
+  "deployed_source": "1d2abf2cfa7465636e49474062e11f6aca571dda",
+  "deployment_allowlist": {
+    "count": 47,
+    "mismatches": 0,
+    "changed_from_80513a9": [
+      "MuscleCore分析資料/website/app/static/css/main.css"
+    ],
+    "files": [
+      {
+        "path": "MuscleCore分析資料/website/Dockerfile",
+        "sha256": "20c8da5e991be8b8e3400430361b1352732bb7b8f47b3379bd8ec245c08df35a",
+        "matches_deployed_source": true,
+        "changed_from_80513a9": false
+      },
+      {
+        "path": "MuscleCore分析資料/website/.dockerignore",
+        "sha256": "e5bd828bf62cd6ce4cadef8793079af3415346c8ee777a247d1297823d37a4d0",
+        "matches_deployed_source": true,
+        "changed_from_80513a9": false
+      },
+      {
+        "path": "MuscleCore分析資料/website/requirements-cloud.txt",
+        "sha256": "2630f9296f68b7e8e80828ec5d9fee8673665ed2e15a3df8fc8df9c5603d37f0",
+        "matches_deployed_source": true,
+        "changed_from_80513a9": false
+      },
+      {
+        "path": "MuscleCore分析資料/website/cloud_runtime.py",
+        "sha256": "9822e40c8b2cb0bc2a9b17b63e1feff7e18d0c9c2c001b0c3f5e6a06fcd45d99",
+        "matches_deployed_source": true,
+        "changed_from_80513a9": false
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/__init__.py",
+        "sha256": "48c19b3ba9d217fb68ec093317be4a7c9725d55578b28b5727887c01f3c9675e",
+        "matches_deployed_source": true,
+        "changed_from_80513a9": false
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/admin.py",
+        "sha256": "f7db8ca32ed05e48506c98de533d0ba4c3f5430154462cc8974761cc4415b18e",
+        "matches_deployed_source": true,
+        "changed_from_80513a9": false
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/auth.py",
+        "sha256": "f58024bf9fa4443dba13cb98193dbd69a3b480c7dbfb69e403daa1a126ee1a16",
+        "matches_deployed_source": true,
+        "changed_from_80513a9": false
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/db.py",
+        "sha256": "e429461ecbcf683f551df962c66f765025472be033dac84f86c76a9a5eec2e88",
+        "matches_deployed_source": true,
+        "changed_from_80513a9": false
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/security.py",
+        "sha256": "90a920e1a3e70e6b968252d3fa8ba5bcf160c7d6ef3b04caa4ea16f03515f394",
+        "matches_deployed_source": true,
+        "changed_from_80513a9": false
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/services/__init__.py",
+        "sha256": "ad99f2d924998782cb45c4afff9971baa500c70ab753ad2afbb4ad3c63c365d8",
+        "matches_deployed_source": true,
+        "changed_from_80513a9": false
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/services/ai_compare.py",
+        "sha256": "d4c0e5a428b05e5aa7b731f80a5f5a22fd33066e9684401e50c758b094dbfa73",
+        "matches_deployed_source": true,
+        "changed_from_80513a9": false
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/services/ai_payload.py",
+        "sha256": "bf2ff4d1f0ce8c2402c666b18ee86ef17a8e7051b914cb0fd74ebf298f53a178",
+        "matches_deployed_source": true,
+        "changed_from_80513a9": false
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/services/ai_workflows.py",
+        "sha256": "da27c6b475ad5c0e4b40c04f6775c15a6cebbad9a50bf3d96b06b1779d556693",
+        "matches_deployed_source": true,
+        "changed_from_80513a9": false
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/services/analytics.py",
+        "sha256": "fd47fc513b71a961d4ecc5c1f1045d14cd1674baebde1b76cd58c9f3ac6c056b",
+        "matches_deployed_source": true,
+        "changed_from_80513a9": false
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/services/behavior_scope.py",
+        "sha256": "4cc48c37388f4f09710f0450071619f5f6758af6441409ed6491f315ae240068",
+        "matches_deployed_source": true,
+        "changed_from_80513a9": false
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/services/dashboard.py",
+        "sha256": "a89a2b61ee1a53656ecd78ee3cb02d6fa07e1f76d9006c328a6b81784558b5c6",
+        "matches_deployed_source": true,
+        "changed_from_80513a9": false
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/services/local_ai.py",
+        "sha256": "1b88d118e75a3a908ca75363e0b86cf425b1ab098a7bf74196a7f8f2add8efa1",
+        "matches_deployed_source": true,
+        "changed_from_80513a9": false
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/services/member_events.py",
+        "sha256": "3c5c69dc30f0f5cf46b7eabcad718597b4f3ec570ad8999364e63e2efc93454f",
+        "matches_deployed_source": true,
+        "changed_from_80513a9": false
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/services/member_sessions.py",
+        "sha256": "54d088d060018ee0289e1d4326af3f2b2da2aa3ce5066ca1c0487d393054e787",
+        "matches_deployed_source": true,
+        "changed_from_80513a9": false
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/services/recommendation.py",
+        "sha256": "fec347df4e2080203e617d85ad0af0db8b96a40242d2f226230e21a8a6790d52",
+        "matches_deployed_source": true,
+        "changed_from_80513a9": false
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/services/sku_gateway.py",
+        "sha256": "7cb615e55bb0e0ef09caf056947cb88e67e193bfa445dd477d234f91f2b55c45",
+        "matches_deployed_source": true,
+        "changed_from_80513a9": false
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/static/css/admin.css",
+        "sha256": "130bdc8a96e1a1b6cece9a96049b5f328b6914b31604a6eb5dd378892835eb92",
+        "matches_deployed_source": true,
+        "changed_from_80513a9": false
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/static/css/main.css",
+        "sha256": "f265290cfae92e005ac92b68e5b286d21fa8f2bf55212eb2215c1fde95ac77aa",
+        "matches_deployed_source": true,
+        "changed_from_80513a9": true
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/static/img/hero.png",
+        "sha256": "a0ef2f0fee2b163b02edee7102c975668d5f78286786a575b4d42ef81e05633e",
+        "matches_deployed_source": true,
+        "changed_from_80513a9": false
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/static/img/product-placeholder.svg",
+        "sha256": "50cfb1ca36a0122d85ec6d51b1913b685c9885064c5a8701e5aa7d841b44dee3",
+        "matches_deployed_source": true,
+        "changed_from_80513a9": false
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/static/js/admin.js",
+        "sha256": "c537c86942d7bb8ef6fecaa9c991fa992f18ba7b69a235e22e9507e0dd255115",
+        "matches_deployed_source": true,
+        "changed_from_80513a9": false
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/store.py",
+        "sha256": "e0a5fa4ced669b7b76ef32201e19d1bf2a7fca3d426d04fc1394530a92a3c982",
+        "matches_deployed_source": true,
+        "changed_from_80513a9": false
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/store_v4.py",
+        "sha256": "20923f8e13e42f3edebafef7b5e644615061e47e719b3e250c6007061f2a93d8",
+        "matches_deployed_source": true,
+        "changed_from_80513a9": false
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/templates/admin/ai_compare.html",
+        "sha256": "4de1c694a0c29bc1b383575b086df85ae8932a3c5169c8c93d046e0473590aa9",
+        "matches_deployed_source": true,
+        "changed_from_80513a9": false
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/templates/admin/ai_insight.html",
+        "sha256": "d0d3f8f9e062acaa06c7135082a3de59a964e0ba281bf8dfeb8c422f0c87f82b",
+        "matches_deployed_source": true,
+        "changed_from_80513a9": false
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/templates/admin/ai_recommendation.html",
+        "sha256": "c10ec9b065ca6aaa14058881665369ce19162a87cc8021044f308d4c7dc77c0a",
+        "matches_deployed_source": true,
+        "changed_from_80513a9": false
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/templates/admin/dashboard.html",
+        "sha256": "97f803ec91a1025e006e54ca77513bd2ffea88dae252b97746beff987c8b8754",
+        "matches_deployed_source": true,
+        "changed_from_80513a9": false
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/templates/admin/filter_error.html",
+        "sha256": "46f5b44fb119ea3654c24cd43ba82023b0378913127869f3fda17d865f1ea46a",
+        "matches_deployed_source": true,
+        "changed_from_80513a9": false
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/templates/admin/layout.html",
+        "sha256": "68eecd71b1cfaa7fb6354dee0721f2989bb68d8db92fbcc2024ae74eec98fd59",
+        "matches_deployed_source": true,
+        "changed_from_80513a9": false
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/templates/admin/recommendations.html",
+        "sha256": "9d991b0bb4dc90413e31d98b28c88d1638c77bc562d997d1beaebf28d6c6a540",
+        "matches_deployed_source": true,
+        "changed_from_80513a9": false
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/templates/auth/login.html",
+        "sha256": "58665c254c71d5ecd605ba7f12ea7f3f2aa18b661412b9b25a7d93725d32cc17",
+        "matches_deployed_source": true,
+        "changed_from_80513a9": false
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/templates/auth/logout.html",
+        "sha256": "deab381fd88da90b5ae550d911a05eb2be834402cd4af7efa43c2b348f63f5f5",
+        "matches_deployed_source": true,
+        "changed_from_80513a9": false
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/templates/auth/register.html",
+        "sha256": "fda8ddff3433ccfc32540e7e407b5c436bba7f321acaa6bb538d5eba58283c5b",
+        "matches_deployed_source": true,
+        "changed_from_80513a9": false
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/templates/base.html",
+        "sha256": "30bfbc6039f4441a4dda12a303f21e7a28430efdad243796782202479e737c4f",
+        "matches_deployed_source": true,
+        "changed_from_80513a9": false
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/templates/store/cart.html",
+        "sha256": "0e84d915c6d754329ede42dab21163a0de12438d5b120a870bbe3e3a5d30f496",
+        "matches_deployed_source": true,
+        "changed_from_80513a9": false
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/templates/store/cart_v4.html",
+        "sha256": "04827dfee303764c4db1ae0a5aeadac184aed4f11d071d15a94cded8f5a867df",
+        "matches_deployed_source": true,
+        "changed_from_80513a9": false
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/templates/store/home.html",
+        "sha256": "873536fa42a48c9f4878982a38964918842e04669ed2dacd03d6ecfa550c2f7b",
+        "matches_deployed_source": true,
+        "changed_from_80513a9": false
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/templates/store/product.html",
+        "sha256": "1d5a8398db5aa8b0c4010b946a7a49937c76f0c52e1ffd4a3a073a7acdd07fcb",
+        "matches_deployed_source": true,
+        "changed_from_80513a9": false
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/templates/store/product_image.html",
+        "sha256": "e1b2a30da50de5623f5210f76701760d2292c3c6cf1274d473d9a7eee836b0bf",
+        "matches_deployed_source": true,
+        "changed_from_80513a9": false
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/templates/store/sku_fields.html",
+        "sha256": "c4d4efd786c02dafdd5d0c52333d317c6e3b7ec26eee60dc56d6085347a0c070",
+        "matches_deployed_source": true,
+        "changed_from_80513a9": false
+      },
+      {
+        "path": "VibeCart_AI/services/cart_service.py",
+        "sha256": "5e416e6d4945d391ec633845ea493fd152262abf6d5b489b503160db6d58457f",
+        "matches_deployed_source": true,
+        "changed_from_80513a9": false
+      },
+      {
+        "path": "VibeCart_AI/services/sku_cart_service.py",
+        "sha256": "53a7bae24c07135db8fc02bb036d0b45881ab3ba499fa67116c4da5262167179",
+        "matches_deployed_source": true,
+        "changed_from_80513a9": false
+      }
+    ]
+  },
+  "regression_source": "7affe59b23582940a2b83085c023c4b3b8b7d1e9",
+  "runtime_or_test_diff_to_audited_main": [],
+  "deck": {
+    "path": "簡報文件/交付/VibeCart_AI_進度簡報_2026-10-18_v2.pptx",
+    "sha256": "c3108d68c6aca68e48031c57c7e4fadff2998b4643c5fe553b2dd8c5965c3a72",
+    "slides": 12,
+    "package_findings": 0,
+    "layout_findings": 0,
+    "layout_warnings": 0,
+    "renderer": "Artifact Tool; not native PowerPoint",
+    "rendered_slides": 12,
+    "visual_review": "12 slides inspected; no unintended clipping or overlap observed",
+    "mailto_relationships": 0,
+    "claim_boundary": "Historical progress draft; slide 5 imagery and slide 10 release snapshot precede current catalog deployment; not final signoff",
+    "rendered_pngs": [
+      {
+        "file": "slide-1.png",
+        "sha256": "17b358f2ee0498fd418e67de22809d619b5e4585eed878c9703e1c7cfcf8f98e"
+      },
+      {
+        "file": "slide-10.png",
+        "sha256": "fc6eb85a70db169b5635e32329f47677c47b8fca8ad7dab45b3342fb4da1641a"
+      },
+      {
+        "file": "slide-11.png",
+        "sha256": "6144e8b3525cb4fbc095a165ebd24cb5a99dd42242d63ead5670aa52368215ac"
+      },
+      {
+        "file": "slide-12.png",
+        "sha256": "11c3f620210300fa8164d47af0b15d30fd408484337198452b2f71d1ad9bd859"
+      },
+      {
+        "file": "slide-2.png",
+        "sha256": "8fce06e4724a4d87c7aa3dd875e8ce38b7d8a243d2a0e0a146126c13b1858785"
+      },
+      {
+        "file": "slide-3.png",
+        "sha256": "a119445e453d04cea5ce786bbbef6011113b514abe23e5d0249027672c473509"
+      },
+      {
+        "file": "slide-4.png",
+        "sha256": "857f6f268229490b770dcc2127e4ef55a2b726c1bd3c0cbd7be1dd2fb965637a"
+      },
+      {
+        "file": "slide-5.png",
+        "sha256": "7b85f3f3391b5b991da3be4f375b79352975d1e055aa83bf84f5da2f1e6d40b2"
+      },
+      {
+        "file": "slide-6.png",
+        "sha256": "84f37bd7cf8afda4791c6bf0aa0658e34247464f6948ca29bf85cae850161410"
+      },
+      {
+        "file": "slide-7.png",
+        "sha256": "81596b0f8e77d14dbe4694a76b542693040adef95ab63b6eb48573499262ed95"
+      },
+      {
+        "file": "slide-8.png",
+        "sha256": "83d463286e840daf23d942c673d490600e27969d53b23ff97f5a651cc0f574e1"
+      },
+      {
+        "file": "slide-9.png",
+        "sha256": "aa5240cbaf945e95e5aabd19ee6ecbbaf3eab948dd25593817d05c7a7b95d5b7"
+      }
+    ]
+  },
+  "no_remote_database_or_cloud_mutation_this_check": true
+}
