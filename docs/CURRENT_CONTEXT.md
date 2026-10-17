@@ -1,5 +1,7 @@
 # 最新專案上下文 / Current project context
 
+更新：2026-10-17（Asia/Taipei）。SAM 代理 REN 的[獨立遠端交易驗收紀錄](SAM_REMOTE_TRANSACTION_ACCEPTANCE_2026-10-17.md)已讀回私有 Cloud Run 服務的同版映像、Ready、專用 IAM、匿名 403 與正式流量不變；初始服務仍是假 URI、唯讀，ready 503 為預期。Atlas 專用帳號需連接器額外確認，尚未建立，沒有遠端交易或 Atlas 寫入。PR #21 仍為草稿，D4 不得 apply。
+
 更新：2026-10-17（Asia/Taipei）。PR #21 已加入[隔離交易驗收啟動防護與前置清單](SAM_REMOTE_TRANSACTION_PREFLIGHT_2026-10-17.md)：指定私有 Cloud Run 服務、顯式旗標及 `vibecart_acceptance_` 資料庫名稱才可選獨立 DB；本機隔離 MongoDB 完整測試 180 passed／0 skipped。私有可寫入服務、最小權限 MongoDB 憑證、測試資料與遠端交易驗收仍未建立；不得把此程式防護列為遠端角色／交易通過。
 
 更新：2026-10-17（Asia/Taipei）。SAM 的 [Atlas 唯讀對帳](SAM_ATLAS_READONLY_ACCEPTANCE_2026-10-17.md)讀回 28 集合、6 筆 succeeded migration 且 checksum 與 Git 原始碼一致、336 active 商品與 SKU、原 D1～D3 訂單／明細 3,000／8,969、孤兒 SKU／明細 0；D4 仍 0。Network Access 有一筆 `0.0.0.0/0` 規則，需在正式上線前查來源與收斂方案；目前未變更資料庫或白名單。這些是資料層快照，不等於角色／交易或最終簽收。
