@@ -24,6 +24,7 @@ from workflow import canonical, digest, require
 HOST = 'vibecart-ai-free.odqe25w.mongodb.net'
 BATCH_QUERY = {'metadata.synthetic_batch_id': BATCH}
 CONSUMERS = {'admin_monitor', 'storefront_recommendation', 'scoring_scheduler', 'production_attribution'}
+OPTIONAL_UNDEPLOYED = {'scoring_scheduler', 'production_attribution'}
 
 
 def connect(env_file):
@@ -90,11 +91,21 @@ def isolation_evidence(path):
     require(isinstance(checks, dict) and set(checks) == CONSUMERS,
             'Consumer isolation incomplete')
     for consumer, check in checks.items():
-        require(isinstance(check, dict) and check.get('status') == 'passed'
-                and check.get('source_commit') == evidence['deployment_ref']
+        require(isinstance(check, dict) and check.get('source_commit') == evidence['deployment_ref']
+                and check.get('checked_at'), 'Consumer evidence scope incomplete: ' + consumer)
+        if check.get('status') == 'not_deployed':
+            require(consumer in OPTIONAL_UNDEPLOYED
+                    and check.get('project_id') == 'vibecart-llmai'
+                    and check.get('inventory_evidence_url')
+                    and re.fullmatch(r'[0-9a-f]{64}', str(check.get('inventory_sha256', '')))
+                    and set(check.get('inventory_scopes', [])) == {
+                        'cloud_run_services', 'cloud_run_jobs', 'cloud_scheduler',
+                        'cloud_functions', 'pubsub_subscriptions'},
+                    'Undeployed consumer inventory incomplete: ' + consumer)
+            continue
+        require(check.get('status') == 'passed'
                 and re.fullmatch(r'sha256:[0-9a-f]{64}', str(check.get('image_digest', '')))
                 and check.get('revision') and check.get('remote_evidence_url')
-                and check.get('checked_at')
                 and type(check.get('synthetic_input_count')) is int
                 and check['synthetic_input_count'] > 0
                 and type(check.get('synthetic_visible_count')) is int
