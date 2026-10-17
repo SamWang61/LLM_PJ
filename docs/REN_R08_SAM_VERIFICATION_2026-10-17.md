@@ -37,3 +37,9 @@ PR #25 以草稿 PR #21 為 base；上述本機測試當時沒有合併 `main`�
 - 預覽版 `/health/live`、`/health/ready`、首頁、無結果搜尋與商品詳情均回應 200；瀏覽器實測商品頁與共用頁尾三位成員的 `mailto:` 連結。登入、管理、購物車與 checkout 請求回應 403，符合唯讀預覽設定。這些結果不代表會員／訂單、Atlas 寫入、行動版或付款驗收。
 - Firebase Hosting 預覽 channel：<https://vibecart-llmai--pr25-5f73fe6-g2aj380d.web.app/>（到期時間 2026-10-18 03:31 UTC）。其未固定版號的 rewrite 目前指向正式流量版本；首頁及登入頁回應 200，未顯示此 PR 的新頁尾。Firebase 拒絕先在 channel 固定新版，原因是 live rewrite 尚未固定；為避免將唯讀版固定到正式入口，本次未變更 live Hosting 或正式 Cloud Run 流量。
 - 上述為預覽部署與匿名瀏覽驗證；PR #21／#25 仍是草稿。正式上線須先完成整合、可寫環境的交易／權限驗收，並重新核對 Cloud Run revision、映像 digest 及 Hosting rewrite。
+
+## 10/17 晚間接續：S03 與登入返回路徑
+
+- 上節 11:32 的 PR 與正式流量資訊為當時快照；[PR #38 正式部署紀錄](SAM_PR21_LIVE_ACCEPTANCE_2026-10-17.md)已記載 PR #21 合併及 `vibecart-web-00012-85f` 在 16:04 承接正式 100% 流量，且私有同版服務完成隔離交易讀回。此處不把該紀錄延伸成真付款或全站簽收。
+- SAM 暫代 REN 於正式 Hosting 實拍商品頁並唯讀對帳一件 active 商品／SKU：`CF-1210303000104`／`CF-SKU-1210303000104`，畫面與 Atlas 都是 NT$79.00、庫存 95。原始 JPEG、PNG 和取證限制見 [S03 證據](../簡報文件/screenshots/S03-product-evidence.md)；[PR #43](https://github.com/SamWang61/LLM_PJ/pull/43) 已通過文件與離線測試 CI 並合併。這是單件商品的 S03 部分證據，仍待最終 revision 再確認、手機畫面及簽認。
+- 同一正式網站的匿名 `/cart` 正確導至 `/auth/login?next=/cart`，但登入頁標題顯示舊品牌 `MuscleCore`，而既有登入函式成功後固定返回首頁，使原購物車導向失效。本次修正 v4 登入／註冊標題及註冊眉標，保留 legacy 文字；成功登入時僅接受安全的站內 `next` 路徑，阻擋站外返回網址。定向離線測試 `test_hen_auth_order.py`、`test_v4_routes.py` 為 **53 passed**，含購物車返回與站外導向拒絕。這只是本機修正，合併、重新部署及正式登入流程尚須另行讀回；沒有在正式站建立測試帳號或訂單。

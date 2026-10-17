@@ -12,6 +12,14 @@ from .services.member_sessions import create_member_session, valid_member_sessio
 bp = Blueprint("auth", __name__, url_prefix="/auth")
 
 
+def safe_return_path(value):
+    """Honor a local login destination without allowing external redirects."""
+    if (value.startswith("/") and not value.startswith("//") and "\\" not in value
+            and len(value) <= 2048 and all(ord(char) >= 32 for char in value)):
+        return value
+    return None
+
+
 def current_member():
     if hasattr(g, "member"):
         return g.member
@@ -101,7 +109,7 @@ def login():
                 and check_password_hash(user.get("password_hash", ""), password)
                 and start_member_session(user)):
             target = "admin.dashboard" if session["role"] == "admin" else "store.home"
-            return redirect(url_for(target))
+            return redirect(safe_return_path(request.args.get("next", "")) or url_for(target))
         flash("帳號或密碼不正確。", "danger")
     return render_template("auth/login.html")
 

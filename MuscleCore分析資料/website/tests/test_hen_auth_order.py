@@ -23,6 +23,31 @@ def login(client, email="test@example.test", password="test-password"):
     return client.post("/auth/login", data={"csrf_token": token, "email": email, "password": password})
 
 
+def test_v4_cart_login_returns_to_cart_and_rejects_external_next(shop):
+    app, _, _, _, _, _ = shop
+    member = app.test_client()
+    redirected = member.get("/cart")
+    assert redirected.status_code == 302 and redirected.location == "/auth/login?next=/cart"
+    page = member.get(redirected.location)
+    assert "登入｜VibeCart" in page.get_data(as_text=True)
+    with member.session_transaction() as state:
+        csrf = state["csrf_token"]
+    result = member.post(redirected.location, data={
+        "csrf_token": csrf, "email": "test@example.test", "password": "test-password"})
+    assert result.status_code == 302 and result.location == "/cart"
+    assert member.get(result.location).status_code == 200
+    register = member.get("/auth/register").get_data(as_text=True)
+    assert "加入會員｜VibeCart" in register and "JOIN VIBECART" in register
+
+    outside = app.test_client()
+    outside.get("/auth/login")
+    with outside.session_transaction() as state:
+        csrf = state["csrf_token"]
+    result = outside.post("/auth/login?next=%2F%2Fevil.example", data={
+        "csrf_token": csrf, "email": "test@example.test", "password": "test-password"})
+    assert result.status_code == 302 and result.location == "/"
+
+
 def test_logout_csrf_and_copied_cookie_cannot_replay(shop):
     app, client, db, uid, _, _ = shop
     old = cookie(client)
