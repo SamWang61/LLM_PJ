@@ -28,4 +28,12 @@ docker stop ren-r08-rs-20261017
 | #10 四事件觸發 | 核對 SEARCH、PRODUCT_VIEW、ADD_TO_CART、PURCHASE 的事件欄位及 demo／synthetic 標記。 | REN 觸發端由 SAM 代驗；JEFF 提供所有實際推薦、評分、歸因及排程 consumer 清單。SAM 逐一核對部署版在 sort／limit 前的排除及正常事件對照，未完成前 D4 不 apply。 |
 | S03～S05 素材 | 以最終同版桌面與手機流程擷取商品／搜尋、會員登入、購物車與 demo checkout 畫面，標明示範資料及未實現付款。 | 每張保留檔名、時間、最終 SHA、URL、revision／digest、測試帳號類型與驗收人。不能用較舊唯讀預覽或單張 HTTP 200 代替流程證據。 |
 
-PR #25 以草稿 PR #21 為 base；本次測試沒有合併 `main`、部署、寫入 Atlas 或重匯 D1～D3。正式遠端驗收須先定最終整合 SHA，再以同版環境逐項取證。到 2026-10-18 11:10 代理期滿，SAM 應列出已交／未交 SHA、遠端證據及阻礙交回 REN；沒有恢復資料時，REN 軟體異常仍標為待確認。
+PR #25 以草稿 PR #21 為 base；上述本機測試當時沒有合併 `main`、部署、寫入 Atlas 或重匯 D1～D3；後續唯讀預覽部署另記於下節。正式遠端驗收須先定最終整合 SHA，再以同版環境逐項取證。到 2026-10-18 11:10 代理期滿，SAM 應列出已交／未交 SHA、遠端證據及阻礙交回 REN；沒有恢復資料時，REN 軟體異常仍標為待確認。
+
+## Firebase／Cloud Run 唯讀預覽（2026-10-17 11:32 Asia/Taipei）
+
+- PR #25 的來源提交 `5f73fe6bd6f5d0496e61a593a31831bd38f0c378` 以 Git 提交物件原始位元組建立 47 檔 Docker context，推送到 Artifact Registry。映像 index digest 為 `sha256:1fc2a3e01380cdb67a9117ed1db2e04d315e369533ba86e28f409749376dca47`。
+- Cloud Run `vibecart-web` 新 revision `vibecart-web-00010-q8l` 已 Ready，標籤 `pr25-5f73fe6`，流量 **0%**；正式流量仍由 `vibecart-web-00007-m9k` 承接 100%。預覽網址：<https://pr25-5f73fe6---vibecart-web-m44ncgz5ta-de.a.run.app/>。預覽環境設定 `CLOUD_PREVIEW_READ_ONLY=true`、`ENABLE_CHECKOUT=false`。
+- 預覽版 `/health/live`、`/health/ready`、首頁、無結果搜尋與商品詳情均回應 200；瀏覽器實測商品頁與共用頁尾三位成員的 `mailto:` 連結。登入、管理、購物車與 checkout 請求回應 403，符合唯讀預覽設定。這些結果不代表會員／訂單、Atlas 寫入、行動版或付款驗收。
+- Firebase Hosting 預覽 channel：<https://vibecart-llmai--pr25-5f73fe6-g2aj380d.web.app/>（到期時間 2026-10-18 03:31 UTC）。其未固定版號的 rewrite 目前指向正式流量版本；首頁及登入頁回應 200，未顯示此 PR 的新頁尾。Firebase 拒絕先在 channel 固定新版，原因是 live rewrite 尚未固定；為避免將唯讀版固定到正式入口，本次未變更 live Hosting 或正式 Cloud Run 流量。
+- 上述為預覽部署與匿名瀏覽驗證；PR #21／#25 仍是草稿。正式上線須先完成整合、可寫環境的交易／權限驗收，並重新核對 Cloud Run revision、映像 digest 及 Hosting rewrite。

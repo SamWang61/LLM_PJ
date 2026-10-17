@@ -1,5 +1,17 @@
 # 最新專案上下文 / Current project context
 
+更新：2026-10-17（Asia/Taipei）。PR #21 已加入[隔離交易驗收啟動防護與前置清單](SAM_REMOTE_TRANSACTION_PREFLIGHT_2026-10-17.md)：指定私有 Cloud Run 服務、顯式旗標及 `vibecart_acceptance_` 資料庫名稱才可選獨立 DB；本機隔離 MongoDB 完整測試 180 passed／0 skipped。私有可寫入服務、最小權限 MongoDB 憑證、測試資料與遠端交易驗收仍未建立；不得把此程式防護列為遠端角色／交易通過。
+
+更新：2026-10-17（Asia/Taipei）。SAM 的 [Atlas 唯讀對帳](SAM_ATLAS_READONLY_ACCEPTANCE_2026-10-17.md)讀回 28 集合、6 筆 succeeded migration 且 checksum 與 Git 原始碼一致、336 active 商品與 SKU、原 D1～D3 訂單／明細 3,000／8,969、孤兒 SKU／明細 0；D4 仍 0。Network Access 有一筆 `0.0.0.0/0` 規則，需在正式上線前查來源與收斂方案；目前未變更資料庫或白名單。這些是資料層快照，不等於角色／交易或最終簽收。
+
+更新：2026-10-17（Asia/Taipei）。SAM PR #21 的 `3842893904e54e638e1fc88346c85d90e5beb22b` 已建立 Cloud Run 無流量唯讀修訂 `vibecart-web-00009-xfq`；47/47 建置來源與 Git blob 一致，映像、revision label、Ready、100% 舊版流量與 Atlas 唯讀計數均已讀回。新修訂的匿名首頁／搜尋／商品與寫入拒絕通過所測遠端檢查；角色、交易、模型、Hosting、所有 consumer 隔離及最終畫面驗收仍缺證據。完整結果與界線見 [PR #21 同版遠端預覽](SAM_PR21_REMOTE_PREVIEW_2026-10-17.md)。D4 不得 apply，PR #21 保持草稿。
+
+更新：**2026-10-17 11:10（Asia/Taipei）**。REN 因軟體設定問題，原會員／購物／事件觸發及 S03～S05 工作由 SAM 暫代 24 小時，至 **2026-10-18 11:10**；JEFF 的 AI／後台與 consumer 責任不變。現行責任、22 項待辦及 10/18 20:00 交付順序以 [專案工作清單](../專題進度/專案工作清單_2026-10-17.md) 和 [分工表](TEAM_OWNERSHIP.md) 為準。下方早期分工、SHA、CI、部署及 Atlas 數字是各日期的歷史快照，不當作目前狀態。
+
+軟體異常的已知影響、SAM 代理 REN 提交文件／PR 的身份標示、到期與交還條件，另見 [REN 工作異常報告](REN_WORK_INCIDENT_2026-10-17.md)。
+
+更新：2026-10-17（Asia/Taipei）。HEN 文件名稱及人名改稱 REN 的 PR #22 已合併 main，本機文件已同步；詳見 [文件同步紀錄](DOCUMENT_SYNC_2026-10-17.md)。PR #22 文件同步該輪沒有重新驗證部署或 Atlas 狀態；本頁最上方另記錄後續同版遠端讀回。
+
 更新：2026-10-17（Asia/Taipei）。REN PR #24 已合併到 SAM PR #21 審查分支，其 R02 交接只有文件，沒有新功能程式。SAM 接手後在一次性、無憑證的 localhost MongoDB replica set 對 PR #21 完整程式重跑網站測試，**178 passed／0 skipped**，含交易回滾、最後庫存並發及撤權回滾；測試方法見[同版驗證紀錄](SAM_PR21_ACCEPTANCE_2026-10-16.md)。這是本機證據，遠端跨角色、交易與全部 consumer 隔離仍待驗。詳見 [REN R02 接口交接](REN_R02_INTERFACE_2026-10-17.md)。PR #21 仍為草稿，main 未合併，D4 閘門維持。
 
 更新：2026-10-17（Asia/Taipei）。PR #21 已修補 legacy synthetic 事件標記、示範 PURCHASE 歸因條件及 D4 匯入證據格式；網站離線測試 175 passed／3 skipped，D4 定向測試 17 passed。詳見 [D4 遠端閘門](D4_REMOTE_GATE_2026-10-17.md)。現行結帳仍全部建立示範訂單，因此購買事件仍排除歸因；D4 尚缺所有實際部署 consumer 的同版遠端隔離讀回，不得正式匯入。PR #21 保持草稿，線上 Claude、BGE、自由提問仍關閉；D5 為規格，D1～D3 與額外兩筆示範訂單保留。
