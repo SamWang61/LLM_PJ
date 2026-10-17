@@ -1,5 +1,7 @@
 # 最新專案上下文 / Current project context
 
+更新：**2026-10-18（Asia/Taipei），全PR盤點**。下一輪工作入口改為[專案未完成工作清單](../專題進度/專案未完成工作清單_2026-10-18.md)，**先做N01：PR #59既有CRLF工作樹的封裝P2**。已即時核對#1～#60：49合併／10開啟／1關閉未合併；[完整PR清冊](PR_AUDIT_2026-10-18.md)保留原標題、SHA、base與替代關係。依既有22項的88個核對點，已得55、缺33，未完成度約38%；這是驗收里程碑估計，不是PR open率或工時承諾。D4由#51完成、正式發布由#58更新，不能重列首次入庫或首次部署。當前main=62bec5a、CI success；#60已補同映像私有會員交易部分，遠端故障回滾／併發與全站簽認仍待辦，#59 CI success但P2未解；本輪只盤點與文件交付，未合併既有PR、部署或寫Atlas。下方歷史快照依日期解讀。
+
 更新：**2026-10-18 02:10（Asia/Taipei）**。正式／私有同映像的[私有遠端真交易驗收](SAM_REMOTE_TRANSACTION_2026-10-18.md)通過：兩裝置獨立登入、會員後台拒絕、Atlas 示範訂單／明細與庫存減 1、相同 checkout ID 重送冪等、改 revision 409、單裝置登出後另一裝置仍可用。九範圍測試資料清理讀回 0，獨立 Atlas marker 查核 0、臨時 IAM 角色撤銷讀回 0。正式 Cloud Run `vibecart-web-00015-nlk` 仍 100%；此次未寫正式業務庫，也未重跑新映像遠端故障注入／最後庫存併發。真模型、D5、實機及具名簽收仍按[22 項檢查點](SAM_PROGRESS_CHECKPOINT_2026-10-18.md)追蹤。
 
 更新：**2026-10-18 01:58（Asia/Taipei）**。[PR #56](https://github.com/SamWang61/LLM_PJ/pull/56) 商品標題 RWD 已合併；同映像私有 D4 consumer 對照、逐項清理、獨立 Atlas marker 查核及 IAM 撤權通過後，Cloud Run `vibecart-web-00015-nlk` 讀回 **100%** 正式流量，舊 `00013-ds5` 保留零流量回退標籤。[部署、映像與正式站畫面](SAM_RELEASE_2026-10-18.md)已留證。Firebase Hosting 公開路由 200，320／375／768／1280 px Chrome 商品標題橫排、無水平溢出。[最新 22 項檢查點](SAM_PROGRESS_CHECKPOINT_2026-10-18.md)仍把遠端真登入／交易、JEFF 真模型／D5、實機與具名簽收列為未完成；下方 01:30 與更早快照按各自時間解讀。
