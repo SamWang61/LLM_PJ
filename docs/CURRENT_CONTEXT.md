@@ -1,5 +1,7 @@
 # 最新專案上下文 / Current project context
 
+更新：**2026-10-17 16:06（Asia/Taipei）**。[PR #21](https://github.com/SamWang61/LLM_PJ/pull/21) 已合併，正式 Cloud Run `vibecart-web-00012-85f` 現承接 **100%** 流量；Cloud Run 與 Firebase Hosting 的首頁／ready 均回 200。Atlas 驗收帳號已收斂至單一驗收庫與叢集；私有服務的遠端雙裝置／角色／購物車／demo checkout、Atlas 回滾與最後庫存併發已讀回，測試帳號全停用且 session 清空。正式 D1～D3 3,000 筆訂單、額外 demo 2 筆、指定 D4 事件 0 維持不變。這是部署與**隔離驗收**，仍非真付款、真模型、D4 全 consumer 或最終簡報簽收。完整版本、交易及殘項見[正式部署與遠端驗收紀錄](SAM_PR21_LIVE_ACCEPTANCE_2026-10-17.md)；下方較早狀態均為歷史快照。
+
 更新：**2026-10-17 15:10（Asia/Taipei）**。Atlas 現已出現驗收使用者 `sam_pr21_acceptance_20261017`，Secret Manager 的 `vibecart-pr21-acceptance-mongo-uri` 也有啟用的版本 1；URI 的主機、帳號與資料庫路徑已在不輸出密碼的條件下核對。但 Atlas 使用者目前是 **`atlasAdmin@admin`、All Resources**，並非只限 `vibecart_acceptance_pr21` 的 `readWrite`。因此私有服務仍保持唯讀，沒有向 Atlas 寫入或進行遠端交易；已請使用者於 Atlas 管理頁修正權限。正式服務仍為舊修訂 100% 流量。以下 13:39「帳號／版本不存在」為當時歷史快照，不再代表現況。
 
 更新：**2026-10-17 13:39（Asia/Taipei）**。[PR #21](https://github.com/SamWang61/LLM_PJ/pull/21) 已依使用者要求合併至 `main`，merge SHA `2fd43557bac0148e02fa427163a9657a13c7ae23`，[合併後 CI](https://github.com/SamWang61/LLM_PJ/actions/runs/39006863627) success。同版映像已建立 Cloud Run 正式服務的**零流量唯讀**修訂 `vibecart-web-00011-dx2`；舊 `00007-m9k` 仍為 100% 流量。Atlas 獨立驗收帳號仍未建立，驗收 Mongo URI secret 仍無版本；連接器建立帳號動作因缺少操作確認而未執行。遠端交易、Atlas 持久化與正式流量切換**尚未完成**；D4 閘門未解除。詳見[最新驗收紀錄](SAM_REMOTE_TRANSACTION_ACCEPTANCE_2026-10-17.md)。以下舊段落均按各自日期作歷史快照。
