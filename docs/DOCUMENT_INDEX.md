@@ -8,6 +8,8 @@
 
 | 文件 / Document | English scope |
 |---|---|
+| [N03 目前版本、來源與部署讀回](SAM_VERSION_MAP_2026-10-18.md) | Remote-head drift guard, 102 immutable changed files, 51 reproducible runtime sources and current Cloud Run mapping. |
+| [N02 交接來源補充](SAM_V1_DELIVERY_SCOPE_2026-10-18.md) | Named owner handback remains pending; current scope is defined by the N02 handoff page. |
 | [SAM 私有帳號與撤權驗收](SAM_ACCOUNT_ACCEPTANCE_2026-10-18.md) | Isolated two-role lifecycle, relogin, disable/reenable and independent cleanup; event-window accounts and final signoff remain open. |
 | [2026-10-18 專案未完成工作清單與下一步](../專題進度/專案未完成工作清單_2026-10-18.md) | Primary dependency-ordered work queue, owners, 22-item milestone estimate and next task N01. |
 | [2026-10-18 全部60個PR核對清冊](PR_AUDIT_2026-10-18.md) | Complete PR states, heads/bases, supersession, unresolved reviews and evidence scope; machine-readable snapshot in inventory. |

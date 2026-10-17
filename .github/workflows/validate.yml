@@ -31,7 +31,7 @@ jobs:
         run: python -m pytest scripts/test_backup_manifest.py -q -p no:cacheprovider
       - name: 雲端來源白名單封裝 / Cloud source allowlist
         run: |
-          python -m pytest scripts/test_prepare_cloud_source.py -q -p no:cacheprovider
+          python -m pytest scripts/test_prepare_cloud_source.py scripts/test_audit_delivery_source.py -q -p no:cacheprovider
           python scripts/prepare_cloud_source.py --output "$RUNNER_TEMP/vibecart-source.tar.gz"
       - name: 真 MongoDB D5 與會員交易 / Real local MongoDB transactions
         run: python scripts/run_transaction_acceptance.py --report "$RUNNER_TEMP/d5-local.json" --junit "$RUNNER_TEMP/d5-local.xml"

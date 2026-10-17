@@ -46,3 +46,6 @@
 - [SAM 完成工作與預計項目](../專題進度/至今SAM完成的工作與預計項目_2026-10-05.md) / SAM delivery and next work.
 
 - [REN 命名修正 log / Naming correction log](log/REN_NAMING_2026-10-18.md)
+
+- [N03 最新來源與版本核對](SAM_VERSION_MAP_2026-10-18.md)
+- [N02 交接來源補充](SAM_V1_DELIVERY_SCOPE_2026-10-18.md)
