@@ -1,5 +1,7 @@
 # 最新專案上下文 / Current project context
 
+更新：**2026-10-18 00:23（Asia/Taipei）**。SAM 已修復 [PR #47 私有 D4 探針](REN_D4_PRIVATE_PROBE_2026-10-17.md)的 ID token 授權與等待問題；正式 `vibecart-web-00013-ds5`／私有 `vibecart-acceptance-pr21-00004-9qr` 同為 main `80513a951d0dff67fd47a153a45918522b5ffbb5` 的 pinned 映像。管理監控 13→14→14，1,001 synthetic 不改變前台推薦；探針五集合殘留 0、臨時窄 IAM role 已撤。全區盤點 42 區可讀、1 區政策拒絕；formal D4 preflight／abort dry-run 的 1,240 規劃事件通過，但 D4 batch 仍 0，D1～D3 及額外 2 demo 訂單保留。正式匯入證據發布／覆核與 apply／verify／重送仍待完成；以下為歷史快照。
+
 更新：**2026-10-18 00:12（Asia/Taipei）**。main `80513a9` 的 [CI #39047572571](https://github.com/SamWang61/LLM_PJ/actions/runs/39047572571) success；同版本機 **186 passed／0 skipped**、47 個 Git blob 精確封裝及 Cloud Build boot 通過。正式 **`vibecart-web-00013-ds5` 100%**，舊 `00012-85f` 保留回退；Hosting／Run 切換後 20 項公開路由檢查通過，JEFF mailto 與 VibeCart 會員頁名稱已線上讀回。正式 Atlas 唯讀仍為原批次訂單 3,000、額外 demo 2、D4 0。完整 [部署讀回與限制](SAM_RELEASE_2026-10-18.md)含 digest、manifest、JUnit、HTTP 與瀏覽器證據；新修訂未重跑登入成功／遠端交易，不能當全站簽收。D4／真模型／D5、素材／PPTX／備援／排練及 **10/18 11:10 REN 交回**仍待辦。下方舊版本按各自日期解讀。
 
 更新：**2026-10-17 19:20（Asia/Taipei）**。[S02 商品／搜尋畫面證據](../簡報文件/screenshots/S02-catalog-evidence.md)已補 390×844 瀏覽器窄視窗的搜尋、分類、336 件清單及單欄商品卡片截圖，原始檔雜湊已記錄；已恢復預設 viewport。手機實機、其他斷點與具名簽收仍待驗；Cloud Run revision／digest 本次仍未即時讀回。以下 19:14 為桌面證據快照。

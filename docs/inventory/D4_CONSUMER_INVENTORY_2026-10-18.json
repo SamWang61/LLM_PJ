@@ -1,0 +1,148 @@
+{
+  "checked_at": "2026-10-17T16:10:05.764Z",
+  "project_id": "vibecart-llmai",
+  "inventory_scopes": [
+    "cloud_run_services",
+    "cloud_run_jobs",
+    "cloud_scheduler",
+    "cloud_functions",
+    "pubsub_subscriptions"
+  ],
+  "cloud_run_services": [
+    {
+      "name": "projects/vibecart-llmai/locations/asia-east1/services/vibecart-acceptance-pr21",
+      "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:d933a5d8bf3f9264beac3bc9738e2bb84d11cf92e1b8ce097b0cd3000be40b91",
+      "source_commit": "5da34e6f748c31fa9410082fdd943a86ef54297a",
+      "traffic": [
+        {
+          "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_LATEST",
+          "revision": "vibecart-acceptance-pr21-00003-8hr",
+          "percent": 100
+        }
+      ],
+      "environment": {
+        "CLOUD_ACCEPTANCE_MODE": "true"
+      },
+      "latest_ready_revision": "vibecart-acceptance-pr21-00003-8hr",
+      "active_revisions": [
+        {
+          "revision": "vibecart-acceptance-pr21-00003-8hr",
+          "percent": 100,
+          "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:d933a5d8bf3f9264beac3bc9738e2bb84d11cf92e1b8ce097b0cd3000be40b91",
+          "source_commit": "5da34e6f748c31fa9410082fdd943a86ef54297a"
+        }
+      ]
+    },
+    {
+      "name": "projects/vibecart-llmai/locations/asia-east1/services/vibecart-web",
+      "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:57c8fd038d7c231a4e417471a66b9c7996c296efd2d7b1ff70302c46a45f0fab",
+      "source_commit": "80513a951d0dff67fd47a153a45918522b5ffbb5",
+      "traffic": [
+        {
+          "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+          "revision": "vibecart-web-00007-m9k",
+          "tag": "rollback-00007",
+          "uri": "https://rollback-00007---vibecart-web-m44ncgz5ta-de.a.run.app"
+        },
+        {
+          "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+          "revision": "vibecart-web-00008-5bw",
+          "tag": "pr21-preview",
+          "uri": "https://pr21-preview---vibecart-web-m44ncgz5ta-de.a.run.app"
+        },
+        {
+          "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+          "revision": "vibecart-web-00009-xfq",
+          "tag": "pr21-3842893",
+          "uri": "https://pr21-3842893---vibecart-web-m44ncgz5ta-de.a.run.app"
+        },
+        {
+          "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+          "revision": "vibecart-web-00010-q8l",
+          "tag": "pr25-5f73fe6",
+          "uri": "https://pr25-5f73fe6---vibecart-web-m44ncgz5ta-de.a.run.app"
+        },
+        {
+          "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+          "revision": "vibecart-web-00012-85f",
+          "percent": 100,
+          "tag": "main-2fd4355",
+          "uri": "https://main-2fd4355---vibecart-web-m44ncgz5ta-de.a.run.app"
+        },
+        {
+          "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+          "revision": "vibecart-web-00013-ds5",
+          "tag": "release-80513a9",
+          "uri": "https://release-80513a9---vibecart-web-m44ncgz5ta-de.a.run.app"
+        }
+      ],
+      "environment": {},
+      "latest_ready_revision": "vibecart-web-00013-ds5",
+      "active_revisions": [
+        {
+          "revision": "vibecart-web-00012-85f",
+          "percent": 100,
+          "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:d933a5d8bf3f9264beac3bc9738e2bb84d11cf92e1b8ce097b0cd3000be40b91",
+          "source_commit": "2fd43557bac0148e02fa427163a9657a13c7ae23"
+        }
+      ]
+    }
+  ],
+  "services_unreachable": [
+    "europe-west15",
+    "me-central2",
+    "us-central2",
+    "us-east7",
+    "us-west8"
+  ],
+  "services_next_page": false,
+  "cloud_run_jobs": {
+    "count": 0,
+    "unreachable": [],
+    "continue": "",
+    "regional_report": "D4_CLOUD_JOBS_2026-10-18.json"
+  },
+  "cloud_run_worker_pools": {
+    "count": 0,
+    "unreachable": []
+  },
+  "enabled_api": {
+    "cloudscheduler.googleapis.com": false,
+    "cloudfunctions.googleapis.com": false,
+    "workflows.googleapis.com": false,
+    "cloudtasks.googleapis.com": false
+  },
+  "enabled_api_next_page": false,
+  "pubsub": {
+    "topics": [],
+    "subscriptions": [],
+    "topics_next_page": false,
+    "subscriptions_next_page": false
+  },
+  "hosting": {
+    "release": "sites/vibecart-llmai/releases/1791982222797000",
+    "version": "sites/vibecart-llmai/versions/c3772dcc7c906211",
+    "rewrites": [
+      {
+        "glob": "**",
+        "run": {
+          "serviceId": "vibecart-web",
+          "region": "asia-east1"
+        }
+      }
+    ]
+  },
+  "iam": {
+    "direct_token_creator_grants": 0
+  },
+  "note": "latest_ready_revision can be a zero-traffic candidate; active_revisions identifies traffic. Global v1 services/jobs/worker pools are the project-wide lists. V2 discovery unreachable locations and the regional Jobs LOCATION_POLICY_VIOLATED response are retained as diagnostics.",
+  "global_v1_services": {
+    "http": 200,
+    "names": [
+      "vibecart-acceptance-pr21",
+      "vibecart-web"
+    ],
+    "unreachable": [],
+    "continue": ""
+  }
+}

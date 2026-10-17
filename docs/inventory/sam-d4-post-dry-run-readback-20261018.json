@@ -1,0 +1,12 @@
+{
+  "checked_at": "2026-10-17T16:24:36.585Z",
+  "provider": "MongoDB Atlas connector",
+  "database": "vibecart_ai",
+  "collection": "behavior_events",
+  "query": {
+    "metadata.synthetic_batch_id": "sam-behavior-20261011-v1"
+  },
+  "result": {
+    "count": 0
+  }
+}
