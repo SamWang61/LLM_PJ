@@ -24,6 +24,12 @@
 - [REN R08 修正 PR #25](https://github.com/SamWang61/LLM_PJ/pull/25) 為草稿，提交 `ac74b4f49853c6a92e1dd26bfe5bf430fba1154d`；同一瀏覽器重新登入會撤銷其舊裝置 session，其他裝置保留。該提交的本機網站回歸為 176 passed、3 skipped，GitHub CI 成功。三項跳過測試需要隔離 MongoDB replica set；SAM 對較早程式版本的真交易測試不能直接當成此提交的結果。
 - PR #21 仍是草稿，正式遠端角色／交易及全部事件 consumer 的同版驗收未完成。以上狀態是接手時快照，後續應重新讀取 PR head、CI 與部署版本。
 
+## 代理期間進度（2026-10-17 11:20，Asia/Taipei）
+
+- SAM 以一次性、無正式憑證 localhost MongoDB replica set，對 PR #25 程式提交 `ac74b4f49853c6a92e1dd26bfe5bf430fba1154d` 重跑完整網站測試：**179 passed、0 skipped（31.57s）**，含真交易測試。測後僅剩 MongoDB 系統資料庫，容器已停止；這更新上節接手時 176 passed／3 skipped 的證據，沒有把 PR #21 另一版的結果混算。
+- [PR #25](https://github.com/SamWang61/LLM_PJ/pull/25) 已由實際帳號 `SamWang61` 推送文件提交 `5f73fe6bd6f5d0496e61a593a31831bd38f0c378`，其 [同版代理驗證與後續步驟](https://github.com/SamWang61/LLM_PJ/blob/codex/ren-r08-verification/docs/REN_R08_SAM_VERIFICATION_2026-10-17.md) 記錄 #07、#08、#10 及 S03～S05。文件提交未改受測程式；PR 仍是草稿，遠端同版角色、交易、consumer 與手機畫面未驗。
+- 本機專案目錄的 R02 交接與驗證文件已同步，仍須逐一核對本分支文件、專案副本和 GitHub 檔案內容。REN 軟體設定細節與恢復狀態仍待確認。
+
 ## 代理操作與交還
 
 1. SAM 先核對最新 REN／整合分支、未提交異動與既有 PR，使用乾淨工作樹；每次僅提交明確的 REN 範圍檔案，不覆蓋原 `C:\LLM\LLM_PJ` 工作目錄。
