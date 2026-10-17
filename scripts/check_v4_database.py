@@ -1,6 +1,8 @@
 """Read-only v4 readiness audit. No schema changes, inserts or sample-data output."""
 import argparse
+import hashlib
 import json
+import os
 import sys
 from pathlib import Path
 from datetime import datetime, timezone
@@ -9,6 +11,25 @@ from urllib.parse import urlparse
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'VibeCart_AI/MongoDB'))
 from schema_active_v4 import SCHEMAS, INDEXES, MIGRATIONS, CONTRACT
+
+MIGRATION_SOURCES = {
+    '20260916_01_initial_schema_v2': ('bootstrap_schema.py',),
+    '20260916_02_cart_state_events_v3': ('migrate_cart_v3.py', 'cart_schema.py'),
+    '20260918_03_schema_document_constraints': ('migrate_schema_audit.py', 'schema_current.py'),
+    '20260918_04_complete_catalog_schema_v4': (
+        'migrate_complete_v4.py', 'schema_complete_v4.py', '13_完整Schema_v1.0_來源快照.md'),
+    '20261005_05_synthetic_profile_v4': ('test_data/schema_test_profile.py',),
+    '20261014_06_member_device_sessions_v4': ('auth_session_schema.py', '../../scripts/migrate_auth_sessions.py'),
+}
+
+
+def migration_checksums():
+    """Reproduce the byte order used when each immutable migration was applied."""
+    if set(MIGRATION_SOURCES) != MIGRATIONS:
+        raise ValueError('Migration source map does not match the active contract')
+    base = ROOT / 'VibeCart_AI/MongoDB'
+    return {name: hashlib.sha256(b''.join((base / part).read_bytes() for part in sources)).hexdigest()
+            for name, sources in MIGRATION_SOURCES.items()}
 
 RELATIONSHIPS = [('products', 'major_category_id', 'categories'),
                  ('products', 'minor_category_id', 'categories'),
@@ -48,6 +69,7 @@ def index_differences(actual, expected):
 
 def audit(db, *, relationships=False):
     names = set(db.list_collection_names())
+    checksums = migration_checksums()
     report = {'checked_at': datetime.now(timezone.utc).isoformat(), 'mode': 'read_only',
               'status': 'passed', 'schema_contract': CONTRACT, 'collections': [], 'issues': [], 'relationships': [],
               'extra_collections_count': len(names - set(SCHEMAS))}
@@ -69,11 +91,16 @@ def audit(db, *, relationships=False):
             if row['documents'] != row['conforming']:
                 row['issues'].append('nonconforming_documents_or_concurrent_change')
         report['collections'].append(row)
-    migration_rows = list(db.schema_migrations.find({}, {'_id': 1, 'status': 1})) if 'schema_migrations' in names else []
-    report['expected_migrations'] = [{'id': name, 'succeeded': any(r['_id'] == name and r.get('status') == 'succeeded'
-                                      for r in migration_rows)} for name in sorted(MIGRATIONS)]
+    migration_rows = list(db.schema_migrations.find({}, {'_id': 1, 'status': 1, 'checksum': 1})) if 'schema_migrations' in names else []
+    by_id = {row['_id']: row for row in migration_rows}
+    report['expected_migrations'] = [
+        {'id': name, 'succeeded': by_id.get(name, {}).get('status') == 'succeeded',
+         'checksum_match': by_id.get(name, {}).get('checksum') == checksums[name]}
+        for name in sorted(MIGRATIONS)]
     if not all(r['succeeded'] for r in report['expected_migrations']):
         report['issues'].append('missing_or_unsuccessful_migration')
+    if not all(r['checksum_match'] for r in report['expected_migrations']):
+        report['issues'].append('migration_checksum_mismatch')
     if any(r.get('status') != 'succeeded' for r in migration_rows):
         report['issues'].append('unfinished_or_failed_migration')
     report['extra_migrations_count'] = sum(r['_id'] not in MIGRATIONS for r in migration_rows)
@@ -117,7 +144,8 @@ def main():
         raise ValueError('Choose a new evidence file')
     config = dotenv_values(args.env_file)
     if (urlparse(config.get('MONGO_URI', '')).hostname != 'vibecart-ai-free.odqe25w.mongodb.net'
-            or config.get('MONGO_DB') != 'vibecart_ai' or config.get('DATA_MODE') != 'v4'):
+            or config.get('MONGO_DB') != 'vibecart_ai'
+            or (config.get('DATA_MODE') or os.environ.get('DATA_MODE')) != 'v4'):
         raise ValueError('Unexpected database target')
     with MongoClient(config['MONGO_URI'], serverSelectionTimeoutMS=10000, tz_aware=True) as client:
         report = audit(client[config['MONGO_DB']], relationships=args.relationships)

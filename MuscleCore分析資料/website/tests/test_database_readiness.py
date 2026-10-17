@@ -6,7 +6,7 @@ import pytest
 from pymongo import IndexModel
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[3]))
-from scripts.check_v4_database import audit, index_differences, SCHEMAS, INDEXES, MIGRATIONS
+from scripts.check_v4_database import audit, index_differences, migration_checksums, SCHEMAS, INDEXES, MIGRATIONS
 
 
 class Collection:
@@ -21,7 +21,8 @@ class Collection:
             self.indexes.append(doc)
         self.documents = self.conforming = 0
         self.policies = 1
-        self.rows = [{'_id': name, 'status': 'succeeded'} for name in MIGRATIONS]
+        self.rows = [{'_id': name, 'status': 'succeeded', 'checksum': checksum}
+                     for name, checksum in migration_checksums().items()]
         self.orphans = 0
 
     def options(self):
@@ -36,7 +37,7 @@ class Collection:
         return self.conforming if '$jsonSchema' in query else self.documents
 
     def find(self, query, projection):
-        assert projection == {'_id': 1, 'status': 1}
+        assert projection == {'_id': 1, 'status': 1, 'checksum': 1}
         return self.rows
 
     def aggregate(self, pipeline):
@@ -120,16 +121,26 @@ def test_invalid_documents_and_orphans_are_counts_only():
     assert next(r for r in result['relationships'] if r['source'] == 'product_skus')['orphans'] == 1
 
 
-@pytest.mark.parametrize('change', ['missing', 'failed', 'extra'])
+@pytest.mark.parametrize('change', ['missing', 'failed', 'extra', 'checksum'])
 def test_migration_history(change):
     db = Database()
     if change == 'missing':
         db.schema_migrations.rows.pop()
     elif change == 'failed':
         db.schema_migrations.rows[0]['status'] = 'failed'
-    else:
+    elif change == 'extra':
         db.schema_migrations.rows.append({'_id': 'unreviewed', 'status': 'succeeded'})
+    else:
+        db.schema_migrations.rows[0]['checksum'] = '0' * 64
     assert audit(db)['status'] == 'failed'
+
+
+def test_migration_checksum_drift_is_named_without_exposing_documents():
+    db = Database()
+    db.schema_migrations.rows[0]['checksum'] = '0' * 64
+    report = audit(db)
+    assert 'migration_checksum_mismatch' in report['issues']
+    assert sum(not row['checksum_match'] for row in report['expected_migrations']) == 1
 
 
 def test_missing_policy_and_unknown_collection_require_review():
