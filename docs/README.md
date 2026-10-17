@@ -1,12 +1,15 @@
 # 文件中心 / Documentation hub
 
-**後續工作先讀：[最新專案上下文](CURRENT_CONTEXT.md)。** 舊文件保留供追溯，日常作業不需反覆全量閱讀。Start with the compact current context, then consult only task-relevant references.
+- [2026-10-17 REN 文件同步紀錄 / Documentation sync](DOCUMENT_SYNC_2026-10-17.md)
 
+**後續工作先讀：[最新專案上下文](CURRENT_CONTEXT.md)。** 舊文件保留供追溯，日常作業不需反覆全量閱讀。Start with the compact current context, then consult only task-relevant references.
 本目錄提供跨模組索引與管理規則；原文件保留在既有目錄，以維持引用、來源快照與遷移可追溯性。This hub consolidates navigation while preserving original paths and historical evidence.
 
 | 主題 / Topic | 入口 / Entry |
 |---|---|
 | 10/17 JEFF 交付與 SAM 決定 | [PR #23 合併、D4 consumer 稽核及展示邊界](SAM_JEFF_1017_HANDOFF.md) |
+| D4 匯入閘門 | [10/17 程式修正與遠端驗收缺口](D4_REMOTE_GATE_2026-10-17.md) |
+| D4 匯入閘門 | [10/17 程式修正與遠端驗收缺口](D4_REMOTE_GATE_2026-10-17.md) |
 | SAM 同版整合基線 | [2026-10-16 來源與驗證](SAM_INTEGRATION_BASELINE_2026-10-16.md) |
 | SAM PR #21 本機驗證與最終缺口 | [2026-10-16 Docker／交易與遠端待驗](SAM_PR21_ACCEPTANCE_2026-10-16.md) |
 | 部署方式 | [Firebase Hosting／Cloud Run](../deploy/FIREBASE_CLOUD_RUN_DEPLOYMENT.md)、[Render](../deploy/RENDER_DEPLOYMENT.md) |

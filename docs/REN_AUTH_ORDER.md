@@ -1,8 +1,8 @@
-# 仁千 HEN：會員／購物流程（B） / Auth and order handoff
+# 仁千 REN：會員／購物流程（B） / Auth and order handoff
 
-2026-10-05：組長確認 HEN 選擇 B，負責會員／購物流程，對應既有分支 `feature/auth-order`。此決策取代原前台／RWD 暫定安排；前台／RWD 待重新分配，整合驗證責任仍待確認。
+2026-10-05：組長確認 REN 選擇 B，負責會員／購物流程，對應既有分支 `feature/auth-order`。此決策取代原前台／RWD 暫定安排；前台／RWD 待重新分配，整合驗證責任仍待確認。
 
-HEN owns option B (auth/order). The former provisional frontend assignment is superseded. See [current ownership](TEAM_OWNERSHIP.md).
+REN owns option B (auth/order). The former provisional frontend assignment is superseded. See [current ownership](TEAM_OWNERSHIP.md).
 
 ## 工作範圍 / Scope
 
@@ -38,12 +38,12 @@ git push origin feature/auth-order
 
 ## GitHub 存取狀態 / Access status
 
-2026-10-05：組長已確認 HEN 的 GitHub 帳號為 [@1dcvgieok4gm](https://github.com/1dcvgieok4gm)。GitHub 已有此帳號的 Write 邀請，目前仍待 HEN 接受；不重複發送邀請，也尚未標記為權限已生效。私人 Email 不寫入公開文件。
+2026-10-05：組長已確認 REN 的 GitHub 帳號為 [@1dcvgieok4gm](https://github.com/1dcvgieok4gm)。GitHub 已有此帳號的 Write 邀請，目前仍待 REN 接受；不重複發送邀請，也尚未標記為權限已生效。私人 Email 不寫入公開文件。
 
 本倉庫屬個人帳號，協作者 Write 是倉庫層級，可對倉庫推送；分配 `feature/auth-order` 不會自動限制成「只准修改此分支」。本次不授予管理員權限、不移轉倉庫或改動其他人的權限。正式生效需邀請對象接受，或回讀確認已是協作者。
 
-Collaborator write access is repository-wide; branch ownership is a workflow agreement, not a branch-only ACL. HEN is confirmed as @1dcvgieok4gm. An existing Write invitation is pending acceptance as of 2026-10-05; access is not yet active. [GitHub permissions](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/repository-access-and-collaboration/permission-levels-for-a-personal-account-repository).
+Collaborator write access is repository-wide; branch ownership is a workflow agreement, not a branch-only ACL. REN is confirmed as @1dcvgieok4gm. An existing Write invitation was pending acceptance as of 2026-10-05; later access status is recorded below. [GitHub permissions](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/repository-access-and-collaboration/permission-levels-for-a-personal-account-repository).
 
 ## 2026-10-07 狀態更新
 
-GitHub 即時核對：1dcvgieok4gm 已是具 Write 權限的協作者，無待接受邀請；不再以存取權限作為阻礙。feature/auth-order 沒有超出當前 main 的新提交；需 HEN 更新至最新 main 並交付會員／購物流程驗收。前台/RWD 與最終整合由 SAM 承接。具體清單見 [進度盤點](PROJECT_PROGRESS_2026-10-07.md)。
+GitHub 當日核對：1dcvgieok4gm 已是具 Write 權限的協作者，無待接受邀請；不再以存取權限作為阻礙。當時 feature/auth-order 尚無超出 main 的新提交，後續交付依新日期文件核對。前台/RWD 與最終整合由 SAM 承接。具體清單見 [進度盤點](PROJECT_PROGRESS_2026-10-07.md)。

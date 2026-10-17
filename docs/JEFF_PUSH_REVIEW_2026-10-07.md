@@ -45,12 +45,12 @@ English: Documentation placement and scope are correct; CI passed. Clarify AI pa
 |---|---|---|
 | P1 | 本機成果尚未交付 GitHub | 將 test_data overlay／生成器／測試、TEST_DATA_SPEC、匯入證據、SAM 工作紀錄與超市讀取修改整理為可審查 PR；不要把其他人的未提交工作一起提交。main 目前沒有這些新增工具與規範 |
 | P1 | GitHub 檢查器仍是舊 schema | main/scripts/check_v4_database.py 仍只接受原 v4 validator、四個 migration；Atlas 已是五個 migration 及 optional demographics／batch 欄位。應新增現行契約入口與回歸案例，不能改歷史 migration checksum |
-| P1 | D5 後台寫入資料契約 | 定義商品／SKU 更新、訂單合法狀態轉移、會員停用、授權、CSRF、稽核、衝突及 rollback，與 JEFF/HEN 明確分工 |
+| P1 | D5 後台寫入資料契約 | 定義商品／SKU 更新、訂單合法狀態轉移、會員停用、授權、CSRF、稽核、衝突及 rollback，與 JEFF/REN 明確分工 |
 | P1 | AI 問答白名單 | 提供分商品補貨、期間比較與必要的資料品質標示；JEFF 實作模型呼叫與畫面。不要發送會員資料 |
 | P2 | D4 行為事件 | 生成有批次、參照、時間與標準答案的測試事件；不把模擬事件當真實轉換成效 |
 | P2 | 可登入的測試帳號 | 現有 600 人全部停用，需另配置少量 customer/admin 私有憑證與撤權案例 |
 | P2 | 與 JEFF 完成畫面对帳 | 對日期、demo、退款／取消、零筆、366 天／5,000 筆界線測試；資料匯入不是 UI／API 接線完成 |
 | 待處理 | 其他協作事項 | PR #9 查詢手冊已合併；PR #10 Network Access 文件尚未合併；PR #5 計分候選仍是草稿，由 JEFF 決定，非 SAM 正式交付 |
-| 待確認 | HEN／最終驗收／備份 | 此聊天尚未收到 HEN 晚上確認結果；整合驗收負責人與 Drive 私有／加密決策仍待確認，不因這次審查自動完成 |
+| 待確認 | REN／最終驗收／備份 | 此聊天尚未收到 REN 晚上確認結果；整合驗收負責人與 Drive 私有／加密決策仍待確認，不因這次審查自動完成 |
 
 建議順序：SAM 先交付現行 schema 與資料文件並補 D5／AI 契約，JEFF 更新設計文件並開始／提交功能實作，再以同批資料對帳。此文件是本機審查結果，沒有自動向 JEFF 發送評論或更改其 PR。
