@@ -1,5 +1,7 @@
 # 最新專案上下文 / Current project context
 
+**2026-10-18 02:48（Asia/Taipei）最新入口**：[專案未完成工作清單](../專題進度/專案未完成工作清單_2026-10-18.md)。N01 的 Git blob 來源封裝修正已在 [PR #59](https://github.com/SamWang61/LLM_PJ/pull/59) 通過 CI、解決 P2 並合併至 main `77a19d6`；下一件為 N02 交付範圍與跨組具名交接。進度依清單的 56／88 核對點計算，未完成約 36%。未因本次程式修正重新部署或重跑遠端交易。
+
 更新：**2026-10-18 02:10（Asia/Taipei）**。正式／私有同映像的[私有遠端真交易驗收](SAM_REMOTE_TRANSACTION_2026-10-18.md)通過：兩裝置獨立登入、會員後台拒絕、Atlas 示範訂單／明細與庫存減 1、相同 checkout ID 重送冪等、改 revision 409、單裝置登出後另一裝置仍可用。九範圍測試資料清理讀回 0，獨立 Atlas marker 查核 0、臨時 IAM 角色撤銷讀回 0。正式 Cloud Run `vibecart-web-00015-nlk` 仍 100%；此次未寫正式業務庫，也未重跑新映像遠端故障注入／最後庫存併發。真模型、D5、實機及具名簽收仍按[22 項檢查點](SAM_PROGRESS_CHECKPOINT_2026-10-18.md)追蹤。
 
 更新：**2026-10-18 02:05（Asia/Taipei）**。[SAM 新推送驗證](SAM_PUSH_VALIDATION_2026-10-18.md)已核對 main `85cb40a`：44 個交付檔的工作樹／提交／GitHub 位元組一致，47 個部署來源與新映像相同，本機完整回歸 **186 passed／0 skipped**、main CI success。獨立讀回正式 `00015-nlk` 100% 與私有 `00005-5j5` 同 digest；CSS 的 Windows CRLF／LF 差異已校正並新增 LF 規則。當時下一項為私有角色／雙裝置／交易驗收，後續結果以上方 02:10 更新為準。
