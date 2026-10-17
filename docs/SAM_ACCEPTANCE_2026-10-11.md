@@ -1,6 +1,6 @@
 # SAM 驗收矩陣與稽核草案｜2026-10-11
 
-主責 SAM；功能實作 JEFF（AI／後台）、HEN（會員／購物）。本文件交付測試規格，不把未接線案例標成已通過。
+主責 SAM；功能實作 JEFF（AI／後台）、REN（會員／購物）。本文件交付測試規格，不把未接線案例標成已通過。
 
 ## R07 稽核 schema 草案
 
@@ -24,13 +24,13 @@
 | A04 | 同管理員第6／7次，多 worker／不同帳號 | 預設6次／分鐘，超限429；明訂 process-local 限制與跨 worker 行為，不宣稱全部署統一限流 | JEFF | 規格今日完成，接線待驗 |
 | A05 | 問題含敏感文字、相同問題重送、300秒到期 | 檢查問題全文／回答是否留 cache；定案保留與刪除行為；logs 僅 intent/長度/耗時/token | JEFF | 快取政策未定案 |
 | A06 | 瀏覽器竄改數值／超額欄位 | 伺服器重新聚合，預覽與該次傳送物件一致；來源批次、demo、截止時間有明確意義 | JEFF | 欄位差異待修正 |
-| B01 | 未登入/customer/停用admin/失效session/CSRF錯誤 | 401/403（或明訂頁面redirect契約），不得更新與成功稽核；驗API與頁面一致 | JEFF/HEN | 功能／接口待交付 |
+| B01 | 未登入/customer/停用admin/失效session/CSRF錯誤 | 401/403（或明訂頁面redirect契約），不得更新與成功稽核；驗API與頁面一致 | JEFF/REN | 功能／接口待交付 |
 | B02 | 相同request ID同內容、不同內容、雙人版本衝突 | 同內容原結果，異內容409；expected_updated_at不符409，不覆蓋 | JEFF | 批量／ledger契約待定 |
 | B03 | 100／101批量、逐筆與原子模式、稽核故障 | 上限明確；原子失敗全部回滾，逐筆模式回傳各結果；稽核故障不可留下成功更新 | JEFF，SAM稽核 | R07尚未部署 |
-| B04 | stock<reserved、負值／非整数、價格第三位小數 | 422；available=stock-reserved；stock_status依現行規則；不重算歷史demo庫存 | JEFF/HEN | 接線待驗 |
-| B05 | pending跳completed、未paid轉confirmed、未shipped轉shipping、未delivered轉completed | 非法跳躍拒絕；合法條件才能轉移，終態不可任意回退 | JEFF/HEN | 接線待驗 |
-| B06 | paid訂單取消、退款請求、金額／快照／is_demo改寫 | v1不退款，不假裝付款商已退款；取消庫存責任明訂；保護欄位拒寫 | JEFF/HEN | 功能／付款契約待交付 |
-| B07 | 停用customer後重播舊cookie/token，停用admin/自己 | 舊會員不能繼續操作；admin後台停用403；管理員直接資料庫維護另有稽核流程 | HEN/JEFF | 撤權接口待驗 |
+| B04 | stock<reserved、負值／非整数、價格第三位小數 | 422；available=stock-reserved；stock_status依現行規則；不重算歷史demo庫存 | JEFF/REN | 接線待驗 |
+| B05 | pending跳completed、未paid轉confirmed、未shipped轉shipping、未delivered轉completed | 非法跳躍拒絕；合法條件才能轉移，終態不可任意回退 | JEFF/REN | 接線待驗 |
+| B06 | paid訂單取消、退款請求、金額／快照／is_demo改寫 | v1不退款，不假裝付款商已退款；取消庫存責任明訂；保護欄位拒寫 | JEFF/REN | 功能／付款契約待交付 |
+| B07 | 停用customer後重播舊cookie/token，停用admin/自己 | 舊會員不能繼續操作；admin後台停用403；管理員直接資料庫維護另有稽核流程 | REN/JEFF | 撤權接口待驗 |
 | B08 | 有歷史訂單商品／會員的硬刪除 | v1沒有授權刪除接口，測404或明訂拒絕；後續先定參照、稽核及恢復 | JEFF | 刪除契約待定 |
 | C01 | 台北午夜、跨年、2024閏日，366／367日 | UTC半開區間；每日補零；同口徑相鄰等長比較期；超上限拒絕 | JEFF | 分支離線測試另記，不算畫面對帳 |
 | C02 | 全狀態分母／paid非cancelled分子，demo only/exclude/all | 訂單分子分母及Decimal營收吻合標準答案；排除既有demo後為零 | JEFF | live畫面/API待驗 |

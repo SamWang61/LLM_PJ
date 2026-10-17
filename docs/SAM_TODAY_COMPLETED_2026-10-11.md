@@ -11,13 +11,13 @@
 | Firebase後端／排程 | Cloud Run查詢與asia-east1排程查詢返回403 SERVICE_DISABLED | 啟用與配置；不能据此宣稱所有consumer已停用 |
 | Atlas D4 | 正式preflight passed：預期1,240、existing0、missing1,240、committed=false | 隔離部署驗證通過後正式apply、verify、重送冪等 |
 
-Firebase使用者依提供截圖：SAM cashsam@gmail.com、JEFF jeff841117@gmail.com、HEN chen2000401@gmail.com均標示擁有者；未變更IAM或憑證。Atlas正式新增0、schema更新0、私有帳號新增0，歷史五筆migration與庫存不變。
+Firebase使用者依提供截圖：SAM cashsam@gmail.com、JEFF jeff841117@gmail.com、REN chen2000401@gmail.com均標示擁有者；未變更IAM或憑證。Atlas正式新增0、schema更新0、私有帳號新增0，歷史五筆migration與庫存不變。
 
 來源：[PR #16](https://github.com/SamWang61/LLM_PJ/pull/16)、[push CI](https://github.com/SamWang61/LLM_PJ/actions/runs/38095908477/job/114341631684)、[PR CI](https://github.com/SamWang61/LLM_PJ/actions/runs/38095911210/job/114341640007)、[Firebase檢查](inventory/FIREBASE_PREFLIGHT_2026-10-11.json)、[最新D4檢查](inventory/D4_FORMAL_PREFLIGHT_2026-10-11.json)、[隔離說明](SYNTHETIC_ISOLATION_2026-10-11.md)、[SAM總表](SAM_OUTSTANDING_2026-10-11.md)。
 
-下一步主責SAM：完成Firebase後端與隔離部署驗證，再匯入D4；前置JEFF：核對評分／歸因消費者及稽核語義；前置HEN：登入撤權與購物／事件觸發接口。稽核草案未定案，不當作第六筆migration。
+下一步主責SAM：完成Firebase後端與隔離部署驗證，再匯入D4；前置JEFF：核對評分／歸因消費者及稽核語義；前置REN：登入撤權與購物／事件觸發接口。稽核草案未定案，不當作第六筆migration。
 
-通知依使用者授權寄給SAM／JEFF／HEN，附最新兩份文件及GitHub連結；寄送結果另外以Gmail SENT驗證，不預先寫為寄送成功。
+通知依使用者授權寄給SAM／JEFF／REN，附最新兩份文件及GitHub連結；寄送結果另外以Gmail SENT驗證，不預先寫為寄送成功。
 
 ## 較早輪次完成證據（歷史記錄）
 
@@ -64,7 +64,7 @@ GitHub：[PR #16](https://github.com/SamWang61/LLM_PJ/pull/16)，[分支](https:
 ## 尚不能執行的項目
 
 - R03-b入庫：JEFF須先交所有consumer隔離及部署證據。
-- R04帳號／撤權：HEN接口待交付，不啟用既有600人。
+- R04帳號／撤權：REN接口待交付，不啟用既有600人。
 - R07部署：稽核草案未定案，不能自動把提案列成第六筆成功migration。
 - R13部署與R16簽收：平台／功能／真模型與整合验收待完成。
 - R15備份：BACKUP中的私有／加密決策與ACL／雲端核對仍未解決，未啟動複製。

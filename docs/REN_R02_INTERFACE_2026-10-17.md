@@ -1,6 +1,6 @@
 # REN R02：會員、購物與事件接口交接
 
-日期：2026-10-17（Asia/Taipei）。核對來源為 PR #21 的 `1d60914d95eca924c8a1c5f4edfecf22ef443283`。本頁記錄該版程式目前的接口與剩餘決策；舊版 `HEN_R02_CONTRACT_2026-10-14.md` 的單一登入草稿已被多裝置實作取代。PR #21 仍是草稿，尚未合併 `main`。
+日期：2026-10-17（Asia/Taipei）。核對來源為 PR #21 的 `1d60914d95eca924c8a1c5f4edfecf22ef443283`。本頁記錄該版程式目前的接口與剩餘決策；舊版 `REN_R02_CONTRACT_2026-10-14.md` 的單一登入草稿已被多裝置實作取代。PR #21 仍是草稿，尚未合併 `main`。
 
 **SAM 10/17 接手更新**：REN [PR #24](https://github.com/SamWang61/LLM_PJ/pull/24) 僅新增本交接文件，提交 `6e005456da39a3938fb633c2d58368974958d461`；GitHub 顯示已合併到 PR #21 審查分支，未合併 main。本頁後述 172 passed／3 skipped 是交接當時的 T5 紀錄；PR #21 程式修正後先得到 175 passed／3 skipped，後在一次性、無憑證 localhost replica set 重跑同版完整網站測試，**178 passed／0 skipped**，含 3 項真交易測試。詳細命令與界線見 [PR #21 同版驗證紀錄](SAM_PR21_ACCEPTANCE_2026-10-16.md)。D4 現況與 Atlas 唯讀讀回見 [D4 遠端閘門](D4_REMOTE_GATE_2026-10-17.md)。
 
@@ -21,7 +21,7 @@
 
 ## 2. 已有證據與界線
 
-- PR #18 `5053993` 已推送；其 R02/R08、四事件與多裝置實作已包含在 PR #21。PR #18 的舊 HEN 名稱與原 base 是歷史資訊，不代表另一份待重做程式。
+- PR #18 `5053993` 已推送；其 R02/R08、四事件與多裝置實作已包含在 PR #21。PR #18 的舊 REN 名稱與原 base 是歷史資訊，不代表另一份待重做程式。
 - 10/15 REN 版本在獨立、無憑證 localhost MongoDB replica set：網站測試 166 passed、0 skipped，含真 rollback、最後庫存並發、checkout 重送與撤權回滾；見 `docs/SAM_CI_TRANSACTION_ACCEPTANCE_2026-10-15.md`。
 - PR #21 在 T5 合併前的隔離 replica set 為 171 passed、0 skipped；T5 合併後未帶該測試服務的本機網站回歸為 172 passed、3 skipped。不能把不同提交的結果合併寫成同版真交易通過。
 - Cloud Run 的 PR #21 零流量預覽是唯讀模式，登入、購物及後台寫入被擋；舊正式 revision 的會員 QA 不能當作 PR #21 同版遠端交易驗收。D4 指定批次尚不可 apply，D1～D3 不重匯。

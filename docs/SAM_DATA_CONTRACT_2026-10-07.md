@@ -1,6 +1,6 @@
 # SAM D5 與 AI 資料契約提案
 
-日期：2026-10-07；狀態：SAM 提案，JEFF／HEN 尚未接受。SAM 定義資料與測試；JEFF 實作管理後台／AI；HEN 實作會員／購物流程。本文不代表已有可用寫入 API。
+日期：2026-10-07；狀態：SAM 提案，JEFF／REN 尚未接受。SAM 定義資料與測試；JEFF 實作管理後台／AI；REN 實作會員／購物流程。本文不代表已有可用寫入 API。
 
 ## D5 寫入協定
 
@@ -11,7 +11,7 @@
 |商品|product_name、description、status、is_ai_recommendable；分類必須存在，status 僅 active/inactive/draft|比對 updated_at；保留 ID、schema_version、評價與歷史快照|
 |SKU|price、stock_quantity、status；TWD Decimal128 兩位，非負金額／整數庫存，合法 product_id|同交易重算 stock_status；庫存帳與補貨原因需 JEFF 確認，不能由歷史合成訂單重算庫存|
 |訂單|pending→confirmed→shipping→completed；pending/confirmed→cancelled；completed 為終態|confirmed 必須 paid，shipping 必須 shipped，completed 必須 delivered；取消退款是獨立付款確認，不能直接把 paid 改為 refunded 假裝退款成功|
-|會員停用|status=inactive、is_active=false；不刪除歷史訂單|撤銷 session／token；最後一位管理員與自己停用策略待 JEFF/HEN 確認|
+|會員停用|status=inactive、is_active=false；不刪除歷史訂單|撤銷 session／token；最後一位管理員與自己停用策略待 JEFF/REN 確認|
 
 不可修改已建訂單的 user_id、價格／分類快照、總額、checkout_id 或 is_demo。退款外部流程採有冪等键的待辦紀錄與回應確認，不能宣稱 MongoDB transaction 可回滾付款商。
 
@@ -34,7 +34,7 @@
 
 D1/D2：商品 336／SKU 336；D3：停用合成會員 600、demo 訂單 3,000、明細 8,969，既有批次不重匯。D4 使用新批次，metadata 記批次，event_id 唯一且能辨識 synthetic；四事件權重 PURCHASE=4、ADD_TO_CART=3、SEARCH=2、PRODUCT_VIEW=1。PURCHASE 參照真實存在的本批有效 demo 訂單／明細，時間不得早於下單；不得觸發正式推薦歸因或營收。未建立或匯入 D4。
 
-私有登入測試需單獨少量 customer/admin、不可啟用既有 600 人；隨機密碼只存私有密碼管理器、hash 入庫，測完停用並撤銷 session。現有角色授權／session 接口由 HEN/JEFF 確認後實作；本次不造出無法驗證撤權的帳號。
+私有登入測試需單獨少量 customer/admin、不可啟用既有 600 人；隨機密碼只存私有密碼管理器、hash 入庫，測完停用並撤銷 session。現有角色授權／session 接口由 REN/JEFF 確認後實作；本次不造出無法驗證撤權的帳號。
 
 待 API 接線後驗收：越權／CSRF、重送及不同 payload、雙人版本衝突、稽核失敗交易回滾、非法狀態跳躍、取消退款、停用後舊 session、100/101 批量、366/367 日、5000/5001 訂單、零資料／零基期、跨年／閏日、demo 排除為零、下架低價 SKU 不影響最低可售價。離線測試與 Atlas 結構檢查不等於此表已通過。
 

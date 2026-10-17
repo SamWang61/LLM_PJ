@@ -36,3 +36,5 @@
 
 - [客戶／訂單測試資料規範](TEST_DATA_SPEC.md) / Synthetic test-data specification.
 - [SAM 完成工作與預計項目](../專題進度/至今SAM完成的工作與預計項目_2026-10-05.md) / SAM delivery and next work.
+
+- [REN 命名修正 log / Naming correction log](log/REN_NAMING_2026-10-18.md)
