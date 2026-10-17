@@ -1,5 +1,5 @@
 {
-  "checked_at_utc": "2026-10-17T21:14:06.813Z",
+  "checked_at_utc": "2026-10-17T21:57:02.666Z",
   "scope": "Read-only GET requests only; no IAM, deployment or database mutation",
   "services": [
     {
@@ -23,11 +23,11 @@
           "runtime_identity": "vibecart-web@vibecart-llmai.iam.gserviceaccount.com"
         },
         {
-          "revision": "vibecart-web-00017-5xb",
+          "revision": "vibecart-web-00018-s59",
           "traffic_percent": 100,
-          "tag": "footer-spacing-1319911",
-          "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:8bf5ee37923b61faad488fcf4406de2d647f0ea2a8e5eccc86a54689e13995a5",
-          "source_sha": "13199110305691910f2e235d6dca4d9d605672d2",
+          "tag": "final-ff65ea",
+          "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:ba7d34787ffda32cb944022494c0dd5da64600df64ea05c49a79c41473404f5f",
+          "source_sha": "ff65eaef0f6db932f844893cf2f8dc42eac5b5f7",
           "condition": "CONDITION_SUCCEEDED",
           "configured_database": "vibecart_ai",
           "database_mapping_basis": "Committed cloud_runtime.py factory and current nonsecret acceptance flags; not a database data audit",
@@ -53,11 +53,11 @@
       "condition": "CONDITION_SUCCEEDED",
       "revisions": [
         {
-          "revision": "vibecart-acceptance-pr21-00006-cb6",
+          "revision": "vibecart-acceptance-pr21-00007-wcd",
           "traffic_percent": 100,
           "tag": null,
-          "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:8bf5ee37923b61faad488fcf4406de2d647f0ea2a8e5eccc86a54689e13995a5",
-          "source_sha": "13199110305691910f2e235d6dca4d9d605672d2",
+          "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:ba7d34787ffda32cb944022494c0dd5da64600df64ea05c49a79c41473404f5f",
+          "source_sha": "ff65eaef0f6db932f844893cf2f8dc42eac5b5f7",
           "condition": "CONDITION_SUCCEEDED",
           "configured_database": "vibecart_acceptance_pr21",
           "database_mapping_basis": "Committed cloud_runtime.py factory and current nonsecret acceptance flags; not a database data audit",
