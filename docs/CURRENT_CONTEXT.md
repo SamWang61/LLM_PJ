@@ -7,9 +7,9 @@
 **現行入口：[V5本輪工作清單](../專題進度/專案未完成工作清單_2026-10-18.md)、[09:00 REN逐項接回](../專題進度/REN_0900逐項交接清單_2026-10-18.md)、[版本／部署證據](SAM_V5_DELIVERY_EVIDENCE_2026-10-18.md)、[S01～S12同版素材](../簡報文件/screenshots/S01-S12_同版取證_2026-10-18.md)。**
 
 - 依使用者與V5第12頁決定：真模型／受控自由提問、D5後台維護／180天審計與冪等收據／批量request_id、金流／物流及既定6+4擴充屬下一階段，不計本輪未完成分子與分母。本輪14關卡：2完成、12待結案；不沿用61/88或30.7%跨階段歷史數字。
-- 程式來源 `ff65eaef0f6db932f844893cf2f8dc42eac5b5f7`，#71已合併 `fffa8aae87dff9af706dfcb3caf8ac31a8aa477c`，CI success；正式 `vibecart-web-00018-s59`、私有 `vibecart-acceptance-pr21-00007-wcd` 各100%，同pinned digest `ba7d34787ffda32cb944022494c0dd5da64600df64ea05c49a79c41473404f5f`。05:57已讀回Hosting路由、6公開GET200及私有匿名403。文件SHA與程式SHA分別記錄。
+- 現行部署來源為 PR #74 的 `e000d952d22a64b568903641893f4ffdc71accd3`；06:50正式 `vibecart-web-00019-phf`、私有 `vibecart-acceptance-pr21-00010-9zg` 同pinned digest、各100%。PR #74 head `7818a5d`兩個CI check success；**main仍為`b595cf9`，PR尚未合併**。06:50六公開health GET為200、私有匿名403；這些只是路由／invoker證據。
 - #65 P2已修正合併，#67／#69已整合；#72發布簡報目錄44實際文件，main基線 `625f70347e56f9fccb2ab9a27babfceae6dcce76`。V5 PPTX13頁及SAM手動封面／深淺頁尾／封底保持原bytes。
-- 本機201 passed／0 skipped；新映像同版私有角色／交易／七項帳號生命週期與consumer正常／synthetic對照通過；不是公開展示最終帳號或全站簽收。任意DB fault、交易途中撤權仍缺遠端證據；me-central2政策拒絕未核實。
+- PR #74來源本機一次性replica set 208 passed／0 skipped；同映像私有正常交易、兩種受控DB錯誤回滾、PURCHASE中session撤銷／會員停用回滾、期限登入拒絕與consumer normal／synthetic對照有遠端報告。**尚未覆蓋真實Atlas網路中斷／全部資料庫錯誤，REN具名交接、最終展示登入及全站簽收未完成**；me-central2政策拒絕未核實。
 - S01～S12主圖已補入專案；會員／後台透過同映像私有環境取證，九範圍清理0、臨時IAM撤回、獨立三根marker0。390px窄視窗不是手機實機；逐圖待人員具名核對。
 - 原REN暫代上限10/18 11:10；使用者預計09:00提早交回，逐項接收後生效，未簽認不標交回，也不自動延長。REN接會員／購物／事件／S03～S05；JEFF維持AI／後台／consumer；SAM維持Atlas／測試／部署／備份／協調。
 - D4已完成1240首次匯入／驗證／同批冪等；05:58唯讀四事件各310、雙標記齊全。**D1～D4不重匯、不重設庫存**。
