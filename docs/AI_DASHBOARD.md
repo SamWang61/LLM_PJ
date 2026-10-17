@@ -82,6 +82,42 @@ Existing module paths and migration history are preserved. The scoped manifest s
 - 新增共用 `duration` 篩選器（< 1 秒用 ms，否則用秒並取 1 位小數），取代 A、B 頁各自的 macro；手機寬度下頁首不換行，比較表改為橫向捲動。
 - 驗證：新增 11 項離線測試（共 115 項通過），涵蓋未量測狀態、最近 10 次中位數、Local／Cloud 分開計算、只有設定單價才估算、紀錄不含問題文字、從 A 頁實際呼叫到比較頁、時間格式、權限。**真實延遲與 token 待 T5 實測後才會出現**。
 
+### 2026-10-12 真實模型實測（JEFF，T5／R09）
+
+**環境**：Windows 10、CPU；Python 3.13.3；`requirements-ai.txt`（torch 2.14.1+cpu、sentence-transformers 5.7.0）；資料讀自 Atlas `vibecart_ai`，**只做唯讀查詢**。實測腳本只放在本機，未提交；它直接呼叫 `services/local_ai.py`、`services/ai_payload.py` 與 `insight_answer`，和網站走同一段程式。比較頁的量測只保存在網站程序記憶體中，腳本是另一個程序，所以這些數字不會出現在 `/admin/ai/compare`。
+
+**BGE（`BAAI/bge-small-zh-v1.5`，512 維）**
+
+| 項目 | 實測 |
+|---|---|
+| 可售候選商品 | 324 |
+| 模型載入（已下載後） | 5.0 秒 |
+| 324 筆商品全部向量化（冷啟動、「更新商品向量」） | 7.6 秒 |
+| 相似查詢（向量已快取 324/324） | 22～31 ms，8 次中位數 26.5 ms |
+
+- **相關性**：從 8 個不同大類各取 1 個商品作基準，人工檢視 Top 5 共 40 筆。40 筆全部與基準同大類，37 筆同小類。跨小類的 3 筆仍屬合理鄰近：玉米粒罐頭對沙茶醬、純水對蘆筍汁、蠶豆對米豆。例如漱口水的 Top 5 是同品牌漱口水、牙膏、口腔噴劑等口腔清潔用品。
+- **觀察**：同一商品的不同包裝（單入對箱購）分數最高（0.94～0.95）。後台「找相似」這樣是合理的，但之後做前台推薦（T8）時應考慮合併同商品的不同包裝。
+
+**Claude（`claude-sonnet-5`，雲端洞察 4 個 intent，範圍 2026-09-29～10-05 對比 09-22～09-28，含示範訂單）**
+
+| 回合 | 延遲 | 輸入 tokens | 輸出 tokens | 數字核對 |
+|---|---|---|---|---|
+| 第 1 回（原設定） | 8.8～10.6 秒 | 17,891～18,113 | 4 次都是 600，**全部被截斷** | 營收、訂單、變化率、每日、庫存範圍皆與送出資料一致；**1 處日期抄錯**（比較期寫成 09/22–10/28） |
+| 第 2 回（修正後） | 7.5～8.6 秒 | 5,229～10,010 | 476～597，**皆未截斷** | 日期正確；每日最高／最低、促銷 50 筆銷量 0 與庫存 87～100 皆正確；**補貨回覆有 2 處問題**：誤稱 50 筆可售量皆為 3（實際含 40～43），並自行算出「缺口 7 件」 |
+
+- **第 1 回後的修正**：
+  - 雲端洞察的 `max_tokens` 改為 1200、逾時改為 45 秒（總覽摘要維持 600）。
+  - 偵測 `stop_reason=max_tokens` 時，回覆下方標示「內容可能不完整」。
+  - 送出的 JSON 縮排由 2 改為 1。
+  - products 依 intent 限量：主管摘要與營收變化 20 筆、補貨與促銷 50 筆、自由提問 100 筆。
+  - system prompt 要求日期照抄、不用 Markdown 標題；修正 prompt 中誤寫的「運動商品電商」。
+  - 「營收為什麼下滑」改為列出兩期各自最高與最低的日期，不讓模型自己比較差異。
+- **第 2 回後的修正**：
+  - 補貨候選改由程式篩選，只送「可售量 ≤ 安全庫存」的商品。實際資料共 29 筆，可售量都是 3。
+  - system prompt 明文禁止自行加減乘除產生新數字。
+  - 2026-10-17 第 3 回以真實 Claude 驗證（只問補貨 1 次）：範圍自動移到 10/09～10/15，因 Atlas 新增 2 筆 10/14 的示範訂單，共 3,002 筆。延遲 20.6 秒，輸入 6,726、輸出 1,186 tokens，未截斷。回覆中的 29 筆候選、可售量 3、安全庫存 10、本期銷量皆為 0，以及點名的 9 個商品，全部與送出資料一致，**不再以偏概全，也不再自行計算差額**。仍有 1 處小瑕疵：說「其餘 23 項」，是 29−6 自行相減，數字正確但違反「不自行計算」。另外回覆長度超出 prompt 要求的 400 字，接近 1200 tokens 上限。
+- **結論**：模型會正確引用程式算好的數字，但仍可能抄錯日期、以偏概全或自行計算，所以畫面上的「請人工核對」必須保留。請模型做「判斷或篩選」的部分，應盡量改由程式先做好。
+
 Taipei date filters and demo exclusions apply consistently to v4 revenue, daily totals, ranking and summaries. Inventory is current; recommendation events are bounded counts, not attribution metrics.
 
 ## 私有連線與啟動 / Private connection and launch
@@ -114,6 +150,6 @@ The ignored local profile contains the existing v4 connection. It is not a newly
 
 流程驗證註冊登入、購物車增刪改、結帳重送、管理員撤權、真實交易 rollback 與最後庫存併發。清理只使用本次產生的 ID，並比較執行前後集合筆數。報告不含 URI 或密碼，不執行歷史 migration。
 
-完整 6+4 推薦、排程衰減／計分與批次統計仍屬後續工作；本次完成的是 SAM 的後台、連線與既有整合驗收。BGE 真實推論、Claude API 及手機全站 UAT 尚未驗收，不能把規則退回稱為模型成功。未提供模型憑證時不呼叫付費 API。
+完整 6+4 推薦、排程衰減／計分與批次統計仍屬後續工作；本次完成的是 SAM 的後台、連線與既有整合驗收。BGE 真實推論與 Claude API 已於 2026-10-12 實測（見上方 T5 小節）；手機全站 UAT 尚未驗收，不能把規則退回稱為模型成功。未提供模型憑證時不呼叫付費 API。
 
 Live checks exercise real transactions with temporary owned fixtures. Real BGE/Claude providers and full scheduled recommendation processing remain outside the verified delivery. No migration or production deployment is performed.

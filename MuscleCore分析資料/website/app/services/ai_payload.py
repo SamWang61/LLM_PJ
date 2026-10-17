@@ -11,6 +11,8 @@ from .sku_gateway import money
 CONTRACT_VERSION = "ai-whitelist-v1"
 MAX_PERIOD_ORDERS = 5000
 MAX_PRODUCTS = 100
+# T5: products were ~78% of an 18k-token request. Summary-style intents only need the top sellers.
+INTENT_PRODUCT_LIMITS = {"period_compare": 20, "revenue_change": 20, "replenishment": 50, "promotion": 50}
 UNAVAILABLE_FIELDS = ["visitors", "traffic", "conversion_rate", "cost", "gross_margin", "advertising"]
 ORDER_FIELDS = {"_id": 1, "ordered_at": 1, "payment_status": 1, "status": 1, "total_amount": 1, "is_demo": 1}
 # Products sent per intent are ordered for that question, then truncated to MAX_PRODUCTS.
@@ -127,9 +129,15 @@ def product_rows(db, valid_ids, intent):
             for pid, (price, sku) in cheapest.items()]
     sort_name, key = PRODUCT_SORTS.get(intent, DEFAULT_SORT)
     rows.sort(key=key)
-    meta = {"sort": sort_name, "total_candidates": len(rows), "returned": min(len(rows), MAX_PRODUCTS),
-            "truncated": len(rows) > MAX_PRODUCTS, "excluded_without_sellable_sku": len(products) - len(cheapest)}
-    return rows[:MAX_PRODUCTS], meta
+    candidate_filter = None
+    if intent == "replenishment":
+        # The program decides candidacy (T5: the model over-generalised when given mixed stock levels).
+        candidate_filter = "available_quantity<=safety_stock"
+        rows = [r for r in rows if r["available_quantity"] <= r["safety_stock"]]
+    limit = min(MAX_PRODUCTS, INTENT_PRODUCT_LIMITS.get(intent, MAX_PRODUCTS))
+    meta = {"sort": sort_name, "filter": candidate_filter, "limit": limit, "total_candidates": len(rows), "returned": min(len(rows), limit),
+            "truncated": len(rows) > limit, "excluded_without_sellable_sku": len(products) - len(cheapest)}
+    return rows[:limit], meta
 
 
 def build_insight_payload(db, mode, current, comparison, intent):
@@ -148,8 +156,10 @@ def build_insight_payload(db, mode, current, comparison, intent):
         warnings.append(f"含示範訂單：本期 {cur_demo} 筆、比較期 {cmp_demo} 筆，數字不代表真實營運。")
     if products_meta["excluded_without_sellable_sku"]:
         warnings.append(f"{products_meta['excluded_without_sellable_sku']} 個可推薦商品沒有可售 SKU，未列入 products。")
+    if products_meta["filter"]:
+        warnings.append(f"products 只列 {products_meta['filter']} 的補貨候選，共 {products_meta['total_candidates']} 筆。")
     if products_meta["truncated"]:
-        warnings.append(f"products 依 {products_meta['sort']} 排序後只列前 {MAX_PRODUCTS} 筆。")
+        warnings.append(f"products 依 {products_meta['sort']} 排序後只列前 {products_meta['limit']} 筆（共 {products_meta['total_candidates']} 筆候選）。")
 
     def period(filters):
         return {"start": filters["start"], "end": filters["end"],

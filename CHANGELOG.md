@@ -6,6 +6,36 @@
 - 稽核與獨立重送紀錄各保留 180 天；定義單筆、原子及逐筆批量 `request_id` 與重送規則。Audit retention does not substitute for idempotency records.
 - 將 JEFF 設計規格重新對齊現行 `main` 文件入口；此為文件契約更新，不代表 D5 寫入或真模型已完成。
 
+## 2026-10-12 — JEFF 真實模型實測 / Real model validation (T5, R09)
+
+- BGE：324 筆可售商品，模型載入 5.0 秒、全部向量化 7.6 秒，相似查詢中位數 26.5 ms；Top 5 共 40 筆全部同大類、37 筆同小類。Measured on CPU with read-only Atlas data.
+- Claude：共 3 回 9 次真實呼叫。修正回覆截斷（`max_tokens` 1200 並標示截斷）、輸入 token 由約 1.8 萬降到 0.5～1 萬（依 intent 限量商品、縮排 1）、日期照抄；補貨候選改由程式篩選，並禁止模型自行計算。10/17 第 3 回驗證補貨修正有效。See [dashboard handoff](docs/AI_DASHBOARD.md).
+- 新增 4 項離線測試。
+
+## 2026-10-09 — JEFF AI 比較 / AI comparison (T4, R09)
+
+- 新增 `/admin/ai/compare`：Local（BGE）與 Cloud（Claude）的延遲取最近 10 次實際呼叫的中位數，並顯示 Cloud 的平均 token；未量測時顯示「尚未量測」，不填示範數字。Added the measured comparison page.
+- 只有設定 token 單價（`CLAUDE_INPUT_USD_PER_MTOK`／`CLAUDE_OUTPUT_USD_PER_MTOK`）時才估算成本；呼叫紀錄不含問題內容。See [dashboard handoff](docs/AI_DASHBOARD.md).
+- 新增 11 項離線測試（共 115 項）。
+
+## 2026-10-09 — JEFF Local 相似商品 / Local similar products (T3, R09)
+
+- 新增 `/admin/ai/recommendation`：選一個可推薦且可購買的商品，以本機 BGE 計算 Top 5 相似商品，顯示 cosine 分數條、處理時間與快取命中；「更新商品向量」需 POST 並驗證 CSRF。Added the local similarity page.
+- 模型未安裝或未下載時顯示安裝指令，不顯示假結果。See [dashboard handoff](docs/AI_DASHBOARD.md).
+- 新增 12 項離線測試（共 104 項）；真實 BGE 待 T5 實測。
+
+## 2026-10-09 — JEFF 雲端洞察 / Cloud insight (T2, R09)
+
+- 新增 `/admin/ai/insight`：依 AI 白名單 v1 由伺服器重新彙總本期與比較期資料；4 個預設 intent 加上有防護的自由提問（300 字、不可信輸入隔離、個資格式拒送、每分鐘限流）。Added the cloud insight page.
+- 回覆標示模型、耗時、token 與「請人工核對」；預覽就是同一次請求實際送出的 JSON；失敗時退回規則答案。總覽摘要與洞察共用 Claude 呼叫邏輯。See [dashboard handoff](docs/AI_DASHBOARD.md).
+- 新設定 `AI_INSIGHT_RATE_LIMIT`；新增 26 項離線測試（共 92 項）；真實模型尚未實測。
+
+## 2026-10-09 — JEFF 後台共用版型 / Admin shared layout (T1, R05)
+
+- 新增後台專用 `admin/layout.html`、`admin.css`、`admin.js`：側欄導覽、獨立頁首、系統狀態燈、平板分頁列、手機漢堡選單、懸浮提示；不修改前台 `base.html`／`main.css`。Added an admin-only layout.
+- 營運總覽 KPI 改「有效／全部訂單」，零有效單客單為 null；每日營收加 CSS 長條圖；推薦監控改讀 v4 權重政策。See [dashboard handoff](docs/AI_DASHBOARD.md).
+- 新增 11 項離線測試（共 66 項）。Offline tests only; no Atlas writes.
+
 ## 2026-10-09 — JEFF 設計規格 v1.1 與 D5／AI 契約回覆 / Design v1.1 and contract reply
 
 - 依 SAM 審查修正：KPI 分子／分母、可售 SKU 候選與最低價、模型離線範圍、D1～D3 現況。Review fixes.
