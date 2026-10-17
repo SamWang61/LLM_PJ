@@ -1,5 +1,7 @@
 # 最新專案上下文 / Current project context
 
+更新：**2026-10-17 19:05（Asia/Taipei）**。SAM 的[商品／SKU 與公開頁面唯讀對帳](SAM_LIVE_CATALOG_AUDIT_2026-10-17.md)已逐頁核對 336 商品、336 active SKU、14 頁清單、336 頁詳情及四筆搜尋，所測價格／庫存／SKU 與 Atlas 差異 0；報告在 `docs/inventory/`。Cloud Run revision 本次未即時讀回，工作清單 #06 的同版部署與手機／最終畫面簽收仍待補；D4 閘門不變。下方較早快照依各自時間解讀。
+
 更新：**2026-10-17 18:45（Asia/Taipei）**。SAM 已在正式 Atlas `vibecart_ai` 執行 [v4 schema／migration／參照唯讀核對](SAM_SCHEMA_AUDIT_2026-10-17.md)：28 集合、89 索引、六筆 checksum 符合 Git 原始檔、12 項參照孤兒 0；報告已保存於 `docs/inventory/`。此為工作清單 #04 的資料層快照，沒有資料庫寫入或重新匯入。D4 consumer 遠端閘門與全站簽收仍未完成；下方 18:44 與更早狀態按各自時間解讀。
 
 更新：**2026-10-17 18:44（Asia/Taipei）**。GitHub `main`=`9afd5fb372c24346b1f98232792f2740a1e1f73c`，同版 [CI #39016249576](https://github.com/SamWang61/LLM_PJ/actions/runs/39016249576) success。PR #21 已合併且正式服務於 16:04 切至 `vibecart-web-00012-85f` 100% 流量；詳見 [同版部署與隔離 Atlas 驗收](SAM_PR21_LIVE_ACCEPTANCE_2026-10-17.md)。本次公開 Hosting 首頁、live、ready、登入均 200；Cloud Run 管理端本次未重讀。D4 全 consumer 遠端隔離、真模型／自由提問、D5、S01～S12 同版素材、最終 PPTX／離線備援／排練與具名全站簽收仍待完成。[工作清單](../專題進度/專案工作清單_2026-10-17.md) 首段列最新優先順序及 REN 代班交回點；下文為歷史快照。
