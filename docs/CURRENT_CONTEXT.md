@@ -1,6 +1,8 @@
 # 最新專案上下文 / Current project context
 
-更新：2026/10/18 06:00（Asia/Taipei）。
+更新：2026/10/18 06:50（Asia/Taipei）。
+
+**06:50優先驗收更新**：[REN 09:00展示帳號與故障驗收](../專題進度/REN_0900展示帳號與故障驗收_2026-10-18.md)記錄兩個短期角色帳號已啟用、DPAPI私有交付，以及同映像私有測試的兩類受控資料庫錯誤回滾、交易中session撤權／會員停用回滾。該遠端測試在06:36～06:38完成；06:50唯讀回查顯示正式revision `vibecart-web-00019-phf` 與私有 `vibecart-acceptance-pr21-00010-9zg` 均為來源 `e000d95` 的同digest、各100%流量，Hosting仍導向正式服務。健康GET僅是路由證據。**正式服務來源目前不在main，PR #74仍未合併**；兩個PR CI check success。06:47唯讀fault preflight發現私有服務暫時barrier command已移除，沒有冒稱重新執行。N04待REN具名接收、現場登入及展示後清理；N06待具名接受與更廣範圍outage評估。本輪清單仍2/14完成，N07～N10完全排除。部署讀回：[JSON](inventory/REN_DEPLOYMENT_READBACK_2026-10-18.json)。
 
 **現行入口：[V5本輪工作清單](../專題進度/專案未完成工作清單_2026-10-18.md)、[09:00 REN逐項接回](../專題進度/REN_0900逐項交接清單_2026-10-18.md)、[版本／部署證據](SAM_V5_DELIVERY_EVIDENCE_2026-10-18.md)、[S01～S12同版素材](../簡報文件/screenshots/S01-S12_同版取證_2026-10-18.md)。**
 
