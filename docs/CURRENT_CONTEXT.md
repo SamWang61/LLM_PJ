@@ -1,5 +1,7 @@
 # 最新專案上下文 / Current project context
 
+更新：**2026-10-18 01:30（Asia/Taipei）**。[22 項進度檢查點](SAM_PROGRESS_CHECKPOINT_2026-10-18.md)按主責與前置順序列出最新已驗、部分及阻礙。PR #52～#54 已合併，主線 `32587e9` 的 CI success；47 檔部署白名單來源與正式映像相同，本機 Docker build／boot 通過，12 頁離線進度簡報草案已交付。正式同版角色／交易、真模型、D5、手機與具名簽收仍待補；Drive 備份目標仍可由持連結者讀取，尚未上傳含機密來源。下方較早紀錄依各自日期解讀。
+
 更新：**2026-10-18 00:41（Asia/Taipei）**。SAM 完成 [D4 正式庫合成批次匯入與驗收](D4_IMPORT_ACCEPTANCE_2026-10-18.md)：全專案 global 清單已補足盤點，來源 `80513a9` 的同映像 consumer 遠端對照與不可變證據通過；首次 apply 1,240、verify 缺漏 0、同批次重送新增 0。獨立 Atlas 讀回四事件各 310、全部 synthetic／exclude_from_attribution=true、漏標 0；D1～D3 3,000 訂單／8,969 明細與額外 demo 2 保留。#11 此批次完成，不等於真模型、D5、付款或全站最終簽收；以下「D4 0／未 apply」是較早快照。
 
 更新：**2026-10-18 00:23（Asia/Taipei）**。SAM 已修復 [PR #47 私有 D4 探針](REN_D4_PRIVATE_PROBE_2026-10-17.md)的 ID token 授權與等待問題；正式 `vibecart-web-00013-ds5`／私有 `vibecart-acceptance-pr21-00004-9qr` 同為 main `80513a951d0dff67fd47a153a45918522b5ffbb5` 的 pinned 映像。管理監控 13→14→14，1,001 synthetic 不改變前台推薦；探針五集合殘留 0、臨時窄 IAM role 已撤。全區盤點 42 區可讀、1 區政策拒絕；formal D4 preflight／abort dry-run 的 1,240 規劃事件通過，但 D4 batch 仍 0，D1～D3 及額外 2 demo 訂單保留。正式匯入證據發布／覆核與 apply／verify／重送仍待完成；以下為歷史快照。
