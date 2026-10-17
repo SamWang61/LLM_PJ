@@ -1,5 +1,9 @@
 # D4 行為事件匯入閘門與遠端驗收｜2026-10-17
 
+**2026-10-18 00:23（Asia/Taipei）更新：**[PR #47 的同版私有探針](REN_D4_PRIVATE_PROBE_2026-10-17.md)已通過前台推薦／管理監控的正常與 1,001 synthetic 對照，五集合探針殘留 0、臨時 IAM role 已撤。正式與私有同為 main `80513a951d0dff67fd47a153a45918522b5ffbb5` 映像；43 區盤點有 42 區可讀、1 區明確地區政策拒絕，完整範圍見[盤點更新](D4_DEPLOYED_CONSUMER_INVENTORY_2026-10-17.md)。正式 D4 的 1,240 筆規劃事件已通過 preflight 與 abort dry-run，batch 仍 0；D1～D3 與額外 2 demo 訂單保留。
+
+目前下一步是把已發布的不可變證據填入 `consumer_checks`，覆核部署／地區範圍後才進行 apply、verify 與冪等重送。**本次尚未 apply，不能標 D4 已匯入或全站最終簽收。以下為較早歷史快照，舊版 revision 與「缺正常／synthetic 對照」須依本次更新校正。**
+
 同日後續 [PR #21 同版遠端預覽](SAM_PR21_REMOTE_PREVIEW_2026-10-17.md)已建立零流量唯讀修訂 `vibecart-web-00009-xfq`，再次唯讀讀回 D4 0、原 D1～D3 訂單 3,000、額外示範訂單 2。Cloud Run 全區服務清單只有一項；Job 43 區中 42 區無項目、1 區 403，Functions／Scheduler API 未啟用，資產總清單仍不完整。新修訂拒絕登入、後台、購物與寫入，因此**沒有**對前台／後台 consumer 執行 synthetic 與正常對照。D4 閘門不變。
 
 本頁記錄 PR #21 的程式缺口、已修範圍及正式匯入前的遠端證據。**目前不得執行 D4 apply**。D1～D3 的 600 位停用合成會員、3,000 筆示範訂單與 8,969 筆明細保留，不重匯；額外兩筆示範訂單也保留。

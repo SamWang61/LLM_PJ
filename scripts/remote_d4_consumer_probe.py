@@ -94,7 +94,42 @@ def verify_scope(config):
             and not service.path and not service.query,
             "Private Cloud Run scope mismatch")
     require(config["revision"].startswith(SERVICE_PREFIX), "Revision scope mismatch")
-    require(config["image"], "Image identity missing")
+    require(re.search(r"@sha256:[a-f0-9]{64}$", config["image"]), "Pinned image identity missing")
+
+
+def verify_database_roles(client):
+    info = client.admin.command("connectionStatus").get("authInfo", {})
+    roles = info.get("authenticatedUserRoles", [])
+    require(len(roles) == 1 and roles[0] == {"role": "readWrite", "db": DATABASE},
+            "Mongo acceptance role scope mismatch")
+    users = info.get("authenticatedUsers", [])
+    require(len(users) == 1 and users[0].get("user") == MONGO_USER,
+            "Mongo authenticated user mismatch")
+
+
+def cleanup_probe(db, marker, user_ids, sku_ids, product_ids):
+    scopes = (
+        ("events", db.behavior_events, {"metadata.probe_id": marker}),
+        ("sessions", db.auth_sessions, {"user_id": {"$in": user_ids}}),
+        ("users", db.users, {"_id": {"$in": user_ids}, "acceptance_run": marker}),
+        ("skus", db.product_skus, {"_id": {"$in": sku_ids}, "acceptance_run": marker}),
+        ("products", db.products, {"_id": {"$in": product_ids}, "acceptance_run": marker}),
+    )
+    cleanup = {}
+    for name, collection, query in scopes:
+        try:
+            cleanup[name] = collection.delete_many(query).deleted_count
+        except Exception:
+            cleanup[name] = "delete_failed"
+    for name, collection, query in scopes:
+        try:
+            cleanup[name + "_remaining"] = collection.count_documents(query)
+        except Exception:
+            cleanup[name + "_remaining"] = "readback_failed"
+    cleanup["verified"] = all(
+        isinstance(cleanup[name], int) and cleanup[name + "_remaining"] == 0
+        for name, _, _ in scopes)
+    return cleanup
 
 
 def run(config):
@@ -102,6 +137,7 @@ def run(config):
     db_client = MongoClient(config["mongo_uri"], serverSelectionTimeoutMS=15000)
     db = db_client[DATABASE]
     db.command("ping")
+    verify_database_roles(db_client)
     marker = "ren-d4-" + secrets.token_hex(8)
     base = config["service_url"].rstrip("/")
     now = datetime.now(timezone.utc)
@@ -174,34 +210,14 @@ def run(config):
                       after_normal_admin_count=normal_count,
                       after_synthetic_admin_count=synthetic_count,
                       normal_visible=True, synthetic_excluded=True,
-                      synthetic_inserted=len(synthetic),
+                      normal_inserted=1, synthetic_inserted=len(synthetic),
                       product_ids=[str(pid) for pid in product_ids])
     except Exception as error:
         failed = error
         report.update(status="failed", error_type=type(error).__name__,
                       error=str(error) if isinstance(error, RuntimeError) else "Probe execution failed")
     finally:
-        scopes = (
-            ("events", db.behavior_events, {"metadata.probe_id": marker}),
-            ("sessions", db.auth_sessions, {"user_id": {"$in": user_ids}}),
-            ("users", db.users, {"_id": {"$in": user_ids}, "acceptance_run": marker}),
-            ("skus", db.product_skus, {"_id": {"$in": sku_ids}, "acceptance_run": marker}),
-            ("products", db.products, {"_id": {"$in": product_ids}, "acceptance_run": marker}),
-        )
-        cleanup = {}
-        for name, collection, query in scopes:
-            try:
-                cleanup[name] = collection.delete_many(query).deleted_count
-            except Exception:
-                cleanup[name] = "delete_failed"
-        for name, collection, query in scopes:
-            try:
-                cleanup[name + "_remaining"] = collection.count_documents(query)
-            except Exception:
-                cleanup[name + "_remaining"] = "readback_failed"
-        cleanup["verified"] = all(
-            isinstance(cleanup[name], int) and cleanup[name + "_remaining"] == 0
-            for name, _, _ in scopes)
+        cleanup = cleanup_probe(db, marker, user_ids, sku_ids, product_ids)
         report["cleanup"] = cleanup
         if not cleanup["verified"]:
             report["status"] = "cleanup_failed"

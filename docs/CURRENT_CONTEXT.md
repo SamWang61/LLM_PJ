@@ -1,5 +1,7 @@
 # 最新專案上下文 / Current project context
 
+更新：**2026-10-18 00:23（Asia/Taipei）**。SAM 已修復 [PR #47 私有 D4 探針](REN_D4_PRIVATE_PROBE_2026-10-17.md)的 ID token 授權與等待問題；正式 `vibecart-web-00013-ds5`／私有 `vibecart-acceptance-pr21-00004-9qr` 同為 main `80513a951d0dff67fd47a153a45918522b5ffbb5` 的 pinned 映像。管理監控 13→14→14，1,001 synthetic 不改變前台推薦；探針五集合殘留 0、臨時窄 IAM role 已撤。全區盤點 42 區可讀、1 區政策拒絕；formal D4 preflight／abort dry-run 的 1,240 規劃事件通過，但 D4 batch 仍 0，D1～D3 及額外 2 demo 訂單保留。正式匯入證據發布／覆核與 apply／verify／重送仍待完成；以下為歷史快照。
+
 更新：**2026-10-17 19:20（Asia/Taipei）**。[S02 商品／搜尋畫面證據](../簡報文件/screenshots/S02-catalog-evidence.md)已補 390×844 瀏覽器窄視窗的搜尋、分類、336 件清單及單欄商品卡片截圖，原始檔雜湊已記錄；已恢復預設 viewport。手機實機、其他斷點與具名簽收仍待驗；Cloud Run revision／digest 本次仍未即時讀回。以下 19:14 為桌面證據快照。
 
 更新：**2026-10-17 19:14（Asia/Taipei）**。SAM 已留存 [S02 商品清單／搜尋實際畫面](../簡報文件/screenshots/S02-catalog-evidence.md)：公開桌面瀏覽器顯示 336 件／14 頁、商品卡片，按鈕搜尋刷樂牙刷得 1 件／NT$79／庫存 95，鍵盤 Enter 的無結果提示正確。三張原始 PNG 的 SHA-256 已逐張記錄。Cloud Run revision／digest 本次無法即時讀回，手機畫面與最終簽收仍待補；D4 閘門不變。以下為較早快照。

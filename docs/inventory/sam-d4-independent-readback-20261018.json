@@ -1,0 +1,81 @@
+{
+  "checked_at": "2026-10-17T16:22:25.483Z",
+  "provider": "MongoDB Atlas connector",
+  "acceptance_database": "vibecart_acceptance_pr21",
+  "probe_id": "ren-d4-41a7e6927cb6cc96",
+  "cleanup_checks": [
+    {
+      "collection": "behavior_events",
+      "query": {
+        "metadata.probe_id": "ren-d4-41a7e6927cb6cc96"
+      },
+      "count": 0
+    },
+    {
+      "collection": "users",
+      "query": {
+        "acceptance_run": "ren-d4-41a7e6927cb6cc96"
+      },
+      "count": 0
+    },
+    {
+      "collection": "product_skus",
+      "query": {
+        "acceptance_run": "ren-d4-41a7e6927cb6cc96"
+      },
+      "count": 0
+    },
+    {
+      "collection": "products",
+      "query": {
+        "acceptance_run": "ren-d4-41a7e6927cb6cc96"
+      },
+      "count": 0
+    }
+  ],
+  "auth_sessions_aggregate": {
+    "pipeline": [
+      {
+        "$count": "remaining"
+      }
+    ],
+    "response": {
+      "documents": [],
+      "count": 0,
+      "appliedLimits": []
+    }
+  },
+  "formal_database": "vibecart_ai",
+  "formal_checks": [
+    {
+      "collection": "behavior_events",
+      "query": {
+        "metadata.synthetic_batch_id": "sam-behavior-20261011-v1"
+      },
+      "result": {
+        "count": 0
+      }
+    },
+    {
+      "collection": "orders",
+      "query": {
+        "synthetic_batch_id": "sam-synthetic-20261005-v1"
+      },
+      "result": {
+        "count": 3000
+      }
+    },
+    {
+      "collection": "orders",
+      "query": {
+        "synthetic_batch_id": {
+          "$ne": "sam-synthetic-20261005-v1"
+        },
+        "is_demo": true
+      },
+      "result": {
+        "count": 2
+      }
+    }
+  ]
+}

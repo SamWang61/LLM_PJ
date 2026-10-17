@@ -1,5 +1,9 @@
 # D4 實際部署 consumer 盤點｜2026-10-17
 
+**2026-10-18 00:15～00:23（Asia/Taipei）更新：**[同版私有對照與清理](REN_D4_PRIVATE_PROBE_2026-10-17.md)已完成，正式 `vibecart-web-00013-ds5` 與私有 `vibecart-acceptance-pr21-00004-9qr` 同為 source `80513a951d0dff67fd47a153a45918522b5ffbb5`、digest `sha256:57c8fd038d7c231a4e417471a66b9c7996c296efd2d7b1ff70302c46a45f0fab`。兩個已部署網站 consumer 已在同映像隔離資料庫驗證：正常事件可見、1,001 synthetic 不影響前台推薦或管理監控；測後全部探針資料與臨時 IAM binding 清除。
+
+本次逐區查 43 個 Cloud Run location：42 區完成 services／jobs 查詢；`me-central2` 回明確 `LOCATION_POLICY_VIOLATED`，保留為專案不可存取區，沒有冒記讀取成功。可讀區只有上述兩服務，Job 為 0；Pub/Sub topic／subscription 為 0；Scheduler、Functions、Workflows、Tasks API 未啟用。[原始管理端清單](inventory/sam-d4-consumer-probe-20261018.json)包含逐區名稱、受限區及兩個服務的來源。正式 D4 preflight／abort dry-run 已通過，仍未 apply；應在填寫正式匯入證據時保留受限區範圍並重查。本頁以下 10/17 內容是歷史快照。
+
 查核時間：2026-10-17 11:38～11:40（Asia/Taipei）。SAM 代理 REN／JEFF 的 D4 前置盤點，以具雲端讀取權限的 Firebase CLI OAuth 登入，直接讀取 Google Cloud Run、Service Usage、Pub/Sub 與 Firebase Hosting 管理 API。查詢只讀；沒有讀出 Secret Manager 值、變更部署、建立測試帳號或寫入 Atlas。專案：`vibecart-llmai`（project number `278483818008`）。本頁是當時快照，D4 apply 前必須重查。
 
 ## 管理端讀回
