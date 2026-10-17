@@ -31,3 +31,5 @@ jobs:
         run: |
           python -m pytest scripts/test_prepare_cloud_source.py -q -p no:cacheprovider
           python scripts/prepare_cloud_source.py --output "$RUNNER_TEMP/vibecart-source.tar.gz"
+      - name: 真 MongoDB D5 與會員交易 / Real local MongoDB transactions
+        run: python scripts/run_transaction_acceptance.py --report "$RUNNER_TEMP/d5-local.json" --junit "$RUNNER_TEMP/d5-local.xml"
