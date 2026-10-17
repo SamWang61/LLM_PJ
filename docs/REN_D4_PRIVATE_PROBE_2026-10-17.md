@@ -15,6 +15,8 @@
 
 **00:13:54 更新**：[正式流量重查](inventory/D4_PRODUCTION_CHANGE_2026-10-18.json) 已讀回 `00013-ds5` 承接 100%，映像為上述 `57c8…`；00:10 的零流量狀態已被取代。D4 尚欠新正式映像的同版隔離對照及最終證據整理，不能沿用 `00012` 的 image digest 聲稱新版本已通過。另一個 SAM 對話同時接續 PR #47 的驗收工作，本對話已先保存完成的結果並請求跨對話協調授權，避免重複部署及正式匯入。
 
+**00:15:50 正式庫唯讀 preflight**：[報告](inventory/D4_PREFLIGHT_2026-10-18.json) 以 `80513a9` 的匯入程式執行 `action=preflight`，schema／索引與來源參照核對通過。預期 **1,240**（四種事件各 310），`existing=0`、`missing=1240`、`inserted=0`、`committed=false`、`database_writes=0`；dataset SHA-256 仍為 `da6998425bc80746902b407336489f43bfcc77bc7f092d9ece5e3b02d1d0edea`。D1～D3 訂單／明細讀回 **3,000／8,969**。Mongo URI 只在記憶體取得與傳遞，使用正式應用程式帳號連線；這次沒有執行交易 dry-run 或 apply。
+
 ## 目標與資料範圍
 
 本探針只允許連至 `vibecart-ai-free.odqe25w.mongodb.net/vibecart_acceptance_pr21`，帳號須為只對該庫具 `readWrite` 的 `sam_pr21_acceptance_20261017`；HTTP 目標只允許 `vibecart-acceptance-pr21-*.a.run.app` 私有服務。腳本在程序記憶體接收短期 ID token 與 Mongo URI，不接受正式 `vibecart_ai` URI，也不將憑證寫入檔案、命令列或輸出。
