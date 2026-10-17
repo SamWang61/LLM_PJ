@@ -5,7 +5,7 @@
   <meta name="description" content="{{ 'VibeCart 超級市場教學測試平台' if config.DATA_MODE == 'v4' else 'MuscleCore 智慧運動商品購物平台' }}">
   <title>{% block title %}MuscleCore{% endblock %}</title>
   <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
-  <style>.footer-team{margin-top:.6rem}.footer-team a{text-decoration:underline;text-underline-offset:.2em}.footer-team a:hover,.footer-team a:focus-visible{color:var(--lime)}</style>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/footer-team.css') }}">
 </head>
 <body>
   <a class="skip-link" href="#main-content">跳至主要內容</a>
@@ -24,7 +24,12 @@
   <main id="main-content" tabindex="-1">{% block content %}{% endblock %}</main>
   <footer>
     <div>© 2026 {{ "VibeCart 超級市場 · 教學測試用途" if config.DATA_MODE == "v4" else "MuscleCore · Python × MongoDB 智慧運動商城" }}</div>
-    <div class="footer-team">聯成 LLM-2601 第六組　<a href="mailto:jeff841117@gmail.com">黃健維(JEFF)</a>　<a href="mailto:chen2000401@gmail.com">陳仁千(REN)</a>　<a href="mailto:cashsam@gmail.com">汪文彥(SAM)</a></div>
+    <div class="footer-team">
+      <span>聯成 LLM-2601 第六組</span>
+      <span class="footer-person"><a href="mailto:eff841117@gmail.com">黃健維(JEFF)</a><img class="footer-portrait" src="{{ url_for('static', filename='img/team/Jeff-s.png') }}" alt="" aria-hidden="true" width="249" height="336" loading="lazy" decoding="async"></span>
+      <span class="footer-person"><a href="mailto:chen2000401@gmail.com">陳仁千(REN)</a><img class="footer-portrait" src="{{ url_for('static', filename='img/team/Ren-s.png') }}" alt="" aria-hidden="true" width="148" height="314" loading="lazy" decoding="async"></span>
+      <span class="footer-person"><a href="mailto:cashsam@gmail.com">汪文彥(SAM)</a><img class="footer-portrait" src="{{ url_for('static', filename='img/team/sam-s.png') }}" alt="" aria-hidden="true" width="141" height="353" loading="lazy" decoding="async"></span>
+    </div>
   </footer>
 </body>
 </html>
