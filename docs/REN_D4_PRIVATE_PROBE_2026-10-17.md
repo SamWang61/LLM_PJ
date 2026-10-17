@@ -17,6 +17,20 @@
 
 這支探針只檢查已部署的前台推薦與管理員監控；評分排程、正式歸因及其他 consumer 仍須用[部署清單](D4_DEPLOYED_CONSUMER_INVENTORY_2026-10-17.md)逐項重查。兩端通過也不直接授權 D4 apply；需先完成正式流量同版核對、全 consumer 隔離證據、正式 preflight、交易 dry-run，之後才可 apply、讀回與重送冪等驗證。
 
+## 19:09 雲端唯讀重查（Asia/Taipei）
+
+使用 Firebase CLI 現有登入讀取 Google Cloud Run、Service Usage、Pub/Sub、Run IAM 與 Firebase Hosting 管理 API，沒有修改雲端設定或 Atlas 資料：
+
+| 項目 | 讀回 |
+|---|---|
+| 正式服務 | `vibecart-web-00012-85f` 承接 100% 流量，來源 label `2fd43557bac0148e02fa427163a9657a13c7ae23`。 |
+| 私有驗收服務 | `vibecart-acceptance-pr21-00003-8hr` 承接其服務 100% 流量；其 invoker 只有 `vibecart-pr21-acceptance@vibecart-llmai.iam.gserviceaccount.com`。 |
+| 映像 | 兩個 revision 都是 `sha256:d933a5d8bf3f9264beac3bc9738e2bb84d11cf92e1b8ce097b0cd3000be40b91`。 |
+| 部署清單 | 全專案 Cloud Run 服務只有上述兩個；`asia-east1` Job 0，Pub/Sub topic／subscription 0；Cloud Scheduler、Cloud Functions、Workflows、Cloud Tasks API 未啟用。 |
+| Hosting | live release `1791982222797000`，`**` rewrite 指向 `asia-east1/vibecart-web`。 |
+
+此時可確認正式與隔離服務同映像，且部署清單沒有新增計分／歸因 worker；仍欠私有 HTTP 的正常／synthetic 對照結果。授權問題處理並完成對照前，D4 閘門保持關閉。
+
 ## 本次靜態檢查
 
 `remote_d4_consumer_probe.py` 通過 `py_compile`，`run_remote_d4_consumer_probe.cjs` 通過 `node --check`；以錯誤的非驗收 URI 執行時在連線前退出，回報 `RuntimeError`，沒有資料庫操作。這些不是遠端 consumer 通過證據。
