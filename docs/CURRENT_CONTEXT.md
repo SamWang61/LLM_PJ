@@ -1,5 +1,7 @@
 # 最新專案上下文 / Current project context
 
+更新：**2026-10-17 15:10（Asia/Taipei）**。Atlas 現已出現驗收使用者 `sam_pr21_acceptance_20261017`，Secret Manager 的 `vibecart-pr21-acceptance-mongo-uri` 也有啟用的版本 1；URI 的主機、帳號與資料庫路徑已在不輸出密碼的條件下核對。但 Atlas 使用者目前是 **`atlasAdmin@admin`、All Resources**，並非只限 `vibecart_acceptance_pr21` 的 `readWrite`。因此私有服務仍保持唯讀，沒有向 Atlas 寫入或進行遠端交易；已請使用者於 Atlas 管理頁修正權限。正式服務仍為舊修訂 100% 流量。以下 13:39「帳號／版本不存在」為當時歷史快照，不再代表現況。
+
 更新：**2026-10-17 13:39（Asia/Taipei）**。[PR #21](https://github.com/SamWang61/LLM_PJ/pull/21) 已依使用者要求合併至 `main`，merge SHA `2fd43557bac0148e02fa427163a9657a13c7ae23`，[合併後 CI](https://github.com/SamWang61/LLM_PJ/actions/runs/39006863627) success。同版映像已建立 Cloud Run 正式服務的**零流量唯讀**修訂 `vibecart-web-00011-dx2`；舊 `00007-m9k` 仍為 100% 流量。Atlas 獨立驗收帳號仍未建立，驗收 Mongo URI secret 仍無版本；連接器建立帳號動作因缺少操作確認而未執行。遠端交易、Atlas 持久化與正式流量切換**尚未完成**；D4 閘門未解除。詳見[最新驗收紀錄](SAM_REMOTE_TRANSACTION_ACCEPTANCE_2026-10-17.md)。以下舊段落均按各自日期作歷史快照。
 
 更新：2026-10-17（Asia/Taipei）。SAM 代理 REN 的[獨立遠端交易驗收紀錄](SAM_REMOTE_TRANSACTION_ACCEPTANCE_2026-10-17.md)已讀回私有 Cloud Run 服務的同版映像、Ready、專用 IAM、匿名 403 與正式流量不變；初始服務仍是假 URI、唯讀，ready 503 為預期。Atlas 專用帳號需連接器額外確認，尚未建立，沒有遠端交易或 Atlas 寫入。PR #21 仍為草稿，D4 不得 apply。
