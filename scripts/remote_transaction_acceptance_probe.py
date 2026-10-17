@@ -11,6 +11,7 @@ from pymongo import MongoClient
 from werkzeug.security import generate_password_hash
 
 from remote_d4_consumer_probe import login, page, require, verify_database_roles, verify_scope
+from remote_member_transaction_checks import run as run_deep_checks
 
 
 def run(config):
@@ -21,6 +22,7 @@ def run(config):
     verify_database_roles(client)
     marker = "ren-txn-" + secrets.token_hex(8)
     user_id, product_id, sku_id = ObjectId(), ObjectId(), ObjectId()
+    user_ids, sku_ids = [user_id], [sku_id]
     email = marker + "@example.invalid"
     password = secrets.token_urlsafe(24)
     now = datetime.now(timezone.utc)
@@ -99,21 +101,24 @@ def run(config):
         report.update(status="passed", two_device_sessions=True, customer_admin_denied=True,
                       add_to_cart=True, checkout_persisted=True, retry_same_order=True,
                       conflict_409=True, stock_after_checkout=1, per_device_logout=True)
+        run_deep_checks(db, config, marker, user_id, product_id, sku_id, email, password,
+                        user_ids, sku_ids, report)
     except Exception as error:
-        report.update(error_type=type(error).__name__,
+        report.update(status="failed", error_type=type(error).__name__,
                       error=str(error) if isinstance(error, RuntimeError) else "Probe execution failed")
     finally:
-        order_ids = [row["_id"] for row in db.orders.find({"user_id": user_id}, {"_id": 1})]
-        cart_ids = [row["_id"] for row in db.carts.find({"user_id": user_id}, {"_id": 1})]
+        users_query = {"user_id": {"$in": user_ids}}
+        order_ids = [row["_id"] for row in db.orders.find(users_query, {"_id": 1})]
+        cart_ids = [row["_id"] for row in db.carts.find(users_query, {"_id": 1})]
         scopes = (
             ("order_items", db.order_items, {"order_id": {"$in": order_ids}}),
-            ("orders", db.orders, {"user_id": user_id}),
+            ("orders", db.orders, users_query),
             ("cart_events", db.cart_events, {"cart_id": {"$in": cart_ids}}),
-            ("carts", db.carts, {"user_id": user_id}),
-            ("behavior_events", db.behavior_events, {"user_id": user_id}),
-            ("auth_sessions", db.auth_sessions, {"user_id": user_id}),
-            ("users", db.users, {"_id": user_id, "acceptance_run": marker}),
-            ("product_skus", db.product_skus, {"_id": sku_id, "acceptance_run": marker}),
+            ("carts", db.carts, users_query),
+            ("behavior_events", db.behavior_events, users_query),
+            ("auth_sessions", db.auth_sessions, users_query),
+            ("users", db.users, {"_id": {"$in":user_ids}, "acceptance_run": marker}),
+            ("product_skus", db.product_skus, {"_id": {"$in":sku_ids}, "acceptance_run": marker}),
             ("products", db.products, {"_id": product_id, "acceptance_run": marker}),
         )
         cleanup = {}
