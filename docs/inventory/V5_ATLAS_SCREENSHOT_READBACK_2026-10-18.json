@@ -1,0 +1,62 @@
+{
+  "method": "Connected MongoDB connector; fresh atlas_connect; read-only aggregate",
+  "database": "vibecart_ai",
+  "production": {
+    "documents": [
+      {
+        "available_quantity": 95,
+        "price": {
+          "$numberDecimal": "79.00"
+        },
+        "sku_code": "CF-SKU-1210303000104",
+        "variant_attributes": {
+          "規格": "1PC支 x 1 x 4PC支"
+        },
+        "kind": "S03_sku"
+      },
+      {
+        "_id": "PRODUCT_VIEW",
+        "count": 310,
+        "synthetic": 310,
+        "excluded": 310
+      },
+      {
+        "_id": "ADD_TO_CART",
+        "count": 310,
+        "synthetic": 310,
+        "excluded": 310
+      },
+      {
+        "_id": "PURCHASE",
+        "count": 310,
+        "synthetic": 310,
+        "excluded": 310
+      },
+      {
+        "_id": "SEARCH",
+        "count": 310,
+        "synthetic": 310,
+        "excluded": 310
+      }
+    ],
+    "count": 5,
+    "appliedLimits": []
+  },
+  "acceptance": {
+    "database": "vibecart_acceptance_pr21",
+    "marker": "ren-txn-screens-73310f3e74da",
+    "checked_collections": [
+      "users",
+      "products",
+      "product_skus"
+    ],
+    "result": {
+      "documents": [],
+      "count": 0,
+      "appliedLimits": []
+    }
+  },
+  "boundary": "Three root marker readback only; full nine-scope cleanup is in screenshot probe report.",
+  "recorded_at_utc": "2026-10-17T22:03:49.424144+00:00",
+  "query_time_basis": "Observed in this run after 05:57 cloud readback; connector does not return server query timestamp"
+}
