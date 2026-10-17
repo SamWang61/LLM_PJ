@@ -8,6 +8,8 @@
 
 本次於一次性、無憑證的本機 Docker MongoDB replica set 重跑網站完整測試：**180 passed、0 skipped**，容器已停止。這是本機交易行為與回歸測試，不是遠端交易驗收。
 
+合併 REN 交接 `main` 後的 PR #21 程式提交 `2251c88a250c1001942960230f691c2acea10803` 已重新封裝與建置：47/47 白名單檔案與 Git blob 完全相同，tar SHA-256 `c7851f2db0ed764c5f2230316d16d1890e9331c48924f4956a50db2f6efaafa1`，本機 Docker image build 通過。以假 MongoDB URI 啟動唯讀容器，`/health/live` 200、`/health/ready` 503（無資料庫的預期結果）、`/auth/login` 403；容器已停止。此映像尚未推送或部署到 Cloud Run。
+
 此防護只避免服務誤選正式資料庫，**不是完整隔離的證明**。Atlas 唯讀讀回的 3 個資料庫使用者，權限分別是正式 `vibecart_ai` 的 readWrite/dbAdmin、正式庫的 readWrite，以及 admin 的 atlasAdmin；目前沒有已核實的獨立驗收 DB 專用帳號。私有服務的 IAM、網路入口、獨立 session secret、資料保留與清理權限也尚未讀回。不可直接把現有公開 `vibecart-web` 切成可寫入模式。
 
 ## 建立私有驗收服務前必備
