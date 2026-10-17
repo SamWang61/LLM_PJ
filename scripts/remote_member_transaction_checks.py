@@ -28,6 +28,21 @@ def scope(db, marker, user_ids, sku_ids, product_id):
                 'Deep probe fixture ownership mismatch')
 
 
+def persisted_counts(db, user_ids, sku_ids):
+    """Count dependent rows by their real keys, including orphan order items."""
+    cart_ids = [row['_id'] for row in db.carts.find(
+        {'user_id': {'$in': user_ids}}, {'_id': 1})]
+    queries = {
+        'orders': {'user_id': {'$in': user_ids}},
+        # Current checkout writes user_id too. SKU ownership additionally
+        # catches an anomalous item missing user_id or its parent order.
+        'order_items': {'sku_id': {'$in': sku_ids}},
+        'behavior_events': {'user_id': {'$in': user_ids}},
+        'cart_events': {'cart_id': {'$in': cart_ids}},
+    }
+    return {name: db[name].count_documents(query) for name, query in queries.items()}
+
+
 def run(db, config, marker, user_id, product_id, sku_id, email, password, user_ids, sku_ids, report):
     verify_scope(config)
     scope(db, marker, user_ids, sku_ids, product_id)
@@ -131,8 +146,7 @@ def run(db, config, marker, user_id, product_id, sku_id, email, password, user_i
     scope(db, marker, user_ids, sku_ids, product_id)
     db.product_skus.update_one({'_id': blocked_id, 'acceptance_run': marker},
         {'$set': {'stock_quantity': 0, 'available_quantity': 0}})
-    query = {'user_id': {'$in': customers}}
-    before = {name: db[name].count_documents(query) for name in ('orders','order_items','behavior_events')}
+    before = persisted_counts(db, customers, sku_ids)
     response = loser_session.post(base+'/checkout', json={'cart_id': str(cart['_id']),
         'expected_revision': cart['revision'], 'checkout_id': marker+'-rollback-checkout'},timeout=45)
     require(response.status_code in (400,409), 'Unavailable second SKU was not rejected')
@@ -140,9 +154,12 @@ def run(db, config, marker, user_id, product_id, sku_id, email, password, user_i
             'First SKU mutation was not rolled back')
     require(db.carts.find_one({'_id':cart['_id']})['revision'] == cart['revision'],
             'Failed checkout changed cart revision')
-    after = {name: db[name].count_documents(query) for name in before}
+    after = persisted_counts(db, customers, sku_ids)
     require(before == after and db.orders.count_documents({'checkout_id':marker+'-rollback-checkout'}) == 0,
             'Failed checkout left partial data')
     report['stock_failure_rollback'] = {'second_sku_unavailable_http':response.status_code,
         'first_sku_stock_preserved':True, 'cart_revision_preserved':True,
-        'order_item_event_counts_unchanged':True, 'arbitrary_fault_injection_tested':False}
+        'order_item_event_counts_unchanged':True, 'cart_event_counts_unchanged':True,
+        'persisted_before':before, 'persisted_after':after,
+        'order_items_scope':'fixture sku_id including orphan items',
+        'arbitrary_fault_injection_tested':False}
