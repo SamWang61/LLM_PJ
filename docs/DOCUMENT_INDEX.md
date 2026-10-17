@@ -1,9 +1,13 @@
 # 全部文件索引 / Document catalog
 
+[10/18逐項工作與今日證據](WORK_EXECUTION_2026-10-18.md)；[下一階段D5本機演練](SAM_D5_LOCAL_REHEARSAL_2026-10-18.md)；[舊PR差異盤點](OPEN_PR_RESIDUALS_2026-10-18.md)。
+
 中文標題連到原稿；英文欄說明用途。歷史報告依原日期解讀，原始快照保持不變。Chinese titles link to original documents; English summaries explain their scope. Historical evidence remains dated.
 
 | 文件 / Document | English scope |
 |---|---|
+| [2026-10-18 專案未完成工作清單與下一步](../專題進度/專案未完成工作清單_2026-10-18.md) | Primary dependency-ordered work queue, owners, 22-item milestone estimate and next task N01. |
+| [2026-10-18 全部60個PR核對清冊](PR_AUDIT_2026-10-18.md) | Complete PR states, heads/bases, supersession, unresolved reviews and evidence scope; machine-readable snapshot in inventory. |
 | [SAM 10/18 新推送驗證](SAM_PUSH_VALIDATION_2026-10-18.md) | Immutable source/commit/GitHub equality, current-image source map, 186 local passes, Cloud Run readback and CSS line-ending repair; remote transactions remain open. |
 | [D4 合成事件正式庫匯入與驗收](D4_IMPORT_ACCEPTANCE_2026-10-18.md) | Same-image remote consumer isolation, project inventory, 1,240 synthetic events, canonical readback and zero-insert replay; not payment or final project acceptance. |
 | [10/17 JEFF 交付核對與 SAM 決定](SAM_JEFF_1017_HANDOFF.md) | PR #23 merge, consumer audit, demonstration decisions and remaining remote gates. |

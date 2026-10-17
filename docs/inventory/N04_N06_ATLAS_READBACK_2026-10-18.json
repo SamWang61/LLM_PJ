@@ -1,0 +1,16 @@
+{
+  "checked_at": "2026-10-17T19:19:55.143Z",
+  "source": "independent MongoDB Atlas connector aggregate",
+  "database": "vibecart_acceptance_pr21",
+  "probe_id": "ren-txn-93436cc9c31f5e1c",
+  "scopes": [
+    "users.acceptance_run",
+    "products.acceptance_run",
+    "product_skus.acceptance_run",
+    "orders.checkout_id prefix"
+  ],
+  "matching_documents": 0,
+  "runner_nine_scope_readback": "N04_N06_REMOTE_RETRY1_2026-10-18.json",
+  "limitation": "Independent marker check covers four roots; all nine dependent scopes are checked by runner using exact generated IDs.",
+  "writes": false
+}

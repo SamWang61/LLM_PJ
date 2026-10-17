@@ -1,0 +1,22 @@
+{
+  "checked_at": "2026-10-17T19:18:54.684Z",
+  "projectId": "6aa9bd20af3f21039447a5c0",
+  "totalCount": 4,
+  "entries": [
+    {
+      "cidrBlock": "180.177.10.68/32"
+    },
+    {
+      "cidrBlock": "0.0.0.0/0"
+    },
+    {
+      "cidrBlock": "101.10.106.152/32"
+    },
+    {
+      "cidrBlock": "180.177.24.85/32"
+    }
+  ],
+  "source": "MongoDB Atlas connector atlas_inspect_access_list",
+  "active_expiration_exposed": false,
+  "changed": false
+}
