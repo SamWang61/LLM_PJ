@@ -679,7 +679,7 @@
         "| 推薦監控 | 標明最近 1,000 筆事件，次數非轉換率；歸因指標留空、衰減排程標示尚未接線，界線表達合理 |",
         "重現：總覽起迄日期均設為 2026-10-03，示範訂單選「排除示範」，按套用。提交紀錄顯示成功，但 KPI 仍為 486,320、92 / 100；每日表仍列 9/20–10/3，最近訂單仍含示範訂單，頁首仍寫包含示範。已重現兩次。",
         "2. SAM 驗證 v4 欄位契約、已付款／退款／取消口徑、日期邊界、零資料、366 天及 5,000 筆界線、金額精度。",
-        "5. JEFF 的會員／訂單後台操作需與 HEN 的會員／購物流程共用資料契約；分工不因此重新指派。跨模組驗收責任仍依 TEAM_OWNERSHIP.md 待確認。"
+        "5. JEFF 的會員／訂單後台操作需與 REN 的會員／購物流程共用資料契約；分工不因此重新指派。跨模組驗收責任仍依 TEAM_OWNERSHIP.md 待確認。"
       ]
     },
     {
@@ -1705,18 +1705,18 @@
     },
     {
       "ref": "origin/main",
-      "path": "docs/HEN_AUTH_ORDER.md",
+      "path": "docs/REN_AUTH_ORDER.md",
       "lines": 45,
       "headings": [
-        "# 仁千 HEN：會員／購物流程（B） / Auth and order handoff",
+        "# 仁千 REN：會員／購物流程（B） / Auth and order handoff",
         "## 工作範圍 / Scope",
         "## 分支與操作 / Branch workflow",
         "## GitHub 存取狀態 / Access status"
       ],
       "evidence": [
-        "2026-10-05：組長確認 HEN 選擇 B，負責會員／購物流程，對應既有分支 `feature/auth-order`。此決策取代原前台／RWD 暫定安排；前台／RWD 待重新分配，整合驗證責任仍待確認。",
-        "2026-10-05：組長已確認 HEN 的 GitHub 帳號為 [@1dcvgieok4gm](https://github.com/1dcvgieok4gm)。GitHub 已有此帳號的 Write 邀請，目前仍待 HEN 接受；不重複發送邀請，也尚未標記為權限已生效。私人 Email 不寫入公開文件。",
-        "Collaborator write access is repository-wide; branch ownership is a workflow agreement, not a branch-only ACL. HEN is confirmed as @1dcvgieok4gm. An existing Write invitation is pending acceptance as of 2026-10-05; access is not yet active. [GitHub permissions](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/repository-access-and-collaboration/permission-lev"
+        "2026-10-05：組長確認 REN 選擇 B，負責會員／購物流程，對應既有分支 `feature/auth-order`。此決策取代原前台／RWD 暫定安排；前台／RWD 待重新分配，整合驗證責任仍待確認。",
+        "2026-10-05：組長已確認 REN 的 GitHub 帳號為 [@1dcvgieok4gm](https://github.com/1dcvgieok4gm)。GitHub 已有此帳號的 Write 邀請，目前仍待 REN 接受；不重複發送邀請，也尚未標記為權限已生效。私人 Email 不寫入公開文件。",
+        "Collaborator write access is repository-wide; branch ownership is a workflow agreement, not a branch-only ACL. REN is confirmed as @1dcvgieok4gm. An existing Write invitation is pending acceptance as of 2026-10-05; access is not yet active. [GitHub permissions](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/repository-access-and-collaboration/permission-lev"
       ]
     },
     {
@@ -1769,10 +1769,10 @@
       ],
       "evidence": [
         "更新日期：2026-10-05（Asia/Taipei）。以下依使用者最新決策，優先於舊四人分工表及先前的 SAM 後台交接描述。歷史提交的作者與合併事實不改寫。",
-        "| 會員／購物流程（B） | **仁千 HEN** | 2026-10-05 已確認；使用 `feature/auth-order`，見 [分支交接](HEN_AUTH_ORDER.md) |",
+        "| 會員／購物流程（B） | **仁千 REN** | 2026-10-05 已確認；使用 `feature/auth-order`，見 [分支交接](REN_AUTH_ORDER.md) |",
         "| 跨模組整合驗證與最終驗收 | 待確認 | SAM 尚需再確認；資料庫測試通過不等於全站整合驗收完成 |",
         "- PR #2／#3／#4 已合併的程式與文件保留，完成事實見 [合併紀錄](MERGE_RECORD_2026-10-02.md)。",
-        "- 2026-10-05 已由組長確認 HEN 選擇會員／購物流程；GitHub 存取狀態另見分支交接，分工確認不等於邀請已接受。"
+        "- 2026-10-05 已由組長確認 REN 選擇會員／購物流程；GitHub 存取狀態另見分支交接，分工確認不等於邀請已接受。"
       ]
     },
     {
@@ -1795,18 +1795,18 @@
     },
     {
       "ref": "origin/docs/jeff-admin-ui-design",
-      "path": "docs/HEN_AUTH_ORDER.md",
+      "path": "docs/REN_AUTH_ORDER.md",
       "lines": 45,
       "headings": [
-        "# 仁千 HEN：會員／購物流程（B） / Auth and order handoff",
+        "# 仁千 REN：會員／購物流程（B） / Auth and order handoff",
         "## 工作範圍 / Scope",
         "## 分支與操作 / Branch workflow",
         "## GitHub 存取狀態 / Access status"
       ],
       "evidence": [
-        "2026-10-05：組長確認 HEN 選擇 B，負責會員／購物流程，對應既有分支 `feature/auth-order`。此決策取代原前台／RWD 暫定安排；前台／RWD 待重新分配，整合驗證責任仍待確認。",
-        "2026-10-05：組長已確認 HEN 的 GitHub 帳號為 [@1dcvgieok4gm](https://github.com/1dcvgieok4gm)。GitHub 已有此帳號的 Write 邀請，目前仍待 HEN 接受；不重複發送邀請，也尚未標記為權限已生效。私人 Email 不寫入公開文件。",
-        "Collaborator write access is repository-wide; branch ownership is a workflow agreement, not a branch-only ACL. HEN is confirmed as @1dcvgieok4gm. An existing Write invitation is pending acceptance as of 2026-10-05; access is not yet active. [GitHub permissions](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/repository-access-and-collaboration/permission-lev"
+        "2026-10-05：組長確認 REN 選擇 B，負責會員／購物流程，對應既有分支 `feature/auth-order`。此決策取代原前台／RWD 暫定安排；前台／RWD 待重新分配，整合驗證責任仍待確認。",
+        "2026-10-05：組長已確認 REN 的 GitHub 帳號為 [@1dcvgieok4gm](https://github.com/1dcvgieok4gm)。GitHub 已有此帳號的 Write 邀請，目前仍待 REN 接受；不重複發送邀請，也尚未標記為權限已生效。私人 Email 不寫入公開文件。",
+        "Collaborator write access is repository-wide; branch ownership is a workflow agreement, not a branch-only ACL. REN is confirmed as @1dcvgieok4gm. An existing Write invitation is pending acceptance as of 2026-10-05; access is not yet active. [GitHub permissions](https://docs.github.com/en/repositories/managing-your-repositorys-settings-and-features/repository-access-and-collaboration/permission-lev"
       ]
     },
     {
@@ -1921,10 +1921,10 @@
       ],
       "evidence": [
         "更新日期：2026-10-05（Asia/Taipei）。以下依使用者最新決策，優先於舊四人分工表及先前的 SAM 後台交接描述。歷史提交的作者與合併事實不改寫。",
-        "| 會員／購物流程（B） | **仁千 HEN** | 2026-10-05 已確認；使用 `feature/auth-order`，見 [分支交接](HEN_AUTH_ORDER.md) |",
+        "| 會員／購物流程（B） | **仁千 REN** | 2026-10-05 已確認；使用 `feature/auth-order`，見 [分支交接](REN_AUTH_ORDER.md) |",
         "| 跨模組整合驗證與最終驗收 | 待確認 | SAM 尚需再確認；資料庫測試通過不等於全站整合驗收完成 |",
         "- PR #2／#3／#4 已合併的程式與文件保留，完成事實見 [合併紀錄](MERGE_RECORD_2026-10-02.md)。",
-        "- 2026-10-05 已由組長確認 HEN 選擇會員／購物流程；GitHub 存取狀態另見分支交接，分工確認不等於邀請已接受。"
+        "- 2026-10-05 已由組長確認 REN 選擇會員／購物流程；GitHub 存取狀態另見分支交接，分工確認不等於邀請已接受。"
       ]
     }
   ]

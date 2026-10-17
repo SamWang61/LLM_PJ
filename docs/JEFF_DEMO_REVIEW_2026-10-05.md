@@ -61,6 +61,6 @@ English: The UI is a useful partial prototype, not evidence of production integr
 2. SAM 驗證 v4 欄位契約、已付款／退款／取消口徑、日期邊界、零資料、366 天及 5,000 筆界線、金額精度。
 3. 驗證管理員登入、逐次角色檢查、撤權、CSRF、真實登出與資料持久化；目前原型的登出及回商城連結都指向 #overview。
 4. 驗證真實 BGE、雲端 API、快取分範圍、逾時、使用紀錄與成本；不能用狀態預覽替代故障測試。
-5. JEFF 的會員／訂單後台操作需與 HEN 的會員／購物流程共用資料契約；分工不因此重新指派。跨模組驗收責任仍依 TEAM_OWNERSHIP.md 待確認。
+5. JEFF 的會員／訂單後台操作需與 REN 的會員／購物流程共用資料契約；分工不因此重新指派。跨模組驗收責任仍依 TEAM_OWNERSHIP.md 待確認。
 
 English: Fix filtering, inactive-product eligibility, and payload consistency first. Then verify numeric claims, real providers, authorization, persistence, data contracts, and failure behavior. No full integration acceptance is granted by this review.

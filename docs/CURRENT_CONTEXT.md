@@ -4,9 +4,9 @@
 
 更新：2026-10-15（Asia/Taipei）。先看 [SAM 的 CI、文件版本與真交易驗收](SAM_CI_TRANSACTION_ACCEPTANCE_2026-10-15.md)；下方 10/7 摘要保留為歷史，不作現行分支、部署或資料庫狀態。
 
-- 分工：SAM 負責資料庫、測試、前台／RWD、整合與交付；JEFF 負責 AI／後台；HEN 負責登入、撤權、購物車與訂單。跨組項目仍按前置交付逐項簽收。
-- GitHub `main` 在修復起點為 `7d10f7e`，僅有文件同步，File policy 原有 35 項錯誤；本輪修復分支須以遠端 CI 成功再算完成。HEN PR #18 的 `5053993` 與簡報 PR #19 的 `58b1427` 尚未合併。
-- HEN `5053993` 在隔離 localhost MongoDB replica set 完成 166 passed、0 skipped，含三項真交易／並發測試；這是該分支的本機驗收，不能當成 `main` 已整合或正式 Atlas 全流程驗收。
+- 分工：SAM 負責資料庫、測試、前台／RWD、整合與交付；JEFF 負責 AI／後台；REN 負責登入、撤權、購物車與訂單。跨組項目仍按前置交付逐項簽收。
+- GitHub `main` 在修復起點為 `7d10f7e`，僅有文件同步，File policy 原有 35 項錯誤；本輪修復分支須以遠端 CI 成功再算完成。REN PR #18 的 `5053993` 與簡報 PR #19 的 `58b1427` 尚未合併。
+- REN `5053993` 在隔離 localhost MongoDB replica set 完成 166 passed、0 skipped，含三項真交易／並發測試；這是該分支的本機驗收，不能當成 `main` 已整合或正式 Atlas 全流程驗收。
 - 10/15 最近一次唯讀核對：Atlas 28 集合、89 索引、6 筆 succeeded migrations；336 商品、336 SKU。D4 指定批次仍 0 筆。Firebase Hosting 可瀏覽，Cloud Run 最新 Ready revision 為 `vibecart-web-00007-m9k`，checkout 已啟用；真模型、所有 consumer 遠端隔離、D4 正式匯入與全站簽收仍未完成。
 - 10/5、10/12 交付文件保留當時的數字與限制；如需現況，重新核對 GitHub、Cloud Run 與 Atlas，不沿用舊部署 revision 或唯讀設定。
 
@@ -24,7 +24,7 @@
 
 - SAM：資料庫、測試、組長協調及交付文件。
 - JEFF：AI／管理後台；不把其設計或實作列為 SAM 成果。
-- HEN（@1dcvgieok4gm）：已選 B 會員／購物流程，使用 feature/auth-order。晚上確認及邀請接受尚未收到後續結果；**不是仍負責前台／RWD**。
+- REN（@1dcvgieok4gm）：已選 B 會員／購物流程，使用 feature/auth-order。晚上確認及邀請接受尚未收到後續結果；**不是仍負責前台／RWD**。
 - 前台／RWD 待重新分配；最終整合驗收責任待確認。
 
 ## 已核實基線（10/7）
@@ -47,7 +47,7 @@
 
 1. 整理並提交上述本機交付，補最新文件入口。
 2. 更新現行 schema 檢查器；main 仍按舊 validator／四筆 migration，會對現在資料庫報差異。保留歷史 migration checksum。
-3. 與 JEFF／HEN 定義後台寫入契約 D5，以及補貨／促銷／期間比較的 AI 白名單資料。
+3. 與 JEFF／REN 定義後台寫入契約 D5，以及補貨／促銷／期間比較的 AI 白名單資料。
 4. 補 D4 行為事件測試資料、少量私有登入測試帳號。
 5. 以同批標準答案完成畫面/API 對帳及邊界測試。
 

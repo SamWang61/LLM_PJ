@@ -1,6 +1,6 @@
 # SAM 資料庫檢查與測試 / Database testing handoff
 
-依 [現行分工](TEAM_OWNERSHIP.md)，SAM 負責資料庫與測試。本輪新增只讀查核工具及離線回歸測試，重新檢查既有 Atlas v4；不修改 JEFF 的 AI／後台與 HEN 的前台。
+依 [現行分工](TEAM_OWNERSHIP.md)，SAM 負責資料庫與測試。本輪新增只讀查核工具及離線回歸測試，重新檢查既有 Atlas v4；不修改 JEFF 的 AI／後台與 REN 的前台。
 
 ## 交付檔案 / Files
 

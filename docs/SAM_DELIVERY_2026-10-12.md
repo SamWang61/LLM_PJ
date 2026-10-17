@@ -17,7 +17,7 @@
 | 遠端 HTTP R13 | SAM | Cloud Run 與 Hosting **各 9/9**，活性／readiness／首頁／明細／空搜尋／auth／admin／cart／checkout 拒絕及 private,no-store；[Run 最終檢查](https://github.com/SamWang61/LLM_PJ/blob/a0fcad01acc0a5cb5672dbe55bd55236d0d89bd2/docs/inventory/CLOUD_RUN_FINAL_SMOKE_2026-10-12.json)、[Hosting 檢查](https://github.com/SamWang61/LLM_PJ/blob/a0fcad01acc0a5cb5672dbe55bd55236d0d89bd2/docs/inventory/HOSTING_SMOKE_2026-10-12.json) | HTTP checks 與 Chrome 基礎瀏覽各自列證據，不延伸為 UAT 全通過 |
 | Atlas 唯讀 R03／資料檢查 | SAM | 今天重新核對 27 集合、86 索引、12 關聯、五 migration；[資料庫結果](https://github.com/SamWang61/LLM_PJ/blob/a0fcad01acc0a5cb5672dbe55bd55236d0d89bd2/docs/inventory/SAM_DATABASE_CURRENT_2026-10-12.json) passed；[D4 preflight](https://github.com/SamWang61/LLM_PJ/blob/a0fcad01acc0a5cb5672dbe55bd55236d0d89bd2/docs/inventory/D4_PREFLIGHT_2026-10-12.json) expected 1,240／existing 0／missing 1,240／committed=false／inserted=0 | 正式 D4 仍未匯入；schema／帳號／庫存未更新 |
 | 備份準備 R15 | SAM | 全量 hashing／restore compare 工具及 3 案例測試；原來源 **10,533 檔案** scan 與原來源比對通過；清冊存在 repo 外的私有本機報告目錄，未加入 Git／Drive | 原來源比對不是實際復原測試；沒有雲端備份、ACL 切換或私有／加密方案定案 |
-| 進度與 HEN 操作文件 | SAM | 19:00 表與 HEN 提示詞指南一併纳入本輪交付 | 未自動寄信或傳訊息 |
+| 進度與 REN 操作文件 | SAM | 19:00 表與 REN 提示詞指南一併纳入本輪交付 | 未自動寄信或傳訊息 |
 
 ## 部署證據與資源
 
@@ -34,22 +34,22 @@
 | 原編號 | 工作 | 主責 | 必須先完成的前置／提供人 | 本輪後狀態 |
 |---|---|---|---|---|
 | R07／R01 | 稽核 migration、validator／交易部署驗證 | SAM | JEFF 定案 request_id 範圍、逐筆批量 ID、失敗稽核與 TTL 後重送語義 | 草案保留；未部署第六筆 migration |
-| R03-b | 全部 consumer 隔離、D4 apply／讀回／重送 | SAM | JEFF 核對評分／歸因／推薦／排程清單；HEN 交事件觸發接口；SAM 再完成所有 consumer 的遠端驗證 | 已部署包含隔離程式的瀏覽服務，但沒有證明所有 consumer；不得藉此解除匯入門檻 |
-| R04 | 私有 admin/customer 與停用／撤權驗收 | SAM | HEN 交登入／撤權接口；JEFF 交後台 active／role 檢查 | 未新增帳號，不啟用 600 合成會員 |
-| R12-A/B | 自由輸入／快取政策、D5 寫入與取消／刪除驗收 | SAM | JEFF 確認政策並交 D5 功能；HEN 交庫存／付款／撤權；SAM R07 | 規格＋整合離線回歸完成，真實操作待交付 |
-| R12-C／R09 | 真模型、白名單來源／資料截止與畫面/API 對帳 | SAM | JEFF 交契約差異與真模型可驗配置；HEN 會員接口 | 四功能已整合，不代替真模型量測與全流程驗收 |
-| R11 | 完整無障礙、登入購物與推薦 RWD | SAM | HEN R08、JEFF R09／R10 | 匿名瀏覽／圖片故障／鍵盤／手機分頁已驗，完整範圍部分完成 |
-| R13 | 全功能展示與排程／後台／會員遠端驗收 | SAM | JEFF／HEN 功能交付，SAM R04／R12 與 consumer 清單 | 匿名商品展示已部署，完整站仍未簽收 |
+| R03-b | 全部 consumer 隔離、D4 apply／讀回／重送 | SAM | JEFF 核對評分／歸因／推薦／排程清單；REN 交事件觸發接口；SAM 再完成所有 consumer 的遠端驗證 | 已部署包含隔離程式的瀏覽服務，但沒有證明所有 consumer；不得藉此解除匯入門檻 |
+| R04 | 私有 admin/customer 與停用／撤權驗收 | SAM | REN 交登入／撤權接口；JEFF 交後台 active／role 檢查 | 未新增帳號，不啟用 600 合成會員 |
+| R12-A/B | 自由輸入／快取政策、D5 寫入與取消／刪除驗收 | SAM | JEFF 確認政策並交 D5 功能；REN 交庫存／付款／撤權；SAM R07 | 規格＋整合離線回歸完成，真實操作待交付 |
+| R12-C／R09 | 真模型、白名單來源／資料截止與畫面/API 對帳 | SAM | JEFF 交契約差異與真模型可驗配置；REN 會員接口 | 四功能已整合，不代替真模型量測與全流程驗收 |
+| R11 | 完整無障礙、登入購物與推薦 RWD | SAM | REN R08、JEFF R09／R10 | 匿名瀏覽／圖片故障／鍵盤／手機分頁已驗，完整範圍部分完成 |
+| R13 | 全功能展示與排程／後台／會員遠端驗收 | SAM | JEFF／REN 功能交付，SAM R04／R12 與 consumer 清單 | 匿名商品展示已部署，完整站仍未簽收 |
 | R14 | Access List 即時核對與 #10 處理 | SAM | SAM 恢復 Atlas 管理連接器；仍 UNAUTHORIZED／要求重新登入 | DB 連線通過不代替 CIDR Active／到期核對 |
 | R15 | 雲端可恢復備份 | SAM | 私有或加密處理方式由使用者定案；SAM 取得專案／資料夾／子檔 ACL 核對及撤銷能力 | 工具／本機清冊完成；未複製至 Drive |
-| R17／R18 | #11／#16／本輪 PR 審查與 main 合併 | SAM | SAM 核對最終 CI、審查相依分支；JEFF／HEN 補契約／功能差異 | 本輪推送及 PR／CI 另記；原 PR 尚未合併 |
-| R16 | 最終展示、報告與簽收 | SAM | JEFF AI／後台與完整推薦、HEN 會員購物、SAM 整合／備份證據 | 公開商品展示可用；全站簽收未完成 |
+| R17／R18 | #11／#16／本輪 PR 審查與 main 合併 | SAM | SAM 核對最終 CI、審查相依分支；JEFF／REN 補契約／功能差異 | 本輪推送及 PR／CI 另記；原 PR 尚未合併 |
+| R16 | 最終展示、報告與簽收 | SAM | JEFF AI／後台與完整推薦、REN 會員購物、SAM 整合／備份證據 | 公開商品展示可用；全站簽收未完成 |
 
 ## 下輪順序
 
-1. JEFF 先回覆 consumer 清單與 R01 稽核／保留語義；HEN 先交可審查的登入撤權、checkout 與事件接口。
+1. JEFF 先回覆 consumer 清單與 R01 稽核／保留語義；REN 先交可審查的登入撤權、checkout 與事件接口。
 2. SAM 接稽核 migration、少量私有帳號與分段整合；consumer 全部部署驗證後才 D4 apply／verify／重送。
-3. SAM 與 JEFF／HEN 以新 revision 驗真模型、寫入、撤權、交易與完整 RWD，再正式簽收。
+3. SAM 與 JEFF／REN 以新 revision 驗真模型、寫入、撤權、交易與完整 RWD，再正式簽收。
 4. 備份另依 BACKUP 的私有／加密與 ACL 條件處理，不將 Git 排除清單當全量備份。
 
 本輪沒有修改他人分支、force push、重新 seed、寄信或傳訊息。JEFF 原功能成果與 SAM 整合／部署／測試成果分開歸屬。

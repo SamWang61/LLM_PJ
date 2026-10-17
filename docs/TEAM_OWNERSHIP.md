@@ -6,11 +6,11 @@
 |---|---|---|
 | 組長協調、資料庫與測試 | **SAM** | 已確認；目前執行 v4 檢查、資料庫回歸測試、驗證證據與文件 |
 | AI／管理後台 | **JEFF** | 已確認；功能、模型、計分、推薦池與後台需求由 JEFF 負責 |
-| 前台／RWD 介面 | 待重新分配 | HEN 已選擇 B：會員／購物流程，原暫定安排取消 |
-| 會員／購物流程（B） | **仁千 HEN** | 2026-10-05 已確認；使用 `feature/auth-order`，見 [分支交接](HEN_AUTH_ORDER.md) |
+| 前台／RWD 介面 | 待重新分配 | REN 已選擇 B：會員／購物流程，原暫定安排取消 |
+| 會員／購物流程（B） | **仁千 REN** | 2026-10-05 已確認；使用 `feature/auth-order`，見 [分支交接](REN_AUTH_ORDER.md) |
 | 跨模組整合驗證與最終驗收 | 待確認 | SAM 尚需再確認；資料庫測試通過不等於全站整合驗收完成 |
 
-SAM owns database/testing and team coordination. JEFF owns AI/admin. HEN confirmed option B (auth/order) on October 5 and uses feature/auth-order. Frontend/RWD must be reassigned; integration acceptance ownership remains pending.
+SAM owns database/testing and team coordination. JEFF owns AI/admin. REN confirmed option B (auth/order) on October 5 and uses feature/auth-order. Frontend/RWD must be reassigned; integration acceptance ownership remains pending.
 
 ## SAM 現在可執行 / SAM's current work
 
@@ -25,6 +25,6 @@ SAM owns database/testing and team coordination. JEFF owns AI/admin. HEN confirm
 
 - PR #2／#3／#4 已合併的程式與文件保留，完成事實見 [合併紀錄](MERGE_RECORD_2026-10-02.md)。
 - [PR #5](https://github.com/SamWang61/LLM_PJ/pull/5) 是確認分工前產生的行為計分候選實作，已轉為草稿，**未合併且不算 SAM 正式交付**。分支內原有 SAM 分工文字已由本文件取代；是否採用由 JEFF 後續決定。
-- 2026-10-05 已由組長確認 HEN 選擇會員／購物流程；GitHub 存取狀態另見分支交接，分工確認不等於邀請已接受。
+- 2026-10-05 已由組長確認 REN 選擇會員／購物流程；GitHub 存取狀態另見分支交接，分工確認不等於邀請已接受。
 
-Previously merged work remains intact. PR #5 is parked as an unmerged draft; HEN ownership is confirmed by the team lead, while GitHub invitation acceptance is tracked separately.
+Previously merged work remains intact. PR #5 is parked as an unmerged draft; REN ownership is confirmed by the team lead, while GitHub invitation acceptance is tracked separately.

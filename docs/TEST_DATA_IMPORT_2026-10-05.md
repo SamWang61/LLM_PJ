@@ -35,7 +35,7 @@ English: Imported 600 synthetic customers, 3,000 demo orders and 8,969 order ite
 
 CSV 預覽及完整 Extended JSON 位於 `VibeCart_AI/MongoDB/test_data/generated/`，另以目錄的 .gitignore 排除大型輸出；會員 CSV 只含合成識別與人口欄位，沒有登入密碼。
 
-## JEFF／HEN 如何使用 / Handoff
+## JEFF／REN 如何使用 / Handoff
 
 1. JEFF 後台連指定 v4 資料庫，查詢 `synthetic_batch_id` 可限定本批；日期須以台北日界轉 UTC。
 2. 驗證某月 KPI／每日營收，對照 expected_metrics.json；不要一次查跨三年而突破後台 366 天上限。
@@ -44,4 +44,4 @@ CSV 預覽及完整 Extended JSON 位於 `VibeCart_AI/MongoDB/test_data/generate
 5. 本批不生成 behavior_events、評價、向量或 AI 執行資料；這些仍可能顯示空狀態。JEFF D1／D2 有超市商品與照片，D3 本次完成，D4 行為事件及 D5 寫入契約待後續。
 6. 日期篩選、下架商品推薦及 AI 請求預覽等原型問題仍須 JEFF 串接後重測。不得把資料生成成功當作實際模型推論或網站驗收通過。
 
-本機程式與文件已保存；本次任務沒有提交／合併其他工作中的 GitHub 分支，也沒有修改 JEFF 原型或替 HEN 接受邀請。
+本機程式與文件已保存；本次任務沒有提交／合併其他工作中的 GitHub 分支，也沒有修改 JEFF 原型或替 REN 接受邀請。
