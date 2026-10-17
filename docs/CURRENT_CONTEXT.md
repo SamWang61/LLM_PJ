@@ -1,5 +1,7 @@
 # 最新專案上下文 / Current project context
 
+更新：2026-10-17（Asia/Taipei）。HEN 文件名稱及人名改稱 REN 的 PR #22 已合併 main，本機文件已同步；詳見 [文件同步紀錄](DOCUMENT_SYNC_2026-10-17.md)。此輪沒有重新驗證部署或 Atlas 狀態，以下數字仍按原核對日期解讀。
+
 更新：2026-10-16（Asia/Taipei）。[JEFF 管理後台設計規格 v1.2](JEFF_ADMIN_UI_DESIGN.md) 已補定自由提問的獨立啟用／驗收條件、稽核與重送紀錄的 180 天保存及批量 request_id 規則。這是文件契約；D5 寫入、自由提問遠端真模型驗收與 D4 正式匯入仍須按各自門檻完成。下方歷史版本狀態依原日期解讀。
 
 更新：2026-10-15（Asia/Taipei）。先看 [SAM 的 CI、文件版本與真交易驗收](SAM_CI_TRANSACTION_ACCEPTANCE_2026-10-15.md)；下方 10/7 摘要保留為歷史，不作現行分支、部署或資料庫狀態。
