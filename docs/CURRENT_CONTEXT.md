@@ -1,6 +1,6 @@
 # 最新專案上下文 / Current project context
 
-**2026-10-18 04:11 SAM 補強**：[N06 關聯資料讀回](SAM_N06_READBACK_2026-10-18.md)重跑同映像私有驗收，最後庫存 HTTP [400,200]、只成功一次；缺貨回滾前後 order／item／behavior／cart event 數量 2／2／6／6 不變，九範圍清理 0、獨立 Atlas 四根 marker 0／IAM condition 0。現行明細確有 user_id，原查詢不是欄位不存在；此次改 SKU 範圍以補異常殘留，並補 cart event 計數。#69 依賴 #61，#67 保留另一輪帳號撤權證據，均非 main 已合併。N06 任意 DB fault／checkout 中撤權及具名簽收仍缺；下一步先整合證據、按 N11～N18 收尾，不重做已通過案例。未部署、未重匯 D1～D4。
+**2026-10-18 04:11 SAM 補強**：[N06 關聯資料讀回](SAM_N06_READBACK_2026-10-18.md)重跑同映像私有驗收，最後庫存 HTTP [400,200]、只成功一次；缺貨回滾前後 order／item／behavior／cart event 數量 2／2／6／6 不變，九範圍清理 0、獨立 Atlas 四根 marker 0／IAM condition 0。現行明細確有 user_id，原查詢不是欄位不存在；此次改 SKU 範圍以補異常殘留，並補 cart event 計數。其後 #61 與頁尾 #68 已合併 main `73c5664`，#69 已改 target main 並保留新版頁尾；#67／#69 仍待整合。遠端證據僅對應既有映像，頁尾新版未列為已部署／驗收。N06 任意 DB fault／checkout 中撤權及具名簽收仍缺；下一步按 N11～N18 收尾，不重做已通過案例。未部署、未重匯 D1～D4。
 
 **2026/10/18 04:00交付恢復**：PR #61已補推`0aba544`，兩組CI success；19份文件的原目錄／提交／遠端blob一致。[補推證據](inventory/PUSH_RECOVERY_2026-10-18.json)。本次狀態文件再推送，未完成度仍30.7%，未合併main、未部署或apply Atlas。
 

@@ -1,6 +1,8 @@
 # N06 回滾關聯資料讀回補強｜2026-10-18
 
-SAM 在 [PR #61](https://github.com/SamWang61/LLM_PJ/pull/61) 的 `2e30880054b02c00872f11bfffe97873ca8f95d5` 基礎上補強探針，並於 **04:06～04:11（Asia/Taipei）** 重跑同映像私有驗收。補強由 [PR #69](https://github.com/SamWang61/LLM_PJ/pull/69) 審查，base 為 #61 分支，沒有直接合併 main。[無憑證結果與獨立讀回](inventory/sam-n06-readback-20261018.json)保留實際數字。
+SAM 在 [PR #61](https://github.com/SamWang61/LLM_PJ/pull/61) 的 `2e30880054b02c00872f11bfffe97873ca8f95d5` 基礎上補強探針，並於 **04:06～04:11（Asia/Taipei）** 重跑同映像私有驗收。補強由 [PR #69](https://github.com/SamWang61/LLM_PJ/pull/69) 審查。[無憑證結果與獨立讀回](inventory/sam-n06-readback-20261018.json)保留實際數字。
+
+**後續 GitHub 更新**：#61 已合併；#68 頁尾人像亦已進 main `73c5664c54eeabcda25c60c010a238bb0aa30893`。#69 已改以 main 為 base 並整合該版本，頁尾變更保留。下列遠端證據仍只對應既有 `1d2abf2` 映像，沒有把之後新增的頁尾人像稱作已部署／已驗收；新映像依 N11 另驗。#69 本身尚未合併。
 
 ## 查詢契約與更正
 
