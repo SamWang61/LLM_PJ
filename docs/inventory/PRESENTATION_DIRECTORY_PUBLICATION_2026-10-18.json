@@ -1,0 +1,235 @@
+{
+  "captured_at_utc": "2026-10-17T21:40:42.899436+00:00",
+  "source": "C:/LLM/LLM_PJ/簡報文件",
+  "base_main": "fffa8aae87dff9af706dfcb3caf8ac31a8aa477c",
+  "files": [
+    {
+      "path": "簡報文件/ARCHITECTURE.md",
+      "bytes": 1424,
+      "sha256": "9a75b83ad44c1d396cbc10ad9ba63323ed45b773dde98efc9010d69d527db277"
+    },
+    {
+      "path": "簡報文件/DELIVERY_PLAN.md",
+      "bytes": 2613,
+      "sha256": "d828a1083082c57289ce99ebeb8933d234e2f6301d5f6173f20feda09fc7a454"
+    },
+    {
+      "path": "簡報文件/README.md",
+      "bytes": 1875,
+      "sha256": "b556b7eef5f5a2cf8163085faf363f374e56908fb978d0cb54cd51969181b922"
+    },
+    {
+      "path": "簡報文件/screenshots/README.md",
+      "bytes": 3227,
+      "sha256": "90c1f199b36ba1fc7c3d6c1b7a54d02dae27354b8690a73e46ff00efd29e84f3"
+    },
+    {
+      "path": "簡報文件/screenshots/S01-home.png",
+      "bytes": 36808,
+      "sha256": "39b8b45376cebf770811abe6602bf333349e0d2e9383f0cbcb9c25f6b4fa9f18"
+    },
+    {
+      "path": "簡報文件/screenshots/S03-product-evidence.md",
+      "bytes": 1956,
+      "sha256": "b2512a7d3f1ed05ed0d9a8d4052b0e96597955b1c0ea3e7530e92b74a29724ea"
+    },
+    {
+      "path": "簡報文件/screenshots/S03-product-source.jpg",
+      "bytes": 93634,
+      "sha256": "5bfb9222c00e7267b953bd33926b5b32fa2cd0aeae257cee8b8c47b3ee2d29ba"
+    },
+    {
+      "path": "簡報文件/screenshots/S03-product.png",
+      "bytes": 450300,
+      "sha256": "eb894676383db01208dbabc6202e102fa3b79ba4ddb82480b4d65abc9cb6658c"
+    },
+    {
+      "path": "簡報文件/SLIDE_CONTENT.md",
+      "bytes": 3601,
+      "sha256": "ecaf5e9395ec415b0e6a40da8fc11f140e2d8b77b84abe9dcbe6fad152ac3847"
+    },
+    {
+      "path": "簡報文件/SOURCE_REGISTER.md",
+      "bytes": 3556,
+      "sha256": "86fff4f6a60e6d15bb213caa47c09d9fcd088942c60778e935ee5aacc66695db"
+    },
+    {
+      "path": "簡報文件/交付/README.md",
+      "bytes": 1589,
+      "sha256": "ea65fdc2d89d1df23026fc16841dcdc781f5a6a179297e1c41b5f695ef3e6cc5"
+    },
+    {
+      "path": "簡報文件/交付/VibeCart_AI_進度簡報_2026-10-18_v2.pptx",
+      "bytes": 637122,
+      "sha256": "c3108d68c6aca68e48031c57c7e4fadff2998b4643c5fe553b2dd8c5965c3a72"
+    },
+    {
+      "path": "簡報文件/交付/VibeCart_AI_進度簡報_2026-10-18_v3.pptx",
+      "bytes": 637763,
+      "sha256": "3254f8d7ea1014eccf21186d21a7c7a5980c2562653b34144454741aa2120c79"
+    },
+    {
+      "path": "簡報文件/超市AI版_2026-10-18/assets/image-generation-prompt.txt",
+      "bytes": 1127,
+      "sha256": "31ae235409f7a0c9fffbe678a9e246d2de06264d59e67593ccf77ef3f325882c"
+    },
+    {
+      "path": "簡報文件/超市AI版_2026-10-18/assets/S02-desktop-cloud-preview-20261018.png",
+      "bytes": 163342,
+      "sha256": "e7c534b36e4f855f64523ffb6d2da4dc310e70418a93c81c0b5da93b1d35d28d"
+    },
+    {
+      "path": "簡報文件/超市AI版_2026-10-18/assets/S02-mobile-card-source.png",
+      "bytes": 43448,
+      "sha256": "39ca1004151dc2f70357cb97b127009c0899e85d695e44edef3c2d93da0abcf3"
+    },
+    {
+      "path": "簡報文件/超市AI版_2026-10-18/assets/S03-product.png",
+      "bytes": 450300,
+      "sha256": "eb894676383db01208dbabc6202e102fa3b79ba4ddb82480b4d65abc9cb6658c"
+    },
+    {
+      "path": "簡報文件/超市AI版_2026-10-18/assets/S11-login-deploy-20261018.png",
+      "bytes": 31460,
+      "sha256": "8c0cda52cc1a446539a7200d67cb3f1aeb602ee6460808642c2b122ddc6c3721"
+    },
+    {
+      "path": "簡報文件/超市AI版_2026-10-18/assets/supermarket-ai-cover.png",
+      "bytes": 1740199,
+      "sha256": "fc7bfd40f7a40f000187fe746af909b95c1e678e483fc84136a9cb1c811f3c23"
+    },
+    {
+      "path": "簡報文件/超市AI版_2026-10-18/assets/team-photo-original.jpg",
+      "bytes": 127879,
+      "sha256": "c44ca3e15fd7f5859854f1141de227cb60a4af6e0ba360f4baed666de00101f9"
+    },
+    {
+      "path": "簡報文件/超市AI版_2026-10-18/README.md",
+      "bytes": 2113,
+      "sha256": "476509f36b952edc4b49354d109bc83cfb08f9d0c2e24072baf6e02b29569879"
+    },
+    {
+      "path": "簡報文件/超市AI版_2026-10-18/SHA256.json",
+      "bytes": 4116,
+      "sha256": "0a4ac0750b65f4c4b8b813d6d495bdb62dd0b5af65817355ba43b09a7b4a670c"
+    },
+    {
+      "path": "簡報文件/超市AI版_2026-10-18/VibeCart_AI_超市網購與AI系統_2026-10-18_v3.pdf",
+      "bytes": 794645,
+      "sha256": "61ea74a6a4fe6fadde866b9854ed5aa39e8d82d9ba56926879fd60916b4bbaac"
+    },
+    {
+      "path": "簡報文件/超市AI版_2026-10-18/VibeCart_AI_超市網購與AI系統_2026-10-18_v3.pptx",
+      "bytes": 2598250,
+      "sha256": "9985caa029d1aa8475226a54efc3ac6ef91288b451f207719e50ad57daf04a0e"
+    },
+    {
+      "path": "簡報文件/超市AI版_2026-10-18/VibeCart_AI_超市網購與AI系統_2026-10-18_v5.pdf",
+      "bytes": 812156,
+      "sha256": "c5555c2a54d8a4200fd79fb8073d0fa5af691b40b13a4e031ddf9f8f6dc4535d"
+    },
+    {
+      "path": "簡報文件/超市AI版_2026-10-18/VibeCart_AI_超市網購與AI系統_2026-10-18_v5.pptx",
+      "bytes": 2603358,
+      "sha256": "43374f71c5e42fdc1725f38a8ac69ea0e2ccc696f6238ebb06425e58e00d7203"
+    },
+    {
+      "path": "簡報文件/超市AI版_2026-10-18/來源登錄.md",
+      "bytes": 3403,
+      "sha256": "6fab5359f785dd20c9cc368b476f9c2ebc22e754b7402a3b3b5683b6c2b9462a"
+    },
+    {
+      "path": "簡報文件/超市AI版_2026-10-18/內容資料.json",
+      "bytes": 11287,
+      "sha256": "33903177b80a2b2998955eeb31b4fe6df0fdba1b3943636858980ee24fedb7a7"
+    },
+    {
+      "path": "簡報文件/超市AI版_2026-10-18/截圖對照與待補清單.md",
+      "bytes": 3824,
+      "sha256": "c12f746104dd210ed4f570b495eded7f1894bcf646b65c6644fe08ffb5982617"
+    },
+    {
+      "path": "簡報文件/超市AI版_2026-10-18/版面與素材規範.md",
+      "bytes": 2467,
+      "sha256": "93b306f641bf9723e5ee040622c84ee57fd69f56e7556a57df25ebded0b06851"
+    },
+    {
+      "path": "簡報文件/超市AI版_2026-10-18/逐頁內容與講稿.md",
+      "bytes": 11167,
+      "sha256": "0801ddf61fe2db7e26ad76802bb047e71616b139d4411053c007febfa35abb7c"
+    },
+    {
+      "path": "簡報文件/超市AI版_2026-10-18/預覽/slide-01.png",
+      "bytes": 612736,
+      "sha256": "23d2c56ca471b936eec35b5caf59c86521d88c8b50698a864fe56199faa23e64"
+    },
+    {
+      "path": "簡報文件/超市AI版_2026-10-18/預覽/slide-02.png",
+      "bytes": 175937,
+      "sha256": "a418c74c6980a9a699a37476ce51891ee66021aa491749038cff9673b25fa410"
+    },
+    {
+      "path": "簡報文件/超市AI版_2026-10-18/預覽/slide-03.png",
+      "bytes": 75369,
+      "sha256": "281e202cb4c1d46464c03186a0230f37ed826ec93944d7b98eb9a694b21197d3"
+    },
+    {
+      "path": "簡報文件/超市AI版_2026-10-18/預覽/slide-04.png",
+      "bytes": 83386,
+      "sha256": "e9f2a39e0935af448c6f06b34f25a0a0bfe451a232474a274a1fd5f6551e32c5"
+    },
+    {
+      "path": "簡報文件/超市AI版_2026-10-18/預覽/slide-05.png",
+      "bytes": 216950,
+      "sha256": "e0ed63ccce5451254d9bd981ffe5acf6c35c01e76a3dd65070b048b06bfcf7be"
+    },
+    {
+      "path": "簡報文件/超市AI版_2026-10-18/預覽/slide-06.png",
+      "bytes": 112451,
+      "sha256": "67fc0b52908c9750eac7643bf488b92123c67ec85c509f44edae67e6b2ba8162"
+    },
+    {
+      "path": "簡報文件/超市AI版_2026-10-18/預覽/slide-07.png",
+      "bytes": 76321,
+      "sha256": "dafe6df9363c8a33166ea4e34bafc412678c03867eda9371c770e2e7351b868d"
+    },
+    {
+      "path": "簡報文件/超市AI版_2026-10-18/預覽/slide-08.png",
+      "bytes": 74498,
+      "sha256": "e4bb04f1499f3f9fb28d535a60a6f4f648a9b6069f243b40469d639b0ec3d1ad"
+    },
+    {
+      "path": "簡報文件/超市AI版_2026-10-18/預覽/slide-09.png",
+      "bytes": 76698,
+      "sha256": "b5665c76ae86d2265934936f77ede84b12a5166a7de03c951d16b33189c6bdbe"
+    },
+    {
+      "path": "簡報文件/超市AI版_2026-10-18/預覽/slide-10.png",
+      "bytes": 71951,
+      "sha256": "b93b1062376a13823780b0a4b454e4580050d318781509caf13dea5040dcd282"
+    },
+    {
+      "path": "簡報文件/超市AI版_2026-10-18/預覽/slide-11.png",
+      "bytes": 170417,
+      "sha256": "7f59e790c49165ac602afedd2eda1ed264f808dedb244dd63f528f0711717e92"
+    },
+    {
+      "path": "簡報文件/超市AI版_2026-10-18/預覽/slide-12.png",
+      "bytes": 93742,
+      "sha256": "01f6850425d5dea5e646ab96f07563c12a7980d4ae05f5108a468cb7bb472e2d"
+    },
+    {
+      "path": "簡報文件/超市AI版_2026-10-18/預覽/slide-13.png",
+      "bytes": 529017,
+      "sha256": "638553d9c20446f7f5073a8f22018a7af7bd20587a9e8f4aea9379f9e65ed2cc"
+    }
+  ],
+  "count": 44,
+  "excluded": [
+    {
+      "path": "超市AI版_2026-10-18/~$VibeCart_AI_超市網購與AI系統_2026-10-18_v5.pptx",
+      "reason": "Office temporary lock file, not document content"
+    }
+  ],
+  "scope": "Exact full presentation directory publication; no slide edits or acceptance-status upgrade"
+}

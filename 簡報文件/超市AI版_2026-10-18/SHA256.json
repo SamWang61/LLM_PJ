@@ -1,0 +1,122 @@
+[
+  {
+    "path": "內容資料.json",
+    "sha256": "33903177b80a2b2998955eeb31b4fe6df0fdba1b3943636858980ee24fedb7a7"
+  },
+  {
+    "path": "來源登錄.md",
+    "sha256": "6fab5359f785dd20c9cc368b476f9c2ebc22e754b7402a3b3b5683b6c2b9462a"
+  },
+  {
+    "path": "版面與素材規範.md",
+    "sha256": "93b306f641bf9723e5ee040622c84ee57fd69f56e7556a57df25ebded0b06851"
+  },
+  {
+    "path": "逐頁內容與講稿.md",
+    "sha256": "0801ddf61fe2db7e26ad76802bb047e71616b139d4411053c007febfa35abb7c"
+  },
+  {
+    "path": "截圖對照與待補清單.md",
+    "sha256": "c12f746104dd210ed4f570b495eded7f1894bcf646b65c6644fe08ffb5982617"
+  },
+  {
+    "path": "README.md",
+    "sha256": "476509f36b952edc4b49354d109bc83cfb08f9d0c2e24072baf6e02b29569879"
+  },
+  {
+    "path": "VibeCart_AI_超市網購與AI系統_2026-10-18_v3.pdf",
+    "sha256": "61ea74a6a4fe6fadde866b9854ed5aa39e8d82d9ba56926879fd60916b4bbaac"
+  },
+  {
+    "path": "VibeCart_AI_超市網購與AI系統_2026-10-18_v3.pptx",
+    "sha256": "9985caa029d1aa8475226a54efc3ac6ef91288b451f207719e50ad57daf04a0e"
+  },
+  {
+    "path": "VibeCart_AI_超市網購與AI系統_2026-10-18_v5.pdf",
+    "sha256": "c5555c2a54d8a4200fd79fb8073d0fa5af691b40b13a4e031ddf9f8f6dc4535d"
+  },
+  {
+    "path": "VibeCart_AI_超市網購與AI系統_2026-10-18_v5.pptx",
+    "sha256": "43374f71c5e42fdc1725f38a8ac69ea0e2ccc696f6238ebb06425e58e00d7203"
+  },
+  {
+    "path": "assets/image-generation-prompt.txt",
+    "sha256": "31ae235409f7a0c9fffbe678a9e246d2de06264d59e67593ccf77ef3f325882c"
+  },
+  {
+    "path": "assets/S02-desktop-cloud-preview-20261018.png",
+    "sha256": "e7c534b36e4f855f64523ffb6d2da4dc310e70418a93c81c0b5da93b1d35d28d"
+  },
+  {
+    "path": "assets/S02-mobile-card-source.png",
+    "sha256": "39ca1004151dc2f70357cb97b127009c0899e85d695e44edef3c2d93da0abcf3"
+  },
+  {
+    "path": "assets/S03-product.png",
+    "sha256": "eb894676383db01208dbabc6202e102fa3b79ba4ddb82480b4d65abc9cb6658c"
+  },
+  {
+    "path": "assets/S11-login-deploy-20261018.png",
+    "sha256": "8c0cda52cc1a446539a7200d67cb3f1aeb602ee6460808642c2b122ddc6c3721"
+  },
+  {
+    "path": "assets/supermarket-ai-cover.png",
+    "sha256": "fc7bfd40f7a40f000187fe746af909b95c1e678e483fc84136a9cb1c811f3c23"
+  },
+  {
+    "path": "assets/team-photo-original.jpg",
+    "sha256": "c44ca3e15fd7f5859854f1141de227cb60a4af6e0ba360f4baed666de00101f9"
+  },
+  {
+    "path": "預覽/slide-01.png",
+    "sha256": "23d2c56ca471b936eec35b5caf59c86521d88c8b50698a864fe56199faa23e64"
+  },
+  {
+    "path": "預覽/slide-02.png",
+    "sha256": "a418c74c6980a9a699a37476ce51891ee66021aa491749038cff9673b25fa410"
+  },
+  {
+    "path": "預覽/slide-03.png",
+    "sha256": "281e202cb4c1d46464c03186a0230f37ed826ec93944d7b98eb9a694b21197d3"
+  },
+  {
+    "path": "預覽/slide-04.png",
+    "sha256": "e9f2a39e0935af448c6f06b34f25a0a0bfe451a232474a274a1fd5f6551e32c5"
+  },
+  {
+    "path": "預覽/slide-05.png",
+    "sha256": "e0ed63ccce5451254d9bd981ffe5acf6c35c01e76a3dd65070b048b06bfcf7be"
+  },
+  {
+    "path": "預覽/slide-06.png",
+    "sha256": "67fc0b52908c9750eac7643bf488b92123c67ec85c509f44edae67e6b2ba8162"
+  },
+  {
+    "path": "預覽/slide-07.png",
+    "sha256": "dafe6df9363c8a33166ea4e34bafc412678c03867eda9371c770e2e7351b868d"
+  },
+  {
+    "path": "預覽/slide-08.png",
+    "sha256": "e4bb04f1499f3f9fb28d535a60a6f4f648a9b6069f243b40469d639b0ec3d1ad"
+  },
+  {
+    "path": "預覽/slide-09.png",
+    "sha256": "b5665c76ae86d2265934936f77ede84b12a5166a7de03c951d16b33189c6bdbe"
+  },
+  {
+    "path": "預覽/slide-10.png",
+    "sha256": "b93b1062376a13823780b0a4b454e4580050d318781509caf13dea5040dcd282"
+  },
+  {
+    "path": "預覽/slide-11.png",
+    "sha256": "7f59e790c49165ac602afedd2eda1ed264f808dedb244dd63f528f0711717e92"
+  },
+  {
+    "path": "預覽/slide-12.png",
+    "sha256": "01f6850425d5dea5e646ab96f07563c12a7980d4ae05f5108a468cb7bb472e2d"
+  },
+  {
+    "path": "預覽/slide-13.png",
+    "sha256": "638553d9c20446f7f5073a8f22018a7af7bd20587a9e8f4aea9379f9e65ed2cc"
+  }
+]
