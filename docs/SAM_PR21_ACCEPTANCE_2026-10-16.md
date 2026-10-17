@@ -2,7 +2,7 @@
 
 **10/17 最新遠端讀回**：同版無流量唯讀修訂 `vibecart-web-00009-xfq` 已 Ready，匿名唯讀路徑與寫入拒絕通過所測檢查，正式流量仍由舊修訂承接；完整來源、映像、流量、Atlas 計數與缺口見 [10/17 遠端預覽紀錄](SAM_PR21_REMOTE_PREVIEW_2026-10-17.md)。下方 10/16 預覽資料保留歷史，不能代表最新修訂。
 
-**10/17 最新同版交易測試**：在 PR #21 程式 `c678133be5cdaa89acdf9c18cd7fb97f2dd44d60` 的乾淨工作樹，以 Docker `mongo:8` 建立一次性、無憑證且只繫結 `127.0.0.1:27017` 的 replica set `rsSAM20261017`；測試環境設 `HEN_TEST_MONGO_URI=mongodb://127.0.0.1:27017/?replicaSet=rsSAM20261017`，於 `MuscleCore分析資料/website` 執行 `python -m pytest tests -q -p no:cacheprovider`，結果 **178 passed、0 skipped（38.92 秒）**。測試 fixture 只建隨機 `hen_acceptance_*` 資料庫並在結束後刪除；涵蓋 rollback、最後庫存並發、checkout 重送與管理員撤權 rollback。沒有使用 `.env`、正式 Atlas 或線上帳號。容器測後停止並移除。此結果對應該程式版；後續文件提交不改程式，仍須分別核對 CI 與遠端文件位元組。本機真交易測試不構成線上角色、交易或 D4 consumer 最終驗收。
+**10/17 最新同版交易測試**：在 PR #21 程式 `c678133be5cdaa89acdf9c18cd7fb97f2dd44d60` 的乾淨工作樹，以 Docker `mongo:8` 建立一次性、無憑證且只繫結 `127.0.0.1:27017` 的 replica set `rsSAM20261017`；測試環境設 `REN_TEST_MONGO_URI=mongodb://127.0.0.1:27017/?replicaSet=rsSAM20261017`，於 `MuscleCore分析資料/website` 執行 `python -m pytest tests -q -p no:cacheprovider`，結果 **178 passed、0 skipped（38.92 秒）**。測試 fixture 只建隨機 `ren_acceptance_*` 資料庫並在結束後刪除；涵蓋 rollback、最後庫存並發、checkout 重送與管理員撤權 rollback。沒有使用 `.env`、正式 Atlas 或線上帳號。容器測後停止並移除。此結果對應該程式版；後續文件提交不改程式，仍須分別核對 CI 與遠端文件位元組。本機真交易測試不構成線上角色、交易或 D4 consumer 最終驗收。
 
 **10/17 更新**：JEFF T5 PR #23 已以 `6e401ef459b4ca5e002c22ee225cb4c63375ec3a` 合併入本 PR；下方 10/16 的 Docker／Cloud Run 證據屬 T5 前的 `88dca3b` 映像，不能延伸為 T5 同版遠端驗收。新合併提交的 [push CI](https://github.com/SamWang61/LLM_PJ/actions/runs/38991253680) 與 [PR CI](https://github.com/SamWang61/LLM_PJ/actions/runs/38991257679) 通過。完整新範圍、consumer 審查與展示決定見[10/17 交付核對](SAM_JEFF_1017_HANDOFF.md)；PR 仍為草稿、`main` 未合併。
 
@@ -18,7 +18,7 @@
 | 文件政策與附件 | `python scripts/check_repository.py`：281 files、263 UTF-8 texts、0 errors；`git lfs fsck` 通過，四個 PDF 由 LFS 管理。 | 已核對本地 LFS 物件；遠端發布後須再核對可讀性。 |
 | 白名單封裝 | `python scripts/prepare_cloud_source.py` 封裝 47 個檔案；將獨立工作樹的換行與 Git 提交位元組對齊後，tar SHA-256=`1ed8b875194e3eff9b9d4e74e32350193d690f0e8af1cd50d6b837bce4dedf94`。 | tar 雜湊屬本次建置產物，不代表遠端映像 digest。 |
 | Docker build／boot | 使用上述封裝內容執行 `docker build --pull` 成功；本地映像 ID=`sha256:c608f42c439eeb720b922480881d2f6aafd5b50772262bc39ec3ac7039ea8161`。容器以假 URI／假 session key 啟動，`/health/live` 為 200、`{"status":"ok"}`；唯讀模式 `/auth/login` 為 403。 | 假 URI 不連 Atlas；未以此測 `/health/ready`、商品資料或真實登入。容器已停止。 |
-| 網站與交易 | 在無憑證的一次性 localhost MongoDB replica set 執行完整 `pytest tests -q -p no:cacheprovider`：**171 passed、0 skipped**，含 rollback、最後庫存並發、撤權回滾與自由提問啟用閘門。測試使用隨機 `hen_acceptance_*` DB，結束後刪除；容器已停止。 | 僅證明本機隔離環境與此 SHA；不等於 Atlas 或展示站交易驗收。 |
+| 網站與交易 | 在無憑證的一次性 localhost MongoDB replica set 執行完整 `pytest tests -q -p no:cacheprovider`：**171 passed、0 skipped**，含 rollback、最後庫存並發、撤權回滾與自由提問啟用閘門。測試使用隨機 `ren_acceptance_*` DB，結束後刪除；容器已停止。 | 僅證明本機隔離環境與此 SHA；不等於 Atlas 或展示站交易驗收。 |
 
 ## 零流量預覽修訂與遠端讀回（10/16）
 

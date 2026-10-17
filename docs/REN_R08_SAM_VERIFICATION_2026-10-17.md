@@ -11,9 +11,9 @@
 ```powershell
 docker run --rm -d --name ren-r08-rs-20261017 -p 127.0.0.1:27017:27017 mongo:8 --replSet rsREN20261017 --bind_ip_all
 docker exec ren-r08-rs-20261017 mongosh --quiet --eval 'rs.initiate({_id:"rsREN20261017",members:[{_id:0,host:"127.0.0.1:27017"}]})'
-$env:HEN_TEST_MONGO_URI = 'mongodb://127.0.0.1:27017/?replicaSet=rsREN20261017'
+$env:REN_TEST_MONGO_URI = 'mongodb://127.0.0.1:27017/?replicaSet=rsREN20261017'
 python -m pytest tests -q -p no:cacheprovider
-Remove-Item Env:HEN_TEST_MONGO_URI
+Remove-Item Env:REN_TEST_MONGO_URI
 docker stop ren-r08-rs-20261017
 ```
 
@@ -42,4 +42,4 @@ PR #25 以草稿 PR #21 為 base；上述本機測試當時沒有合併 `main`�
 
 - 上節 11:32 的 PR 與正式流量資訊為當時快照；[PR #38 正式部署紀錄](SAM_PR21_LIVE_ACCEPTANCE_2026-10-17.md)已記載 PR #21 合併及 `vibecart-web-00012-85f` 在 16:04 承接正式 100% 流量，且私有同版服務完成隔離交易讀回。此處不把該紀錄延伸成真付款或全站簽收。
 - SAM 暫代 REN 於正式 Hosting 實拍商品頁並唯讀對帳一件 active 商品／SKU：`CF-1210303000104`／`CF-SKU-1210303000104`，畫面與 Atlas 都是 NT$79.00、庫存 95。原始 JPEG、PNG 和取證限制見 [S03 證據](../簡報文件/screenshots/S03-product-evidence.md)；[PR #43](https://github.com/SamWang61/LLM_PJ/pull/43) 已通過文件與離線測試 CI 並合併。這是單件商品的 S03 部分證據，仍待最終 revision 再確認、手機畫面及簽認。
-- 同一正式網站的匿名 `/cart` 正確導至 `/auth/login?next=/cart`，但登入頁標題顯示舊品牌 `MuscleCore`，而既有登入函式成功後固定返回首頁，使原購物車導向失效。本次修正 v4 登入／註冊標題及註冊眉標，保留 legacy 文字；成功登入時僅接受安全的站內 `next` 路徑，阻擋站外返回網址。定向離線測試 `test_hen_auth_order.py`、`test_v4_routes.py` 為 **53 passed**，含購物車返回與站外導向拒絕。這只是本機修正，合併、重新部署及正式登入流程尚須另行讀回；沒有在正式站建立測試帳號或訂單。
+- 同一正式網站的匿名 `/cart` 正確導至 `/auth/login?next=/cart`，但登入頁標題顯示舊品牌 `MuscleCore`，而既有登入函式成功後固定返回首頁，使原購物車導向失效。本次修正 v4 登入／註冊標題及註冊眉標，保留 legacy 文字；成功登入時僅接受安全的站內 `next` 路徑，阻擋站外返回網址。定向離線測試 `test_ren_auth_order.py`、`test_v4_routes.py` 為 **53 passed**，含購物車返回與站外導向拒絕。這只是本機修正，合併、重新部署及正式登入流程尚須另行讀回；沒有在正式站建立測試帳號或訂單。

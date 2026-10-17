@@ -1,4 +1,4 @@
-"""HEN acceptance cases with isolated mongomock; not transaction proof."""
+"""REN acceptance cases with isolated mongomock; not transaction proof."""
 from datetime import datetime, timezone
 import pytest
 from bson import ObjectId, Decimal128
@@ -264,7 +264,7 @@ def test_checkout_reprices_ignores_client_money_and_rejects_changed_payload(shop
 
 def test_all_four_events_are_server_marked_synthetic(shop):
     app, client, db, uid, pid, sid = shop
-    app.config.update(BEHAVIOR_SYNTHETIC_BATCH="hen-offline-20261014", ENABLE_CHECKOUT=True)
+    app.config.update(BEHAVIOR_SYNTHETIC_BATCH="ren-offline-20261014", ENABLE_CHECKOUT=True)
     assert client.get("/?q=test").status_code == 200
     assert client.get(f"/product/{pid}").status_code == 200
     post(client, f"/cart/add/{pid}", sku_id=str(sid), quantity=1, operation_id="a", synthetic=False)
@@ -273,7 +273,7 @@ def test_all_four_events_are_server_marked_synthetic(shop):
     events = list(db.behavior_events.find())
     assert {e["event_type"] for e in events} == {"SEARCH", "PRODUCT_VIEW", "ADD_TO_CART", "PURCHASE"}
     assert all(e["metadata"]["synthetic"] and e["metadata"]["exclude_from_attribution"] for e in events)
-    assert all(e["metadata"]["synthetic_batch_id"] == "hen-offline-20261014" for e in events)
+    assert all(e["metadata"]["synthetic_batch_id"] == "ren-offline-20261014" for e in events)
 
 
 def test_synthetic_exclusion_is_before_sort_limit(shop, monkeypatch):

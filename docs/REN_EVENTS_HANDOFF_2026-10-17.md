@@ -16,4 +16,4 @@
 3. **SAM 遠端同版驗收**：在獲授權、可寫且隔離的環境，以少量私有帳號跑搜尋、商品瀏覽、加購、demo checkout；讀回事件 ID、欄位、重送筆數與 consumer 輸出，保存 URL、時間、SHA、revision／digest 和清理／撤權證據。S03～S05 畫面素材需同版桌面與手機流程，不以舊零流量唯讀預覽作為交易證據。
 4. **D4 閘門**：所有 consumer 的同版遠端隔離讀回完成之前，D4 不 apply；D1～D3 不重匯。現行 PURCHASE 全為 demo，沒有真付款或正式購買歸因驗收。
 
-重跑網站測試時，在 `MuscleCore分析資料/website` 設定 `HEN_TEST_MONGO_URI=mongodb://127.0.0.1:27017/?replicaSet=rsRENevents`，使用空的一次性 localhost replica set，再執行 `python -m pytest tests -q -p no:cacheprovider`。不可指向正式 Atlas 或使用專案私人帳密。完整的容器建立與清理步驟亦見 [R08 代理驗證紀錄](REN_R08_SAM_VERIFICATION_2026-10-17.md)。
+重跑網站測試時，在 `MuscleCore分析資料/website` 設定 `REN_TEST_MONGO_URI=mongodb://127.0.0.1:27017/?replicaSet=rsRENevents`，使用空的一次性 localhost replica set，再執行 `python -m pytest tests -q -p no:cacheprovider`。不可指向正式 Atlas 或使用專案私人帳密。完整的容器建立與清理步驟亦見 [R08 代理驗證紀錄](REN_R08_SAM_VERIFICATION_2026-10-17.md)。
