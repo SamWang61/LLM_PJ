@@ -1,34 +1,13 @@
-# 現行分工與確認項目 / Current team ownership
+# 現行分工與 REN 24 小時代班 / Current team ownership
 
-更新日期：2026-10-07（Asia/Taipei）。以下依使用者最新決策，優先於舊四人分工表及先前的 SAM 後台交接描述。歷史提交的作者與合併事實不改寫。
+更新：**2026/10/17 11:10（Asia/Taipei）**。依使用者最新決定，REN 因軟體設定問題，會員／購物相關工作暫由 SAM 接手 **24 小時，至 2026/10/18 11:10**。逐項範圍、證據、前置及 10/18 20:00 交付期限見 [2026-10-17 專案工作清單](../專題進度/專案工作清單_2026-10-17.md)。
 
-| 範圍 / Area | 負責人 / Owner | 狀態與界線 / Status |
-|---|---|---|
-| 組長協調、資料庫與測試 | **SAM** | 已確認；目前執行 v4 檢查、資料庫回歸測試、驗證證據與文件 |
-| AI／管理後台 | **JEFF** | 已確認；功能、模型、計分、推薦池與後台需求由 JEFF 負責 |
-| 前台／RWD 介面 | **SAM** | 2026-10-07 組長指示：非 REN/JEFF 範圍由 SAM 承接；本次交付超市瀏覽前台，完整手機驗收待辦 |
-| 會員／購物流程（B） | **仁千 REN** | 2026-10-05 已確認；使用 `feature/auth-order`，見 [分支交接](REN_AUTH_ORDER.md) |
-| 跨模組整合驗證與最終驗收 | **SAM** | 2026-10-07 指名；須等 JEFF/REN 對應功能先交付，資料庫測試不等於全站驗收 |
+| 範圍 | 原模組主責 | 代班期間執行主責 | 界線 |
+|---|---|---|---|
+| 資料庫、測試、前台／RWD、跨組整合、部署與交付 | SAM | SAM | SAM 統籌同版驗證及最終簽收；未取得證據前不宣稱正式上線。 |
+| 登入／多裝置／撤權、SKU 購物、demo checkout、事件觸發與 S03～S05 | REN | **SAM** | SAM 先依現有 PR #21 與 [R02 接口交接](https://github.com/SamWang61/LLM_PJ/blob/codex/sam-final-baseline-20261016/docs/REN_R02_INTERFACE_2026-10-17.md) 推進。REN 保留原模組責任，軟體設定恢復後接回；交接需有 SHA、測試、阻礙與待辦。 |
+| AI／推薦及所有 consumer、管理後台／D5 與 S06～S08 | JEFF | JEFF | 後台撤權需接 REN 會員服務接口；JEFF 仍負責受權、CSRF、稽核及後台流程，不由 SAM 單獨代做。 |
 
-SAM owns database/testing and team coordination. JEFF owns AI/admin. REN confirmed option B (auth/order) on October 5 and uses feature/auth-order. As of October 7, SAM owns frontend/RWD and final integration acceptance under the team lead instruction.
+**到期檢查**：10/18 11:10 由 SAM 列出已完成和未完成項目、最新版本及可重現證據，再與 REN 逐項交回。REN 環境未恢復或缺少可驗證設定時，標示阻礙並由專案負責人明確決定後續承接；不自動延長代班，也不把暫代視為 REN 已驗收。這次調整不更改歷史提交作者或 PR 歸屬。
 
-## SAM 現在可執行 / SAM's current work
-
-1. v4 validator、索引、遷移狀態、有效政策與資料關聯的只讀檢查。
-2. 資料庫測試：格式拒絕、Decimal128、SKU 庫存、交易 rollback／併發、訂單與評價契約。
-3. 建立具日期的驗證證據與測試操作說明，保留歷史報告。
-4. 提供其他組別資料契約與缺口清單；需求涉及 Schema 時另做版本化遷移，不重寫舊 migration。
-
-執行與驗證詳見 [SAM 資料庫與測試](SAM_DATABASE_TESTING.md)。跨模組 Flask／AI／RWD 新功能與驗收不在本輪擴大執行。
-
-## 已存在工作如何處理 / Existing work
-
-- PR #2／#3／#4 已合併的程式與文件保留，完成事實見 [合併紀錄](MERGE_RECORD_2026-10-02.md)。
-- [PR #5](https://github.com/SamWang61/LLM_PJ/pull/5) 是確認分工前產生的行為計分候選實作，已轉為草稿，**未合併且不算 SAM 正式交付**。分支內原有 SAM 分工文字已由本文件取代；是否採用由 JEFF 後續決定。
-- 2026-10-05 已由組長確認 REN 選擇會員／購物流程；GitHub 存取狀態另見分支交接，分工確認不等於邀請已接受。
-
-Previously merged work remains intact. PR #5 is parked as an unmerged draft; REN ownership is confirmed by the team lead, while GitHub invitation acceptance is tracked separately.
-
-## 2026-10-07 最新核對與待辦
-
-REN（1dcvgieok4gm）及 JEFF（jeff841117）均已具 Write 權限，pending invitations 為零。此為目前狀態，舊 10/5 邀請紀錄保留。詳細先後順序與單一負責人見 [專案進度盤點](PROJECT_PROGRESS_2026-10-07.md) 與 [具名殘留問題](PROJECT_BLOCKERS_2026-10-07.md)。所有非 JEFF AI/後台、非 REN 會員/購物的工作由 SAM 負責；跨組驗收由 SAM 統整，前置完成責任分別列出。
+舊 10/5 分工記錄保留在 Git 歷史；其「前台／RWD 待分配、最終整合驗收待確認」已由較新的 SAM 交付安排取代。分工文件只說明責任，功能、CI、本機測試、main 合併、部署與正式驗收各自需要獨立證據。

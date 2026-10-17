@@ -1,5 +1,7 @@
 # 文件中心 / Documentation hub
 
+- [2026-10-17 專案工作清單與 REN 24 小時代班](../專題進度/專案工作清單_2026-10-17.md)
+- [現行團隊分工](TEAM_OWNERSHIP.md)
 - [2026-10-17 REN 文件同步紀錄 / Documentation sync](DOCUMENT_SYNC_2026-10-17.md)
 
 **後續工作先讀：[最新專案上下文](CURRENT_CONTEXT.md)。** 舊文件保留供追溯，日常作業不需反覆全量閱讀。Start with the compact current context, then consult only task-relevant references.
