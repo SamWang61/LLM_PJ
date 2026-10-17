@@ -8,10 +8,8 @@ from urllib.parse import urlparse
 
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / 'VibeCart_AI/MongoDB'))
-from schema_complete_v4 import SCHEMAS, INDEXES
+from schema_active_v4 import SCHEMAS, INDEXES, MIGRATIONS, CONTRACT
 
-MIGRATIONS = {'20260916_01_initial_schema_v2', '20260916_02_cart_state_events_v3',
-              '20260918_03_schema_document_constraints', '20260918_04_complete_catalog_schema_v4'}
 RELATIONSHIPS = [('products', 'major_category_id', 'categories'),
                  ('products', 'minor_category_id', 'categories'),
                  ('product_skus', 'product_id', 'products'),
@@ -51,7 +49,7 @@ def index_differences(actual, expected):
 def audit(db, *, relationships=False):
     names = set(db.list_collection_names())
     report = {'checked_at': datetime.now(timezone.utc).isoformat(), 'mode': 'read_only',
-              'status': 'passed', 'collections': [], 'issues': [], 'relationships': [],
+              'status': 'passed', 'schema_contract': CONTRACT, 'collections': [], 'issues': [], 'relationships': [],
               'extra_collections_count': len(names - set(SCHEMAS))}
     for name, validator in SCHEMAS.items():
         row = {'name': name, 'issues': []}

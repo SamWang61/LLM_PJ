@@ -1,0 +1,8 @@
+{
+  "hosting": {
+    "site": "vibecart-llmai",
+    "public": "public",
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
+    "rewrites": [{"source": "**", "run": {"serviceId": "vibecart-web", "region": "asia-east1"}}]
+  }
+}

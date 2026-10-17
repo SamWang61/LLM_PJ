@@ -1,0 +1,30 @@
+{
+  "batch": "supermarket-carrefour-20261005",
+  "checked_at": "2026-10-05T07:28:49.234664+00:00",
+  "database": "vibecart_ai",
+  "source_sha256": "edd1df3ba95a7c0b92f67fb8bcd5feb68a0d482298d871c187a730e9a72d2e27",
+  "mode": "applied",
+  "before": {
+    "categories": 0,
+    "brands": 0,
+    "products": 0,
+    "product_skus": 0
+  },
+  "inserted": {
+    "categories": 32,
+    "brands": 128,
+    "products": 336,
+    "product_skus": 336
+  },
+  "after": {
+    "categories": 32,
+    "brands": 128,
+    "products": 336,
+    "product_skus": 336
+  },
+  "policy": "insert-only; rerun does not reset stock, ratings, prices or user edits",
+  "source_product_count": 336,
+  "images_verified": 336,
+  "major_categories": 8,
+  "minor_categories": 24
+}

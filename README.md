@@ -8,6 +8,8 @@ VibeCart AI builds on the MuscleCore sports store to explore personalized shoppi
 
 ## 目前狀態 / Current status
 
+2026-10-16 同版整合正在 [SAM PR #21](https://github.com/SamWang61/LLM_PJ/pull/21) 草稿審查；[本機 Docker 與交易驗證](docs/SAM_PR21_ACCEPTANCE_2026-10-16.md) 已完成，遠端部署、Atlas 讀回、跨角色與真模型驗收仍待完成。以下條列保留原版本界線。
+
 - **新版資料層**：Complete Schema v4，含 SKU 購物車、訂單明細與評價服務。2026-09-19 保存的證據為 27 集合、59 自訂索引、66 項整合測試通過；這是歷史證據，並非本次重新驗證 Atlas。
 - **展示網站**：`MuscleCore分析資料/website` 為 Flask + Jinja2 + MongoDB MVP；已提供可選 v4 路由介接與離線測試；尚未完成真實資料庫整合驗收。
 - **尚待完成**：完整 AI 推薦、排程計分、批次統計，以及真實模型與新版資料層整合驗收。規格中的 FastAPI／Firebase 部署是設計內容，不代表已部署。

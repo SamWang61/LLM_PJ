@@ -1,18 +1,38 @@
 # 最新專案上下文 / Current project context
 
+更新：2026-10-17（Asia/Taipei）。SAM 代理 REN 的[獨立遠端交易驗收紀錄](SAM_REMOTE_TRANSACTION_ACCEPTANCE_2026-10-17.md)已讀回私有 Cloud Run 服務的同版映像、Ready、專用 IAM、匿名 403 與正式流量不變；初始服務仍是假 URI、唯讀，ready 503 為預期。Atlas 專用帳號需連接器額外確認，尚未建立，沒有遠端交易或 Atlas 寫入。PR #21 仍為草稿，D4 不得 apply。
+
+更新：2026-10-17（Asia/Taipei）。PR #21 已加入[隔離交易驗收啟動防護與前置清單](SAM_REMOTE_TRANSACTION_PREFLIGHT_2026-10-17.md)：指定私有 Cloud Run 服務、顯式旗標及 `vibecart_acceptance_` 資料庫名稱才可選獨立 DB；本機隔離 MongoDB 完整測試 180 passed／0 skipped。私有可寫入服務、最小權限 MongoDB 憑證、測試資料與遠端交易驗收仍未建立；不得把此程式防護列為遠端角色／交易通過。
+
+更新：2026-10-17（Asia/Taipei）。SAM 的 [Atlas 唯讀對帳](SAM_ATLAS_READONLY_ACCEPTANCE_2026-10-17.md)讀回 28 集合、6 筆 succeeded migration 且 checksum 與 Git 原始碼一致、336 active 商品與 SKU、原 D1～D3 訂單／明細 3,000／8,969、孤兒 SKU／明細 0；D4 仍 0。Network Access 有一筆 `0.0.0.0/0` 規則，需在正式上線前查來源與收斂方案；目前未變更資料庫或白名單。這些是資料層快照，不等於角色／交易或最終簽收。
+
+更新：2026-10-17（Asia/Taipei）。SAM PR #21 的 `3842893904e54e638e1fc88346c85d90e5beb22b` 已建立 Cloud Run 無流量唯讀修訂 `vibecart-web-00009-xfq`；47/47 建置來源與 Git blob 一致，映像、revision label、Ready、100% 舊版流量與 Atlas 唯讀計數均已讀回。新修訂的匿名首頁／搜尋／商品與寫入拒絕通過所測遠端檢查；角色、交易、模型、Hosting、所有 consumer 隔離及最終畫面驗收仍缺證據。完整結果與界線見 [PR #21 同版遠端預覽](SAM_PR21_REMOTE_PREVIEW_2026-10-17.md)。D4 不得 apply，PR #21 保持草稿。
+
 更新：**2026-10-17 11:10（Asia/Taipei）**。REN 因軟體設定問題，原會員／購物／事件觸發及 S03～S05 工作由 SAM 暫代 24 小時，至 **2026-10-18 11:10**；JEFF 的 AI／後台與 consumer 責任不變。現行責任、22 項待辦及 10/18 20:00 交付順序以 [專案工作清單](../專題進度/專案工作清單_2026-10-17.md) 和 [分工表](TEAM_OWNERSHIP.md) 為準。下方早期分工、SHA、CI、部署及 Atlas 數字是各日期的歷史快照，不當作目前狀態。
 
 軟體異常的已知影響、SAM 代理 REN 提交文件／PR 的身份標示、到期與交還條件，另見 [REN 工作異常報告](REN_WORK_INCIDENT_2026-10-17.md)。
 
-更新：2026-10-17（Asia/Taipei）。HEN 文件名稱及人名改稱 REN 的 PR #22 已合併 main，本機文件已同步；詳見 [文件同步紀錄](DOCUMENT_SYNC_2026-10-17.md)。此輪沒有重新驗證部署或 Atlas 狀態，以下數字仍按原核對日期解讀。
+更新：2026-10-17（Asia/Taipei）。HEN 文件名稱及人名改稱 REN 的 PR #22 已合併 main，本機文件已同步；詳見 [文件同步紀錄](DOCUMENT_SYNC_2026-10-17.md)。PR #22 文件同步該輪沒有重新驗證部署或 Atlas 狀態；本頁最上方另記錄後續同版遠端讀回。
 
-更新：2026-10-16（Asia/Taipei）。[JEFF 管理後台設計規格 v1.2](JEFF_ADMIN_UI_DESIGN.md) 已補定自由提問的獨立啟用／驗收條件、稽核與重送紀錄的 180 天保存及批量 request_id 規則。這是文件契約；D5 寫入、自由提問遠端真模型驗收與 D4 正式匯入仍須按各自門檻完成。下方歷史版本狀態依原日期解讀。
+更新：2026-10-17（Asia/Taipei）。REN PR #24 已合併到 SAM PR #21 審查分支，其 R02 交接只有文件，沒有新功能程式。SAM 接手後在一次性、無憑證的 localhost MongoDB replica set 對 PR #21 完整程式重跑網站測試，**178 passed／0 skipped**，含交易回滾、最後庫存並發及撤權回滾；測試方法見[同版驗證紀錄](SAM_PR21_ACCEPTANCE_2026-10-16.md)。這是本機證據，遠端跨角色、交易與全部 consumer 隔離仍待驗。詳見 [REN R02 接口交接](REN_R02_INTERFACE_2026-10-17.md)。PR #21 仍為草稿，main 未合併，D4 閘門維持。
+
+更新：2026-10-17（Asia/Taipei）。PR #21 已修補 legacy synthetic 事件標記、示範 PURCHASE 歸因條件及 D4 匯入證據格式；網站離線測試 175 passed／3 skipped，D4 定向測試 17 passed。詳見 [D4 遠端閘門](D4_REMOTE_GATE_2026-10-17.md)。現行結帳仍全部建立示範訂單，因此購買事件仍排除歸因；D4 尚缺所有實際部署 consumer 的同版遠端隔離讀回，不得正式匯入。PR #21 保持草稿，線上 Claude、BGE、自由提問仍關閉；D5 為規格，D1～D3 與額外兩筆示範訂單保留。
+
+同日 main 已合併 REN 文件名稱、人名與頁腳修正的 PR #22；本分支已整合其文件與頁腳，保留新版前台鍵盤焦點。詳見 [文件同步紀錄](DOCUMENT_SYNC_2026-10-17.md)。10:49 Atlas 唯讀讀回 D4 指定批次 0、原 D1～D3 訂單 3,000、額外示範訂單 2；未重新驗證部署，未向 Atlas 寫入。
+
+更新：2026-10-17（Asia/Taipei）。JEFF [PR #23](https://github.com/SamWang61/LLM_PJ/pull/23) 的 T5 六檔已合併進 SAM [PR #21](https://github.com/SamWang61/LLM_PJ/pull/21)，合併提交 `6e401ef459b4ca5e002c22ee225cb4c63375ec3a`；合併後 push／PR CI 成功，`main` 尚未合併。[10/17 交付核對與決定](SAM_JEFF_1017_HANDOFF.md)列出 consumer 程式稽核、離線測試、線上 Claude／BGE 展示決定及未滿足的遠端驗收。T5 的真模型數據來自 JEFF 本機 Atlas 唯讀實測；PR #21 的零流量預覽仍是較早的 88dca3b 映像，不能代表 T5 已線上發布。D4 閘門維持，D1～D3 不重匯。
+
+更新：2026-10-16（Asia/Taipei）。GitHub `main` 的 `00a1d21` 已合併 JEFF [PR #8](https://github.com/SamWang61/LLM_PJ/pull/8)，[同版 CI](https://github.com/SamWang61/LLM_PJ/actions/runs/38825012234) 成功。[JEFF 管理後台設計規格 v1.2](JEFF_ADMIN_UI_DESIGN.md) 已明定自由提問啟用與驗收、180 天稽核／冪等收據保存，以及批量 request_id 規則；這是文件契約，未代表 D5 寫入、真模型或 D4 正式匯入已驗收。
+
+SAM 的 [同版整合基線](SAM_INTEGRATION_BASELINE_2026-10-16.md) 與 [PR #21](https://github.com/SamWang61/LLM_PJ/pull/21) 整理 HEN／JEFF／商品導覽來源，仍是草稿，未完成最終簽收。10/16 已以該來源建立 Cloud Run 零流量唯讀預覽修訂 `vibecart-web-00008-5bw`，詳見[同版驗證紀錄](SAM_PR21_ACCEPTANCE_2026-10-16.md)；正式流量仍由 `vibecart-web-00007-m9k` 承接 100%。下方 10/15 及 10/7 狀態保留為歷史，不當作當前 GitHub、部署或資料庫狀態。
+
+10/16 同版 [PR #21 驗證](SAM_PR21_ACCEPTANCE_2026-10-16.md)：Docker 白名單建置與啟動通過；修正自由提問預設關閉閘門後，無憑證 localhost replica set 的網站測試 171 passed、0 skipped。零流量預覽的 Cloud Run revision、映像 digest 與 HTTP 唯讀閘門已讀回；Hosting 尚未發布此版，遠端交易、角色、真模型、全部 consumer 隔離及全站驗收仍未完成。
 
 更新：2026-10-15（Asia/Taipei）。先看 [SAM 的 CI、文件版本與真交易驗收](SAM_CI_TRANSACTION_ACCEPTANCE_2026-10-15.md)；下方 10/7 摘要保留為歷史，不作現行分支、部署或資料庫狀態。
 
-- 分工：SAM 負責資料庫、測試、前台／RWD、整合與交付；JEFF 負責 AI／後台；REN 負責登入、撤權、購物車與訂單。跨組項目仍按前置交付逐項簽收。
-- GitHub `main` 在修復起點為 `7d10f7e`，僅有文件同步，File policy 原有 35 項錯誤；本輪修復分支須以遠端 CI 成功再算完成。REN PR #18 的 `5053993` 與簡報 PR #19 的 `58b1427` 尚未合併。
-- REN `5053993` 在隔離 localhost MongoDB replica set 完成 166 passed、0 skipped，含三項真交易／並發測試；這是該分支的本機驗收，不能當成 `main` 已整合或正式 Atlas 全流程驗收。
+- 分工：SAM 負責資料庫、測試、前台／RWD、整合與交付；JEFF 負責 AI／後台；HEN 負責登入、撤權、購物車與訂單。跨組項目仍按前置交付逐項簽收。
+- GitHub `main` 在修復起點為 `7d10f7e`，僅有文件同步，File policy 原有 35 項錯誤；本輪修復分支須以遠端 CI 成功再算完成。HEN PR #18 的 `5053993` 與簡報 PR #19 的 `58b1427` 尚未合併。
+- HEN `5053993` 在隔離 localhost MongoDB replica set 完成 166 passed、0 skipped，含三項真交易／並發測試；這是該分支的本機驗收，不能當成 `main` 已整合或正式 Atlas 全流程驗收。
 - 10/15 最近一次唯讀核對：Atlas 28 集合、89 索引、6 筆 succeeded migrations；336 商品、336 SKU。D4 指定批次仍 0 筆。Firebase Hosting 可瀏覽，Cloud Run 最新 Ready revision 為 `vibecart-web-00007-m9k`，checkout 已啟用；真模型、所有 consumer 遠端隔離、D4 正式匯入與全站簽收仍未完成。
 - 10/5、10/12 交付文件保留當時的數字與限制；如需現況，重新核對 GitHub、Cloud Run 與 Atlas，不沿用舊部署 revision 或唯讀設定。
 
@@ -30,7 +50,7 @@
 
 - SAM：資料庫、測試、組長協調及交付文件。
 - JEFF：AI／管理後台；不把其設計或實作列為 SAM 成果。
-- REN（@1dcvgieok4gm）：已選 B 會員／購物流程，使用 feature/auth-order。晚上確認及邀請接受尚未收到後續結果；**不是仍負責前台／RWD**。
+- HEN（@1dcvgieok4gm）：已選 B 會員／購物流程，使用 feature/auth-order。晚上確認及邀請接受尚未收到後續結果；**不是仍負責前台／RWD**。
 - 前台／RWD 待重新分配；最終整合驗收責任待確認。
 
 ## 已核實基線（10/7）
@@ -53,7 +73,7 @@
 
 1. 整理並提交上述本機交付，補最新文件入口。
 2. 更新現行 schema 檢查器；main 仍按舊 validator／四筆 migration，會對現在資料庫報差異。保留歷史 migration checksum。
-3. 與 JEFF／REN 定義後台寫入契約 D5，以及補貨／促銷／期間比較的 AI 白名單資料。
+3. 與 JEFF／HEN 定義後台寫入契約 D5，以及補貨／促銷／期間比較的 AI 白名單資料。
 4. 補 D4 行為事件測試資料、少量私有登入測試帳號。
 5. 以同批標準答案完成畫面/API 對帳及邊界測試。
 

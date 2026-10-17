@@ -1,0 +1,35 @@
+{
+  "checked_at": "2026-10-10T22:10:47.792330+00:00",
+  "database": "vibecart_ai",
+  "action": "preflight",
+  "batch": "sam-behavior-20261011-v1",
+  "status": "passed",
+  "expected": {
+    "batch": "sam-behavior-20261011-v1",
+    "source_batch": "sam-synthetic-20261005-v1",
+    "events": 1240,
+    "counts": {
+      "ADD_TO_CART": 310,
+      "PRODUCT_VIEW": 310,
+      "PURCHASE": 310,
+      "SEARCH": 310
+    },
+    "weights": {
+      "PURCHASE": 4,
+      "ADD_TO_CART": 3,
+      "SEARCH": 2,
+      "PRODUCT_VIEW": 1
+    },
+    "weighted_event_count": 3100,
+    "production_attribution_events": 0,
+    "database_writes": 0,
+    "note": "Offline exercise counts; not production scores or conversion performance."
+  },
+  "dataset_sha256": "da6998425bc80746902b407336489f43bfcc77bc7f092d9ece5e3b02d1d0edea",
+  "existing": 0,
+  "missing": 1240,
+  "committed": false,
+  "inserted": 0,
+  "rollback_rehearsal": false,
+  "isolation_evidence_sha256": null
+}

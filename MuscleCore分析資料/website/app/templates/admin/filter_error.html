@@ -1,3 +1,4 @@
-{% extends 'base.html' %}
-{% block title %}篩選條件有誤｜VibeInsight{% endblock %}
-{% block content %}<section class="admin-shell panel"><h1>請調整篩選條件</h1><p role="alert">{{ message }}</p><a class="button" href="{{ url_for('admin.dashboard') }}">返回營運後台</a></section>{% endblock %}
+{% extends 'admin/layout.html' %}
+{% block title %}篩選條件有誤｜VibeInsight 後台{% endblock %}
+{% block heading %}請調整篩選條件{% endblock %}
+{% block content %}<section class="panel"><p class="form-error" role="alert">{{ message }}</p><a class="button" href="{{ url_for('admin.dashboard') }}">返回營運總覽</a></section>{% endblock %}

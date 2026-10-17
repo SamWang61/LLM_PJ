@@ -1,0 +1,17 @@
+{
+  "project": "vibecart-llmai",
+  "checked_at": "2026-10-10T23:44:48.826Z",
+  "persisted_atlas_events": 0,
+  "releases": {
+    "status": 200,
+    "entries": []
+  },
+  "services": {
+    "status": 403,
+    "reason": "SERVICE_DISABLED"
+  },
+  "scheduler": {
+    "status": 403,
+    "reason": "SERVICE_DISABLED"
+  }
+}
