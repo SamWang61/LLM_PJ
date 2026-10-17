@@ -1,6 +1,6 @@
 # MuscleCore｜Python + MongoDB 智慧運動商城
 
-目前正式網站由 Cloud Run `vibecart-web-00013-ds5` 提供服務，Firebase Hosting 導流；[2026-10-18 部署紀錄](../../docs/SAM_RELEASE_2026-10-18.md)記錄來源 `80513a9`、映像 digest、CI、公開路由與限制。[D4 驗收](../../docs/D4_IMPORT_ACCEPTANCE_2026-10-18.md)另記錄已匯入批次。下方快速啟動與示範帳號只適用隔離本機展示；正式修訂的會員／交易、真模型與 D5 仍需分別驗收。
+截至 2026-10-18 01:58，正式網站由 Cloud Run `vibecart-web-00015-nlk` 承接 100% 流量，Firebase Hosting 導流；[部署紀錄](../../docs/SAM_RELEASE_2026-10-18.md)記錄來源 `1d2abf2`、映像 digest、CI、同映像 D4 隔離探針、公開路由與限制。[D4 驗收](../../docs/D4_IMPORT_ACCEPTANCE_2026-10-18.md)另記錄已匯入批次。下方快速啟動與示範帳號只適用隔離本機展示；正式修訂的會員／交易、真模型與 D5 仍需分別驗收。
 
 本專案把原運動商品購物網站重構成可展示的 Python MVP，採 Flask Blueprint 分層、MongoDB 文件資料庫與角色權限。前台為 `VibeCart AI` 個人化推薦；後台為 `VibeInsight AI` 營運洞察。
 
