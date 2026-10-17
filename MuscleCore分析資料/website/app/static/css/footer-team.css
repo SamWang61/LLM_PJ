@@ -1,0 +1,51 @@
+.footer-team {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: baseline;
+  gap: .4rem 1.5rem;
+  margin-top: .6rem;
+}
+
+.footer-person {
+  position: relative;
+  display: inline-block;
+}
+
+.footer-person a {
+  text-decoration: underline;
+  text-underline-offset: .2em;
+}
+
+.footer-person a:hover,
+.footer-person a:focus-visible {
+  color: var(--lime);
+}
+
+.footer-portrait {
+  position: absolute;
+  left: 50%;
+  bottom: calc(100% + 3rem);
+  z-index: 5;
+  width: min(130px, 35vw);
+  height: 175px;
+  object-fit: contain;
+  object-position: bottom;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transform: translate(-50%, 8px);
+  filter: drop-shadow(0 12px 18px rgba(0, 0, 0, .65));
+  transition: opacity .16s ease, transform .16s ease, visibility .16s ease;
+}
+
+.footer-person:hover .footer-portrait,
+.footer-person:focus-within .footer-portrait {
+  opacity: 1;
+  visibility: visible;
+  transform: translate(-50%, 0);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .footer-portrait { transition: none; }
+}
