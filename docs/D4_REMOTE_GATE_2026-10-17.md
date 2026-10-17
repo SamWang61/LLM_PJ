@@ -1,5 +1,7 @@
 # D4 行為事件匯入閘門與遠端驗收｜2026-10-17
 
+同日後續 [PR #21 同版遠端預覽](SAM_PR21_REMOTE_PREVIEW_2026-10-17.md)已建立零流量唯讀修訂 `vibecart-web-00009-xfq`，再次唯讀讀回 D4 0、原 D1～D3 訂單 3,000、額外示範訂單 2。Cloud Run 全區服務清單只有一項；Job 43 區中 42 區無項目、1 區 403，Functions／Scheduler API 未啟用，資產總清單仍不完整。新修訂拒絕登入、後台、購物與寫入，因此**沒有**對前台／後台 consumer 執行 synthetic 與正常對照。D4 閘門不變。
+
 本頁記錄 PR #21 的程式缺口、已修範圍及正式匯入前的遠端證據。**目前不得執行 D4 apply**。D1～D3 的 600 位停用合成會員、3,000 筆示範訂單與 8,969 筆明細保留，不重匯；額外兩筆示範訂單也保留。
 
 2026-10-17 10:49（Asia/Taipei）以 MongoDB Atlas 連接器唯讀聚合讀回：指定 D4 batch 的 `behavior_events` 為 **0**；原 D1～D3 batch 的 `orders` 為 **3,000**；不屬原 batch 且 `is_demo=true` 的 `orders` 為 **2**。此查詢未寫入資料，也沒有證明 consumer 隔離。
