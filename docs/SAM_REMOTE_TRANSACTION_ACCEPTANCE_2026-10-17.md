@@ -15,3 +15,9 @@
 ## 尚未滿足的遠端驗收閘門
 
 Atlas 連接器建立資料庫帳號時要求額外操作確認，當次未獲該確認，故帳號**未建立**。不能把正式庫使用者或正式 Mongo URI 密鑰拿來頂替。取得獨立 `vibecart_acceptance_pr21` 的最小權限帳號後，才可寫入 Mongo URI 密鑰，改修訂為受限可寫模式並讀回 IAM、修訂、資料庫名及空集合。接著按[前置與清理清單](SAM_REMOTE_TRANSACTION_PREFLIGHT_2026-10-17.md)驗角色、跨裝置、SKU cart、checkout、事件與寫後讀回。正式 D4 consumer 閘門獨立存在，仍不得 apply；PR #21 維持草稿，不合併 main。
+
+## 後續同版核對
+
+REN 的 R08 重新登入修正、事件驗證，以及 D4 未部署 consumer 門檻已併入 PR #21。2026-10-17 本機整合提交 `afbc913d53ba086842f3e51f2d68451c1936e2f0` 已推送；GitHub 遠端 head SHA 相同，Repository validation 兩次均為 success，文件政策檢查為 298 檔、0 錯誤，D4 匯入門檻測試為 4 passed，Git LFS fsck 通過。先前以 MongoDB replica set 執行的網站完整測試為 183 passed、0 skipped，但該次測試所對應的提交早於 D4 門檻整合。
+
+上述私有服務仍是較早的 `2251c88a250c1001942960230f691c2acea10803`，不能用它宣稱最新 PR #21 的遠端交易驗收。最新提交須重新封裝、build／boot、部署到私有服務，並完成 Atlas 隔離資料庫讀寫後才可進行角色與交易驗收。2026-10-17 再次嘗試時，Atlas 連接器仍未建立驗收帳號，Docker Desktop daemon 亦未啟動；兩項均已向使用者提出操作請求。正式主站流量及資料保持不變。
