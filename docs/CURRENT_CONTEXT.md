@@ -1,5 +1,7 @@
 # 最新專案上下文 / Current project context
 
+更新：**2026-10-17 18:44（Asia/Taipei）**。GitHub `main`=`9afd5fb372c24346b1f98232792f2740a1e1f73c`，同版 [CI #39016249576](https://github.com/SamWang61/LLM_PJ/actions/runs/39016249576) success。PR #21 已合併且正式服務於 16:04 切至 `vibecart-web-00012-85f` 100% 流量；詳見 [同版部署與隔離 Atlas 驗收](SAM_PR21_LIVE_ACCEPTANCE_2026-10-17.md)。本次公開 Hosting 首頁、live、ready、登入均 200；Cloud Run 管理端本次未重讀。D4 全 consumer 遠端隔離、真模型／自由提問、D5、S01～S12 同版素材、最終 PPTX／離線備援／排練與具名全站簽收仍待完成。[工作清單](../專題進度/專案工作清單_2026-10-17.md) 首段列最新優先順序及 REN 代班交回點；下文為歷史快照。
+
 更新：**2026-10-17 16:06（Asia/Taipei）**。[PR #21](https://github.com/SamWang61/LLM_PJ/pull/21) 已合併，正式 Cloud Run `vibecart-web-00012-85f` 現承接 **100%** 流量；Cloud Run 與 Firebase Hosting 的首頁／ready 均回 200。Atlas 驗收帳號已收斂至單一驗收庫與叢集；私有服務的遠端雙裝置／角色／購物車／demo checkout、Atlas 回滾與最後庫存併發已讀回，測試帳號全停用且 session 清空。正式 D1～D3 3,000 筆訂單、額外 demo 2 筆、指定 D4 事件 0 維持不變。這是部署與**隔離驗收**，仍非真付款、真模型、D4 全 consumer 或最終簡報簽收。完整版本、交易及殘項見[正式部署與遠端驗收紀錄](SAM_PR21_LIVE_ACCEPTANCE_2026-10-17.md)；下方較早狀態均為歷史快照。
 
 更新：**2026-10-17 15:10（Asia/Taipei）**。Atlas 現已出現驗收使用者 `sam_pr21_acceptance_20261017`，Secret Manager 的 `vibecart-pr21-acceptance-mongo-uri` 也有啟用的版本 1；URI 的主機、帳號與資料庫路徑已在不輸出密碼的條件下核對。但 Atlas 使用者目前是 **`atlasAdmin@admin`、All Resources**，並非只限 `vibecart_acceptance_pr21` 的 `readWrite`。因此私有服務仍保持唯讀，沒有向 Atlas 寫入或進行遠端交易；已請使用者於 Atlas 管理頁修正權限。正式服務仍為舊修訂 100% 流量。以下 13:39「帳號／版本不存在」為當時歷史快照，不再代表現況。
