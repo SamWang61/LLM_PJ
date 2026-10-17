@@ -1,11 +1,10 @@
 {
-  "files": 312,
-  "bytes": 903417626,
+  "files": 191,
+  "bytes": 5390567,
   "excluded_trees": [
     ".codex",
     ".pytest_cache",
     "MuscleCore分析資料/website/.pytest_cache",
-    "MuscleCore分析資料/website/__pycache__",
     "MuscleCore分析資料/website/app/__pycache__",
     "MuscleCore分析資料/website/app/services/__pycache__",
     "MuscleCore分析資料/website/tests/__pycache__",
@@ -17,15 +16,6 @@
   "errors": [],
   "identical_files": [
     [
-      "docs/SAM_DELIVERY_2026-10-12.md",
-      "討論的相關記錄/SAM_DELIVERY_2026-10-12.md"
-    ],
-    [
-      "docs/整體進度表_2026-10-12_1900.md",
-      "專題進度/整體進度表_2026-10-12_1900.md",
-      "討論的相關記錄/整體進度表_2026-10-12_1900.md"
-    ],
-    [
       "VibeCart_AI/MongoDB/02_專案整合規格_v1.1_來源快照.md",
       "討論的相關記錄/VibeCart_AI_專案整合規格_v1.1.md"
     ],
@@ -34,20 +24,8 @@
       "討論的相關記錄/VibeCart_AI_MongoDB_Cart_Schema_Update.md"
     ],
     [
-      "VibeCart_AI/MongoDB/08_購物車更新前結構.md",
-      "VibeCart_AI/MongoDB/supermarket/recovery_20261005/before/08_購物車更新前結構.md"
-    ],
-    [
       "VibeCart_AI/MongoDB/13_完整Schema_v1.0_來源快照.md",
       "討論的相關記錄/VibeCart_AI_MongoDB_Complete_Schema.md"
-    ],
-    [
-      "專題進度/REN_AI操作與提示詞指南_2026-10-12.md",
-      "討論的相關記錄/REN_AI操作與提示詞指南_2026-10-12.md"
-    ],
-    [
-      "簡報文件/screenshots/S02-tablet-cloud-preview-20261018.png",
-      "簡報文件/screenshots/S02-tablet-live-20261018.png"
     ]
   ]
 }
