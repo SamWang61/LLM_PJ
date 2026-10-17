@@ -1,0 +1,28 @@
+# D4 行為事件匯入閘門與遠端驗收｜2026-10-17
+
+本頁記錄 PR #21 的程式缺口、已修範圍及正式匯入前的遠端證據。**目前不得執行 D4 apply**。D1～D3 的 600 位停用合成會員、3,000 筆示範訂單與 8,969 筆明細保留，不重匯；額外兩筆示範訂單也保留。
+
+## 程式原因與本輪修正
+
+1. legacy `app/store.py` 的瀏覽、加購、結帳事件原先都沒有 `metadata`。本輪讓三個寫入點使用伺服器端的 `behavior_metadata()`；有 `BEHAVIOR_SYNTHETIC_BATCH` 時，一律附上 synthetic、batch ID 與歸因排除。legacy 路徑不在現行 Cloud Run `DATA_MODE=v4` 的服務流量上，但本機或舊版部署不得再漏標。
+2. v4 `sku_cart_service.py` 原先按 `event_type=PURCHASE` 一律排除歸因。本輪改成按結帳產生的 `order.is_demo` 決定。**現行 checkout 仍固定建立 `is_demo=true` 訂單**，所以所有由此路徑產生的購買事件仍排除歸因；不得把這次改動寫成正式購買歸因已啟用。未來若要正式訂單，須另定付款、庫存、退款、稽核及權限契約並驗收。
+3. `behavior_import.py` 原本接受四個 consumer 的純 `passed` 字串。本輪要求每項留下來源完整 SHA、映像 digest、revision、遠端證據網址、檢查時間、合成輸入數、合成可見數 0 與正常事件可見數。格式檢查只防止空泛的完成聲明，**不能取代實際遠端讀回或人工核對**。
+
+## 實際 consumer 盤點與缺口
+
+| 類別 | 本版程式 | 遠端同版證據 |
+|---|---|---|
+| 管理員推薦監控 | `app/services/dashboard.py` 在排序及 1000 筆上限前套用 `production_behavior_query()` | 缺管理員可授權環境、同版 revision/digest 與合成／正常事件對照讀回。現有零流量預覽禁止 `/admin`。 |
+| 前台推薦 | `app/store_v4.py` 在排序及 50 筆上限前過濾，`ai_workflows` 再做記憶體過濾 | 缺同版登入會員的遠端對照讀回；現有零流量預覽只允許匿名讀取。 |
+| 計分排程 | PR #21 未查到正式 `user_preference_scores` 寫入 worker／job；PR #5 候選不在本版 | 缺雲端服務／排程實際部署清單及「未部署」核對；不得用本機原始碼推定遠端不存在。 |
+| 正式歸因 | PR #21 未查到正式 `recommendation_logs` 歸因 consumer | 同上；示範 PURCHASE 排除歸因不等於正式歸因驗收。 |
+| legacy 事件寫入 | 本輪補伺服器端 synthetic metadata | 需核對是否有任何 legacy revision 承接流量；本輪沒有遠端路由／版本證據。 |
+
+## 可執行的驗收順序
+
+1. 從雲端管理端讀回 Cloud Run 各 revision、流量比例、Job／Scheduler、Hosting rewrite 及其他實際 consumer，逐項對應完整來源 SHA 與映像 digest；保留讀回時間和不可變證據。不能只檢查 PR、HTTP 200 或單一服務。
+2. 在隔離且可撤回的資料與帳號範圍，使用明確標記的 synthetic 與正常對照事件，對每個實際部署 consumer 驗證 synthetic 在排序／limit 前被排除、正常事件可見，並核對寫入目的地未被 synthetic 污染。留下查詢、預期、實際及清理讀回。不可拿 D4 正式批次作探針。
+3. 對未部署的計分／歸因工作，保存 Cloud Run Job、Scheduler 與相關服務清單的管理端讀回，並在正式啟用時重新驗收。任何新 consumer 都要納入盤點。
+4. 將每項通過的證據填入 `behavior_import.py` 所需的 `consumer_checks`，由 SAM 核對網址內容、revision、digest、source SHA、時間及部署清單後，才可考慮 D4 preflight、交易 dry-run、apply 與正式讀回。只改 JSON 不能視為驗收。
+
+本輪本機測試：網站 `174 passed, 3 skipped`（跳過項需本機 replica set）；D4 匯入／fixture 定向測試 `17 passed`。目前只完成程式修正與離線驗證；**未部署新修訂、未建立示範帳號、未向 Atlas 寫入 D4、未驗真 Claude/BGE、未啟用自由提問**。D5 繼續標為規格，PR #21 保持草稿。

@@ -5,6 +5,7 @@ from .auth import login_required
 from .db import get_db, utcnow
 from .services.ai_workflows import storefront_recommendations
 from .services.behavior_scope import production_behavior_query
+from .services.member_events import behavior_metadata
 
 bp = Blueprint("store", __name__)
 
@@ -38,7 +39,8 @@ def product_detail(product_id):
         abort(404)
     if session.get("user_id"):
         get_db().behavior_events.insert_one({"user_id": ObjectId(session["user_id"]),
-            "product_id": product["_id"], "event_type": "view", "created_at": utcnow()})
+            "product_id": product["_id"], "event_type": "view", "created_at": utcnow(),
+            "metadata": behavior_metadata()})
     return render_template("store/product.html", product=product)
 
 
@@ -52,7 +54,8 @@ def add_to_cart(product_id):
     cart[product_id] = min(int(cart.get(product_id, 0)) + 1, int(product.get("stock", 0)))
     session["cart"] = cart
     get_db().behavior_events.insert_one({"user_id": ObjectId(session["user_id"]),
-        "product_id": product["_id"], "event_type": "cart", "created_at": utcnow()})
+        "product_id": product["_id"], "event_type": "cart", "created_at": utcnow(),
+        "metadata": behavior_metadata()})
     flash(f"已將「{product['name']}」加入購物車。", "success")
     return redirect(request.referrer or url_for("store.home"))
 
@@ -93,7 +96,8 @@ def checkout():
     for item in order_items:
         db.products.update_one({"_id": item["product_id"]}, {"$inc": {"stock": -item["quantity"], "sales_count": item["quantity"]}})
         db.behavior_events.insert_one({"user_id": ObjectId(session["user_id"]), "product_id": item["product_id"],
-                                      "event_type": "purchase", "created_at": utcnow()})
+                                      "event_type": "purchase", "created_at": utcnow(),
+                                      "metadata": behavior_metadata()})
     session["cart"] = {}
     flash(f"訂單 {order['order_no']} 已成立，感謝您的購買。", "success")
     return redirect(url_for("store.home"))

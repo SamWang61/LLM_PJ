@@ -7,6 +7,10 @@ from app.services.behavior_scope import production_behavior_query, production_ev
 from app.services.dashboard import recommendation_monitor
 from app.services.recommendation import recommend_products
 from app.services.ai_workflows import build_recommendation_graph
+from app import create_app
+from flask import g
+from bson import ObjectId
+from app.services.sku_gateway import CartService
 
 
 @pytest.mark.parametrize("metadata", [{"synthetic": True},
@@ -64,3 +68,46 @@ def test_direct_graph_does_not_seed_embeddings_from_synthetic_history():
         "events": [{"product_id": "a", "event_type": "PURCHASE", "metadata": {"synthetic": True}}],
         "query": ""})
     assert result["source"] == "rules" and result["events"] == []
+
+
+def test_legacy_writes_keep_server_synthetic_batch_on_all_events():
+    db = mongomock.MongoClient().legacy
+    uid, pid = ObjectId(), ObjectId()
+    db.users.insert_one({"_id": uid, "is_active": True, "role": "customer"})
+    db.products.insert_one({"_id": pid, "name": "測試商品", "is_active": True,
+                            "category": "測試", "price": 10, "stock": 2, "sales_count": 0})
+    app = create_app({"TESTING": True, "SECRET_KEY": "test", "DATA_MODE": "legacy",
+                      "BEHAVIOR_SYNTHETIC_BATCH": "legacy-offline-batch"})
+
+    @app.before_request
+    def inject_database():
+        g.db = db
+
+    client = app.test_client()
+    with client.session_transaction() as state:
+        state.update(user_id=str(uid), csrf_token="test-csrf")
+    assert client.get(f"/product/{pid}").status_code == 200
+    assert client.post(f"/cart/add/{pid}", data={"csrf_token": "test-csrf"}).status_code == 302
+    assert client.post("/checkout", data={"csrf_token": "test-csrf"}).status_code == 302
+    events = list(db.behavior_events.find())
+    assert {event["event_type"] for event in events} == {"view", "cart", "purchase"}
+    assert all(event["metadata"] == {"synthetic": True,
+        "synthetic_batch_id": "legacy-offline-batch", "exclude_from_attribution": True}
+        for event in events)
+    assert list(production_events(events)) == []
+
+
+def test_purchase_attribution_follows_order_demo_flag():
+    db = mongomock.MongoClient().test
+    service = CartService(db)
+    uid, pid, cid, oid = (ObjectId() for _ in range(4))
+    product = {"_id": pid, "major_category_id": ObjectId(),
+               "minor_category_id": ObjectId()}
+    now = datetime.now(timezone.utc)
+    demo = service._behavior(uid, product, 1, "PURCHASE", "demo", now, cid, oid,
+                             is_demo=True)
+    formal = service._behavior(uid, product, 1, "PURCHASE", "formal", now, cid, oid,
+                               is_demo=False)
+    assert demo["metadata"] == {"demo_checkout": True, "exclude_from_attribution": True}
+    assert formal["metadata"] == {}
+    assert list(production_events([demo, formal])) == [formal]

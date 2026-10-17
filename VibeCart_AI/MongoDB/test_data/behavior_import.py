@@ -5,6 +5,7 @@ Only behavior_events can be written. Application requires deployment isolation e
 """
 import argparse
 import json
+import re
 import sys
 from datetime import datetime, timezone
 from pathlib import Path
@@ -83,9 +84,24 @@ def isolation_evidence(path):
     require(path is not None, 'Deployment isolation evidence required')
     evidence = json.loads(Path(path).read_text(encoding='utf-8'))
     require(evidence.get('database') == 'vibecart_ai' and evidence.get('batch') == BATCH
-            and evidence.get('deployment_ref') and evidence.get('checked_at'), 'Isolation evidence scope missing')
-    require(set(evidence.get('consumer_checks', {})) == CONSUMERS
-            and all(v == 'passed' for v in evidence['consumer_checks'].values()), 'Consumer isolation incomplete')
+            and re.fullmatch(r'[0-9a-f]{40}', str(evidence.get('deployment_ref', '')))
+            and evidence.get('checked_at'), 'Isolation evidence scope missing')
+    checks = evidence.get('consumer_checks', {})
+    require(isinstance(checks, dict) and set(checks) == CONSUMERS,
+            'Consumer isolation incomplete')
+    for consumer, check in checks.items():
+        require(isinstance(check, dict) and check.get('status') == 'passed'
+                and check.get('source_commit') == evidence['deployment_ref']
+                and re.fullmatch(r'sha256:[0-9a-f]{64}', str(check.get('image_digest', '')))
+                and check.get('revision') and check.get('remote_evidence_url')
+                and check.get('checked_at')
+                and type(check.get('synthetic_input_count')) is int
+                and check['synthetic_input_count'] > 0
+                and type(check.get('synthetic_visible_count')) is int
+                and check.get('synthetic_visible_count') == 0
+                and type(check.get('normal_visible_count')) is int
+                and check['normal_visible_count'] > 0,
+                'Remote consumer evidence incomplete: ' + consumer)
     return digest(evidence)
 
 

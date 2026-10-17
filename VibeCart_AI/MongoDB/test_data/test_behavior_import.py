@@ -29,10 +29,18 @@ def test_isolation_requires_every_consumer(tmp_path):
     import json
     from behavior_import import CONSUMERS
     path = tmp_path / 'evidence.json'
-    value = {'database': 'vibecart_ai', 'batch': BATCH, 'deployment_ref': 'test-only',
-             'checked_at': '2026-10-11', 'consumer_checks': {k: 'passed' for k in CONSUMERS}}
+    commit = 'a' * 40
+    value = {'database': 'vibecart_ai', 'batch': BATCH, 'deployment_ref': commit,
+             'checked_at': '2026-10-17T00:00:00Z', 'consumer_checks': {k: {
+                 'status': 'passed', 'source_commit': commit, 'image_digest': 'sha256:' + 'b' * 64,
+                 'revision': 'test-only', 'remote_evidence_url': 'https://example.test/evidence',
+                 'checked_at': '2026-10-17T00:00:00Z', 'synthetic_input_count': 1,
+                 'synthetic_visible_count': 0, 'normal_visible_count': 1}
+                 for k in CONSUMERS}}
     path.write_text(json.dumps(value), encoding='utf-8')
     assert isolation_evidence(path)
     value['consumer_checks']['admin_monitor'] = 'failed'
     path.write_text(json.dumps(value), encoding='utf-8')
+    with pytest.raises(ValueError): isolation_evidence(path)
+    value['consumer_checks']['admin_monitor'] = 'passed'
     with pytest.raises(ValueError): isolation_evidence(path)

@@ -2,6 +2,8 @@
 
 本紀錄依 JEFF 的 10/17 本機交付說明，核對 [PR #21](https://github.com/SamWang61/LLM_PJ/pull/21)、[PR #23](https://github.com/SamWang61/LLM_PJ/pull/23) 和同版程式。專案負責人已授權在本對話處理決策。此處將程式、離線驗證、遠端部署與最終簽收分開記錄；沒有將 JEFF 的本機模型敘述當成 SAM 的遠端驗收。
 
+**10/17 後續**：legacy 事件寫入的 synthetic 標記、示範訂單 PURCHASE 的歸因條件及 D4 匯入證據格式已修正；原因、測試與尚缺的實際部署清單見 [D4 遠端閘門](D4_REMOTE_GATE_2026-10-17.md)。下文第 2 節是修正前的程式核對，不代表新遠端驗收已完成。
+
 ## 1. 分支與驗證
 
 - 10/17 將 JEFF PR #23 的 `caa88d9bac9bb71baa58dd5d1cd7b70cc4136704` 合併至 PR #21 分支；合併提交 `6e401ef459b4ca5e002c22ee225cb4c63375ec3a`。`main` 未合併。T5 相對原 #21 只有六個檔案：`ai_payload.py`、`ai_workflows.py`、`ai_insight.html`、`test_ai_insight.py`、`AI_DASHBOARD.md`、`CHANGELOG.md`。

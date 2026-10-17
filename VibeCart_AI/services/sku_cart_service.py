@@ -27,14 +27,14 @@ class CartService(LegacyCartService):
         event.update(schema_version=4,sku_id=sku_id,event_id='cart:'+str(event['_id']))
         return event
 
-    def _behavior(self,uid,product,qty,kind,event_id,now,cart_id,order_id=None):
+    def _behavior(self,uid,product,qty,kind,event_id,now,cart_id,order_id=None,*,is_demo=False):
         return {'_id':ObjectId(),'schema_version':4,'event_id':event_id,'user_id':uid,'anonymous_id':None,
             'session_id':'cart:'+str(cart_id),'event_type':kind,'product_id':product['_id'],
             'major_category_id':product['major_category_id'],'minor_category_id':product['minor_category_id'],
             'quantity':qty,'order_id':order_id,'cart_id':cart_id,'search_query':None,'source':'organic',
             'recommendation_id':None,'event_at':now,'score_version':1,'processed_at':None,'metadata':{
                 **self.behavior_metadata,
-                **({'demo_checkout':True,'exclude_from_attribution':True} if kind=='PURCHASE' else {})},'created_at':now}
+                **({'demo_checkout':True,'exclude_from_attribution':True} if is_demo else {})},'created_at':now}
 
     def _mutate(self,user_id,sku_id,qty,operation_id,kind,expected_revision=None):
         uid,sid=oid(user_id),oid(sku_id)
@@ -133,7 +133,8 @@ class CartService(LegacyCartService):
             self.db.order_items.insert_many(lines,session=s)
             for product,qty in purchases.values():
                 self.db.behavior_events.insert_one(self._behavior(uid,product,qty,'PURCHASE',
-                    'purchase:'+str(order_id)+':'+str(product['_id']),now,cid,order_id),session=s)
+                    'purchase:'+str(order_id)+':'+str(product['_id']),now,cid,order_id,
+                    is_demo=order['is_demo']),session=s)
             self.db.cart_events.insert_one(self._event(cart,'CHECKOUT',checkout_id,request_hash,now,metadata={'order_id':order_id}),session=s)
             result=self.db.carts.update_one({'_id':cid,'status':'active','revision':expected_revision},
                 {'$set':{'status':'converted','updated_at':now},'$inc':{'revision':1}},session=s)
