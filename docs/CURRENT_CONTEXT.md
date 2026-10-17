@@ -1,5 +1,7 @@
 # 最新專案上下文 / Current project context
 
+更新：**2026-10-18 00:12（Asia/Taipei）**。main `80513a9` 的 [CI #39047572571](https://github.com/SamWang61/LLM_PJ/actions/runs/39047572571) success；同版本機 **186 passed／0 skipped**、47 個 Git blob 精確封裝及 Cloud Build boot 通過。正式 **`vibecart-web-00013-ds5` 100%**，舊 `00012-85f` 保留回退；Hosting／Run 切換後 20 項公開路由檢查通過，JEFF mailto 與 VibeCart 會員頁名稱已線上讀回。正式 Atlas 唯讀仍為原批次訂單 3,000、額外 demo 2、D4 0。完整 [部署讀回與限制](SAM_RELEASE_2026-10-18.md)含 digest、manifest、JUnit、HTTP 與瀏覽器證據；新修訂未重跑登入成功／遠端交易，不能當全站簽收。D4／真模型／D5、素材／PPTX／備援／排練及 **10/18 11:10 REN 交回**仍待辦。下方舊版本按各自日期解讀。
+
 更新：**2026-10-17 19:20（Asia/Taipei）**。[S02 商品／搜尋畫面證據](../簡報文件/screenshots/S02-catalog-evidence.md)已補 390×844 瀏覽器窄視窗的搜尋、分類、336 件清單及單欄商品卡片截圖，原始檔雜湊已記錄；已恢復預設 viewport。手機實機、其他斷點與具名簽收仍待驗；Cloud Run revision／digest 本次仍未即時讀回。以下 19:14 為桌面證據快照。
 
 更新：**2026-10-17 19:14（Asia/Taipei）**。SAM 已留存 [S02 商品清單／搜尋實際畫面](../簡報文件/screenshots/S02-catalog-evidence.md)：公開桌面瀏覽器顯示 336 件／14 頁、商品卡片，按鈕搜尋刷樂牙刷得 1 件／NT$79／庫存 95，鍵盤 Enter 的無結果提示正確。三張原始 PNG 的 SHA-256 已逐張記錄。Cloud Run revision／digest 本次無法即時讀回，手機畫面與最終簽收仍待補；D4 閘門不變。以下為較早快照。

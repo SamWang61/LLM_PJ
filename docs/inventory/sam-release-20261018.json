@@ -1,0 +1,488 @@
+{
+  "before": {
+    "name": "projects/vibecart-llmai/locations/asia-east1/services/vibecart-web",
+    "uri": "https://vibecart-web-m44ncgz5ta-de.a.run.app",
+    "etag": "\"CPnXzNYGEIiL7bcD/cHJvamVjdHMvdmliZWNhcnQtbGxtYWkvbG9jYXRpb25zL2FzaWEtZWFzdDEvc2VydmljZXMvdmliZWNhcnQtd2Vi\"",
+    "ready": "CONDITION_SUCCEEDED",
+    "latestReadyRevision": "projects/vibecart-llmai/locations/asia-east1/services/vibecart-web/revisions/vibecart-web-00012-85f",
+    "traffic": [
+      {
+        "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+        "revision": "vibecart-web-00012-85f",
+        "percent": 100,
+        "tag": "main-2fd4355"
+      },
+      {
+        "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+        "revision": "vibecart-web-00007-m9k",
+        "tag": "rollback-00007"
+      },
+      {
+        "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+        "revision": "vibecart-web-00008-5bw",
+        "tag": "pr21-preview"
+      },
+      {
+        "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+        "revision": "vibecart-web-00009-xfq",
+        "tag": "pr21-3842893"
+      },
+      {
+        "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+        "revision": "vibecart-web-00010-q8l",
+        "tag": "pr25-5f73fe6"
+      }
+    ],
+    "trafficStatuses": [
+      {
+        "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+        "revision": "vibecart-web-00007-m9k",
+        "tag": "rollback-00007",
+        "uri": "https://rollback-00007---vibecart-web-m44ncgz5ta-de.a.run.app"
+      },
+      {
+        "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+        "revision": "vibecart-web-00008-5bw",
+        "tag": "pr21-preview",
+        "uri": "https://pr21-preview---vibecart-web-m44ncgz5ta-de.a.run.app"
+      },
+      {
+        "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+        "revision": "vibecart-web-00009-xfq",
+        "tag": "pr21-3842893",
+        "uri": "https://pr21-3842893---vibecart-web-m44ncgz5ta-de.a.run.app"
+      },
+      {
+        "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+        "revision": "vibecart-web-00010-q8l",
+        "tag": "pr25-5f73fe6",
+        "uri": "https://pr25-5f73fe6---vibecart-web-m44ncgz5ta-de.a.run.app"
+      },
+      {
+        "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+        "revision": "vibecart-web-00012-85f",
+        "percent": 100,
+        "tag": "main-2fd4355",
+        "uri": "https://main-2fd4355---vibecart-web-m44ncgz5ta-de.a.run.app"
+      }
+    ],
+    "sourceSha": "2fd43557bac0148e02fa427163a9657a13c7ae23",
+    "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:f680bb4afc2401d2e4fe1c230c088341d5554f8e9e04abda58f4322371894815",
+    "serviceAccount": "vibecart-web@vibecart-llmai.iam.gserviceaccount.com",
+    "env": [
+      {
+        "name": "CLOUD_PREVIEW_READ_ONLY",
+        "value": "false"
+      },
+      {
+        "name": "ENABLE_CHECKOUT",
+        "value": "true"
+      },
+      {
+        "name": "MONGO_URI",
+        "valueSource": {
+          "secretKeyRef": {
+            "secret": "vibecart-mongo-uri",
+            "version": "1"
+          }
+        }
+      },
+      {
+        "name": "SECRET_KEY",
+        "valueSource": {
+          "secretKeyRef": {
+            "secret": "vibecart-session-key",
+            "version": "1"
+          }
+        }
+      }
+    ]
+  },
+  "build": {
+    "id": "7971f814-f43f-41e3-8a2c-adb893a51156",
+    "operation": "operations/build/vibecart-llmai/Nzk3MWY4MTQtZjQzZi00MWUzLThhMmMtYWRiODkzYTUxMTU2",
+    "status": "SUCCESS",
+    "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web:release-20261018-80513a9-exact",
+    "sourceSha": "80513a951d0dff67fd47a153a45918522b5ffbb5",
+    "archiveSha256": "3a9a175bdc145a8202e98366b86e310266571f063e8b0a210821a085b9069721",
+    "logUrl": "https://console.cloud.google.com/cloud-build/builds;region=asia-east1/7971f814-f43f-41e3-8a2c-adb893a51156?project=278483818008",
+    "images": [
+      {
+        "name": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web:release-20261018-80513a9-exact",
+        "digest": "sha256:57c8fd038d7c231a4e417471a66b9c7996c296efd2d7b1ff70302c46a45f0fab"
+      }
+    ]
+  },
+  "operation": {
+    "name": "projects/vibecart-llmai/locations/asia-east1/operations/711ce2e6-7d23-471d-b71b-5bcbd4bb2ca1",
+    "purpose": "live"
+  },
+  "stage": {
+    "name": "projects/vibecart-llmai/locations/asia-east1/services/vibecart-web",
+    "uri": "https://vibecart-web-m44ncgz5ta-de.a.run.app",
+    "etag": "\"CJi7ztYGEMCar5sB/cHJvamVjdHMvdmliZWNhcnQtbGxtYWkvbG9jYXRpb25zL2FzaWEtZWFzdDEvc2VydmljZXMvdmliZWNhcnQtd2Vi\"",
+    "ready": "CONDITION_SUCCEEDED",
+    "latestCreatedRevision": "projects/vibecart-llmai/locations/asia-east1/services/vibecart-web/revisions/vibecart-web-00013-ds5",
+    "latestReadyRevision": "projects/vibecart-llmai/locations/asia-east1/services/vibecart-web/revisions/vibecart-web-00013-ds5",
+    "traffic": [
+      {
+        "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+        "revision": "vibecart-web-00012-85f",
+        "percent": 100,
+        "tag": "main-2fd4355"
+      },
+      {
+        "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+        "revision": "vibecart-web-00007-m9k",
+        "tag": "rollback-00007"
+      },
+      {
+        "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+        "revision": "vibecart-web-00008-5bw",
+        "tag": "pr21-preview"
+      },
+      {
+        "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+        "revision": "vibecart-web-00009-xfq",
+        "tag": "pr21-3842893"
+      },
+      {
+        "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+        "revision": "vibecart-web-00010-q8l",
+        "tag": "pr25-5f73fe6"
+      }
+    ],
+    "trafficStatuses": [
+      {
+        "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+        "revision": "vibecart-web-00007-m9k",
+        "tag": "rollback-00007",
+        "uri": "https://rollback-00007---vibecart-web-m44ncgz5ta-de.a.run.app"
+      },
+      {
+        "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+        "revision": "vibecart-web-00008-5bw",
+        "tag": "pr21-preview",
+        "uri": "https://pr21-preview---vibecart-web-m44ncgz5ta-de.a.run.app"
+      },
+      {
+        "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+        "revision": "vibecart-web-00009-xfq",
+        "tag": "pr21-3842893",
+        "uri": "https://pr21-3842893---vibecart-web-m44ncgz5ta-de.a.run.app"
+      },
+      {
+        "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+        "revision": "vibecart-web-00010-q8l",
+        "tag": "pr25-5f73fe6",
+        "uri": "https://pr25-5f73fe6---vibecart-web-m44ncgz5ta-de.a.run.app"
+      },
+      {
+        "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+        "revision": "vibecart-web-00012-85f",
+        "percent": 100,
+        "tag": "main-2fd4355",
+        "uri": "https://main-2fd4355---vibecart-web-m44ncgz5ta-de.a.run.app"
+      }
+    ],
+    "sourceSha": "80513a951d0dff67fd47a153a45918522b5ffbb5",
+    "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:57c8fd038d7c231a4e417471a66b9c7996c296efd2d7b1ff70302c46a45f0fab",
+    "serviceAccount": "vibecart-web@vibecart-llmai.iam.gserviceaccount.com",
+    "env": [
+      {
+        "name": "CLOUD_PREVIEW_READ_ONLY",
+        "value": "false"
+      },
+      {
+        "name": "ENABLE_CHECKOUT",
+        "value": "true"
+      },
+      {
+        "name": "MONGO_URI",
+        "valueSource": {
+          "secretKeyRef": {
+            "secret": "vibecart-mongo-uri",
+            "version": "1"
+          }
+        }
+      },
+      {
+        "name": "SECRET_KEY",
+        "valueSource": {
+          "secretKeyRef": {
+            "secret": "vibecart-session-key",
+            "version": "1"
+          }
+        }
+      }
+    ]
+  },
+  "tagged": {
+    "name": "projects/vibecart-llmai/locations/asia-east1/services/vibecart-web",
+    "uri": "https://vibecart-web-m44ncgz5ta-de.a.run.app",
+    "etag": "\"CMK7ztYGEOCCzFI/cHJvamVjdHMvdmliZWNhcnQtbGxtYWkvbG9jYXRpb25zL2FzaWEtZWFzdDEvc2VydmljZXMvdmliZWNhcnQtd2Vi\"",
+    "ready": "CONDITION_SUCCEEDED",
+    "latestCreatedRevision": "projects/vibecart-llmai/locations/asia-east1/services/vibecart-web/revisions/vibecart-web-00013-ds5",
+    "latestReadyRevision": "projects/vibecart-llmai/locations/asia-east1/services/vibecart-web/revisions/vibecart-web-00013-ds5",
+    "traffic": [
+      {
+        "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+        "revision": "vibecart-web-00012-85f",
+        "percent": 100,
+        "tag": "main-2fd4355"
+      },
+      {
+        "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+        "revision": "vibecart-web-00007-m9k",
+        "tag": "rollback-00007"
+      },
+      {
+        "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+        "revision": "vibecart-web-00008-5bw",
+        "tag": "pr21-preview"
+      },
+      {
+        "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+        "revision": "vibecart-web-00009-xfq",
+        "tag": "pr21-3842893"
+      },
+      {
+        "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+        "revision": "vibecart-web-00010-q8l",
+        "tag": "pr25-5f73fe6"
+      },
+      {
+        "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+        "revision": "vibecart-web-00013-ds5",
+        "tag": "release-80513a9"
+      }
+    ],
+    "trafficStatuses": [
+      {
+        "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+        "revision": "vibecart-web-00007-m9k",
+        "tag": "rollback-00007",
+        "uri": "https://rollback-00007---vibecart-web-m44ncgz5ta-de.a.run.app"
+      },
+      {
+        "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+        "revision": "vibecart-web-00008-5bw",
+        "tag": "pr21-preview",
+        "uri": "https://pr21-preview---vibecart-web-m44ncgz5ta-de.a.run.app"
+      },
+      {
+        "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+        "revision": "vibecart-web-00009-xfq",
+        "tag": "pr21-3842893",
+        "uri": "https://pr21-3842893---vibecart-web-m44ncgz5ta-de.a.run.app"
+      },
+      {
+        "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+        "revision": "vibecart-web-00010-q8l",
+        "tag": "pr25-5f73fe6",
+        "uri": "https://pr25-5f73fe6---vibecart-web-m44ncgz5ta-de.a.run.app"
+      },
+      {
+        "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+        "revision": "vibecart-web-00012-85f",
+        "percent": 100,
+        "tag": "main-2fd4355",
+        "uri": "https://main-2fd4355---vibecart-web-m44ncgz5ta-de.a.run.app"
+      },
+      {
+        "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+        "revision": "vibecart-web-00013-ds5",
+        "tag": "release-80513a9",
+        "uri": "https://release-80513a9---vibecart-web-m44ncgz5ta-de.a.run.app"
+      }
+    ],
+    "sourceSha": "80513a951d0dff67fd47a153a45918522b5ffbb5",
+    "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:57c8fd038d7c231a4e417471a66b9c7996c296efd2d7b1ff70302c46a45f0fab",
+    "serviceAccount": "vibecart-web@vibecart-llmai.iam.gserviceaccount.com",
+    "env": [
+      {
+        "name": "CLOUD_PREVIEW_READ_ONLY",
+        "value": "false"
+      },
+      {
+        "name": "ENABLE_CHECKOUT",
+        "value": "true"
+      },
+      {
+        "name": "MONGO_URI",
+        "valueSource": {
+          "secretKeyRef": {
+            "secret": "vibecart-mongo-uri",
+            "version": "1"
+          }
+        }
+      },
+      {
+        "name": "SECRET_KEY",
+        "valueSource": {
+          "secretKeyRef": {
+            "secret": "vibecart-session-key",
+            "version": "1"
+          }
+        }
+      }
+    ]
+  },
+  "revision": {
+    "name": "projects/vibecart-llmai/locations/asia-east1/services/vibecart-web/revisions/vibecart-web-00013-ds5",
+    "createTime": "2026-10-17T16:08:57.051745Z",
+    "labels": {
+      "codex-source-sha": "80513a951d0dff67fd47a153a45918522b5ffbb5"
+    },
+    "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:57c8fd038d7c231a4e417471a66b9c7996c296efd2d7b1ff70302c46a45f0fab",
+    "conditions": [
+      {
+        "type": "Ready",
+        "state": "CONDITION_SUCCEEDED",
+        "message": "Deploying revision succeeded in 13.41s.",
+        "lastTransitionTime": "2026-10-17T16:09:52.079945Z"
+      },
+      {
+        "type": "Active",
+        "state": "CONDITION_SUCCEEDED",
+        "lastTransitionTime": "2026-10-17T16:09:52.165754Z",
+        "severity": "INFO"
+      },
+      {
+        "type": "ResourcesAvailable",
+        "state": "CONDITION_SUCCEEDED",
+        "message": "Provisioning imported containers completed in 2.99s. Checking container health. This will wait for up to 2m for the configured startup probe, including an initial delay of 0s.",
+        "lastTransitionTime": "2026-10-17T16:09:41.656377Z"
+      },
+      {
+        "type": "ContainerReady",
+        "state": "CONDITION_SUCCEEDED",
+        "message": "Container image import completed.",
+        "lastTransitionTime": "2026-10-17T16:09:39.122286Z"
+      },
+      {
+        "type": "ContainerHealthy",
+        "state": "CONDITION_SUCCEEDED",
+        "message": "Containers became healthy in 10.01s.",
+        "lastTransitionTime": "2026-10-17T16:09:52.006334Z"
+      }
+    ]
+  },
+  "live": {
+    "name": "projects/vibecart-llmai/locations/asia-east1/services/vibecart-web",
+    "uri": "https://vibecart-web-m44ncgz5ta-de.a.run.app",
+    "etag": "\"CJe8ztYGELDWszc/cHJvamVjdHMvdmliZWNhcnQtbGxtYWkvbG9jYXRpb25zL2FzaWEtZWFzdDEvc2VydmljZXMvdmliZWNhcnQtd2Vi\"",
+    "ready": "CONDITION_SUCCEEDED",
+    "latestCreatedRevision": "projects/vibecart-llmai/locations/asia-east1/services/vibecart-web/revisions/vibecart-web-00013-ds5",
+    "latestReadyRevision": "projects/vibecart-llmai/locations/asia-east1/services/vibecart-web/revisions/vibecart-web-00013-ds5",
+    "traffic": [
+      {
+        "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+        "revision": "vibecart-web-00013-ds5",
+        "percent": 100,
+        "tag": "release-80513a9"
+      },
+      {
+        "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+        "revision": "vibecart-web-00012-85f",
+        "tag": "rollback-00012"
+      },
+      {
+        "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+        "revision": "vibecart-web-00007-m9k",
+        "tag": "rollback-00007"
+      },
+      {
+        "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+        "revision": "vibecart-web-00008-5bw",
+        "tag": "pr21-preview"
+      },
+      {
+        "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+        "revision": "vibecart-web-00009-xfq",
+        "tag": "pr21-3842893"
+      },
+      {
+        "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+        "revision": "vibecart-web-00010-q8l",
+        "tag": "pr25-5f73fe6"
+      }
+    ],
+    "trafficStatuses": [
+      {
+        "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+        "revision": "vibecart-web-00007-m9k",
+        "tag": "rollback-00007",
+        "uri": "https://rollback-00007---vibecart-web-m44ncgz5ta-de.a.run.app"
+      },
+      {
+        "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+        "revision": "vibecart-web-00008-5bw",
+        "tag": "pr21-preview",
+        "uri": "https://pr21-preview---vibecart-web-m44ncgz5ta-de.a.run.app"
+      },
+      {
+        "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+        "revision": "vibecart-web-00009-xfq",
+        "tag": "pr21-3842893",
+        "uri": "https://pr21-3842893---vibecart-web-m44ncgz5ta-de.a.run.app"
+      },
+      {
+        "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+        "revision": "vibecart-web-00010-q8l",
+        "tag": "pr25-5f73fe6",
+        "uri": "https://pr25-5f73fe6---vibecart-web-m44ncgz5ta-de.a.run.app"
+      },
+      {
+        "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+        "revision": "vibecart-web-00012-85f",
+        "tag": "rollback-00012",
+        "uri": "https://rollback-00012---vibecart-web-m44ncgz5ta-de.a.run.app"
+      },
+      {
+        "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+        "revision": "vibecart-web-00013-ds5",
+        "percent": 100,
+        "tag": "release-80513a9",
+        "uri": "https://release-80513a9---vibecart-web-m44ncgz5ta-de.a.run.app"
+      }
+    ],
+    "sourceSha": "80513a951d0dff67fd47a153a45918522b5ffbb5",
+    "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:57c8fd038d7c231a4e417471a66b9c7996c296efd2d7b1ff70302c46a45f0fab",
+    "serviceAccount": "vibecart-web@vibecart-llmai.iam.gserviceaccount.com",
+    "env": [
+      {
+        "name": "CLOUD_PREVIEW_READ_ONLY",
+        "value": "false"
+      },
+      {
+        "name": "ENABLE_CHECKOUT",
+        "value": "true"
+      },
+      {
+        "name": "MONGO_URI",
+        "valueSource": {
+          "secretKeyRef": {
+            "secret": "vibecart-mongo-uri",
+            "version": "1"
+          }
+        }
+      },
+      {
+        "name": "SECRET_KEY",
+        "valueSource": {
+          "secretKeyRef": {
+            "secret": "vibecart-session-key",
+            "version": "1"
+          }
+        }
+      }
+    ]
+  },
+  "logs": {
+    "filter": "resource.type=\"cloud_run_revision\" AND resource.labels.service_name=\"vibecart-web\" AND resource.labels.revision_name=\"vibecart-web-00013-ds5\" AND severity>=ERROR AND timestamp>=\"2026-10-17T16:10:50Z\"",
+    "errorEntriesReturned": 0,
+    "hasMore": false,
+    "checkedUTC": "2026-10-17T16:12:06.506Z"
+  }
+}
