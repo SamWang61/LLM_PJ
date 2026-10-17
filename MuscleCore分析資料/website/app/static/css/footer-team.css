@@ -1,3 +1,7 @@
+footer {
+  padding-top: 155px;
+}
+
 .footer-team {
   display: flex;
   flex-wrap: wrap;
@@ -27,8 +31,8 @@
   left: 50%;
   bottom: calc(100% + 3rem);
   z-index: 5;
-  width: min(130px, 35vw);
-  height: 175px;
+  width: min(115px, 32vw);
+  height: 150px;
   object-fit: contain;
   object-position: bottom;
   opacity: 0;
