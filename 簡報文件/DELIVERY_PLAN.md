@@ -7,9 +7,9 @@
 | 日期 | 主責 | 先決條件／提供人 | 產物與完成條件 |
 |---|---|---|---|
 | 10/15 四 | [SAM](mailto:cashsam@gmail.com) | 既有文件及main | 建立簡報目錄、12頁內容、架構、素材盤點與截圖標準；本輪交付 |
-| 10/16 五 | [JEFF](mailto:eff841117@gmail.com) | AI／後台可驗版本與配置，由[JEFF](mailto:eff841117@gmail.com)提供 | S06～S08、模型啟用／規則退回說明、consumer 清單與同輸入結果 |
+| 10/16 五 | [JEFF](mailto:jeff841117@gmail.com) | AI／後台可驗版本與配置，由[JEFF](mailto:jeff841117@gmail.com)提供 | S06～S08、模型啟用／規則退回說明、consumer 清單與同輸入結果 |
 | 10/16 五 | [REN](mailto:chen2000401@gmail.com) | 會員／購物與事件接口，由[REN](mailto:chen2000401@gmail.com)提供 | S03～S05、成功與失敗步驟、最終commit與訂單結果 |
-| 10/17 六上午 | [SAM](mailto:cashsam@gmail.com) | [JEFF](mailto:eff841117@gmail.com)／[REN](mailto:chen2000401@gmail.com)功能版本及契約先交 | 整合 final SHA；同版離線CI、角色、庫存／訂單／KPI對帳與遠端功能驗收 |
+| 10/17 六上午 | [SAM](mailto:cashsam@gmail.com) | [JEFF](mailto:jeff841117@gmail.com)／[REN](mailto:chen2000401@gmail.com)功能版本及契約先交 | 整合 final SHA；同版離線CI、角色、庫存／訂單／KPI對帳與遠端功能驗收 |
 | 10/17 六下午 | [SAM](mailto:cashsam@gmail.com)（簡報整理與前台／RWD）；各功能主責核對 | 同版驗收與S01～S12素材 | PPTX排版、素材註記、講稿與展示備援；[SAM](mailto:cashsam@gmail.com) 核對前台／RWD |
 | 10/18 日 | [SAM](mailto:cashsam@gmail.com)協調；最終簽收人待確認 | 最終PPTX、版本、URL、驗收記錄 | 全組排練、凍結展示版本、簽收；未通過項目明列限制 |
 
@@ -20,7 +20,7 @@
 - 商品、會員、SKU購物、示範訂單、推薦與後台具操作截圖及必要API／資料讀回；真付款出貨不在目前教學範圍。
 - 模型型號、啟用狀態與規則退回可辨識；無實測的AI效果不列完成。
 - 部署URL與revision一致，匿名／customer／admin權限及撤權完成核對。
-- D4如列交付範圍：[JEFF](mailto:eff841117@gmail.com)列全部consumer、[REN](mailto:chen2000401@gmail.com)交事件接口，[SAM](mailto:cashsam@gmail.com)先部署並遠端驗synthetic隔離，再正式apply／讀回／重送；未完成就列未完成，不為趕簡報跳過前置。
+- D4如列交付範圍：[JEFF](mailto:jeff841117@gmail.com)列全部consumer、[REN](mailto:chen2000401@gmail.com)交事件接口，[SAM](mailto:cashsam@gmail.com)先部署並遠端驗synthetic隔離，再正式apply／讀回／重送；未完成就列未完成，不為趕簡報跳過前置。
 - PPTX與操作素材可離線展示；來源、負責人、限制和完成項目經組員核對。
 
 本輪不修改功能、不重匯入資料、不代替同學做簽收；後續依上表補證據與定稿。

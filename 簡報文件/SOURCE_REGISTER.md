@@ -7,9 +7,9 @@
 | 同學要求 | 來源與版本 | 目前可用素材 | 待補／負責人 |
 |---|---|---|---|
 | README | [根 README](../README.md)、[網站 README](../MuscleCore分析資料/website/README.md) | 專案定位、入口、legacy setup | [SAM](mailto:cashsam@gmail.com) 整理最終版本；舊 README 的完成宣稱须以同版驗收補強 |
-| 架構圖 | [本目錄架構](ARCHITECTURE.md)、[串接說明](../docs/FLASK_SKU_AI_INTEGRATION.md) | 模組及雲端拓樸草稿 | [JEFF](mailto:eff841117@gmail.com)／[REN](mailto:chen2000401@gmail.com) 確認接口，[SAM](mailto:cashsam@gmail.com) 定稿 |
+| 架構圖 | [本目錄架構](ARCHITECTURE.md)、[串接說明](../docs/FLASK_SKU_AI_INTEGRATION.md) | 模組及雲端拓樸草稿 | [JEFF](mailto:jeff841117@gmail.com)／[REN](mailto:chen2000401@gmail.com) 確認接口，[SAM](mailto:cashsam@gmail.com) 定稿 |
 | setup | 根／網站 README、[網站環境範例](../MuscleCore分析資料/website/.env.example) | Python 3.11、venv、依賴、DB、run.py | [SAM](mailto:cashsam@gmail.com) 在乾淨環境驗 final SHA；不得對既有 Atlas 重跑 seed |
-| screenshots | [操作截圖清單](screenshots/README.md) | S01 本輪實拍；其餘按場景收集 | [REN](mailto:chen2000401@gmail.com)購物、[JEFF](mailto:eff841117@gmail.com)後台AI、[SAM](mailto:cashsam@gmail.com)整合與證據 |
+| screenshots | [操作截圖清單](screenshots/README.md) | S01 本輪實拍；其餘按場景收集 | [REN](mailto:chen2000401@gmail.com)購物、[JEFF](mailto:jeff841117@gmail.com)後台AI、[SAM](mailto:cashsam@gmail.com)整合與證據 |
 | 測試 | 網站 tests、[CI](../.github/workflows/validate.yml)、[SAM 10/15 紀錄](../docs/SAM_CI_TRANSACTION_ACCEPTANCE_2026-10-15.md) | main 的離線驗證工作流；[REN](mailto:chen2000401@gmail.com) 版本隔離真交易 166 passed | [SAM](mailto:cashsam@gmail.com) 保存最終 run／SHA／數字與測試範圍 |
 | Dockerfile | [整合分支 deploy](https://github.com/SamWang61/LLM_PJ/tree/a0fcad0/deploy) | 分支有部署容器資料；main 無 Dockerfile | [SAM](mailto:cashsam@gmail.com) 對最終交付版本做 build／boot smoke |
 | docker-compose | [compose](../MuscleCore分析資料/website/docker-compose.yml) | mongo:8、持久 volume、healthcheck；僅 DB | [SAM](mailto:cashsam@gmail.com) 明確列 DB 容器與本機 Flask 分開啟動 |

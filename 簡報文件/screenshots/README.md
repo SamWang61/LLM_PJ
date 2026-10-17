@@ -11,13 +11,13 @@
 | S03-product.png | 開商品→SKU、價格、庫存、規格一致 | [REN](mailto:chen2000401@gmail.com)；SKU接口 | 待拍、待對帳 |
 | S04-auth.png | 私有測試會員登入成功；錯誤與停用帳號拒絕 | [REN](mailto:chen2000401@gmail.com)先交接口，[SAM](mailto:cashsam@gmail.com)核對 | 待拍；不得啟用合成停用會員 |
 | S05-order.png | 加購→調整數量→示範結帳→訂單明細；另驗缺貨與重送 | [REN](mailto:chen2000401@gmail.com)先交購物，[SAM](mailto:cashsam@gmail.com)讀回DB | 待拍、待持久化／庫存驗證 |
-| S06-admin.png | 日期與示範範圍→KPI／熱銷符合相同範圍查詢 | [JEFF](mailto:eff841117@gmail.com)先交功能，[SAM](mailto:cashsam@gmail.com)標準答案 | 既有頁面可見，待新截圖與對帳 |
-| S07-recommend.png | 推薦商品與理由；冷啟動／無歷史也有明確結果 | [JEFF](mailto:eff841117@gmail.com)；[REN](mailto:chen2000401@gmail.com)事件接口 | 首頁理由可見，待情境對照 |
-| S08-ai.png | 同輸入比較規則／本機／雲端；顯示失敗退回與耗時 | [JEFF](mailto:eff841117@gmail.com)真模型配置先交，[SAM](mailto:cashsam@gmail.com)核對 | 待驗；既有頁面顯示模型未啟用 |
+| S06-admin.png | 日期與示範範圍→KPI／熱銷符合相同範圍查詢 | [JEFF](mailto:jeff841117@gmail.com)先交功能，[SAM](mailto:cashsam@gmail.com)標準答案 | 既有頁面可見，待新截圖與對帳 |
+| S07-recommend.png | 推薦商品與理由；冷啟動／無歷史也有明確結果 | [JEFF](mailto:jeff841117@gmail.com)；[REN](mailto:chen2000401@gmail.com)事件接口 | 首頁理由可見，待情境對照 |
+| S08-ai.png | 同輸入比較規則／本機／雲端；顯示失敗退回與耗時 | [JEFF](mailto:jeff841117@gmail.com)真模型配置先交，[SAM](mailto:cashsam@gmail.com)核對 | 待驗；既有頁面顯示模型未啟用 |
 | S09-ci.png | final SHA 的 Actions run 及測試摘要 | [SAM](mailto:cashsam@gmail.com)；最終提交 | 待補 |
 | S10-data.png | 遮蔽敏感資料的 schema／關聯／示範標記結果 | [SAM](mailto:cashsam@gmail.com)；唯讀查詢 | 待補 |
 | S11-deploy.png | revision、健康檢查、展示URL一致 | [SAM](mailto:cashsam@gmail.com)；功能分支交付 | 待補最終版 |
-| S12-mobile.png | 手機寬度首頁／購物／後台；無溢出、可點與可讀 | 前台主責待確認；[REN](mailto:chen2000401@gmail.com)／[JEFF](mailto:eff841117@gmail.com)畫面先交 | 待補 |
+| S12-mobile.png | 手機寬度首頁／購物／後台；無溢出、可點與可讀 | 前台主責待確認；[REN](mailto:chen2000401@gmail.com)／[JEFF](mailto:jeff841117@gmail.com)畫面先交 | 待補 |
 
 完成勾選規則：截圖存在＋步驟可重現＋實際結果符合＋關鍵資料/API核對＋同一交付版本＋核對人簽認。權限另測 customer 無法進入 admin、停用／撤權後舊 session 失效；畫面可開啟不能替代上述測試。
 
