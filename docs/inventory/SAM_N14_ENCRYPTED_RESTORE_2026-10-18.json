@@ -1,5 +1,5 @@
 {
-  "checked_at_utc": "2026-10-18T00:48:52.468543+00:00",
+  "checked_at_utc": "2026-10-18T01:15:11.334606+00:00",
   "basis_main": "40dbd24abd8041c66e0642f14c4dd4cc727638a9",
   "scope": "N14 historical full-source client encryption and isolated local restoration; gate remains open",
   "encryption_restore": {
@@ -95,12 +95,12 @@
   },
   "cloud": {
     "catalog_id": "1ZilMHLhfCv25WHUxWyeVuSTKIEhm3o0N",
-    "catalog_bytes": 672,
+    "catalog_bytes": 7379,
     "catalog_owner_only": true,
     "catalog_readback": true,
-    "data_parts_verified": 0,
+    "data_parts_verified": 1,
     "data_parts_expected": 25,
-    "status": "25 x <=96MiB ciphertext parts upload in progress; verification remains open",
+    "status": "incomplete_remote_readback; resumable inventory retained",
     "original_480m_attempt": "Rejected before action invocation: HTTP413 single-file100MiB limit",
     "parts": [
       {
@@ -228,10 +228,79 @@
         "bytes": 23574820,
         "sha256": "213eb9faab5c59c7e4b76f82cae9a8d9feaea8a8774b6de2e9ea2377d893a5a5"
       }
-    ]
+    ],
+    "data_parts_uploaded": 9,
+    "metadata_owner_only_parts": 9,
+    "metadata_size_bytes_each": 100663296,
+    "observed_files": [
+      {
+        "number": 1,
+        "name": "LLM_PJ_0528_source.vcbak.part001",
+        "id": "1kNjeYv6Bk93yh3u3CnyhmrD63LbR4nrs",
+        "url": "https://drive.google.com/file/d/1kNjeYv6Bk93yh3u3CnyhmrD63LbR4nrs/view?usp=drivesdk"
+      },
+      {
+        "number": 2,
+        "name": "LLM_PJ_0528_source.vcbak.part002",
+        "id": "1u-LCD1C2F4q6rxHqOqCvtzpR4YxMcEwD",
+        "url": "https://drive.google.com/file/d/1u-LCD1C2F4q6rxHqOqCvtzpR4YxMcEwD/view?usp=drivesdk"
+      },
+      {
+        "number": 3,
+        "name": "LLM_PJ_0528_source.vcbak.part003",
+        "id": "1POYRCE4Zl4toi3SQKVwxjUZXJu95EK3g",
+        "url": "https://drive.google.com/file/d/1POYRCE4Zl4toi3SQKVwxjUZXJu95EK3g/view?usp=drivesdk"
+      },
+      {
+        "number": 4,
+        "name": "LLM_PJ_0528_source.vcbak.part004",
+        "id": "1hD3tflGxCHZQoC6kPlg2YTrig2DpI-iC",
+        "url": "https://drive.google.com/file/d/1hD3tflGxCHZQoC6kPlg2YTrig2DpI-iC/view?usp=drivesdk"
+      },
+      {
+        "number": 5,
+        "name": "LLM_PJ_0528_source.vcbak.part005",
+        "id": "1z7KSCY3irg-tqG6x6RFSCRD93fZkiDab",
+        "url": "https://drive.google.com/file/d/1z7KSCY3irg-tqG6x6RFSCRD93fZkiDab/view?usp=drivesdk"
+      },
+      {
+        "number": 6,
+        "name": "LLM_PJ_0528_source.vcbak.part006",
+        "id": "1TpohRbdaL6M_bUKhoSLcWq0ehDHTmgFF",
+        "url": "https://drive.google.com/file/d/1TpohRbdaL6M_bUKhoSLcWq0ehDHTmgFF/view?usp=drivesdk"
+      },
+      {
+        "number": 7,
+        "name": "LLM_PJ_0528_source.vcbak.part007",
+        "id": "1jVeMvhg26-U6xGW7fT7sHE3hn0YxtDxF",
+        "url": "https://drive.google.com/file/d/1jVeMvhg26-U6xGW7fT7sHE3hn0YxtDxF/view?usp=drivesdk"
+      },
+      {
+        "number": 8,
+        "name": "LLM_PJ_0528_source.vcbak.part008",
+        "id": "161VLiCtul8mV2oJFGsGU4mSaC3KquZGk",
+        "url": "https://drive.google.com/file/d/161VLiCtul8mV2oJFGsGU4mSaC3KquZGk/view?usp=drivesdk"
+      },
+      {
+        "number": 9,
+        "name": "LLM_PJ_0528_source.vcbak.part009",
+        "id": "1nqiiAmiWopjociJUHS8ctDSnquVtOv8k",
+        "url": "https://drive.google.com/file/d/1nqiiAmiWopjociJUHS8ctDSnquVtOv8k/view?usp=drivesdk"
+      }
+    ],
+    "verified_parts": [
+      {
+        "number": 1,
+        "sha256": "ac3394484353f7eb9782f5c67c9e1cdf8c5961711692065e0db07f39f09eb48a",
+        "bytes": 100663296
+      }
+    ],
+    "retry_resolution": "Part008 initial blob connection error; directory re-list reconciled successful008/009 without recreating them",
+    "readback_failure": "Part002 download received0bytes for >7minutes; owned process stopped; parts002-009 SHA256 and010-025 uploads remain open",
+    "next": "Re-list exact filenames before create, resume missing parts, verify every remote SHA256, join and authenticate the joined remote ciphertext"
   },
   "remaining": [
-    "Five cloud ciphertext parts and independent SHA-256 readback/reassembly/decrypt",
+    "Cloud parts010-025 upload, parts002-009 and remaining SHA256 readback, full remote reassembly/authenticated decrypt",
     "Current main plus a fresh stable private-directory snapshot",
     "Recovery key copy on a separate device and independent recovery",
     "Real Atlas consistent export, indexes/validators/TTL metadata, and isolated full data restore",
@@ -246,5 +315,19 @@
   "review_fixes": {
     "P1": "All runtime asserts replaced with explicit require checks; host and container optimized mode passed; two -O negative checks passed",
     "P2": "Cloud reassembled ciphertext is now the documented decrypt source"
+  },
+  "code_delivery": {
+    "pr": 77,
+    "reviewed_head": "2496745e30b94d06b3abd39fcfb748e9dc102e52",
+    "merge_sha": "d68f0f34d3a8c10a327c0af4d253f88458e7175e",
+    "pr_ci": 39085154175,
+    "push_ci": 39085151748,
+    "main_ci": 39085305266,
+    "all_ci_success": true,
+    "scoped_paths": 18,
+    "source_commit_remote_equal": 18,
+    "original_canonical": 14,
+    "original_preserved_variants": 4,
+    "unrelated_variant_bytes_preserved": true
   }
 }

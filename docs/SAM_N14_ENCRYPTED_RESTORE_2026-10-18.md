@@ -1,5 +1,15 @@
 # SAM N14 加密備份與隔離復原｜2026-10-18
 
+## 09:15 合併後交付與雲端檢查點
+
+[PR #77](https://github.com/SamWang61/LLM_PJ/pull/77)已合併main `d68f0f34d3a8c10a327c0af4d253f88458e7175e`；審查head `2496745e30b94d06b3abd39fcfb748e9dc102e52` 的push／PR CI及[合併後CI](https://github.com/SamWang61/LLM_PJ/actions/runs/39085305266)均success。P1已將所有runtime assert換成不可略過的明確檢查，host／container最佳化模式實測通過，另補兩項-O負向回歸；P2已將還原指令改成解密雲端重組產物。46測試／0 skipped、545文件／442 UTF-8／0政策錯誤。
+
+18個本輪路徑的提交與不可變GitHub內容一致；原目錄14檔為canonical，4檔保留本機自訂內容，且除本輪插入區域外逐byte保留原檔。原分支／HEAD `bbb8e9c`與其他未提交內容保留。後續文件檢查點提交另以GitHub紀錄為準，不把文件提交當新部署。
+
+Drive已逐檔讀回9／25個96MiB密文片的大小與owner-only ACL，**完整內容SHA-256僅第1片通過**。第8片初次blob連線失敗，重試後目錄重新盤點確認8／9已成功，未重建重複檔；第2片內容下載逾7分鐘仍0bytes，已停止該自建下載程序。清冊已更新為25片並保留九個Drive物件ID；後續先列目錄，再續傳10～25及讀回其餘內容。7379-byte索引檔已原ID更新／讀回、仍owner-only；索引或成功上傳回覆都不等於完整備份驗收。
+
+N14仍待結案；本輪V5仍2完成／12待結案。下一步需要全數遠端hash／重組／認證解密，再處理最新快照、異機key與正式Atlas資料復原。以下08:50雲端描述保留為執行歷史，以本檢查點為準。
+
 主責：[SAM](mailto:cashsam@gmail.com)。本輪基線 main `40dbd24abd8041c66e0642f14c4dd4cc727638a9`，PR #74 已合併。依使用者授權由 SAM 實作、測試與技術覆核，通過 GitHub CI 後直接合併；不代填其他人的具名接收。
 
 ## 本輪已完成
