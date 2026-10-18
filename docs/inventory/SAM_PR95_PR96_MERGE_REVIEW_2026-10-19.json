@@ -1240,5 +1240,21 @@
   "delivery_normalization": {
     "path": "MuscleCore分析資料/website/app/templates/auth/login.html",
     "reason": "checkout CRLF normalized to committed Git blob bytes; application source unchanged"
+  },
+  "postmerge96_readback": {
+    "number": 96,
+    "url": "https://github.com/SamWang61/LLM_PJ/pull/96",
+    "head_sha": "6e4bd15602eb34a1e866ae7133bd93394dcac667",
+    "merged_at": "2026-10-18T22:37:12Z",
+    "merge_sha": "b038aaca2d2553a39d8fd958100f277c64a75486",
+    "main_ci": {
+      "id": 39173026751,
+      "run_number": 509,
+      "status": "completed",
+      "conclusion": "success",
+      "head_sha": "b038aaca2d2553a39d8fd958100f277c64a75486",
+      "url": "https://github.com/SamWang61/LLM_PJ/actions/runs/39173026751",
+      "completed_at": "2026-10-18T22:39:20Z"
+    }
   }
 }

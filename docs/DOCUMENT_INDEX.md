@@ -1,5 +1,9 @@
 # 全部文件索引 / Document catalog
 
+**2026/10/19 06:52 正式流量變更後獨立重驗**：06:51讀回`vibecart-web-reviews-b038aaca`已100%，source `b038aaca2d2553a39d8fd958100f277c64a75486`、digest `8755ccb82902cf59430d5b2b76505c3fb6e4ed265d0ef98ba42821769edbcbdd`；本輪不是切換執行者。已在新正式版重驗六角色登入／後台允許或拒絕／線上改密403／登出及自有session 0，全通過；沒有換密碼或撤其他裝置session。早先正式576／新預覽0%為06:46歷史，現在以此讀回為準。V5仍2/14，完整功能、人員簽收與其他待辦不因流量變更自動結案。 [部署JSON](inventory/SAM_CI509_POST_RELEASE_DEPLOYMENT_2026-10-19.json)／[新正式六角色JSON](inventory/SAM_CI509_POST_RELEASE_SIX_ROLES_2026-10-19.json)。
+
+**2026/10/19 06:48 main CI #509與剩餘驗收**：PR #96已合併 `b038aaca2d2553a39d8fd958100f277c64a75486`，同SHA的[main CI #509](https://github.com/SamWang61/LLM_PJ/actions/runs/39173026751)於06:39:20成功。兩個到期舊展示帳號獨立重查均inactive／session 0、正式登入拒絕，本輪未再寫入；固定六角色不變。正式28集合／89索引／7 migration／12組指定關聯稽核通過，指定關聯孤兒0；43區Cloud Run清冊可讀42區，me-central2政策拒絕，Functions／Scheduler／Compute API未啟用。Atlas仍含0.0.0.0/0，固定出口未驗。部署以實際100%修訂讀回，不能用latestReady或service template當正式流量。V5仍2/14，下一階段仍排除。 [SAM_CI509_ACCEPTANCE_2026-10-19詳細證據](SAM_CI509_ACCEPTANCE_2026-10-19.md)。
+
 <!-- SAM PR95 PR96 REVIEW 20261019 BEGIN -->
 **2026/10/19 06:30 SAM PR #95／#96覆核**：[同版測試與合併紀錄](SAM_PR95_PR96_MERGE_REVIEW_2026-10-19.md)。#95已合併main `8a29f5f`；275項真本機MongoDB測試0 skipped、完整56檔PR95私有0%預覽的四組探針與正式六角色登入均通過。正式仍登入增量576b474／100%，本輪未切正式流量；28集合／89索引／7 migration及關聯唯讀稽核通過。#96保留05:45歷史，舊修復憑證已由05:52固定雙角色規則接續，不回灌舊憑證。V5仍2/14；#96最終合併SHA／CI以GitHub紀錄為準。
 <!-- SAM PR95 PR96 REVIEW 20261019 END -->
