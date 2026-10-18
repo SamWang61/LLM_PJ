@@ -27,6 +27,8 @@
 - 保留LangGraph／BGE路徑，增加可指定候選數，避免模型啟用時又退回固定4項；個人區先依行為分數，BGE作同分語意排序，破圈星等優先不變。此處模型測試使用可控Embeddings，不把本次本機結果宣稱遠端真模型驗收。
 - 定向整合回歸70 passed；整合main `cac315ba`後完整真localhost MongoDB交易套件 **261 passed／0 skipped**，[本次報告](inventory/review_stars_20261018/transactions-main-integration.json)確認測試庫／容器清理完成。原228項為上午較早基線，不冒稱最新結果。
 
+- 提交 `2e44f12` 的56檔白名單封裝SHA-256 `55a2ae82895e6c9940a5387e2f90d1138f3b41994f8fde087326b808d4eb1425`；本機精簡Docker build與斷網factory boot通過，評價服務可匯入、兩個新路由已註冊。[容器證據](inventory/review_stars_20261018/container-boot.json)。`.dockerignore`與封裝器均保留review_service。未把此精簡映像測試當成新版真BGE／Claude遠端驗收。
+
 ## 交付邊界
 
 本次交付程式、文件與[GitHub PR #81](https://github.com/SamWang61/LLM_PJ/pull/81)，合併狀態依GitHub紀錄。正式服務部署、Firebase路由／流量、Atlas遠端評價流程、跨裝置推播與真人驗收未由本紀錄宣稱完成。未改既有示範訂單付款／配送狀態，不以假評價填推薦池。
