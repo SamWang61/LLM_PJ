@@ -1,5 +1,7 @@
 # main CI #509／PR #96合併證據與剩餘驗收
 
+**2026/10/19 06:52 正式流量變更後獨立重驗**：06:51讀回`vibecart-web-reviews-b038aaca`已100%，source `b038aaca2d2553a39d8fd958100f277c64a75486`、digest `8755ccb82902cf59430d5b2b76505c3fb6e4ed265d0ef98ba42821769edbcbdd`；本輪不是切換執行者。已在新正式版重驗六角色登入／後台允許或拒絕／線上改密403／登出及自有session 0，全通過；沒有換密碼或撤其他裝置session。早先正式576／新預覽0%為06:46歷史，現在以此讀回為準。V5仍2/14，完整功能、人員簽收與其他待辦不因流量變更自動結案。 [部署JSON](inventory/SAM_CI509_POST_RELEASE_DEPLOYMENT_2026-10-19.json)／[新正式六角色JSON](inventory/SAM_CI509_POST_RELEASE_SIX_ROLES_2026-10-19.json)。
+
 本輪以main `b038aaca2d2553a39d8fd958100f277c64a75486`建立獨立乾淨工作目錄；原專案未提交內容保留。以下為2026/10/19 06:32～06:49（Asia/Taipei）分別取證，實際UTC時間列於各JSON；不是同一瞬間的全站快照。
 
 ## 合併與CI已完成
