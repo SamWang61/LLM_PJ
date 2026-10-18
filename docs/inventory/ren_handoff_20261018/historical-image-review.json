@@ -1,0 +1,27 @@
+{
+  "checked_at": "2026-10-18T03:25:36.613217+00:00",
+  "files": [
+    {
+      "file": "S04-auth.png",
+      "sha256": "c2fa624ee36b6e91b1d101f81967ab7a6ea22fc3a7dbf347e51de005458675bc",
+      "index_sha256": "c2fa624ee36b6e91b1d101f81967ab7a6ea22fc3a7dbf347e51de005458675bc",
+      "matches_index": true,
+      "source_commit": "ff65eaef0f6db932f844893cf2f8dc42eac5b5f7",
+      "revision": "vibecart-acceptance-pr21-00007-wcd",
+      "technical_visual_review": "Codex",
+      "human_signed": false
+    },
+    {
+      "file": "S05-order.png",
+      "sha256": "f42ef272bd3fa16178585e55207bedc9e91677cc1119c122234c1ce7fd8b8986",
+      "index_sha256": "f42ef272bd3fa16178585e55207bedc9e91677cc1119c122234c1ce7fd8b8986",
+      "matches_index": true,
+      "source_commit": "ff65eaef0f6db932f844893cf2f8dc42eac5b5f7",
+      "revision": "vibecart-acceptance-pr21-00007-wcd",
+      "technical_visual_review": "Codex",
+      "human_signed": false
+    }
+  ],
+  "scope": "Existing isolated screenshots retain original source; no new version relabeling",
+  "human_signoff_pending": true
+}

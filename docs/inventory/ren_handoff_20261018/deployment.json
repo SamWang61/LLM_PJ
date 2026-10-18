@@ -1,0 +1,27 @@
+{
+  "checked_at": "2026-10-18T03:15:21.189Z",
+  "services": [
+    {
+      "name": "vibecart-web",
+      "active": [
+        {
+          "revision": "vibecart-web-00019-phf",
+          "percent": 100,
+          "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:7199fa08c711917a80e5f54dbfd580ed96f3ef632bda7337b4aa2bde2325c992",
+          "source_commit": "e000d952d22a64b568903641893f4ffdc71accd3"
+        }
+      ]
+    },
+    {
+      "name": "vibecart-acceptance-pr21",
+      "active": [
+        {
+          "revision": "vibecart-acceptance-pr21-00011-2hq",
+          "percent": 100,
+          "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:7199fa08c711917a80e5f54dbfd580ed96f3ef632bda7337b4aa2bde2325c992",
+          "source_commit": "e000d952d22a64b568903641893f4ffdc71accd3"
+        }
+      ]
+    }
+  ]
+}

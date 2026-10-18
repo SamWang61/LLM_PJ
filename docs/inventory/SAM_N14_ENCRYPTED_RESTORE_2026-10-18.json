@@ -1,7 +1,7 @@
 {
-  "checked_at_utc": "2026-10-18T02:33:48.022453+00:00",
+  "checked_at_utc": "2026-10-18T03:26:20+00:00",
   "basis_main": "40dbd24abd8041c66e0642f14c4dd4cc727638a9",
-  "scope": "N14 historical full-source client encryption and isolated local restoration; gate remains open",
+  "scope": "N14 historical0528 full-source encryption, remote reassembly/authenticated restoration and prior isolated local boot; gate remains open",
   "encryption_restore": {
     "checked_at_utc": "2026-10-18T00:43:46.829168+00:00",
     "source_snapshot_at_utc": "2026-10-17T21:28:12.525521+00:00",
@@ -48,7 +48,7 @@
         "md5": "65c2b3e531826fa23316488e2b3366e3"
       }
     ],
-    "cloud_uploaded": false
+    "cloud_uploaded_at_initial_local_run": false
   },
   "local_boot": {
     "checked_at_utc": "2026-10-18T01:00:59.774779+00:00",
@@ -95,12 +95,12 @@
   },
   "cloud": {
     "catalog_id": "1ZilMHLhfCv25WHUxWyeVuSTKIEhm3o0N",
-    "catalog_bytes": 7379,
+    "catalog_bytes": 12537,
     "catalog_owner_only": true,
     "catalog_readback": true,
-    "data_parts_verified": 20,
+    "data_parts_verified": 25,
     "data_parts_expected": 25,
-    "status": "incomplete_local_dns_failure",
+    "status": "all25_remote_sha256_and_authenticated_historical_archive_restore_passed",
     "original_480m_attempt": "Rejected before action invocation: HTTP413 single-file100MiB limit",
     "parts": [
       {
@@ -229,9 +229,10 @@
         "sha256": "213eb9faab5c59c7e4b76f82cae9a8d9feaea8a8774b6de2e9ea2377d893a5a5"
       }
     ],
-    "data_parts_uploaded": 20,
-    "metadata_owner_only_parts": 20,
-    "metadata_size_bytes_each": 100663296,
+    "data_parts_uploaded": 25,
+    "metadata_owner_only_parts": 25,
+    "metadata_size_bytes_first24": 100663296,
+    "metadata_size_bytes_last": 23574820,
     "observed_files": [
       {
         "number": 1,
@@ -352,6 +353,36 @@
         "name": "LLM_PJ_0528_source.vcbak.part020",
         "id": "1hbiVISChuF6kqVlYY8OPcTLw4LMwbLd6",
         "url": "https://drive.google.com/file/d/1hbiVISChuF6kqVlYY8OPcTLw4LMwbLd6/view?usp=drivesdk"
+      },
+      {
+        "number": 21,
+        "name": "LLM_PJ_0528_source.vcbak.part021",
+        "id": "1FlVP_ex_8oW2uUJSW2HG-Ak485K9lvBp",
+        "url": "https://drive.google.com/file/d/1FlVP_ex_8oW2uUJSW2HG-Ak485K9lvBp/view?usp=drivesdk"
+      },
+      {
+        "number": 22,
+        "name": "LLM_PJ_0528_source.vcbak.part022",
+        "id": "1bOZ4mmJPymtvthhDccM1a_GtcyNdgWUX",
+        "url": "https://drive.google.com/file/d/1bOZ4mmJPymtvthhDccM1a_GtcyNdgWUX/view?usp=drivesdk"
+      },
+      {
+        "number": 23,
+        "name": "LLM_PJ_0528_source.vcbak.part023",
+        "id": "1giEYyjvXSPdSRkkpIoXmScEKlI-9GDjy",
+        "url": "https://drive.google.com/file/d/1giEYyjvXSPdSRkkpIoXmScEKlI-9GDjy/view?usp=drivesdk"
+      },
+      {
+        "number": 24,
+        "name": "LLM_PJ_0528_source.vcbak.part024",
+        "id": "1BuEHt8f0YFY4dirWTcD6K4kLd152Woaz",
+        "url": "https://drive.google.com/file/d/1BuEHt8f0YFY4dirWTcD6K4kLd152Woaz/view?usp=drivesdk"
+      },
+      {
+        "number": 25,
+        "name": "LLM_PJ_0528_source.vcbak.part025",
+        "id": "1xKzqqdeZpbb6AEKhgurmizJ0m29UQeCR",
+        "url": "https://drive.google.com/file/d/1xKzqqdeZpbb6AEKhgurmizJ0m29UQeCR/view?usp=drivesdk"
       }
     ],
     "verified_parts": [
@@ -533,21 +564,112 @@
         "number": 20,
         "id": "1hbiVISChuF6kqVlYY8OPcTLw4LMwbLd6",
         "owner_only": true
+      },
+      {
+        "verified": true,
+        "name": "LLM_PJ_0528_source.vcbak.part021",
+        "bytes": 100663296,
+        "sha256": "91b4eb2f7f641e945a46bda967ee8e53d45c13405b7aca442861829806b34ac9",
+        "process_dns_fallback_used": false,
+        "number": 21,
+        "id": "1FlVP_ex_8oW2uUJSW2HG-Ak485K9lvBp",
+        "owner_only": true
+      },
+      {
+        "verified": true,
+        "name": "LLM_PJ_0528_source.vcbak.part022",
+        "bytes": 100663296,
+        "sha256": "d34e72714e7f884550c90c90f38819447a9be3d9d5fecac1ac3d386a858d343d",
+        "process_dns_fallback_used": false,
+        "number": 22,
+        "id": "1bOZ4mmJPymtvthhDccM1a_GtcyNdgWUX",
+        "owner_only": true
+      },
+      {
+        "verified": true,
+        "name": "LLM_PJ_0528_source.vcbak.part023",
+        "bytes": 100663296,
+        "sha256": "df08772a3396ea930e30b77bc8dcc052ebf5dd2764fedd691e1eabbd44cb083b",
+        "process_dns_fallback_used": false,
+        "number": 23,
+        "id": "1giEYyjvXSPdSRkkpIoXmScEKlI-9GDjy",
+        "owner_only": true
+      },
+      {
+        "verified": true,
+        "name": "LLM_PJ_0528_source.vcbak.part024",
+        "bytes": 100663296,
+        "sha256": "5d70236198c25bd0017f54a91672c65b6b706934d89679f0144dab3edb93ac86",
+        "process_dns_fallback_used": false,
+        "number": 24,
+        "id": "1BuEHt8f0YFY4dirWTcD6K4kLd152Woaz",
+        "owner_only": true
+      },
+      {
+        "verified": true,
+        "name": "LLM_PJ_0528_source.vcbak.part025",
+        "bytes": 23574820,
+        "sha256": "213eb9faab5c59c7e4b76f82cae9a8d9feaea8a8774b6de2e9ea2377d893a5a5",
+        "process_dns_fallback_used": false,
+        "number": 25,
+        "id": "1xKzqqdeZpbb6AEKhgurmizJ0m29UQeCR",
+        "owner_only": true
       }
     ],
-    "retry_resolution": "Part008 reconciled without duplicates; part020 DNS failure recovered with task-local explicit DNS lookup and normal TLS verification",
+    "retry_resolution": "After user-reported DNS recovery, existing20 IDs retained, missing021-025 uploaded and all25 remotely verified. No system DNS setting changed.",
     "readback_failure": "Part002 had no completed result for >7min; its open-file directory metadata showed0, but after stopping it contained84934656bytes. Retained prefix matched local source, Range download of15728640bytes completed, full part SHA256 passed. Zero metadata was not evidence of no transfer.",
-    "next": "Restore local DNS, re-list exact Drive object names, upload missing021-025, verify their remote SHA256, then join and authenticate the joined remote ciphertext",
-    "catalog_is_older_checkpoint": true,
-    "current_blocker": "Default local DNS fails for GitHub/ChatGPT; cache flush did not recover it. File-parameter transfer for part021 failed at chatgpt.com/backend-api/files before Drive invocation.",
-    "source_archive_cloud_restore_verified": false,
+    "next": "Latest stable complete source snapshot; off-device recovery key; real Atlas consistent export and full isolated restore; daily fixed-project ACL workflow",
+    "catalog_is_older_checkpoint": false,
+    "current_blocker": null,
+    "source_archive_cloud_restore_verified": true,
     "original_transport_failure": {
       "part": 20,
       "type": "local DNS getaddrinfo failure; router resolver timed out; explicit resolver succeeded"
+    },
+    "catalog_sha256": "bd47cf82f21e2f4ed15ef449bfe31b2769269df4d24e2fb72261cb9746b93fa4",
+    "catalog_content_sha256_verified": true,
+    "remote_restore": {
+      "checked_at_utc": "2026-10-18T03:25:35.126497+00:00",
+      "source_snapshot_at_utc": "2026-10-17T21:28:12.525521+00:00",
+      "current_main_snapshot": false,
+      "remote_parts_verified": 25,
+      "owner_only_parts": 25,
+      "reassembly": {
+        "verified": true,
+        "parts": 25,
+        "ciphertext": {
+          "bytes": 2439493924,
+          "sha256": "328b9aa8194589d53d8f18e7d41b0e96809335a1329bd23ed3ba95d992fe51d5"
+        }
+      },
+      "decrypt": {
+        "authenticated": true,
+        "plaintext": {
+          "bytes": 2439493848,
+          "sha256": "75f91fcf4b490a112ec1672393600d7cab5c649e60282d9f1203cc3516d9a291"
+        }
+      },
+      "source_archive_cloud_restore_verified": true,
+      "identity_chain": "Cloud decrypted ZIP exactly equals the local authenticated ZIP whose 13048 extracted files were checked with zero differences; no new extraction or Atlas restore claimed.",
+      "off_device_key_recovery": false,
+      "atlas_export_or_restore": false
+    },
+    "final_inventory": {
+      "part_count": 25,
+      "duplicate_names": 0,
+      "all_unshared": true,
+      "folder_owner_only": true
+    },
+    "catalog_verification": {
+      "id": "1ZilMHLhfCv25WHUxWyeVuSTKIEhm3o0N",
+      "bytes": 12537,
+      "sha256": "bd47cf82f21e2f4ed15ef449bfe31b2769269df4d24e2fb72261cb9746b93fa4",
+      "owner_only": true,
+      "content_readback_equal": true,
+      "checked_at": "2026-10-18T03:26:19.540Z"
     }
   },
   "remaining": [
-    "Cloud parts021-025 upload/readback after DNS recovery, then full remote reassembly/authenticated decrypt",
     "Current main plus a fresh stable private-directory snapshot",
     "Recovery key copy on a separate device and independent recovery",
     "Real Atlas consistent export, indexes/validators/TTL metadata, and isolated full data restore",
@@ -561,7 +683,8 @@
   },
   "review_fixes": {
     "P1": "All runtime asserts replaced with explicit require checks; host and container optimized mode passed; two -O negative checks passed",
-    "P2": "Cloud reassembled ciphertext is now the documented decrypt source"
+    "P2": "Cloud reassembled ciphertext is now the documented decrypt source",
+    "PR80_P2": "Overall acceptance checkpoint03:26:20UTC is after catalog readback03:26:19UTC; document11:26 headings aligned. Remote decrypt retains its actual03:25:35UTC time."
   },
   "code_delivery": {
     "pr": 77,
@@ -576,5 +699,12 @@
     "original_canonical": 14,
     "original_preserved_variants": 4,
     "unrelated_variant_bytes_preserved": true
+  },
+  "checkpoint_delivery": {
+    "pr": 78,
+    "reviewed_head": "75e6126a3aa0b272b8cdb2d5e23fb03d6516474a",
+    "merge_sha": "0b742bab73d9a99e28602a7b11dfd52e29cd40d9",
+    "main_ci": 39090844026,
+    "main_ci_success": true
   }
 }

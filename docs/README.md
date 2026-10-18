@@ -4,7 +4,7 @@
 
 
 <!-- SAM N14 20261018 BEGIN -->
-**2026/10/18 10:33 SAM N14**：[加密備份／復原與續傳檢查點](SAM_N14_ENCRYPTED_RESTORE_2026-10-18.md)。[PR #77](https://github.com/SamWang61/LLM_PJ/pull/77)已合併main `d68f0f3`、CI通過；46測試／13,048檔本機還原差異0／最佳化模式啟動通過。雲端20/25片完整SHA與owner ACL已驗；第21片因本機DNS／檔案通道失敗未送入Drive。保留20物件ID待補21～25、整批認證還原與最新快照／異機key／Atlas復原。V5仍2/14完成；文件交付見[PR #78](https://github.com/SamWang61/LLM_PJ/pull/78)。
+**2026/10/18 11:26 SAM N14**：[加密備份／雲端還原驗收](SAM_N14_ENCRYPTED_RESTORE_2026-10-18.md)。25/25片完整遠端SHA-256及owner-only ACL通過；已重組2,439,493,924-byte密文、認證解密，ZIP hash與05:28歷史快照完全相同。13,048檔本機還原差異0／46安全回歸／最佳化隔離啟動的既有證據可由相同ZIP銜接。雲端清冊原ID更新並逐byte讀回核對。**N14仍缺最新快照、異機key、正式Atlas完整復原及每日固定專案流程；V5仍2/14完成。** 工具[PR #77](https://github.com/SamWang61/LLM_PJ/pull/77)與前次文件[PR #78](https://github.com/SamWang61/LLM_PJ/pull/78)已合併；本次只補雲端證據。
 <!-- SAM N14 20261018 END -->
 
 **2026/10/18 08:06 SAM PR #74 技術覆核**：[完整整合紀錄](SAM_PR74_MERGE_REVIEW_2026-10-18.md)。本輪208 passed／0 skipped、51執行來源對帳0差異；公開customer/admin登入、角色及單裝置登出通過，sessions0。另修正維運驗證清理可能誤刪並行session，4項回歸通過。正式19／私有10同映像、正常command、IAM0；故障報告仍依06:36～06:38原時間。本次PR將部署來源整合main，實際合併SHA／時間見[PR #74](https://github.com/SamWang61/LLM_PJ/pull/74)。V5仍2/14完成，具名交接／更廣outage／實機／備份／簽收待辦。
