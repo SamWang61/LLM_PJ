@@ -1,0 +1,38 @@
+{
+  "recorded_at": "2026-10-18T17:43:14.181569+08:00",
+  "source": "user_message",
+  "reported_device_test": true,
+  "device_model_raw": "iPhone17ProMax",
+  "device_model_display": "iPhone 17 Pro Max",
+  "os_reported": "iOS 27.0.1",
+  "browser_name_reported": "Chrome",
+  "browser_version": null,
+  "operator_reported": "SAM",
+  "performed_at": "2026-10-18T17:00:00+08:00",
+  "timezone": "Asia/Taipei",
+  "tested_url": null,
+  "tested_source_sha": null,
+  "tested_revision": null,
+  "steps_reported": null,
+  "results": {
+    "S03": null,
+    "S04": null,
+    "S05": null
+  },
+  "anomalies_reported": null,
+  "screenshots": [],
+  "outcome": "pending_results",
+  "independently_verified": false,
+  "named_ren_acceptance": false,
+  "pending_fields": [
+    "browser_version",
+    "tested_url",
+    "tested_source_sha_or_revision",
+    "steps_reported",
+    "S03_S04_S05_results",
+    "anomalies_reported",
+    "physical_device_evidence",
+    "named_ren_acceptance"
+  ],
+  "note_zh_TW": "使用者已回報實測；本次只收到設備、OS、瀏覽器名稱、操作人與時間，未提供通過／失敗結果。現有尺寸模擬圖不作實機證據。"
+}

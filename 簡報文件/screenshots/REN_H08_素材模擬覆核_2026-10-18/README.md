@@ -1,6 +1,6 @@
 # H08 商品頁模擬與素材覆核
 
-日期2026/10/18；原始JPEG由內建瀏覽器直接回傳，沒有裁切、改圖或縮放。這是CSS viewport模擬；使用者確認尚未實機測試。完整時間、URL、角色、焦點、尺寸與hash見[captures.json](captures.json)及[素材清冊](audit.json)。
+日期2026/10/18；原始JPEG由內建瀏覽器直接回傳，沒有裁切、改圖或縮放。這是CSS viewport模擬；取證時依使用者先前「尚未實測」回覆執行。完整時間、URL、角色、焦點、尺寸與hash見[captures.json](captures.json)及[素材清冊](audit.json)。
 
 | 圖片 | 步驟／實際結果 |
 |---|---|
@@ -11,3 +11,5 @@
 JPEG寬度為375／305／829px，CSS viewport為390／320／844px；原圖回傳範圍不含15px右側捲軸。這三張是公開商品頁，不作私有交易、付款、登入負向或手機實機證據。
 
 [完整H08報告](../../../docs/REN_H08_MATERIAL_SIMULATION_2026-10-18.md)說明五張歷史S03～S05圖與原索引一致、PPTX hash未變、另附補充講稿，以及公開登入檢查未採計的界線。角色／交易與事件以[PR #89新版遠端報告](../../../docs/REN_PR89_REVIEW_2026-10-18.md)另核。所有真人接收欄維持待填。
+
+**2026/10/18 17:43 後續實機回報**：使用者提供[汪文彥（SAM）](mailto:cashsam@gmail.com)於17:00使用iPhone 17 Pro Max／iOS 27.0.1／Chrome實測的資料，結果、完整版本及實機證據待補，見[H08報告](../../../docs/REN_H08_MATERIAL_SIMULATION_2026-10-18.md)。本目錄原圖及`audit.json`只記錄上述模擬，取證方式保持不變。
