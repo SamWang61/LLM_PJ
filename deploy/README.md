@@ -4,6 +4,9 @@
 **2026/10/19 06:56 SAM正式部署獨立驗收**：[完整證據](../docs/SAM_MAIN_PRODUCTION_ACCEPTANCE_2026-10-19.md)。main b038aaca的56檔已於06:47切正式revision `vibecart-web-reviews-b038aaca` 100%，Firebase於06:48發布。候選與公開網址各六角色／Atlas session驗收通過；正式受控評價4＋4＋5→4.4／3筆，原頁即時更新，八集合清理0、既有業務hash一致。同版私有4組探針驗6＋4／交易／隔離；正式高星實評候選0，不填假資料。原目錄55／56執行檔一致，既有base.html頁尾變體保留。V5仍2/14，真人簽認等待辦保留。
 <!-- SAM MAIN PRODUCTION INDEPENDENT 20261019 END -->
 
+<!-- SAM REVIEWS PRODUCTION 20261019 -->
+**2026/10/19 06:55 SAM商品評價／6＋4正式發布**：Cloud Run `vibecart-web-reviews-b038aaca`已100%，Firebase Hosting 06:48:42發布成功；正式網址Chrome不重載4.0／2筆→4.4／3筆、Atlas13／3讀回、六角色登入及清理驗證通過。275項本機測試0 skipped，同digest私有遠端4探針與高星6＋4排序通過；正式真實評價候選不足不補滿，測試商品不可推薦且已清除。[正式部署與驗收](../docs/SAM_REVIEWS_6PLUS4_PRODUCTION_2026-10-19.md)。下方較早狀態為各時點歷史；V5仍2／14，未代填真人簽收。
+
 <!-- SAM PR95 PR96 REVIEW 20261019 BEGIN -->
 **2026/10/19 06:30 SAM PR #95／#96覆核**：[同版測試與合併紀錄](../docs/SAM_PR95_PR96_MERGE_REVIEW_2026-10-19.md)。#95已合併main `8a29f5f`；275項真本機MongoDB測試0 skipped、完整56檔PR95私有0%預覽的四組探針與正式六角色登入均通過。正式仍登入增量576b474／100%，本輪未切正式流量；28集合／89索引／7 migration及關聯唯讀稽核通過。#96保留05:45歷史，舊修復憑證已由05:52固定雙角色規則接續，不回灌舊憑證。V5仍2/14；#96最終合併SHA／CI以GitHub紀錄為準。
 <!-- SAM PR95 PR96 REVIEW 20261019 END -->
@@ -16,7 +19,7 @@
 **2026/10/18 21:41 SAM商品評價／6＋4無流量預覽**：[同版遠端驗收](../docs/SAM_REVIEWS_6PLUS4_PREVIEW_2026-10-18.md)。固定main9a76b1d、56檔與GCS SHA一致；BGE／規則同digest各0%，最後4探針及真Atlas回滾／角色／交易通過。瀏覽器不重載4.0／2筆→4.4／3筆、DOM6＋4；fixture／索引／Job／暫時IAM清理。正式19／私有base11仍100%原版，Hosting未變，正式評價0、D4 synthetic1240不變。正式上線、效能SLO與具名簽收未完成；V5仍2/14。
 <!-- SAM REVIEWS PREVIEW 20261018 END -->
 
-本次最新main的0%預覽、同版BGE／Claude與隔離交易證據見[2026-10-18驗收](../docs/SAM_MAIN_PREVIEW_2026-10-18.md)，Key設定見[Claude版本1](CLAUDE_SECRET_SETUP.md)。正式100%仍為`vibecart-web-00019-phf`，Hosting rewrite未改；下方01:58狀態是歷史。
+2026/10/18較早main的0%預覽、同版BGE／Claude與隔離交易證據見[2026-10-18驗收](../docs/SAM_MAIN_PREVIEW_2026-10-18.md)，Key設定見[Claude版本1](CLAUDE_SECRET_SETUP.md)。該時點正式100%為`vibecart-web-00019-phf`；本次06:55正式發布見頁首，下方01:58狀態亦為歷史。
 
 目前部署方式分開閱讀：[Firebase Hosting／Cloud Run 判定與操作](FIREBASE_CLOUD_RUN_DEPLOYMENT.md)、[Render 準備與驗收](RENDER_DEPLOYMENT.md)。
 
