@@ -4,7 +4,7 @@ from flask import Blueprint, abort, flash, redirect, render_template, request, s
 from .auth import login_required
 from .db import get_db, utcnow
 from .services.ai_workflows import storefront_recommendations
-from .services.behavior_scope import production_behavior_query
+from .services.behavior_scope import personalization_behavior_query
 from .services.member_events import behavior_metadata
 
 bp = Blueprint("store", __name__)
@@ -22,7 +22,7 @@ def home():
     recommendations = []
     events = []
     if session.get("user_id"):
-        events = list(db.behavior_events.find(production_behavior_query({"user_id": ObjectId(session["user_id"])})).sort("created_at", -1).limit(50))
+        events = list(db.behavior_events.find(personalization_behavior_query({"user_id": ObjectId(session["user_id"])})).sort("created_at", -1).limit(50))
     if events or request.args.get("q"):
         recommendations = storefront_recommendations(products, events, request.args.get("q", "")[:200])["items"]
     return render_template("store/home.html", products=products, categories=categories,
