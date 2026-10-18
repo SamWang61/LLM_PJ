@@ -1,0 +1,13 @@
+{
+  "checked_at": "2026-10-18T03:18:28.247792+00:00",
+  "source_commit": "0b742bab73d9a99e28602a7b11dfd52e29cd40d9",
+  "target": "new credential-free localhost replica set",
+  "docker_required": false,
+  "status": "failed",
+  "mongo_version": "db version v8.0.20",
+  "pid": 4812,
+  "error_type": "RuntimeError",
+  "test_process_stopped": true,
+  "temporary_data_removed": true,
+  "finished_at": "2026-10-18T03:19:56.415273+00:00"
+}

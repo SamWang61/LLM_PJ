@@ -1,0 +1,119 @@
+{
+  "checked_at": "2026-10-17T21:26:19.247Z",
+  "mode": "isolated-probe",
+  "project": "vibecart-llmai",
+  "status": "passed",
+  "production": {
+    "service": "vibecart-web",
+    "revision": "vibecart-web-00018-s59",
+    "traffic_percent": 0,
+    "production_is_zero_traffic_candidate": true,
+    "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:ba7d34787ffda32cb944022494c0dd5da64600df64ea05c49a79c41473404f5f",
+    "source_sha": "ff65eaef0f6db932f844893cf2f8dc42eac5b5f7"
+  },
+  "acceptance": {
+    "service": "vibecart-acceptance-pr21",
+    "revision": "vibecart-acceptance-pr21-00007-wcd",
+    "traffic_percent": 100,
+    "production_is_zero_traffic_candidate": false,
+    "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:ba7d34787ffda32cb944022494c0dd5da64600df64ea05c49a79c41473404f5f",
+    "source_sha": "ff65eaef0f6db932f844893cf2f8dc42eac5b5f7"
+  },
+  "inventory": {
+    "services": [
+      "projects/vibecart-llmai/locations/asia-east1/services/vibecart-acceptance-pr21",
+      "projects/vibecart-llmai/locations/asia-east1/services/vibecart-web"
+    ],
+    "jobs": [],
+    "job_regions_checked": [
+      "africa-south1",
+      "asia-east1",
+      "asia-east2",
+      "asia-northeast1",
+      "asia-northeast2",
+      "asia-northeast3",
+      "asia-south1",
+      "asia-south2",
+      "asia-southeast1",
+      "asia-southeast2",
+      "asia-southeast3",
+      "australia-southeast1",
+      "australia-southeast2",
+      "europe-central2",
+      "europe-north1",
+      "europe-north2",
+      "europe-southwest1",
+      "europe-west1",
+      "europe-west10",
+      "europe-west12",
+      "europe-west2",
+      "europe-west3",
+      "europe-west4",
+      "europe-west6",
+      "europe-west8",
+      "europe-west9",
+      "me-central1",
+      "me-central2",
+      "me-west1",
+      "northamerica-northeast1",
+      "northamerica-northeast2",
+      "northamerica-south1",
+      "southamerica-east1",
+      "southamerica-west1",
+      "us-central1",
+      "us-east1",
+      "us-east4",
+      "us-east5",
+      "us-south1",
+      "us-west1",
+      "us-west2",
+      "us-west3",
+      "us-west4"
+    ],
+    "restricted_regions": [
+      "me-central2"
+    ],
+    "restricted_reason": "LOCATION_POLICY_VIOLATED",
+    "topics": [],
+    "subscriptions": [],
+    "enabled_worker_apis": []
+  },
+  "iam": {
+    "role": "roles/iam.serviceAccountOpenIdTokenCreator",
+    "member": "user:cashsam@gmail.com",
+    "expires": "request.time < timestamp(\"2026-10-17T21:46:37.923Z\")",
+    "title": "sam-d4-cac5f600-7a28-4fce-9722-4c2f36b243b8",
+    "revoked": true,
+    "id_token_attempts": 9
+  },
+  "probe": {
+    "probe_id": "ren-d4-f04f6aa5e913c41d",
+    "service_revision": "vibecart-acceptance-pr21-00007-wcd",
+    "service_image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:ba7d34787ffda32cb944022494c0dd5da64600df64ea05c49a79c41473404f5f",
+    "status": "passed",
+    "baseline_admin_count": 13,
+    "after_normal_admin_count": 14,
+    "after_synthetic_admin_count": 14,
+    "normal_visible": true,
+    "synthetic_excluded": true,
+    "normal_inserted": 1,
+    "synthetic_inserted": 1001,
+    "product_ids": [
+      "6ad3e868c79394a2cc2ee67a",
+      "6ad3e868c79394a2cc2ee67b"
+    ],
+    "cleanup": {
+      "events": 1002,
+      "sessions": 2,
+      "users": 2,
+      "skus": 2,
+      "products": 2,
+      "events_remaining": 0,
+      "sessions_remaining": 0,
+      "users_remaining": 0,
+      "skus_remaining": 0,
+      "products_remaining": 0,
+      "verified": true
+    }
+  }
+}

@@ -7,7 +7,7 @@ from pymongo.errors import PyMongoError, DuplicateKeyError
 from werkzeug.security import check_password_hash, generate_password_hash
 
 from .db import get_db, utcnow
-from .services.member_sessions import create_member_session, valid_member_session, revoke_device_session
+from .services.member_sessions import create_member_session, valid_member_session, revoke_device_session, account_unexpired
 
 bp = Blueprint("auth", __name__, url_prefix="/auth")
 
@@ -35,7 +35,7 @@ def current_member():
     if current_app.config["DATA_MODE"] == "v4":
         query.update(schema_version=4, status="active")
     user = get_db().users.find_one(query)
-    if (not user or user.get("role") not in {"admin", "customer"}
+    if (not user or not account_unexpired(user) or user.get("role") not in {"admin", "customer"}
             or (current_app.config["DATA_MODE"] == "v4" and
                 not valid_member_session(get_db(), user, session.get("member_session")))):
         session.clear()
@@ -52,7 +52,7 @@ def start_member_session(user):
         prior_token = session.get("member_session")
         current = get_db().users.find_one({"_id": user["_id"], "schema_version": 4,
             "status": "active", "is_active": True})
-        if not current or current.get("password_hash") != user.get("password_hash"):
+        if not current or not account_unexpired(current) or current.get("password_hash") != user.get("password_hash"):
             return False
         user = current
         token = create_member_session(get_db(), user)
@@ -105,7 +105,7 @@ def login():
         except PyMongoError:
             flash("目前無法連線至資料庫，請先啟動 MongoDB。", "danger")
             return render_template("auth/login.html"), 503
-        if (user and user.get("role") in {"admin", "customer"}
+        if (user and account_unexpired(user) and user.get("role") in {"admin", "customer"}
                 and check_password_hash(user.get("password_hash", ""), password)
                 and start_member_session(user)):
             target = "admin.dashboard" if session["role"] == "admin" else "store.home"

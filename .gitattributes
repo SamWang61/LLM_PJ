@@ -6,6 +6,7 @@
 *.yaml text eol=lf
 *.json text eol=lf
 *.css text eol=lf
+*.cjs text eol=lf
 *.csv text eol=lf
 *.bat text eol=crlf
 *.ps1 text eol=crlf
@@ -28,3 +29,6 @@ MuscleCore分析資料/website/app/templates/base.html -text !eol
 # Preserve the exact bytes of the remote D4 run and its executed runner.
 docs/inventory/sam-d4-*-20261018.json -text !eol whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
 scripts/run_remote_d4_consumer_probe.cjs -text !eol whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
+# Keep published presentation metadata byte-identical.
+簡報文件/**/*.json -text !eol

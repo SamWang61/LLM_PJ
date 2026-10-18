@@ -1,11 +1,35 @@
 """Independent v4 device sessions; only a digest is stored on the server."""
-from datetime import timedelta
+from datetime import datetime, timedelta, timezone
 import hashlib
 import hmac
 import secrets
+import re
 from bson import ObjectId
 from flask import current_app
 from ..db import utcnow
+
+
+def demo_expiration(user):
+    """Reserved, immutable demo identities carry an enforced UTC cutoff.
+
+    This uses the existing email identity contract rather than changing deployed
+    validators. A malformed reserved identity fails closed.
+    """
+    email = user.get('email', '').lower()
+    if not email.endswith('@demo.vibecart.invalid'):
+        return None
+    match = re.fullmatch(r'[a-z0-9-]+-(\d{8}t\d{6}z)@demo\.vibecart\.invalid', email)
+    if not match:
+        return datetime.min.replace(tzinfo=timezone.utc)
+    try:
+        return datetime.strptime(match[1].upper(), '%Y%m%dT%H%M%SZ').replace(tzinfo=timezone.utc)
+    except ValueError:
+        return datetime.min.replace(tzinfo=timezone.utc)
+
+
+def account_unexpired(user):
+    expiry = demo_expiration(user)
+    return expiry is None or expiry > utcnow()
 
 
 def token_digest(token):

@@ -1,0 +1,569 @@
+{
+  "checked_at_utc": "2026-10-17T22:04:09.633504+00:00",
+  "audited_main": "625f70347e56f9fccb2ab9a27babfceae6dcce76",
+  "remote_main_before": "625f70347e56f9fccb2ab9a27babfceae6dcce76",
+  "remote_main_after": "625f70347e56f9fccb2ab9a27babfceae6dcce76",
+  "remote_head_stable": true,
+  "baseline_main": "fffa8aae87dff9af706dfcb3caf8ac31a8aa477c",
+  "verified_files": 40,
+  "commit_remote_mismatches": 0,
+  "files": [
+    {
+      "path": ".gitattributes",
+      "bytes": 1166,
+      "sha256": "d13523716b0a238ce47ef836d7ddb74e4e81054ba2a88dee60f67eef75c428fd",
+      "commit_remote_equal": true
+    },
+    {
+      "path": "docs/inventory/PRESENTATION_DIRECTORY_PUBLICATION_2026-10-18.json",
+      "bytes": 8923,
+      "sha256": "0cbeb13f7a3c6a44053530f9d5ae88b752b064bbb45eaae685a726f5b623648e",
+      "commit_remote_equal": true
+    },
+    {
+      "path": "簡報文件/ARCHITECTURE.md",
+      "bytes": 1424,
+      "sha256": "9a75b83ad44c1d396cbc10ad9ba63323ed45b773dde98efc9010d69d527db277",
+      "commit_remote_equal": true
+    },
+    {
+      "path": "簡報文件/DELIVERY_PLAN.md",
+      "bytes": 2613,
+      "sha256": "d828a1083082c57289ce99ebeb8933d234e2f6301d5f6173f20feda09fc7a454",
+      "commit_remote_equal": true
+    },
+    {
+      "path": "簡報文件/README.md",
+      "bytes": 1875,
+      "sha256": "b556b7eef5f5a2cf8163085faf363f374e56908fb978d0cb54cd51969181b922",
+      "commit_remote_equal": true
+    },
+    {
+      "path": "簡報文件/SLIDE_CONTENT.md",
+      "bytes": 3601,
+      "sha256": "ecaf5e9395ec415b0e6a40da8fc11f140e2d8b77b84abe9dcbe6fad152ac3847",
+      "commit_remote_equal": true
+    },
+    {
+      "path": "簡報文件/SOURCE_REGISTER.md",
+      "bytes": 3556,
+      "sha256": "86fff4f6a60e6d15bb213caa47c09d9fcd088942c60778e935ee5aacc66695db",
+      "commit_remote_equal": true
+    },
+    {
+      "path": "簡報文件/screenshots/README.md",
+      "bytes": 3227,
+      "sha256": "90c1f199b36ba1fc7c3d6c1b7a54d02dae27354b8690a73e46ff00efd29e84f3",
+      "commit_remote_equal": true
+    },
+    {
+      "path": "簡報文件/screenshots/S01-home.png",
+      "bytes": 36808,
+      "sha256": "39b8b45376cebf770811abe6602bf333349e0d2e9383f0cbcb9c25f6b4fa9f18",
+      "commit_remote_equal": true
+    },
+    {
+      "path": "簡報文件/超市AI版_2026-10-18/README.md",
+      "bytes": 2113,
+      "sha256": "476509f36b952edc4b49354d109bc83cfb08f9d0c2e24072baf6e02b29569879",
+      "commit_remote_equal": true
+    },
+    {
+      "path": "簡報文件/超市AI版_2026-10-18/SHA256.json",
+      "bytes": 4116,
+      "sha256": "0a4ac0750b65f4c4b8b813d6d495bdb62dd0b5af65817355ba43b09a7b4a670c",
+      "commit_remote_equal": true
+    },
+    {
+      "path": "簡報文件/超市AI版_2026-10-18/VibeCart_AI_超市網購與AI系統_2026-10-18_v3.pdf",
+      "bytes": 131,
+      "sha256": "3b13fec4f2f230e29b383a25ae227997d32bbb02bae4645f50545891d7893799",
+      "commit_remote_equal": true
+    },
+    {
+      "path": "簡報文件/超市AI版_2026-10-18/VibeCart_AI_超市網購與AI系統_2026-10-18_v3.pptx",
+      "bytes": 2598250,
+      "sha256": "9985caa029d1aa8475226a54efc3ac6ef91288b451f207719e50ad57daf04a0e",
+      "commit_remote_equal": true
+    },
+    {
+      "path": "簡報文件/超市AI版_2026-10-18/VibeCart_AI_超市網購與AI系統_2026-10-18_v5.pdf",
+      "bytes": 131,
+      "sha256": "518be4cb1bd584a501546008944e15909c440730ec3e035442a133c9fc145c4f",
+      "commit_remote_equal": true
+    },
+    {
+      "path": "簡報文件/超市AI版_2026-10-18/VibeCart_AI_超市網購與AI系統_2026-10-18_v5.pptx",
+      "bytes": 2603358,
+      "sha256": "43374f71c5e42fdc1725f38a8ac69ea0e2ccc696f6238ebb06425e58e00d7203",
+      "commit_remote_equal": true
+    },
+    {
+      "path": "簡報文件/超市AI版_2026-10-18/assets/S02-desktop-cloud-preview-20261018.png",
+      "bytes": 163342,
+      "sha256": "e7c534b36e4f855f64523ffb6d2da4dc310e70418a93c81c0b5da93b1d35d28d",
+      "commit_remote_equal": true
+    },
+    {
+      "path": "簡報文件/超市AI版_2026-10-18/assets/S02-mobile-card-source.png",
+      "bytes": 43448,
+      "sha256": "39ca1004151dc2f70357cb97b127009c0899e85d695e44edef3c2d93da0abcf3",
+      "commit_remote_equal": true
+    },
+    {
+      "path": "簡報文件/超市AI版_2026-10-18/assets/S03-product.png",
+      "bytes": 450300,
+      "sha256": "eb894676383db01208dbabc6202e102fa3b79ba4ddb82480b4d65abc9cb6658c",
+      "commit_remote_equal": true
+    },
+    {
+      "path": "簡報文件/超市AI版_2026-10-18/assets/S11-login-deploy-20261018.png",
+      "bytes": 31460,
+      "sha256": "8c0cda52cc1a446539a7200d67cb3f1aeb602ee6460808642c2b122ddc6c3721",
+      "commit_remote_equal": true
+    },
+    {
+      "path": "簡報文件/超市AI版_2026-10-18/assets/image-generation-prompt.txt",
+      "bytes": 1127,
+      "sha256": "31ae235409f7a0c9fffbe678a9e246d2de06264d59e67593ccf77ef3f325882c",
+      "commit_remote_equal": true
+    },
+    {
+      "path": "簡報文件/超市AI版_2026-10-18/assets/supermarket-ai-cover.png",
+      "bytes": 1740199,
+      "sha256": "fc7bfd40f7a40f000187fe746af909b95c1e678e483fc84136a9cb1c811f3c23",
+      "commit_remote_equal": true
+    },
+    {
+      "path": "簡報文件/超市AI版_2026-10-18/assets/team-photo-original.jpg",
+      "bytes": 127879,
+      "sha256": "c44ca3e15fd7f5859854f1141de227cb60a4af6e0ba360f4baed666de00101f9",
+      "commit_remote_equal": true
+    },
+    {
+      "path": "簡報文件/超市AI版_2026-10-18/來源登錄.md",
+      "bytes": 3403,
+      "sha256": "6fab5359f785dd20c9cc368b476f9c2ebc22e754b7402a3b3b5683b6c2b9462a",
+      "commit_remote_equal": true
+    },
+    {
+      "path": "簡報文件/超市AI版_2026-10-18/內容資料.json",
+      "bytes": 11287,
+      "sha256": "33903177b80a2b2998955eeb31b4fe6df0fdba1b3943636858980ee24fedb7a7",
+      "commit_remote_equal": true
+    },
+    {
+      "path": "簡報文件/超市AI版_2026-10-18/截圖對照與待補清單.md",
+      "bytes": 3824,
+      "sha256": "c12f746104dd210ed4f570b495eded7f1894bcf646b65c6644fe08ffb5982617",
+      "commit_remote_equal": true
+    },
+    {
+      "path": "簡報文件/超市AI版_2026-10-18/版面與素材規範.md",
+      "bytes": 2467,
+      "sha256": "93b306f641bf9723e5ee040622c84ee57fd69f56e7556a57df25ebded0b06851",
+      "commit_remote_equal": true
+    },
+    {
+      "path": "簡報文件/超市AI版_2026-10-18/逐頁內容與講稿.md",
+      "bytes": 11167,
+      "sha256": "0801ddf61fe2db7e26ad76802bb047e71616b139d4411053c007febfa35abb7c",
+      "commit_remote_equal": true
+    },
+    {
+      "path": "簡報文件/超市AI版_2026-10-18/預覽/slide-01.png",
+      "bytes": 612736,
+      "sha256": "23d2c56ca471b936eec35b5caf59c86521d88c8b50698a864fe56199faa23e64",
+      "commit_remote_equal": true
+    },
+    {
+      "path": "簡報文件/超市AI版_2026-10-18/預覽/slide-02.png",
+      "bytes": 175937,
+      "sha256": "a418c74c6980a9a699a37476ce51891ee66021aa491749038cff9673b25fa410",
+      "commit_remote_equal": true
+    },
+    {
+      "path": "簡報文件/超市AI版_2026-10-18/預覽/slide-03.png",
+      "bytes": 75369,
+      "sha256": "281e202cb4c1d46464c03186a0230f37ed826ec93944d7b98eb9a694b21197d3",
+      "commit_remote_equal": true
+    },
+    {
+      "path": "簡報文件/超市AI版_2026-10-18/預覽/slide-04.png",
+      "bytes": 83386,
+      "sha256": "e9f2a39e0935af448c6f06b34f25a0a0bfe451a232474a274a1fd5f6551e32c5",
+      "commit_remote_equal": true
+    },
+    {
+      "path": "簡報文件/超市AI版_2026-10-18/預覽/slide-05.png",
+      "bytes": 216950,
+      "sha256": "e0ed63ccce5451254d9bd981ffe5acf6c35c01e76a3dd65070b048b06bfcf7be",
+      "commit_remote_equal": true
+    },
+    {
+      "path": "簡報文件/超市AI版_2026-10-18/預覽/slide-06.png",
+      "bytes": 112451,
+      "sha256": "67fc0b52908c9750eac7643bf488b92123c67ec85c509f44edae67e6b2ba8162",
+      "commit_remote_equal": true
+    },
+    {
+      "path": "簡報文件/超市AI版_2026-10-18/預覽/slide-07.png",
+      "bytes": 76321,
+      "sha256": "dafe6df9363c8a33166ea4e34bafc412678c03867eda9371c770e2e7351b868d",
+      "commit_remote_equal": true
+    },
+    {
+      "path": "簡報文件/超市AI版_2026-10-18/預覽/slide-08.png",
+      "bytes": 74498,
+      "sha256": "e4bb04f1499f3f9fb28d535a60a6f4f648a9b6069f243b40469d639b0ec3d1ad",
+      "commit_remote_equal": true
+    },
+    {
+      "path": "簡報文件/超市AI版_2026-10-18/預覽/slide-09.png",
+      "bytes": 76698,
+      "sha256": "b5665c76ae86d2265934936f77ede84b12a5166a7de03c951d16b33189c6bdbe",
+      "commit_remote_equal": true
+    },
+    {
+      "path": "簡報文件/超市AI版_2026-10-18/預覽/slide-10.png",
+      "bytes": 71951,
+      "sha256": "b93b1062376a13823780b0a4b454e4580050d318781509caf13dea5040dcd282",
+      "commit_remote_equal": true
+    },
+    {
+      "path": "簡報文件/超市AI版_2026-10-18/預覽/slide-11.png",
+      "bytes": 170417,
+      "sha256": "7f59e790c49165ac602afedd2eda1ed264f808dedb244dd63f528f0711717e92",
+      "commit_remote_equal": true
+    },
+    {
+      "path": "簡報文件/超市AI版_2026-10-18/預覽/slide-12.png",
+      "bytes": 93742,
+      "sha256": "01f6850425d5dea5e646ab96f07563c12a7980d4ae05f5108a468cb7bb472e2d",
+      "commit_remote_equal": true
+    },
+    {
+      "path": "簡報文件/超市AI版_2026-10-18/預覽/slide-13.png",
+      "bytes": 529017,
+      "sha256": "638553d9c20446f7f5073a8f22018a7af7bd20587a9e8f4aea9379f9e65ed2cc",
+      "commit_remote_equal": true
+    }
+  ],
+  "packaging": {
+    "count": 51,
+    "deterministic_sha256": "f31b961fafdc878fc6e8a7c962c673ef63bb98fb96584a3cca68ba1e5c3bf98a",
+    "repeat_archive_equal": true,
+    "git_blob_mismatches": 0,
+    "deployed_source": "ff65eaef0f6db932f844893cf2f8dc42eac5b5f7",
+    "deployed_source_differences": [],
+    "files": [
+      {
+        "path": "MuscleCore分析資料/website/.dockerignore",
+        "archive_path": ".dockerignore",
+        "bytes": 260,
+        "sha256": "e5bd828bf62cd6ce4cadef8793079af3415346c8ee777a247d1297823d37a4d0"
+      },
+      {
+        "path": "MuscleCore分析資料/website/Dockerfile",
+        "archive_path": "Dockerfile",
+        "bytes": 459,
+        "sha256": "20c8da5e991be8b8e3400430361b1352732bb7b8f47b3379bd8ec245c08df35a"
+      },
+      {
+        "path": "VibeCart_AI/services/cart_service.py",
+        "archive_path": "VibeCart_AI/services/cart_service.py",
+        "bytes": 12024,
+        "sha256": "5e416e6d4945d391ec633845ea493fd152262abf6d5b489b503160db6d58457f"
+      },
+      {
+        "path": "VibeCart_AI/services/sku_cart_service.py",
+        "archive_path": "VibeCart_AI/services/sku_cart_service.py",
+        "bytes": 10192,
+        "sha256": "53a7bae24c07135db8fc02bb036d0b45881ab3ba499fa67116c4da5262167179"
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/__init__.py",
+        "archive_path": "app/__init__.py",
+        "bytes": 2594,
+        "sha256": "48c19b3ba9d217fb68ec093317be4a7c9725d55578b28b5727887c01f3c9675e"
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/admin.py",
+        "archive_path": "app/admin.py",
+        "bytes": 8104,
+        "sha256": "f7db8ca32ed05e48506c98de533d0ba4c3f5430154462cc8974761cc4415b18e"
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/auth.py",
+        "archive_path": "app/auth.py",
+        "bytes": 7262,
+        "sha256": "f58024bf9fa4443dba13cb98193dbd69a3b480c7dbfb69e403daa1a126ee1a16"
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/db.py",
+        "archive_path": "app/db.py",
+        "bytes": 618,
+        "sha256": "e429461ecbcf683f551df962c66f765025472be033dac84f86c76a9a5eec2e88"
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/security.py",
+        "archive_path": "app/security.py",
+        "bytes": 882,
+        "sha256": "90a920e1a3e70e6b968252d3fa8ba5bcf160c7d6ef3b04caa4ea16f03515f394"
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/services/__init__.py",
+        "archive_path": "app/services/__init__.py",
+        "bytes": 57,
+        "sha256": "ad99f2d924998782cb45c4afff9971baa500c70ab753ad2afbb4ad3c63c365d8"
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/services/ai_compare.py",
+        "archive_path": "app/services/ai_compare.py",
+        "bytes": 2259,
+        "sha256": "d4c0e5a428b05e5aa7b731f80a5f5a22fd33066e9684401e50c758b094dbfa73"
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/services/ai_payload.py",
+        "archive_path": "app/services/ai_payload.py",
+        "bytes": 10459,
+        "sha256": "bf2ff4d1f0ce8c2402c666b18ee86ef17a8e7051b914cb0fd74ebf298f53a178"
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/services/ai_workflows.py",
+        "archive_path": "app/services/ai_workflows.py",
+        "bytes": 21602,
+        "sha256": "da27c6b475ad5c0e4b40c04f6775c15a6cebbad9a50bf3d96b06b1779d556693"
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/services/analytics.py",
+        "archive_path": "app/services/analytics.py",
+        "bytes": 1013,
+        "sha256": "fd47fc513b71a961d4ecc5c1f1045d14cd1674baebde1b76cd58c9f3ac6c056b"
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/services/behavior_scope.py",
+        "archive_path": "app/services/behavior_scope.py",
+        "bytes": 703,
+        "sha256": "4cc48c37388f4f09710f0450071619f5f6758af6441409ed6491f315ae240068"
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/services/dashboard.py",
+        "archive_path": "app/services/dashboard.py",
+        "bytes": 6343,
+        "sha256": "a89a2b61ee1a53656ecd78ee3cb02d6fa07e1f76d9006c328a6b81784558b5c6"
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/services/local_ai.py",
+        "archive_path": "app/services/local_ai.py",
+        "bytes": 6393,
+        "sha256": "1b88d118e75a3a908ca75363e0b86cf425b1ab098a7bf74196a7f8f2add8efa1"
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/services/member_events.py",
+        "archive_path": "app/services/member_events.py",
+        "bytes": 1244,
+        "sha256": "3c5c69dc30f0f5cf46b7eabcad718597b4f3ec570ad8999364e63e2efc93454f"
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/services/member_sessions.py",
+        "archive_path": "app/services/member_sessions.py",
+        "bytes": 1746,
+        "sha256": "54d088d060018ee0289e1d4326af3f2b2da2aa3ce5066ca1c0487d393054e787"
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/services/recommendation.py",
+        "archive_path": "app/services/recommendation.py",
+        "bytes": 1570,
+        "sha256": "fec347df4e2080203e617d85ad0af0db8b96a40242d2f226230e21a8a6790d52"
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/services/sku_gateway.py",
+        "archive_path": "app/services/sku_gateway.py",
+        "bytes": 2793,
+        "sha256": "7cb615e55bb0e0ef09caf056947cb88e67e193bfa445dd477d234f91f2b55c45"
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/static/css/admin.css",
+        "archive_path": "app/static/css/admin.css",
+        "bytes": 13049,
+        "sha256": "130bdc8a96e1a1b6cece9a96049b5f328b6914b31604a6eb5dd378892835eb92"
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/static/css/footer-team.css",
+        "archive_path": "app/static/css/footer-team.css",
+        "bytes": 1078,
+        "sha256": "238fc779c6bbc90f940210fccdac9ca2ebb6a302b499f47016804ea0e5abe30d"
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/static/css/main.css",
+        "archive_path": "app/static/css/main.css",
+        "bytes": 9182,
+        "sha256": "f265290cfae92e005ac92b68e5b286d21fa8f2bf55212eb2215c1fde95ac77aa"
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/static/img/hero.png",
+        "archive_path": "app/static/img/hero.png",
+        "bytes": 1898747,
+        "sha256": "a0ef2f0fee2b163b02edee7102c975668d5f78286786a575b4d42ef81e05633e"
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/static/img/product-placeholder.svg",
+        "archive_path": "app/static/img/product-placeholder.svg",
+        "bytes": 447,
+        "sha256": "50cfb1ca36a0122d85ec6d51b1913b685c9885064c5a8701e5aa7d841b44dee3"
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/static/img/team/Jeff-s.png",
+        "archive_path": "app/static/img/team/Jeff-s.png",
+        "bytes": 90730,
+        "sha256": "193a5595bb025ac6999082b6e574a8876199f7e7b18aeb173ff2f151139406c6"
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/static/img/team/Ren-s.png",
+        "archive_path": "app/static/img/team/Ren-s.png",
+        "bytes": 49897,
+        "sha256": "20f365e734bc0a24047bcadb5791e3ef98ef9a2ee6541eb3ca24980c427295a2"
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/static/img/team/sam-s.png",
+        "archive_path": "app/static/img/team/sam-s.png",
+        "bytes": 64550,
+        "sha256": "25d975cf616ab59ee34a3e1a5e6fe39bfe7c4ccc281d0ee2a19e25d069b80252"
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/static/js/admin.js",
+        "archive_path": "app/static/js/admin.js",
+        "bytes": 1204,
+        "sha256": "c537c86942d7bb8ef6fecaa9c991fa992f18ba7b69a235e22e9507e0dd255115"
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/store.py",
+        "archive_path": "app/store.py",
+        "bytes": 4672,
+        "sha256": "e0a5fa4ced669b7b76ef32201e19d1bf2a7fca3d426d04fc1394530a92a3c982"
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/store_v4.py",
+        "archive_path": "app/store_v4.py",
+        "bytes": 8206,
+        "sha256": "20923f8e13e42f3edebafef7b5e644615061e47e719b3e250c6007061f2a93d8"
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/templates/admin/ai_compare.html",
+        "archive_path": "app/templates/admin/ai_compare.html",
+        "bytes": 4317,
+        "sha256": "4de1c694a0c29bc1b383575b086df85ae8932a3c5169c8c93d046e0473590aa9"
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/templates/admin/ai_insight.html",
+        "archive_path": "app/templates/admin/ai_insight.html",
+        "bytes": 7177,
+        "sha256": "d0d3f8f9e062acaa06c7135082a3de59a964e0ba281bf8dfeb8c422f0c87f82b"
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/templates/admin/ai_recommendation.html",
+        "archive_path": "app/templates/admin/ai_recommendation.html",
+        "bytes": 5390,
+        "sha256": "c10ec9b065ca6aaa14058881665369ce19162a87cc8021044f308d4c7dc77c0a"
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/templates/admin/dashboard.html",
+        "archive_path": "app/templates/admin/dashboard.html",
+        "bytes": 6762,
+        "sha256": "97f803ec91a1025e006e54ca77513bd2ffea88dae252b97746beff987c8b8754"
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/templates/admin/filter_error.html",
+        "archive_path": "app/templates/admin/filter_error.html",
+        "bytes": 359,
+        "sha256": "46f5b44fb119ea3654c24cd43ba82023b0378913127869f3fda17d865f1ea46a"
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/templates/admin/layout.html",
+        "archive_path": "app/templates/admin/layout.html",
+        "bytes": 4062,
+        "sha256": "68eecd71b1cfaa7fb6354dee0721f2989bb68d8db92fbcc2024ae74eec98fd59"
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/templates/admin/recommendations.html",
+        "archive_path": "app/templates/admin/recommendations.html",
+        "bytes": 3175,
+        "sha256": "9d991b0bb4dc90413e31d98b28c88d1638c77bc562d997d1beaebf28d6c6a540"
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/templates/auth/login.html",
+        "archive_path": "app/templates/auth/login.html",
+        "bytes": 755,
+        "sha256": "58665c254c71d5ecd605ba7f12ea7f3f2aa18b661412b9b25a7d93725d32cc17"
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/templates/auth/logout.html",
+        "archive_path": "app/templates/auth/logout.html",
+        "bytes": 262,
+        "sha256": "deab381fd88da90b5ae550d911a05eb2be834402cd4af7efa43c2b348f63f5f5"
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/templates/auth/register.html",
+        "archive_path": "app/templates/auth/register.html",
+        "bytes": 766,
+        "sha256": "fda8ddff3433ccfc32540e7e407b5c436bba7f321acaa6bb538d5eba58283c5b"
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/templates/base.html",
+        "archive_path": "app/templates/base.html",
+        "bytes": 3068,
+        "sha256": "e885b269c2bac7d52137dd351705e141c5153fd66d09e3a392defad4829403d5"
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/templates/store/cart.html",
+        "archive_path": "app/templates/store/cart.html",
+        "bytes": 853,
+        "sha256": "0e84d915c6d754329ede42dab21163a0de12438d5b120a870bbe3e3a5d30f496"
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/templates/store/cart_v4.html",
+        "archive_path": "app/templates/store/cart_v4.html",
+        "bytes": 1946,
+        "sha256": "04827dfee303764c4db1ae0a5aeadac184aed4f11d071d15a94cded8f5a867df"
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/templates/store/home.html",
+        "archive_path": "app/templates/store/home.html",
+        "bytes": 5447,
+        "sha256": "873536fa42a48c9f4878982a38964918842e04669ed2dacd03d6ecfa550c2f7b"
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/templates/store/product.html",
+        "archive_path": "app/templates/store/product.html",
+        "bytes": 2333,
+        "sha256": "1d5a8398db5aa8b0c4010b946a7a49937c76f0c52e1ffd4a3a073a7acdd07fcb"
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/templates/store/product_image.html",
+        "archive_path": "app/templates/store/product_image.html",
+        "bytes": 375,
+        "sha256": "e1b2a30da50de5623f5210f76701760d2292c3c6cf1274d473d9a7eee836b0bf"
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/templates/store/sku_fields.html",
+        "archive_path": "app/templates/store/sku_fields.html",
+        "bytes": 549,
+        "sha256": "c4d4efd786c02dafdd5d0c52333d317c6e3b7ec26eee60dc56d6085347a0c070"
+      },
+      {
+        "path": "MuscleCore分析資料/website/cloud_runtime.py",
+        "archive_path": "cloud_runtime.py",
+        "bytes": 3392,
+        "sha256": "9822e40c8b2cb0bc2a9b17b63e1feff7e18d0c9c2c001b0c3f5e6a06fcd45d99"
+      },
+      {
+        "path": "MuscleCore分析資料/website/requirements-cloud.txt",
+        "archive_path": "requirements-cloud.txt",
+        "bytes": 83,
+        "sha256": "2630f9296f68b7e8e80828ec5d9fee8673665ed2e15a3df8fc8df9c5603d37f0"
+      }
+    ]
+  },
+  "scope": "Immutable main commit/remote bytes and reproducible archive; not dirty-checkout equality, LFS payload verification, deployment or business signoff"
+}

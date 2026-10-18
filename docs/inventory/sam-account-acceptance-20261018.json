@@ -1,0 +1,163 @@
+{
+  "probe": {
+    "checked_at": "2026-10-17T19:19:36.353Z",
+    "mode": "isolated-probe",
+    "purpose": "account-lifecycle",
+    "project": "vibecart-llmai",
+    "status": "passed",
+    "production": {
+      "service": "vibecart-web",
+      "revision": "vibecart-web-00015-nlk",
+      "traffic_percent": 100,
+      "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:1686638380b8cb8dc792423b059918b292e94f095d68c623ea9136da1ff9813b",
+      "source_sha": "1d2abf2cfa7465636e49474062e11f6aca571dda"
+    },
+    "acceptance": {
+      "service": "vibecart-acceptance-pr21",
+      "revision": "vibecart-acceptance-pr21-00005-5j5",
+      "traffic_percent": 100,
+      "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:1686638380b8cb8dc792423b059918b292e94f095d68c623ea9136da1ff9813b",
+      "source_sha": "1d2abf2cfa7465636e49474062e11f6aca571dda"
+    },
+    "inventory": {
+      "services": [
+        "projects/vibecart-llmai/locations/asia-east1/services/vibecart-acceptance-pr21",
+        "projects/vibecart-llmai/locations/asia-east1/services/vibecart-web"
+      ],
+      "jobs": [],
+      "job_regions_checked": [
+        "africa-south1",
+        "asia-east1",
+        "asia-east2",
+        "asia-northeast1",
+        "asia-northeast2",
+        "asia-northeast3",
+        "asia-south1",
+        "asia-south2",
+        "asia-southeast1",
+        "asia-southeast2",
+        "asia-southeast3",
+        "australia-southeast1",
+        "australia-southeast2",
+        "europe-central2",
+        "europe-north1",
+        "europe-north2",
+        "europe-southwest1",
+        "europe-west1",
+        "europe-west10",
+        "europe-west12",
+        "europe-west2",
+        "europe-west3",
+        "europe-west4",
+        "europe-west6",
+        "europe-west8",
+        "europe-west9",
+        "me-central1",
+        "me-central2",
+        "me-west1",
+        "northamerica-northeast1",
+        "northamerica-northeast2",
+        "northamerica-south1",
+        "southamerica-east1",
+        "southamerica-west1",
+        "us-central1",
+        "us-east1",
+        "us-east4",
+        "us-east5",
+        "us-south1",
+        "us-west1",
+        "us-west2",
+        "us-west3",
+        "us-west4"
+      ],
+      "restricted_regions": [
+        "me-central2"
+      ],
+      "restricted_reason": "LOCATION_POLICY_VIOLATED",
+      "topics": [],
+      "subscriptions": [],
+      "enabled_worker_apis": []
+    },
+    "iam": {
+      "role": "roles/iam.serviceAccountOpenIdTokenCreator",
+      "member": "user:cashsam@gmail.com",
+      "expires": "request.time < timestamp(\"2026-10-17T19:39:55.194Z\")",
+      "title": "sam-accounts-622abb87-d963-4bbd-aa82-2af8df64869c",
+      "revoked": true,
+      "id_token_attempts": 10
+    },
+    "probe": {
+      "probe_id": "sam-accounts-11847cc6c4310272",
+      "database": "vibecart_acceptance_pr21",
+      "service_revision": "vibecart-acceptance-pr21-00005-5j5",
+      "service_image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:1686638380b8cb8dc792423b059918b292e94f095d68c623ea9136da1ff9813b",
+      "accounts": [
+        {
+          "role": "admin",
+          "id": "6ad3cabd1eec9f5dae2ae67e"
+        },
+        {
+          "role": "customer",
+          "id": "6ad3cabd1eec9f5dae2ae67f"
+        }
+      ],
+      "status": "passed",
+      "checks": {
+        "anonymous_member_admin_denied": true,
+        "admin_read_pages": true,
+        "customer_two_sessions_admin_denied": true,
+        "same_browser_relogin_old_cookie_denied_second_device_live": true,
+        "all_customer_sessions_revoked_admin_unaffected": true,
+        "disabled_accounts_login_and_all_devices_denied": true,
+        "reenable_requires_new_login_old_cookies_stay_invalid": true
+      },
+      "credentials_persisted": false,
+      "retirement_before_cleanup": {
+        "disabled": true,
+        "sessions_revoked": true,
+        "accounts_present": 2,
+        "sessions_deleted": 3,
+        "sessions_remaining": 0,
+        "verified": true
+      },
+      "cleanup": {
+        "retirement": {
+          "disabled": true,
+          "sessions_revoked": true,
+          "accounts_present": 2,
+          "sessions_deleted": 1,
+          "sessions_remaining": 0,
+          "verified": true
+        },
+        "users_deleted": 2,
+        "users_remaining": 0,
+        "verified": true
+      }
+    }
+  },
+  "independent_readback": {
+    "checked_at": "2026-10-17T19:23:16.035Z",
+    "temporary_binding_remaining": 0,
+    "private_anonymous_http": 403,
+    "atlas_independent": {
+      "database": "vibecart_acceptance_pr21",
+      "probe_id": "sam-accounts-11847cc6c4310272",
+      "users_remaining": 0,
+      "auth_sessions_remaining": 0,
+      "evidence": "Atlas connector aggregate after runner completion; both queries returned zero documents"
+    }
+  },
+  "offline_tests": {
+    "python_safety_passed": 15,
+    "node_safety_passed": 5,
+    "skipped": 0,
+    "member_regression_passed": 31
+  },
+  "scope": {
+    "production_writes": false,
+    "standing_demo_accounts": false,
+    "d1_d4_reimport": false,
+    "deployments": false,
+    "d5_admin_http_implemented": false
+  }
+}

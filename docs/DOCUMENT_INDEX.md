@@ -1,11 +1,24 @@
 # 全部文件索引 / Document catalog
 
+<!-- SAM N14 20261018 BEGIN -->
+**2026/10/18 11:26 SAM N14**：[加密備份／雲端還原驗收](SAM_N14_ENCRYPTED_RESTORE_2026-10-18.md)。25/25片完整遠端SHA-256及owner-only ACL通過；已重組2,439,493,924-byte密文、認證解密，ZIP hash與05:28歷史快照完全相同。13,048檔本機還原差異0／46安全回歸／最佳化隔離啟動的既有證據可由相同ZIP銜接。雲端清冊原ID更新並逐byte讀回核對。**N14仍缺最新快照、異機key、正式Atlas完整復原及每日固定專案流程；V5仍2/14完成。** 工具[PR #77](https://github.com/SamWang61/LLM_PJ/pull/77)與前次文件[PR #78](https://github.com/SamWang61/LLM_PJ/pull/78)已合併；本次只補雲端證據。
+<!-- SAM N14 20261018 END -->
+
+**2026/10/18 08:06 SAM PR #74 技術覆核**：[完整整合紀錄](SAM_PR74_MERGE_REVIEW_2026-10-18.md)。本輪208 passed／0 skipped、51執行來源對帳0差異；公開customer/admin登入、角色及單裝置登出通過，sessions0。另修正維運驗證清理可能誤刪並行session，4項回歸通過。正式19／私有10同映像、正常command、IAM0；故障報告仍依06:36～06:38原時間。本次PR將部署來源整合main，實際合併SHA／時間見[PR #74](https://github.com/SamWang61/LLM_PJ/pull/74)。V5仍2/14完成，具名交接／更廣outage／實機／備份／簽收待辦。
+
+**2026/10/18 06:50 SAM N17 補強**：[V5 離線備援與還原](SAM_V5_OFFLINE_REHEARSAL_2026-10-18.md)完成40檔、雙建包相同雜湊、全新目錄還原差異0及18項安全回歸；補13頁無PDF外掛圖片閱讀版。原PPTX／PDF不變；實體斷網、第二台電腦／投影及真人計時仍待驗，14關卡仍2完成／12待結案。
+
+**2026-10-18 05:12（Asia/Taipei）本輪整合**：#69 已修正 P2 並合併；#67 已完成衝突整合、本機 201 passed／0 skipped 與目前同映像私有交易／七項帳號驗收，最新文件 CI 通過後按使用者授權合併。正式 `00017-5xb` 100% 不變，私有已對齊 `00006-cb6`；清理 0、臨時 IAM 0、匿名 403。[PR #67／#69 驗收與同步紀錄](SAM_PR67_PR69_MERGE_2026-10-18.md)為本輪入口；下方舊修訂／待整合狀態按原時間解讀。N11 其餘 consumer 證據、N12～N18 及具名簽認仍待辦，不重複計分。
+
 [10/18逐項工作與今日證據](WORK_EXECUTION_2026-10-18.md)；[下一階段D5本機演練](SAM_D5_LOCAL_REHEARSAL_2026-10-18.md)；[舊PR差異盤點](OPEN_PR_RESIDUALS_2026-10-18.md)。
 
 中文標題連到原稿；英文欄說明用途。歷史報告依原日期解讀，原始快照保持不變。Chinese titles link to original documents; English summaries explain their scope. Historical evidence remains dated.
 
 | 文件 / Document | English scope |
 |---|---|
+| [N03 目前版本、來源與部署讀回](SAM_VERSION_MAP_2026-10-18.md) | Remote-head drift guard, 102 immutable changed files, 51 reproducible runtime sources and current Cloud Run mapping. |
+| [N02 交接來源補充](SAM_V1_DELIVERY_SCOPE_2026-10-18.md) | Named owner handback remains pending; current scope is defined by the N02 handoff page. |
+| [SAM 私有帳號與撤權驗收](SAM_ACCOUNT_ACCEPTANCE_2026-10-18.md) | Isolated two-role lifecycle, relogin, disable/reenable and independent cleanup; event-window accounts and final signoff remain open. |
 | [2026-10-18 專案未完成工作清單與下一步](../專題進度/專案未完成工作清單_2026-10-18.md) | Primary dependency-ordered work queue, owners, 22-item milestone estimate and next task N01. |
 | [2026-10-18 全部60個PR核對清冊](PR_AUDIT_2026-10-18.md) | Complete PR states, heads/bases, supersession, unresolved reviews and evidence scope; machine-readable snapshot in inventory. |
 | [SAM 10/18 新推送驗證](SAM_PUSH_VALIDATION_2026-10-18.md) | Immutable source/commit/GitHub equality, current-image source map, 186 local passes, Cloud Run readback and CSS line-ending repair; remote transactions remain open. |
