@@ -1,4 +1,5 @@
 from collections import Counter
+import math
 from .behavior_scope import production_events
 
 # v4 recommendation_policy defaults (system_configs); the stored policy overrides them.
@@ -11,10 +12,14 @@ LEGACY_EVENT_TYPES = {"view": "PRODUCT_VIEW", "cart": "ADD_TO_CART", "favorite":
 def policy_weights(db):
     """Read the active v4 policy weights, falling back to the defaults for missing or invalid values."""
     policy = db.system_configs.find_one({"config_key": "recommendation_policy", "status": "active"}) or {}
-    stored = (policy.get("settings") or {}).get("weights") or {}
+    settings = policy.get("settings")
+    stored = settings.get("weights") if isinstance(settings, dict) else None
+    if not isinstance(stored, dict):
+        stored = {}
     weights = dict(DEFAULT_WEIGHTS)
     for event_type, value in stored.items():
-        if event_type in weights and isinstance(value, (int, float)) and not isinstance(value, bool) and value >= 0:
+        if (event_type in weights and isinstance(value, (int, float)) and not isinstance(value, bool)
+                and value >= 0 and (not isinstance(value, float) or math.isfinite(value))):
             weights[event_type] = value
     return weights
 
