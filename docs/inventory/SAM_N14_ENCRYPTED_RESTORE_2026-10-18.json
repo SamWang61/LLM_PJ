@@ -1,0 +1,250 @@
+{
+  "checked_at_utc": "2026-10-18T00:48:52.468543+00:00",
+  "basis_main": "40dbd24abd8041c66e0642f14c4dd4cc727638a9",
+  "scope": "N14 historical full-source client encryption and isolated local restoration; gate remains open",
+  "encryption_restore": {
+    "checked_at_utc": "2026-10-18T00:43:46.829168+00:00",
+    "source_snapshot_at_utc": "2026-10-17T21:28:12.525521+00:00",
+    "scope": "Historical full local directory including ignored files and Git metadata; one Office lock excluded",
+    "current_main_snapshot": false,
+    "format": 1,
+    "algorithm": "AES-256-GCM",
+    "plaintext_bytes": 2439493848,
+    "plaintext_sha256": "75f91fcf4b490a112ec1672393600d7cab5c649e60282d9f1203cc3516d9a291",
+    "ciphertext_bytes": 2439493924,
+    "ciphertext_sha256": "328b9aa8194589d53d8f18e7d41b0e96809335a1329bd23ed3ba95d992fe51d5",
+    "authenticated_decrypt": true,
+    "restore_files_checked": 13048,
+    "restore_hash_differences": 0,
+    "parts": [
+      {
+        "name": "LLM_PJ_0528_source.vcbak.part01",
+        "bytes": 503316480,
+        "sha256": "a896e3e77848fef206dc2eca6d8495db0f7ff860bee9efac00439aa9859b756a",
+        "md5": "8ac580ccca5c6e51124225b67055c2f4"
+      },
+      {
+        "name": "LLM_PJ_0528_source.vcbak.part02",
+        "bytes": 503316480,
+        "sha256": "e39f9629d666e0afaef3dd073c6885b3435434abc2cefee5cbc0ae1331488fab",
+        "md5": "954634eaca8c4e1e5880a9610f57b0d6"
+      },
+      {
+        "name": "LLM_PJ_0528_source.vcbak.part03",
+        "bytes": 503316480,
+        "sha256": "bfef423e6b4ddffdacd4dea38eec6e3b835298819b5c5a54607939820f3f1150",
+        "md5": "47df2b88de4b0447909822462a435aa9"
+      },
+      {
+        "name": "LLM_PJ_0528_source.vcbak.part04",
+        "bytes": 503316480,
+        "sha256": "c3167c617ce23f108bb296da9a5f9d2a5780ccbe4b9103cdb4383db89c441e78",
+        "md5": "e499993ba60d1e68ce6149611a68acc3"
+      },
+      {
+        "name": "LLM_PJ_0528_source.vcbak.part05",
+        "bytes": 426228004,
+        "sha256": "c3a085001e761fdaa4238261c2601e67ca2c3f2118fbb2c326c71a47abf4a55f",
+        "md5": "65c2b3e531826fa23316488e2b3366e3"
+      }
+    ],
+    "cloud_uploaded": false
+  },
+  "local_boot": {
+    "checked_at_utc": "2026-10-18T01:00:59.774779+00:00",
+    "runtime_image_id": "sha256:17626ad81d61b95aa5c7d5771ffe163e4e44d78d80d166bf1fa0dcebc6db5e65",
+    "mongo_image_id": "sha256:2609aaf7a1abbff404101af896e05f243d22be742471ed857b50b9ce0270fdbd",
+    "status": "passed",
+    "network_internal": true,
+    "source_mount_readonly": true,
+    "published_ports": 0,
+    "probe": {
+      "target": "disposable internal Docker MongoDB",
+      "scope": "historical restored source and three local fixture collections",
+      "python_optimization": 1,
+      "dotenv_loaded": false,
+      "atlas_export_or_restore": false,
+      "bson_restore": {
+        "collections": 3,
+        "documents": 3,
+        "hash_differences": 0,
+        "unique_index_restored": true
+      },
+      "restored_http": {
+        "/": 200,
+        "/product/": 200,
+        "/auth/login": 200,
+        "/static/css/main.css": 200
+      },
+      "boot_readback_differences": 0,
+      "status": "passed",
+      "fixture_database_removed": true
+    },
+    "created_resources_removed": true
+  },
+  "security_tests": {
+    "passed": 46,
+    "skipped": 0,
+    "failures": 0
+  },
+  "private_acl": {
+    "local_data": "current Windows user and SYSTEM only",
+    "local_key": "separate directory, current Windows user and SYSTEM only",
+    "drive_folder": "1VXRIgBOG7mj2b3funYY0i46mdYpJ0DfS",
+    "drive_owner_only": true
+  },
+  "cloud": {
+    "catalog_id": "1ZilMHLhfCv25WHUxWyeVuSTKIEhm3o0N",
+    "catalog_bytes": 672,
+    "catalog_owner_only": true,
+    "catalog_readback": true,
+    "data_parts_verified": 0,
+    "data_parts_expected": 25,
+    "status": "25 x <=96MiB ciphertext parts upload in progress; verification remains open",
+    "original_480m_attempt": "Rejected before action invocation: HTTP413 single-file100MiB limit",
+    "parts": [
+      {
+        "name": "LLM_PJ_0528_source.vcbak.part001",
+        "bytes": 100663296,
+        "sha256": "ac3394484353f7eb9782f5c67c9e1cdf8c5961711692065e0db07f39f09eb48a"
+      },
+      {
+        "name": "LLM_PJ_0528_source.vcbak.part002",
+        "bytes": 100663296,
+        "sha256": "14fd7208333c7c7f667025e8d9c71ec5213aaa323ce54f16edac69b0be161198"
+      },
+      {
+        "name": "LLM_PJ_0528_source.vcbak.part003",
+        "bytes": 100663296,
+        "sha256": "ed76f2394792d5585e5595e43cefe6e6fb4783ff28b16d54cad76941b038fa10"
+      },
+      {
+        "name": "LLM_PJ_0528_source.vcbak.part004",
+        "bytes": 100663296,
+        "sha256": "9e4a2431a17ca18a65e84b1fff7aad9d4262247995701f4adf32ec8cfe6a385f"
+      },
+      {
+        "name": "LLM_PJ_0528_source.vcbak.part005",
+        "bytes": 100663296,
+        "sha256": "d5296150350d8a7bf7fe0c8ef1f74aa978e53fd8763865fea6b847b9fe13076b"
+      },
+      {
+        "name": "LLM_PJ_0528_source.vcbak.part006",
+        "bytes": 100663296,
+        "sha256": "ff746700e27c03f3818d7e44a13a5ce04174c79d3bd655d3adf81f7efd1fa353"
+      },
+      {
+        "name": "LLM_PJ_0528_source.vcbak.part007",
+        "bytes": 100663296,
+        "sha256": "95d062c7fd7bcc64d68e0271f11e8a60f4b32b203d2e5d3d4d4c43119e8bb2ab"
+      },
+      {
+        "name": "LLM_PJ_0528_source.vcbak.part008",
+        "bytes": 100663296,
+        "sha256": "3df1209b318037966dbb523bb1aa7a9424873a1dc062cadca5e5ac8fc815d364"
+      },
+      {
+        "name": "LLM_PJ_0528_source.vcbak.part009",
+        "bytes": 100663296,
+        "sha256": "cdc5823e3c812463677820fcee531b588e5933d22f6044eb4cb416e494de254b"
+      },
+      {
+        "name": "LLM_PJ_0528_source.vcbak.part010",
+        "bytes": 100663296,
+        "sha256": "60f4abfdb4f7908f97511dbb56ddc8c2c525b711f3dd1a675b5451bf7ec334cc"
+      },
+      {
+        "name": "LLM_PJ_0528_source.vcbak.part011",
+        "bytes": 100663296,
+        "sha256": "fcd35cabe5505930a9a632e9b6b28d0180ca054f366138c8597e08d3e7f09087"
+      },
+      {
+        "name": "LLM_PJ_0528_source.vcbak.part012",
+        "bytes": 100663296,
+        "sha256": "d277e8159004798ab0be7adfd840514bd0842d37c535de223b97be5dc8cbc9ef"
+      },
+      {
+        "name": "LLM_PJ_0528_source.vcbak.part013",
+        "bytes": 100663296,
+        "sha256": "14c729f64cccd526287184e85fe21b06097fde08195da1eba8cf6d7181cda48d"
+      },
+      {
+        "name": "LLM_PJ_0528_source.vcbak.part014",
+        "bytes": 100663296,
+        "sha256": "cd3306dcf92edc30fe70b2945aaed16603dbd7ac8237980715d9672dc3528a95"
+      },
+      {
+        "name": "LLM_PJ_0528_source.vcbak.part015",
+        "bytes": 100663296,
+        "sha256": "ddf9c9cdb385d773ac2ef6d26529ef5d6e1c3636b26b44e9f20ca8f26b624e60"
+      },
+      {
+        "name": "LLM_PJ_0528_source.vcbak.part016",
+        "bytes": 100663296,
+        "sha256": "a21b354a6ecf7874ebd83c117f4311e376d14d255f77a4ae3d27726a4631b20a"
+      },
+      {
+        "name": "LLM_PJ_0528_source.vcbak.part017",
+        "bytes": 100663296,
+        "sha256": "c9c984998d54af1aef14710ec20158b23eea5ad386875b6a6a6499291bca0acc"
+      },
+      {
+        "name": "LLM_PJ_0528_source.vcbak.part018",
+        "bytes": 100663296,
+        "sha256": "b6934905aae1d64e37e64bd4a6967c6d8f9de2673a2bac71fde89a4bdf5b2636"
+      },
+      {
+        "name": "LLM_PJ_0528_source.vcbak.part019",
+        "bytes": 100663296,
+        "sha256": "3fa7e99b8b1e18fb47797a4ea2eb03c17d08667540a79640fd31bd750081eb96"
+      },
+      {
+        "name": "LLM_PJ_0528_source.vcbak.part020",
+        "bytes": 100663296,
+        "sha256": "73321c7066a379ac1d3fbb3c6820fd90d3edf730b3031f5dd6b5383ff1613b54"
+      },
+      {
+        "name": "LLM_PJ_0528_source.vcbak.part021",
+        "bytes": 100663296,
+        "sha256": "91b4eb2f7f641e945a46bda967ee8e53d45c13405b7aca442861829806b34ac9"
+      },
+      {
+        "name": "LLM_PJ_0528_source.vcbak.part022",
+        "bytes": 100663296,
+        "sha256": "d34e72714e7f884550c90c90f38819447a9be3d9d5fecac1ac3d386a858d343d"
+      },
+      {
+        "name": "LLM_PJ_0528_source.vcbak.part023",
+        "bytes": 100663296,
+        "sha256": "df08772a3396ea930e30b77bc8dcc052ebf5dd2764fedd691e1eabbd44cb083b"
+      },
+      {
+        "name": "LLM_PJ_0528_source.vcbak.part024",
+        "bytes": 100663296,
+        "sha256": "5d70236198c25bd0017f54a91672c65b6b706934d89679f0144dab3edb93ac86"
+      },
+      {
+        "name": "LLM_PJ_0528_source.vcbak.part025",
+        "bytes": 23574820,
+        "sha256": "213eb9faab5c59c7e4b76f82cae9a8d9feaea8a8774b6de2e9ea2377d893a5a5"
+      }
+    ]
+  },
+  "remaining": [
+    "Five cloud ciphertext parts and independent SHA-256 readback/reassembly/decrypt",
+    "Current main plus a fresh stable private-directory snapshot",
+    "Recovery key copy on a separate device and independent recovery",
+    "Real Atlas consistent export, indexes/validators/TTL metadata, and isolated full data restore",
+    "Daily23:30 fixed-project backup ACL transitions and completion"
+  ],
+  "current_scope": {
+    "gates": 14,
+    "closed": 2,
+    "open": 12,
+    "N07_N10_excluded": true
+  },
+  "review_fixes": {
+    "P1": "All runtime asserts replaced with explicit require checks; host and container optimized mode passed; two -O negative checks passed",
+    "P2": "Cloud reassembled ciphertext is now the documented decrypt source"
+  }
+}

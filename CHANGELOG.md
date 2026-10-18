@@ -1,5 +1,10 @@
 # 變更紀錄 / Changelog
 
+## 2026-10-18 — N14 私有加密與隔離復原
+
+- 新增串流認證加密／解密與internal Docker還原來源啟動工具，46項安全回歸通過。歷史13,048檔逐檔還原差異0、三筆BSON fixture／索引復原及四HTTP讀回通過。
+- [N14完整證據與未完成範圍](docs/SAM_N14_ENCRYPTED_RESTORE_2026-10-18.md)；雲端／正式Atlas／異機復原未冒稱完成，V5仍2完成／12待結案。
+
 ## 2026-10-18 — D4 同版隔離與合成批次驗收 / Synthetic event acceptance
 
 - 修復 PR #47 的限時 ID token 授權與 IAM 傳播等待，完成同映像 consumer 遠端對照、探針清理與撤權。
