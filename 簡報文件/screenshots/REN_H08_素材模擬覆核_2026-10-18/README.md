@@ -13,3 +13,5 @@ JPEG寬度為375／305／829px，CSS viewport為390／320／844px；原圖回傳
 [完整H08報告](../../../docs/REN_H08_MATERIAL_SIMULATION_2026-10-18.md)說明五張歷史S03～S05圖與原索引一致、PPTX hash未變、另附補充講稿，以及公開登入檢查未採計的界線。角色／交易與事件以[PR #89新版遠端報告](../../../docs/REN_PR89_REVIEW_2026-10-18.md)另核。所有真人接收欄維持待填。
 
 **2026/10/18 17:43 後續實機回報**：使用者提供[汪文彥（SAM）](mailto:cashsam@gmail.com)於17:00使用iPhone 17 Pro Max／iOS 27.0.1／Chrome實測的資料，結果、完整版本及實機證據待補，見[H08報告](../../../docs/REN_H08_MATERIAL_SIMULATION_2026-10-18.md)。本目錄原圖及`audit.json`只記錄上述模擬，取證方式保持不變。
+
+**2026/10/18 17:49 結果與版本補件**：使用者回報[汪文彥（SAM）](mailto:cashsam@gmail.com)的S03～S05皆正常；Chrome `155.0.8059.37`已與[原始關於頁圖片](<../../截圖 2026-10-18 17.44.46.png>)核對。版本圖為1125×2436 PNG，未呈現網站操作；本目錄三張JPEG仍是尺寸模擬，詳見[H08報告](../../../docs/REN_H08_MATERIAL_SIMULATION_2026-10-18.md)。

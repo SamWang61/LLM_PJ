@@ -1,62 +1,70 @@
 {
-  "recorded_at": "2026-10-18T17:43:14.181569+08:00",
+  "recorded_at": "2026-10-18T17:49:10.946311+08:00",
   "source_project": "C:/LLM/LLM_PJ",
-  "baseline_commit": "4aad4760176c100472bd62dc602e36ba1693a3ad",
-  "scope": "User-reported H08 device metadata update; excludes this manifest from its own hash",
+  "baseline_commit": "0cd62f132aafba33cae0424166b5ae2cfa578d73",
+  "integrated_main": "c0941031ec4fb3472efa7cdfa754717837c6b8d7",
+  "scope": "H08 user-reported results, Chrome-version evidence, and main synchronization; excludes this manifest from its own hash",
   "prior_snapshot_manifest": "docs/inventory/REN_H08_PUBLICATION_2026-10-18.json",
   "prior_snapshot_commit": "4aad4760176c100472bd62dc602e36ba1693a3ad",
+  "prior_metadata_delivery": {
+    "commit": "0cd62f132aafba33cae0424166b5ae2cfa578d73",
+    "ci_run_id": 39116474899,
+    "ci_conclusion": "success",
+    "readback_files_equal": 8,
+    "original_full_bytes_equal": 6,
+    "shared_H08_content_equal": 2
+  },
   "files": [
     {
       "path": "docs/REN_H08_MATERIAL_SIMULATION_2026-10-18.md",
-      "sha256": "ca1323e5ad15476e5a001acc2dae8dd9e4095393a9a99800536f2e01490d3c4e",
-      "original_project_sha256": "ca1323e5ad15476e5a001acc2dae8dd9e4095393a9a99800536f2e01490d3c4e",
-      "full_source_bytes_equal": true,
-      "h08_content_equal": true
+      "sha256": "f4d7ef7600f12e242e6dc1a9fb4414a5cadd2d48e400cc79b69ce6654ce9e8d7",
+      "original_project_sha256": "f4d7ef7600f12e242e6dc1a9fb4414a5cadd2d48e400cc79b69ce6654ce9e8d7",
+      "full_source_bytes_equal": true
     },
     {
       "path": "docs/CURRENT_CONTEXT.md",
-      "sha256": "084006e8c97831667a7680aa5b34ba5ce1294a24c3a257d66ced0969428f3abe",
-      "original_project_sha256": "13bac4b850f137463ccec40ce31553740f0b7edd711586a3256d4b6fbdface56",
-      "full_source_bytes_equal": false,
-      "h08_content_equal": true
+      "sha256": "164d08d1c0e01804e219b5a215dc79668153c29d5e9883d272e11b69e905806b",
+      "original_project_sha256": "164d08d1c0e01804e219b5a215dc79668153c29d5e9883d272e11b69e905806b",
+      "full_source_bytes_equal": true
     },
     {
       "path": "專題進度/REN_1200逐項交接清單_2026-10-18.md",
-      "sha256": "3602e378be16ff291e08dd07c8534df9497fd9f44aacc771a3463f8872d7faab",
-      "original_project_sha256": "3602e378be16ff291e08dd07c8534df9497fd9f44aacc771a3463f8872d7faab",
-      "full_source_bytes_equal": true,
-      "h08_content_equal": true
+      "sha256": "3de1e799413058fb99e4b40dad89ed65afe44cf1c9eb2c028c74c9f09d2c6e5e",
+      "original_project_sha256": "3de1e799413058fb99e4b40dad89ed65afe44cf1c9eb2c028c74c9f09d2c6e5e",
+      "full_source_bytes_equal": true
     },
     {
       "path": "專題進度/專案未完成工作清單_2026-10-18.md",
-      "sha256": "bae578e6bb5989cfc4df3e3eaf39466b9e041ce7a6a59537ebae168c9eb5691a",
-      "original_project_sha256": "dfd30ae24ccc53c3fae8081867732ee855fe8bffaf926af3aa9f774dc52739b4",
-      "full_source_bytes_equal": false,
-      "h08_content_equal": true
+      "sha256": "7105c0a22f9874e037cd66900a6d5be4b2d4abdfed6d2cbc5d87253f0fcf359f",
+      "original_project_sha256": "7105c0a22f9874e037cd66900a6d5be4b2d4abdfed6d2cbc5d87253f0fcf359f",
+      "full_source_bytes_equal": true
     },
     {
       "path": "簡報文件/超市AI版_2026-10-18/REN_S03-S05補充講稿_2026-10-18.md",
-      "sha256": "f61771d783d5f85b07cb2cc788dcf0e69b33e8f5d061bfbeaed0b339f5644d43",
-      "original_project_sha256": "f61771d783d5f85b07cb2cc788dcf0e69b33e8f5d061bfbeaed0b339f5644d43",
-      "full_source_bytes_equal": true,
-      "h08_content_equal": true
+      "sha256": "9318715d96ec004ea4c0df9e226667f90f46d4c126eca4f678fde7d4396dfe14",
+      "original_project_sha256": "9318715d96ec004ea4c0df9e226667f90f46d4c126eca4f678fde7d4396dfe14",
+      "full_source_bytes_equal": true
     },
     {
       "path": "簡報文件/screenshots/REN_H08_素材模擬覆核_2026-10-18/README.md",
-      "sha256": "736257fb1dc44698cca5e845fef008217e9080a2233e74a67dcd6c60e9feb359",
-      "original_project_sha256": "736257fb1dc44698cca5e845fef008217e9080a2233e74a67dcd6c60e9feb359",
-      "full_source_bytes_equal": true,
-      "h08_content_equal": true
+      "sha256": "5e3f86b4d44413d3a340bfb665204d0c79d99eaf13d8678e88a7fa24c19e1677",
+      "original_project_sha256": "5e3f86b4d44413d3a340bfb665204d0c79d99eaf13d8678e88a7fa24c19e1677",
+      "full_source_bytes_equal": true
     },
     {
       "path": "docs/inventory/REN_H08_PHYSICAL_DEVICE_REPORTED_2026-10-18.json",
-      "sha256": "939d3f5ea551f277f116e4fbad399abbcc1ce07af585f9f18a5ef7a8029a6cec",
-      "original_project_sha256": "939d3f5ea551f277f116e4fbad399abbcc1ce07af585f9f18a5ef7a8029a6cec",
-      "full_source_bytes_equal": true,
-      "h08_content_equal": true
+      "sha256": "4bb7e20c345dbc11aef0b8835503c5ab662abe830bc75e5c7cc727d4445e16b8",
+      "original_project_sha256": "4bb7e20c345dbc11aef0b8835503c5ab662abe830bc75e5c7cc727d4445e16b8",
+      "full_source_bytes_equal": true
+    },
+    {
+      "path": "簡報文件/截圖 2026-10-18 17.44.46.png",
+      "sha256": "a224a5f10ee8ae1add3cc1a3c7b80246b1fe65c27f2d7bc3400bbff2120872b5",
+      "original_project_sha256": "a224a5f10ee8ae1add3cc1a3c7b80246b1fe65c27f2d7bc3400bbff2120872b5",
+      "full_source_bytes_equal": true
     }
   ],
-  "concurrent_source_blocks_preserved": [
+  "main_blocks_preserved": [
     {
       "path": "docs/CURRENT_CONTEXT.md",
       "marker": "SAM MAIN PREVIEW 20261018",
@@ -68,7 +76,7 @@
       "sha256_lf": "5f2d953ba76111054152ba06e55e5278df9aa1bcca4d75f352f8d7cd81a1ea55"
     }
   ],
-  "source_sync_note": "Original context/checklist retain a concurrent SAM preview block; H08 content matches. The unrelated preview block is excluded from this PR update.",
+  "source_sync_note": "SAM preview is now included through main c094103; both shared documents preserve it. All current H08 delivery files match original project bytes.",
   "preserved_files": [
     {
       "path": "簡報文件/超市AI版_2026-10-18/VibeCart_AI_超市網購與AI系統_2026-10-18_v5.pptx",

@@ -1,0 +1,1628 @@
+{
+  "checked_at_taipei": "2026/10/18 17:34",
+  "source_commit": "20ee040110cbd6f02abb35aefde532a54d2fb120",
+  "scope": "Tagged zero-percent previews only; no formal traffic migration",
+  "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:1d7b666db5b3f927e6fecf484617c2a0842694c0bfdc61150e6f3683434b4074",
+  "build": {
+    "id": "606b023b-3489-4bc2-b98e-123c7e543d18",
+    "operation": "operations/build/vibecart-llmai/NjA2YjAyM2ItMzQ4OS00YmMyLWI5OGUtMTIzYzdlNTQzZDE4",
+    "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web:main20ee-ai-20261018-1640",
+    "status": "SUCCESS",
+    "steps": [
+      {
+        "name": "gcr.io/cloud-builders/docker",
+        "status": "SUCCESS"
+      },
+      {
+        "name": "gcr.io/cloud-builders/docker",
+        "status": "SUCCESS"
+      },
+      {
+        "name": "gcr.io/cloud-builders/docker",
+        "status": "SUCCESS"
+      }
+    ],
+    "log_url": "https://console.cloud.google.com/cloud-build/builds;region=asia-east1/606b023b-3489-4bc2-b98e-123c7e543d18?project=278483818008",
+    "digest": "sha256:1d7b666db5b3f927e6fecf484617c2a0842694c0bfdc61150e6f3683434b4074",
+    "finish_time": "2026-10-18T08:45:54.228772Z"
+  },
+  "source_archive": {
+    "sha256": "9d0544fb3393566c759546feb46da421e9e3f4202f36b59ccff4d0e04defd285",
+    "bytes": 2151544,
+    "remote_readback_equal": true
+  },
+  "runtime_files": [
+    {
+      "path": "MuscleCore分析資料/website/.dockerignore",
+      "archive_path": ".dockerignore",
+      "git_blob": "c8d8b92b9d5f993c97bb91465256e5188b105c29",
+      "bytes": 287,
+      "sha256": "f93536bfcef911fcda617aaf35610ee3beb4f8709f2681bedab16428957ac0ea"
+    },
+    {
+      "path": "MuscleCore分析資料/website/Dockerfile",
+      "archive_path": "Dockerfile",
+      "git_blob": "466b4d497cc45696ef33380861d9c2a3658d371f",
+      "bytes": 1075,
+      "sha256": "6020d6e52ad69fdf55d202fd1703b1e8a4106a304628e310164b439d9c5f31a7"
+    },
+    {
+      "path": "VibeCart_AI/services/cart_service.py",
+      "archive_path": "VibeCart_AI/services/cart_service.py",
+      "git_blob": "15bb3ffde7df5b75890355df6e90a97b7998e9e4",
+      "bytes": 12024,
+      "sha256": "5e416e6d4945d391ec633845ea493fd152262abf6d5b489b503160db6d58457f"
+    },
+    {
+      "path": "VibeCart_AI/services/sku_cart_service.py",
+      "archive_path": "VibeCart_AI/services/sku_cart_service.py",
+      "git_blob": "8f9b686f0f1df6d3d9f513f3f3e214f078d1e565",
+      "bytes": 12533,
+      "sha256": "6ef2272284f9c36d27923fbf4448854d6de1305dd1b4e001a82f40ef6eccd649"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/__init__.py",
+      "archive_path": "app/__init__.py",
+      "git_blob": "6738d9dab3b63dcd75bb6dac98f5f210a1510450",
+      "bytes": 2594,
+      "sha256": "48c19b3ba9d217fb68ec093317be4a7c9725d55578b28b5727887c01f3c9675e"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/admin.py",
+      "archive_path": "app/admin.py",
+      "git_blob": "ae28216026525c5bda82ef0c98a4294a9c2671dc",
+      "bytes": 8104,
+      "sha256": "f7db8ca32ed05e48506c98de533d0ba4c3f5430154462cc8974761cc4415b18e"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/auth.py",
+      "archive_path": "app/auth.py",
+      "git_blob": "d95163c82baad1809d73f6edf327ace1a4dbe4f4",
+      "bytes": 7374,
+      "sha256": "a22b5befd716ccfd0f48fce59c6feaa1d229e2e7d633a9218733c6c6af1d0e98"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/db.py",
+      "archive_path": "app/db.py",
+      "git_blob": "22a614671a7f2d14bc321464f27be763b1ca1d82",
+      "bytes": 618,
+      "sha256": "e429461ecbcf683f551df962c66f765025472be033dac84f86c76a9a5eec2e88"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/security.py",
+      "archive_path": "app/security.py",
+      "git_blob": "95dcfc7f383aeebba0c26c4aa52dbe6c77878980",
+      "bytes": 882,
+      "sha256": "90a920e1a3e70e6b968252d3fa8ba5bcf160c7d6ef3b04caa4ea16f03515f394"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/services/__init__.py",
+      "archive_path": "app/services/__init__.py",
+      "git_blob": "7b12f23281659982866e90a8fff0bd30703e84fa",
+      "bytes": 57,
+      "sha256": "ad99f2d924998782cb45c4afff9971baa500c70ab753ad2afbb4ad3c63c365d8"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/services/ai_compare.py",
+      "archive_path": "app/services/ai_compare.py",
+      "git_blob": "55ea01784ee4951647cd782ccad49103bc8fa86c",
+      "bytes": 2259,
+      "sha256": "d4c0e5a428b05e5aa7b731f80a5f5a22fd33066e9684401e50c758b094dbfa73"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/services/ai_payload.py",
+      "archive_path": "app/services/ai_payload.py",
+      "git_blob": "20f7f16ade658cf56645448ea23f2bba2c04aff8",
+      "bytes": 10459,
+      "sha256": "bf2ff4d1f0ce8c2402c666b18ee86ef17a8e7051b914cb0fd74ebf298f53a178"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/services/ai_workflows.py",
+      "archive_path": "app/services/ai_workflows.py",
+      "git_blob": "4c9cb54912e925abf5a15b2990962b9e3eeba7c0",
+      "bytes": 21661,
+      "sha256": "36cd71cd9d98d66ded5680abefca9a095d606224b6ec9bb682d292f1fc7b2c73"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/services/analytics.py",
+      "archive_path": "app/services/analytics.py",
+      "git_blob": "2632c67567ed78d676983fbc1bbd5f60fd3d4014",
+      "bytes": 1013,
+      "sha256": "fd47fc513b71a961d4ecc5c1f1045d14cd1674baebde1b76cd58c9f3ac6c056b"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/services/behavior_scope.py",
+      "archive_path": "app/services/behavior_scope.py",
+      "git_blob": "528e0edf44daf69c8b2f2e90538800adc718cef7",
+      "bytes": 1495,
+      "sha256": "57b611a8602f18ea2e725f7429caa11e898233c25f9405a2335ee2b34b6dc6ba"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/services/dashboard.py",
+      "archive_path": "app/services/dashboard.py",
+      "git_blob": "17e88d7d6092bdcf596e5a69acac315420711d9b",
+      "bytes": 6343,
+      "sha256": "a89a2b61ee1a53656ecd78ee3cb02d6fa07e1f76d9006c328a6b81784558b5c6"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/services/local_ai.py",
+      "archive_path": "app/services/local_ai.py",
+      "git_blob": "3fb87d930c40658024323b902589ec7ce9679406",
+      "bytes": 6393,
+      "sha256": "1b88d118e75a3a908ca75363e0b86cf425b1ab098a7bf74196a7f8f2add8efa1"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/services/member_events.py",
+      "archive_path": "app/services/member_events.py",
+      "git_blob": "91097ef7e15b664a57effd1af51a03737db51bd5",
+      "bytes": 1244,
+      "sha256": "3c5c69dc30f0f5cf46b7eabcad718597b4f3ec570ad8999364e63e2efc93454f"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/services/member_sessions.py",
+      "archive_path": "app/services/member_sessions.py",
+      "git_blob": "cfc5c11528b9ace0e54bc689508fa7a12471807c",
+      "bytes": 2604,
+      "sha256": "00ac249cc04d743157e4e4c2d9304791c496e61a5a5ba3b332534d6a722a059e"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/services/recommendation.py",
+      "archive_path": "app/services/recommendation.py",
+      "git_blob": "c0d93391127ab52c8954b50baa35898687e38e20",
+      "bytes": 3457,
+      "sha256": "93f0ca7725135e43981c3024e7a5d6ab4eed7a7d315e9db10fc50d7e012988cf"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/services/sku_gateway.py",
+      "archive_path": "app/services/sku_gateway.py",
+      "git_blob": "4774462bf8248ac26ffc27a3c3982ed49622fe85",
+      "bytes": 3253,
+      "sha256": "0239a41a4f5d4a7287aa50a0623154e0bb03f5f3eff61330780eef0d975e7e1a"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/static/css/admin.css",
+      "archive_path": "app/static/css/admin.css",
+      "git_blob": "d8333c958c0ced2abbbdc368462d9e0a7311f36d",
+      "bytes": 13049,
+      "sha256": "130bdc8a96e1a1b6cece9a96049b5f328b6914b31604a6eb5dd378892835eb92"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/static/css/footer-team.css",
+      "archive_path": "app/static/css/footer-team.css",
+      "git_blob": "688d30cf5ed6b63159459418627d45c856158048",
+      "bytes": 1078,
+      "sha256": "238fc779c6bbc90f940210fccdac9ca2ebb6a302b499f47016804ea0e5abe30d"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/static/css/main.css",
+      "archive_path": "app/static/css/main.css",
+      "git_blob": "e1db516b698c77685ba7ec86ec385d0a113d73c0",
+      "bytes": 9182,
+      "sha256": "f265290cfae92e005ac92b68e5b286d21fa8f2bf55212eb2215c1fde95ac77aa"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/static/img/hero.png",
+      "archive_path": "app/static/img/hero.png",
+      "git_blob": "025b73205aba06cbeb91fe5479fa07ccd4726644",
+      "bytes": 1898747,
+      "sha256": "a0ef2f0fee2b163b02edee7102c975668d5f78286786a575b4d42ef81e05633e"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/static/img/product-placeholder.svg",
+      "archive_path": "app/static/img/product-placeholder.svg",
+      "git_blob": "ec8173c205ddde1d0aefd207a40ce7814e33fcd1",
+      "bytes": 447,
+      "sha256": "50cfb1ca36a0122d85ec6d51b1913b685c9885064c5a8701e5aa7d841b44dee3"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/static/img/team/Jeff-s.png",
+      "archive_path": "app/static/img/team/Jeff-s.png",
+      "git_blob": "98dcebb32abb6a89e26497e84b97308a3d5bcc94",
+      "bytes": 90730,
+      "sha256": "193a5595bb025ac6999082b6e574a8876199f7e7b18aeb173ff2f151139406c6"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/static/img/team/Ren-s.png",
+      "archive_path": "app/static/img/team/Ren-s.png",
+      "git_blob": "b2caf739c35015e05df241359e2a31ffdcbd35ae",
+      "bytes": 49897,
+      "sha256": "20f365e734bc0a24047bcadb5791e3ef98ef9a2ee6541eb3ca24980c427295a2"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/static/img/team/sam-s.png",
+      "archive_path": "app/static/img/team/sam-s.png",
+      "git_blob": "fa9f89c5c2bef022d7e1afe721589bc140efb6f1",
+      "bytes": 64550,
+      "sha256": "25d975cf616ab59ee34a3e1a5e6fe39bfe7c4ccc281d0ee2a19e25d069b80252"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/static/js/admin.js",
+      "archive_path": "app/static/js/admin.js",
+      "git_blob": "6b6d050b7c9d3453a3f5cc988ca30b79b9e4af80",
+      "bytes": 1204,
+      "sha256": "c537c86942d7bb8ef6fecaa9c991fa992f18ba7b69a235e22e9507e0dd255115"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/store.py",
+      "archive_path": "app/store.py",
+      "git_blob": "7d72e2237435e12a15a788303df556c3a8df7095",
+      "bytes": 4682,
+      "sha256": "7f8e251f0b6f77b87cf0ce4cd64bfe546eef32fc19cce169a86e66b2c68ad75f"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/store_v4.py",
+      "archive_path": "app/store_v4.py",
+      "git_blob": "1d17c3834024e7515d1ed043a5bd680d650c427a",
+      "bytes": 8216,
+      "sha256": "f332f4abb22551acd59a52e1492ff7f9bb0da5f66c3bc162e93f1de74d1ef0a1"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/templates/admin/ai_compare.html",
+      "archive_path": "app/templates/admin/ai_compare.html",
+      "git_blob": "147725bb12d73be72f67ff34da61e71b304290f4",
+      "bytes": 4317,
+      "sha256": "4de1c694a0c29bc1b383575b086df85ae8932a3c5169c8c93d046e0473590aa9"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/templates/admin/ai_insight.html",
+      "archive_path": "app/templates/admin/ai_insight.html",
+      "git_blob": "1ed8e8b864a409327384e39344055d11e38f818c",
+      "bytes": 7177,
+      "sha256": "d0d3f8f9e062acaa06c7135082a3de59a964e0ba281bf8dfeb8c422f0c87f82b"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/templates/admin/ai_recommendation.html",
+      "archive_path": "app/templates/admin/ai_recommendation.html",
+      "git_blob": "5e272dae41b303f1af3fb214f331f18fa6f9d0a3",
+      "bytes": 5390,
+      "sha256": "c10ec9b065ca6aaa14058881665369ce19162a87cc8021044f308d4c7dc77c0a"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/templates/admin/dashboard.html",
+      "archive_path": "app/templates/admin/dashboard.html",
+      "git_blob": "537c751cccb12b12926e29e9ebe2fcc73bab3e2b",
+      "bytes": 6762,
+      "sha256": "97f803ec91a1025e006e54ca77513bd2ffea88dae252b97746beff987c8b8754"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/templates/admin/filter_error.html",
+      "archive_path": "app/templates/admin/filter_error.html",
+      "git_blob": "085f5c72c3ce986585ae2da7c13657ba3b35982e",
+      "bytes": 359,
+      "sha256": "46f5b44fb119ea3654c24cd43ba82023b0378913127869f3fda17d865f1ea46a"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/templates/admin/layout.html",
+      "archive_path": "app/templates/admin/layout.html",
+      "git_blob": "9294a11b8beaf5b45a6a093c7c258276ca03ecd0",
+      "bytes": 4062,
+      "sha256": "68eecd71b1cfaa7fb6354dee0721f2989bb68d8db92fbcc2024ae74eec98fd59"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/templates/admin/recommendations.html",
+      "archive_path": "app/templates/admin/recommendations.html",
+      "git_blob": "6b8573f817f85df39e59fd335e305c01ae08edd0",
+      "bytes": 3239,
+      "sha256": "7f61d3555ab4c4a0d0a4a845b290d298f1b4fb2b074fda790f9d6dc1dda5f3db"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/templates/auth/login.html",
+      "archive_path": "app/templates/auth/login.html",
+      "git_blob": "6efce21d5f069769e3324c958c90e78e501e408d",
+      "bytes": 755,
+      "sha256": "58665c254c71d5ecd605ba7f12ea7f3f2aa18b661412b9b25a7d93725d32cc17"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/templates/auth/logout.html",
+      "archive_path": "app/templates/auth/logout.html",
+      "git_blob": "7791b8748b535eaaef1eb6081f8fe5e2662f40ba",
+      "bytes": 262,
+      "sha256": "deab381fd88da90b5ae550d911a05eb2be834402cd4af7efa43c2b348f63f5f5"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/templates/auth/register.html",
+      "archive_path": "app/templates/auth/register.html",
+      "git_blob": "a61f3bd111fc4e6ceb7e673c3ea6ad58a738fbfd",
+      "bytes": 766,
+      "sha256": "fda8ddff3433ccfc32540e7e407b5c436bba7f321acaa6bb538d5eba58283c5b"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/templates/base.html",
+      "archive_path": "app/templates/base.html",
+      "git_blob": "bf3da4511830450710dcc097e7ac8cc1825530eb",
+      "bytes": 3068,
+      "sha256": "e885b269c2bac7d52137dd351705e141c5153fd66d09e3a392defad4829403d5"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/templates/store/cart.html",
+      "archive_path": "app/templates/store/cart.html",
+      "git_blob": "bf163136a2ee255ecca6ffc4b8e11e7e238891ee",
+      "bytes": 853,
+      "sha256": "0e84d915c6d754329ede42dab21163a0de12438d5b120a870bbe3e3a5d30f496"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/templates/store/cart_v4.html",
+      "archive_path": "app/templates/store/cart_v4.html",
+      "git_blob": "a4255933462ed4a5790054d833c678c70e5a38ee",
+      "bytes": 1946,
+      "sha256": "04827dfee303764c4db1ae0a5aeadac184aed4f11d071d15a94cded8f5a867df"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/templates/store/home.html",
+      "archive_path": "app/templates/store/home.html",
+      "git_blob": "57baedba6ffd2abbcc19661fbb33f2018c4c7d3f",
+      "bytes": 5447,
+      "sha256": "873536fa42a48c9f4878982a38964918842e04669ed2dacd03d6ecfa550c2f7b"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/templates/store/product.html",
+      "archive_path": "app/templates/store/product.html",
+      "git_blob": "1eaf255e1641d3acab1cc0b95b10191cef1f3abd",
+      "bytes": 2333,
+      "sha256": "1d5a8398db5aa8b0c4010b946a7a49937c76f0c52e1ffd4a3a073a7acdd07fcb"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/templates/store/product_image.html",
+      "archive_path": "app/templates/store/product_image.html",
+      "git_blob": "fbb83aa8b98dff135a6c8facd91b8435fbd7e661",
+      "bytes": 375,
+      "sha256": "e1b2a30da50de5623f5210f76701760d2292c3c6cf1274d473d9a7eee836b0bf"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/templates/store/sku_fields.html",
+      "archive_path": "app/templates/store/sku_fields.html",
+      "git_blob": "a20152f381e2506baf48957dd8cc4d97a7994e95",
+      "bytes": 549,
+      "sha256": "c4d4efd786c02dafdd5d0c52333d317c6e3b7ec26eee60dc56d6085347a0c070"
+    },
+    {
+      "path": "MuscleCore分析資料/website/cloud_runtime.py",
+      "archive_path": "cloud_runtime.py",
+      "git_blob": "385d9ecef2d926de75871724eba604ae6d293a5e",
+      "bytes": 3821,
+      "sha256": "7a3c019046d9ec14b3d4e762ac9d86d5600c84e07293ccdf1042b90cc2478cbd"
+    },
+    {
+      "path": "MuscleCore分析資料/website/requirements-cloud-ai.txt",
+      "archive_path": "requirements-cloud-ai.txt",
+      "git_blob": "660d9ee93873c9aaab34432022318f7dd698d627",
+      "bytes": 432,
+      "sha256": "0e206231a9a70ff6a843f07d4e6143c6553d701def9db501251a6e04b2e5a487"
+    },
+    {
+      "path": "MuscleCore分析資料/website/requirements-cloud.txt",
+      "archive_path": "requirements-cloud.txt",
+      "git_blob": "f04ec537cd0ec5fbb26b3aba012311d14745af4f",
+      "bytes": 83,
+      "sha256": "2630f9296f68b7e8e80828ec5d9fee8673665ed2e15a3df8fc8df9c5603d37f0"
+    }
+  ],
+  "previews": {
+    "vibecart-web": {
+      "revision": "vibecart-web-main20ee-1640",
+      "url": "https://main20ee-preview---vibecart-web-m44ncgz5ta-de.a.run.app",
+      "percent": 0,
+      "ready": true,
+      "formal_revision": "vibecart-web-00019-phf",
+      "formal_percent": 100,
+      "flags": [
+        {
+          "name": "CLOUD_PREVIEW_READ_ONLY",
+          "value": "true"
+        },
+        {
+          "name": "ENABLE_CHECKOUT",
+          "value": "false"
+        },
+        {
+          "name": "AI_RECOMMENDATIONS_ENABLED",
+          "value": "false"
+        },
+        {
+          "name": "AI_SUMMARY_ENABLED",
+          "value": "false"
+        },
+        {
+          "name": "AI_FREE_QUESTION_ENABLED",
+          "value": "false"
+        }
+      ],
+      "runtime_identity": "vibecart-web@vibecart-llmai.iam.gserviceaccount.com"
+    },
+    "vibecart-acceptance-pr21": {
+      "revision": "vibecart-acceptance-pr21-main20ee-claude1-180s",
+      "url": "https://main20ee-ai---vibecart-acceptance-pr21-m44ncgz5ta-de.a.run.app",
+      "percent": 0,
+      "ready": true,
+      "formal_revision": "vibecart-acceptance-pr21-00011-2hq",
+      "formal_percent": 100,
+      "flags": [
+        {
+          "name": "CLOUD_ACCEPTANCE_MODE",
+          "value": "true"
+        },
+        {
+          "name": "CLOUD_ACCEPTANCE_DB",
+          "value": "vibecart_acceptance_pr21"
+        },
+        {
+          "name": "CLOUD_PREVIEW_READ_ONLY",
+          "value": "false"
+        },
+        {
+          "name": "ENABLE_CHECKOUT",
+          "value": "true"
+        },
+        {
+          "name": "AI_RECOMMENDATIONS_ENABLED",
+          "value": "true"
+        },
+        {
+          "name": "AI_SUMMARY_ENABLED",
+          "value": "true"
+        },
+        {
+          "name": "CLAUDE_MODEL",
+          "value": "claude-sonnet-5"
+        },
+        {
+          "name": "AI_FREE_QUESTION_ENABLED",
+          "value": "false"
+        },
+        {
+          "name": "ANTHROPIC_API_KEY",
+          "valueSource": {
+            "secretKeyRef": {
+              "secret": "ANTHROPIC_API_KEY",
+              "version": "1"
+            }
+          }
+        }
+      ],
+      "runtime_identity": "vibecart-pr21-acceptance@vibecart-llmai.iam.gserviceaccount.com"
+    }
+  },
+  "deadline_adjustment": {
+    "timeout": "180s",
+    "before_requests": [
+      {
+        "at": "2026-10-18T09:21:42.055876Z",
+        "status": 504,
+        "latency": "60.001263761s",
+        "path": "/admin/ai/recommendation"
+      },
+      {
+        "at": "2026-10-18T09:21:41.029251Z",
+        "status": 302,
+        "latency": "1.014144282s",
+        "path": "/admin/ai/recommendation"
+      },
+      {
+        "at": "2026-10-18T09:21:39.697198Z",
+        "status": 302,
+        "latency": "1.322702062s",
+        "path": "/auth/login"
+      },
+      {
+        "at": "2026-10-18T09:21:39.682501Z",
+        "status": 200,
+        "latency": "0.004207680s",
+        "path": "/auth/login"
+      },
+      {
+        "at": "2026-10-18T09:21:38.342606Z",
+        "status": 302,
+        "latency": "1.319225124s",
+        "path": "/auth/login"
+      },
+      {
+        "at": "2026-10-18T09:21:38.328904Z",
+        "status": 200,
+        "latency": "0.003387749s",
+        "path": "/auth/login"
+      },
+      {
+        "at": "2026-10-18T09:21:36.541549Z",
+        "status": 302,
+        "latency": "1.758122422s",
+        "path": "/auth/login"
+      },
+      {
+        "at": "2026-10-18T09:21:25.885838Z",
+        "status": 200,
+        "latency": "10.092137818s",
+        "path": "/auth/login"
+      }
+    ],
+    "formal_service_unchanged": true
+  },
+  "fallback_preview": {
+    "revision": "vibecart-acceptance-pr21-main20ee-off-180s",
+    "url": "https://main20ee-off---vibecart-acceptance-pr21-m44ncgz5ta-de.a.run.app",
+    "tag": "main20ee-off",
+    "operation": "projects/vibecart-llmai/locations/asia-east1/operations/2e84531e-6059-43c9-a5ae-6c186737af59",
+    "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:1d7b666db5b3f927e6fecf484617c2a0842694c0bfdc61150e6f3683434b4074",
+    "summary_enabled": false
+  },
+  "secret": {
+    "version": "1",
+    "state": "ENABLED",
+    "payload_accessed_by_operator": false,
+    "accessor_bindings": [
+      {
+        "role": "roles/secretmanager.secretAccessor",
+        "members": [
+          "serviceAccount:vibecart-pr21-acceptance@vibecart-llmai.iam.gserviceaccount.com"
+        ]
+      }
+    ]
+  },
+  "hosting": {
+    "release": "sites/vibecart-llmai/releases/1791982222797000",
+    "release_time": "2026-10-14T12:50:22.797Z",
+    "version": "sites/vibecart-llmai/versions/c3772dcc7c906211",
+    "rewrites": [
+      {
+        "glob": "**",
+        "run": {
+          "serviceId": "vibecart-web",
+          "region": "asia-east1"
+        }
+      }
+    ]
+  },
+  "public_routes": {
+    "checked_at": "2026-10-18T09:04:18.641656+00:00",
+    "url": "https://main20ee-preview---vibecart-web-m44ncgz5ta-de.a.run.app",
+    "revision": "vibecart-web-main20ee-1640",
+    "checks": [
+      {
+        "route": "/health/live",
+        "http": 200,
+        "cache_control": "private, no-store"
+      },
+      {
+        "route": "/health/ready",
+        "http": 200,
+        "cache_control": "private, no-store"
+      },
+      {
+        "route": "/",
+        "http": 200,
+        "cache_control": "private, no-store"
+      },
+      {
+        "route": "/?q=SAM_NO_SUCH_PRODUCT_20261018",
+        "http": 200,
+        "cache_control": "private, no-store"
+      },
+      {
+        "route": "/auth/login",
+        "http": 403,
+        "cache_control": "private, no-store"
+      },
+      {
+        "route": "/admin/",
+        "http": 403,
+        "cache_control": "private, no-store"
+      },
+      {
+        "route": "/cart",
+        "http": 403,
+        "cache_control": "private, no-store"
+      },
+      {
+        "route": "/checkout",
+        "http": 403,
+        "cache_control": "private, no-store"
+      },
+      {
+        "route": "/auth/login",
+        "method": "POST",
+        "http": 403
+      }
+    ],
+    "status": "passed",
+    "sample_product": {
+      "id": "007b9fa91f1e7f506cb21d54",
+      "name": "福樂一番鮮全脂鮮乳936ml※實際到貨效期約4天以上",
+      "price": "80.00",
+      "quantity": 3,
+      "display_matches_atlas": true
+    },
+    "before": {
+      "d4": 1240,
+      "events": 1257
+    },
+    "after": {
+      "d4": 1240,
+      "events": 1257
+    },
+    "source_events_unchanged": true,
+    "source_writes": false
+  },
+  "private_contracts": [
+    {
+      "code": 0,
+      "file": "remote_preview_ai_probe.py",
+      "report": {
+        "expect_claude": true,
+        "revision": "vibecart-acceptance-pr21-main20ee-claude1-180s",
+        "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:1d7b666db5b3f927e6fecf484617c2a0842694c0bfdc61150e6f3683434b4074",
+        "cleanup": {
+          "sessions_remaining": 0,
+          "events": 61,
+          "verified": true,
+          "users_remaining": 0,
+          "skus": 2,
+          "products_remaining": 0,
+          "users": 3,
+          "sessions": 3,
+          "events_remaining": 0,
+          "skus_remaining": 0,
+          "products": 2
+        },
+        "comparison_page_http": 200,
+        "probe_id": "sam-ai-b06a92212c14f2a7",
+        "personalization": {
+          "demo_purchase_in_own_ranking": true,
+          "demo_and_synthetic_excluded_from_monitor": true,
+          "other_member_unchanged": true,
+          "synthetic_excluded_before_limit": true
+        },
+        "claude_cache_repeated_request": true,
+        "free_question_http": 403,
+        "real_claude_calls_expected": 4,
+        "customer_ai_admin_http": 302,
+        "stage": "revenue_change",
+        "bge": {
+          "real_scores": true,
+          "first_http_ms": 38467,
+          "second": {
+            "total": 2,
+            "hits": 2,
+            "scores": [
+              0.67
+            ]
+          },
+          "first_request_is_not_claimed_cold_start": true,
+          "first": {
+            "scores": [
+              0.67
+            ],
+            "hits": 0,
+            "total": 2
+          },
+          "cached_http_ms": 1251
+        },
+        "last_intent": {
+          "intent": "revenue_change",
+          "label": "Claude",
+          "source": "claude"
+        },
+        "intents": [
+          {
+            "input_warnings": [
+              "比較期沒有有效訂單，成長率為 null。",
+              "含示範訂單：本期 5 筆、比較期 0 筆，數字不代表真實營運。"
+            ],
+            "intent": "period_compare",
+            "input_tokens": 2335,
+            "http": 200,
+            "whitelist_and_member_data_check": true,
+            "answer_text": "A： - 本期（2026-10-11至2026-10-17）：有效訂單5筆、有效營收51.25元、平均客單10.25元；比較期（2026-10-04至2026-10-10）：有效訂單0筆、有效營收0.00元、平均客單無資料。\n- 三項成長率（valid_orders、revenue、average_order_value）皆為 null，因比較期基期為零，無法計算成長率。\n- 本期銷量最高商品：資料中「隔離驗收瑜珈墊伸展運動」與「隔離驗收高蛋白營養飲品」之 valid_sold_units 皆為 0，無法判定本期銷量最高商品。\n- 來客數、流量、轉換率、成本、毛利、廣告等項目：資料未提供，無法判定。\n- 警示說明：比較期無有效訂單，故相關成長率無法計算；本期資料含示範訂單5筆、比較期0筆，上述數字不代表真實營運狀況，僅供參考。\n- 每日明細顯示本期僅10/17有訂單活動（5筆、51.25元），其餘日期及整個比較期均為0，但此分布是否反映真實銷售情形，資料不足以判斷原因。",
+            "input_totals": {
+              "comparison": {
+                "valid_orders": 0,
+                "average_order_value": null,
+                "all_orders": 0,
+                "revenue": "0.00"
+              },
+              "change_pct": {
+                "average_order_value": null,
+                "revenue": null,
+                "valid_orders": null
+              },
+              "current": {
+                "all_orders": 5,
+                "valid_orders": 5,
+                "revenue": "51.25",
+                "average_order_value": "10.25"
+              }
+            },
+            "output_tokens": 413,
+            "source": "claude",
+            "http_ms": 17622,
+            "input_products": [
+              {
+                "valid_sold_units": 0,
+                "available_quantity": 10,
+                "safety_stock": 0,
+                "name": "隔離驗收瑜珈墊伸展運動",
+                "price": "10.00"
+              },
+              {
+                "available_quantity": 10,
+                "safety_stock": 0,
+                "price": "10.00",
+                "valid_sold_units": 0,
+                "name": "隔離驗收高蛋白營養飲品"
+              }
+            ]
+          },
+          {
+            "intent": "replenishment",
+            "output_tokens": 343,
+            "input_products": [],
+            "input_totals": {
+              "change_pct": {
+                "valid_orders": null,
+                "revenue": null,
+                "average_order_value": null
+              },
+              "current": {
+                "all_orders": 5,
+                "revenue": "51.25",
+                "average_order_value": "10.25",
+                "valid_orders": 5
+              },
+              "comparison": {
+                "average_order_value": null,
+                "valid_orders": 0,
+                "revenue": "0.00",
+                "all_orders": 0
+              }
+            },
+            "http_ms": 6143,
+            "http": 200,
+            "answer_text": "A： 目前沒有低於安全庫存的可售商品（products 清單為空，total_candidates 為 0），因此無補貨候選項目可供排序說明。\n\n補充說明：\n\n- 本次查詢區間為 current_range 2026-10-11 至 2026-10-17，comparison_range 2026-10-04 至 2026-10-10。\n- 警示事項需提醒：資料中「含示範訂單：本期 5 筆、比較期 0 筆，數字不代表真實營運」，故本期訂單與營收數字僅供參考，不代表真實營運狀況。\n- 另外「比較期沒有有效訂單，成長率為 null」，故無法計算任何成長率。\n- 來客數、流量、轉換率、成本、毛利、廣告等資料未提供，無法判定。\n- 若未來補貨候選名單出現商品，將依 valid_sold_units 由高到低，並列出其 available_quantity、safety_stock、valid_sold_units 原值供參考；目前無資料可供此分析。",
+            "input_warnings": [
+              "比較期沒有有效訂單，成長率為 null。",
+              "含示範訂單：本期 5 筆、比較期 0 筆，數字不代表真實營運。",
+              "products 只列 available_quantity<=safety_stock 的補貨候選，共 0 筆。"
+            ],
+            "input_tokens": 2129,
+            "source": "claude",
+            "whitelist_and_member_data_check": true
+          },
+          {
+            "intent": "promotion",
+            "http": 200,
+            "answer_text": "A： - 本期（2026-10-11至2026-10-17）與比較期（2026-10-04至2026-10-10）資料顯示，促銷候選商品共2項：「隔離驗收瑜珈墊伸展運動」與「隔離驗收高蛋白營養飲品」，兩者可用庫存（available_quantity）皆為10，本期有效銷售量（valid_sold_units）皆為0，符合「庫存高、銷量低」的促銷篩選條件。\n\n- 這兩項商品的 promotion_eligible 欄位為 null，代表系統缺少成本與毛利資料，因此無法評估促銷後的毛利影響，僅能作為人工評估的候選名單，不建議直接執行促銷。\n\n- 本期總營收為51.25元，比較期為0.00元，由於比較期無有效訂單，成長率（change_pct）為 null，無法計算成長幅度。\n\n- 警告提示：本期與比較期資料含示範訂單（本期5筆、比較期0筆），數字不代表真實營運狀況，分析結果僅供參考。\n\n- 來客數、流量、轉換率、成本、毛利、廣告等資料均未提供，無法判定與促銷相關的成本效益或轉換表現。\n\n- 以上僅為依現有資料整理之候選建議，實際是否促銷、折扣幅度或庫存調整，仍須人工確認成本與毛利後再行決策。",
+            "input_warnings": [
+              "比較期沒有有效訂單，成長率為 null。",
+              "含示範訂單：本期 5 筆、比較期 0 筆，數字不代表真實營運。"
+            ],
+            "whitelist_and_member_data_check": true,
+            "input_tokens": 2361,
+            "input_totals": {
+              "comparison": {
+                "valid_orders": 0,
+                "revenue": "0.00",
+                "average_order_value": null,
+                "all_orders": 0
+              },
+              "current": {
+                "revenue": "51.25",
+                "all_orders": 5,
+                "valid_orders": 5,
+                "average_order_value": "10.25"
+              },
+              "change_pct": {
+                "average_order_value": null,
+                "valid_orders": null,
+                "revenue": null
+              }
+            },
+            "http_ms": 8526,
+            "input_products": [
+              {
+                "safety_stock": 0,
+                "price": "10.00",
+                "name": "隔離驗收瑜珈墊伸展運動",
+                "available_quantity": 10,
+                "valid_sold_units": 0
+              },
+              {
+                "safety_stock": 0,
+                "price": "10.00",
+                "available_quantity": 10,
+                "name": "隔離驗收高蛋白營養飲品",
+                "valid_sold_units": 0
+              }
+            ],
+            "output_tokens": 480,
+            "source": "claude"
+          },
+          {
+            "input_totals": {
+              "current": {
+                "all_orders": 5,
+                "revenue": "51.25",
+                "average_order_value": "10.25",
+                "valid_orders": 5
+              },
+              "comparison": {
+                "revenue": "0.00",
+                "valid_orders": 0,
+                "average_order_value": null,
+                "all_orders": 0
+              },
+              "change_pct": {
+                "revenue": null,
+                "average_order_value": null,
+                "valid_orders": null
+              }
+            },
+            "whitelist_and_member_data_check": true,
+            "input_products": [
+              {
+                "name": "隔離驗收瑜珈墊伸展運動",
+                "available_quantity": 10,
+                "safety_stock": 0,
+                "price": "10.00",
+                "valid_sold_units": 0
+              },
+              {
+                "valid_sold_units": 0,
+                "available_quantity": 10,
+                "name": "隔離驗收高蛋白營養飲品",
+                "safety_stock": 0,
+                "price": "10.00"
+              }
+            ],
+            "answer_text": "A： 營收變化說明：\n\n- 本期（2026-10-11～2026-10-17）有效營收為 51.25 元，比較期（2026-10-04～2026-10-10）有效營收為 0.00 元。本期營收並未下滑，反而由零成長至 51.25 元。\n- 成長率部分：valid_orders、revenue、average_order_value 的 change_pct 皆為 null，因為比較期基期為零，無法計算成長率，故無法判定此差異是由有效訂單數或平均客單價哪一項造成。\n- 本期各日有效營收：最高為 2026-10-17（51.25 元），其餘 2026-10-11～2026-10-16 皆為 0.00 元，故最低為這些日期（並列 0.00 元）。\n- 比較期各日有效營收：2026-10-04～2026-10-10 全部為 0.00 元，故最高與最低皆為 0.00 元，無法區分單一日期。\n- 依規則不得推論來客數、流量或外部原因，且 visitors、traffic、conversion_rate、cost、gross_margin、advertising 等資料未提供，無法判定相關因素。\n- 提醒：本期資料含 5 筆示範訂單、比較期含 0 筆示範訂單，故本次數字不代表真實營運狀況，僅供參考。",
+            "intent": "revenue_change",
+            "output_tokens": 446,
+            "source": "claude",
+            "http": 200,
+            "http_ms": 7126,
+            "input_warnings": [
+              "比較期沒有有效訂單，成長率為 null。",
+              "含示範訂單：本期 5 筆、比較期 0 筆，數字不代表真實營運。"
+            ],
+            "input_tokens": 2382
+          }
+        ],
+        "status": "passed"
+      }
+    },
+    {
+      "report": {
+        "probe_id": "sam-accounts-8d4ca0ba54dc4c3f",
+        "database": "vibecart_acceptance_pr21",
+        "service_image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:1d7b666db5b3f927e6fecf484617c2a0842694c0bfdc61150e6f3683434b4074",
+        "accounts": [
+          {
+            "id": "6ad49168b975dcd31b0d9004",
+            "role": "admin"
+          },
+          {
+            "role": "customer",
+            "id": "6ad49168b975dcd31b0d9005"
+          }
+        ],
+        "checks": {
+          "anonymous_member_admin_denied": true,
+          "same_browser_relogin_old_cookie_denied_second_device_live": true,
+          "reenable_requires_new_login_old_cookies_stay_invalid": true,
+          "all_customer_sessions_revoked_admin_unaffected": true,
+          "admin_read_pages": true,
+          "customer_two_sessions_admin_denied": true,
+          "disabled_accounts_login_and_all_devices_denied": true
+        },
+        "retirement_before_cleanup": {
+          "sessions_revoked": true,
+          "verified": true,
+          "sessions_remaining": 0,
+          "disabled": true,
+          "accounts_present": 2,
+          "sessions_deleted": 3
+        },
+        "status": "passed",
+        "service_revision": "vibecart-acceptance-pr21-main20ee-claude1-180s",
+        "cleanup": {
+          "verified": true,
+          "users_remaining": 0,
+          "users_deleted": 2,
+          "retirement": {
+            "sessions_revoked": true,
+            "disabled": true,
+            "sessions_remaining": 0,
+            "accounts_present": 2,
+            "sessions_deleted": 1,
+            "verified": true
+          }
+        },
+        "credentials_persisted": false
+      },
+      "code": 0,
+      "file": "remote_account_acceptance_probe.py"
+    },
+    {
+      "file": "remote_transaction_acceptance_probe.py",
+      "code": 0,
+      "report": {
+        "customer_admin_denied": true,
+        "status": "passed",
+        "conflict_409": true,
+        "retry_same_order": true,
+        "two_device_sessions": true,
+        "last_stock_concurrency": {
+          "parallel_clients": 2,
+          "http_statuses": [
+            200,
+            400
+          ],
+          "orders_total_including_original": 2,
+          "stock_remaining": 0,
+          "successful_checkouts": 1
+        },
+        "checkout_persisted": true,
+        "stock_after_checkout": 1,
+        "add_to_cart": true,
+        "cleanup": {
+          "order_items": 2,
+          "product_skus": 2,
+          "users_remaining": 0,
+          "behavior_events": 6,
+          "orders_remaining": 0,
+          "cart_events_remaining": 0,
+          "products": 1,
+          "auth_sessions": 3,
+          "product_skus_remaining": 0,
+          "orders": 2,
+          "auth_sessions_remaining": 0,
+          "verified": true,
+          "products_remaining": 0,
+          "carts_remaining": 0,
+          "users": 3,
+          "cart_events": 6,
+          "carts": 3,
+          "order_items_remaining": 0,
+          "behavior_events_remaining": 0
+        },
+        "stock_failure_rollback": {
+          "cart_event_counts_unchanged": true,
+          "persisted_after": {
+            "orders": 2,
+            "cart_events": 6,
+            "behavior_events": 6,
+            "order_items": 2
+          },
+          "second_sku_unavailable_http": 400,
+          "order_item_event_counts_unchanged": true,
+          "persisted_before": {
+            "order_items": 2,
+            "orders": 2,
+            "cart_events": 6,
+            "behavior_events": 6
+          },
+          "order_items_scope": "fixture sku_id including orphan items",
+          "arbitrary_fault_injection_tested": false,
+          "first_sku_stock_preserved": true,
+          "cart_revision_preserved": true
+        },
+        "session_security": {
+          "inactive_customer_both_devices_denied": true,
+          "d5_ui_tested": false,
+          "old_cookie_denied": true,
+          "same_browser_relogin": true,
+          "other_device_preserved": true,
+          "maintainer_revoke_all_denied": true
+        },
+        "add_http": 200,
+        "role_checks": {
+          "inactive_admin_denied": true,
+          "missing_csrf_400": true,
+          "active_admin_200": true
+        },
+        "per_device_logout": true,
+        "service_revision": "vibecart-acceptance-pr21-main20ee-claude1-180s",
+        "probe_id": "ren-txn-72534b4caa655195",
+        "service_image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:1d7b666db5b3f927e6fecf484617c2a0842694c0bfdc61150e6f3683434b4074"
+      }
+    },
+    {
+      "code": 0,
+      "report": {
+        "normal_inserted": 1,
+        "service_image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:1d7b666db5b3f927e6fecf484617c2a0842694c0bfdc61150e6f3683434b4074",
+        "synthetic_excluded": true,
+        "product_ids": [
+          "6ad491c3e42f4139146636f8",
+          "6ad491c3e42f4139146636f9"
+        ],
+        "synthetic_inserted": 1001,
+        "after_normal_admin_count": 14,
+        "baseline_admin_count": 13,
+        "cleanup": {
+          "events": 1002,
+          "users_remaining": 0,
+          "users": 2,
+          "skus": 2,
+          "events_remaining": 0,
+          "verified": true,
+          "products": 2,
+          "skus_remaining": 0,
+          "products_remaining": 0,
+          "sessions_remaining": 0,
+          "sessions": 2
+        },
+        "normal_visible": true,
+        "service_revision": "vibecart-acceptance-pr21-main20ee-claude1-180s",
+        "after_synthetic_admin_count": 14,
+        "status": "passed",
+        "probe_id": "ren-d4-725ba01842bca03f"
+      },
+      "file": "remote_d4_consumer_probe.py"
+    }
+  ],
+  "ai_quality_and_disabled_fallback": [
+    {
+      "code": 0,
+      "file": "remote_preview_ai_probe.py",
+      "report": {
+        "expect_claude": true,
+        "revision": "vibecart-acceptance-pr21-main20ee-claude1-180s",
+        "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:1d7b666db5b3f927e6fecf484617c2a0842694c0bfdc61150e6f3683434b4074",
+        "cleanup": {
+          "sessions_remaining": 0,
+          "events": 61,
+          "verified": true,
+          "users_remaining": 0,
+          "skus": 2,
+          "products_remaining": 0,
+          "users": 3,
+          "sessions": 3,
+          "events_remaining": 0,
+          "skus_remaining": 0,
+          "products": 2
+        },
+        "comparison_page_http": 200,
+        "probe_id": "sam-ai-b06a92212c14f2a7",
+        "personalization": {
+          "demo_purchase_in_own_ranking": true,
+          "demo_and_synthetic_excluded_from_monitor": true,
+          "other_member_unchanged": true,
+          "synthetic_excluded_before_limit": true
+        },
+        "claude_cache_repeated_request": true,
+        "free_question_http": 403,
+        "real_claude_calls_expected": 4,
+        "customer_ai_admin_http": 302,
+        "stage": "revenue_change",
+        "bge": {
+          "real_scores": true,
+          "first_http_ms": 38467,
+          "second": {
+            "total": 2,
+            "hits": 2,
+            "scores": [
+              0.67
+            ]
+          },
+          "first_request_is_not_claimed_cold_start": true,
+          "first": {
+            "scores": [
+              0.67
+            ],
+            "hits": 0,
+            "total": 2
+          },
+          "cached_http_ms": 1251
+        },
+        "last_intent": {
+          "intent": "revenue_change",
+          "label": "Claude",
+          "source": "claude"
+        },
+        "intents": [
+          {
+            "input_warnings": [
+              "比較期沒有有效訂單，成長率為 null。",
+              "含示範訂單：本期 5 筆、比較期 0 筆，數字不代表真實營運。"
+            ],
+            "intent": "period_compare",
+            "input_tokens": 2335,
+            "http": 200,
+            "whitelist_and_member_data_check": true,
+            "answer_text": "A： - 本期（2026-10-11至2026-10-17）：有效訂單5筆、有效營收51.25元、平均客單10.25元；比較期（2026-10-04至2026-10-10）：有效訂單0筆、有效營收0.00元、平均客單無資料。\n- 三項成長率（valid_orders、revenue、average_order_value）皆為 null，因比較期基期為零，無法計算成長率。\n- 本期銷量最高商品：資料中「隔離驗收瑜珈墊伸展運動」與「隔離驗收高蛋白營養飲品」之 valid_sold_units 皆為 0，無法判定本期銷量最高商品。\n- 來客數、流量、轉換率、成本、毛利、廣告等項目：資料未提供，無法判定。\n- 警示說明：比較期無有效訂單，故相關成長率無法計算；本期資料含示範訂單5筆、比較期0筆，上述數字不代表真實營運狀況，僅供參考。\n- 每日明細顯示本期僅10/17有訂單活動（5筆、51.25元），其餘日期及整個比較期均為0，但此分布是否反映真實銷售情形，資料不足以判斷原因。",
+            "input_totals": {
+              "comparison": {
+                "valid_orders": 0,
+                "average_order_value": null,
+                "all_orders": 0,
+                "revenue": "0.00"
+              },
+              "change_pct": {
+                "average_order_value": null,
+                "revenue": null,
+                "valid_orders": null
+              },
+              "current": {
+                "all_orders": 5,
+                "valid_orders": 5,
+                "revenue": "51.25",
+                "average_order_value": "10.25"
+              }
+            },
+            "output_tokens": 413,
+            "source": "claude",
+            "http_ms": 17622,
+            "input_products": [
+              {
+                "valid_sold_units": 0,
+                "available_quantity": 10,
+                "safety_stock": 0,
+                "name": "隔離驗收瑜珈墊伸展運動",
+                "price": "10.00"
+              },
+              {
+                "available_quantity": 10,
+                "safety_stock": 0,
+                "price": "10.00",
+                "valid_sold_units": 0,
+                "name": "隔離驗收高蛋白營養飲品"
+              }
+            ]
+          },
+          {
+            "intent": "replenishment",
+            "output_tokens": 343,
+            "input_products": [],
+            "input_totals": {
+              "change_pct": {
+                "valid_orders": null,
+                "revenue": null,
+                "average_order_value": null
+              },
+              "current": {
+                "all_orders": 5,
+                "revenue": "51.25",
+                "average_order_value": "10.25",
+                "valid_orders": 5
+              },
+              "comparison": {
+                "average_order_value": null,
+                "valid_orders": 0,
+                "revenue": "0.00",
+                "all_orders": 0
+              }
+            },
+            "http_ms": 6143,
+            "http": 200,
+            "answer_text": "A： 目前沒有低於安全庫存的可售商品（products 清單為空，total_candidates 為 0），因此無補貨候選項目可供排序說明。\n\n補充說明：\n\n- 本次查詢區間為 current_range 2026-10-11 至 2026-10-17，comparison_range 2026-10-04 至 2026-10-10。\n- 警示事項需提醒：資料中「含示範訂單：本期 5 筆、比較期 0 筆，數字不代表真實營運」，故本期訂單與營收數字僅供參考，不代表真實營運狀況。\n- 另外「比較期沒有有效訂單，成長率為 null」，故無法計算任何成長率。\n- 來客數、流量、轉換率、成本、毛利、廣告等資料未提供，無法判定。\n- 若未來補貨候選名單出現商品，將依 valid_sold_units 由高到低，並列出其 available_quantity、safety_stock、valid_sold_units 原值供參考；目前無資料可供此分析。",
+            "input_warnings": [
+              "比較期沒有有效訂單，成長率為 null。",
+              "含示範訂單：本期 5 筆、比較期 0 筆，數字不代表真實營運。",
+              "products 只列 available_quantity<=safety_stock 的補貨候選，共 0 筆。"
+            ],
+            "input_tokens": 2129,
+            "source": "claude",
+            "whitelist_and_member_data_check": true
+          },
+          {
+            "intent": "promotion",
+            "http": 200,
+            "answer_text": "A： - 本期（2026-10-11至2026-10-17）與比較期（2026-10-04至2026-10-10）資料顯示，促銷候選商品共2項：「隔離驗收瑜珈墊伸展運動」與「隔離驗收高蛋白營養飲品」，兩者可用庫存（available_quantity）皆為10，本期有效銷售量（valid_sold_units）皆為0，符合「庫存高、銷量低」的促銷篩選條件。\n\n- 這兩項商品的 promotion_eligible 欄位為 null，代表系統缺少成本與毛利資料，因此無法評估促銷後的毛利影響，僅能作為人工評估的候選名單，不建議直接執行促銷。\n\n- 本期總營收為51.25元，比較期為0.00元，由於比較期無有效訂單，成長率（change_pct）為 null，無法計算成長幅度。\n\n- 警告提示：本期與比較期資料含示範訂單（本期5筆、比較期0筆），數字不代表真實營運狀況，分析結果僅供參考。\n\n- 來客數、流量、轉換率、成本、毛利、廣告等資料均未提供，無法判定與促銷相關的成本效益或轉換表現。\n\n- 以上僅為依現有資料整理之候選建議，實際是否促銷、折扣幅度或庫存調整，仍須人工確認成本與毛利後再行決策。",
+            "input_warnings": [
+              "比較期沒有有效訂單，成長率為 null。",
+              "含示範訂單：本期 5 筆、比較期 0 筆，數字不代表真實營運。"
+            ],
+            "whitelist_and_member_data_check": true,
+            "input_tokens": 2361,
+            "input_totals": {
+              "comparison": {
+                "valid_orders": 0,
+                "revenue": "0.00",
+                "average_order_value": null,
+                "all_orders": 0
+              },
+              "current": {
+                "revenue": "51.25",
+                "all_orders": 5,
+                "valid_orders": 5,
+                "average_order_value": "10.25"
+              },
+              "change_pct": {
+                "average_order_value": null,
+                "valid_orders": null,
+                "revenue": null
+              }
+            },
+            "http_ms": 8526,
+            "input_products": [
+              {
+                "safety_stock": 0,
+                "price": "10.00",
+                "name": "隔離驗收瑜珈墊伸展運動",
+                "available_quantity": 10,
+                "valid_sold_units": 0
+              },
+              {
+                "safety_stock": 0,
+                "price": "10.00",
+                "available_quantity": 10,
+                "name": "隔離驗收高蛋白營養飲品",
+                "valid_sold_units": 0
+              }
+            ],
+            "output_tokens": 480,
+            "source": "claude"
+          },
+          {
+            "input_totals": {
+              "current": {
+                "all_orders": 5,
+                "revenue": "51.25",
+                "average_order_value": "10.25",
+                "valid_orders": 5
+              },
+              "comparison": {
+                "revenue": "0.00",
+                "valid_orders": 0,
+                "average_order_value": null,
+                "all_orders": 0
+              },
+              "change_pct": {
+                "revenue": null,
+                "average_order_value": null,
+                "valid_orders": null
+              }
+            },
+            "whitelist_and_member_data_check": true,
+            "input_products": [
+              {
+                "name": "隔離驗收瑜珈墊伸展運動",
+                "available_quantity": 10,
+                "safety_stock": 0,
+                "price": "10.00",
+                "valid_sold_units": 0
+              },
+              {
+                "valid_sold_units": 0,
+                "available_quantity": 10,
+                "name": "隔離驗收高蛋白營養飲品",
+                "safety_stock": 0,
+                "price": "10.00"
+              }
+            ],
+            "answer_text": "A： 營收變化說明：\n\n- 本期（2026-10-11～2026-10-17）有效營收為 51.25 元，比較期（2026-10-04～2026-10-10）有效營收為 0.00 元。本期營收並未下滑，反而由零成長至 51.25 元。\n- 成長率部分：valid_orders、revenue、average_order_value 的 change_pct 皆為 null，因為比較期基期為零，無法計算成長率，故無法判定此差異是由有效訂單數或平均客單價哪一項造成。\n- 本期各日有效營收：最高為 2026-10-17（51.25 元），其餘 2026-10-11～2026-10-16 皆為 0.00 元，故最低為這些日期（並列 0.00 元）。\n- 比較期各日有效營收：2026-10-04～2026-10-10 全部為 0.00 元，故最高與最低皆為 0.00 元，無法區分單一日期。\n- 依規則不得推論來客數、流量或外部原因，且 visitors、traffic、conversion_rate、cost、gross_margin、advertising 等資料未提供，無法判定相關因素。\n- 提醒：本期資料含 5 筆示範訂單、比較期含 0 筆示範訂單，故本次數字不代表真實營運狀況，僅供參考。",
+            "intent": "revenue_change",
+            "output_tokens": 446,
+            "source": "claude",
+            "http": 200,
+            "http_ms": 7126,
+            "input_warnings": [
+              "比較期沒有有效訂單，成長率為 null。",
+              "含示範訂單：本期 5 筆、比較期 0 筆，數字不代表真實營運。"
+            ],
+            "input_tokens": 2382
+          }
+        ],
+        "status": "passed"
+      }
+    },
+    {
+      "code": 0,
+      "file": "remote_preview_ai_probe.py",
+      "report": {
+        "probe_id": "sam-ai-08e6689e0384bc82",
+        "bge": {
+          "first_http_ms": 33782,
+          "cached_http_ms": 1210,
+          "real_scores": true,
+          "first": {
+            "total": 2,
+            "scores": [
+              0.67
+            ],
+            "hits": 0
+          },
+          "first_request_is_not_claimed_cold_start": true,
+          "second": {
+            "hits": 2,
+            "total": 2,
+            "scores": [
+              0.67
+            ]
+          }
+        },
+        "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:1d7b666db5b3f927e6fecf484617c2a0842694c0bfdc61150e6f3683434b4074",
+        "revision": "vibecart-acceptance-pr21-main20ee-off-180s",
+        "cleanup": {
+          "skus_remaining": 0,
+          "products": 2,
+          "users_remaining": 0,
+          "skus": 2,
+          "sessions_remaining": 0,
+          "sessions": 3,
+          "products_remaining": 0,
+          "events_remaining": 0,
+          "users": 3,
+          "events": 61,
+          "verified": true
+        },
+        "customer_ai_admin_http": 302,
+        "real_claude_calls_expected": 0,
+        "free_question_http": 403,
+        "personalization": {
+          "synthetic_excluded_before_limit": true,
+          "demo_purchase_in_own_ranking": true,
+          "demo_and_synthetic_excluded_from_monitor": true,
+          "other_member_unchanged": true
+        },
+        "last_intent": {
+          "label": "規則退回 · 雲端 AI 未啟用",
+          "source": "rules",
+          "intent": "revenue_change"
+        },
+        "intents": [
+          {
+            "input_products": [
+              {
+                "safety_stock": 0,
+                "name": "隔離驗收瑜珈墊伸展運動",
+                "valid_sold_units": 0,
+                "price": "10.00",
+                "available_quantity": 10
+              },
+              {
+                "safety_stock": 0,
+                "price": "10.00",
+                "name": "隔離驗收高蛋白營養飲品",
+                "valid_sold_units": 0,
+                "available_quantity": 10
+              }
+            ],
+            "answer_text": "A： 本期 2026-10-11～2026-10-17：有效營收 NT$ 51.25，有效／全部訂單 5／5，平均客單 NT$ 10.25。\n比較期 2026-10-04～2026-10-10：有效營收 NT$ 0.00，有效訂單 0；營收變化 無法計算（比較基期為零）。\n比較期沒有有效訂單，成長率為 null。\n含示範訂單：本期 5 筆、比較期 0 筆，數字不代表真實營運。",
+            "intent": "period_compare",
+            "whitelist_and_member_data_check": true,
+            "input_totals": {
+              "comparison": {
+                "all_orders": 0,
+                "valid_orders": 0,
+                "revenue": "0.00",
+                "average_order_value": null
+              },
+              "change_pct": {
+                "average_order_value": null,
+                "revenue": null,
+                "valid_orders": null
+              },
+              "current": {
+                "revenue": "51.25",
+                "valid_orders": 5,
+                "average_order_value": "10.25",
+                "all_orders": 5
+              }
+            },
+            "input_tokens": null,
+            "output_tokens": null,
+            "http_ms": 1519,
+            "source": "rules",
+            "http": 200,
+            "input_warnings": [
+              "比較期沒有有效訂單，成長率為 null。",
+              "含示範訂單：本期 5 筆、比較期 0 筆，數字不代表真實營運。"
+            ]
+          },
+          {
+            "input_products": [],
+            "whitelist_and_member_data_check": true,
+            "intent": "replenishment",
+            "input_totals": {
+              "change_pct": {
+                "average_order_value": null,
+                "valid_orders": null,
+                "revenue": null
+              },
+              "current": {
+                "revenue": "51.25",
+                "all_orders": 5,
+                "average_order_value": "10.25",
+                "valid_orders": 5
+              },
+              "comparison": {
+                "revenue": "0.00",
+                "valid_orders": 0,
+                "all_orders": 0,
+                "average_order_value": null
+              }
+            },
+            "input_tokens": null,
+            "http_ms": 1581,
+            "source": "rules",
+            "output_tokens": null,
+            "input_warnings": [
+              "比較期沒有有效訂單，成長率為 null。",
+              "含示範訂單：本期 5 筆、比較期 0 筆，數字不代表真實營運。",
+              "products 只列 available_quantity<=safety_stock 的補貨候選，共 0 筆。"
+            ],
+            "answer_text": "A： 本期 2026-10-11～2026-10-17：有效營收 NT$ 51.25，有效／全部訂單 5／5，平均客單 NT$ 10.25。\n比較期 2026-10-04～2026-10-10：有效營收 NT$ 0.00，有效訂單 0；營收變化 無法計算（比較基期為零）。\n目前沒有可售量低於安全庫存的可售商品。\n比較期沒有有效訂單，成長率為 null。\n含示範訂單：本期 5 筆、比較期 0 筆，數字不代表真實營運。\nproducts 只列 available_quantity<=safety_stock 的補貨候選，共 0 筆。",
+            "http": 200
+          },
+          {
+            "input_totals": {
+              "comparison": {
+                "revenue": "0.00",
+                "all_orders": 0,
+                "average_order_value": null,
+                "valid_orders": 0
+              },
+              "current": {
+                "valid_orders": 5,
+                "average_order_value": "10.25",
+                "revenue": "51.25",
+                "all_orders": 5
+              },
+              "change_pct": {
+                "average_order_value": null,
+                "revenue": null,
+                "valid_orders": null
+              }
+            },
+            "input_warnings": [
+              "比較期沒有有效訂單，成長率為 null。",
+              "含示範訂單：本期 5 筆、比較期 0 筆，數字不代表真實營運。"
+            ],
+            "intent": "promotion",
+            "source": "rules",
+            "http_ms": 1535,
+            "whitelist_and_member_data_check": true,
+            "input_products": [
+              {
+                "safety_stock": 0,
+                "price": "10.00",
+                "available_quantity": 10,
+                "valid_sold_units": 0,
+                "name": "隔離驗收瑜珈墊伸展運動"
+              },
+              {
+                "valid_sold_units": 0,
+                "available_quantity": 10,
+                "safety_stock": 0,
+                "price": "10.00",
+                "name": "隔離驗收高蛋白營養飲品"
+              }
+            ],
+            "input_tokens": null,
+            "http": 200,
+            "output_tokens": null,
+            "answer_text": "A： 本期 2026-10-11～2026-10-17：有效營收 NT$ 51.25，有效／全部訂單 5／5，平均客單 NT$ 10.25。\n比較期 2026-10-04～2026-10-10：有效營收 NT$ 0.00，有效訂單 0；營收變化 無法計算（比較基期為零）。\n促銷候選：隔離驗收瑜珈墊伸展運動（可售 10，本期售出 0）\n促銷候選：隔離驗收高蛋白營養飲品（可售 10，本期售出 0）\n沒有成本與毛利資料，無法評估促銷毛利。\n比較期沒有有效訂單，成長率為 null。\n含示範訂單：本期 5 筆、比較期 0 筆，數字不代表真實營運。"
+          },
+          {
+            "output_tokens": null,
+            "source": "rules",
+            "input_products": [
+              {
+                "available_quantity": 10,
+                "valid_sold_units": 0,
+                "safety_stock": 0,
+                "name": "隔離驗收瑜珈墊伸展運動",
+                "price": "10.00"
+              },
+              {
+                "safety_stock": 0,
+                "valid_sold_units": 0,
+                "available_quantity": 10,
+                "name": "隔離驗收高蛋白營養飲品",
+                "price": "10.00"
+              }
+            ],
+            "http_ms": 1564,
+            "http": 200,
+            "input_totals": {
+              "comparison": {
+                "all_orders": 0,
+                "valid_orders": 0,
+                "revenue": "0.00",
+                "average_order_value": null
+              },
+              "change_pct": {
+                "revenue": null,
+                "average_order_value": null,
+                "valid_orders": null
+              },
+              "current": {
+                "valid_orders": 5,
+                "average_order_value": "10.25",
+                "revenue": "51.25",
+                "all_orders": 5
+              }
+            },
+            "input_tokens": null,
+            "answer_text": "A： 本期 2026-10-11～2026-10-17：有效營收 NT$ 51.25，有效／全部訂單 5／5，平均客單 NT$ 10.25。\n比較期 2026-10-04～2026-10-10：有效營收 NT$ 0.00，有效訂單 0；營收變化 無法計算（比較基期為零）。\n有效訂單變化 無法計算（比較基期為零），平均客單變化 無法計算（比較基期為零）。\n規則摘要只列出數字變化；資料未包含來客數與流量，無法判定原因。\n比較期沒有有效訂單，成長率為 null。\n含示範訂單：本期 5 筆、比較期 0 筆，數字不代表真實營運。",
+            "whitelist_and_member_data_check": true,
+            "input_warnings": [
+              "比較期沒有有效訂單，成長率為 null。",
+              "含示範訂單：本期 5 筆、比較期 0 筆，數字不代表真實營運。"
+            ],
+            "intent": "revenue_change"
+          }
+        ],
+        "expect_claude": false,
+        "status": "passed",
+        "comparison_page_http": 200,
+        "stage": "revenue_change"
+      }
+    }
+  ],
+  "cloud_test_executions": [
+    {
+      "name": "projects/vibecart-llmai/locations/asia-east1/jobs/sam-main20ee-acceptance-20261018/executions/sam-main20ee-acceptance-20261018-9ng9g",
+      "harness_sha256": "f1da291b8ff45c101d87b675bba6035cc25a661ec21b7f998ebc92b4c252584d",
+      "complete": true,
+      "error": null
+    },
+    {
+      "name": "projects/vibecart-llmai/locations/asia-east1/jobs/sam-main20ee-acceptance-20261018/executions/sam-main20ee-acceptance-20261018-4gvjh",
+      "harness_sha256": "6a57b42826d6b00fc4d53f870fc5a35d6bba83c287360d22ff067d451810fac5",
+      "complete": true,
+      "error": null
+    }
+  ],
+  "tested_probe_sources": {
+    "remote_preview_ai_probe.py": "71e311355aafc0948ff253dd7377bf97218db0530333bad242f65c4e57659d97",
+    "remote_d4_consumer_probe.py": "8ab73293e069114a5de1d0b66fe69193114285c1e1dbc28a5216de47d0d976ae",
+    "remote_account_acceptance_probe.py": "6bf1206fc71c2a85b69608f58b871c03b3dca44922bd2f225165097621e4c027",
+    "remote_transaction_acceptance_probe.py": "2d348fd039c0d49a876ca6956921c5f5c24d928fbf59f98ed8740e170734ae61",
+    "remote_member_transaction_checks.py": "ab25e4eb6f1d7a49e00d6e78756e1628c35168616deee7fe26702d12a1d3d86e"
+  },
+  "local_tests": {
+    "preview_safety_passed": 22,
+    "skipped": 0
+  },
+  "screenshots": [
+    {
+      "path": "docs/evidence/main-preview-2026-10-18/catalog.png",
+      "sha256": "d63c8f7c043db052b7d84926e98221f69b73903f98ceb75cd633a97fbbabfb6a",
+      "bytes": 47246
+    },
+    {
+      "path": "docs/evidence/main-preview-2026-10-18/product-price.png",
+      "sha256": "89611617383eb829e9286f5cb090d768cc4d2efba82c0ec93aca530fa0747390",
+      "bytes": 42707
+    },
+    {
+      "path": "docs/evidence/main-preview-2026-10-18/product.png",
+      "sha256": "9ad1885dd3c2a0fade50b8a6c148c1449353df80a5048358c720548e28002bd7",
+      "bytes": 87561
+    }
+  ],
+  "operator_claude_payload_access": false,
+  "source_database_writes": false,
+  "test_data_cleanup_verified": true,
+  "temporary_local_identity_grant_revoked": true,
+  "job_deleted": true,
+  "review": {
+    "sample_answers_checked_against_inputs": true,
+    "note": "SAM compared all four Claude and four rules responses against totals, candidate quantities, zero comparison base, missing cost data and demo warnings. Replenishment covers the empty-candidate branch only."
+  },
+  "limits": [
+    "No formal traffic cutover; production AI and free questions remain off",
+    "No full-site or named human signoff; no new real-device acceptance",
+    "Provider failure fallback remains covered by earlier offline tests; this run tests deployed disabled-feature fallback",
+    "No claim about every actual consumer or region; previous restricted-region evidence gap remains",
+    "No D1-D4 reimport, no production payments or shipment; private demo orders are cleaned"
+  ],
+  "initial_attempts": {
+    "local_http_failures_retained_outside_repository": true,
+    "role_redirect_false_positive_fixed": true,
+    "native_transport_adapter_attribute_error_fixed": true,
+    "remote_runner_used_for_final_acceptance": true
+  },
+  "runner_dependency_pins": {
+    "beautifulsoup4": "4.15.0"
+  },
+  "executed_probe_commit": "79a297ac5939a648646386bc7adddbceae956c3f",
+  "integrated_upstream_main": "5ef0c05bc6943ae15a5eabb961a9bc05c4d7ffd4",
+  "integration_note": "PR89 changes docs and test runners only; the 52-file deployed runtime archive is unchanged. Executed probe hashes refer to the retained pre-integration commit; delivered runner includes PR89 opt-in native transport and bounded GET retry.",
+  "integration_tests": {
+    "python_passed": 66,
+    "node_passed": 10,
+    "skipped": 0
+  },
+  "integrated_main_runtime_archive_equal": true
+}

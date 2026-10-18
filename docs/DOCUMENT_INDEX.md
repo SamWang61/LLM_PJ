@@ -1,5 +1,9 @@
 # 全部文件索引 / Document catalog
 
+<!-- SAM MAIN PREVIEW 20261018 BEGIN -->
+**2026/10/18 17:34 SAM 最新main無流量預覽**：[部署與驗收](SAM_MAIN_PREVIEW_2026-10-18.md)。來源`20ee040`、52檔封裝／GCS讀回一致、AI build三步SUCCESS；私有真BGE、Claude四固定問題／快取、角色／交易／1001 synthetic及停用退回已驗，fixture清理0。Key版本1 Enabled，只引用於私有預覽，自由提問false。**正式19／私有base11仍100%舊版，最新main只在0% tag；Hosting未重發，V5仍2/14完成。**
+<!-- SAM MAIN PREVIEW 20261018 END -->
+
 <!-- SAM N14 20261018 BEGIN -->
 **2026/10/18 16:10 SAM N14**：[最新來源與Atlas完整還原](SAM_N14_CURRENT_ATLAS_2026-10-18.md)。15:30原目錄快照13,976檔／4,109,781,733 bytes，以已驗基底＋983變更／1刪除完整重建，hash差異0；Atlas28集合／14,691筆／89索引／3TTL及validator完成同一snapshot匯出、雲端讀回認證解密及全新localhost還原對帳。82安全測試通過，原Atlas未寫入。**差異包需保留原25片基底；異機key與每日固定專案ACL流程仍缺，N14保留待結案、V5仍2/14完成。**
 <!-- SAM N14 20261018 END -->
