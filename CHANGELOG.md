@@ -5,6 +5,11 @@
 - 新增串流認證加密／解密與internal Docker還原來源啟動工具，46項安全回歸通過。歷史13,048檔逐檔還原差異0、三筆BSON fixture／索引復原及四HTTP讀回通過。
 - [N14完整證據與未完成範圍](docs/SAM_N14_ENCRYPTED_RESTORE_2026-10-18.md)：25/25雲端分片完整SHA與私人ACL核對，重組密文／認證解密後ZIP與05:28原備份相同；雲端清冊原ID更新與內容核對通過。最新快照／正式Atlas／異機key／每日固定專案流程仍待辦，V5仍2完成／12待結案。
 
+## 2026-10-18 — JEFF 線上 AI 啟用準備 / Online AI readiness (A1, A2)
+
+- 雲端 runtime 的 AI 開關改讀環境變數（預設關閉、格式錯誤即拒絕啟動），不放寬既有安全檢查。Cloud AI flags now come from the environment.
+- 新增可選的 AI 映像（`INSTALL_AI=true`：CPU 版 PyTorch、內建 BGE 模型、Cloud Build 離線載入檢查）；預設映像不變。尚未建置與部署，設定見 [dashboard handoff](docs/AI_DASHBOARD.md)。
+
 ## 2026-10-18 — D4 同版隔離與合成批次驗收 / Synthetic event acceptance
 
 - 修復 PR #47 的限時 ID token 授權與 IAM 傳播等待，完成同映像 consumer 遠端對照、探針清理與撤權。
