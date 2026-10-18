@@ -1,0 +1,77 @@
+{
+  "schema_version": 1,
+  "checked_at": "2026-10-19T07:05:31.357892+08:00",
+  "pr": 97,
+  "initial_head": "1d85f1cb822bd636b31b5a8fd4b8501dd8f49f43",
+  "reviewed_head": "9d742ea215f07da047107355d76678a222b3f1f3",
+  "merge_sha": "0ab1fa1210b18e5be76751fd3e31abcccc06ff3b",
+  "merged_at": "2026-10-19T06:53:22+08:00",
+  "review_id": 5565427689,
+  "fixed_p2": {
+    "before_sessions": {
+      "REN": 2,
+      "JEFF": 0
+    },
+    "after_sessions": {
+      "REN": 0,
+      "JEFF": 0
+    },
+    "original_json_unchanged": true,
+    "thread_resolved": true
+  },
+  "pr_ci": {
+    "id": 39173895001,
+    "conclusion": "success"
+  },
+  "merge_main_ci": {
+    "id": 39174176404,
+    "conclusion": "success"
+  },
+  "next_baseline": "8be14a1d7faacbf2d9a8881fb94b747d07628fae",
+  "local_scope_tests": {
+    "passed": 12,
+    "skipped": 0
+  },
+  "tested_service_dependencies": [
+    {
+      "path": "VibeCart_AI/services/sku_cart_service.py",
+      "sha256": "6ef2272284f9c36d27923fbf4448854d6de1305dd1b4e001a82f40ef6eccd649",
+      "matches_production_source_b038aaca": true
+    },
+    {
+      "path": "VibeCart_AI/services/cart_service.py",
+      "sha256": "5e416e6d4945d391ec633845ea493fd152262abf6d5b489b503160db6d58457f",
+      "matches_production_source_b038aaca": true
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/store_v4.py",
+      "sha256": "743150b2e6de3a5542a2df378104c96969a67f657d49c4e1fa4720110abaad12",
+      "matches_production_source_b038aaca": true
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/auth.py",
+      "sha256": "6d69044df007d4bacb3fc9b32a50b3a6df690124515841b211cc770f2e0f925d",
+      "matches_production_source_b038aaca": true
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/services/member_sessions.py",
+      "sha256": "00ac249cc04d743157e4e4c2d9304791c496e61a5a5ba3b332534d6a722a059e",
+      "matches_production_source_b038aaca": true
+    }
+  ],
+  "n06_single_fault_cases": 6,
+  "n06_historical_continuous_fault_cases": 6,
+  "response_time_acceptance_complete": false,
+  "remote_atlas_outage_tested": false,
+  "real_person_receipt_provided": false,
+  "v5_completed": 2,
+  "v5_total": 14,
+  "new_deployment_this_turn": false,
+  "integrated_main_after_tests": "d681d9926cd5a88f7598242c6d1df2a17ec221c2",
+  "concurrent_document_changes_preserved": true,
+  "finalized_at": "2026-10-19T07:09:24.956580+08:00",
+  "cleanup_readback": {
+    "owned_run_directories": 4,
+    "data_directories_remaining": 0
+  }
+}
