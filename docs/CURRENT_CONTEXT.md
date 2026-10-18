@@ -1,8 +1,18 @@
 # 最新專案上下文 / Current project context
 
+<!-- SAM PR90 REVIEW 20261018 BEGIN -->
+**2026/10/18 SAM PR #90整合覆核**：[完整紀錄](SAM_PR90_MERGE_REVIEW_2026-10-18.md)。最新51b30a1已保留main c094103與REN H08更新，衝突解除；圖片／清冊／來源核對通過，修正後HEAD與CI、實際合併SHA見[PR #90](https://github.com/SamWang61/LLM_PJ/pull/90)。S03～S05為使用者回報正常，Chrome版本原圖已核；網址／版本、網站操作證據、完整矩陣與REN具名接收仍缺，H08／N12待結案，V5仍2/14。
+<!-- SAM PR90 REVIEW 20261018 END -->
+
+**2026/10/18 17:49 REN H08結果補登**：使用者確認[汪文彥（SAM）](mailto:cashsam@gmail.com)於17:00以iPhone 17 Pro Max／iOS 27.0.1操作S03～S05「皆正常」，Chrome `155.0.8059.37`已與原始關於頁截圖核對；[H08報告](REN_H08_MATERIAL_SIMULATION_2026-10-18.md)及JSON已補齊。圖片是版本證據，網站網址／交付版本與逐步操作或網站畫面、完整錯誤／鍵盤矩陣及REN具名接收仍待補；H08／N12仍待結案，V5仍2/14。17:43以下保留當時補件進度。
+
+**2026/10/18 17:43 REN H08實機資料補登**：使用者後續回報[汪文彥（SAM）](mailto:cashsam@gmail.com)於2026/10/18 17:00（台灣時間）使用iPhone 17 Pro Max（原填iPhone17ProMax）／iOS 27.0.1／Chrome實測；已補入[H08紀錄](REN_H08_MATERIAL_SIMULATION_2026-10-18.md)。Chrome完整版本、S03～S05步驟與結果、網址／版本及實機截圖待補；尚未列通過或代填REN接收。原17:33「尚未實測」為當時資訊，尺寸模擬保留原來源；H08／N12仍待結案，V5仍2/14。
+
 <!-- SAM MAIN PREVIEW 20261018 BEGIN -->
 **2026/10/18 17:34 SAM 最新main無流量預覽**：[部署與驗收](SAM_MAIN_PREVIEW_2026-10-18.md)。來源`20ee040`、52檔封裝／GCS讀回一致、AI build三步SUCCESS；私有真BGE、Claude四固定問題／快取、角色／交易／1001 synthetic及停用退回已驗，fixture清理0。Key版本1 Enabled，只引用於私有預覽，自由提問false。**正式19／私有base11仍100%舊版，最新main只在0% tag；Hosting未重發，V5仍2/14完成。**
 <!-- SAM MAIN PREVIEW 20261018 END -->
+
+**2026/10/18 17:33 REN PR #89已合併／H08素材與模擬補件**：[審查補強](REN_PR89_REVIEW_2026-10-18.md)兩項P2已修正，Python39／Node9及新版遠端重跑通過，marker／IAM獨立回查0；PR HEAD37a5c6c之CI #466及合併main `5ef0c05` 的CI均success。[H08報告](REN_H08_MATERIAL_SIMULATION_2026-10-18.md)核五張歷史S03～S05圖hash、補三種尺寸與Tab焦點原圖，另交補充講稿；V5 PPTX原bytes不變。使用者確認尚未實機、先做素材與模擬；公開登入負向檢查未採計通過，本人接收／完整矩陣／展示後回收仍待辦，V5仍2/14。
 
 **2026/10/18 17:05 REN H05～H07 遠端技術驗收通過**：[完整報告](REN_H05_H07_REMOTE_ACCEPTANCE_2026-10-18.md)。固定七檔工具執行前後 hash 一致；私有正常入口／真 Atlas 完成購物車加入2→改1→重載／移除、revision 1→2→3→4及舊版409；不收款結帳／冪等／409、最後庫存兩客戶競爭及缺貨完整回滾通過；四事件讀回、consumer 13→14→14且synthetic 1,001筆不改推薦。交易九範圍／consumer五範圍均清理0，獨立marker與臨時IAM為0；正式19／私有11仍同digest各100%，來源e000d95。未部署main新推薦變更；先前手機圖仍屬localhost，實機、本人接收、廣義outage與展示後回收仍待辦，V5維持2/14。
 

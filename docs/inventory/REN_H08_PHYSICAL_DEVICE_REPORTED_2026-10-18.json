@@ -1,0 +1,70 @@
+{
+  "recorded_at": "2026-10-18T17:43:14.181569+08:00",
+  "source": "user_message",
+  "reported_device_test": true,
+  "device_model_raw": "iPhone17ProMax",
+  "device_model_display": "iPhone 17 Pro Max",
+  "os_reported": "iOS 27.0.1",
+  "browser_name_reported": "Chrome",
+  "browser_version": "155.0.8059.37",
+  "operator_reported": "SAM",
+  "performed_at": "2026-10-18T17:00:00+08:00",
+  "timezone": "Asia/Taipei",
+  "tested_url": null,
+  "tested_source_sha": null,
+  "tested_revision": null,
+  "steps_reported": null,
+  "results": {
+    "S03": {
+      "status": "pass_reported_by_user",
+      "actual_result_zh_TW": "正常",
+      "source": "user_message"
+    },
+    "S04": {
+      "status": "pass_reported_by_user",
+      "actual_result_zh_TW": "正常",
+      "source": "user_message"
+    },
+    "S05": {
+      "status": "pass_reported_by_user",
+      "actual_result_zh_TW": "正常",
+      "source": "user_message"
+    }
+  },
+  "anomalies_reported": "none_reported; user stated all normal",
+  "screenshots": [
+    {
+      "path": "簡報文件/截圖 2026-10-18 17.44.46.png",
+      "sha256": "a224a5f10ee8ae1add3cc1a3c7b80246b1fe65c27f2d7bc3400bbff2120872b5",
+      "format": "PNG",
+      "width": 1125,
+      "height": 2436,
+      "visible_clock": "17:44",
+      "observed_content": "About Google Chrome, version 155.0.8059.37",
+      "supports": [
+        "browser_version"
+      ],
+      "does_not_establish": [
+        "device_model",
+        "os_version",
+        "tested_url",
+        "S03_S04_S05_website_operations",
+        "tested_source_sha_or_revision"
+      ],
+      "image_unmodified": true
+    }
+  ],
+  "outcome": "user_reported_pass",
+  "independently_verified": false,
+  "named_ren_acceptance": false,
+  "pending_fields": [
+    "tested_url",
+    "tested_source_sha_or_revision",
+    "steps_reported_or_website_operation_evidence",
+    "complete_error_keyboard_matrix",
+    "named_ren_acceptance"
+  ],
+  "note_zh_TW": "S03～S05正常依使用者回報；Chrome版本已目視核對原圖。型號／OS／17:00實測時間依使用者填寫；關於頁圖片顯示17:44，不證明網站操作或REN接收，尺寸模擬圖保留原來源。",
+  "updated_at": "2026-10-18T17:49:10.946311+08:00",
+  "browser_version_image_verified": true
+}
