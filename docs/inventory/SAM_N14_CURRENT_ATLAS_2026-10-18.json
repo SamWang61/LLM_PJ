@@ -1,5 +1,5 @@
 {
-  "checked_at_utc": "2026-10-18T07:52:24.513028+00:00",
+  "checked_at_utc": "2026-10-18T08:10:05.259753+00:00",
   "scope": "N14 latest eligible local-directory recovery chain and complete production application database vibecart_ai restoration; not cluster/platform disaster recovery",
   "source_snapshot": {
     "started_at_utc": "2026-10-18T07:30:03.182194+00:00",
@@ -36,13 +36,13 @@
   },
   "atlas_export": {
     "database": "vibecart_ai",
-    "checked_at_utc": "2026-10-18T07:22:44.946399+00:00",
+    "checked_at_utc": "2026-10-18T08:04:42.579667+00:00",
     "snapshot_timestamp": {
-      "time": 1792308144,
-      "inc": 20
+      "time": 1792310662,
+      "inc": 22
     },
     "source_version": "8.0.34",
-    "documents": 14689,
+    "documents": 14691,
     "indexes": 89,
     "ttl_indexes": 3,
     "search_indexes": 0,
@@ -64,19 +64,19 @@
   "atlas_cloud_restore": {
     "status": "passed",
     "target": "new credential-free localhost MongoDB replica set",
-    "database": "sam_n14_restore_dc2c3f064d134cdbb197550da814a859",
+    "database": "sam_n14_restore_1424eb87ae1742999bc9aa9ffc0766df",
     "atlas_written": false,
     "restoration": {
       "verified": true,
       "collections": 28,
-      "documents": 14689,
+      "documents": 14691,
       "indexes": 89,
       "ttl_indexes": 3,
       "validators_and_index_options_equal": true,
       "raw_bson_hash_differences": 0,
       "ttl_monitor_disabled": true,
       "source_database_contacted_by_restore": false,
-      "target_database": "sam_n14_restore_dc2c3f064d134cdbb197550da814a859",
+      "target_database": "sam_n14_restore_1424eb87ae1742999bc9aa9ffc0766df",
       "collections_verified": [
         {
           "collection": "ai_insights",
@@ -95,12 +95,12 @@
         },
         {
           "collection": "auth_sessions",
-          "documents": 2,
+          "documents": 3,
           "sha256_equal": true
         },
         {
           "collection": "behavior_events",
-          "documents": 1254,
+          "documents": 1255,
           "sha256_equal": true
         },
         {
@@ -228,39 +228,40 @@
     ],
     "restored_database_removed": true,
     "local_process_stopped": true,
-    "checked_at_utc": "2026-10-18T07:47:55.632660+00:00"
+    "checked_at_utc": "2026-10-18T08:08:17.208112+00:00"
   },
   "cloud_archive": {
     "verified": true,
-    "name": "cloud-current-readback.vcbak",
-    "bytes": 42063468,
-    "sha256": "cbe9c33fffa9cc973f56ab249583401c7046a278e4d3a6525cbc5059b4126776",
+    "name": "cloud-recheck-readback.vcbak",
+    "bytes": 42063896,
+    "sha256": "5ff28ee49341fa6070ab6b1e418106ed8623901071b3d4e3d54c7c97092aa885",
     "process_dns_fallback_used": false,
-    "drive_id": "1hY10qyR5AnBFPHgA2XyRfqdAyqTV_ADb",
-    "url": "https://drive.google.com/file/d/1hY10qyR5AnBFPHgA2XyRfqdAyqTV_ADb/view?usp=drivesdk",
+    "drive_id": "1DFgz-Rc-_Tz1cQ8877yvuSf0KNNcREma",
+    "url": "https://drive.google.com/file/d/1DFgz-Rc-_Tz1cQ8877yvuSf0KNNcREma/view?usp=drivesdk",
     "owner_only": true,
-    "checked_at_utc": "2026-10-18T07:46:44.808Z"
+    "checked_at_utc": "2026-10-18T08:08:26.285791+00:00",
+    "prior_download_attempt": "ConnectionResetError; new fetch and retry succeeded"
   },
   "authenticated_decryption": {
     "authenticated": true,
     "plaintext": {
-      "bytes": 42063392,
-      "sha256": "4f94608463d0d08807b4eede218799eccd9929899483b8a8e8a0724d013ed07b"
+      "bytes": 42063820,
+      "sha256": "26e99a399c442e2b41d846e06fe6065c7045e81f42f65e8645227d53eba2b53a"
     }
   },
   "cloud_source_delta_equals_locally_restored_delta": true,
   "source_second_cloud_extraction_performed": false,
   "catalog_verification": {
-    "checked_at_utc": "2026-10-18T07:49:47.979Z",
+    "checked_at_utc": "2026-10-18T08:10:05.259753+00:00",
     "drive_id": "1ZilMHLhfCv25WHUxWyeVuSTKIEhm3o0N",
-    "bytes": 20456,
-    "sha256": "9b5dc440190cfed11313ef8b2885a5265701b34f36994e938df6c6386ad64cdd",
+    "bytes": 20585,
+    "sha256": "ffec37fc4178f52bb31aec99cc0155b730255494d0eb237443c766bef3e6a365",
     "owner_only": true,
     "content_readback_equal": true
   },
-  "tool_commit": "237aa296ee7c29b90929a230f4aef6d9590999e9",
+  "tool_commit": "2710516fee920b0f57fbf6e6281967632300e843",
   "backup_tests": {
-    "passed": 79,
+    "passed": 82,
     "skipped": 0
   },
   "remaining": [
@@ -274,5 +275,10 @@
     "N07_N10_excluded": true
   },
   "production_routing_changed": false,
-  "atlas_source_mutations": 0
+  "atlas_source_mutations": 0,
+  "review_fixes": {
+    "compound_index_metadata_order": true,
+    "directory_file_transition_roundtrips": true,
+    "fresh_atlas_export_cloud_readback_restore_after_fix": true
+  }
 }

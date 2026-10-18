@@ -5,7 +5,7 @@
 **2026/10/18 11:26 REN 技術覆核**：[接回技術紀錄](REN_HANDOFF_TECHNICAL_REVIEW_2026-10-18.md)補本機新建 localhost replica set **208 passed／0 skipped**、清理完成；公開 customer/admin 登入／角色／單裝置登出及兩獨立 HTTPS session 通過；51 執行檔與 e000d95 差異0。正式19／私有11同映像各100%，S03新正式畫面與Atlas同時點79元／95一致；D4唯讀1240、四事件各310且雙標記齊全。Docker曾遇兩處socket啟動錯誤，終段Engine29.6.1 ready；本輪測試採native MongoDB。這是Codex技術覆核，REN具名接收、手機實機、展示後帳號回收與最終簽收仍待填；V5仍2/14完成。
 
 <!-- SAM N14 20261018 BEGIN -->
-**2026/10/18 15:52 SAM N14**：[最新來源與Atlas完整還原](SAM_N14_CURRENT_ATLAS_2026-10-18.md)。15:30原目錄快照13,976檔／4,109,781,733 bytes，以已驗基底＋983變更／1刪除完整重建，hash差異0；Atlas28集合／14,689筆／89索引／3TTL及validator完成同一snapshot匯出、雲端讀回認證解密及全新localhost還原對帳。79安全測試通過，原Atlas未寫入。**差異包需保留原25片基底；異機key與每日固定專案ACL流程仍缺，N14保留待結案、V5仍2/14完成。**
+**2026/10/18 16:10 SAM N14**：[最新來源與Atlas完整還原](SAM_N14_CURRENT_ATLAS_2026-10-18.md)。15:30原目錄快照13,976檔／4,109,781,733 bytes，以已驗基底＋983變更／1刪除完整重建，hash差異0；Atlas28集合／14,691筆／89索引／3TTL及validator完成同一snapshot匯出、雲端讀回認證解密及全新localhost還原對帳。82安全測試通過，原Atlas未寫入。**差異包需保留原25片基底；異機key與每日固定專案ACL流程仍缺，N14保留待結案、V5仍2/14完成。**
 <!-- SAM N14 20261018 END -->
 
 <!-- SAM JEFF 20261018 BEGIN -->
