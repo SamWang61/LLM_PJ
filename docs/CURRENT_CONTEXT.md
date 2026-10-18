@@ -1,5 +1,9 @@
 # 最新專案上下文 / Current project context
 
+<!-- SAM PR81 POST MERGE 20261018 BEGIN -->
+**2026/10/18 SAM新推送核對**：[PR #81合併後增量紀錄](SAM_PR81_POST_MERGE_CHECK_2026-10-18.md)。main `1068397` CI成功；本輪真localhost MongoDB完整261／0 skipped、工具5項與32檔GitHub blob核對通過。原目錄29檔一致、3檔差異合併保留；新版未部署、Atlas／模型同版遠端與真人驗收仍缺，不能沿用20ee預覽當新版本證據。V5仍2/14，增量分開記錄。
+<!-- SAM PR81 POST MERGE 20261018 END -->
+
 **2026-10-18 商品評價／6＋4增量**：使用者要求沿用文件無條件進位至小數一位、評價後交易回填商品並更新網頁、破圈高星優先。[對話決議](../討論的相關記錄/商品評價與猜你喜歡6加4推薦_對話決議_2026-10-18.md)；[本次實作與驗證](PRODUCT_REVIEWS_6PLUS4_DELIVERY_2026-10-18.md)。本次明確授權的增量與較早V5歷史範圍分別記錄，不改原關卡數或主責；GitHub交付不等於正式部署。
 
 <!-- SAM PR90 REVIEW 20261018 BEGIN -->
