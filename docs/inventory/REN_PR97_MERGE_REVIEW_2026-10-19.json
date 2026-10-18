@@ -66,5 +66,7 @@
   "real_person_receipt_provided": false,
   "v5_completed": 2,
   "v5_total": 14,
-  "new_deployment_this_turn": false
+  "new_deployment_this_turn": false,
+  "integrated_main_after_tests": "d681d9926cd5a88f7598242c6d1df2a17ec221c2",
+  "concurrent_document_changes_preserved": true
 }

@@ -21,19 +21,19 @@
     },
     {
       "path": "docs/inventory/REN_PR97_MERGE_REVIEW_2026-10-19.json",
-      "worktree_sha256": "fd7239af05352f01aa2ffda8e05e33a8039647b94de070577177c9eddf5d3524",
-      "source_sha256": "fd7239af05352f01aa2ffda8e05e33a8039647b94de070577177c9eddf5d3524",
+      "worktree_sha256": "81219a702d28f2e34c65413e121330df208a092d4425885cc1847db06fa12a49",
+      "source_sha256": "81219a702d28f2e34c65413e121330df208a092d4425885cc1847db06fa12a49",
       "before_source_sha256": null,
       "full_file_equal": true,
       "preserved_concurrent_source_variant": false
     },
     {
       "path": "docs/CURRENT_CONTEXT.md",
-      "worktree_sha256": "c22fbe736834d7df69d260db4609256e5f3c38866f69dc3fc11a572e70bbf9fa",
+      "worktree_sha256": "81c7150e95d21e6230c6dd87595e02f17ed98c75292f2dd8741ee759becff0a1",
       "source_sha256": "81c7150e95d21e6230c6dd87595e02f17ed98c75292f2dd8741ee759becff0a1",
       "before_source_sha256": "828dd2fd41432eca8cc241e6908693d13c380feb6481db8180cca08d73bdcb5a",
-      "full_file_equal": false,
-      "preserved_concurrent_source_variant": true
+      "full_file_equal": true,
+      "preserved_concurrent_source_variant": false
     },
     {
       "path": "專題進度/專案未完成工作清單_2026-10-18.md",
@@ -53,8 +53,8 @@
     },
     {
       "path": "docs/REN_PR97_MERGE_N06_2026-10-19.md",
-      "worktree_sha256": "bb993d27f66a1c5a8c2096ce000e9898188eb7674d489caa47f74387058ea5a9",
-      "source_sha256": "bb993d27f66a1c5a8c2096ce000e9898188eb7674d489caa47f74387058ea5a9",
+      "worktree_sha256": "758c560e276a676cf576e98419ebd93895e78d328d5d0ec8b371f483ccca0b38",
+      "source_sha256": "758c560e276a676cf576e98419ebd93895e78d328d5d0ec8b371f483ccca0b38",
       "before_source_sha256": null,
       "full_file_equal": true,
       "preserved_concurrent_source_variant": false
@@ -86,6 +86,7 @@
   ],
   "shared_current_context_scope_sha256": "4b45337f91afa8ea02c28729a5ea46daaaaedc27e17717d8df74d92df69fa26f",
   "current_context_block_equal": true,
-  "exception": "CURRENT_CONTEXT full source preserves concurrent SAM production section; this new block is identical",
-  "unrelated_source_changes_preserved": true
+  "exception": null,
+  "unrelated_source_changes_preserved": true,
+  "concurrent_variant_resolved_by_main": "d681d9926cd5a88f7598242c6d1df2a17ec221c2"
 }
