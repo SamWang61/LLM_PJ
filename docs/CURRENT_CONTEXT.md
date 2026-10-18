@@ -1,5 +1,9 @@
 # 最新專案上下文 / Current project context
 
+<!-- SAM PR90 REVIEW 20261018 BEGIN -->
+**2026/10/18 SAM PR #90整合覆核**：[完整紀錄](SAM_PR90_MERGE_REVIEW_2026-10-18.md)。最新51b30a1已保留main c094103與REN H08更新，衝突解除；圖片／清冊／來源核對通過，修正後HEAD與CI、實際合併SHA見[PR #90](https://github.com/SamWang61/LLM_PJ/pull/90)。S03～S05為使用者回報正常，Chrome版本原圖已核；網址／版本、網站操作證據、完整矩陣與REN具名接收仍缺，H08／N12待結案，V5仍2/14。
+<!-- SAM PR90 REVIEW 20261018 END -->
+
 **2026/10/18 17:49 REN H08結果補登**：使用者確認[汪文彥（SAM）](mailto:cashsam@gmail.com)於17:00以iPhone 17 Pro Max／iOS 27.0.1操作S03～S05「皆正常」，Chrome `155.0.8059.37`已與原始關於頁截圖核對；[H08報告](REN_H08_MATERIAL_SIMULATION_2026-10-18.md)及JSON已補齊。圖片是版本證據，網站網址／交付版本與逐步操作或網站畫面、完整錯誤／鍵盤矩陣及REN具名接收仍待補；H08／N12仍待結案，V5仍2/14。17:43以下保留當時補件進度。
 
 **2026/10/18 17:43 REN H08實機資料補登**：使用者後續回報[汪文彥（SAM）](mailto:cashsam@gmail.com)於2026/10/18 17:00（台灣時間）使用iPhone 17 Pro Max（原填iPhone17ProMax）／iOS 27.0.1／Chrome實測；已補入[H08紀錄](REN_H08_MATERIAL_SIMULATION_2026-10-18.md)。Chrome完整版本、S03～S05步驟與結果、網址／版本及實機截圖待補；尚未列通過或代填REN接收。原17:33「尚未實測」為當時資訊，尺寸模擬保留原來源；H08／N12仍待結案，V5仍2/14。

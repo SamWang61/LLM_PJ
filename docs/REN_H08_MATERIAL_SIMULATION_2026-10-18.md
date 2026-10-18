@@ -59,3 +59,5 @@ V5第5～7頁講稿仍包含早期「S04／S05待補」語句，本輪另交[REN
 H08素材來源與指定模擬子項完成；已補實機設備／操作者／時間、S03～S05回報正常及Chrome版本原圖。網站網址／版本與操作紀錄、完整錯誤／鍵盤矩陣及REN逐圖具名覆核仍待辦。H09由[REN](mailto:chen2000401@gmail.com)接收customer展示資料、[JEFF](mailto:jeff841117@gmail.com)持有admin，[SAM](mailto:cashsam@gmail.com)依既有20:30期限及展示後流程回收；本輪沒有新增展示帳號、延長期限或代填接收。現行[逐項清單](../專題進度/REN_1200逐項交接清單_2026-10-18.md)與[V5清單](../專題進度/專案未完成工作清單_2026-10-18.md)同步保留待辦。
 
 本次設備回報更新的檔案清冊見[發布清冊](inventory/REN_H08_DEVICE_RECORD_PUBLICATION_2026-10-18.json)。原[17:33發布清冊](inventory/REN_H08_PUBLICATION_2026-10-18.json)對應`4aad4760176c100472bd62dc602e36ba1693a3ad`，保留為該次交付快照。
+
+**SAM整合覆核**：[PR #90覆核紀錄](SAM_PR90_MERGE_REVIEW_2026-10-18.md)；上述設備發布清冊固定對應`51b30a1`，後續入口修改改由SAM本輪清冊記錄。
