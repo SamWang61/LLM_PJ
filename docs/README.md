@@ -1,5 +1,8 @@
 # 文件中心 / Documentation hub
 
+<!-- SAM REVIEWS PRODUCTION 20261019 -->
+**2026/10/19 06:55 SAM商品評價／6＋4正式發布**：Cloud Run `vibecart-web-reviews-b038aaca`已100%，Firebase Hosting 06:48:42發布成功；正式網址Chrome不重載4.0／2筆→4.4／3筆、Atlas13／3讀回、六角色登入及清理驗證通過。275項本機測試0 skipped，同digest私有遠端4探針與高星6＋4排序通過；正式真實評價候選不足不補滿，測試商品不可推薦且已清除。[正式部署與驗收](SAM_REVIEWS_6PLUS4_PRODUCTION_2026-10-19.md)。下方較早狀態為各時點歷史；V5仍2／14，未代填真人簽收。
+
 <!-- SAM PR95 PR96 REVIEW 20261019 BEGIN -->
 **2026/10/19 06:30 SAM PR #95／#96覆核**：[同版測試與合併紀錄](SAM_PR95_PR96_MERGE_REVIEW_2026-10-19.md)。#95已合併main `8a29f5f`；275項真本機MongoDB測試0 skipped、完整56檔PR95私有0%預覽的四組探針與正式六角色登入均通過。正式仍登入增量576b474／100%，本輪未切正式流量；28集合／89索引／7 migration及關聯唯讀稽核通過。#96保留05:45歷史，舊修復憑證已由05:52固定雙角色規則接續，不回灌舊憑證。V5仍2/14；#96最終合併SHA／CI以GitHub紀錄為準。
 <!-- SAM PR95 PR96 REVIEW 20261019 END -->
