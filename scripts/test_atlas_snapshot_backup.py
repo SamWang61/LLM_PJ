@@ -71,6 +71,28 @@ def test_compound_index_order_is_significant():
     assert logical_metadata(first)!=logical_metadata(second)
 
 
+def test_export_rejects_compound_key_reorder(monkeypatch,tmp_path):
+    from contextlib import nullcontext
+    from types import SimpleNamespace
+    from bson.raw_bson import RawBSONDocument
+    from bson.timestamp import Timestamp
+    import atlas_snapshot_backup as backup
+    before={'name':'items','type':'collection','options':{},'uuid':'same-collection',
+            'indexes':[{'name':'compound','key':{'a':1,'b':-1}}],'search_indexes':[]}
+    after={**before,'indexes':[{'name':'compound','key':{'b':-1,'a':1}}]}
+    observations=iter([[before],[after]])
+    monkeypatch.setattr(backup,'metadata',lambda *_a,**_kw:next(observations))
+    document=RawBSONDocument(BSON.encode({'_id':1}))
+    collection=SimpleNamespace(find=lambda *_a,**_kw:nullcontext([document]))
+    database=SimpleNamespace(get_collection=lambda *_a,**_kw:collection)
+    class Client:
+        def __getitem__(self,_name):return database
+        def start_session(self,**_kw):return nullcontext(SimpleNamespace(_snapshot_time=Timestamp(1,1)))
+    with pytest.raises(ValueError,match='metadata changed'):
+        backup.export_snapshot(Client(),'source',tmp_path/'attempt')
+    assert not (tmp_path/'attempt'/'manifest.json').exists()
+
+
 class LocalClient:
     address=('127.0.0.1',27017)
     admin=None

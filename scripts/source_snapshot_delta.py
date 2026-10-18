@@ -140,6 +140,14 @@ def restore_delta(base_zip, delta_zip, destination):
             require(seen == set(base_manifest['files']), 'Base ZIP members incomplete')
         for name in delta['deleted']:
             (destination / name).unlink()
+            parent = (destination / name).parent
+            while parent != destination:
+                require(parent.resolve().is_relative_to(destination), 'Directory cleanup escaped restore root')
+                try:
+                    parent.rmdir()  # Only empty directories in this fresh restore tree.
+                except OSError:
+                    break
+                parent = parent.parent
         for name in delta['changed']:
             target = destination / name
             target.parent.mkdir(parents=True, exist_ok=True)

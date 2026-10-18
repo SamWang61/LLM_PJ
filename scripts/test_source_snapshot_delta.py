@@ -32,6 +32,27 @@ def test_full_recovery_from_base_and_delta(tmp_path):
     assert (tmp_path/'restored'/'change.txt').read_text()=='after'
 
 
+@pytest.mark.parametrize('direction',['directory_to_file','file_to_directory'])
+def test_tree_type_replacement_round_trip(tmp_path,direction):
+    source=tmp_path/'source';source.mkdir()
+    if direction=='directory_to_file':
+        (source/'node').mkdir();(source/'node/old.txt').write_text('old')
+    else:(source/'node').write_text('old')
+    files={p.relative_to(source).as_posix():{'size':p.stat().st_size,'sha256':hashlib.sha256(p.read_bytes()).hexdigest()} for p in source.rglob('*') if p.is_file()}
+    manifest={'version':1,'complete':True,'errors':[],'files':files};archive=tmp_path/'base.zip'
+    with zipfile.ZipFile(archive,'x') as z:
+        for rel in files:z.write(source/rel,'LLM_PJ/'+rel)
+        z.writestr('manifest.json',json.dumps(manifest))
+    if direction=='directory_to_file':
+        (source/'node/old.txt').unlink();(source/'node').rmdir();(source/'node').write_text('new file')
+    else:
+        (source/'node').unlink();(source/'node').mkdir();(source/'node/new.txt').write_text('new child')
+    delta=tmp_path/'delta.zip'
+    create_delta(source,manifest,hashlib.sha256(archive.read_bytes()).hexdigest(),delta)
+    result=restore_delta(archive,delta,tmp_path/'restored')
+    assert result['verified'] and result['files']==1
+
+
 @pytest.mark.parametrize('name',['../out','/absolute','C:/absolute','a\\b','a/../b','a//b','a/.. /outside','.','CON','a.'])
 def test_traversal_and_ambiguous_names_rejected(name):
     with pytest.raises(ValueError):safe_name(name)

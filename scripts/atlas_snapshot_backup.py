@@ -49,6 +49,11 @@ def logical_metadata(row):
             'indexes': sorted(indexes, key=lambda x: x['name'])}
 
 
+def metadata_identity(rows):
+    return [{'logical': logical_metadata(row), 'uuid': row['uuid'],
+             'search_indexes': row['search_indexes']} for row in rows]
+
+
 def metadata(database, search=True):
     result = []
     for collection in sorted(database.list_collections(), key=lambda x: x['name']):
@@ -98,7 +103,8 @@ def export_snapshot(client, database_name, directory, search=True):
         require(stamp is not None, 'Snapshot timestamp was not pinned')
         snapshot = {'time': stamp.time, 'inc': stamp.inc}
     after = metadata(db, search=search)
-    require(canonical(before) == canonical(after), 'Source metadata changed during export')
+    require(canonical(metadata_identity(before)) == canonical(metadata_identity(after)),
+            'Source metadata changed during export')
     report = {'version': 1, 'complete': True, 'database': database_name,
               'checked_at_utc': datetime.now(timezone.utc).isoformat(),
               'snapshot_timestamp': snapshot, 'metadata_stable': True,
