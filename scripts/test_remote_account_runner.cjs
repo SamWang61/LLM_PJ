@@ -28,3 +28,26 @@ test('account runner rejects public or mixed invokers before credential use', ()
     bindings: [{ role: 'roles/run.invoker', members: ['serviceAccount:' + sa] }],
   }));
 });
+
+test('private runner recognizes only the existing SAM maintainer alongside runtime SA', () => {
+  const sa = 'vibecart-pr21-acceptance@vibecart-llmai.iam.gserviceaccount.com';
+  const image = 'registry/web@sha256:' + 'a'.repeat(64);
+  const acceptance = { image, serviceAccount: sa, env: [
+    { name: 'CLOUD_ACCEPTANCE_MODE', value: 'true' },
+    { name: 'CLOUD_ACCEPTANCE_DB', value: 'vibecart_acceptance_pr21' },
+    { name: 'CLOUD_PREVIEW_READ_ONLY', value: 'false' },
+  ] };
+  const policy = members => ({ bindings: [{ role: 'roles/run.invoker', members }] });
+  assert.doesNotThrow(() => runner.assertDeployment({ image }, acceptance,
+    policy(['user:cashsam@gmail.com', 'serviceAccount:' + sa])));
+  for (const members of [
+    ['serviceAccount:' + sa, 'user:other@example.invalid'],
+    ['serviceAccount:' + sa, 'allAuthenticatedUsers'],
+    ['serviceAccount:' + sa, 'user:cashsam@gmail.com', 'allUsers'],
+    ['user:cashsam@gmail.com'],
+  ]) assert.throws(() => runner.assertDeployment({ image }, acceptance, policy(members)));
+  assert.throws(() => runner.assertDeployment({ image }, acceptance, {
+    bindings: [{ role: 'roles/run.invoker', members: ['serviceAccount:' + sa],
+      condition: { expression: 'true' } }],
+  }));
+});

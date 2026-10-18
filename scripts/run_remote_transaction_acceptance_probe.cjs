@@ -27,9 +27,14 @@ function assertDeployment(production, acceptance, policy) {
     && flags.CLOUD_ACCEPTANCE_DB === 'vibecart_acceptance_pr21'
     && flags.CLOUD_PREVIEW_READ_ONLY === 'false', 'Acceptance database mode mismatch');
   const invokers = (policy.bindings || []).filter(b => b.role === 'roles/run.invoker');
+  // The existing private service also permits the designated SAM maintainer.
+  // Recognize only these exact principals; this check never changes IAM.
+  const members = invokers[0]?.members || [];
   requireValue(invokers.length === 1 && !invokers[0].condition
-    && invokers[0].members?.length === 1
-    && invokers[0].members[0] === 'serviceAccount:' + SA, 'Acceptance invoker scope mismatch');
+    && members.includes('serviceAccount:' + SA) && members.length <= 2
+    && new Set(members).size === members.length
+    && members.every(m => m === 'serviceAccount:' + SA || m === MEMBER),
+    'Acceptance invoker scope mismatch');
   requireValue(acceptance.serviceAccount === SA, 'Acceptance runtime identity mismatch');
 }
 function temporaryBinding(title, expires) {
