@@ -13,6 +13,7 @@ import os
 import sys
 from urllib.parse import urlparse
 import requests
+from bs4 import BeautifulSoup
 
 from bson import ObjectId
 from pymongo import MongoClient
@@ -35,6 +36,57 @@ def credentials():
     finally:
         ctypes.windll.kernel32.LocalFree(target.pbData)
     return vault, result
+
+
+def verify_public_role(entry, expected_role, *, http_session_factory=requests.Session):
+    """Verify one browser, then revoke only that browser through normal logout.
+
+    A database before/after difference can include the real holder's concurrent
+    login. Never use that difference to delete sessions for a shared demo user.
+    """
+    base = 'https://vibecart-llmai.web.app'
+    browser = http_session_factory()
+    authenticated = False
+    verification = {}
+    try:
+        response = browser.get(base + '/auth/login', timeout=30)
+        field = BeautifulSoup(response.text, 'html.parser').select_one('input[name="csrf_token"]')
+        if response.status_code != 200 or not field:
+            raise RuntimeError('Demo login form unavailable')
+        response = browser.post(base + '/auth/login', data={
+            'email': entry['email'], 'password': entry['password'], 'csrf_token': field['value']},
+            allow_redirects=False, timeout=30)
+        if response.status_code not in (302, 303):
+            raise RuntimeError('Demo login failed')
+        authenticated = True
+        cart = browser.get(base + '/cart', allow_redirects=False, timeout=30)
+        admin = browser.get(base + '/admin/', allow_redirects=False, timeout=30)
+        allowed = expected_role == 'admin'
+        if cart.status_code != 200 or (admin.status_code == 200) != allowed:
+            raise RuntimeError('Demo role verification failed')
+        if not allowed and admin.status_code not in (302, 303):
+            raise RuntimeError('Customer admin rejection missing')
+        verification = {'login_http': response.status_code, 'cart_http': cart.status_code,
+                        'admin_http': admin.status_code, 'role_verified': True,
+                        'production_checkout_performed': False}
+    finally:
+        try:
+            if authenticated:
+                form = browser.get(base + '/auth/logout', timeout=30)
+                field = BeautifulSoup(form.text, 'html.parser').select_one('input[name="csrf_token"]')
+                if form.status_code != 200 or not field:
+                    raise RuntimeError('Own-device logout form unavailable')
+                logout = browser.post(base + '/auth/logout', data={'csrf_token': field['value']},
+                                      allow_redirects=False, timeout=30)
+                denied = browser.get(base + '/cart', allow_redirects=False, timeout=30)
+                if logout.status_code not in (302, 303) or denied.status_code not in (302, 303):
+                    raise RuntimeError('Own-device logout failed; no other sessions were deleted')
+                verification.update(logout_http=logout.status_code,
+                                    post_logout_cart_http=denied.status_code,
+                                    own_device_logout_verified=True)
+        finally:
+            browser.close()
+    return verification
 
 
 def run(config):
@@ -100,36 +152,7 @@ def run(config):
             checked = db.users.find_one({'_id': uid})
             verification = {}
             if mode == 'verify':
-                base = 'https://vibecart-llmai.web.app'
-                before = {r['_id'] for r in db.auth_sessions.find({'user_id': uid}, {'_id': 1})}
-                browser = requests.Session()
-                try:
-                    from bs4 import BeautifulSoup
-                    response = browser.get(base + '/auth/login', timeout=30)
-                    field = BeautifulSoup(response.text, 'html.parser').select_one('input[name="csrf_token"]')
-                    if response.status_code != 200 or not field:
-                        raise RuntimeError('Demo login form unavailable')
-                    response = browser.post(base + '/auth/login', data={
-                        'email': email, 'password': entry['password'], 'csrf_token': field['value']},
-                        allow_redirects=False, timeout=30)
-                    if response.status_code not in (302, 303):
-                        raise RuntimeError('Demo login failed')
-                    cart = browser.get(base + '/cart', allow_redirects=False, timeout=30)
-                    admin = browser.get(base + '/admin/', allow_redirects=False, timeout=30)
-                    allowed = expected_role == 'admin'
-                    if cart.status_code != 200 or (admin.status_code == 200) != allowed:
-                        raise RuntimeError('Demo role verification failed')
-                    if not allowed and admin.status_code not in (302, 303):
-                        raise RuntimeError('Customer admin rejection missing')
-                    verification = {'login_http': response.status_code, 'cart_http': cart.status_code,
-                                    'admin_http': admin.status_code, 'role_verified': True,
-                                    'production_checkout_performed': False}
-                finally:
-                    after = {r['_id'] for r in db.auth_sessions.find({'user_id': uid}, {'_id': 1})}
-                    own = list(after - before)
-                    if own:
-                        db.auth_sessions.delete_many({'user_id': uid, '_id': {'$in': own}})
-                    browser.close()
+                verification = verify_public_role(entry, expected_role)
             report['accounts'].append({'holder': entry['holder'], 'role': expected_role,
                 'id': str(uid), 'active': checked['is_active'],
                 'sessions': db.auth_sessions.count_documents({'user_id': uid}), **verification})
