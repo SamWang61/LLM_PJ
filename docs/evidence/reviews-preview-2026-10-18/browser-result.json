@@ -1,0 +1,66 @@
+{
+  "source": "private Cloud Run revision via authenticated loopback relay",
+  "revision": "vibecart-acceptance-pr21-rv9a76-2117",
+  "source_sha": "9a76b1d4dd5a13aac4beeb7065702c3d58dd6abd",
+  "before": {
+    "rating": 4,
+    "count": 2
+  },
+  "after": {
+    "rating": 4.4,
+    "count": 3,
+    "success_message": true,
+    "form_disabled": true
+  },
+  "home_grid_counts": [
+    6,
+    4
+  ],
+  "real_payment_tested": false,
+  "fixture_only": true,
+  "atlas_readback": {
+    "rating_sum": 13,
+    "rating_count": 3,
+    "average_rating_display": 4.4,
+    "review_rows": 3
+  },
+  "product_page_gets": 1,
+  "review_posts": 1,
+  "fixture_cleanup": {
+    "product_reviews_deleted": 3,
+    "product_reviews_remaining": 0,
+    "order_items_deleted": 3,
+    "order_items_remaining": 0,
+    "orders_deleted": 3,
+    "orders_remaining": 0,
+    "behavior_events_deleted": 7,
+    "behavior_events_remaining": 0,
+    "auth_sessions_deleted": 1,
+    "auth_sessions_remaining": 0,
+    "users_deleted": 1,
+    "users_remaining": 0,
+    "product_skus_deleted": 13,
+    "product_skus_remaining": 0,
+    "products_deleted": 13,
+    "products_remaining": 0,
+    "verified": true
+  },
+  "temporary_grant_removed": true,
+  "screenshots": [
+    {
+      "path": "home-6plus4.png",
+      "sha256": "3e40b982fa8283caa7c048e25b55eb0ad9464d70a051b141f1dd09b0985240ea",
+      "captured_at_utc": "2026-10-18T13:35:26.843200+00:00"
+    },
+    {
+      "path": "review-after.png",
+      "sha256": "555ba7e2c417eff7d783ccfd75c03813b00f62b44ba05b2f4780fa5e829fcff5",
+      "captured_at_utc": "2026-10-18T13:34:19.618052+00:00"
+    },
+    {
+      "path": "review-before.png",
+      "sha256": "e1132750ad3b5dfd4cf5cadc67addff9dd52a2474f9192fea0f0f3d30c6478e4",
+      "captured_at_utc": "2026-10-18T13:34:14.621900+00:00"
+    }
+  ]
+}

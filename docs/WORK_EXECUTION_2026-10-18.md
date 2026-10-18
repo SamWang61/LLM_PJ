@@ -1,4 +1,8 @@
 <!-- SAM MAIN PREVIEW 20261018 BEGIN -->
+
+<!-- SAM REVIEWS PREVIEW 20261018 BEGIN -->
+**2026/10/18 21:41 SAM商品評價／6＋4無流量預覽**：[同版遠端驗收](SAM_REVIEWS_6PLUS4_PREVIEW_2026-10-18.md)。固定main9a76b1d、56檔與GCS SHA一致；BGE／規則同digest各0%，最後4探針及真Atlas回滾／角色／交易通過。瀏覽器不重載4.0／2筆→4.4／3筆、DOM6＋4；fixture／索引／Job／暫時IAM清理。正式19／私有base11仍100%原版，Hosting未變，正式評價0、D4 synthetic1240不變。正式上線、效能SLO與具名簽收未完成；V5仍2/14。
+<!-- SAM REVIEWS PREVIEW 20261018 END -->
 **2026/10/18 17:34 SAM 最新main無流量預覽**：[部署與驗收](SAM_MAIN_PREVIEW_2026-10-18.md)。來源`20ee040`、52檔封裝／GCS讀回一致、AI build三步SUCCESS；私有真BGE、Claude四固定問題／快取、角色／交易／1001 synthetic及停用退回已驗，fixture清理0。Key版本1 Enabled，只引用於私有預覽，自由提問false。**正式19／私有base11仍100%舊版，最新main只在0% tag；Hosting未重發，V5仍2/14完成。**
 <!-- SAM MAIN PREVIEW 20261018 END -->
 

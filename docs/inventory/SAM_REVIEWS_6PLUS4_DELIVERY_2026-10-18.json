@@ -1,0 +1,88 @@
+{
+  "created_at": "2026-10-18T13:43:26.142516+00:00",
+  "source_main": "9a76b1d4dd5a13aac4beeb7065702c3d58dd6abd",
+  "scope": "Delivery paths excluding this manifest; canonical committed/remote bytes checked after push, original variants preserved separately",
+  "relative_links_checked": 207,
+  "files": [
+    {
+      "path": ".github/workflows/validate.yml",
+      "sha256": "4c2a7de35745d40c852fc6b855d92ee3c87a4ccd95367aa518c1ada1812fa7fb"
+    },
+    {
+      "path": "deploy/README.md",
+      "sha256": "8e6237d234a1d32637dafc379b1e8775e01c12a0a0f5292217ce076ddc3578fc"
+    },
+    {
+      "path": "docs/CURRENT_CONTEXT.md",
+      "sha256": "3529fe4ff15bf1fa003a84904cdb17ec092f2af30aef386209bae0eb29f4adc1"
+    },
+    {
+      "path": "docs/DOCUMENT_INDEX.md",
+      "sha256": "b38d05debb0126a03008ead1142eb24bf594e23fa772279ad9cd4e32be571882"
+    },
+    {
+      "path": "docs/README.md",
+      "sha256": "0a10f7ce9d29b9a39eaf27d910f86379f83e47d3e4642088b2bc1c8438ad00fc"
+    },
+    {
+      "path": "docs/SAM_REVIEWS_6PLUS4_PREVIEW_2026-10-18.md",
+      "sha256": "3fb3edd3702a83dcc3188888536043fb3cbb2f68a62a9c3510431bd27bf7dc71"
+    },
+    {
+      "path": "docs/WORK_EXECUTION_2026-10-18.md",
+      "sha256": "eca4d176ccea39d9c10199e8b10338e8690c8a581c4ca7a2c9304cc6a46dfcc7"
+    },
+    {
+      "path": "docs/evidence/reviews-preview-2026-10-18/README.md",
+      "sha256": "9fdb25918cb7f2ed9c487e20e564684863e208c273665105296d775a741bde31"
+    },
+    {
+      "path": "docs/evidence/reviews-preview-2026-10-18/browser-result.json",
+      "sha256": "40bbe1bf26a20fec56079ae8a2ade016709eb99f3ca7e71efc4a0d3289d2760d"
+    },
+    {
+      "path": "docs/evidence/reviews-preview-2026-10-18/home-6plus4.png",
+      "sha256": "3e40b982fa8283caa7c048e25b55eb0ad9464d70a051b141f1dd09b0985240ea"
+    },
+    {
+      "path": "docs/evidence/reviews-preview-2026-10-18/review-after.png",
+      "sha256": "555ba7e2c417eff7d783ccfd75c03813b00f62b44ba05b2f4780fa5e829fcff5"
+    },
+    {
+      "path": "docs/evidence/reviews-preview-2026-10-18/review-before.png",
+      "sha256": "e1132750ad3b5dfd4cf5cadc67addff9dd52a2474f9192fea0f0f3d30c6478e4"
+    },
+    {
+      "path": "docs/inventory/SAM_REVIEWS_6PLUS4_PREVIEW_2026-10-18.json",
+      "sha256": "2789f135cce6b238d4ae0b441df7820dd3bf9e42d741e86abccbc54537a423dc"
+    },
+    {
+      "path": "scripts/private_https_transport.cjs",
+      "sha256": "1dbb68eba0d83232083d1070c7215da18b46a2150e389c53d7b0cd3496497246"
+    },
+    {
+      "path": "scripts/private_https_transport.py",
+      "sha256": "dc5c789b3d38da53152ffaac84073164ff44134408845cb2ac3ed709d9827cd0"
+    },
+    {
+      "path": "scripts/remote_d4_consumer_probe.py",
+      "sha256": "a31907c0ce2fcc1fbf9c9f867d32084a5ba81896e807ca7a4c48bab5afcb475c"
+    },
+    {
+      "path": "scripts/remote_reviews_acceptance_probe.py",
+      "sha256": "705cdd6476d748bbf4648b767b199b63f6c1cee01e05f141dc2ce1b306561669"
+    },
+    {
+      "path": "scripts/test_private_https_transport.py",
+      "sha256": "2b86aa7b4cbc4dd290dd0b8ec8ed07bc024103c7ef3f13d03e36b2973fff6c10"
+    },
+    {
+      "path": "scripts/test_remote_reviews_acceptance_probe.py",
+      "sha256": "bb20d30e88bdd26c2f04c131563a4c752ff8a339aa37b861718e1adb269d37f3"
+    },
+    {
+      "path": "專題進度/專案未完成工作清單_2026-10-18.md",
+      "sha256": "f888907dfa46938aa831b637008a9e9219c55ef585a833099fcb57244e18e723"
+    }
+  ]
+}
