@@ -68,5 +68,10 @@
   "v5_total": 14,
   "new_deployment_this_turn": false,
   "integrated_main_after_tests": "d681d9926cd5a88f7598242c6d1df2a17ec221c2",
-  "concurrent_document_changes_preserved": true
+  "concurrent_document_changes_preserved": true,
+  "finalized_at": "2026-10-19T07:09:24.956580+08:00",
+  "cleanup_readback": {
+    "owned_run_directories": 4,
+    "data_directories_remaining": 0
+  }
 }

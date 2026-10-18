@@ -21,40 +21,40 @@
     },
     {
       "path": "docs/inventory/REN_PR97_MERGE_REVIEW_2026-10-19.json",
-      "worktree_sha256": "81219a702d28f2e34c65413e121330df208a092d4425885cc1847db06fa12a49",
-      "source_sha256": "81219a702d28f2e34c65413e121330df208a092d4425885cc1847db06fa12a49",
+      "worktree_sha256": "8969e29573e0db62c533d0ba45353c0a0e69ac2e91db9b93458609738372040e",
+      "source_sha256": "8969e29573e0db62c533d0ba45353c0a0e69ac2e91db9b93458609738372040e",
       "before_source_sha256": null,
       "full_file_equal": true,
       "preserved_concurrent_source_variant": false
     },
     {
       "path": "docs/CURRENT_CONTEXT.md",
-      "worktree_sha256": "81c7150e95d21e6230c6dd87595e02f17ed98c75292f2dd8741ee759becff0a1",
-      "source_sha256": "81c7150e95d21e6230c6dd87595e02f17ed98c75292f2dd8741ee759becff0a1",
+      "worktree_sha256": "6106cac4088d470c31433d1d8b55a1e695cf2013772b8c4071ce82e05911e09f",
+      "source_sha256": "6106cac4088d470c31433d1d8b55a1e695cf2013772b8c4071ce82e05911e09f",
       "before_source_sha256": "828dd2fd41432eca8cc241e6908693d13c380feb6481db8180cca08d73bdcb5a",
       "full_file_equal": true,
       "preserved_concurrent_source_variant": false
     },
     {
       "path": "專題進度/專案未完成工作清單_2026-10-18.md",
-      "worktree_sha256": "a456d18b57904fabfcbc9c798b421231fafc0488609428a91974d64a4da0c2ef",
-      "source_sha256": "a456d18b57904fabfcbc9c798b421231fafc0488609428a91974d64a4da0c2ef",
+      "worktree_sha256": "282727fcb9a230e0ea22c71622b29707bcdfc91046eee2952bb8f644428877c1",
+      "source_sha256": "282727fcb9a230e0ea22c71622b29707bcdfc91046eee2952bb8f644428877c1",
       "before_source_sha256": "f46e15eeaaa3f010568305b2dcbd2d7de204a240f87e1eb6ecca0c4b80038603",
       "full_file_equal": true,
       "preserved_concurrent_source_variant": false
     },
     {
       "path": "專題進度/REN_1200逐項交接清單_2026-10-18.md",
-      "worktree_sha256": "9cfa94c3e5421c401c014bc62710fef4f006ca162e3592404e08ff24ac2b01c9",
-      "source_sha256": "9cfa94c3e5421c401c014bc62710fef4f006ca162e3592404e08ff24ac2b01c9",
+      "worktree_sha256": "19588af43256666212db80241ded817795f8f2bdff3d31c8222b4427ca1f1b92",
+      "source_sha256": "19588af43256666212db80241ded817795f8f2bdff3d31c8222b4427ca1f1b92",
       "before_source_sha256": "589d092f6007b6d51b5b52244f6c85525ffee68094741ab2a21fb9c60be38c27",
       "full_file_equal": true,
       "preserved_concurrent_source_variant": false
     },
     {
       "path": "docs/REN_PR97_MERGE_N06_2026-10-19.md",
-      "worktree_sha256": "758c560e276a676cf576e98419ebd93895e78d328d5d0ec8b371f483ccca0b38",
-      "source_sha256": "758c560e276a676cf576e98419ebd93895e78d328d5d0ec8b371f483ccca0b38",
+      "worktree_sha256": "8855f86e3a0a49822f1fa1f63f31c76f6299a8e3c0ee5be8dc0e2c2b1dfef847",
+      "source_sha256": "8855f86e3a0a49822f1fa1f63f31c76f6299a8e3c0ee5be8dc0e2c2b1dfef847",
       "before_source_sha256": null,
       "full_file_equal": true,
       "preserved_concurrent_source_variant": false
@@ -84,9 +84,10 @@
       "preserved_concurrent_source_variant": false
     }
   ],
-  "shared_current_context_scope_sha256": "4b45337f91afa8ea02c28729a5ea46daaaaedc27e17717d8df74d92df69fa26f",
+  "shared_current_context_scope_sha256": "cf6ea748c5cf7f974585f2ad3bb76e776fa69b59f4b9b0b85c5e5d2f777c37a6",
   "current_context_block_equal": true,
   "exception": null,
   "unrelated_source_changes_preserved": true,
-  "concurrent_variant_resolved_by_main": "d681d9926cd5a88f7598242c6d1df2a17ec221c2"
+  "concurrent_variant_resolved_by_main": "d681d9926cd5a88f7598242c6d1df2a17ec221c2",
+  "finalized_at": "2026-10-19T07:09:24.956580+08:00"
 }
