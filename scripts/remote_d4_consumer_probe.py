@@ -104,9 +104,12 @@ def verify_scope(config):
             and mongo.path == "/" + DATABASE and mongo.username == MONGO_USER,
             "Mongo acceptance scope mismatch")
     service = urlparse(config["service_url"])
+    tagged_host = re.fullmatch(r"[a-z][a-z0-9-]{0,20}---vibecart-acceptance-pr21-[a-z0-9-]+\.a\.run\.app",
+                              service.hostname or "")
     require(service.scheme == "https" and service.hostname
-            and service.hostname.startswith(SERVICE_PREFIX)
+            and (service.hostname.startswith(SERVICE_PREFIX) or tagged_host)
             and service.hostname.endswith(".a.run.app")
+            and not service.username and not service.password and service.port in (None, 443)
             and not service.path and not service.query,
             "Private Cloud Run scope mismatch")
     require(config["revision"].startswith(SERVICE_PREFIX), "Revision scope mismatch")

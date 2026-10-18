@@ -1,5 +1,9 @@
 # 營運後台與 v4 測試交接 / Dashboard handoff
 
+<!-- SAM MAIN PREVIEW 20261018 BEGIN -->
+**2026/10/18 17:34 SAM 最新main無流量預覽**：[部署與驗收](SAM_MAIN_PREVIEW_2026-10-18.md)。來源`20ee040`、52檔封裝／GCS讀回一致、AI build三步SUCCESS；私有真BGE、Claude四固定問題／快取、角色／交易／1001 synthetic及停用退回已驗，fixture清理0。Key版本1 Enabled，只引用於私有預覽，自由提問false。**正式19／私有base11仍100%舊版，最新main只在0% tag；Hosting未重發，V5仍2/14完成。**
+<!-- SAM MAIN PREVIEW 20261018 END -->
+
 > 2026/10/18 16:30 最新：[SAM三PR整合與驗收](SAM_JEFF_PR82_84_ACCEPTANCE_2026-10-18.md)。#82～#84本輪已完成程式測試；舊段落保留交付時序，不代稱已部署或線上AI驗收。
 
 > 最新責任：AI／後台由 JEFF 負責；SAM 負責資料庫與測試。下文保留先前交付的技術與合併紀錄，不再代表現行分工。見 [現行分工](TEAM_OWNERSHIP.md)。Current ownership supersedes historical delivery attribution.
