@@ -169,7 +169,9 @@ def run(config):
         db.products.create_index([('average_rating_display', 1)], unique=True, name=temporary_index,
                                  partialFilterExpression={'acceptance_rollback': marker})
         failed = post(valid[2], 5)
-        require(failed.status_code == 503, 'Controlled product-write conflict not reported')
+        # The shared transaction service retries duplicate-key conflicts and
+        # reports CartConflict/409 when exhausted; it is not a transport outage.
+        require(failed.status_code == 409, 'Controlled product-write conflict not reported')
         require(db.products.find_one({'_id': products[0]}) == before
                 and db.product_reviews.count_documents({'product_id': products[0]}) == 2,
                 'Review/product transaction did not roll back')
@@ -189,7 +191,8 @@ def run(config):
         require(not detail.select_one('[data-rating-default]'), 'Default marker survived first review')
         report['reviews'] = {'sum': 13, 'count': 3, 'display': 4.4,
                              'concurrent_identical_200': True, 'changed_retry_409': True,
-                             'after_insert_product_failure_503_rollback': True,
+                             'after_insert_product_failure_http': failed.status_code,
+                             'after_insert_product_failure_rollback': True,
                              'persisted_html_equal': True, 'default_excluded': True}
 
         report['stage'] = '6plus4'
