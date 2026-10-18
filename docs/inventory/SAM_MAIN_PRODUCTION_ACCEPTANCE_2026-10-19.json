@@ -1,0 +1,1879 @@
+{
+  "checked_at": "2026-10-18T22:57:08.306260+00:00",
+  "status": "passed",
+  "deployed_source": "b038aaca2d2553a39d8fd958100f277c64a75486",
+  "document_base_main": "0ab1fa1210b18e5be76751fd3e31abcccc06ff3b",
+  "deployment_actor": "Existing separately user-authorized release task; this task performed independent source, control-plane, public role, rating and cleanup verification; no second traffic mutation",
+  "cloud": {
+    "revision": "vibecart-web-reviews-b038aaca",
+    "percent": 100,
+    "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:8755ccb82902cf59430d5b2b76505c3fb6e4ed265d0ef98ba42821769edbcbdd",
+    "service_account": "vibecart-web@vibecart-llmai.iam.gserviceaccount.com",
+    "IAM": {
+      "version": 1,
+      "etag": "BwZdpI4H3TI=",
+      "bindings": [
+        {
+          "role": "roles/run.invoker",
+          "members": [
+            "allUsers"
+          ]
+        }
+      ]
+    },
+    "traffic": [
+      {
+        "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+        "revision": "vibecart-web-00019-phf",
+        "tag": "ren-fence",
+        "uri": "https://ren-fence---vibecart-web-m44ncgz5ta-de.a.run.app"
+      },
+      {
+        "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+        "revision": "vibecart-web-main20ee-1640",
+        "tag": "main20ee-preview",
+        "uri": "https://main20ee-preview---vibecart-web-m44ncgz5ta-de.a.run.app"
+      },
+      {
+        "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+        "revision": "vibecart-web-reviews-b038aaca",
+        "percent": 100,
+        "tag": "reviews-1019",
+        "uri": "https://reviews-1019---vibecart-web-m44ncgz5ta-de.a.run.app"
+      },
+      {
+        "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+        "revision": "vibecart-web-role-auth-576b4748",
+        "tag": "role-auth-1019",
+        "uri": "https://role-auth-1019---vibecart-web-m44ncgz5ta-de.a.run.app"
+      }
+    ],
+    "flags": [
+      {
+        "name": "CLOUD_PREVIEW_READ_ONLY",
+        "value": "false"
+      },
+      {
+        "name": "ENABLE_CHECKOUT",
+        "value": "true"
+      },
+      {
+        "name": "AI_RECOMMENDATIONS_ENABLED",
+        "value": "false"
+      },
+      {
+        "name": "AI_SUMMARY_ENABLED",
+        "value": "false"
+      },
+      {
+        "name": "AI_FREE_QUESTION_ENABLED",
+        "value": "false"
+      }
+    ],
+    "rollback_revision": "vibecart-web-role-auth-576b4748"
+  },
+  "hosting": {
+    "release": {
+      "name": "sites/vibecart-llmai/releases/1792363722745000",
+      "version": {
+        "name": "sites/vibecart-llmai/versions/a33b77d8155885b8",
+        "status": "FINALIZED",
+        "config": {
+          "rewrites": [
+            {
+              "glob": "**",
+              "run": {
+                "serviceId": "vibecart-web",
+                "region": "asia-east1"
+              }
+            }
+          ]
+        },
+        "labels": {
+          "deployment-tool": "cli-firebase"
+        },
+        "createTime": "2026-10-18T22:48:39.927004Z",
+        "createUser": {
+          "email": "cashsam@gmail.com",
+          "imageUrl": "https://lh3.googleusercontent.com/a/ACg8ocIqQXyhleG7Dhl5mxDb3tN-2O-ZnGdSDgxeVe8yAkV1WuGU2SSihA"
+        },
+        "finalizeTime": "2026-10-18T22:48:42.578646Z",
+        "finalizeUser": {
+          "email": "cashsam@gmail.com",
+          "imageUrl": "https://lh3.googleusercontent.com/a/ACg8ocIqQXyhleG7Dhl5mxDb3tN-2O-ZnGdSDgxeVe8yAkV1WuGU2SSihA"
+        },
+        "fileCount": "3",
+        "versionBytes": "661"
+      },
+      "type": "DEPLOY",
+      "releaseTime": "2026-10-18T22:48:42.745Z",
+      "releaseUser": {
+        "email": "cashsam@gmail.com",
+        "imageUrl": "https://lh3.googleusercontent.com/a/ACg8ocIqQXyhleG7Dhl5mxDb3tN-2O-ZnGdSDgxeVe8yAkV1WuGU2SSihA"
+      }
+    },
+    "config": {
+      "rewrites": [
+        {
+          "glob": "**",
+          "run": {
+            "serviceId": "vibecart-web",
+            "region": "asia-east1"
+          }
+        }
+      ]
+    }
+  },
+  "source": {
+    "main": "b038aaca2d2553a39d8fd958100f277c64a75486",
+    "archive_sha256": "bd85ba17567bfdcff4b7d633551841df4b02a6dafee0a701fac46d969cf7fb4e",
+    "files": [
+      {
+        "path": "MuscleCore分析資料/website/.dockerignore",
+        "archive_path": ".dockerignore",
+        "git_blob": "80e00992db055bbd9108b55bec60892ff918d0bc",
+        "sha256": "e93ab8b6e4a05bb46354e2dc4ec06124c2eb241fdd872b3424250df4e35afd94",
+        "bytes": 327
+      },
+      {
+        "path": "MuscleCore分析資料/website/Dockerfile",
+        "archive_path": "Dockerfile",
+        "git_blob": "466b4d497cc45696ef33380861d9c2a3658d371f",
+        "sha256": "6020d6e52ad69fdf55d202fd1703b1e8a4106a304628e310164b439d9c5f31a7",
+        "bytes": 1075
+      },
+      {
+        "path": "VibeCart_AI/services/cart_service.py",
+        "archive_path": "VibeCart_AI/services/cart_service.py",
+        "git_blob": "15bb3ffde7df5b75890355df6e90a97b7998e9e4",
+        "sha256": "5e416e6d4945d391ec633845ea493fd152262abf6d5b489b503160db6d58457f",
+        "bytes": 12024
+      },
+      {
+        "path": "VibeCart_AI/services/review_service.py",
+        "archive_path": "VibeCart_AI/services/review_service.py",
+        "git_blob": "5d06f7bdd9d3341aaac390febe4c23c74477dda3",
+        "sha256": "262dd2f09ba04ad66a4a63bcb16e9214039e74bd41531271a4b8e93619a564d5",
+        "bytes": 3178
+      },
+      {
+        "path": "VibeCart_AI/services/sku_cart_service.py",
+        "archive_path": "VibeCart_AI/services/sku_cart_service.py",
+        "git_blob": "8f9b686f0f1df6d3d9f513f3f3e214f078d1e565",
+        "sha256": "6ef2272284f9c36d27923fbf4448854d6de1305dd1b4e001a82f40ef6eccd649",
+        "bytes": 12533
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/__init__.py",
+        "archive_path": "app/__init__.py",
+        "git_blob": "6738d9dab3b63dcd75bb6dac98f5f210a1510450",
+        "sha256": "48c19b3ba9d217fb68ec093317be4a7c9725d55578b28b5727887c01f3c9675e",
+        "bytes": 2594
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/admin.py",
+        "archive_path": "app/admin.py",
+        "git_blob": "ae28216026525c5bda82ef0c98a4294a9c2671dc",
+        "sha256": "f7db8ca32ed05e48506c98de533d0ba4c3f5430154462cc8974761cc4415b18e",
+        "bytes": 8104
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/auth.py",
+        "archive_path": "app/auth.py",
+        "git_blob": "7f119d4e8ebf01d180287f6fa5ecf9a031c33433",
+        "sha256": "6d69044df007d4bacb3fc9b32a50b3a6df690124515841b211cc770f2e0f925d",
+        "bytes": 8530
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/db.py",
+        "archive_path": "app/db.py",
+        "git_blob": "22a614671a7f2d14bc321464f27be763b1ca1d82",
+        "sha256": "e429461ecbcf683f551df962c66f765025472be033dac84f86c76a9a5eec2e88",
+        "bytes": 618
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/security.py",
+        "archive_path": "app/security.py",
+        "git_blob": "95dcfc7f383aeebba0c26c4aa52dbe6c77878980",
+        "sha256": "90a920e1a3e70e6b968252d3fa8ba5bcf160c7d6ef3b04caa4ea16f03515f394",
+        "bytes": 882
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/services/__init__.py",
+        "archive_path": "app/services/__init__.py",
+        "git_blob": "7b12f23281659982866e90a8fff0bd30703e84fa",
+        "sha256": "ad99f2d924998782cb45c4afff9971baa500c70ab753ad2afbb4ad3c63c365d8",
+        "bytes": 57
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/services/ai_compare.py",
+        "archive_path": "app/services/ai_compare.py",
+        "git_blob": "55ea01784ee4951647cd782ccad49103bc8fa86c",
+        "sha256": "d4c0e5a428b05e5aa7b731f80a5f5a22fd33066e9684401e50c758b094dbfa73",
+        "bytes": 2259
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/services/ai_payload.py",
+        "archive_path": "app/services/ai_payload.py",
+        "git_blob": "20f7f16ade658cf56645448ea23f2bba2c04aff8",
+        "sha256": "bf2ff4d1f0ce8c2402c666b18ee86ef17a8e7051b914cb0fd74ebf298f53a178",
+        "bytes": 10459
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/services/ai_workflows.py",
+        "archive_path": "app/services/ai_workflows.py",
+        "git_blob": "6b806b2d0ef3fc70f4fb170b5e290774af3f4c5c",
+        "sha256": "c58a53ac7db1def62b5908b1c6d56bb6fff331abc5998386fb8766d99d526332",
+        "bytes": 21763
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/services/analytics.py",
+        "archive_path": "app/services/analytics.py",
+        "git_blob": "2632c67567ed78d676983fbc1bbd5f60fd3d4014",
+        "sha256": "fd47fc513b71a961d4ecc5c1f1045d14cd1674baebde1b76cd58c9f3ac6c056b",
+        "bytes": 1013
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/services/behavior_scope.py",
+        "archive_path": "app/services/behavior_scope.py",
+        "git_blob": "528e0edf44daf69c8b2f2e90538800adc718cef7",
+        "sha256": "57b611a8602f18ea2e725f7429caa11e898233c25f9405a2335ee2b34b6dc6ba",
+        "bytes": 1495
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/services/dashboard.py",
+        "archive_path": "app/services/dashboard.py",
+        "git_blob": "17e88d7d6092bdcf596e5a69acac315420711d9b",
+        "sha256": "a89a2b61ee1a53656ecd78ee3cb02d6fa07e1f76d9006c328a6b81784558b5c6",
+        "bytes": 6343
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/services/local_ai.py",
+        "archive_path": "app/services/local_ai.py",
+        "git_blob": "3fb87d930c40658024323b902589ec7ce9679406",
+        "sha256": "1b88d118e75a3a908ca75363e0b86cf425b1ab098a7bf74196a7f8f2add8efa1",
+        "bytes": 6393
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/services/member_events.py",
+        "archive_path": "app/services/member_events.py",
+        "git_blob": "91097ef7e15b664a57effd1af51a03737db51bd5",
+        "sha256": "3c5c69dc30f0f5cf46b7eabcad718597b4f3ec570ad8999364e63e2efc93454f",
+        "bytes": 1244
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/services/member_sessions.py",
+        "archive_path": "app/services/member_sessions.py",
+        "git_blob": "cfc5c11528b9ace0e54bc689508fa7a12471807c",
+        "sha256": "00ac249cc04d743157e4e4c2d9304791c496e61a5a5ba3b332534d6a722a059e",
+        "bytes": 2604
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/services/recommendation.py",
+        "archive_path": "app/services/recommendation.py",
+        "git_blob": "c0d93391127ab52c8954b50baa35898687e38e20",
+        "sha256": "93f0ca7725135e43981c3024e7a5d6ab4eed7a7d315e9db10fc50d7e012988cf",
+        "bytes": 3457
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/services/sku_gateway.py",
+        "archive_path": "app/services/sku_gateway.py",
+        "git_blob": "fabb7ad0cca7d1ce50748467e4f745bcff2bd340",
+        "sha256": "62453f330a703ef086ab4ecda99f6dc490f93e9ab4a9be967669bf9e82306f08",
+        "bytes": 3477
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/services/storefront_ranking.py",
+        "archive_path": "app/services/storefront_ranking.py",
+        "git_blob": "1a984faf44f0b056de735d96a6f8bb90a288a655",
+        "sha256": "389105fe3ea8001980b1fa37ede86d622f9ec3d240462611c0eddcfac46fa808",
+        "bytes": 6795
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/static/css/admin.css",
+        "archive_path": "app/static/css/admin.css",
+        "git_blob": "d8333c958c0ced2abbbdc368462d9e0a7311f36d",
+        "sha256": "130bdc8a96e1a1b6cece9a96049b5f328b6914b31604a6eb5dd378892835eb92",
+        "bytes": 13049
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/static/css/footer-team.css",
+        "archive_path": "app/static/css/footer-team.css",
+        "git_blob": "688d30cf5ed6b63159459418627d45c856158048",
+        "sha256": "238fc779c6bbc90f940210fccdac9ca2ebb6a302b499f47016804ea0e5abe30d",
+        "bytes": 1078
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/static/css/main.css",
+        "archive_path": "app/static/css/main.css",
+        "git_blob": "9ca6daa1c8938920b506ac0b18260461ea643fe4",
+        "sha256": "83d5e22a1b91bbf0128710f47a9fd70448d615661c6ac1a6a587fea21295b4f4",
+        "bytes": 9495
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/static/img/hero.png",
+        "archive_path": "app/static/img/hero.png",
+        "git_blob": "025b73205aba06cbeb91fe5479fa07ccd4726644",
+        "sha256": "a0ef2f0fee2b163b02edee7102c975668d5f78286786a575b4d42ef81e05633e",
+        "bytes": 1898747
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/static/img/product-placeholder.svg",
+        "archive_path": "app/static/img/product-placeholder.svg",
+        "git_blob": "ec8173c205ddde1d0aefd207a40ce7814e33fcd1",
+        "sha256": "50cfb1ca36a0122d85ec6d51b1913b685c9885064c5a8701e5aa7d841b44dee3",
+        "bytes": 447
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/static/img/team/Jeff-s.png",
+        "archive_path": "app/static/img/team/Jeff-s.png",
+        "git_blob": "98dcebb32abb6a89e26497e84b97308a3d5bcc94",
+        "sha256": "193a5595bb025ac6999082b6e574a8876199f7e7b18aeb173ff2f151139406c6",
+        "bytes": 90730
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/static/img/team/Ren-s.png",
+        "archive_path": "app/static/img/team/Ren-s.png",
+        "git_blob": "b2caf739c35015e05df241359e2a31ffdcbd35ae",
+        "sha256": "20f365e734bc0a24047bcadb5791e3ef98ef9a2ee6541eb3ca24980c427295a2",
+        "bytes": 49897
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/static/img/team/sam-s.png",
+        "archive_path": "app/static/img/team/sam-s.png",
+        "git_blob": "fa9f89c5c2bef022d7e1afe721589bc140efb6f1",
+        "sha256": "25d975cf616ab59ee34a3e1a5e6fe39bfe7c4ccc281d0ee2a19e25d069b80252",
+        "bytes": 64550
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/static/js/admin.js",
+        "archive_path": "app/static/js/admin.js",
+        "git_blob": "6b6d050b7c9d3453a3f5cc988ca30b79b9e4af80",
+        "sha256": "c537c86942d7bb8ef6fecaa9c991fa992f18ba7b69a235e22e9507e0dd255115",
+        "bytes": 1204
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/static/js/reviews.js",
+        "archive_path": "app/static/js/reviews.js",
+        "git_blob": "1e2944fb19ba00306f41fe3a053b037944e535db",
+        "sha256": "82ef1fb2f5d8281375dfba4496dff4adc6d3c0371a3ac24626656be431219cc0",
+        "bytes": 3079
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/store.py",
+        "archive_path": "app/store.py",
+        "git_blob": "7d72e2237435e12a15a788303df556c3a8df7095",
+        "sha256": "7f8e251f0b6f77b87cf0ce4cd64bfe546eef32fc19cce169a86e66b2c68ad75f",
+        "bytes": 4682
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/store_v4.py",
+        "archive_path": "app/store_v4.py",
+        "git_blob": "8019b306ea5025f41433fe5e6745d284e13d0646",
+        "sha256": "743150b2e6de3a5542a2df378104c96969a67f657d49c4e1fa4720110abaad12",
+        "bytes": 12069
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/templates/admin/ai_compare.html",
+        "archive_path": "app/templates/admin/ai_compare.html",
+        "git_blob": "147725bb12d73be72f67ff34da61e71b304290f4",
+        "sha256": "4de1c694a0c29bc1b383575b086df85ae8932a3c5169c8c93d046e0473590aa9",
+        "bytes": 4317
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/templates/admin/ai_insight.html",
+        "archive_path": "app/templates/admin/ai_insight.html",
+        "git_blob": "1ed8e8b864a409327384e39344055d11e38f818c",
+        "sha256": "d0d3f8f9e062acaa06c7135082a3de59a964e0ba281bf8dfeb8c422f0c87f82b",
+        "bytes": 7177
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/templates/admin/ai_recommendation.html",
+        "archive_path": "app/templates/admin/ai_recommendation.html",
+        "git_blob": "5e272dae41b303f1af3fb214f331f18fa6f9d0a3",
+        "sha256": "c10ec9b065ca6aaa14058881665369ce19162a87cc8021044f308d4c7dc77c0a",
+        "bytes": 5390
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/templates/admin/dashboard.html",
+        "archive_path": "app/templates/admin/dashboard.html",
+        "git_blob": "537c751cccb12b12926e29e9ebe2fcc73bab3e2b",
+        "sha256": "97f803ec91a1025e006e54ca77513bd2ffea88dae252b97746beff987c8b8754",
+        "bytes": 6762
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/templates/admin/filter_error.html",
+        "archive_path": "app/templates/admin/filter_error.html",
+        "git_blob": "085f5c72c3ce986585ae2da7c13657ba3b35982e",
+        "sha256": "46f5b44fb119ea3654c24cd43ba82023b0378913127869f3fda17d865f1ea46a",
+        "bytes": 359
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/templates/admin/layout.html",
+        "archive_path": "app/templates/admin/layout.html",
+        "git_blob": "9294a11b8beaf5b45a6a093c7c258276ca03ecd0",
+        "sha256": "68eecd71b1cfaa7fb6354dee0721f2989bb68d8db92fbcc2024ae74eec98fd59",
+        "bytes": 4062
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/templates/admin/recommendations.html",
+        "archive_path": "app/templates/admin/recommendations.html",
+        "git_blob": "6b8573f817f85df39e59fd335e305c01ae08edd0",
+        "sha256": "7f61d3555ab4c4a0d0a4a845b290d298f1b4fb2b074fda790f9d6dc1dda5f3db",
+        "bytes": 3239
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/templates/auth/login.html",
+        "archive_path": "app/templates/auth/login.html",
+        "git_blob": "fd12e63ddf5d25adde07a1de41034bc55db95371",
+        "sha256": "b20ab40bc3b656bbca5883665050d9128210aa276cb6ea2be4b6f35e2e658f9c",
+        "bytes": 907
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/templates/auth/logout.html",
+        "archive_path": "app/templates/auth/logout.html",
+        "git_blob": "7791b8748b535eaaef1eb6081f8fe5e2662f40ba",
+        "sha256": "deab381fd88da90b5ae550d911a05eb2be834402cd4af7efa43c2b348f63f5f5",
+        "bytes": 262
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/templates/auth/register.html",
+        "archive_path": "app/templates/auth/register.html",
+        "git_blob": "a61f3bd111fc4e6ceb7e673c3ea6ad58a738fbfd",
+        "sha256": "fda8ddff3433ccfc32540e7e407b5c436bba7f321acaa6bb538d5eba58283c5b",
+        "bytes": 766
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/templates/base.html",
+        "archive_path": "app/templates/base.html",
+        "git_blob": "b269a68f6b89bc3bb7bc10a06b91e36068b4b618",
+        "sha256": "b86fa4a7bf5744f53390afc68b025cb9589fbadf96324a8a2ba3511195cbc4dc",
+        "bytes": 3192
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/templates/store/cart.html",
+        "archive_path": "app/templates/store/cart.html",
+        "git_blob": "bf163136a2ee255ecca6ffc4b8e11e7e238891ee",
+        "sha256": "0e84d915c6d754329ede42dab21163a0de12438d5b120a870bbe3e3a5d30f496",
+        "bytes": 853
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/templates/store/cart_v4.html",
+        "archive_path": "app/templates/store/cart_v4.html",
+        "git_blob": "a4255933462ed4a5790054d833c678c70e5a38ee",
+        "sha256": "04827dfee303764c4db1ae0a5aeadac184aed4f11d071d15a94cded8f5a867df",
+        "bytes": 1946
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/templates/store/home.html",
+        "archive_path": "app/templates/store/home.html",
+        "git_blob": "f82d233a47b78722396451ad98b23de6bfd1cb2c",
+        "sha256": "4870a3ec667a73dc7bd2d5044e1739cad0c3e632db62cb08909c8750015eee6e",
+        "bytes": 5782
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/templates/store/product.html",
+        "archive_path": "app/templates/store/product.html",
+        "git_blob": "716fbf5424293706db2304b125deddf0b878e933",
+        "sha256": "6f70c7fa5486680107995c2594c2d996fe71e175911d1e998c0a65eb92db890b",
+        "bytes": 3768
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/templates/store/product_image.html",
+        "archive_path": "app/templates/store/product_image.html",
+        "git_blob": "fbb83aa8b98dff135a6c8facd91b8435fbd7e661",
+        "sha256": "e1b2a30da50de5623f5210f76701760d2292c3c6cf1274d473d9a7eee836b0bf",
+        "bytes": 375
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/templates/store/recommendations_v4.html",
+        "archive_path": "app/templates/store/recommendations_v4.html",
+        "git_blob": "1f6720065f9c3cd0371ea091a743ae0dcd12a9e5",
+        "sha256": "dc97bbb0158a4a53a756c196fa91e3c62d17ea378d8375467726c24cf400f09c",
+        "bytes": 1144
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/templates/store/sku_fields.html",
+        "archive_path": "app/templates/store/sku_fields.html",
+        "git_blob": "a20152f381e2506baf48957dd8cc4d97a7994e95",
+        "sha256": "c4d4efd786c02dafdd5d0c52333d317c6e3b7ec26eee60dc56d6085347a0c070",
+        "bytes": 549
+      },
+      {
+        "path": "MuscleCore分析資料/website/cloud_runtime.py",
+        "archive_path": "cloud_runtime.py",
+        "git_blob": "385d9ecef2d926de75871724eba604ae6d293a5e",
+        "sha256": "7a3c019046d9ec14b3d4e762ac9d86d5600c84e07293ccdf1042b90cc2478cbd",
+        "bytes": 3821
+      },
+      {
+        "path": "MuscleCore分析資料/website/requirements-cloud-ai.txt",
+        "archive_path": "requirements-cloud-ai.txt",
+        "git_blob": "660d9ee93873c9aaab34432022318f7dd698d627",
+        "sha256": "0e206231a9a70ff6a843f07d4e6143c6553d701def9db501251a6e04b2e5a487",
+        "bytes": 432
+      },
+      {
+        "path": "MuscleCore分析資料/website/requirements-cloud.txt",
+        "archive_path": "requirements-cloud.txt",
+        "git_blob": "f04ec537cd0ec5fbb26b3aba012311d14745af4f",
+        "sha256": "2630f9296f68b7e8e80828ec5d9fee8673665ed2e15a3df8fc8df9c5603d37f0",
+        "bytes": 83
+      }
+    ],
+    "archive_equals_latest_main_blobs": true,
+    "reused_pinned_image": true
+  },
+  "source_build_readback": {
+    "checked_at": "2026-10-18T22:46:56.745Z",
+    "bucket": "vibecart-llmai-sam-build-278483818008",
+    "object": "role95-full-e5788ce-20261019.tar.gz",
+    "generation": "1792361421014751",
+    "sha256": "bd85ba17567bfdcff4b7d633551841df4b02a6dafee0a701fac46d969cf7fb4e",
+    "bytes": 2157908,
+    "build": {
+      "id": "4e12f368-f6fd-41a7-9404-86b276e3e66b",
+      "status": "SUCCESS",
+      "image": {
+        "name": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web:role95-full-e5788ce-20261019",
+        "digest": "sha256:8755ccb82902cf59430d5b2b76505c3fb6e4ed265d0ef98ba42821769edbcbdd",
+        "pushTiming": {
+          "startTime": "2026-10-18T22:10:45.524536883Z",
+          "endTime": "2026-10-18T22:10:51.001842462Z"
+        },
+        "artifactRegistryPackage": "projects/vibecart-llmai/locations/asia-east1/repositories/vibecart/packages/web/versions/sha256:8755ccb82902cf59430d5b2b76505c3fb6e4ed265d0ef98ba42821769edbcbdd"
+      },
+      "steps": [
+        {
+          "name": "gcr.io/cloud-builders/docker",
+          "status": "SUCCESS"
+        },
+        {
+          "name": "gcr.io/cloud-builders/docker",
+          "status": "SUCCESS"
+        },
+        {
+          "name": "gcr.io/cloud-builders/docker",
+          "status": "SUCCESS"
+        }
+      ],
+      "source": {
+        "storageSource": {
+          "bucket": "vibecart-llmai-sam-build-278483818008",
+          "object": "role95-full-e5788ce-20261019.tar.gz",
+          "generation": "1792361421014751"
+        }
+      },
+      "substitutions": {
+        "_IMAGE": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web:role95-full-e5788ce-20261019",
+        "_INSTALL_AI": "false"
+      },
+      "finishTime": "2026-10-18T22:10:51.330631Z"
+    }
+  },
+  "candidate_six_roles": {
+    "checked_at": "2026-10-18T22:46:29.576874+00:00",
+    "status": "passed",
+    "site": "https://reviews-1019---vibecart-web-m44ncgz5ta-de.a.run.app",
+    "accounts": [
+      {
+        "email": "cashsam@gmail.com",
+        "role": "customer",
+        "login_http": 302,
+        "landing": "/",
+        "admin_http": 302,
+        "password_get_http": 403,
+        "password_post_http": 403,
+        "server_session_verified": true,
+        "logout_http": 302,
+        "post_logout_admin_http": 302,
+        "own_session_remaining": 0,
+        "direct_cleanup_used": false
+      },
+      {
+        "email": "cashsam@gmail.com",
+        "role": "admin",
+        "login_http": 302,
+        "landing": "/admin/",
+        "admin_http": 200,
+        "password_get_http": 403,
+        "password_post_http": 403,
+        "server_session_verified": true,
+        "logout_http": 302,
+        "post_logout_admin_http": 302,
+        "own_session_remaining": 0,
+        "direct_cleanup_used": false
+      },
+      {
+        "email": "jeff841117@gmail.com",
+        "role": "customer",
+        "login_http": 302,
+        "landing": "/",
+        "admin_http": 302,
+        "password_get_http": 403,
+        "password_post_http": 403,
+        "server_session_verified": true,
+        "logout_http": 302,
+        "post_logout_admin_http": 302,
+        "own_session_remaining": 0,
+        "direct_cleanup_used": false
+      },
+      {
+        "email": "jeff841117@gmail.com",
+        "role": "admin",
+        "login_http": 302,
+        "landing": "/admin/",
+        "admin_http": 200,
+        "password_get_http": 403,
+        "password_post_http": 403,
+        "server_session_verified": true,
+        "logout_http": 302,
+        "post_logout_admin_http": 302,
+        "own_session_remaining": 0,
+        "direct_cleanup_used": false
+      },
+      {
+        "email": "chen2000401@gmail.com",
+        "role": "customer",
+        "login_http": 302,
+        "landing": "/",
+        "admin_http": 302,
+        "password_get_http": 403,
+        "password_post_http": 403,
+        "server_session_verified": true,
+        "logout_http": 302,
+        "post_logout_admin_http": 302,
+        "own_session_remaining": 0,
+        "direct_cleanup_used": false
+      },
+      {
+        "email": "chen2000401@gmail.com",
+        "role": "admin",
+        "login_http": 302,
+        "landing": "/admin/",
+        "admin_http": 200,
+        "password_get_http": 403,
+        "password_post_http": 403,
+        "server_session_verified": true,
+        "logout_http": 302,
+        "post_logout_admin_http": 302,
+        "own_session_remaining": 0,
+        "direct_cleanup_used": false
+      }
+    ],
+    "credentials_in_report": false,
+    "credentials_changed": false,
+    "mail_sent": false,
+    "session_scope": "only server-issued device tokens from six fresh clients",
+    "business_before": {
+      "sku_stock_sha256": "1b430a66adde743f295ea3468a833159c768ea2aee45cc970271c9d6d01ef2da",
+      "behavior_events": 1272,
+      "behavior_sha256": "d8f0d52de282dbd21a6ce883dfe11b1bc29d09da9bf857b8b9ba9046ca536bec",
+      "orders": 3006,
+      "order_items": 8977,
+      "product_reviews": 0
+    },
+    "business_after": {
+      "sku_stock_sha256": "1b430a66adde743f295ea3468a833159c768ea2aee45cc970271c9d6d01ef2da",
+      "behavior_events": 1272,
+      "behavior_sha256": "d8f0d52de282dbd21a6ce883dfe11b1bc29d09da9bf857b8b9ba9046ca536bec",
+      "orders": 3006,
+      "order_items": 8977,
+      "product_reviews": 0
+    },
+    "business_unchanged": true,
+    "readiness": {
+      "status": "passed",
+      "collections": 28,
+      "indexes": 89,
+      "migrations": 7,
+      "relationships": 12
+    },
+    "own_sessions_remaining": 0,
+    "preexisting_session_count": 0,
+    "preexisting_sessions_still_present": 0
+  },
+  "public_six_roles": {
+    "checked_at": "2026-10-18T22:54:32.569213+00:00",
+    "status": "passed",
+    "site": "https://vibecart-llmai.web.app",
+    "accounts": [
+      {
+        "email": "cashsam@gmail.com",
+        "role": "customer",
+        "login_http": 302,
+        "landing": "/",
+        "admin_http": 302,
+        "password_get_http": 403,
+        "password_post_http": 403,
+        "server_session_verified": true,
+        "logout_http": 302,
+        "post_logout_admin_http": 302,
+        "own_session_remaining": 0,
+        "direct_cleanup_used": false
+      },
+      {
+        "email": "cashsam@gmail.com",
+        "role": "admin",
+        "login_http": 302,
+        "landing": "/admin/",
+        "admin_http": 200,
+        "password_get_http": 403,
+        "password_post_http": 403,
+        "server_session_verified": true,
+        "logout_http": 302,
+        "post_logout_admin_http": 302,
+        "own_session_remaining": 0,
+        "direct_cleanup_used": false
+      },
+      {
+        "email": "jeff841117@gmail.com",
+        "role": "customer",
+        "login_http": 302,
+        "landing": "/",
+        "admin_http": 302,
+        "password_get_http": 403,
+        "password_post_http": 403,
+        "server_session_verified": true,
+        "logout_http": 302,
+        "post_logout_admin_http": 302,
+        "own_session_remaining": 0,
+        "direct_cleanup_used": false
+      },
+      {
+        "email": "jeff841117@gmail.com",
+        "role": "admin",
+        "login_http": 302,
+        "landing": "/admin/",
+        "admin_http": 200,
+        "password_get_http": 403,
+        "password_post_http": 403,
+        "server_session_verified": true,
+        "logout_http": 302,
+        "post_logout_admin_http": 302,
+        "own_session_remaining": 0,
+        "direct_cleanup_used": false
+      },
+      {
+        "email": "chen2000401@gmail.com",
+        "role": "customer",
+        "login_http": 302,
+        "landing": "/",
+        "admin_http": 302,
+        "password_get_http": 403,
+        "password_post_http": 403,
+        "server_session_verified": true,
+        "logout_http": 302,
+        "post_logout_admin_http": 302,
+        "own_session_remaining": 0,
+        "direct_cleanup_used": false
+      },
+      {
+        "email": "chen2000401@gmail.com",
+        "role": "admin",
+        "login_http": 302,
+        "landing": "/admin/",
+        "admin_http": 200,
+        "password_get_http": 403,
+        "password_post_http": 403,
+        "server_session_verified": true,
+        "logout_http": 302,
+        "post_logout_admin_http": 302,
+        "own_session_remaining": 0,
+        "direct_cleanup_used": false
+      }
+    ],
+    "business_snapshot_scope": "Existing business rows excluding the exact registered product/SKU/user/order/item IDs of the parallel authorized production review fixture; its cleanup verified separately",
+    "credentials_in_report": false,
+    "credentials_changed": false,
+    "mail_sent": false,
+    "session_scope": "only server-issued device tokens from six fresh clients",
+    "business_before": {
+      "sku_stock_sha256": "1b430a66adde743f295ea3468a833159c768ea2aee45cc970271c9d6d01ef2da",
+      "behavior_events": 1272,
+      "behavior_sha256": "d8f0d52de282dbd21a6ce883dfe11b1bc29d09da9bf857b8b9ba9046ca536bec",
+      "orders": 3006,
+      "order_items": 8977,
+      "product_reviews": 0
+    },
+    "business_after": {
+      "sku_stock_sha256": "1b430a66adde743f295ea3468a833159c768ea2aee45cc970271c9d6d01ef2da",
+      "behavior_events": 1272,
+      "behavior_sha256": "d8f0d52de282dbd21a6ce883dfe11b1bc29d09da9bf857b8b9ba9046ca536bec",
+      "orders": 3006,
+      "order_items": 8977,
+      "product_reviews": 0
+    },
+    "business_unchanged": true,
+    "readiness": {
+      "status": "passed",
+      "collections": 28,
+      "indexes": 89,
+      "migrations": 7,
+      "relationships": 12
+    },
+    "own_sessions_remaining": 0,
+    "other_device_preservation_evidence": "Same-image isolated remote dual-role and transaction probes with two explicitly owned devices; public preexisting session counts are observations only and may include concurrent legitimate logout",
+    "preexisting_session_count": 0,
+    "preexisting_sessions_still_present": 0
+  },
+  "public_role_initial_attempt": {
+    "status": "failed_extra_observation",
+    "all_six_role_contract_rows_passed": true,
+    "own_sessions_remaining": 0,
+    "business_unchanged": true,
+    "preexisting_observed": 1,
+    "preexisting_still_present": 0,
+    "conclusion": "An uncontrolled preexisting session may legitimately log out during concurrent acceptance. This count alone cannot attribute revocation. The probe was corrected to gate only its registered server-issued tokens; controlled other-device preservation remains covered by the isolated same-image probes. Retest passed with zero preexisting sessions."
+  },
+  "public_site": {
+    "public_site": "https://vibecart-llmai.web.app",
+    "source": "b038aaca2d2553a39d8fd958100f277c64a75486",
+    "reviews_js_SHA256": "82ef1fb2f5d8281375dfba4496dff4adc6d3c0371a3ac24626656be431219cc0",
+    "reviews_js_HTTP": 200,
+    "asset_equals_main_git_blob": true,
+    "recommendations_HTTP": 200,
+    "anonymous_counts": [
+      0,
+      0
+    ],
+    "cache_control": "private, no-store",
+    "interpretation": "No actual high-star production ratings; zero qualifying cold-start candidates; do not fabricate ratings or pad 6+4."
+  },
+  "rating_before": {
+    "registered_product": "6ad54cb365f3889553bbcb9e",
+    "product": {
+      "average_rating_display": 4.0,
+      "is_ai_recommendable": false,
+      "product_code": "sam-prod-review-854ff81168ba",
+      "rating_count": 2,
+      "rating_sum": 8,
+      "status": "active"
+    },
+    "sku": {
+      "available_quantity": 0
+    },
+    "detail_HTTP": 200,
+    "html_rating": "★ 4.0",
+    "scope": "Readback of separately authorized production acceptance fixture; no new fixture or review writes by this probe"
+  },
+  "rating_after": {
+    "checked_at": "2026-10-18T22:51:52.526312+00:00",
+    "status": "passed",
+    "public_product": "https://vibecart-llmai.web.app/product/6ad54cb365f3889553bbcb9e",
+    "fixture_id": "6ad54cb365f3889553bbcb9e",
+    "Atlas": {
+      "average_rating_display": 4.4,
+      "average_rating_raw": 4.333333333333333,
+      "is_ai_recommendable": false,
+      "rating_count": 3,
+      "rating_sum": 13
+    },
+    "published_ratings": [
+      4,
+      4,
+      5
+    ],
+    "HTML_rating": "★ 4.4",
+    "HTML_count": 3,
+    "HTTP": 200,
+    "same_fixture_before_display": 4.0,
+    "same_fixture_before_count": 2,
+    "this_probe_scope": "independent Atlas and public HTML reads; browser no-reload evidence produced by the authorized deployment task separately"
+  },
+  "browser": {
+    "before": {
+      "count": "（2筆評價）",
+      "forms": 1,
+      "rating": "★ 4.0",
+      "url": "https://vibecart-llmai.web.app/product/6ad54cb365f3889553bbcb9e"
+    },
+    "after": {
+      "count": "（3筆評價）",
+      "formDisabled": true,
+      "formRetained": 1,
+      "rating": "★ 4.4",
+      "status": "評價已送出，商品星等已更新。",
+      "url": "https://vibecart-llmai.web.app/product/6ad54cb365f3889553bbcb9e"
+    },
+    "withoutReload": true
+  },
+  "formal_fixture_cleanup": {
+    "collections": {
+      "product_reviews": {
+        "deleted": 3,
+        "remaining": 0
+      },
+      "order_items": {
+        "deleted": 3,
+        "remaining": 0
+      },
+      "orders": {
+        "deleted": 3,
+        "remaining": 0
+      },
+      "behavior_events": {
+        "deleted": 4,
+        "remaining": 0
+      },
+      "auth_sessions": {
+        "deleted": 0,
+        "remaining": 0
+      },
+      "users": {
+        "deleted": 1,
+        "remaining": 0
+      },
+      "product_skus": {
+        "deleted": 1,
+        "remaining": 0
+      },
+      "products": {
+        "deleted": 1,
+        "remaining": 0
+      }
+    },
+    "verified": true,
+    "at": "2026-10-18T22:52:18.830953+00:00"
+  },
+  "independent_cleanup": {
+    "checked_at": "2026-10-18T22:54:10.356839+00:00",
+    "status": "passed",
+    "registered_remaining": {
+      "products": 0,
+      "product_skus": 0,
+      "users": 0,
+      "orders": 0,
+      "order_items": 0,
+      "product_reviews": 0,
+      "behavior_events": 0,
+      "auth_sessions": 0
+    },
+    "business_snapshot": {
+      "products": {
+        "count": 336,
+        "sha256": "79dc61b6e7d49bea0bef1fba236f2050c043bd7b0ff171d5ab9247a9b6562013"
+      },
+      "product_skus": {
+        "count": 336,
+        "sha256": "ab2502e841449ce12734eef867ceea6410956e74f035036b81eadedbb2220082"
+      },
+      "users": {
+        "count": 612,
+        "sha256": "3e2f4e1ebed2f97fb81369aca4f398771a8a64cf926e3be3a48c359a7dedf0ad"
+      },
+      "orders": {
+        "count": 3006,
+        "sha256": "7ad4d30c62c3653fcfc8e714f91c731ed2f3f92ed78ce47cd5ce79846eb1a77e"
+      },
+      "order_items": {
+        "count": 8977,
+        "sha256": "64fa0769fa46905de2dc65059b25e59d73ac2ce20c0855a1a052e5173a026bc0"
+      },
+      "product_reviews": {
+        "count": 0,
+        "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      "behavior_events": {
+        "count": 1272,
+        "sha256": "d8f0d52de282dbd21a6ce883dfe11b1bc29d09da9bf857b8b9ba9046ca536bec"
+      }
+    },
+    "existing_business_equals_pre_fixture": true,
+    "normal_login_timestamps_excluded": true,
+    "fixture_public_HTTP_after_cleanup": 404,
+    "synthetic_events": 1240,
+    "actual_high_star_products": 0,
+    "this_probe_writes": false
+  },
+  "private_remote_execution": {
+    "name": "sam-reviews-prod-accept-20261019",
+    "started_at": "2026-10-18T22:41:49.755Z",
+    "results": [
+      {
+        "at": "2026-10-18T22:43:17.903615Z",
+        "sam_preview_job_probe": {
+          "independent_cleanup": {
+            "users": 0,
+            "auth_sessions": 0,
+            "behavior_events": 0
+          },
+          "code": 0,
+          "file": "remote_dual_role_acceptance_probe.py",
+          "report": {
+            "disabled_role_denied": true,
+            "posted_role_ignored": true,
+            "cleanup": {
+              "behavior_events_remaining": 0,
+              "verified": true,
+              "behavior_events_deleted": 0,
+              "users_remaining": 0,
+              "auth_sessions_deleted": 0,
+              "users_deleted": 6,
+              "auth_sessions_remaining": 0
+            },
+            "ambiguous_password_denied": true,
+            "wrong_password_denied": true,
+            "status": "passed",
+            "scope": "six disposable same-email/role identities; no real people or real passwords",
+            "fixture_sessions_after_logout": 0,
+            "other_device_preserved": true,
+            "fixture_ids": [
+              "6ad54b44b1d7138b3cfb6409",
+              "6ad54b44b1d7138b3cfb640a",
+              "6ad54b44b1d7138b3cfb640b",
+              "6ad54b44b1d7138b3cfb640c",
+              "6ad54b44b1d7138b3cfb640d",
+              "6ad54b44b1d7138b3cfb640e"
+            ],
+            "probe_id": "sam-dual-role-4e951e4b5f327145",
+            "six_roles": [
+              {
+                "identity": 1,
+                "own_logout": true,
+                "password_changes": 403,
+                "role": "customer",
+                "login": 302,
+                "role_boundary": 302
+              },
+              {
+                "role_boundary": 200,
+                "role": "admin",
+                "login": 302,
+                "password_changes": 403,
+                "identity": 1,
+                "own_logout": true
+              },
+              {
+                "identity": 2,
+                "password_changes": 403,
+                "login": 302,
+                "role_boundary": 302,
+                "role": "customer",
+                "own_logout": true
+              },
+              {
+                "login": 302,
+                "role": "admin",
+                "role_boundary": 200,
+                "password_changes": 403,
+                "identity": 2,
+                "own_logout": true
+              },
+              {
+                "password_changes": 403,
+                "login": 302,
+                "identity": 3,
+                "role_boundary": 302,
+                "role": "customer",
+                "own_logout": true
+              },
+              {
+                "identity": 3,
+                "own_logout": true,
+                "password_changes": 403,
+                "login": 302,
+                "role_boundary": 200,
+                "role": "admin"
+              }
+            ],
+            "revision": "vibecart-acceptance-pr21-role95-e5788ce",
+            "role_switch_revokes_prior_device": true,
+            "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:8755ccb82902cf59430d5b2b76505c3fb6e4ed265d0ef98ba42821769edbcbdd"
+          }
+        }
+      },
+      {
+        "at": "2026-10-18T22:44:16.809685Z",
+        "sam_preview_job_probe": {
+          "code": 0,
+          "report": {
+            "reviews": {
+              "default_excluded": true,
+              "concurrent_distinct_reviews_200": true,
+              "changed_retry_409": true,
+              "concurrent_count": 5,
+              "concurrent_identical_200": true,
+              "concurrent_sum": 19,
+              "concurrent_display": 3.8,
+              "after_insert_product_failure_rollback": true,
+              "delivered_html_fallback_303": true,
+              "sum": 13,
+              "count": 3,
+              "display": 4.4,
+              "persisted_html_equal": true,
+              "after_insert_product_failure_http": 409
+            },
+            "stage": "revoked_device",
+            "status": "passed",
+            "eligibility": {
+              "invalid_rating_400": true,
+              "csrf_400": true,
+              "unpaid_incomplete_cancelled_other_owner_400": true
+            },
+            "cleanup": {
+              "behavior_events_deleted": 1009,
+              "verified": true,
+              "orders_deleted": 11,
+              "order_items_remaining": 0,
+              "users_deleted": 3,
+              "users_remaining": 0,
+              "products_deleted": 18,
+              "auth_sessions_deleted": 2,
+              "order_items_deleted": 11,
+              "behavior_events_remaining": 0,
+              "orders_remaining": 0,
+              "product_skus_remaining": 0,
+              "products_remaining": 0,
+              "product_reviews_remaining": 0,
+              "auth_sessions_remaining": 0,
+              "product_skus_deleted": 18,
+              "product_reviews_deleted": 6
+            },
+            "ranking": {
+              "cross_count": 4,
+              "insufficient_candidates_not_filled_with_unavailable": true,
+              "other_member_unchanged": true,
+              "caps_3_and_2": true,
+              "personal_count": 6,
+              "unique": 10,
+              "synthetic_monitor_count_unchanged": 21,
+              "synthetic_1001_unchanged": true,
+              "unavailable_default_excluded": true,
+              "cross_ratings": [
+                5,
+                4.9,
+                4.8,
+                4.7
+              ]
+            },
+            "fixture_scope": "isolated simulated paid states and ranking aggregates only",
+            "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:8755ccb82902cf59430d5b2b76505c3fb6e4ed265d0ef98ba42821769edbcbdd",
+            "revoked_device_denied": true,
+            "probe_id": "sam-reviews-d03013067a053810",
+            "expect_bge": false,
+            "fixture_ids": {
+              "products": [
+                "6ad54b87f78a56af4e248e11",
+                "6ad54b87f78a56af4e248e12",
+                "6ad54b87f78a56af4e248e13",
+                "6ad54b87f78a56af4e248e14",
+                "6ad54b87f78a56af4e248e15",
+                "6ad54b87f78a56af4e248e16",
+                "6ad54b87f78a56af4e248e17",
+                "6ad54b87f78a56af4e248e18",
+                "6ad54b87f78a56af4e248e19",
+                "6ad54b87f78a56af4e248e1a",
+                "6ad54b87f78a56af4e248e1b",
+                "6ad54b87f78a56af4e248e1c",
+                "6ad54b87f78a56af4e248e1d",
+                "6ad54b87f78a56af4e248e1e",
+                "6ad54b87f78a56af4e248e1f",
+                "6ad54b87f78a56af4e248e20",
+                "6ad54b87f78a56af4e248e21",
+                "6ad54b87f78a56af4e248e22"
+              ],
+              "users": [
+                "6ad54b87f78a56af4e248e0e",
+                "6ad54b87f78a56af4e248e0f",
+                "6ad54b87f78a56af4e248e10"
+              ],
+              "skus": [
+                "6ad54b87f78a56af4e248e23",
+                "6ad54b87f78a56af4e248e24",
+                "6ad54b87f78a56af4e248e25",
+                "6ad54b87f78a56af4e248e26",
+                "6ad54b87f78a56af4e248e27",
+                "6ad54b87f78a56af4e248e28",
+                "6ad54b87f78a56af4e248e29",
+                "6ad54b87f78a56af4e248e2a",
+                "6ad54b87f78a56af4e248e2b",
+                "6ad54b87f78a56af4e248e2c",
+                "6ad54b87f78a56af4e248e2d",
+                "6ad54b87f78a56af4e248e2e",
+                "6ad54b87f78a56af4e248e2f",
+                "6ad54b87f78a56af4e248e30",
+                "6ad54b87f78a56af4e248e31",
+                "6ad54b87f78a56af4e248e32",
+                "6ad54b87f78a56af4e248e33",
+                "6ad54b87f78a56af4e248e34"
+              ],
+              "lines": [
+                "6ad54b8bf78a56af4e248e40",
+                "6ad54b8cf78a56af4e248e42",
+                "6ad54b8cf78a56af4e248e44",
+                "6ad54b8cf78a56af4e248e46",
+                "6ad54b8cf78a56af4e248e48",
+                "6ad54b8cf78a56af4e248e4a",
+                "6ad54b8cf78a56af4e248e4c",
+                "6ad54b8cf78a56af4e248e4e",
+                "6ad54b8df78a56af4e248e50",
+                "6ad54bbaf78a56af4e249242",
+                "6ad54bbcf78a56af4e249244"
+              ],
+              "orders": [
+                "6ad54b8bf78a56af4e248e3f",
+                "6ad54b8cf78a56af4e248e41",
+                "6ad54b8cf78a56af4e248e43",
+                "6ad54b8cf78a56af4e248e45",
+                "6ad54b8cf78a56af4e248e47",
+                "6ad54b8cf78a56af4e248e49",
+                "6ad54b8cf78a56af4e248e4b",
+                "6ad54b8cf78a56af4e248e4d",
+                "6ad54b8df78a56af4e248e4f",
+                "6ad54bbaf78a56af4e249241",
+                "6ad54bbcf78a56af4e249243"
+              ]
+            },
+            "revision": "vibecart-acceptance-pr21-role95-e5788ce"
+          },
+          "file": "remote_reviews_acceptance_probe.py"
+        }
+      },
+      {
+        "at": "2026-10-18T22:44:52.786221Z",
+        "sam_preview_job_probe": {
+          "code": 0,
+          "report": {
+            "service_revision": "vibecart-acceptance-pr21-role95-e5788ce",
+            "accounts": [
+              {
+                "id": "6ad54bc15432423fa03ca1f8",
+                "role": "admin"
+              },
+              {
+                "role": "customer",
+                "id": "6ad54bc15432423fa03ca1f9"
+              }
+            ],
+            "database": "vibecart_acceptance_pr21",
+            "service_image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:8755ccb82902cf59430d5b2b76505c3fb6e4ed265d0ef98ba42821769edbcbdd",
+            "probe_id": "sam-accounts-4ab6a400101fc598",
+            "cleanup": {
+              "retirement": {
+                "sessions_deleted": 1,
+                "accounts_present": 2,
+                "verified": true,
+                "sessions_revoked": true,
+                "disabled": true,
+                "sessions_remaining": 0
+              },
+              "users_deleted": 2,
+              "users_remaining": 0,
+              "verified": true
+            },
+            "checks": {
+              "admin_read_pages": true,
+              "same_browser_relogin_old_cookie_denied_second_device_live": true,
+              "reenable_requires_new_login_old_cookies_stay_invalid": true,
+              "customer_two_sessions_admin_denied": true,
+              "all_customer_sessions_revoked_admin_unaffected": true,
+              "anonymous_member_admin_denied": true,
+              "disabled_accounts_login_and_all_devices_denied": true
+            },
+            "credentials_persisted": false,
+            "status": "passed",
+            "retirement_before_cleanup": {
+              "verified": true,
+              "sessions_revoked": true,
+              "sessions_remaining": 0,
+              "disabled": true,
+              "accounts_present": 2,
+              "sessions_deleted": 3
+            }
+          },
+          "file": "remote_account_acceptance_probe.py"
+        }
+      },
+      {
+        "at": "2026-10-18T22:46:02.182787Z",
+        "sam_preview_job_probe": {
+          "file": "remote_transaction_acceptance_probe.py",
+          "report": {
+            "customer_admin_denied": true,
+            "cleanup": {
+              "order_items_remaining": 0,
+              "carts_remaining": 0,
+              "auth_sessions": 3,
+              "products": 1,
+              "orders_remaining": 0,
+              "cart_events": 9,
+              "auth_sessions_remaining": 0,
+              "carts": 3,
+              "verified": true,
+              "products_remaining": 0,
+              "order_items": 2,
+              "cart_events_remaining": 0,
+              "users": 3,
+              "orders": 2,
+              "product_skus": 2,
+              "behavior_events_remaining": 0,
+              "product_skus_remaining": 0,
+              "behavior_events": 9,
+              "users_remaining": 0
+            },
+            "session_security": {
+              "maintainer_revoke_all_denied": true,
+              "old_cookie_denied": true,
+              "same_browser_relogin": true,
+              "other_device_preserved": true,
+              "inactive_customer_both_devices_denied": true,
+              "d5_ui_tested": false
+            },
+            "last_stock_concurrency": {
+              "stock_remaining": 0,
+              "http_statuses": [
+                400,
+                200
+              ],
+              "orders_total_including_original": 2,
+              "parallel_clients": 2,
+              "successful_checkouts": 1
+            },
+            "role_checks": {
+              "active_admin_200": true,
+              "inactive_admin_denied": true,
+              "missing_csrf_400": true
+            },
+            "checkout_persisted": true,
+            "two_device_sessions": true,
+            "per_device_logout": true,
+            "status": "passed",
+            "service_revision": "vibecart-acceptance-pr21-role95-e5788ce",
+            "stock_after_checkout": 1,
+            "retry_same_order": true,
+            "add_to_cart": true,
+            "probe_id": "ren-txn-b2f6083ee2293f07",
+            "service_image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:8755ccb82902cf59430d5b2b76505c3fb6e4ed265d0ef98ba42821769edbcbdd",
+            "h07_events": {
+              "required_contract_fields": true,
+              "event_type_counts": {
+                "PRODUCT_VIEW": 1,
+                "SEARCH": 1,
+                "PURCHASE": 1,
+                "ADD_TO_CART": 2
+              },
+              "demo_purchase_excluded_from_attribution": true,
+              "status": "passed",
+              "unique_event_ids": true,
+              "search_product_order_cart_links": true,
+              "readback_scope": "new disposable private user; real HTTPS-generated events",
+              "add_to_cart_links_and_quantities": true
+            },
+            "conflict_409": true,
+            "add_http": 200,
+            "stock_failure_rollback": {
+              "second_sku_unavailable_http": 400,
+              "cart_revision_preserved": true,
+              "arbitrary_fault_injection_tested": false,
+              "cart_event_counts_unchanged": true,
+              "persisted_before": {
+                "orders": 2,
+                "order_items": 2,
+                "cart_events": 9,
+                "behavior_events": 9
+              },
+              "order_items_scope": "fixture sku_id including orphan items",
+              "first_sku_stock_preserved": true,
+              "persisted_after": {
+                "order_items": 2,
+                "behavior_events": 9,
+                "cart_events": 9,
+                "orders": 2
+              },
+              "order_item_event_counts_unchanged": true
+            },
+            "h05": {
+              "readded_for_checkout_quantity": 1,
+              "status": "passed",
+              "add_two_update_one_reload_remove_reload": true,
+              "http_statuses": [
+                200,
+                200,
+                200,
+                200
+              ],
+              "stale_state_unchanged": true,
+              "stale_revision_http": 409,
+              "revision_sequence": [
+                1,
+                2,
+                3,
+                4
+              ]
+            }
+          },
+          "code": 0
+        }
+      },
+      {
+        "at": "2026-10-18T22:46:02.404521Z",
+        "sam_role95_index_cleanup": {
+          "restored": true,
+          "before": [
+            {
+              "unique": false,
+              "key": [
+                [
+                  "_id",
+                  1
+                ]
+              ],
+              "name": "_id_"
+            }
+          ],
+          "after": [
+            {
+              "name": "_id_",
+              "unique": false,
+              "key": [
+                [
+                  "_id",
+                  1
+                ]
+              ]
+            }
+          ],
+          "scope": "vibecart_acceptance_pr21",
+          "temporary_index_scope": {
+            "acceptance_run": "sam-dual-role-4e951e4b5f327145"
+          }
+        }
+      },
+      {
+        "at": "2026-10-18T22:46:02.404536Z",
+        "sam_preview_job_complete": {
+          "acceptance_user_indexes_restored": true,
+          "probes": 4,
+          "status": "passed"
+        }
+      }
+    ],
+    "execution": "projects/vibecart-llmai/locations/asia-east1/jobs/sam-reviews-prod-accept-20261019/executions/sam-reviews-prod-accept-20261019-hhprv",
+    "conditions": [
+      {
+        "type": "Started",
+        "state": "CONDITION_SUCCEEDED",
+        "message": "Started deployed execution in 8.31s.",
+        "lastTransitionTime": "2026-10-18T22:42:04.999142Z"
+      },
+      {
+        "type": "Completed",
+        "state": "CONDITION_SUCCEEDED",
+        "message": "Execution completed successfully in 4m7.29s.",
+        "lastTransitionTime": "2026-10-18T22:46:06.454587Z"
+      },
+      {
+        "type": "ContainerReady",
+        "state": "CONDITION_SUCCEEDED",
+        "message": "Imported container image.",
+        "lastTransitionTime": "2026-10-18T22:41:56.582453Z"
+      },
+      {
+        "type": "ResourcesAvailable",
+        "state": "CONDITION_SUCCEEDED",
+        "message": "Provisioned imported containers.",
+        "lastTransitionTime": "2026-10-18T22:41:56.679743Z"
+      }
+    ],
+    "succeededCount": 1
+  },
+  "local_tests": {
+    "checked_at": "2026-10-18T22:42:41.946379+00:00",
+    "status": "passed",
+    "target": "disposable credential-free localhost replica set",
+    "container_removed": true,
+    "tests": {
+      "tests": 275,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "remaining_databases": [
+      "admin",
+      "config",
+      "local"
+    ],
+    "fixtures_removed": true
+  },
+  "post_cutover_logs": {
+    "checked_at": "2026-10-18T22:55:58.263Z",
+    "revision": "vibecart-web-reviews-b038aaca",
+    "since": "2026-10-18T22:47:55Z",
+    "entries": 314,
+    "http_requests": 313,
+    "status_counts": {
+      "200": 179,
+      "302": 88,
+      "403": 42,
+      "404": 4
+    },
+    "severity_counts": {
+      "INFO": 268,
+      "WARNING": 46
+    },
+    "server_errors": [],
+    "truncated": false,
+    "scope": "Post-cutover request log readback; bounded observation only, not an SLO claim"
+  },
+  "original_runtime": [
+    {
+      "path": "MuscleCore分析資料/website/.dockerignore",
+      "canonical_sha256": "e93ab8b6e4a05bb46354e2dc4ec06124c2eb241fdd872b3424250df4e35afd94",
+      "original_sha256": "e93ab8b6e4a05bb46354e2dc4ec06124c2eb241fdd872b3424250df4e35afd94",
+      "equal": true
+    },
+    {
+      "path": "MuscleCore分析資料/website/Dockerfile",
+      "canonical_sha256": "6020d6e52ad69fdf55d202fd1703b1e8a4106a304628e310164b439d9c5f31a7",
+      "original_sha256": "6020d6e52ad69fdf55d202fd1703b1e8a4106a304628e310164b439d9c5f31a7",
+      "equal": true
+    },
+    {
+      "path": "VibeCart_AI/services/cart_service.py",
+      "canonical_sha256": "5e416e6d4945d391ec633845ea493fd152262abf6d5b489b503160db6d58457f",
+      "original_sha256": "5e416e6d4945d391ec633845ea493fd152262abf6d5b489b503160db6d58457f",
+      "equal": true
+    },
+    {
+      "path": "VibeCart_AI/services/review_service.py",
+      "canonical_sha256": "262dd2f09ba04ad66a4a63bcb16e9214039e74bd41531271a4b8e93619a564d5",
+      "original_sha256": "262dd2f09ba04ad66a4a63bcb16e9214039e74bd41531271a4b8e93619a564d5",
+      "equal": true
+    },
+    {
+      "path": "VibeCart_AI/services/sku_cart_service.py",
+      "canonical_sha256": "6ef2272284f9c36d27923fbf4448854d6de1305dd1b4e001a82f40ef6eccd649",
+      "original_sha256": "6ef2272284f9c36d27923fbf4448854d6de1305dd1b4e001a82f40ef6eccd649",
+      "equal": true
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/__init__.py",
+      "canonical_sha256": "48c19b3ba9d217fb68ec093317be4a7c9725d55578b28b5727887c01f3c9675e",
+      "original_sha256": "48c19b3ba9d217fb68ec093317be4a7c9725d55578b28b5727887c01f3c9675e",
+      "equal": true
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/admin.py",
+      "canonical_sha256": "f7db8ca32ed05e48506c98de533d0ba4c3f5430154462cc8974761cc4415b18e",
+      "original_sha256": "f7db8ca32ed05e48506c98de533d0ba4c3f5430154462cc8974761cc4415b18e",
+      "equal": true
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/auth.py",
+      "canonical_sha256": "6d69044df007d4bacb3fc9b32a50b3a6df690124515841b211cc770f2e0f925d",
+      "original_sha256": "6d69044df007d4bacb3fc9b32a50b3a6df690124515841b211cc770f2e0f925d",
+      "equal": true
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/db.py",
+      "canonical_sha256": "e429461ecbcf683f551df962c66f765025472be033dac84f86c76a9a5eec2e88",
+      "original_sha256": "e429461ecbcf683f551df962c66f765025472be033dac84f86c76a9a5eec2e88",
+      "equal": true
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/security.py",
+      "canonical_sha256": "90a920e1a3e70e6b968252d3fa8ba5bcf160c7d6ef3b04caa4ea16f03515f394",
+      "original_sha256": "90a920e1a3e70e6b968252d3fa8ba5bcf160c7d6ef3b04caa4ea16f03515f394",
+      "equal": true
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/services/__init__.py",
+      "canonical_sha256": "ad99f2d924998782cb45c4afff9971baa500c70ab753ad2afbb4ad3c63c365d8",
+      "original_sha256": "ad99f2d924998782cb45c4afff9971baa500c70ab753ad2afbb4ad3c63c365d8",
+      "equal": true
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/services/ai_compare.py",
+      "canonical_sha256": "d4c0e5a428b05e5aa7b731f80a5f5a22fd33066e9684401e50c758b094dbfa73",
+      "original_sha256": "d4c0e5a428b05e5aa7b731f80a5f5a22fd33066e9684401e50c758b094dbfa73",
+      "equal": true
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/services/ai_payload.py",
+      "canonical_sha256": "bf2ff4d1f0ce8c2402c666b18ee86ef17a8e7051b914cb0fd74ebf298f53a178",
+      "original_sha256": "bf2ff4d1f0ce8c2402c666b18ee86ef17a8e7051b914cb0fd74ebf298f53a178",
+      "equal": true
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/services/ai_workflows.py",
+      "canonical_sha256": "c58a53ac7db1def62b5908b1c6d56bb6fff331abc5998386fb8766d99d526332",
+      "original_sha256": "c58a53ac7db1def62b5908b1c6d56bb6fff331abc5998386fb8766d99d526332",
+      "equal": true
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/services/analytics.py",
+      "canonical_sha256": "fd47fc513b71a961d4ecc5c1f1045d14cd1674baebde1b76cd58c9f3ac6c056b",
+      "original_sha256": "fd47fc513b71a961d4ecc5c1f1045d14cd1674baebde1b76cd58c9f3ac6c056b",
+      "equal": true
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/services/behavior_scope.py",
+      "canonical_sha256": "57b611a8602f18ea2e725f7429caa11e898233c25f9405a2335ee2b34b6dc6ba",
+      "original_sha256": "57b611a8602f18ea2e725f7429caa11e898233c25f9405a2335ee2b34b6dc6ba",
+      "equal": true
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/services/dashboard.py",
+      "canonical_sha256": "a89a2b61ee1a53656ecd78ee3cb02d6fa07e1f76d9006c328a6b81784558b5c6",
+      "original_sha256": "a89a2b61ee1a53656ecd78ee3cb02d6fa07e1f76d9006c328a6b81784558b5c6",
+      "equal": true
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/services/local_ai.py",
+      "canonical_sha256": "1b88d118e75a3a908ca75363e0b86cf425b1ab098a7bf74196a7f8f2add8efa1",
+      "original_sha256": "1b88d118e75a3a908ca75363e0b86cf425b1ab098a7bf74196a7f8f2add8efa1",
+      "equal": true
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/services/member_events.py",
+      "canonical_sha256": "3c5c69dc30f0f5cf46b7eabcad718597b4f3ec570ad8999364e63e2efc93454f",
+      "original_sha256": "3c5c69dc30f0f5cf46b7eabcad718597b4f3ec570ad8999364e63e2efc93454f",
+      "equal": true
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/services/member_sessions.py",
+      "canonical_sha256": "00ac249cc04d743157e4e4c2d9304791c496e61a5a5ba3b332534d6a722a059e",
+      "original_sha256": "00ac249cc04d743157e4e4c2d9304791c496e61a5a5ba3b332534d6a722a059e",
+      "equal": true
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/services/recommendation.py",
+      "canonical_sha256": "93f0ca7725135e43981c3024e7a5d6ab4eed7a7d315e9db10fc50d7e012988cf",
+      "original_sha256": "93f0ca7725135e43981c3024e7a5d6ab4eed7a7d315e9db10fc50d7e012988cf",
+      "equal": true
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/services/sku_gateway.py",
+      "canonical_sha256": "62453f330a703ef086ab4ecda99f6dc490f93e9ab4a9be967669bf9e82306f08",
+      "original_sha256": "62453f330a703ef086ab4ecda99f6dc490f93e9ab4a9be967669bf9e82306f08",
+      "equal": true
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/services/storefront_ranking.py",
+      "canonical_sha256": "389105fe3ea8001980b1fa37ede86d622f9ec3d240462611c0eddcfac46fa808",
+      "original_sha256": "389105fe3ea8001980b1fa37ede86d622f9ec3d240462611c0eddcfac46fa808",
+      "equal": true
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/static/css/admin.css",
+      "canonical_sha256": "130bdc8a96e1a1b6cece9a96049b5f328b6914b31604a6eb5dd378892835eb92",
+      "original_sha256": "130bdc8a96e1a1b6cece9a96049b5f328b6914b31604a6eb5dd378892835eb92",
+      "equal": true
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/static/css/footer-team.css",
+      "canonical_sha256": "238fc779c6bbc90f940210fccdac9ca2ebb6a302b499f47016804ea0e5abe30d",
+      "original_sha256": "238fc779c6bbc90f940210fccdac9ca2ebb6a302b499f47016804ea0e5abe30d",
+      "equal": true
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/static/css/main.css",
+      "canonical_sha256": "83d5e22a1b91bbf0128710f47a9fd70448d615661c6ac1a6a587fea21295b4f4",
+      "original_sha256": "83d5e22a1b91bbf0128710f47a9fd70448d615661c6ac1a6a587fea21295b4f4",
+      "equal": true
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/static/img/hero.png",
+      "canonical_sha256": "a0ef2f0fee2b163b02edee7102c975668d5f78286786a575b4d42ef81e05633e",
+      "original_sha256": "a0ef2f0fee2b163b02edee7102c975668d5f78286786a575b4d42ef81e05633e",
+      "equal": true
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/static/img/product-placeholder.svg",
+      "canonical_sha256": "50cfb1ca36a0122d85ec6d51b1913b685c9885064c5a8701e5aa7d841b44dee3",
+      "original_sha256": "50cfb1ca36a0122d85ec6d51b1913b685c9885064c5a8701e5aa7d841b44dee3",
+      "equal": true
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/static/img/team/Jeff-s.png",
+      "canonical_sha256": "193a5595bb025ac6999082b6e574a8876199f7e7b18aeb173ff2f151139406c6",
+      "original_sha256": "193a5595bb025ac6999082b6e574a8876199f7e7b18aeb173ff2f151139406c6",
+      "equal": true
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/static/img/team/Ren-s.png",
+      "canonical_sha256": "20f365e734bc0a24047bcadb5791e3ef98ef9a2ee6541eb3ca24980c427295a2",
+      "original_sha256": "20f365e734bc0a24047bcadb5791e3ef98ef9a2ee6541eb3ca24980c427295a2",
+      "equal": true
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/static/img/team/sam-s.png",
+      "canonical_sha256": "25d975cf616ab59ee34a3e1a5e6fe39bfe7c4ccc281d0ee2a19e25d069b80252",
+      "original_sha256": "25d975cf616ab59ee34a3e1a5e6fe39bfe7c4ccc281d0ee2a19e25d069b80252",
+      "equal": true
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/static/js/admin.js",
+      "canonical_sha256": "c537c86942d7bb8ef6fecaa9c991fa992f18ba7b69a235e22e9507e0dd255115",
+      "original_sha256": "c537c86942d7bb8ef6fecaa9c991fa992f18ba7b69a235e22e9507e0dd255115",
+      "equal": true
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/static/js/reviews.js",
+      "canonical_sha256": "82ef1fb2f5d8281375dfba4496dff4adc6d3c0371a3ac24626656be431219cc0",
+      "original_sha256": "82ef1fb2f5d8281375dfba4496dff4adc6d3c0371a3ac24626656be431219cc0",
+      "equal": true
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/store.py",
+      "canonical_sha256": "7f8e251f0b6f77b87cf0ce4cd64bfe546eef32fc19cce169a86e66b2c68ad75f",
+      "original_sha256": "7f8e251f0b6f77b87cf0ce4cd64bfe546eef32fc19cce169a86e66b2c68ad75f",
+      "equal": true
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/store_v4.py",
+      "canonical_sha256": "743150b2e6de3a5542a2df378104c96969a67f657d49c4e1fa4720110abaad12",
+      "original_sha256": "743150b2e6de3a5542a2df378104c96969a67f657d49c4e1fa4720110abaad12",
+      "equal": true
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/templates/admin/ai_compare.html",
+      "canonical_sha256": "4de1c694a0c29bc1b383575b086df85ae8932a3c5169c8c93d046e0473590aa9",
+      "original_sha256": "4de1c694a0c29bc1b383575b086df85ae8932a3c5169c8c93d046e0473590aa9",
+      "equal": true
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/templates/admin/ai_insight.html",
+      "canonical_sha256": "d0d3f8f9e062acaa06c7135082a3de59a964e0ba281bf8dfeb8c422f0c87f82b",
+      "original_sha256": "d0d3f8f9e062acaa06c7135082a3de59a964e0ba281bf8dfeb8c422f0c87f82b",
+      "equal": true
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/templates/admin/ai_recommendation.html",
+      "canonical_sha256": "c10ec9b065ca6aaa14058881665369ce19162a87cc8021044f308d4c7dc77c0a",
+      "original_sha256": "c10ec9b065ca6aaa14058881665369ce19162a87cc8021044f308d4c7dc77c0a",
+      "equal": true
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/templates/admin/dashboard.html",
+      "canonical_sha256": "97f803ec91a1025e006e54ca77513bd2ffea88dae252b97746beff987c8b8754",
+      "original_sha256": "97f803ec91a1025e006e54ca77513bd2ffea88dae252b97746beff987c8b8754",
+      "equal": true
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/templates/admin/filter_error.html",
+      "canonical_sha256": "46f5b44fb119ea3654c24cd43ba82023b0378913127869f3fda17d865f1ea46a",
+      "original_sha256": "46f5b44fb119ea3654c24cd43ba82023b0378913127869f3fda17d865f1ea46a",
+      "equal": true
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/templates/admin/layout.html",
+      "canonical_sha256": "68eecd71b1cfaa7fb6354dee0721f2989bb68d8db92fbcc2024ae74eec98fd59",
+      "original_sha256": "68eecd71b1cfaa7fb6354dee0721f2989bb68d8db92fbcc2024ae74eec98fd59",
+      "equal": true
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/templates/admin/recommendations.html",
+      "canonical_sha256": "7f61d3555ab4c4a0d0a4a845b290d298f1b4fb2b074fda790f9d6dc1dda5f3db",
+      "original_sha256": "7f61d3555ab4c4a0d0a4a845b290d298f1b4fb2b074fda790f9d6dc1dda5f3db",
+      "equal": true
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/templates/auth/login.html",
+      "canonical_sha256": "b20ab40bc3b656bbca5883665050d9128210aa276cb6ea2be4b6f35e2e658f9c",
+      "original_sha256": "b20ab40bc3b656bbca5883665050d9128210aa276cb6ea2be4b6f35e2e658f9c",
+      "equal": true
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/templates/auth/logout.html",
+      "canonical_sha256": "deab381fd88da90b5ae550d911a05eb2be834402cd4af7efa43c2b348f63f5f5",
+      "original_sha256": "deab381fd88da90b5ae550d911a05eb2be834402cd4af7efa43c2b348f63f5f5",
+      "equal": true
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/templates/auth/register.html",
+      "canonical_sha256": "fda8ddff3433ccfc32540e7e407b5c436bba7f321acaa6bb538d5eba58283c5b",
+      "original_sha256": "fda8ddff3433ccfc32540e7e407b5c436bba7f321acaa6bb538d5eba58283c5b",
+      "equal": true
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/templates/base.html",
+      "canonical_sha256": "b86fa4a7bf5744f53390afc68b025cb9589fbadf96324a8a2ba3511195cbc4dc",
+      "original_sha256": "c4012edac3c357b4a88f9269ada7c38474c9c9af532804dadbfa70df1002d81a",
+      "equal": false
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/templates/store/cart.html",
+      "canonical_sha256": "0e84d915c6d754329ede42dab21163a0de12438d5b120a870bbe3e3a5d30f496",
+      "original_sha256": "0e84d915c6d754329ede42dab21163a0de12438d5b120a870bbe3e3a5d30f496",
+      "equal": true
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/templates/store/cart_v4.html",
+      "canonical_sha256": "04827dfee303764c4db1ae0a5aeadac184aed4f11d071d15a94cded8f5a867df",
+      "original_sha256": "04827dfee303764c4db1ae0a5aeadac184aed4f11d071d15a94cded8f5a867df",
+      "equal": true
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/templates/store/home.html",
+      "canonical_sha256": "4870a3ec667a73dc7bd2d5044e1739cad0c3e632db62cb08909c8750015eee6e",
+      "original_sha256": "4870a3ec667a73dc7bd2d5044e1739cad0c3e632db62cb08909c8750015eee6e",
+      "equal": true
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/templates/store/product.html",
+      "canonical_sha256": "6f70c7fa5486680107995c2594c2d996fe71e175911d1e998c0a65eb92db890b",
+      "original_sha256": "6f70c7fa5486680107995c2594c2d996fe71e175911d1e998c0a65eb92db890b",
+      "equal": true
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/templates/store/product_image.html",
+      "canonical_sha256": "e1b2a30da50de5623f5210f76701760d2292c3c6cf1274d473d9a7eee836b0bf",
+      "original_sha256": "e1b2a30da50de5623f5210f76701760d2292c3c6cf1274d473d9a7eee836b0bf",
+      "equal": true
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/templates/store/recommendations_v4.html",
+      "canonical_sha256": "dc97bbb0158a4a53a756c196fa91e3c62d17ea378d8375467726c24cf400f09c",
+      "original_sha256": "dc97bbb0158a4a53a756c196fa91e3c62d17ea378d8375467726c24cf400f09c",
+      "equal": true
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/templates/store/sku_fields.html",
+      "canonical_sha256": "c4d4efd786c02dafdd5d0c52333d317c6e3b7ec26eee60dc56d6085347a0c070",
+      "original_sha256": "c4d4efd786c02dafdd5d0c52333d317c6e3b7ec26eee60dc56d6085347a0c070",
+      "equal": true
+    },
+    {
+      "path": "MuscleCore分析資料/website/cloud_runtime.py",
+      "canonical_sha256": "7a3c019046d9ec14b3d4e762ac9d86d5600c84e07293ccdf1042b90cc2478cbd",
+      "original_sha256": "7a3c019046d9ec14b3d4e762ac9d86d5600c84e07293ccdf1042b90cc2478cbd",
+      "equal": true
+    },
+    {
+      "path": "MuscleCore分析資料/website/requirements-cloud-ai.txt",
+      "canonical_sha256": "0e206231a9a70ff6a843f07d4e6143c6553d701def9db501251a6e04b2e5a487",
+      "original_sha256": "0e206231a9a70ff6a843f07d4e6143c6553d701def9db501251a6e04b2e5a487",
+      "equal": true
+    },
+    {
+      "path": "MuscleCore分析資料/website/requirements-cloud.txt",
+      "canonical_sha256": "2630f9296f68b7e8e80828ec5d9fee8673665ed2e15a3df8fc8df9c5603d37f0",
+      "original_sha256": "2630f9296f68b7e8e80828ec5d9fee8673665ed2e15a3df8fc8df9c5603d37f0",
+      "equal": true
+    }
+  ],
+  "limits": [
+    "Production actual high-star products = 0; anonymous cold-start recommendation grids = 0/0. Controlled same-image private candidates prove 6/4 and high-star ordering; no fabricated public ratings or padding.",
+    "Normal role logins update last_login and create then delete their own device sessions. No credential reset, migration or D1-D4 import.",
+    "Human named acceptance, full mobile matrix, N13, N14, SLO and final V5 signoff remain pending; V5 stays 2/14."
+  ],
+  "shared_browser_screenshot_hashes": [
+    {
+      "filename": "review-before.png",
+      "sha256": "637cc6d52657ec21b0314b9f0fba6085b3887181e0d928166160327ea6cc1535",
+      "visually_checked_here": false
+    },
+    {
+      "filename": "review-rating.png",
+      "sha256": "f5ee4d263c5a5ea8d46a4e2de2116e8068ccf352018b8dc9ec5460ce10deed61",
+      "visually_checked_here": true
+    },
+    {
+      "filename": "review-after.png",
+      "sha256": "776994619e413245a07025ac551e235da63c58406cd7b1382bbb05c7095a59e1",
+      "visually_checked_here": true
+    }
+  ]
+}
