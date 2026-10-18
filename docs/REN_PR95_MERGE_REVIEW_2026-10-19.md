@@ -23,7 +23,7 @@
 
 H01～H07已有技術證據；H08仍缺網站操作證據、完整實機錯誤／鍵盤矩陣及REN本人接收。依現行清單接續可執行的H09期限後回收：
 
-1. 精確核對版本庫外DPAPI原展示清冊、原ObjectId、角色、雜湊與到期時間 **2026/10/18 20:30**。06:39處理前兩帳號仍active，各有0個session，不能只因程式拒絕過期登入就當作已停用。
+1. 精確核對版本庫外DPAPI原展示清冊、原ObjectId、角色、雜湊與到期時間 **2026/10/18 20:30**。06:39處理前兩帳號仍active；原始`before_accounts`記錄REN/customer有 **2** 個session、JEFF/admin有 **0** 個。本次回收撤銷REN的兩筆session，處理後兩帳號均為0；不能只因程式拒絕過期登入就當作已停用。
 2. 以既有`provision_handover_demo.run(mode=retire)`只停用兩個指定舊展示帳號並刪除其全部session；未刪除帳號文件，未延長期限或重建副本。
 3. 06:39讀回REN/customer與JEFF/admin均`status=inactive`、`is_active=false`、session **0**；各用新的正常HTTPS client以其舊憑證登入，HTTP200顯示通用錯誤，cart HTTP302轉登入，沒有建立session。
 4. MongoDB Atlas connector另依兩個精確ObjectId獨立讀回inactive／false與session0，時間見[JSON](inventory/REN_H09_RETIREMENT_2026-10-19.json)。
@@ -44,3 +44,5 @@ H01～H07已有技術證據；H08仍缺網站操作證據、完整實機錯誤�
 - 已更新專案入口、原雙角色交付與H09／V5清單；原歷史證據及05:52發布manifest不改。原專案其他未提交修改保留，這次交付檔以原目錄／Git／GitHub immutable raw SHA-256另核對。
 
 [審查JSON](inventory/REN_PR95_MERGE_REVIEW_2026-10-19.json)／[回收JSON](inventory/REN_H09_RETIREMENT_2026-10-19.json)／[現行清單](../專題進度/專案未完成工作清單_2026-10-18.md)。
+
+**PR #97審查勘誤**：原文字誤載回收前兩帳號各0個session，已依原始JSON修正為REN 2、JEFF 0；原始證據及回收操作沒有改寫或重跑。`REN_PR95_PUBLICATION_2026-10-19.json`保留提交`1d85f1cb822bd636b31b5a8fd4b8501dd8f49f43`的原發布快照，修正後檔案hash另見[本次勘誤核對](inventory/REN_PR97_REVIEW_CORRECTION_2026-10-19.json)。
