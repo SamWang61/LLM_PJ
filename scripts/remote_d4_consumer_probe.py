@@ -5,9 +5,11 @@ revision, and image. Secrets are never written to disk or printed.
 """
 
 import json
+import os
 import re
 import secrets
 import sys
+import time
 from datetime import datetime, timedelta, timezone
 from urllib.parse import urlparse
 
@@ -30,13 +32,27 @@ def require(ok, reason):
 
 
 def page(session, url):
-    response = session.get(url, timeout=30)
+    # Retry only GET transport failures. POSTs keep their operation IDs and are
+    # never blindly replayed here. A repeated read may create another read event.
+    for attempt in range(3):
+        try:
+            response = session.get(url, timeout=(10, 45))
+            break
+        except requests.RequestException as error:
+            if attempt == 2:
+                raise RuntimeError('GET ' + urlparse(url).path + ' transport failed after 3 attempts ('
+                                   + type(error).__name__ + ')') from None
+            session.close()  # Discard stale connections; preserve this session's cookie jar.
+            time.sleep(0.5 * (attempt + 1))
     require(response.status_code == 200, f"HTTP {response.status_code} for {urlparse(url).path}")
     return BeautifulSoup(response.text, "html.parser")
 
 
 def login(base, token, email, password):
     session = requests.Session()
+    if os.environ.get('REN_PRIVATE_HTTP_TRANSPORT') == 'node-fetch':
+        from private_https_transport import mount_private_transport
+        mount_private_transport(session)
     session.headers["Authorization"] = "Bearer " + token
     csrf = page(session, base + "/auth/login").select_one('input[name="csrf_token"]')
     require(csrf and csrf.get("value"), "Login CSRF field missing")
@@ -88,9 +104,12 @@ def verify_scope(config):
             and mongo.path == "/" + DATABASE and mongo.username == MONGO_USER,
             "Mongo acceptance scope mismatch")
     service = urlparse(config["service_url"])
+    tagged_host = re.fullmatch(r"[a-z][a-z0-9-]{0,20}---vibecart-acceptance-pr21-[a-z0-9-]+\.a\.run\.app",
+                              service.hostname or "")
     require(service.scheme == "https" and service.hostname
-            and service.hostname.startswith(SERVICE_PREFIX)
+            and (service.hostname.startswith(SERVICE_PREFIX) or tagged_host)
             and service.hostname.endswith(".a.run.app")
+            and not service.username and not service.password and service.port in (None, 443)
             and not service.path and not service.query,
             "Private Cloud Run scope mismatch")
     require(config["revision"].startswith(SERVICE_PREFIX), "Revision scope mismatch")

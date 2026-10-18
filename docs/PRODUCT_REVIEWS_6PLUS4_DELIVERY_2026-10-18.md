@@ -18,8 +18,17 @@
 - [商品頁即時回填截圖](inventory/review_stars_20261018/review-updated.png)；[6＋4首頁截圖](inventory/review_stars_20261018/home-6plus4.png)。截圖為本機測試資料；正式商品與訂單未新增評價。
 - GitHub交付分支：`codex/product-review-stars-20261018`；本頁與對話決議隨同一組提交交付。PR狀態以GitHub實際紀錄為準。
 
+## 最新main整合補強
+
+本次繼續執行時，main已加入JEFF #82～#84的推薦權重／個人化範圍／AI部署補強及後續文件。保留主線的新來源與歷史證據，整合store_v4及文件索引衝突；推薦與評價主責不變。
+
+- 6＋4沿用主線 `personalization_behavior_query`／`personalization_events`，真人示範購買影響本人推薦；歸因監控仍用production範圍排除demo conversion，synthetic兩種標記均排除。
+- 讀取既有推薦政策並保留格式／NaN／Infinity防護，半衰期無效值退回預設，避免除零。
+- 保留LangGraph／BGE路徑，增加可指定候選數，避免模型啟用時又退回固定4項；個人區先依行為分數，BGE作同分語意排序，破圈星等優先不變。此處模型測試使用可控Embeddings，不把本次本機結果宣稱遠端真模型驗收。
+- 定向整合回歸70 passed；整合main `cac315ba`後完整真localhost MongoDB交易套件 **261 passed／0 skipped**，[本次報告](inventory/review_stars_20261018/transactions-main-integration.json)確認測試庫／容器清理完成。原228項為上午較早基線，不冒稱最新結果。
+
 ## 交付邊界
 
-本次先交付程式、文件與GitHub PR。正式服務部署、Firebase路由／流量、Atlas遠端評價流程、跨裝置推播與真人驗收未由本紀錄宣稱完成。未改既有示範訂單付款／配送狀態，不以假評價填推薦池。
+本次交付程式、文件與[GitHub PR #81](https://github.com/SamWang61/LLM_PJ/pull/81)，合併狀態依GitHub紀錄。正式服務部署、Firebase路由／流量、Atlas遠端評價流程、跨裝置推播與真人驗收未由本紀錄宣稱完成。未改既有示範訂單付款／配送狀態，不以假評價填推薦池。
 
 歷史V5清單保留；本次增量未自動變更14關卡統計。推薦主責仍為[JEFF](mailto:jeff841117@gmail.com)，會員／購物接口為[REN](mailto:chen2000401@gmail.com)，資料／前台／測試整合為[SAM](mailto:cashsam@gmail.com)。

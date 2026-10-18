@@ -12,7 +12,7 @@ ROOT = Path(__file__).resolve().parents[1]
 WEBSITE = "MuscleCore分析資料/website"
 REQUIRED = {
     f"{WEBSITE}/{name}"
-    for name in ("Dockerfile", ".dockerignore", "requirements-cloud.txt", "cloud_runtime.py")
+    for name in ("Dockerfile", ".dockerignore", "requirements-cloud.txt", "requirements-cloud-ai.txt", "cloud_runtime.py")
 } | {
     f"VibeCart_AI/services/{name}"
     for name in ("cart_service.py", "sku_cart_service.py", "review_service.py")

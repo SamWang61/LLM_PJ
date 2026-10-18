@@ -1,0 +1,41 @@
+[
+  {
+    "file": "H08-390-keyboard.jpg",
+    "captured_at_utc": "2026-10-18T09:25:46.289Z",
+    "url": "https://vibecart-llmai.web.app/product/02f9efd17210150f2eea7274",
+    "role": "anonymous",
+    "steps": "Select exact SKU; press Tab to quantity",
+    "focusName": "quantity",
+    "focusTag": "INPUT",
+    "height": 844,
+    "scrollWidth": 375,
+    "selected": "CF-SKU-1210303000104 · 1PC支 x 1 x 4PC支 · NT$ 79.00 · 庫存 95",
+    "width": 390
+  },
+  {
+    "file": "H08-320-action-focus.jpg",
+    "captured_at_utc": "2026-10-18T09:26:00.035Z",
+    "url": "https://vibecart-llmai.web.app/product/02f9efd17210150f2eea7274",
+    "role": "anonymous",
+    "steps": "Resize to 320x568; Tab from quantity to Add button without submitting",
+    "focusTag": "BUTTON",
+    "focusText": "加入購物車",
+    "height": 568,
+    "scrollWidth": 305,
+    "selected": "CF-SKU-1210303000104 · 1PC支 x 1 x 4PC支 · NT$ 79.00 · 庫存 95",
+    "width": 320
+  },
+  {
+    "file": "H08-844-landscape.jpg",
+    "captured_at_utc": "2026-10-18T09:26:06.419Z",
+    "url": "https://vibecart-llmai.web.app/product/02f9efd17210150f2eea7274",
+    "role": "anonymous",
+    "steps": "Resize to 844x390; Tab from selected SKU to quantity",
+    "focusName": "quantity",
+    "focusTag": "INPUT",
+    "height": 390,
+    "scrollWidth": 829,
+    "selected": "CF-SKU-1210303000104 · 1PC支 x 1 x 4PC支 · NT$ 79.00 · 庫存 95",
+    "width": 844
+  }
+]

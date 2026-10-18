@@ -1,6 +1,7 @@
 **
 !Dockerfile
 !requirements-cloud.txt
+!requirements-cloud-ai.txt
 !cloud_runtime.py
 !app/
 !app/**
@@ -8,6 +9,7 @@
 !VibeCart_AI/services/
 !VibeCart_AI/services/cart_service.py
 !VibeCart_AI/services/sku_cart_service.py
+!VibeCart_AI/services/review_service.py
 **/__pycache__/
 **/*.pyc
 **/.env*

@@ -118,3 +118,48 @@ def test_preview_product_page_offers_browsing_without_disabled_account_flows(clo
     assert '<form' not in html and '/auth/login' not in html
     assert 'product-placeholder.svg' in html
     assert 'main-content' in html
+
+
+@pytest.fixture
+def no_ai_env(monkeypatch):
+    for name in ("AI_RECOMMENDATIONS_ENABLED", "AI_SUMMARY_ENABLED", "AI_FREE_QUESTION_ENABLED",
+                 "ANTHROPIC_API_KEY", "CLAUDE_MODEL", "BGE_MODEL"):
+        monkeypatch.delenv(name, raising=False)
+
+
+def test_cloud_ai_flags_default_off(cloud_env, no_ai_env):
+    config = create_cloud_app().config
+    assert not config["AI_RECOMMENDATIONS_ENABLED"] and not config["AI_SUMMARY_ENABLED"]
+    assert not config["AI_FREE_QUESTION_ENABLED"] and config["ANTHROPIC_API_KEY"] == ""
+
+
+def test_cloud_ai_flags_follow_environment(cloud_env, no_ai_env, monkeypatch):
+    monkeypatch.setenv("AI_SUMMARY_ENABLED", "true")
+    monkeypatch.setenv("AI_RECOMMENDATIONS_ENABLED", "TRUE")
+    monkeypatch.setenv("CLAUDE_MODEL", "claude-test-model")
+    monkeypatch.setenv("ANTHROPIC_API_KEY", "offline-placeholder")
+    monkeypatch.setenv("BGE_MODEL", "BAAI/bge-small-zh-v1.5")
+    config = create_cloud_app().config
+    assert config["AI_SUMMARY_ENABLED"] and config["AI_RECOMMENDATIONS_ENABLED"]
+    assert not config["AI_FREE_QUESTION_ENABLED"]  # free questions need their own explicit flag
+    assert config["CLAUDE_MODEL"] == "claude-test-model" and config["ANTHROPIC_API_KEY"] == "offline-placeholder"
+    assert config["BGE_MODEL"] == "BAAI/bge-small-zh-v1.5"
+    # Enabling AI must not relax the existing preview guard.
+    assert create_cloud_app().test_client().get("/admin/").status_code == 403
+
+
+@pytest.mark.parametrize("value", ["yes", "1", "on", "enabled"])
+def test_cloud_refuses_ambiguous_ai_flag(cloud_env, no_ai_env, monkeypatch, value):
+    monkeypatch.setenv("AI_SUMMARY_ENABLED", value)
+    with pytest.raises(RuntimeError, match="AI_SUMMARY_ENABLED"):
+        create_cloud_app()
+
+
+def test_cloud_summary_without_key_falls_back_to_rules(cloud_env, no_ai_env, monkeypatch):
+    from app.services.ai_workflows import operational_summary
+    monkeypatch.setenv("AI_SUMMARY_ENABLED", "true")
+    monkeypatch.setenv("CLAUDE_MODEL", "claude-test-model")
+    app = create_cloud_app()
+    with app.app_context():
+        result = operational_summary({"revenue": 1, "orders": 1, "avg_order": 1, "low_stock": [], "messages": ["規則摘要"]})
+    assert result["source"] == "rules" and result["messages"] == ["規則摘要"]

@@ -3,9 +3,17 @@
 - [商品評價、即時回填與猜你喜歡6＋4對話決議](../討論的相關記錄/商品評價與猜你喜歡6加4推薦_對話決議_2026-10-18.md)
 - [本次實作交付與驗證](PRODUCT_REVIEWS_6PLUS4_DELIVERY_2026-10-18.md)
 
+<!-- SAM MAIN PREVIEW 20261018 BEGIN -->
+**2026/10/18 17:34 SAM 最新main無流量預覽**：[部署與驗收](SAM_MAIN_PREVIEW_2026-10-18.md)。來源`20ee040`、52檔封裝／GCS讀回一致、AI build三步SUCCESS；私有真BGE、Claude四固定問題／快取、角色／交易／1001 synthetic及停用退回已驗，fixture清理0。Key版本1 Enabled，只引用於私有預覽，自由提問false。**正式19／私有base11仍100%舊版，最新main只在0% tag；Hosting未重發，V5仍2/14完成。**
+<!-- SAM MAIN PREVIEW 20261018 END -->
+
 <!-- SAM N14 20261018 BEGIN -->
-**2026/10/18 11:26 SAM N14**：[加密備份／雲端還原驗收](SAM_N14_ENCRYPTED_RESTORE_2026-10-18.md)。25/25片完整遠端SHA-256及owner-only ACL通過；已重組2,439,493,924-byte密文、認證解密，ZIP hash與05:28歷史快照完全相同。13,048檔本機還原差異0／46安全回歸／最佳化隔離啟動的既有證據可由相同ZIP銜接。雲端清冊原ID更新並逐byte讀回核對。**N14仍缺最新快照、異機key、正式Atlas完整復原及每日固定專案流程；V5仍2/14完成。** 工具[PR #77](https://github.com/SamWang61/LLM_PJ/pull/77)與前次文件[PR #78](https://github.com/SamWang61/LLM_PJ/pull/78)已合併；本次只補雲端證據。
+**2026/10/18 16:10 SAM N14**：[最新來源與Atlas完整還原](SAM_N14_CURRENT_ATLAS_2026-10-18.md)。15:30原目錄快照13,976檔／4,109,781,733 bytes，以已驗基底＋983變更／1刪除完整重建，hash差異0；Atlas28集合／14,691筆／89索引／3TTL及validator完成同一snapshot匯出、雲端讀回認證解密及全新localhost還原對帳。82安全測試通過，原Atlas未寫入。**差異包需保留原25片基底；異機key與每日固定專案ACL流程仍缺，N14保留待結案、V5仍2/14完成。**
 <!-- SAM N14 20261018 END -->
+
+<!-- SAM JEFF 20261018 BEGIN -->
+**2026/10/18 16:30 JEFF #82～#84整合驗收**：[完整報告](SAM_JEFF_PR82_84_ACCEPTANCE_2026-10-18.md)。三PR同版239 passed／0 skipped（真MongoDB交易與清理）、32項來源／fixture測試；補7項政策格式／非有限數值防護。52檔封裝與測試映像相同，精簡／AI容器Gunicorn與真BGE斷網通過。#82／#83已合併，#84改接main並納入本輪交付；實際合併紀錄見各PR。**未部署、線上AI仍關；Claude secret缺、真模型遠端驗收未完成，V5仍2/14完成。**
+<!-- SAM JEFF 20261018 END -->
 
 **2026/10/18 08:06 SAM PR #74 技術覆核**：[完整整合紀錄](SAM_PR74_MERGE_REVIEW_2026-10-18.md)。本輪208 passed／0 skipped、51執行來源對帳0差異；公開customer/admin登入、角色及單裝置登出通過，sessions0。另修正維運驗證清理可能誤刪並行session，4項回歸通過。正式19／私有10同映像、正常command、IAM0；故障報告仍依06:36～06:38原時間。本次PR將部署來源整合main，實際合併SHA／時間見[PR #74](https://github.com/SamWang61/LLM_PJ/pull/74)。V5仍2/14完成，具名交接／更廣outage／實機／備份／簽收待辦。
 

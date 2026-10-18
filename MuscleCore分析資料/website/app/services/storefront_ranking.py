@@ -3,7 +3,7 @@ from collections import Counter
 from datetime import datetime, timezone
 import math
 
-from .behavior_scope import production_events
+from .behavior_scope import personalization_events
 
 WEIGHTS = {'PURCHASE': 4, 'ADD_TO_CART': 3, 'SEARCH': 2, 'PRODUCT_VIEW': 1}
 HALF_LIVES = dict(zip(WEIGHTS, (365, 180, 90, 30)))
@@ -39,15 +39,22 @@ def take_distinct(ranked, count, category_cap, excluded=()):
     return result
 
 
-def recommendations_6_4(products, events, rules=(), settings=None, now=None):
-    settings, now = settings or {}, now or datetime.now(timezone.utc)
+def recommendations_6_4(products, events, rules=(), settings=None, now=None, semantic_scores=None):
+    settings = settings if isinstance(settings, dict) else {}
+    now = now or datetime.now(timezone.utc)
+    semantic_scores = semantic_scores or {}
     products = [p for p in products if p.get('status') == 'active'
                 and p.get('is_ai_recommendable', False) and p.get('stock', 0) > 0]
     by_id = {str(p['_id']): p for p in products}
     major, minor, purchases = Counter(), Counter(), {}
-    weights = settings.get('weights', WEIGHTS)
-    half_lives = settings.get('half_life_days', HALF_LIVES)
-    for event in production_events(events):
+    def values(name, defaults, minimum):
+        raw = settings.get(name)
+        raw = raw if isinstance(raw, dict) else {}
+        return {key: raw[key] if isinstance(raw.get(key), (int, float)) and not isinstance(raw[key], bool)
+                and math.isfinite(raw[key]) and raw[key] >= minimum else value for key, value in defaults.items()}
+    weights = values('weights', WEIGHTS, 0)
+    half_lives = values('half_life_days', HALF_LIVES, 1)
+    for event in personalization_events(events):
         kind = event.get('event_type')
         age = age_days(event.get('event_at'), now)
         if kind not in WEIGHTS or age is None:
@@ -92,7 +99,8 @@ def recommendations_6_4(products, events, rules=(), settings=None, now=None):
         reason = '依你的分類偏好推薦' if score else (
             '真實高星商品' if actual_rating(product) and rating_key(product)[0] >= 4.5 else '可售商品探索')
         personalized.append((product, score, reason))
-    personalized.sort(key=lambda row: (-row[1], *(-x for x in rating_key(row[0])), str(row[0]['_id'])))
+    personalized.sort(key=lambda row: (-row[1], -semantic_scores.get(str(row[0]['_id']), 0),
+                      *(-x for x in rating_key(row[0])), str(row[0]['_id'])))
     personal = take_distinct(personalized, 6, 3)
     selected = {str(item['product']['_id']) for item in personal}
     cross = []

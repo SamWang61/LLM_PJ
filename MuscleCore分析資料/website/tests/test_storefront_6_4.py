@@ -58,3 +58,41 @@ def test_review_changes_home_ranking_without_cache_or_batch(shop):
     after = client.get('/recommendations')
     assert '★ 5.0' in after.text and '1筆真實評價' in after.text
     assert after.headers['Cache-Control'] == 'private, no-store'
+
+
+def test_bge_enabled_retains_six_personalized_candidates(shop):
+    from copy import deepcopy
+    from flask import g
+    from app.store_v4 import recommendation_blocks
+    from app.services.sku_gateway import catalog
+    from test_ai_workflows import Embeddings
+    app, _, db, uid, pid, sid = shop
+    app.config.update(AI_RECOMMENDATIONS_ENABLED=True, EMBEDDINGS_FACTORY=Embeddings)
+    template, sku = db.products.find_one({'_id': pid}), db.product_skus.find_one({'_id': sid})
+    for i in range(8):
+        doc = deepcopy(template)
+        doc.update(_id=ObjectId(), product_name='瑜珈' if i == 7 else f'其他{i}',
+                   minor_category_id=ObjectId(), rating_status='ACTUAL', rating_count=1,
+                   average_rating_display=5.0, average_rating_raw=5.0)
+        db.products.insert_one(doc)
+        new_sku = deepcopy(sku)
+        new_sku.update(_id=ObjectId(), product_id=doc['_id'])
+        db.product_skus.insert_one(new_sku)
+    with app.test_request_context('/'):
+        g.db = db
+        result = recommendation_blocks(catalog(db), {'_id': uid}, '瑜珈')
+    assert result['source'] == 'bge+rules-6plus4-rating-v1'
+    assert len(result['personalized']) == 6
+    assert result['personalized'][0]['product']['name'] == '瑜珈'
+
+
+def test_personalization_learns_demo_and_validates_policy_values():
+    now = datetime.now(timezone.utc)
+    primary = ObjectId()
+    products = [product(primary, ObjectId()), product(ObjectId(), ObjectId())]
+    event = dict(event_type='PRODUCT_VIEW', product_id=products[0]['_id'], event_at=now,
+                 metadata={'demo_checkout': True, 'exclude_from_attribution': True})
+    settings = {'weights': {'PRODUCT_VIEW': float('inf')}, 'half_life_days': {'PRODUCT_VIEW': 0}}
+    result = recommendations_6_4(products, [event], settings=settings, now=now)
+    assert result['personalized'][0]['score'] == 2.0
+    assert result['personalized'][0]['product']['_id'] == products[0]['_id']

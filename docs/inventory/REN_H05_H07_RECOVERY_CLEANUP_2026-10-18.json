@@ -1,0 +1,53 @@
+{
+  "checked_at": "2026-10-18T08:55:31.233Z",
+  "status": "passed",
+  "temporary_iam_bindings": 0,
+  "production": {
+    "service": "vibecart-web",
+    "revision": "vibecart-web-00019-phf",
+    "traffic_percent": 100,
+    "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:7199fa08c711917a80e5f54dbfd580ed96f3ef632bda7337b4aa2bde2325c992",
+    "source_sha": "e000d952d22a64b568903641893f4ffdc71accd3"
+  },
+  "acceptance": {
+    "service": "vibecart-acceptance-pr21",
+    "revision": "vibecart-acceptance-pr21-00011-2hq",
+    "traffic_percent": 100,
+    "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:7199fa08c711917a80e5f54dbfd580ed96f3ef632bda7337b4aa2bde2325c992",
+    "source_sha": "e000d952d22a64b568903641893f4ffdc71accd3"
+  },
+  "mongo": {
+    "checked_at": "2026-10-18T08:55:30.622941+00:00",
+    "scope": "independent root fixture markers and operation/event marker keys; full dependent cleanup is separately verified by each probe",
+    "counts": {
+      "ren-txn-01e51a7e64977468": {
+        "users": 0,
+        "products": 0,
+        "product_skus": 0,
+        "orders_by_checkout_prefix": 0,
+        "cart_events_by_operation_prefix": 0
+      },
+      "ren-txn-a14ac20c10aa4b44": {
+        "users": 0,
+        "products": 0,
+        "product_skus": 0,
+        "orders_by_checkout_prefix": 0,
+        "cart_events_by_operation_prefix": 0
+      },
+      "ren-txn-a4ae3a127a3104ec": {
+        "users": 0,
+        "products": 0,
+        "product_skus": 0,
+        "orders_by_checkout_prefix": 0,
+        "cart_events_by_operation_prefix": 0
+      },
+      "ren-d4-edb68569e35aa9c1": {
+        "users": 0,
+        "products": 0,
+        "product_skus": 0,
+        "events_by_probe_id": 0
+      }
+    },
+    "verified": true
+  }
+}

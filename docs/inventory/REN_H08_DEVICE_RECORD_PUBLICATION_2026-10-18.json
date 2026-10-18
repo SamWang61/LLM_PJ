@@ -1,0 +1,110 @@
+{
+  "recorded_at": "2026-10-18T17:49:10.946311+08:00",
+  "source_project": "C:/LLM/LLM_PJ",
+  "baseline_commit": "0cd62f132aafba33cae0424166b5ae2cfa578d73",
+  "integrated_main": "c0941031ec4fb3472efa7cdfa754717837c6b8d7",
+  "scope": "H08 user-reported results, Chrome-version evidence, and main synchronization; excludes this manifest from its own hash",
+  "prior_snapshot_manifest": "docs/inventory/REN_H08_PUBLICATION_2026-10-18.json",
+  "prior_snapshot_commit": "4aad4760176c100472bd62dc602e36ba1693a3ad",
+  "prior_metadata_delivery": {
+    "commit": "0cd62f132aafba33cae0424166b5ae2cfa578d73",
+    "ci_run_id": 39116474899,
+    "ci_conclusion": "success",
+    "readback_files_equal": 8,
+    "original_full_bytes_equal": 6,
+    "shared_H08_content_equal": 2
+  },
+  "files": [
+    {
+      "path": "docs/REN_H08_MATERIAL_SIMULATION_2026-10-18.md",
+      "sha256": "f4d7ef7600f12e242e6dc1a9fb4414a5cadd2d48e400cc79b69ce6654ce9e8d7",
+      "original_project_sha256": "f4d7ef7600f12e242e6dc1a9fb4414a5cadd2d48e400cc79b69ce6654ce9e8d7",
+      "full_source_bytes_equal": true
+    },
+    {
+      "path": "docs/CURRENT_CONTEXT.md",
+      "sha256": "164d08d1c0e01804e219b5a215dc79668153c29d5e9883d272e11b69e905806b",
+      "original_project_sha256": "164d08d1c0e01804e219b5a215dc79668153c29d5e9883d272e11b69e905806b",
+      "full_source_bytes_equal": true
+    },
+    {
+      "path": "專題進度/REN_1200逐項交接清單_2026-10-18.md",
+      "sha256": "3de1e799413058fb99e4b40dad89ed65afe44cf1c9eb2c028c74c9f09d2c6e5e",
+      "original_project_sha256": "3de1e799413058fb99e4b40dad89ed65afe44cf1c9eb2c028c74c9f09d2c6e5e",
+      "full_source_bytes_equal": true
+    },
+    {
+      "path": "專題進度/專案未完成工作清單_2026-10-18.md",
+      "sha256": "7105c0a22f9874e037cd66900a6d5be4b2d4abdfed6d2cbc5d87253f0fcf359f",
+      "original_project_sha256": "7105c0a22f9874e037cd66900a6d5be4b2d4abdfed6d2cbc5d87253f0fcf359f",
+      "full_source_bytes_equal": true
+    },
+    {
+      "path": "簡報文件/超市AI版_2026-10-18/REN_S03-S05補充講稿_2026-10-18.md",
+      "sha256": "9318715d96ec004ea4c0df9e226667f90f46d4c126eca4f678fde7d4396dfe14",
+      "original_project_sha256": "9318715d96ec004ea4c0df9e226667f90f46d4c126eca4f678fde7d4396dfe14",
+      "full_source_bytes_equal": true
+    },
+    {
+      "path": "簡報文件/screenshots/REN_H08_素材模擬覆核_2026-10-18/README.md",
+      "sha256": "5e3f86b4d44413d3a340bfb665204d0c79d99eaf13d8678e88a7fa24c19e1677",
+      "original_project_sha256": "5e3f86b4d44413d3a340bfb665204d0c79d99eaf13d8678e88a7fa24c19e1677",
+      "full_source_bytes_equal": true
+    },
+    {
+      "path": "docs/inventory/REN_H08_PHYSICAL_DEVICE_REPORTED_2026-10-18.json",
+      "sha256": "4bb7e20c345dbc11aef0b8835503c5ab662abe830bc75e5c7cc727d4445e16b8",
+      "original_project_sha256": "4bb7e20c345dbc11aef0b8835503c5ab662abe830bc75e5c7cc727d4445e16b8",
+      "full_source_bytes_equal": true
+    },
+    {
+      "path": "簡報文件/截圖 2026-10-18 17.44.46.png",
+      "sha256": "a224a5f10ee8ae1add3cc1a3c7b80246b1fe65c27f2d7bc3400bbff2120872b5",
+      "original_project_sha256": "a224a5f10ee8ae1add3cc1a3c7b80246b1fe65c27f2d7bc3400bbff2120872b5",
+      "full_source_bytes_equal": true
+    }
+  ],
+  "main_blocks_preserved": [
+    {
+      "path": "docs/CURRENT_CONTEXT.md",
+      "marker": "SAM MAIN PREVIEW 20261018",
+      "sha256_lf": "8409163f43ba1dc3e906825e5982a5366531bd65c3139000cc094212e966710b"
+    },
+    {
+      "path": "專題進度/專案未完成工作清單_2026-10-18.md",
+      "marker": "SAM MAIN PREVIEW 20261018",
+      "sha256_lf": "5f2d953ba76111054152ba06e55e5278df9aa1bcca4d75f352f8d7cd81a1ea55"
+    }
+  ],
+  "source_sync_note": "SAM preview is now included through main c094103; both shared documents preserve it. All current H08 delivery files match original project bytes.",
+  "preserved_files": [
+    {
+      "path": "簡報文件/超市AI版_2026-10-18/VibeCart_AI_超市網購與AI系統_2026-10-18_v5.pptx",
+      "sha256": "43374f71c5e42fdc1725f38a8ac69ea0e2ccc696f6238ebb06425e58e00d7203"
+    },
+    {
+      "path": "docs/inventory/REN_H08_PUBLICATION_2026-10-18.json",
+      "sha256": "dce2949e70f4941bcc218806d04f0d6bde5ad7ce16bb86c57769f05eef4935d0"
+    },
+    {
+      "path": "簡報文件/screenshots/REN_H08_素材模擬覆核_2026-10-18/audit.json",
+      "sha256": "f72a549bd396d945c9bfb3bd4e6cf1716e649c91b400c05d39969baa57c88624"
+    },
+    {
+      "path": "簡報文件/screenshots/REN_H08_素材模擬覆核_2026-10-18/captures.json",
+      "sha256": "38e38e153ee96114b194510e4653ae442aaf521e150295ba8ab541a28724dd60"
+    },
+    {
+      "path": "簡報文件/screenshots/REN_H08_素材模擬覆核_2026-10-18/H08-320-action-focus.jpg",
+      "sha256": "39a97b3e53134b784fe9c6b58297b268694aee379fb6e2bc7260ea74a949fe62"
+    },
+    {
+      "path": "簡報文件/screenshots/REN_H08_素材模擬覆核_2026-10-18/H08-390-keyboard.jpg",
+      "sha256": "8e77f1791b73bc11a66193558723f82ec076251447babc997307b8d26581dcbb"
+    },
+    {
+      "path": "簡報文件/screenshots/REN_H08_素材模擬覆核_2026-10-18/H08-844-landscape.jpg",
+      "sha256": "16bc716822d62727614880026ecca8865b7b829e78075044d9daac41781d7431"
+    }
+  ]
+}

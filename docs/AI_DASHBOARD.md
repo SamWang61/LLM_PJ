@@ -1,5 +1,11 @@
 # 營運後台與 v4 測試交接 / Dashboard handoff
 
+<!-- SAM MAIN PREVIEW 20261018 BEGIN -->
+**2026/10/18 17:34 SAM 最新main無流量預覽**：[部署與驗收](SAM_MAIN_PREVIEW_2026-10-18.md)。來源`20ee040`、52檔封裝／GCS讀回一致、AI build三步SUCCESS；私有真BGE、Claude四固定問題／快取、角色／交易／1001 synthetic及停用退回已驗，fixture清理0。Key版本1 Enabled，只引用於私有預覽，自由提問false。**正式19／私有base11仍100%舊版，最新main只在0% tag；Hosting未重發，V5仍2/14完成。**
+<!-- SAM MAIN PREVIEW 20261018 END -->
+
+> 2026/10/18 16:30 最新：[SAM三PR整合與驗收](SAM_JEFF_PR82_84_ACCEPTANCE_2026-10-18.md)。#82～#84本輪已完成程式測試；舊段落保留交付時序，不代稱已部署或線上AI驗收。
+
 > 最新責任：AI／後台由 JEFF 負責；SAM 負責資料庫與測試。下文保留先前交付的技術與合併紀錄，不再代表現行分工。見 [現行分工](TEAM_OWNERSHIP.md)。Current ownership supersedes historical delivery attribution.
 
 ## 分支與負責人 / Branch ownership
@@ -118,6 +124,21 @@ Existing module paths and migration history are preserved. The scoped manifest s
   - 2026-10-17 第 3 回以真實 Claude 驗證（只問補貨 1 次）：範圍自動移到 10/09～10/15，因 Atlas 新增 2 筆 10/14 的示範訂單，共 3,002 筆。延遲 20.6 秒，輸入 6,726、輸出 1,186 tokens，未截斷。回覆中的 29 筆候選、可售量 3、安全庫存 10、本期銷量皆為 0，以及點名的 9 個商品，全部與送出資料一致，**不再以偏概全，也不再自行計算差額**。仍有 1 處小瑕疵：說「其餘 23 項」，是 29−6 自行相減，數字正確但違反「不自行計算」。另外回覆長度超出 prompt 要求的 400 字，接近 1200 tokens 上限。
 - **結論**：模型會正確引用程式算好的數字，但仍可能抄錯日期、以偏概全或自行計算，所以畫面上的「請人工核對」必須保留。請模型做「判斷或篩選」的部分，應盡量改由程式先做好。
 
+### 2026-10-18 規則推薦改用 v4 權重（JEFF，B1）
+
+- `services/recommendation.py` 原本使用舊權重（瀏覽 1、收藏 3、加購 4、購買 8），改為 v4 `recommendation_policy`：PURCHASE 4、ADD_TO_CART 3、SEARCH 2、PRODUCT_VIEW 1。
+- v4 前台會讀取 active 的政策（`policy_weights`），缺少、負數、非數字、非有限數值或錯誤settings／weights結構均以預設值補上；legacy 用預設值，舊事件名稱（view／cart／purchase／favorite）對應到 v4 名稱。
+- SEARCH 事件沒有商品 ID，改為以 `search_query` 比對商品名稱與分類，命中的商品加 2 分。
+- `ai_workflows.py` 移除舊的事件名稱轉換；推薦監控頁的說明同步更新。
+- B1原10項政策測試加SAM7項安全回歸，共17項。synthetic隔離保持；同輪B2已改個人推薦用personalization，監控／歸因仍用production，見下節。
+
+### 2026-10-18 示範結帳計入個人推薦（JEFF，B2）
+
+- **問題**：真實會員完成示範結帳後，PURCHASE 事件帶 `exclude_from_attribution`，原本前台推薦和推薦監控一樣把它排除，所以買完之後「猜你喜歡」沒有任何變化。
+- **改法**：`behavior_scope.py` 新增 `personalization_behavior_query()`／`personalization_events()`，只排除 synthetic 批次（`synthetic`、`synthetic_batch_id`），保留示範結帳；前台推薦（v4、legacy、規則推薦、LangGraph 基線）改用它。
+- **不變**：推薦監控與成效／歸因統計仍用 `production_*`，示範結帳**不計入**；synthetic 事件在兩種範圍都排除。
+- 新增7項離線測試。16:22唯讀確認正式與私有服務均無BEHAVIOR_SYNTHETIC_BATCH；本輪未改雲端設定。
+
 Taipei date filters and demo exclusions apply consistently to v4 revenue, daily totals, ranking and summaries. Inventory is current; recommendation events are bounded counts, not attribution metrics.
 
 ## 私有連線與啟動 / Private connection and launch
@@ -137,6 +158,31 @@ python -m venv .venv
 `run_v4_test.ps1` 透過 `APP_ENV_FILE` 選擇設定，不覆蓋原 `.env`。沒有設定檔就停止。不要執行 legacy seed 寫入 v4。測試帳號與資料會清理，因此驗證後不留下共用管理員帳密。
 
 The ignored local profile contains the existing v4 connection. It is not a newly isolated database. Keep it private; default checkout and model flags remain disabled.
+
+## 線上 AI 設定 / Online AI configuration（JEFF，2026-10-18，A1／A2）
+
+**狀態：程式與建置設定已完成；SAM已實際建置精簡與AI映像、Gunicorn boot及真BGE斷網驗證。尚未執行Cloud Build／發布或部署；線上AI仍關閉。** 部署由 SAM 執行或授權，費用記在 `vibecart-llmai` 帳單；Claude API 費用由 JEFF 的 Key 負擔。
+
+| 設定 | 位置 | 預設 | 線上建議值 |
+|---|---|---|---|
+| `AI_SUMMARY_ENABLED` | Cloud Run 環境變數（`cloud_runtime.py` 讀取） | `false` | `true` |
+| `AI_RECOMMENDATIONS_ENABLED` | 同上 | `false` | `true`（只開 Claude 時 `false`） |
+| `AI_FREE_QUESTION_ENABLED` | 同上 | `false` | `false`（展示只用 4 個預設問題） |
+| `CLAUDE_MODEL` | 環境變數 | 空 | `claude-sonnet-5` |
+| `ANTHROPIC_API_KEY` | Secret Manager 同名 secret，授權 `vibecart-web@` 讀取 | 無 | 由有權金鑰擁有人在Console新增版本 |
+| `BGE_MODEL` | 環境變數 | `BAAI/bge-small-zh-v1.5` | 不變 |
+| `INSTALL_AI` | Docker 建置參數（Cloud Build `_INSTALL_AI`） | `false`（映像與原本相同） | `true` |
+| 記憶體／CPU | Cloud Run | 512Mi | 2Gi、CPU 2（只開 Claude 可先試 1Gi） |
+
+- 三個 AI 開關只接受 `true`／`false`，其他值會拒絕啟動；開了 AI 之後，`CLOUD_PREVIEW_READ_ONLY=true` 仍擋 `/admin`。
+- `INSTALL_AI=true` 會安裝 `requirements-cloud-ai.txt`（CPU 版 PyTorch，版本與 T5 實測相同），並在建置時把 BGE 模型下載到 `/srv/models`；執行期 `HF_HUB_OFFLINE=1`，搭配 `local_files_only=True` 載入。Cloud Build 會多跑一步離線載入檢查（日誌出現 `ai-image-ok`）。
+- 建議流程：建置 → 建立空 secret 並授權 → JEFF 貼入 Key → 部署**零流量**修訂（tag `ai-preview`）→ 量測冷啟動、BGE、Claude 4 個預設問題 → JEFF 與 SAM 都同意後才切流量；舊修訂保留以便退回。
+- **本機已驗／雲端待測**：本輪AI映像inspect大小505,795,251 bytes、快取build3.45秒、斷網2Gi／1CPU流程15.477秒；這些不是registry大小、Cloud Run冷啟動或整個容器peak。雲端實測仍待辦。
+- **備案**：BGE 記憶體不足或冷啟動過慢時，部署 `AI_RECOMMENDATIONS_ENABLED=false`，只開 Claude（映像不需重建）；若今天不上線，簡報使用 T5 本機實測數字。
+- **B3本輪已唯讀確認**：16:22正式19與私有11均未設定 `BEHAVIOR_SYNTHETIC_BATCH`；若日後誤設，真實會員事件將被標為synthetic並排除。
+- **長期方案（B4，下一階段）**：商品向量離線批次計算存入 Atlas（schema 已有 `product_embeddings`，寫入需 SAM 同意），網站只做 cosine，降低記憶體與冷啟動。
+
+English: The integrated source passed local builds, Gunicorn boot, and real offline BGE checks. Cloud Build, deployment, and real Claude acceptance remain pending; production AI stays off. Flags default to off and must be exactly true/false. The AI image (`INSTALL_AI=true`) bakes in CPU PyTorch and the BGE model. The Claude key lives in Secret Manager and is entered by JEFF. The recommended rollout is a zero-traffic revision with 2Gi memory, verified before any traffic switch, with Claude-only as the fallback.
 
 ## 驗證與剩餘界線 / Validation and limits
 

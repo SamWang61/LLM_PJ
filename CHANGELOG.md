@@ -1,9 +1,43 @@
 # 變更紀錄 / Changelog
 
+## 2026-10-18 — 最新main無流量預覽與私有真模型驗收
+
+- [部署與驗收](docs/SAM_MAIN_PREVIEW_2026-10-18.md)：main20ee的52檔封裝與GCS實際讀回一致、Cloud Build三步SUCCESS；真BGE、四Claude問題／快取、角色／交易／1001 synthetic、停用規則退回及清理。
+- 使用者建立Claude secret版本1 Enabled，私有tag明確引用；正式19／私有base11仍各100%、Hosting不變，自由提問關閉。新增密鑰操作文件、私有tag探針及22安全回歸；V5仍2/14，未宣稱正式切流量或全站簽收。
+
+## 2026-10-18 — SAM 接手JEFF三PR整合與驗收
+
+- [完整驗收](docs/SAM_JEFF_PR82_84_ACCEPTANCE_2026-10-18.md)：239／0真MongoDB回歸、32來源／fixture、52檔同版精簡與AI映像build／Gunicorn boot及真BGE斷網驗證。#83補7項錯誤政策與NaN／Infinity安全預設；#84改接main，個人示範購買與歸因隔離分開。
+- 依使用者授權完成PR整合；正式服務未部署，線上AI仍關閉、Claude secret缺，V5仍2/14。保留REN／N14與其他修改，不代填具名簽收。
+
+
+
+## 2026-10-18 — JEFF 示範結帳計入個人推薦 / Demo checkouts shape personal recommendations (B2)
+
+- 新增 personalization 範圍：個人推薦只排除 synthetic 批次，真實會員的示範結帳會影響自己的推薦；推薦監控與歸因仍排除示範結帳。Attribution scope unchanged.
+- 新增 7 項離線測試。See [dashboard handoff](docs/AI_DASHBOARD.md).
+
+
+## 2026-10-18 — JEFF 規則推薦改用 v4 權重 / v4 recommendation weights (B1)
+
+- 規則推薦由舊權重 1/3/4/8 改為 v4 政策 PURCHASE 4、ADD_TO_CART 3、SEARCH 2、PRODUCT_VIEW 1，v4 前台讀取資料庫政策；SEARCH 依搜尋字比對商品。Rule recommendations now follow the stored v4 policy.
+- 新增 10 項離線測試。See [dashboard handoff](docs/AI_DASHBOARD.md).
+
+## 2026-10-18 — N14 最新來源／Atlas完整還原與JEFF準備
+
+- [N14](docs/SAM_N14_CURRENT_ATLAS_2026-10-18.md)：原目錄13,976檔全量重建差異0；Atlas28集合／14,691筆／89索引／validator／3TTL完成雲端認證與隔離還原，82安全回歸；修正複合索引順序比較及目錄／檔案替換，重新匯出、雲端讀回並完整還原驗證。差異包依賴保留的25片歷史基底；異機key／每日固定流程未完成。
+- [JEFF判斷與準備](docs/SAM_JEFF_AI_READINESS_2026-10-18.md)：讀交接與三PR，42項針對性測試；本機AI映像實際建置與斷網BGE通過，B3正式設定唯讀核實、API Key缺口保留；沒有啟用線上AI或切流量。
+
+
 ## 2026-10-18 — N14 私有加密與隔離復原
 
 - 新增串流認證加密／解密與internal Docker還原來源啟動工具，46項安全回歸通過。歷史13,048檔逐檔還原差異0、三筆BSON fixture／索引復原及四HTTP讀回通過。
 - [N14完整證據與未完成範圍](docs/SAM_N14_ENCRYPTED_RESTORE_2026-10-18.md)：25/25雲端分片完整SHA與私人ACL核對，重組密文／認證解密後ZIP與05:28原備份相同；雲端清冊原ID更新與內容核對通過。最新快照／正式Atlas／異機key／每日固定專案流程仍待辦，V5仍2完成／12待結案。
+
+## 2026-10-18 — JEFF 線上 AI 啟用準備 / Online AI readiness (A1, A2)
+
+- 雲端 runtime 的 AI 開關改讀環境變數（預設關閉、格式錯誤即拒絕啟動），不放寬既有安全檢查。Cloud AI flags now come from the environment.
+- 新增可選的 AI 映像（`INSTALL_AI=true`：CPU 版 PyTorch、內建 BGE 模型、Cloud Build 離線載入檢查）；預設映像不變。尚未建置與部署，設定見 [dashboard handoff](docs/AI_DASHBOARD.md)。
 
 ## 2026-10-18 — D4 同版隔離與合成批次驗收 / Synthetic event acceptance
 

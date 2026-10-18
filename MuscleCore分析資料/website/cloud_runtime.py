@@ -10,6 +10,17 @@ from app import create_app
 from app.db import get_db
 
 
+AI_FLAGS = ("AI_RECOMMENDATIONS_ENABLED", "AI_SUMMARY_ENABLED", "AI_FREE_QUESTION_ENABLED")
+
+
+def ai_flag(name):
+    """AI features stay off unless the deployment sets the flag to exactly true."""
+    value = os.environ.get(name, "false").strip().lower()
+    if value not in {"true", "false"}:
+        raise RuntimeError(f"{name} must be true or false")
+    return value == "true"
+
+
 def create_cloud_app():
     uri = os.environ.get("MONGO_URI", "")
     secret = os.environ.get("SECRET_KEY", "")
@@ -33,8 +44,9 @@ def create_cloud_app():
         "DATA_MODE": "v4", "MONGO_URI": uri, "MONGO_DB": acceptance_db or "vibecart_ai",
         "SECRET_KEY": secret, "SESSION_COOKIE_NAME": "__session",
         "SESSION_COOKIE_SECURE": True,
-        "ENABLE_CHECKOUT": preview == "false" and os.environ.get("ENABLE_CHECKOUT", "false").lower() == "true", "AI_RECOMMENDATIONS_ENABLED": False,
-        "AI_SUMMARY_ENABLED": False, "AI_FREE_QUESTION_ENABLED": False,
+        "ENABLE_CHECKOUT": preview == "false" and os.environ.get("ENABLE_CHECKOUT", "false").lower() == "true",
+        # CLAUDE_MODEL, ANTHROPIC_API_KEY and BGE_MODEL are read from the environment by create_app.
+        **{name: ai_flag(name) for name in AI_FLAGS},
     })
     app.config["CLOUD_PREVIEW_READ_ONLY"] = preview == "true"
 

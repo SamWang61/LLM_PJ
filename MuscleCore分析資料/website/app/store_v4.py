@@ -7,7 +7,9 @@ from .auth import login_required, current_member
 from .services.member_events import record_read_event
 from .db import get_db
 from .services.sku_gateway import cart_service, review_service, catalog, product_view, money, oid, CartError, CartConflict
-from .services.behavior_scope import production_behavior_query
+from .services.behavior_scope import personalization_behavior_query
+from .services.ai_workflows import storefront_recommendations
+from .services.recommendation import policy_weights
 from .services.storefront_ranking import recommendations_6_4
 
 bp = Blueprint("store", __name__)
@@ -19,13 +21,21 @@ def fresh_storefront(response):
     return response
 
 
-def recommendation_blocks(products, member):
+def recommendation_blocks(products, member, query=""):
     db = get_db()
     events = [] if not member else list(db.behavior_events.find(
-        production_behavior_query({'user_id': member['_id']})).sort('event_at', -1).limit(1000))
+        personalization_behavior_query({'user_id': member['_id']})).sort('event_at', -1).limit(1000))
     policy = db.system_configs.find_one({'config_key': 'recommendation_policy', 'status': 'active'})
     rules = list(db.cross_category_rules.find({'status': 'active'}))
-    return recommendations_6_4(products, events, rules, (policy or {}).get('settings'))
+    settings = (policy or {}).get('settings')
+    settings = dict(settings) if isinstance(settings, dict) else {}
+    settings['weights'] = policy_weights(db)
+    signals = storefront_recommendations(products, events, query, weights=settings['weights'], limit=max(1, len(products)))
+    semantics = {str(item['product']['_id']): item['score'] for item in signals['items']} if signals['source'] == 'bge' else {}
+    result = recommendations_6_4(products, events, rules, settings, semantic_scores=semantics)
+    if semantics:
+        result['source'] = 'bge+rules-6plus4-rating-v1'
+    return result
 
 
 def reviewable_lines(db, member, product_id):
@@ -121,7 +131,7 @@ def home():
     if member:
         if query:
             record_read_event(member, "SEARCH", query=query)
-    result = recommendation_blocks(products, member)
+    result = recommendation_blocks(products, member, query)
     return render_template("store/home.html", products=shown[(page-1)*24:page*24], categories=categories,
                            selected_category=category, major_categories=major_categories, selected_major=major,
                            page=page, pages=pages, total=total,
@@ -132,7 +142,7 @@ def home():
 @bp.get('/recommendations')
 @handled
 def recommendations_fragment():
-    result = recommendation_blocks(catalog(get_db()), current_member())
+    result = recommendation_blocks(catalog(get_db()), current_member(), request.args.get('q', '')[:200].strip())
     return render_template('store/recommendations_v4.html', recommendations=result['personalized'],
                            cross_recommendations=result['cross_category'])
 

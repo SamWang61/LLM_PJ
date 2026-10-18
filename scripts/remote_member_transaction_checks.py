@@ -16,6 +16,7 @@ def csrf_headers(session, base):
 
 def replay_session(session):
     replay = requests.Session()
+    replay.adapters.update(session.adapters)
     replay.headers.update(session.headers)
     replay.cookies.update(session.cookies)
     return replay
