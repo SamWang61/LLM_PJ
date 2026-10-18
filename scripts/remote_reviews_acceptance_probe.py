@@ -257,7 +257,7 @@ def run(config):
         report['stage'] = 'bge'
         if config.get('expect_bge', True):
             from remote_preview_ai_probe import measured_page, cache_counts
-            url = base + '/admin/ai/recommendation?product_id=' + str(products[1])
+            url = base + '/admin/ai/recommendation?product_id=' + str(products[8])
             first, elapsed = measured_page(admin, url)
             second, cached = measured_page(admin, url)
             one, two = cache_counts(first), cache_counts(second)
