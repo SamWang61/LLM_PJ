@@ -1,5 +1,7 @@
 # REN H01～H09 手機尺寸截圖｜2026-10-18
 
+**後續技術補件**：[H05～H07遠端驗收](../../../docs/REN_H05_H07_REMOTE_ACCEPTANCE_2026-10-18.md)已完成；本資料夾原H05～H07圖片仍為localhost來源，遠端JSON另存，不將舊圖改稱遠端截圖。
+
 預定接收人：[陳仁千（REN）](mailto:chen2000401@gmail.com)。本輪為 Codex 技術操作；本人逐項接收仍待填寫。
 
 **390×844 尺寸模擬，Codex 內建瀏覽器；非手機實機、觸控或行動網路驗收。** 圖片為原始 JPEG；URL、時間、尺寸、環境、SHA-256 及限制見[JSON 索引](capture-records.json)與[完整報告](../../../docs/REN_MOBILE_H01_H09_2026-10-18.md)。
