@@ -1,0 +1,77 @@
+{
+  "recorded_at": "2026-10-19T05:52:36.873133+08:00",
+  "source_project": "C:/LLM/LLM_PJ",
+  "scope": "PR95 scoped files; this manifest excluded from own hash",
+  "files": [
+    {
+      "path": "MuscleCore分析資料/website/app/auth.py",
+      "sha256": "6d69044df007d4bacb3fc9b32a50b3a6df690124515841b211cc770f2e0f925d"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/templates/auth/login.html",
+      "sha256": "b20ab40bc3b656bbca5883665050d9128210aa276cb6ea2be4b6f35e2e658f9c"
+    },
+    {
+      "path": "MuscleCore分析資料/website/tests/test_database_readiness.py",
+      "sha256": "fb68b9469f883e15163d63d0f5a0cc530f428aee349c7640cd9408d4bf21b508"
+    },
+    {
+      "path": "MuscleCore分析資料/website/tests/test_dual_role_login.py",
+      "sha256": "dac48faf54d1c6f810d93fb4cb8fde64a6df6f613828e55f9c8086931aa1094a"
+    },
+    {
+      "path": "MuscleCore分析資料/website/tests/test_role_account_transactions.py",
+      "sha256": "af1c31d983da09da59ff8000b942cf181f66f7efb312359fcbb4d0e2f42616b8"
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/email_role_schema.py",
+      "sha256": "fe87ad9b4789eaf6939199728c21256a1e12e1271c81f067fc2405bb73092f32"
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/schema_active_v4.py",
+      "sha256": "e0c5b14ef00ae6b440f31d53d46c8e2fc286e6e41112d4d4e4bb8e6b6486cdb3"
+    },
+    {
+      "path": "config/role_accounts_20261018.json",
+      "sha256": "bf0bcfce72f31111332a27b0317e4ddc584a13c29ee07c918d2ad7c55a8c9fae"
+    },
+    {
+      "path": "docs/CURRENT_CONTEXT.md",
+      "sha256": "748475888ba64d2f1c15f97ea8e41f1fd6cb7ce5ef3a64c1c4d3c584649cc4d5"
+    },
+    {
+      "path": "docs/REN_DUAL_ROLE_LOGIN_2026-10-19.md",
+      "sha256": "31ec458a2fa9e3df392508825627b2a169e9ee8d276dd224909054df291722aa"
+    },
+    {
+      "path": "docs/inventory/REN_DUAL_ROLE_LOGIN_2026-10-19.json",
+      "sha256": "64ec891c736b77b6dc42acaad0afd13f3cac3625e659ecea17c960a2ef216d70"
+    },
+    {
+      "path": "scripts/check_v4_database.py",
+      "sha256": "44533492e0ebacbca0b3ec3eea7845a37395429e4cd19cce0104a831d2afee8a"
+    },
+    {
+      "path": "scripts/migrate_email_role_logins.py",
+      "sha256": "71417f24171de2fb0f042be8398ceb5f5740b46301e413f4ea04b06891e7f90b"
+    },
+    {
+      "path": "scripts/provision_role_accounts.py",
+      "sha256": "80a477e754e7448147e5d5de434aa3e4b801c0907b502f56f9c71f43ba410470"
+    },
+    {
+      "path": "專題進度/專案未完成工作清單_2026-10-18.md",
+      "sha256": "03fcf2c567621c40ae32ab9fde7ef5edafe438e4300e4b6f5ed7d25c5c2b6ad5"
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/auth_session_schema.py",
+      "sha256": "78bde27912ea0b166d2715d72033d3681d3f4846d0f8c2b32c9e53282a679377",
+      "unchanged_dependency": true
+    },
+    {
+      "path": "scripts/migrate_auth_sessions.py",
+      "sha256": "c8d4ef030b155254b6495a4651111bf44a38d00d25f6273c453482273062cd57",
+      "unchanged_dependency": true
+    }
+  ]
+}
