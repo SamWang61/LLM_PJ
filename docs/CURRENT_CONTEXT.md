@@ -1,6 +1,16 @@
 # 最新專案上下文 / Current project context
 
-**2026/10/19 05:52 REN 同Email雙角色登入已上線**：三人共六組固定角色帳號已在Atlas建立／更新，JEFF依更正採`jeff841117@gmail.com`；一般會員與管理員依密碼選角色，線上改密403。main整合測試260／0、正式增量207／0；正式來源576b474、revision `vibecart-web-role-auth-576b4748` 100%，預覽與Firebase各六組登入／角色／登出通過，三封通知已寄出。28集合／89索引／7 migration通過，D4仍1240、庫存與舊migration不變。[完整交付](REN_DUAL_ROLE_LOGIN_2026-10-19.md)／[PR #95](https://github.com/SamWang61/LLM_PJ/pull/95)。main整合PR待合併；V5仍2/14。
+<!-- SAM PR95 PR96 REVIEW 20261019 BEGIN -->
+**2026/10/19 06:30 SAM PR #95／#96覆核**：[同版測試與合併紀錄](SAM_PR95_PR96_MERGE_REVIEW_2026-10-19.md)。#95已合併main `8a29f5f`；275項真本機MongoDB測試0 skipped、完整56檔PR95私有0%預覽的四組探針與正式六角色登入均通過。正式仍登入增量576b474／100%，本輪未切正式流量；28集合／89索引／7 migration及關聯唯讀稽核通過。#96保留05:45歷史，舊修復憑證已由05:52固定雙角色規則接續，不回灌舊憑證。V5仍2/14；#96最終合併SHA／CI以GitHub紀錄為準。
+<!-- SAM PR95 PR96 REVIEW 20261019 END -->
+
+**2026/10/19 05:52 REN 同Email雙角色登入已上線**：三人共六組固定角色帳號已在Atlas建立／更新，JEFF依更正採`jeff841117@gmail.com`；一般會員與管理員依密碼選角色，線上改密403。main整合測試260／0、正式增量207／0；正式來源576b474、revision `vibecart-web-role-auth-576b4748` 100%，預覽與Firebase各六組登入／角色／登出通過，三封通知已寄出。28集合／89索引／7 migration通過，D4仍1240、庫存與舊migration不變。[完整交付](REN_DUAL_ROLE_LOGIN_2026-10-19.md)／[PR #95](https://github.com/SamWang61/LLM_PJ/pull/95)。本段為05:52發布紀錄；PR #95後續已合併，詳上方覆核。V5仍2/14。
+
+<!-- SAM ADMIN LOGIN REPAIR 20261019 BEGIN -->
+**2026/10/19 05:45 SAM正式管理者登入修復**：[實際核對與結果](SAM_ADMIN_LOGIN_REPAIR_2026-10-19.md)。正式19仍100%；以其引用的Mongo連線實際核對正確vibecart_ai及三個啟用的local admin，未發現連錯庫。依使用者修復授權，三個既有管理者換發不同新憑證，正式入口逐一登入302／後台200／登出302／登出後拒絕及錯誤密碼拒絕均通過；獨立Atlas回查sessions0。憑證僅Windows使用者私有DPAPI保管；未寄信、未入Git。原輸入內容未取得，不推斷密碼管理器故障；未更改部署或擅自提升V5關卡。
+
+**歷史邊界**：上述為05:45時點；05:52起已採REN固定雙角色帳號／憑證，勿以舊修復憑證覆蓋現況。
+<!-- SAM ADMIN LOGIN REPAIR 20261019 END -->
 
 <!-- SAM PR93 MERGE 20261019 BEGIN -->
 **2026/10/19 05:37 SAM PR #93 已合併**：[審查與主幹對帳](SAM_PR93_MERGE_REVIEW_2026-10-19.md)。PR HEAD `863e03e`，合併main `6fbaa0c`；46項安全與5項來源測試通過，main CI成功。既有4組同版遠端／畫面證據已重新核對，56個執行來源相同；正式19／私有base11仍各100%原版，新預覽各0%，本輪沒有重新部署或重寫Atlas。V5仍2/14，正式切換、實機與具名簽收待辦。

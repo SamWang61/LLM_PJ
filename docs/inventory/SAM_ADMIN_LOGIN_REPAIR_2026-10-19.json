@@ -1,0 +1,74 @@
+{
+  "checked_at": "2026-10-19T05:43:07.357396+08:00",
+  "site": "https://vibecart-llmai.web.app",
+  "database": "vibecart_ai",
+  "scope": [
+    "SAM",
+    "JEFF",
+    "REN"
+  ],
+  "credentials_in_report": false,
+  "passwords_logged": false,
+  "status": "passed",
+  "passwords_rotated": 3,
+  "preexisting_sessions_revoked": 0,
+  "rotation_transaction_committed": true,
+  "accounts": [
+    {
+      "account": "SAM",
+      "login_http": 302,
+      "login_destination": "/admin/",
+      "admin_http": 200,
+      "logout_http": 302,
+      "post_logout_admin_http": 302,
+      "post_logout_destination": "/auth/login?next=/admin/",
+      "invalid_password_rejected": true,
+      "status": "passed"
+    },
+    {
+      "account": "JEFF",
+      "login_http": 302,
+      "login_destination": "/admin/",
+      "admin_http": 200,
+      "logout_http": 302,
+      "post_logout_admin_http": 302,
+      "post_logout_destination": "/auth/login?next=/admin/",
+      "invalid_password_rejected": true,
+      "status": "passed"
+    },
+    {
+      "account": "REN",
+      "login_http": 302,
+      "login_destination": "/admin/",
+      "admin_http": 200,
+      "logout_http": 302,
+      "post_logout_admin_http": 302,
+      "post_logout_destination": "/auth/login?next=/admin/",
+      "invalid_password_rejected": true,
+      "status": "passed"
+    }
+  ],
+  "remaining_sessions": {
+    "SAM": 0,
+    "JEFF": 0,
+    "REN": 0
+  },
+  "independent_atlas_readback": {
+    "remaining_sessions": 0,
+    "password_fields_omitted": true,
+    "accounts_active_admin": 3
+  },
+  "deployment_readback": {
+    "runtime_database_verified": "vibecart_ai",
+    "revision": "vibecart-web-00019-phf",
+    "configuration_changed": false,
+    "source_sha": "e000d952d22a64b568903641893f4ffdc71accd3",
+    "traffic_percent": 100
+  },
+  "historical_scope": {
+    "record": "05:38-05:45 password repair; original checks retained",
+    "superseded_by_PR": 95,
+    "current_runtime_source": "576b474822efd7464d650d7af2aa245e07fbc911",
+    "do_not_restore_obsolete_credentials": true
+  }
+}
