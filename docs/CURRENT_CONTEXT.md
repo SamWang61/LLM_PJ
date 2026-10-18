@@ -1,5 +1,7 @@
 # 最新專案上下文 / Current project context
 
+**2026/10/19 05:52 REN 同Email雙角色登入已上線**：三人共六組固定角色帳號已在Atlas建立／更新，JEFF依更正採`jeff841117@gmail.com`；一般會員與管理員依密碼選角色，線上改密403。main整合測試260／0、正式增量207／0；正式來源576b474、revision `vibecart-web-role-auth-576b4748` 100%，預覽與Firebase各六組登入／角色／登出通過，三封通知已寄出。28集合／89索引／7 migration通過，D4仍1240、庫存與舊migration不變。[完整交付](REN_DUAL_ROLE_LOGIN_2026-10-19.md)／[PR #95](https://github.com/SamWang61/LLM_PJ/pull/95)。main整合PR待合併；V5仍2/14。
+
 <!-- SAM PR93 MERGE 20261019 BEGIN -->
 **2026/10/19 05:37 SAM PR #93 已合併**：[審查與主幹對帳](SAM_PR93_MERGE_REVIEW_2026-10-19.md)。PR HEAD `863e03e`，合併main `6fbaa0c`；46項安全與5項來源測試通過，main CI成功。既有4組同版遠端／畫面證據已重新核對，56個執行來源相同；正式19／私有base11仍各100%原版，新預覽各0%，本輪沒有重新部署或重寫Atlas。V5仍2/14，正式切換、實機與具名簽收待辦。
 <!-- SAM PR93 MERGE 20261019 END -->

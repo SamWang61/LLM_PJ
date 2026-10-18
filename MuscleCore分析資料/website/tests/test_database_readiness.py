@@ -170,7 +170,8 @@ def test_relationship_pipeline_finds_only_dangling_v4_references():
 
 def test_current_contract_requires_fifth_migration_and_overlay():
     db = Database()
-    assert len(MIGRATIONS) == 6
+    assert len(MIGRATIONS) == 7
+    assert '20261018_07_email_role_logins_v4' in MIGRATIONS
     db.schema_migrations.rows = [r for r in db.schema_migrations.rows
         if r['_id'] != '20261005_05_synthetic_profile_v4']
     assert 'missing_or_unsuccessful_migration' in audit(db)['issues']
