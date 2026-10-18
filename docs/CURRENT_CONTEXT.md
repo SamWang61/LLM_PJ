@@ -11,7 +11,7 @@
 <!-- SAM N14 20261018 END -->
 
 <!-- SAM JEFF 20261018 BEGIN -->
-**2026/10/18 15:52 JEFF交付判斷／準備**：[同版檢查與部署前置](SAM_JEFF_AI_READINESS_2026-10-18.md)。已讀JEFF交接，#82雲端設定15測試、#83／#84權重與隔離27測試通過；兩映像已建置，BGE斷網2Gi／1CPU輸出512維。正式synthetic batch未設定；ANTHROPIC_API_KEY尚無secret。未做三PR整合後驗收、雲端AI啟用、真Claude或切流量。
+**2026/10/18 16:30 JEFF #82～#84整合驗收**：[完整報告](SAM_JEFF_PR82_84_ACCEPTANCE_2026-10-18.md)。三PR同版239 passed／0 skipped（真MongoDB交易與清理）、32項來源／fixture測試；補7項政策格式／非有限數值防護。52檔封裝與測試映像相同，精簡／AI容器Gunicorn與真BGE斷網通過。#82／#83已合併，#84改接main並納入本輪交付；實際合併紀錄見各PR。**未部署、線上AI仍關；Claude secret缺、真模型遠端驗收未完成，V5仍2/14完成。**
 <!-- SAM JEFF 20261018 END -->
 
 **2026/10/18 08:06 SAM PR #74 技術覆核**：[完整整合紀錄](SAM_PR74_MERGE_REVIEW_2026-10-18.md)。本輪208 passed／0 skipped、51執行來源對帳0差異；公開customer/admin登入、角色及單裝置登出通過，sessions0。另修正維運驗證清理可能誤刪並行session，4項回歸通過。正式19／私有10同映像、正常command、IAM0；故障報告仍依06:36～06:38原時間。本次PR將部署來源整合main，實際合併SHA／時間見[PR #74](https://github.com/SamWang61/LLM_PJ/pull/74)。V5仍2/14完成，具名交接／更廣outage／實機／備份／簽收待辦。

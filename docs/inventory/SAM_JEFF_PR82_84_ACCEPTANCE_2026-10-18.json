@@ -1,0 +1,572 @@
+{
+  "checked_at_utc": "2026-10-18T08:30:29.189411+00:00",
+  "scope": "PR82 cloud configuration/build preparation and PR83/84 recommendation policy/personalization code integration; production rollout and real Claude excluded",
+  "handoff": "討論的相關記錄/JEFF_to_SAM_2026-10-18.md",
+  "runtime_source_commit": "7e7b57826041c1c05c31e50410f6e55eb0f612aa",
+  "tested_candidate": "8c0fe9f1db582de1829d4a352253019ef0d9d47a",
+  "source_archive_sha256": "9d0544fb3393566c759546feb46da421e9e3f4202f36b59ccff4d0e04defd285",
+  "runtime_files": [
+    {
+      "path": "MuscleCore分析資料/website/.dockerignore",
+      "archive_path": ".dockerignore",
+      "git_blob": "c8d8b92b9d5f993c97bb91465256e5188b105c29",
+      "bytes": 287,
+      "sha256": "f93536bfcef911fcda617aaf35610ee3beb4f8709f2681bedab16428957ac0ea"
+    },
+    {
+      "path": "MuscleCore分析資料/website/Dockerfile",
+      "archive_path": "Dockerfile",
+      "git_blob": "466b4d497cc45696ef33380861d9c2a3658d371f",
+      "bytes": 1075,
+      "sha256": "6020d6e52ad69fdf55d202fd1703b1e8a4106a304628e310164b439d9c5f31a7"
+    },
+    {
+      "path": "VibeCart_AI/services/cart_service.py",
+      "archive_path": "VibeCart_AI/services/cart_service.py",
+      "git_blob": "15bb3ffde7df5b75890355df6e90a97b7998e9e4",
+      "bytes": 12024,
+      "sha256": "5e416e6d4945d391ec633845ea493fd152262abf6d5b489b503160db6d58457f"
+    },
+    {
+      "path": "VibeCart_AI/services/sku_cart_service.py",
+      "archive_path": "VibeCart_AI/services/sku_cart_service.py",
+      "git_blob": "8f9b686f0f1df6d3d9f513f3f3e214f078d1e565",
+      "bytes": 12533,
+      "sha256": "6ef2272284f9c36d27923fbf4448854d6de1305dd1b4e001a82f40ef6eccd649"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/__init__.py",
+      "archive_path": "app/__init__.py",
+      "git_blob": "6738d9dab3b63dcd75bb6dac98f5f210a1510450",
+      "bytes": 2594,
+      "sha256": "48c19b3ba9d217fb68ec093317be4a7c9725d55578b28b5727887c01f3c9675e"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/admin.py",
+      "archive_path": "app/admin.py",
+      "git_blob": "ae28216026525c5bda82ef0c98a4294a9c2671dc",
+      "bytes": 8104,
+      "sha256": "f7db8ca32ed05e48506c98de533d0ba4c3f5430154462cc8974761cc4415b18e"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/auth.py",
+      "archive_path": "app/auth.py",
+      "git_blob": "d95163c82baad1809d73f6edf327ace1a4dbe4f4",
+      "bytes": 7374,
+      "sha256": "a22b5befd716ccfd0f48fce59c6feaa1d229e2e7d633a9218733c6c6af1d0e98"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/db.py",
+      "archive_path": "app/db.py",
+      "git_blob": "22a614671a7f2d14bc321464f27be763b1ca1d82",
+      "bytes": 618,
+      "sha256": "e429461ecbcf683f551df962c66f765025472be033dac84f86c76a9a5eec2e88"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/security.py",
+      "archive_path": "app/security.py",
+      "git_blob": "95dcfc7f383aeebba0c26c4aa52dbe6c77878980",
+      "bytes": 882,
+      "sha256": "90a920e1a3e70e6b968252d3fa8ba5bcf160c7d6ef3b04caa4ea16f03515f394"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/services/__init__.py",
+      "archive_path": "app/services/__init__.py",
+      "git_blob": "7b12f23281659982866e90a8fff0bd30703e84fa",
+      "bytes": 57,
+      "sha256": "ad99f2d924998782cb45c4afff9971baa500c70ab753ad2afbb4ad3c63c365d8"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/services/ai_compare.py",
+      "archive_path": "app/services/ai_compare.py",
+      "git_blob": "55ea01784ee4951647cd782ccad49103bc8fa86c",
+      "bytes": 2259,
+      "sha256": "d4c0e5a428b05e5aa7b731f80a5f5a22fd33066e9684401e50c758b094dbfa73"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/services/ai_payload.py",
+      "archive_path": "app/services/ai_payload.py",
+      "git_blob": "20f7f16ade658cf56645448ea23f2bba2c04aff8",
+      "bytes": 10459,
+      "sha256": "bf2ff4d1f0ce8c2402c666b18ee86ef17a8e7051b914cb0fd74ebf298f53a178"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/services/ai_workflows.py",
+      "archive_path": "app/services/ai_workflows.py",
+      "git_blob": "4c9cb54912e925abf5a15b2990962b9e3eeba7c0",
+      "bytes": 21661,
+      "sha256": "36cd71cd9d98d66ded5680abefca9a095d606224b6ec9bb682d292f1fc7b2c73"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/services/analytics.py",
+      "archive_path": "app/services/analytics.py",
+      "git_blob": "2632c67567ed78d676983fbc1bbd5f60fd3d4014",
+      "bytes": 1013,
+      "sha256": "fd47fc513b71a961d4ecc5c1f1045d14cd1674baebde1b76cd58c9f3ac6c056b"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/services/behavior_scope.py",
+      "archive_path": "app/services/behavior_scope.py",
+      "git_blob": "528e0edf44daf69c8b2f2e90538800adc718cef7",
+      "bytes": 1495,
+      "sha256": "57b611a8602f18ea2e725f7429caa11e898233c25f9405a2335ee2b34b6dc6ba"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/services/dashboard.py",
+      "archive_path": "app/services/dashboard.py",
+      "git_blob": "17e88d7d6092bdcf596e5a69acac315420711d9b",
+      "bytes": 6343,
+      "sha256": "a89a2b61ee1a53656ecd78ee3cb02d6fa07e1f76d9006c328a6b81784558b5c6"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/services/local_ai.py",
+      "archive_path": "app/services/local_ai.py",
+      "git_blob": "3fb87d930c40658024323b902589ec7ce9679406",
+      "bytes": 6393,
+      "sha256": "1b88d118e75a3a908ca75363e0b86cf425b1ab098a7bf74196a7f8f2add8efa1"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/services/member_events.py",
+      "archive_path": "app/services/member_events.py",
+      "git_blob": "91097ef7e15b664a57effd1af51a03737db51bd5",
+      "bytes": 1244,
+      "sha256": "3c5c69dc30f0f5cf46b7eabcad718597b4f3ec570ad8999364e63e2efc93454f"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/services/member_sessions.py",
+      "archive_path": "app/services/member_sessions.py",
+      "git_blob": "cfc5c11528b9ace0e54bc689508fa7a12471807c",
+      "bytes": 2604,
+      "sha256": "00ac249cc04d743157e4e4c2d9304791c496e61a5a5ba3b332534d6a722a059e"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/services/recommendation.py",
+      "archive_path": "app/services/recommendation.py",
+      "git_blob": "c0d93391127ab52c8954b50baa35898687e38e20",
+      "bytes": 3457,
+      "sha256": "93f0ca7725135e43981c3024e7a5d6ab4eed7a7d315e9db10fc50d7e012988cf"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/services/sku_gateway.py",
+      "archive_path": "app/services/sku_gateway.py",
+      "git_blob": "4774462bf8248ac26ffc27a3c3982ed49622fe85",
+      "bytes": 3253,
+      "sha256": "0239a41a4f5d4a7287aa50a0623154e0bb03f5f3eff61330780eef0d975e7e1a"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/static/css/admin.css",
+      "archive_path": "app/static/css/admin.css",
+      "git_blob": "d8333c958c0ced2abbbdc368462d9e0a7311f36d",
+      "bytes": 13049,
+      "sha256": "130bdc8a96e1a1b6cece9a96049b5f328b6914b31604a6eb5dd378892835eb92"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/static/css/footer-team.css",
+      "archive_path": "app/static/css/footer-team.css",
+      "git_blob": "688d30cf5ed6b63159459418627d45c856158048",
+      "bytes": 1078,
+      "sha256": "238fc779c6bbc90f940210fccdac9ca2ebb6a302b499f47016804ea0e5abe30d"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/static/css/main.css",
+      "archive_path": "app/static/css/main.css",
+      "git_blob": "e1db516b698c77685ba7ec86ec385d0a113d73c0",
+      "bytes": 9182,
+      "sha256": "f265290cfae92e005ac92b68e5b286d21fa8f2bf55212eb2215c1fde95ac77aa"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/static/img/hero.png",
+      "archive_path": "app/static/img/hero.png",
+      "git_blob": "025b73205aba06cbeb91fe5479fa07ccd4726644",
+      "bytes": 1898747,
+      "sha256": "a0ef2f0fee2b163b02edee7102c975668d5f78286786a575b4d42ef81e05633e"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/static/img/product-placeholder.svg",
+      "archive_path": "app/static/img/product-placeholder.svg",
+      "git_blob": "ec8173c205ddde1d0aefd207a40ce7814e33fcd1",
+      "bytes": 447,
+      "sha256": "50cfb1ca36a0122d85ec6d51b1913b685c9885064c5a8701e5aa7d841b44dee3"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/static/img/team/Jeff-s.png",
+      "archive_path": "app/static/img/team/Jeff-s.png",
+      "git_blob": "98dcebb32abb6a89e26497e84b97308a3d5bcc94",
+      "bytes": 90730,
+      "sha256": "193a5595bb025ac6999082b6e574a8876199f7e7b18aeb173ff2f151139406c6"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/static/img/team/Ren-s.png",
+      "archive_path": "app/static/img/team/Ren-s.png",
+      "git_blob": "b2caf739c35015e05df241359e2a31ffdcbd35ae",
+      "bytes": 49897,
+      "sha256": "20f365e734bc0a24047bcadb5791e3ef98ef9a2ee6541eb3ca24980c427295a2"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/static/img/team/sam-s.png",
+      "archive_path": "app/static/img/team/sam-s.png",
+      "git_blob": "fa9f89c5c2bef022d7e1afe721589bc140efb6f1",
+      "bytes": 64550,
+      "sha256": "25d975cf616ab59ee34a3e1a5e6fe39bfe7c4ccc281d0ee2a19e25d069b80252"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/static/js/admin.js",
+      "archive_path": "app/static/js/admin.js",
+      "git_blob": "6b6d050b7c9d3453a3f5cc988ca30b79b9e4af80",
+      "bytes": 1204,
+      "sha256": "c537c86942d7bb8ef6fecaa9c991fa992f18ba7b69a235e22e9507e0dd255115"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/store.py",
+      "archive_path": "app/store.py",
+      "git_blob": "7d72e2237435e12a15a788303df556c3a8df7095",
+      "bytes": 4682,
+      "sha256": "7f8e251f0b6f77b87cf0ce4cd64bfe546eef32fc19cce169a86e66b2c68ad75f"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/store_v4.py",
+      "archive_path": "app/store_v4.py",
+      "git_blob": "1d17c3834024e7515d1ed043a5bd680d650c427a",
+      "bytes": 8216,
+      "sha256": "f332f4abb22551acd59a52e1492ff7f9bb0da5f66c3bc162e93f1de74d1ef0a1"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/templates/admin/ai_compare.html",
+      "archive_path": "app/templates/admin/ai_compare.html",
+      "git_blob": "147725bb12d73be72f67ff34da61e71b304290f4",
+      "bytes": 4317,
+      "sha256": "4de1c694a0c29bc1b383575b086df85ae8932a3c5169c8c93d046e0473590aa9"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/templates/admin/ai_insight.html",
+      "archive_path": "app/templates/admin/ai_insight.html",
+      "git_blob": "1ed8e8b864a409327384e39344055d11e38f818c",
+      "bytes": 7177,
+      "sha256": "d0d3f8f9e062acaa06c7135082a3de59a964e0ba281bf8dfeb8c422f0c87f82b"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/templates/admin/ai_recommendation.html",
+      "archive_path": "app/templates/admin/ai_recommendation.html",
+      "git_blob": "5e272dae41b303f1af3fb214f331f18fa6f9d0a3",
+      "bytes": 5390,
+      "sha256": "c10ec9b065ca6aaa14058881665369ce19162a87cc8021044f308d4c7dc77c0a"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/templates/admin/dashboard.html",
+      "archive_path": "app/templates/admin/dashboard.html",
+      "git_blob": "537c751cccb12b12926e29e9ebe2fcc73bab3e2b",
+      "bytes": 6762,
+      "sha256": "97f803ec91a1025e006e54ca77513bd2ffea88dae252b97746beff987c8b8754"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/templates/admin/filter_error.html",
+      "archive_path": "app/templates/admin/filter_error.html",
+      "git_blob": "085f5c72c3ce986585ae2da7c13657ba3b35982e",
+      "bytes": 359,
+      "sha256": "46f5b44fb119ea3654c24cd43ba82023b0378913127869f3fda17d865f1ea46a"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/templates/admin/layout.html",
+      "archive_path": "app/templates/admin/layout.html",
+      "git_blob": "9294a11b8beaf5b45a6a093c7c258276ca03ecd0",
+      "bytes": 4062,
+      "sha256": "68eecd71b1cfaa7fb6354dee0721f2989bb68d8db92fbcc2024ae74eec98fd59"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/templates/admin/recommendations.html",
+      "archive_path": "app/templates/admin/recommendations.html",
+      "git_blob": "6b8573f817f85df39e59fd335e305c01ae08edd0",
+      "bytes": 3239,
+      "sha256": "7f61d3555ab4c4a0d0a4a845b290d298f1b4fb2b074fda790f9d6dc1dda5f3db"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/templates/auth/login.html",
+      "archive_path": "app/templates/auth/login.html",
+      "git_blob": "6efce21d5f069769e3324c958c90e78e501e408d",
+      "bytes": 755,
+      "sha256": "58665c254c71d5ecd605ba7f12ea7f3f2aa18b661412b9b25a7d93725d32cc17"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/templates/auth/logout.html",
+      "archive_path": "app/templates/auth/logout.html",
+      "git_blob": "7791b8748b535eaaef1eb6081f8fe5e2662f40ba",
+      "bytes": 262,
+      "sha256": "deab381fd88da90b5ae550d911a05eb2be834402cd4af7efa43c2b348f63f5f5"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/templates/auth/register.html",
+      "archive_path": "app/templates/auth/register.html",
+      "git_blob": "a61f3bd111fc4e6ceb7e673c3ea6ad58a738fbfd",
+      "bytes": 766,
+      "sha256": "fda8ddff3433ccfc32540e7e407b5c436bba7f321acaa6bb538d5eba58283c5b"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/templates/base.html",
+      "archive_path": "app/templates/base.html",
+      "git_blob": "bf3da4511830450710dcc097e7ac8cc1825530eb",
+      "bytes": 3068,
+      "sha256": "e885b269c2bac7d52137dd351705e141c5153fd66d09e3a392defad4829403d5"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/templates/store/cart.html",
+      "archive_path": "app/templates/store/cart.html",
+      "git_blob": "bf163136a2ee255ecca6ffc4b8e11e7e238891ee",
+      "bytes": 853,
+      "sha256": "0e84d915c6d754329ede42dab21163a0de12438d5b120a870bbe3e3a5d30f496"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/templates/store/cart_v4.html",
+      "archive_path": "app/templates/store/cart_v4.html",
+      "git_blob": "a4255933462ed4a5790054d833c678c70e5a38ee",
+      "bytes": 1946,
+      "sha256": "04827dfee303764c4db1ae0a5aeadac184aed4f11d071d15a94cded8f5a867df"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/templates/store/home.html",
+      "archive_path": "app/templates/store/home.html",
+      "git_blob": "57baedba6ffd2abbcc19661fbb33f2018c4c7d3f",
+      "bytes": 5447,
+      "sha256": "873536fa42a48c9f4878982a38964918842e04669ed2dacd03d6ecfa550c2f7b"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/templates/store/product.html",
+      "archive_path": "app/templates/store/product.html",
+      "git_blob": "1eaf255e1641d3acab1cc0b95b10191cef1f3abd",
+      "bytes": 2333,
+      "sha256": "1d5a8398db5aa8b0c4010b946a7a49937c76f0c52e1ffd4a3a073a7acdd07fcb"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/templates/store/product_image.html",
+      "archive_path": "app/templates/store/product_image.html",
+      "git_blob": "fbb83aa8b98dff135a6c8facd91b8435fbd7e661",
+      "bytes": 375,
+      "sha256": "e1b2a30da50de5623f5210f76701760d2292c3c6cf1274d473d9a7eee836b0bf"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/templates/store/sku_fields.html",
+      "archive_path": "app/templates/store/sku_fields.html",
+      "git_blob": "a20152f381e2506baf48957dd8cc4d97a7994e95",
+      "bytes": 549,
+      "sha256": "c4d4efd786c02dafdd5d0c52333d317c6e3b7ec26eee60dc56d6085347a0c070"
+    },
+    {
+      "path": "MuscleCore分析資料/website/cloud_runtime.py",
+      "archive_path": "cloud_runtime.py",
+      "git_blob": "385d9ecef2d926de75871724eba604ae6d293a5e",
+      "bytes": 3821,
+      "sha256": "7a3c019046d9ec14b3d4e762ac9d86d5600c84e07293ccdf1042b90cc2478cbd"
+    },
+    {
+      "path": "MuscleCore分析資料/website/requirements-cloud-ai.txt",
+      "archive_path": "requirements-cloud-ai.txt",
+      "git_blob": "660d9ee93873c9aaab34432022318f7dd698d627",
+      "bytes": 432,
+      "sha256": "0e206231a9a70ff6a843f07d4e6143c6553d701def9db501251a6e04b2e5a487"
+    },
+    {
+      "path": "MuscleCore分析資料/website/requirements-cloud.txt",
+      "archive_path": "requirements-cloud.txt",
+      "git_blob": "f04ec537cd0ec5fbb26b3aba012311d14745af4f",
+      "bytes": 83,
+      "sha256": "2630f9296f68b7e8e80828ec5d9fee8673665ed2e15a3df8fc8df9c5603d37f0"
+    }
+  ],
+  "runtime_files_equal_tested_candidate": true,
+  "tests": {
+    "local_replica_set": {
+      "checked_at": "2026-10-18T08:23:09.809734+00:00",
+      "status": "passed",
+      "target": "disposable credential-free localhost replica set",
+      "container_removed": true,
+      "tests": {
+        "tests": 239,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "remaining_databases": [
+        "admin",
+        "config",
+        "local"
+      ],
+      "fixtures_removed": true
+    },
+    "fixture_and_source_tests": 32,
+    "policy_targeted_tests": 17,
+    "new_policy_regressions": 7
+  },
+  "container_acceptance": {
+    "source_sha": "8c0fe9f1db582de1829d4a352253019ef0d9d47a",
+    "allowlisted_files": 52,
+    "source_archive_sha256": "9d0544fb3393566c759546feb46da421e9e3f4202f36b59ccff4d0e04defd285",
+    "started_at_utc": "2026-10-18T08:23:42.695857+00:00",
+    "cloud_resources_modified": false,
+    "real_claude_calls": 0,
+    "builds": [
+      {
+        "install_ai": "false",
+        "tag": "sam-jeff-integration:8c0fe9f-false",
+        "exit_code": 0,
+        "elapsed_seconds": 6.11,
+        "image_id": "sha256:a636da569f02a65e707d8e54cae8a2f89cfcfb031cb3ad159a07484e2ad11453",
+        "image_bytes": 54442294
+      },
+      {
+        "install_ai": "true",
+        "tag": "sam-jeff-integration:8c0fe9f-true",
+        "exit_code": 0,
+        "elapsed_seconds": 3.45,
+        "image_id": "sha256:41242629cd919ebdd25efc52b4fad73f17a6c1453139eb43a42f00360746f21b",
+        "image_bytes": 505795251
+      }
+    ],
+    "model_exit_code": 0,
+    "status": "passed",
+    "checked_at_utc": "2026-10-18T08:24:48.756469+00:00",
+    "offline_model": {
+      "bge_real": true,
+      "dimensions": 512,
+      "demo_purchase_accepted": true,
+      "synthetic_does_not_change_result": true,
+      "seconds": 15.477
+    },
+    "initial_model_probe": "Rejected credential-free example hostname by unchanged cluster guard; corrected harness hostname and reran",
+    "gunicorn_boots": [
+      {
+        "install_ai": "false",
+        "gunicorn_http": {
+          "live": 200,
+          "admin": 403,
+          "login_post": 403
+        },
+        "mongodb_contacted": false,
+        "default_ai_flags": "all false",
+        "container_removed": true
+      },
+      {
+        "install_ai": "true",
+        "gunicorn_http": {
+          "live": 200,
+          "admin": 403,
+          "login_post": 403
+        },
+        "mongodb_contacted": false,
+        "default_ai_flags": "all false",
+        "container_removed": true
+      }
+    ]
+  },
+  "cloud_readback": {
+    "checked_at_utc": "2026-10-18T08:22:32.923Z",
+    "mode": "read-only control-plane metadata; secret values never accessed",
+    "services": [
+      {
+        "name": "vibecart-web",
+        "revisions": [
+          {
+            "revision": "vibecart-web-00019-phf",
+            "percent": 100,
+            "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:7199fa08c711917a80e5f54dbfd580ed96f3ef632bda7337b4aa2bde2325c992",
+            "service_account": "vibecart-web@vibecart-llmai.iam.gserviceaccount.com",
+            "source_sha": "e000d952d22a64b568903641893f4ffdc71accd3",
+            "resources": {
+              "cpu": "1",
+              "memory": "512Mi"
+            },
+            "flags": {
+              "CLOUD_PREVIEW_READ_ONLY": "false"
+            },
+            "behavior_synthetic_batch_present": false,
+            "behavior_synthetic_batch_nonempty": false,
+            "secret_bindings": [
+              {
+                "environment": "MONGO_URI",
+                "secret": "vibecart-mongo-uri",
+                "version": "1"
+              },
+              {
+                "environment": "SECRET_KEY",
+                "secret": "vibecart-session-key",
+                "version": "1"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "vibecart-acceptance-pr21",
+        "revisions": [
+          {
+            "revision": "vibecart-acceptance-pr21-00011-2hq",
+            "percent": 100,
+            "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:7199fa08c711917a80e5f54dbfd580ed96f3ef632bda7337b4aa2bde2325c992",
+            "service_account": "vibecart-pr21-acceptance@vibecart-llmai.iam.gserviceaccount.com",
+            "source_sha": "e000d952d22a64b568903641893f4ffdc71accd3",
+            "resources": {
+              "cpu": "1",
+              "memory": "512Mi"
+            },
+            "flags": {
+              "CLOUD_PREVIEW_READ_ONLY": "false",
+              "CLOUD_ACCEPTANCE_MODE": "true",
+              "CLOUD_ACCEPTANCE_DB": "vibecart_acceptance_pr21"
+            },
+            "behavior_synthetic_batch_present": false,
+            "behavior_synthetic_batch_nonempty": false,
+            "secret_bindings": [
+              {
+                "environment": "SECRET_KEY",
+                "secret": "vibecart-pr21-acceptance-session-key",
+                "version": "1"
+              },
+              {
+                "environment": "MONGO_URI",
+                "secret": "vibecart-pr21-acceptance-mongo-uri",
+                "version": "1"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "anthropic_secret": {
+      "http_status": 404,
+      "enabled_versions": null
+    },
+    "cloud_modified": false,
+    "real_claude_calls": 0
+  },
+  "pull_requests": {
+    "82": {
+      "reviewed_head": "d71d894352044f31c01c0aa3dd2f39c00f934b18",
+      "merge": "e47fb0c8717b29273f8039e3edac24e40558d41e",
+      "pr_ci": 39111396759
+    },
+    "83": {
+      "reviewed_head": "f3af26a5f56abb1d6c228c86037cbcf1d64ebebc",
+      "merge": "bfff03420f5089c39323227d49b45dc26a7d95a8",
+      "pr_ci": 39111536983
+    },
+    "84": {
+      "base": "main",
+      "reviewed_runtime_source": "7e7b57826041c1c05c31e50410f6e55eb0f612aa",
+      "merge_status_source": "https://github.com/SamWang61/LLM_PJ/pull/84"
+    }
+  },
+  "production_deployed": false,
+  "cloud_resources_modified": false,
+  "atlas_writes": 0,
+  "real_claude_calls": 0,
+  "current_scope": {
+    "gates": 14,
+    "closed": 2,
+    "open": 12,
+    "N07_N10_excluded": true
+  },
+  "remaining": [
+    "ANTHROPIC_API_KEY enabled secret version and minimum permissions",
+    "Same-source private cloud AI role/BGE/four fixed Claude intents/fallback/visual acceptance",
+    "Explicit production rollout decision; current website remains e000d95",
+    "Existing V5 acceptance, off-device backup key and daily workflow gaps remain"
+  ]
+}

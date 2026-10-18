@@ -1,5 +1,10 @@
 # 變更紀錄 / Changelog
 
+## 2026-10-18 — SAM 接手JEFF三PR整合與驗收
+
+- [完整驗收](docs/SAM_JEFF_PR82_84_ACCEPTANCE_2026-10-18.md)：239／0真MongoDB回歸、32來源／fixture、52檔同版精簡與AI映像build／Gunicorn boot及真BGE斷網驗證。#83補7項錯誤政策與NaN／Infinity安全預設；#84改接main，個人示範購買與歸因隔離分開。
+- 依使用者授權完成PR整合；正式服務未部署，線上AI仍關閉、Claude secret缺，V5仍2/14。保留REN／N14與其他修改，不代填具名簽收。
+
 
 
 ## 2026-10-18 — JEFF 示範結帳計入個人推薦 / Demo checkouts shape personal recommendations (B2)

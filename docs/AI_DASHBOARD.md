@@ -1,5 +1,7 @@
 # 營運後台與 v4 測試交接 / Dashboard handoff
 
+> 2026/10/18 16:30 最新：[SAM三PR整合與驗收](SAM_JEFF_PR82_84_ACCEPTANCE_2026-10-18.md)。#82～#84本輪已完成程式測試；舊段落保留交付時序，不代稱已部署或線上AI驗收。
+
 > 最新責任：AI／後台由 JEFF 負責；SAM 負責資料庫與測試。下文保留先前交付的技術與合併紀錄，不再代表現行分工。見 [現行分工](TEAM_OWNERSHIP.md)。Current ownership supersedes historical delivery attribution.
 
 ## 分支與負責人 / Branch ownership
