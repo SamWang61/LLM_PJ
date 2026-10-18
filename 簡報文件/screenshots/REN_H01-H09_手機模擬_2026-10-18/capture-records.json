@@ -147,7 +147,7 @@
       "at": "2026-10-18T08:11:52.135Z",
       "url": "https://vibecart-llmai.web.app/product/02f9efd17210150f2eea7274",
       "browser": "Codex in-app browser",
-      "result": "Public price79 stock95 SKU; normal scroll",
+      "result": "Product aggregate price79 stock95 before SKU selection; selected SKU evidence is H08-keyboard-focus.jpg",
       "layout": {
         "height": 844,
         "scrollTop": 590.9774169921875,
@@ -168,7 +168,9 @@
       "runtime_source": "e000d952d22a64b568903641893f4ffdc71accd3",
       "capture": "original JPEG viewport capture; no editing",
       "physical_phone": false,
-      "human_signoff": false
+      "human_signoff": false,
+      "sku_selected": false,
+      "selected_sku_evidence": "H08-keyboard-focus.jpg"
     },
     {
       "id": "H05",
@@ -309,7 +311,9 @@
       "runtime_source": "e000d952d22a64b568903641893f4ffdc71accd3",
       "capture": "original JPEG viewport capture; no editing",
       "physical_phone": false,
-      "human_signoff": false
+      "human_signoff": false,
+      "sku_selected": true,
+      "selected_sku": "CF-SKU-1210303000104"
     },
     {
       "id": "H09",
