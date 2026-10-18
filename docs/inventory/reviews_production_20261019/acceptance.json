@@ -1,0 +1,1441 @@
+{
+  "checked_at": "2026-10-18T22:54:44.971491+00:00",
+  "status": "passed",
+  "source_proof": {
+    "source": "b038aaca2d2553a39d8fd958100f277c64a75486",
+    "image_built_from": "e5788ce12339370a8afb5e2c824a6ecd24e5f602",
+    "runtime_file_count": 56,
+    "different_files": [],
+    "archive_sha256": "bd85ba17567bfdcff4b7d633551841df4b02a6dafee0a701fac46d969cf7fb4e",
+    "image": "sha256:8755ccb82902cf59430d5b2b76505c3fb6e4ed265d0ef98ba42821769edbcbdd",
+    "files": {
+      ".dockerignore": "80e00992db055bbd9108b55bec60892ff918d0bc",
+      "Dockerfile": "466b4d497cc45696ef33380861d9c2a3658d371f",
+      "VibeCart_AI/services/cart_service.py": "15bb3ffde7df5b75890355df6e90a97b7998e9e4",
+      "VibeCart_AI/services/review_service.py": "5d06f7bdd9d3341aaac390febe4c23c74477dda3",
+      "VibeCart_AI/services/sku_cart_service.py": "8f9b686f0f1df6d3d9f513f3f3e214f078d1e565",
+      "app/__init__.py": "6738d9dab3b63dcd75bb6dac98f5f210a1510450",
+      "app/admin.py": "ae28216026525c5bda82ef0c98a4294a9c2671dc",
+      "app/auth.py": "7f119d4e8ebf01d180287f6fa5ecf9a031c33433",
+      "app/db.py": "22a614671a7f2d14bc321464f27be763b1ca1d82",
+      "app/security.py": "95dcfc7f383aeebba0c26c4aa52dbe6c77878980",
+      "app/services/__init__.py": "7b12f23281659982866e90a8fff0bd30703e84fa",
+      "app/services/ai_compare.py": "55ea01784ee4951647cd782ccad49103bc8fa86c",
+      "app/services/ai_payload.py": "20f7f16ade658cf56645448ea23f2bba2c04aff8",
+      "app/services/ai_workflows.py": "6b806b2d0ef3fc70f4fb170b5e290774af3f4c5c",
+      "app/services/analytics.py": "2632c67567ed78d676983fbc1bbd5f60fd3d4014",
+      "app/services/behavior_scope.py": "528e0edf44daf69c8b2f2e90538800adc718cef7",
+      "app/services/dashboard.py": "17e88d7d6092bdcf596e5a69acac315420711d9b",
+      "app/services/local_ai.py": "3fb87d930c40658024323b902589ec7ce9679406",
+      "app/services/member_events.py": "91097ef7e15b664a57effd1af51a03737db51bd5",
+      "app/services/member_sessions.py": "cfc5c11528b9ace0e54bc689508fa7a12471807c",
+      "app/services/recommendation.py": "c0d93391127ab52c8954b50baa35898687e38e20",
+      "app/services/sku_gateway.py": "fabb7ad0cca7d1ce50748467e4f745bcff2bd340",
+      "app/services/storefront_ranking.py": "1a984faf44f0b056de735d96a6f8bb90a288a655",
+      "app/static/css/admin.css": "d8333c958c0ced2abbbdc368462d9e0a7311f36d",
+      "app/static/css/footer-team.css": "688d30cf5ed6b63159459418627d45c856158048",
+      "app/static/css/main.css": "9ca6daa1c8938920b506ac0b18260461ea643fe4",
+      "app/static/img/hero.png": "025b73205aba06cbeb91fe5479fa07ccd4726644",
+      "app/static/img/product-placeholder.svg": "ec8173c205ddde1d0aefd207a40ce7814e33fcd1",
+      "app/static/img/team/Jeff-s.png": "98dcebb32abb6a89e26497e84b97308a3d5bcc94",
+      "app/static/img/team/Ren-s.png": "b2caf739c35015e05df241359e2a31ffdcbd35ae",
+      "app/static/img/team/sam-s.png": "fa9f89c5c2bef022d7e1afe721589bc140efb6f1",
+      "app/static/js/admin.js": "6b6d050b7c9d3453a3f5cc988ca30b79b9e4af80",
+      "app/static/js/reviews.js": "1e2944fb19ba00306f41fe3a053b037944e535db",
+      "app/store.py": "7d72e2237435e12a15a788303df556c3a8df7095",
+      "app/store_v4.py": "8019b306ea5025f41433fe5e6745d284e13d0646",
+      "app/templates/admin/ai_compare.html": "147725bb12d73be72f67ff34da61e71b304290f4",
+      "app/templates/admin/ai_insight.html": "1ed8e8b864a409327384e39344055d11e38f818c",
+      "app/templates/admin/ai_recommendation.html": "5e272dae41b303f1af3fb214f331f18fa6f9d0a3",
+      "app/templates/admin/dashboard.html": "537c751cccb12b12926e29e9ebe2fcc73bab3e2b",
+      "app/templates/admin/filter_error.html": "085f5c72c3ce986585ae2da7c13657ba3b35982e",
+      "app/templates/admin/layout.html": "9294a11b8beaf5b45a6a093c7c258276ca03ecd0",
+      "app/templates/admin/recommendations.html": "6b8573f817f85df39e59fd335e305c01ae08edd0",
+      "app/templates/auth/login.html": "fd12e63ddf5d25adde07a1de41034bc55db95371",
+      "app/templates/auth/logout.html": "7791b8748b535eaaef1eb6081f8fe5e2662f40ba",
+      "app/templates/auth/register.html": "a61f3bd111fc4e6ceb7e673c3ea6ad58a738fbfd",
+      "app/templates/base.html": "b269a68f6b89bc3bb7bc10a06b91e36068b4b618",
+      "app/templates/store/cart.html": "bf163136a2ee255ecca6ffc4b8e11e7e238891ee",
+      "app/templates/store/cart_v4.html": "a4255933462ed4a5790054d833c678c70e5a38ee",
+      "app/templates/store/home.html": "f82d233a47b78722396451ad98b23de6bfd1cb2c",
+      "app/templates/store/product.html": "716fbf5424293706db2304b125deddf0b878e933",
+      "app/templates/store/product_image.html": "fbb83aa8b98dff135a6c8facd91b8435fbd7e661",
+      "app/templates/store/recommendations_v4.html": "1f6720065f9c3cd0371ea091a743ae0dcd12a9e5",
+      "app/templates/store/sku_fields.html": "a20152f381e2506baf48957dd8cc4d97a7994e95",
+      "cloud_runtime.py": "385d9ecef2d926de75871724eba604ae6d293a5e",
+      "requirements-cloud-ai.txt": "660d9ee93873c9aaab34432022318f7dd698d627",
+      "requirements-cloud.txt": "f04ec537cd0ec5fbb26b3aba012311d14745af4f"
+    },
+    "latest_main_runtime_identical": "87c61825d469d33c628fe8df172856b883cb5f5f"
+  },
+  "local_transactions": {
+    "checked_at": "2026-10-18T22:42:41.946379+00:00",
+    "status": "passed",
+    "target": "disposable credential-free localhost replica set",
+    "container_removed": true,
+    "tests": {
+      "tests": 275,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "remaining_databases": [
+      "admin",
+      "config",
+      "local"
+    ],
+    "fixtures_removed": true
+  },
+  "deployment": {
+    "source": "b038aaca2d2553a39d8fd958100f277c64a75486",
+    "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:8755ccb82902cf59430d5b2b76505c3fb6e4ed265d0ef98ba42821769edbcbdd",
+    "started_at": "2026-10-18T22:44:06.540Z",
+    "before": {
+      "name": "projects/vibecart-llmai/locations/asia-east1/services/vibecart-web/revisions/vibecart-web-role-auth-576b4748",
+      "uri": "https://vibecart-web-m44ncgz5ta-de.a.run.app",
+      "etag": "\"CJf91NYGEOi6vIcD/cHJvamVjdHMvdmliZWNhcnQtbGxtYWkvbG9jYXRpb25zL2FzaWEtZWFzdDEvc2VydmljZXMvdmliZWNhcnQtd2Vi\"",
+      "traffic": [
+        {
+          "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+          "revision": "vibecart-web-00019-phf",
+          "tag": "ren-fence",
+          "uri": "https://ren-fence---vibecart-web-m44ncgz5ta-de.a.run.app"
+        },
+        {
+          "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+          "revision": "vibecart-web-main20ee-1640",
+          "tag": "main20ee-preview",
+          "uri": "https://main20ee-preview---vibecart-web-m44ncgz5ta-de.a.run.app"
+        },
+        {
+          "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+          "revision": "vibecart-web-role-auth-576b4748",
+          "percent": 100,
+          "tag": "role-auth-1019",
+          "uri": "https://role-auth-1019---vibecart-web-m44ncgz5ta-de.a.run.app"
+        }
+      ],
+      "templateSource": "576b474822efd7464d650d7af2aa245e07fbc911",
+      "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:228862259bd96a69224132e5af73fc4e1c89165a759057470ed467c4ce80617b",
+      "labels": {
+        "codex-source-sha": "576b474822efd7464d650d7af2aa245e07fbc911"
+      },
+      "serviceAccount": "vibecart-web@vibecart-llmai.iam.gserviceaccount.com",
+      "flags": {
+        "CLOUD_PREVIEW_READ_ONLY": "false",
+        "ENABLE_CHECKOUT": "true"
+      },
+      "secrets": [
+        {
+          "name": "MONGO_URI",
+          "secretKeyRef": {
+            "secret": "vibecart-mongo-uri",
+            "version": "1"
+          }
+        },
+        {
+          "name": "SECRET_KEY",
+          "secretKeyRef": {
+            "secret": "vibecart-session-key",
+            "version": "1"
+          }
+        }
+      ],
+      "resources": {
+        "limits": {
+          "cpu": "1",
+          "memory": "512Mi"
+        },
+        "cpuIdle": true
+      },
+      "timeout": "60s",
+      "maxInstanceRequestConcurrency": 20,
+      "scaling": {
+        "maxInstanceCount": 1
+      }
+    },
+    "iam_before": {
+      "version": 1,
+      "etag": "BwZdpI4H3TI=",
+      "bindings": [
+        {
+          "role": "roles/run.invoker",
+          "members": [
+            "allUsers"
+          ]
+        }
+      ]
+    },
+    "preview_operation": "projects/vibecart-llmai/locations/asia-east1/operations/e4a60362-3bec-4a67-b92c-2b67df80c2e5",
+    "current": {
+      "name": "projects/vibecart-llmai/locations/asia-east1/services/vibecart-web/revisions/vibecart-web-reviews-b038aaca",
+      "uri": "https://vibecart-web-m44ncgz5ta-de.a.run.app",
+      "etag": "\"CJqZ1dYGEKjh-vgB/cHJvamVjdHMvdmliZWNhcnQtbGxtYWkvbG9jYXRpb25zL2FzaWEtZWFzdDEvc2VydmljZXMvdmliZWNhcnQtd2Vi\"",
+      "traffic": [
+        {
+          "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+          "revision": "vibecart-web-00019-phf",
+          "tag": "ren-fence",
+          "uri": "https://ren-fence---vibecart-web-m44ncgz5ta-de.a.run.app"
+        },
+        {
+          "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+          "revision": "vibecart-web-main20ee-1640",
+          "tag": "main20ee-preview",
+          "uri": "https://main20ee-preview---vibecart-web-m44ncgz5ta-de.a.run.app"
+        },
+        {
+          "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+          "revision": "vibecart-web-reviews-b038aaca",
+          "percent": 100,
+          "tag": "reviews-1019",
+          "uri": "https://reviews-1019---vibecart-web-m44ncgz5ta-de.a.run.app"
+        },
+        {
+          "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+          "revision": "vibecart-web-role-auth-576b4748",
+          "tag": "role-auth-1019",
+          "uri": "https://role-auth-1019---vibecart-web-m44ncgz5ta-de.a.run.app"
+        }
+      ],
+      "templateSource": "b038aaca2d2553a39d8fd958100f277c64a75486",
+      "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:8755ccb82902cf59430d5b2b76505c3fb6e4ed265d0ef98ba42821769edbcbdd",
+      "labels": {
+        "codex-source-sha": "b038aaca2d2553a39d8fd958100f277c64a75486"
+      },
+      "serviceAccount": "vibecart-web@vibecart-llmai.iam.gserviceaccount.com",
+      "flags": {
+        "CLOUD_PREVIEW_READ_ONLY": "false",
+        "ENABLE_CHECKOUT": "true",
+        "AI_RECOMMENDATIONS_ENABLED": "false",
+        "AI_SUMMARY_ENABLED": "false",
+        "AI_FREE_QUESTION_ENABLED": "false"
+      },
+      "secrets": [
+        {
+          "name": "MONGO_URI",
+          "secretKeyRef": {
+            "secret": "vibecart-mongo-uri",
+            "version": "1"
+          }
+        },
+        {
+          "name": "SECRET_KEY",
+          "secretKeyRef": {
+            "secret": "vibecart-session-key",
+            "version": "1"
+          }
+        }
+      ],
+      "resources": {
+        "limits": {
+          "cpu": "1",
+          "memory": "512Mi"
+        },
+        "cpuIdle": true
+      },
+      "timeout": "60s",
+      "maxInstanceRequestConcurrency": 20,
+      "scaling": {
+        "maxInstanceCount": 1
+      }
+    },
+    "preview": {
+      "name": "projects/vibecart-llmai/locations/asia-east1/services/vibecart-web/revisions/vibecart-web-reviews-b038aaca",
+      "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:8755ccb82902cf59430d5b2b76505c3fb6e4ed265d0ef98ba42821769edbcbdd",
+      "labels": {
+        "codex-source-sha": "b038aaca2d2553a39d8fd958100f277c64a75486"
+      },
+      "serviceAccount": "vibecart-web@vibecart-llmai.iam.gserviceaccount.com",
+      "flags": {
+        "CLOUD_PREVIEW_READ_ONLY": "false",
+        "ENABLE_CHECKOUT": "true",
+        "AI_RECOMMENDATIONS_ENABLED": "false",
+        "AI_SUMMARY_ENABLED": "false",
+        "AI_FREE_QUESTION_ENABLED": "false"
+      },
+      "secrets": [
+        {
+          "name": "MONGO_URI",
+          "secretKeyRef": {
+            "secret": "vibecart-mongo-uri",
+            "version": "1"
+          }
+        },
+        {
+          "name": "SECRET_KEY",
+          "secretKeyRef": {
+            "secret": "vibecart-session-key",
+            "version": "1"
+          }
+        }
+      ],
+      "resources": {
+        "limits": {
+          "cpu": "1",
+          "memory": "512Mi"
+        },
+        "cpuIdle": true
+      },
+      "timeout": "60s",
+      "maxInstanceRequestConcurrency": 20,
+      "scaling": {
+        "maxInstanceCount": 1
+      }
+    },
+    "preview_conditions": [
+      {
+        "type": "Ready",
+        "state": "CONDITION_SUCCEEDED",
+        "message": "Updating revision scaling succeeded.",
+        "lastTransitionTime": "2026-10-18T22:47:55.139440Z"
+      },
+      {
+        "type": "Active",
+        "state": "CONDITION_SUCCEEDED",
+        "lastTransitionTime": "2026-10-18T22:44:18.991237Z",
+        "severity": "INFO"
+      },
+      {
+        "type": "ResourcesAvailable",
+        "state": "CONDITION_SUCCEEDED",
+        "message": "Provisioning imported containers completed in 1.4s. Checking container health. This will wait for up to 2m for the configured startup probe, including an initial delay of 0s.",
+        "lastTransitionTime": "2026-10-18T22:44:08.428330Z"
+      },
+      {
+        "type": "ContainerReady",
+        "state": "CONDITION_SUCCEEDED",
+        "message": "Container image import completed.",
+        "lastTransitionTime": "2026-10-18T22:44:07.025271Z"
+      },
+      {
+        "type": "ContainerHealthy",
+        "state": "CONDITION_SUCCEEDED",
+        "message": "Containers became healthy in 10.02s.",
+        "lastTransitionTime": "2026-10-18T22:44:18.843874Z"
+      }
+    ],
+    "operation_done": true,
+    "operation_error": null,
+    "iam_after": {
+      "version": 1,
+      "etag": "BwZdpI4H3TI=",
+      "bindings": [
+        {
+          "role": "roles/run.invoker",
+          "members": [
+            "allUsers"
+          ]
+        }
+      ]
+    },
+    "promote_operation": "projects/vibecart-llmai/locations/asia-east1/operations/582ae60b-0717-41ed-a315-acb3896734cf",
+    "promoted_at": "2026-10-18T22:47:55.043Z"
+  },
+  "final_readback": {
+    "checked_at": "2026-10-18T22:53:19.311Z",
+    "production": {
+      "name": "projects/vibecart-llmai/locations/asia-east1/services/vibecart-web/revisions/vibecart-web-reviews-b038aaca",
+      "uri": "https://vibecart-web-m44ncgz5ta-de.a.run.app",
+      "etag": "\"CJqZ1dYGEKjh-vgB/cHJvamVjdHMvdmliZWNhcnQtbGxtYWkvbG9jYXRpb25zL2FzaWEtZWFzdDEvc2VydmljZXMvdmliZWNhcnQtd2Vi\"",
+      "traffic": [
+        {
+          "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+          "revision": "vibecart-web-00019-phf",
+          "tag": "ren-fence",
+          "uri": "https://ren-fence---vibecart-web-m44ncgz5ta-de.a.run.app"
+        },
+        {
+          "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+          "revision": "vibecart-web-main20ee-1640",
+          "tag": "main20ee-preview",
+          "uri": "https://main20ee-preview---vibecart-web-m44ncgz5ta-de.a.run.app"
+        },
+        {
+          "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+          "revision": "vibecart-web-reviews-b038aaca",
+          "percent": 100,
+          "tag": "reviews-1019",
+          "uri": "https://reviews-1019---vibecart-web-m44ncgz5ta-de.a.run.app"
+        },
+        {
+          "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+          "revision": "vibecart-web-role-auth-576b4748",
+          "tag": "role-auth-1019",
+          "uri": "https://role-auth-1019---vibecart-web-m44ncgz5ta-de.a.run.app"
+        }
+      ],
+      "templateSource": "b038aaca2d2553a39d8fd958100f277c64a75486",
+      "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:8755ccb82902cf59430d5b2b76505c3fb6e4ed265d0ef98ba42821769edbcbdd",
+      "labels": {
+        "codex-source-sha": "b038aaca2d2553a39d8fd958100f277c64a75486"
+      },
+      "serviceAccount": "vibecart-web@vibecart-llmai.iam.gserviceaccount.com",
+      "flags": {
+        "CLOUD_PREVIEW_READ_ONLY": "false",
+        "ENABLE_CHECKOUT": "true",
+        "AI_RECOMMENDATIONS_ENABLED": "false",
+        "AI_SUMMARY_ENABLED": "false",
+        "AI_FREE_QUESTION_ENABLED": "false"
+      },
+      "secrets": [
+        {
+          "name": "MONGO_URI",
+          "secretKeyRef": {
+            "secret": "vibecart-mongo-uri",
+            "version": "1"
+          }
+        },
+        {
+          "name": "SECRET_KEY",
+          "secretKeyRef": {
+            "secret": "vibecart-session-key",
+            "version": "1"
+          }
+        }
+      ],
+      "resources": {
+        "limits": {
+          "cpu": "1",
+          "memory": "512Mi"
+        },
+        "cpuIdle": true
+      },
+      "timeout": "60s",
+      "maxInstanceRequestConcurrency": 20,
+      "scaling": {
+        "maxInstanceCount": 1
+      }
+    },
+    "iam": {
+      "version": 1,
+      "etag": "BwZdpI4H3TI=",
+      "bindings": [
+        {
+          "role": "roles/run.invoker",
+          "members": [
+            "allUsers"
+          ]
+        }
+      ]
+    },
+    "hosting": {
+      "name": "sites/vibecart-llmai/releases/1792363722745000",
+      "releaseTime": "2026-10-18T22:48:42.745Z",
+      "version": "sites/vibecart-llmai/versions/a33b77d8155885b8",
+      "status": "FINALIZED",
+      "config": {
+        "rewrites": [
+          {
+            "glob": "**",
+            "run": {
+              "serviceId": "vibecart-web",
+              "region": "asia-east1"
+            }
+          }
+        ]
+      }
+    },
+    "temporary_job_deleted": true,
+    "routes": [
+      {
+        "host": "https://vibecart-llmai.web.app",
+        "path": "/health/live",
+        "http": 200,
+        "cache_control": "private, no-store"
+      },
+      {
+        "host": "https://vibecart-llmai.web.app",
+        "path": "/health/ready",
+        "http": 200,
+        "cache_control": "private, no-store"
+      },
+      {
+        "host": "https://vibecart-llmai.web.app",
+        "path": "/",
+        "http": 200,
+        "cache_control": "private, no-store",
+        "has_6plus4": true
+      },
+      {
+        "host": "https://vibecart-llmai.web.app",
+        "path": "/recommendations",
+        "http": 200,
+        "cache_control": "private, no-store"
+      },
+      {
+        "host": "https://vibecart-llmai.web.app",
+        "path": "/static/js/reviews.js",
+        "http": 200,
+        "cache_control": "no-cache"
+      },
+      {
+        "host": "https://vibecart-llmai.firebaseapp.com",
+        "path": "/health/live",
+        "http": 200,
+        "cache_control": "private, no-store"
+      },
+      {
+        "host": "https://vibecart-llmai.firebaseapp.com",
+        "path": "/health/ready",
+        "http": 200,
+        "cache_control": "private, no-store"
+      },
+      {
+        "host": "https://vibecart-llmai.firebaseapp.com",
+        "path": "/",
+        "http": 200,
+        "cache_control": "private, no-store",
+        "has_6plus4": true
+      },
+      {
+        "host": "https://vibecart-llmai.firebaseapp.com",
+        "path": "/recommendations",
+        "http": 200,
+        "cache_control": "private, no-store"
+      },
+      {
+        "host": "https://vibecart-llmai.firebaseapp.com",
+        "path": "/static/js/reviews.js",
+        "http": 200,
+        "cache_control": "no-cache"
+      }
+    ]
+  },
+  "same_image_private_job": {
+    "name": "sam-reviews-prod-accept-20261019",
+    "created": "projects/vibecart-llmai/locations/asia-east1/operations/ce9bc0d9-e984-428b-8936-9f56a4f48dc6",
+    "started_at": "2026-10-18T22:41:49.755Z",
+    "run": "projects/vibecart-llmai/locations/asia-east1/operations/c2bebd9e-4ce4-422e-ab5f-d954a127eab6",
+    "results": [
+      {
+        "at": "2026-10-18T22:43:17.903615Z",
+        "sam_preview_job_probe": {
+          "independent_cleanup": {
+            "users": 0,
+            "auth_sessions": 0,
+            "behavior_events": 0
+          },
+          "code": 0,
+          "file": "remote_dual_role_acceptance_probe.py",
+          "report": {
+            "disabled_role_denied": true,
+            "posted_role_ignored": true,
+            "cleanup": {
+              "behavior_events_remaining": 0,
+              "verified": true,
+              "behavior_events_deleted": 0,
+              "users_remaining": 0,
+              "auth_sessions_deleted": 0,
+              "users_deleted": 6,
+              "auth_sessions_remaining": 0
+            },
+            "ambiguous_password_denied": true,
+            "wrong_password_denied": true,
+            "status": "passed",
+            "scope": "six disposable same-email/role identities; no real people or real passwords",
+            "fixture_sessions_after_logout": 0,
+            "other_device_preserved": true,
+            "fixture_ids": [
+              "6ad54b44b1d7138b3cfb6409",
+              "6ad54b44b1d7138b3cfb640a",
+              "6ad54b44b1d7138b3cfb640b",
+              "6ad54b44b1d7138b3cfb640c",
+              "6ad54b44b1d7138b3cfb640d",
+              "6ad54b44b1d7138b3cfb640e"
+            ],
+            "probe_id": "sam-dual-role-4e951e4b5f327145",
+            "six_roles": [
+              {
+                "identity": 1,
+                "own_logout": true,
+                "password_changes": 403,
+                "role": "customer",
+                "login": 302,
+                "role_boundary": 302
+              },
+              {
+                "role_boundary": 200,
+                "role": "admin",
+                "login": 302,
+                "password_changes": 403,
+                "identity": 1,
+                "own_logout": true
+              },
+              {
+                "identity": 2,
+                "password_changes": 403,
+                "login": 302,
+                "role_boundary": 302,
+                "role": "customer",
+                "own_logout": true
+              },
+              {
+                "login": 302,
+                "role": "admin",
+                "role_boundary": 200,
+                "password_changes": 403,
+                "identity": 2,
+                "own_logout": true
+              },
+              {
+                "password_changes": 403,
+                "login": 302,
+                "identity": 3,
+                "role_boundary": 302,
+                "role": "customer",
+                "own_logout": true
+              },
+              {
+                "identity": 3,
+                "own_logout": true,
+                "password_changes": 403,
+                "login": 302,
+                "role_boundary": 200,
+                "role": "admin"
+              }
+            ],
+            "revision": "vibecart-acceptance-pr21-role95-e5788ce",
+            "role_switch_revokes_prior_device": true,
+            "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:8755ccb82902cf59430d5b2b76505c3fb6e4ed265d0ef98ba42821769edbcbdd"
+          }
+        }
+      },
+      {
+        "at": "2026-10-18T22:44:16.809685Z",
+        "sam_preview_job_probe": {
+          "code": 0,
+          "report": {
+            "reviews": {
+              "default_excluded": true,
+              "concurrent_distinct_reviews_200": true,
+              "changed_retry_409": true,
+              "concurrent_count": 5,
+              "concurrent_identical_200": true,
+              "concurrent_sum": 19,
+              "concurrent_display": 3.8,
+              "after_insert_product_failure_rollback": true,
+              "delivered_html_fallback_303": true,
+              "sum": 13,
+              "count": 3,
+              "display": 4.4,
+              "persisted_html_equal": true,
+              "after_insert_product_failure_http": 409
+            },
+            "stage": "revoked_device",
+            "status": "passed",
+            "eligibility": {
+              "invalid_rating_400": true,
+              "csrf_400": true,
+              "unpaid_incomplete_cancelled_other_owner_400": true
+            },
+            "cleanup": {
+              "behavior_events_deleted": 1009,
+              "verified": true,
+              "orders_deleted": 11,
+              "order_items_remaining": 0,
+              "users_deleted": 3,
+              "users_remaining": 0,
+              "products_deleted": 18,
+              "auth_sessions_deleted": 2,
+              "order_items_deleted": 11,
+              "behavior_events_remaining": 0,
+              "orders_remaining": 0,
+              "product_skus_remaining": 0,
+              "products_remaining": 0,
+              "product_reviews_remaining": 0,
+              "auth_sessions_remaining": 0,
+              "product_skus_deleted": 18,
+              "product_reviews_deleted": 6
+            },
+            "ranking": {
+              "cross_count": 4,
+              "insufficient_candidates_not_filled_with_unavailable": true,
+              "other_member_unchanged": true,
+              "caps_3_and_2": true,
+              "personal_count": 6,
+              "unique": 10,
+              "synthetic_monitor_count_unchanged": 21,
+              "synthetic_1001_unchanged": true,
+              "unavailable_default_excluded": true,
+              "cross_ratings": [
+                5,
+                4.9,
+                4.8,
+                4.7
+              ]
+            },
+            "fixture_scope": "isolated simulated paid states and ranking aggregates only",
+            "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:8755ccb82902cf59430d5b2b76505c3fb6e4ed265d0ef98ba42821769edbcbdd",
+            "revoked_device_denied": true,
+            "probe_id": "sam-reviews-d03013067a053810",
+            "expect_bge": false,
+            "fixture_ids": {
+              "products": [
+                "6ad54b87f78a56af4e248e11",
+                "6ad54b87f78a56af4e248e12",
+                "6ad54b87f78a56af4e248e13",
+                "6ad54b87f78a56af4e248e14",
+                "6ad54b87f78a56af4e248e15",
+                "6ad54b87f78a56af4e248e16",
+                "6ad54b87f78a56af4e248e17",
+                "6ad54b87f78a56af4e248e18",
+                "6ad54b87f78a56af4e248e19",
+                "6ad54b87f78a56af4e248e1a",
+                "6ad54b87f78a56af4e248e1b",
+                "6ad54b87f78a56af4e248e1c",
+                "6ad54b87f78a56af4e248e1d",
+                "6ad54b87f78a56af4e248e1e",
+                "6ad54b87f78a56af4e248e1f",
+                "6ad54b87f78a56af4e248e20",
+                "6ad54b87f78a56af4e248e21",
+                "6ad54b87f78a56af4e248e22"
+              ],
+              "users": [
+                "6ad54b87f78a56af4e248e0e",
+                "6ad54b87f78a56af4e248e0f",
+                "6ad54b87f78a56af4e248e10"
+              ],
+              "skus": [
+                "6ad54b87f78a56af4e248e23",
+                "6ad54b87f78a56af4e248e24",
+                "6ad54b87f78a56af4e248e25",
+                "6ad54b87f78a56af4e248e26",
+                "6ad54b87f78a56af4e248e27",
+                "6ad54b87f78a56af4e248e28",
+                "6ad54b87f78a56af4e248e29",
+                "6ad54b87f78a56af4e248e2a",
+                "6ad54b87f78a56af4e248e2b",
+                "6ad54b87f78a56af4e248e2c",
+                "6ad54b87f78a56af4e248e2d",
+                "6ad54b87f78a56af4e248e2e",
+                "6ad54b87f78a56af4e248e2f",
+                "6ad54b87f78a56af4e248e30",
+                "6ad54b87f78a56af4e248e31",
+                "6ad54b87f78a56af4e248e32",
+                "6ad54b87f78a56af4e248e33",
+                "6ad54b87f78a56af4e248e34"
+              ],
+              "lines": [
+                "6ad54b8bf78a56af4e248e40",
+                "6ad54b8cf78a56af4e248e42",
+                "6ad54b8cf78a56af4e248e44",
+                "6ad54b8cf78a56af4e248e46",
+                "6ad54b8cf78a56af4e248e48",
+                "6ad54b8cf78a56af4e248e4a",
+                "6ad54b8cf78a56af4e248e4c",
+                "6ad54b8cf78a56af4e248e4e",
+                "6ad54b8df78a56af4e248e50",
+                "6ad54bbaf78a56af4e249242",
+                "6ad54bbcf78a56af4e249244"
+              ],
+              "orders": [
+                "6ad54b8bf78a56af4e248e3f",
+                "6ad54b8cf78a56af4e248e41",
+                "6ad54b8cf78a56af4e248e43",
+                "6ad54b8cf78a56af4e248e45",
+                "6ad54b8cf78a56af4e248e47",
+                "6ad54b8cf78a56af4e248e49",
+                "6ad54b8cf78a56af4e248e4b",
+                "6ad54b8cf78a56af4e248e4d",
+                "6ad54b8df78a56af4e248e4f",
+                "6ad54bbaf78a56af4e249241",
+                "6ad54bbcf78a56af4e249243"
+              ]
+            },
+            "revision": "vibecart-acceptance-pr21-role95-e5788ce"
+          },
+          "file": "remote_reviews_acceptance_probe.py"
+        }
+      },
+      {
+        "at": "2026-10-18T22:44:52.786221Z",
+        "sam_preview_job_probe": {
+          "code": 0,
+          "report": {
+            "service_revision": "vibecart-acceptance-pr21-role95-e5788ce",
+            "accounts": [
+              {
+                "id": "6ad54bc15432423fa03ca1f8",
+                "role": "admin"
+              },
+              {
+                "role": "customer",
+                "id": "6ad54bc15432423fa03ca1f9"
+              }
+            ],
+            "database": "vibecart_acceptance_pr21",
+            "service_image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:8755ccb82902cf59430d5b2b76505c3fb6e4ed265d0ef98ba42821769edbcbdd",
+            "probe_id": "sam-accounts-4ab6a400101fc598",
+            "cleanup": {
+              "retirement": {
+                "sessions_deleted": 1,
+                "accounts_present": 2,
+                "verified": true,
+                "sessions_revoked": true,
+                "disabled": true,
+                "sessions_remaining": 0
+              },
+              "users_deleted": 2,
+              "users_remaining": 0,
+              "verified": true
+            },
+            "checks": {
+              "admin_read_pages": true,
+              "same_browser_relogin_old_cookie_denied_second_device_live": true,
+              "reenable_requires_new_login_old_cookies_stay_invalid": true,
+              "customer_two_sessions_admin_denied": true,
+              "all_customer_sessions_revoked_admin_unaffected": true,
+              "anonymous_member_admin_denied": true,
+              "disabled_accounts_login_and_all_devices_denied": true
+            },
+            "credentials_persisted": false,
+            "status": "passed",
+            "retirement_before_cleanup": {
+              "verified": true,
+              "sessions_revoked": true,
+              "sessions_remaining": 0,
+              "disabled": true,
+              "accounts_present": 2,
+              "sessions_deleted": 3
+            }
+          },
+          "file": "remote_account_acceptance_probe.py"
+        }
+      },
+      {
+        "at": "2026-10-18T22:46:02.182787Z",
+        "sam_preview_job_probe": {
+          "file": "remote_transaction_acceptance_probe.py",
+          "report": {
+            "customer_admin_denied": true,
+            "cleanup": {
+              "order_items_remaining": 0,
+              "carts_remaining": 0,
+              "auth_sessions": 3,
+              "products": 1,
+              "orders_remaining": 0,
+              "cart_events": 9,
+              "auth_sessions_remaining": 0,
+              "carts": 3,
+              "verified": true,
+              "products_remaining": 0,
+              "order_items": 2,
+              "cart_events_remaining": 0,
+              "users": 3,
+              "orders": 2,
+              "product_skus": 2,
+              "behavior_events_remaining": 0,
+              "product_skus_remaining": 0,
+              "behavior_events": 9,
+              "users_remaining": 0
+            },
+            "session_security": {
+              "maintainer_revoke_all_denied": true,
+              "old_cookie_denied": true,
+              "same_browser_relogin": true,
+              "other_device_preserved": true,
+              "inactive_customer_both_devices_denied": true,
+              "d5_ui_tested": false
+            },
+            "last_stock_concurrency": {
+              "stock_remaining": 0,
+              "http_statuses": [
+                400,
+                200
+              ],
+              "orders_total_including_original": 2,
+              "parallel_clients": 2,
+              "successful_checkouts": 1
+            },
+            "role_checks": {
+              "active_admin_200": true,
+              "inactive_admin_denied": true,
+              "missing_csrf_400": true
+            },
+            "checkout_persisted": true,
+            "two_device_sessions": true,
+            "per_device_logout": true,
+            "status": "passed",
+            "service_revision": "vibecart-acceptance-pr21-role95-e5788ce",
+            "stock_after_checkout": 1,
+            "retry_same_order": true,
+            "add_to_cart": true,
+            "probe_id": "ren-txn-b2f6083ee2293f07",
+            "service_image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:8755ccb82902cf59430d5b2b76505c3fb6e4ed265d0ef98ba42821769edbcbdd",
+            "h07_events": {
+              "required_contract_fields": true,
+              "event_type_counts": {
+                "PRODUCT_VIEW": 1,
+                "SEARCH": 1,
+                "PURCHASE": 1,
+                "ADD_TO_CART": 2
+              },
+              "demo_purchase_excluded_from_attribution": true,
+              "status": "passed",
+              "unique_event_ids": true,
+              "search_product_order_cart_links": true,
+              "readback_scope": "new disposable private user; real HTTPS-generated events",
+              "add_to_cart_links_and_quantities": true
+            },
+            "conflict_409": true,
+            "add_http": 200,
+            "stock_failure_rollback": {
+              "second_sku_unavailable_http": 400,
+              "cart_revision_preserved": true,
+              "arbitrary_fault_injection_tested": false,
+              "cart_event_counts_unchanged": true,
+              "persisted_before": {
+                "orders": 2,
+                "order_items": 2,
+                "cart_events": 9,
+                "behavior_events": 9
+              },
+              "order_items_scope": "fixture sku_id including orphan items",
+              "first_sku_stock_preserved": true,
+              "persisted_after": {
+                "order_items": 2,
+                "behavior_events": 9,
+                "cart_events": 9,
+                "orders": 2
+              },
+              "order_item_event_counts_unchanged": true
+            },
+            "h05": {
+              "readded_for_checkout_quantity": 1,
+              "status": "passed",
+              "add_two_update_one_reload_remove_reload": true,
+              "http_statuses": [
+                200,
+                200,
+                200,
+                200
+              ],
+              "stale_state_unchanged": true,
+              "stale_revision_http": 409,
+              "revision_sequence": [
+                1,
+                2,
+                3,
+                4
+              ]
+            }
+          },
+          "code": 0
+        }
+      },
+      {
+        "at": "2026-10-18T22:46:02.404521Z",
+        "sam_role95_index_cleanup": {
+          "restored": true,
+          "before": [
+            {
+              "unique": false,
+              "key": [
+                [
+                  "_id",
+                  1
+                ]
+              ],
+              "name": "_id_"
+            }
+          ],
+          "after": [
+            {
+              "name": "_id_",
+              "unique": false,
+              "key": [
+                [
+                  "_id",
+                  1
+                ]
+              ]
+            }
+          ],
+          "scope": "vibecart_acceptance_pr21",
+          "temporary_index_scope": {
+            "acceptance_run": "sam-dual-role-4e951e4b5f327145"
+          }
+        }
+      },
+      {
+        "at": "2026-10-18T22:46:02.404536Z",
+        "sam_preview_job_complete": {
+          "acceptance_user_indexes_restored": true,
+          "probes": 4,
+          "status": "passed"
+        }
+      }
+    ],
+    "execution": "projects/vibecart-llmai/locations/asia-east1/jobs/sam-reviews-prod-accept-20261019/executions/sam-reviews-prod-accept-20261019-hhprv",
+    "conditions": [
+      {
+        "type": "Started",
+        "state": "CONDITION_SUCCEEDED",
+        "message": "Started deployed execution in 8.31s.",
+        "lastTransitionTime": "2026-10-18T22:42:04.999142Z"
+      },
+      {
+        "type": "Completed",
+        "state": "CONDITION_SUCCEEDED",
+        "message": "Execution completed successfully in 4m7.29s.",
+        "lastTransitionTime": "2026-10-18T22:46:06.454587Z"
+      },
+      {
+        "type": "ContainerReady",
+        "state": "CONDITION_SUCCEEDED",
+        "message": "Imported container image.",
+        "lastTransitionTime": "2026-10-18T22:41:56.582453Z"
+      },
+      {
+        "type": "ResourcesAvailable",
+        "state": "CONDITION_SUCCEEDED",
+        "message": "Provisioned imported containers.",
+        "lastTransitionTime": "2026-10-18T22:41:56.679743Z"
+      }
+    ],
+    "succeededCount": 1,
+    "deleted": "projects/vibecart-llmai/locations/asia-east1/operations/ce0f9be9-1d50-438d-85eb-0b06f0dbdb49"
+  },
+  "formal_roles_before_cutover": {
+    "checked_at": "2026-10-18T22:46:45.252782+00:00",
+    "status": "passed",
+    "site": "https://reviews-1019---vibecart-web-m44ncgz5ta-de.a.run.app",
+    "accounts": [
+      {
+        "email": "cashsam@gmail.com",
+        "role": "customer",
+        "login_http": 302,
+        "landing": "/",
+        "admin_http": 302,
+        "password_get_http": 403,
+        "password_post_http": 403,
+        "server_session_verified": true,
+        "logout_http": 302,
+        "post_logout_admin_http": 302,
+        "own_session_remaining": 0,
+        "direct_cleanup_used": false
+      },
+      {
+        "email": "cashsam@gmail.com",
+        "role": "admin",
+        "login_http": 302,
+        "landing": "/admin/",
+        "admin_http": 200,
+        "password_get_http": 403,
+        "password_post_http": 403,
+        "server_session_verified": true,
+        "logout_http": 302,
+        "post_logout_admin_http": 302,
+        "own_session_remaining": 0,
+        "direct_cleanup_used": false
+      },
+      {
+        "email": "jeff841117@gmail.com",
+        "role": "customer",
+        "login_http": 302,
+        "landing": "/",
+        "admin_http": 302,
+        "password_get_http": 403,
+        "password_post_http": 403,
+        "server_session_verified": true,
+        "logout_http": 302,
+        "post_logout_admin_http": 302,
+        "own_session_remaining": 0,
+        "direct_cleanup_used": false
+      },
+      {
+        "email": "jeff841117@gmail.com",
+        "role": "admin",
+        "login_http": 302,
+        "landing": "/admin/",
+        "admin_http": 200,
+        "password_get_http": 403,
+        "password_post_http": 403,
+        "server_session_verified": true,
+        "logout_http": 302,
+        "post_logout_admin_http": 302,
+        "own_session_remaining": 0,
+        "direct_cleanup_used": false
+      },
+      {
+        "email": "chen2000401@gmail.com",
+        "role": "customer",
+        "login_http": 302,
+        "landing": "/",
+        "admin_http": 302,
+        "password_get_http": 403,
+        "password_post_http": 403,
+        "server_session_verified": true,
+        "logout_http": 302,
+        "post_logout_admin_http": 302,
+        "own_session_remaining": 0,
+        "direct_cleanup_used": false
+      },
+      {
+        "email": "chen2000401@gmail.com",
+        "role": "admin",
+        "login_http": 302,
+        "landing": "/admin/",
+        "admin_http": 200,
+        "password_get_http": 403,
+        "password_post_http": 403,
+        "server_session_verified": true,
+        "logout_http": 302,
+        "post_logout_admin_http": 302,
+        "own_session_remaining": 0,
+        "direct_cleanup_used": false
+      }
+    ],
+    "credentials_in_report": false,
+    "credentials_changed": false,
+    "mail_sent": false,
+    "session_scope": "only server-issued device tokens from six fresh clients",
+    "business_before": {
+      "sku_stock_sha256": "1b430a66adde743f295ea3468a833159c768ea2aee45cc970271c9d6d01ef2da",
+      "behavior_events": 1272,
+      "behavior_sha256": "d8f0d52de282dbd21a6ce883dfe11b1bc29d09da9bf857b8b9ba9046ca536bec",
+      "orders": 3006,
+      "order_items": 8977,
+      "product_reviews": 0
+    },
+    "business_after": {
+      "sku_stock_sha256": "1b430a66adde743f295ea3468a833159c768ea2aee45cc970271c9d6d01ef2da",
+      "behavior_events": 1272,
+      "behavior_sha256": "d8f0d52de282dbd21a6ce883dfe11b1bc29d09da9bf857b8b9ba9046ca536bec",
+      "orders": 3006,
+      "order_items": 8977,
+      "product_reviews": 0
+    },
+    "business_unchanged": true,
+    "readiness": {
+      "status": "passed",
+      "collections": 28,
+      "indexes": 89,
+      "migrations": 7,
+      "relationships": 12
+    },
+    "own_sessions_remaining": 0,
+    "preexisting_session_count": 1,
+    "preexisting_sessions_still_present": 0
+  },
+  "formal_roles_after_firebase": {
+    "checked_at": "2026-10-18T22:52:31.291931+00:00",
+    "status": "passed",
+    "site": "https://vibecart-llmai.web.app",
+    "accounts": [
+      {
+        "email": "cashsam@gmail.com",
+        "role": "customer",
+        "login_http": 302,
+        "landing": "/",
+        "admin_http": 302,
+        "password_get_http": 403,
+        "password_post_http": 403,
+        "server_session_verified": true,
+        "logout_http": 302,
+        "post_logout_admin_http": 302,
+        "own_session_remaining": 0,
+        "direct_cleanup_used": false
+      },
+      {
+        "email": "cashsam@gmail.com",
+        "role": "admin",
+        "login_http": 302,
+        "landing": "/admin/",
+        "admin_http": 200,
+        "password_get_http": 403,
+        "password_post_http": 403,
+        "server_session_verified": true,
+        "logout_http": 302,
+        "post_logout_admin_http": 302,
+        "own_session_remaining": 0,
+        "direct_cleanup_used": false
+      },
+      {
+        "email": "jeff841117@gmail.com",
+        "role": "customer",
+        "login_http": 302,
+        "landing": "/",
+        "admin_http": 302,
+        "password_get_http": 403,
+        "password_post_http": 403,
+        "server_session_verified": true,
+        "logout_http": 302,
+        "post_logout_admin_http": 302,
+        "own_session_remaining": 0,
+        "direct_cleanup_used": false
+      },
+      {
+        "email": "jeff841117@gmail.com",
+        "role": "admin",
+        "login_http": 302,
+        "landing": "/admin/",
+        "admin_http": 200,
+        "password_get_http": 403,
+        "password_post_http": 403,
+        "server_session_verified": true,
+        "logout_http": 302,
+        "post_logout_admin_http": 302,
+        "own_session_remaining": 0,
+        "direct_cleanup_used": false
+      },
+      {
+        "email": "chen2000401@gmail.com",
+        "role": "customer",
+        "login_http": 302,
+        "landing": "/",
+        "admin_http": 302,
+        "password_get_http": 403,
+        "password_post_http": 403,
+        "server_session_verified": true,
+        "logout_http": 302,
+        "post_logout_admin_http": 302,
+        "own_session_remaining": 0,
+        "direct_cleanup_used": false
+      },
+      {
+        "email": "chen2000401@gmail.com",
+        "role": "admin",
+        "login_http": 302,
+        "landing": "/admin/",
+        "admin_http": 200,
+        "password_get_http": 403,
+        "password_post_http": 403,
+        "server_session_verified": true,
+        "logout_http": 302,
+        "post_logout_admin_http": 302,
+        "own_session_remaining": 0,
+        "direct_cleanup_used": false
+      }
+    ],
+    "credentials_in_report": false,
+    "credentials_changed": false,
+    "mail_sent": false,
+    "session_scope": "only server-issued device tokens from six fresh clients",
+    "business_before": {
+      "sku_stock_sha256": "1b430a66adde743f295ea3468a833159c768ea2aee45cc970271c9d6d01ef2da",
+      "behavior_events": 1272,
+      "behavior_sha256": "d8f0d52de282dbd21a6ce883dfe11b1bc29d09da9bf857b8b9ba9046ca536bec",
+      "orders": 3006,
+      "order_items": 8977,
+      "product_reviews": 0
+    },
+    "business_after": {
+      "sku_stock_sha256": "1b430a66adde743f295ea3468a833159c768ea2aee45cc970271c9d6d01ef2da",
+      "behavior_events": 1272,
+      "behavior_sha256": "d8f0d52de282dbd21a6ce883dfe11b1bc29d09da9bf857b8b9ba9046ca536bec",
+      "orders": 3006,
+      "order_items": 8977,
+      "product_reviews": 0
+    },
+    "business_unchanged": true,
+    "readiness": {
+      "status": "passed",
+      "collections": 28,
+      "indexes": 89,
+      "migrations": 7,
+      "relationships": 12
+    },
+    "own_sessions_remaining": 0,
+    "preexisting_session_count": 0,
+    "preexisting_sessions_still_present": 0
+  },
+  "formal_review": {
+    "marker": "sam-prod-review-854ff81168ba",
+    "user": "6ad54cb365f3889553bbcb9d",
+    "product": "6ad54cb365f3889553bbcb9e",
+    "sku": "6ad54cb365f3889553bbcb9f",
+    "orders": [
+      "6ad54cb365f3889553bbcba0",
+      "6ad54cb365f3889553bbcba1",
+      "6ad54cb365f3889553bbcba2"
+    ],
+    "lines": [
+      "6ad54cb365f3889553bbcba3",
+      "6ad54cb365f3889553bbcba4",
+      "6ad54cb365f3889553bbcba5"
+    ],
+    "email": "sam-prod-review-854ff81168ba@example.invalid",
+    "url": "https://vibecart-llmai.web.app/product/6ad54cb365f3889553bbcb9e",
+    "started_at": "2026-10-18T22:48:19.063359+00:00",
+    "fixture_scope": "new marked unavailable non-recommendable test product and simulated paid orders; not real payment or business ratings",
+    "before": {
+      "products": {
+        "count": 336,
+        "sha256": "79dc61b6e7d49bea0bef1fba236f2050c043bd7b0ff171d5ab9247a9b6562013"
+      },
+      "product_skus": {
+        "count": 336,
+        "sha256": "ab2502e841449ce12734eef867ceea6410956e74f035036b81eadedbb2220082"
+      },
+      "users": {
+        "count": 612,
+        "sha256": "3e2f4e1ebed2f97fb81369aca4f398771a8a64cf926e3be3a48c359a7dedf0ad"
+      },
+      "orders": {
+        "count": 3006,
+        "sha256": "7ad4d30c62c3653fcfc8e714f91c731ed2f3f92ed78ce47cd5ce79846eb1a77e"
+      },
+      "order_items": {
+        "count": 8977,
+        "sha256": "64fa0769fa46905de2dc65059b25e59d73ac2ce20c0855a1a052e5173a026bc0"
+      },
+      "product_reviews": {
+        "count": 0,
+        "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      "behavior_events": {
+        "count": 1272,
+        "sha256": "d8f0d52de282dbd21a6ce883dfe11b1bc29d09da9bf857b8b9ba9046ca536bec"
+      }
+    },
+    "api_first_two": [
+      {
+        "rating": 4.0,
+        "count": 1
+      },
+      {
+        "rating": 4.0,
+        "count": 2
+      }
+    ],
+    "ready": true,
+    "atlas": {
+      "status": "passed",
+      "sum": 13,
+      "count": 3,
+      "raw": 4.333333333333333,
+      "display": 4.4,
+      "distribution": {
+        "star_1": 0,
+        "star_2": 0,
+        "star_3": 0,
+        "star_4": 2,
+        "star_5": 1
+      },
+      "published_ratings": [
+        4,
+        4,
+        5
+      ],
+      "fixture_excluded_from_recommendations": true
+    },
+    "ui_repeat_reason": "First submission persisted; browser tab disappeared before immediate DOM receipt. Repeat only owned simulated review.",
+    "after": {
+      "products": {
+        "count": 336,
+        "sha256": "79dc61b6e7d49bea0bef1fba236f2050c043bd7b0ff171d5ab9247a9b6562013"
+      },
+      "product_skus": {
+        "count": 336,
+        "sha256": "ab2502e841449ce12734eef867ceea6410956e74f035036b81eadedbb2220082"
+      },
+      "users": {
+        "count": 612,
+        "sha256": "3e2f4e1ebed2f97fb81369aca4f398771a8a64cf926e3be3a48c359a7dedf0ad"
+      },
+      "orders": {
+        "count": 3006,
+        "sha256": "7ad4d30c62c3653fcfc8e714f91c731ed2f3f92ed78ce47cd5ce79846eb1a77e"
+      },
+      "order_items": {
+        "count": 8977,
+        "sha256": "64fa0769fa46905de2dc65059b25e59d73ac2ce20c0855a1a052e5173a026bc0"
+      },
+      "product_reviews": {
+        "count": 0,
+        "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      },
+      "behavior_events": {
+        "count": 1272,
+        "sha256": "d8f0d52de282dbd21a6ce883dfe11b1bc29d09da9bf857b8b9ba9046ca536bec"
+      }
+    },
+    "existing_business_unchanged": true,
+    "cleanup": {
+      "collections": {
+        "product_reviews": {
+          "deleted": 3,
+          "remaining": 0
+        },
+        "order_items": {
+          "deleted": 3,
+          "remaining": 0
+        },
+        "orders": {
+          "deleted": 3,
+          "remaining": 0
+        },
+        "behavior_events": {
+          "deleted": 4,
+          "remaining": 0
+        },
+        "auth_sessions": {
+          "deleted": 0,
+          "remaining": 0
+        },
+        "users": {
+          "deleted": 1,
+          "remaining": 0
+        },
+        "product_skus": {
+          "deleted": 1,
+          "remaining": 0
+        },
+        "products": {
+          "deleted": 1,
+          "remaining": 0
+        }
+      },
+      "verified": true,
+      "at": "2026-10-18T22:52:18.830953+00:00"
+    }
+  },
+  "browser_review": {
+    "before": {
+      "count": "（2筆評價）",
+      "forms": 1,
+      "rating": "★ 4.0",
+      "url": "https://vibecart-llmai.web.app/product/6ad54cb365f3889553bbcb9e"
+    },
+    "after": {
+      "count": "（3筆評價）",
+      "formDisabled": true,
+      "formRetained": 1,
+      "rating": "★ 4.4",
+      "status": "評價已送出，商品星等已更新。",
+      "url": "https://vibecart-llmai.web.app/product/6ad54cb365f3889553bbcb9e"
+    },
+    "withoutReload": true
+  },
+  "independent_cleanup": {
+    "users": 0,
+    "products": 0,
+    "product_skus": 0,
+    "orders": 0,
+    "order_items": 0,
+    "product_reviews": 0,
+    "behavior_events": 0,
+    "auth_sessions": 0
+  },
+  "remaining_real_catalog": {
+    "product_reviews": 0,
+    "actual_products": 0,
+    "active_products": 336,
+    "synthetic_events": 1240
+  },
+  "screenshots": {
+    "review-rating.png": {
+      "sha256": "f5ee4d263c5a5ea8d46a4e2de2116e8068ccf352018b8dc9ec5460ce10deed61"
+    },
+    "review-after.png": {
+      "sha256": "776994619e413245a07025ac551e235da63c58406cd7b1382bbb05c7095a59e1"
+    }
+  },
+  "acceptance_limits": [
+    "isolated high-star ranking fixtures on identical image, not real production ratings",
+    "formal review uses simulated paid/delivered orders on a marked unavailable non-recommendable product; all owned rows removed",
+    "AI model flags remain false; no real payment/logistics or human signoff claimed"
+  ]
+}
