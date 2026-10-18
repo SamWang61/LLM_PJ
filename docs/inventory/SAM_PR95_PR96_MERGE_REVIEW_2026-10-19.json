@@ -1138,7 +1138,7 @@
     },
     {
       "path": "MuscleCore分析資料/website/app/templates/auth/login.html",
-      "sha256": "1a5c8e29680f48cffc239fc44025432d28fc87dbc290e12e5266a30b0f7a4232"
+      "sha256": "b20ab40bc3b656bbca5883665050d9128210aa276cb6ea2be4b6f35e2e658f9c"
     },
     {
       "path": "MuscleCore分析資料/website/tests/test_database_readiness.py",
@@ -1236,5 +1236,9 @@
       "path": "專題進度/專案未完成工作清單_2026-10-18.md",
       "sha256": "3bd790b5bb62e42455df3dc759dbae0a280b9f528a14786151897fe746edb28f"
     }
-  ]
+  ],
+  "delivery_normalization": {
+    "path": "MuscleCore分析資料/website/app/templates/auth/login.html",
+    "reason": "checkout CRLF normalized to committed Git blob bytes; application source unchanged"
+  }
 }
