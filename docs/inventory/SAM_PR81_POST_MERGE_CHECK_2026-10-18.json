@@ -1,0 +1,498 @@
+{
+  "checked_at": "2026-10-18T19:56:02.334707+08:00",
+  "source_main": "10683975610780e5d7ff196d7795529fdb450180",
+  "previous_main": "cac315ba1a3cc07518d82117939cfc3055fa2c21",
+  "main_ci": {
+    "run_id": 39121364837,
+    "conclusion": "success"
+  },
+  "local_transaction_acceptance": {
+    "checked_at": "2026-10-18T11:53:46.151730+00:00",
+    "status": "passed",
+    "target": "disposable credential-free localhost replica set",
+    "container_removed": true,
+    "tests": {
+      "tests": 261,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "remaining_databases": [
+      "admin",
+      "config",
+      "local"
+    ],
+    "fixtures_removed": true
+  },
+  "additional_checks": {
+    "relative_links_exist": 157,
+    "runtime_same_as_previously_booted_2e44f12": true,
+    "runtime_boot_not_rerun": true,
+    "js_syntax": "passed",
+    "publication_policy": {
+      "files": 649,
+      "utf8_texts": 519,
+      "errors": 0
+    }
+  },
+  "source_commit_remote": [
+    {
+      "path": "MuscleCore分析資料/website/.dockerignore",
+      "blob_sha": "80e00992db055bbd9108b55bec60892ff918d0bc",
+      "sha256": "e93ab8b6e4a05bb46354e2dc4ec06124c2eb241fdd872b3424250df4e35afd94",
+      "working_eol_only": true
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/services/ai_workflows.py",
+      "blob_sha": "6b806b2d0ef3fc70f4fb170b5e290774af3f4c5c",
+      "sha256": "c58a53ac7db1def62b5908b1c6d56bb6fff331abc5998386fb8766d99d526332",
+      "working_eol_only": false
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/services/sku_gateway.py",
+      "blob_sha": "fabb7ad0cca7d1ce50748467e4f745bcff2bd340",
+      "sha256": "62453f330a703ef086ab4ecda99f6dc490f93e9ab4a9be967669bf9e82306f08",
+      "working_eol_only": false
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/services/storefront_ranking.py",
+      "blob_sha": "1a984faf44f0b056de735d96a6f8bb90a288a655",
+      "sha256": "389105fe3ea8001980b1fa37ede86d622f9ec3d240462611c0eddcfac46fa808",
+      "working_eol_only": false
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/static/css/main.css",
+      "blob_sha": "9ca6daa1c8938920b506ac0b18260461ea643fe4",
+      "sha256": "83d5e22a1b91bbf0128710f47a9fd70448d615661c6ac1a6a587fea21295b4f4",
+      "working_eol_only": false
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/static/js/reviews.js",
+      "blob_sha": "1e2944fb19ba00306f41fe3a053b037944e535db",
+      "sha256": "82ef1fb2f5d8281375dfba4496dff4adc6d3c0371a3ac24626656be431219cc0",
+      "working_eol_only": true
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/store_v4.py",
+      "blob_sha": "8019b306ea5025f41433fe5e6745d284e13d0646",
+      "sha256": "743150b2e6de3a5542a2df378104c96969a67f657d49c4e1fa4720110abaad12",
+      "working_eol_only": false
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/templates/base.html",
+      "blob_sha": "b269a68f6b89bc3bb7bc10a06b91e36068b4b618",
+      "sha256": "b86fa4a7bf5744f53390afc68b025cb9589fbadf96324a8a2ba3511195cbc4dc",
+      "working_eol_only": false
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/templates/store/home.html",
+      "blob_sha": "f82d233a47b78722396451ad98b23de6bfd1cb2c",
+      "sha256": "4870a3ec667a73dc7bd2d5044e1739cad0c3e632db62cb08909c8750015eee6e",
+      "working_eol_only": true
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/templates/store/product.html",
+      "blob_sha": "716fbf5424293706db2304b125deddf0b878e933",
+      "sha256": "6f70c7fa5486680107995c2594c2d996fe71e175911d1e998c0a65eb92db890b",
+      "working_eol_only": true
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/templates/store/recommendations_v4.html",
+      "blob_sha": "1f6720065f9c3cd0371ea091a743ae0dcd12a9e5",
+      "sha256": "dc97bbb0158a4a53a756c196fa91e3c62d17ea378d8375467726c24cf400f09c",
+      "working_eol_only": true
+    },
+    {
+      "path": "MuscleCore分析資料/website/tests/test_behavior_scope.py",
+      "blob_sha": "0c712f0747e2c6b852ec7e6a890f86c2636556c2",
+      "sha256": "a01ef7bde88ce25138c1105d6b98bab667d1406a12454a1d20b667210e30d973",
+      "working_eol_only": false
+    },
+    {
+      "path": "MuscleCore分析資料/website/tests/test_personalization_scope.py",
+      "blob_sha": "8b43150a935c62a0c7fde63a0759cd030116c4bb",
+      "sha256": "ec73bdf0165aac55854c1e0066f58bf090fda05de746d6b934f19e31aeb4dc7d",
+      "working_eol_only": false
+    },
+    {
+      "path": "MuscleCore分析資料/website/tests/test_product_reviews.py",
+      "blob_sha": "2c497eeb1115a555527a7848d85f489a81818351",
+      "sha256": "38e62c035c85dd86bfaa3ffa5bd33ed5c2d2745b0baedbb22c8648769328aa93",
+      "working_eol_only": false
+    },
+    {
+      "path": "MuscleCore分析資料/website/tests/test_ren_auth_order.py",
+      "blob_sha": "14acffe16e200d0c7859d0203028df44297385cb",
+      "sha256": "5bcd19d01e5f6a3195a07ff60eaedc3e671a499ae98e7a9e32ecdb8b31fcc9ae",
+      "working_eol_only": false
+    },
+    {
+      "path": "MuscleCore分析資料/website/tests/test_storefront_6_4.py",
+      "blob_sha": "c38e59901cd710cda8c919341cc359e88afa5e6b",
+      "sha256": "3c88ea36effc41214acca9b3a519a57d6155498c0eb5890aa2638b1c7d1535ae",
+      "working_eol_only": false
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/15_完整Schema_v4架構與遷移.md",
+      "blob_sha": "ef871c45c7342714217522d76d694cffce44372d",
+      "sha256": "07cc08c3d8267504c341522fe48bc03bdf82fdadd64a12b38332b11783e45acb",
+      "working_eol_only": false
+    },
+    {
+      "path": "VibeCart_AI/services/review_service.py",
+      "blob_sha": "5d06f7bdd9d3341aaac390febe4c23c74477dda3",
+      "sha256": "262dd2f09ba04ad66a4a63bcb16e9214039e74bd41531271a4b8e93619a564d5",
+      "working_eol_only": false
+    },
+    {
+      "path": "docs/CURRENT_CONTEXT.md",
+      "blob_sha": "40beaa95f9fb7f92ae4ef44464942e24cf682c17",
+      "sha256": "3979e7e12078e9ec5a6577043679b0dea61f7199cf603cf65fb1ddfcf6177482",
+      "working_eol_only": false
+    },
+    {
+      "path": "docs/DOCUMENT_INDEX.md",
+      "blob_sha": "f40aa634797801e29df8ba8e7549c262d6cb3537",
+      "sha256": "5cc0eec993f7bddcba5d4215fd8f4e5f7bd060f116c3459352cb5de98f93f349",
+      "working_eol_only": false
+    },
+    {
+      "path": "docs/PRODUCT_REVIEWS_6PLUS4_DELIVERY_2026-10-18.md",
+      "blob_sha": "786e3092330cc0fb9f112b491a9d0df745a2ff94",
+      "sha256": "4ac3465f21005d7a81bbfa4b81263c69615da3148313be284b7ea38a02f105c4",
+      "working_eol_only": false
+    },
+    {
+      "path": "docs/README.md",
+      "blob_sha": "02eb0e39c008460aff8429d14e80ec8859a607e6",
+      "sha256": "bd9e065695f9197f4877e2f0f94981e4a887bf2220d469c402105371b0daacbc",
+      "working_eol_only": false
+    },
+    {
+      "path": "docs/inventory/review_stars_20261018/container-boot.json",
+      "blob_sha": "8a56f62d286bd6a48b1f2998d551ba038a49cac6",
+      "sha256": "5df3f424a2346a798f8687ce3c1bba7a8ffc80a1f8802c51629e8f9df0b7af94",
+      "working_eol_only": false
+    },
+    {
+      "path": "docs/inventory/review_stars_20261018/home-6plus4.png",
+      "blob_sha": "bd2f08e3434c080c928882132a35b47edca4a342",
+      "sha256": "8d5f0337014c30a583c4fb3ada034291de2469855fd46c98b15fa9e45a41f0c2",
+      "working_eol_only": false
+    },
+    {
+      "path": "docs/inventory/review_stars_20261018/review-updated.png",
+      "blob_sha": "91bd87290f036c3395062f7f54945adcd33dc87c",
+      "sha256": "0b8701329bc2b49abc01438e27f55a8227a4cd385f249d75db9bbacdbfc28af8",
+      "working_eol_only": false
+    },
+    {
+      "path": "docs/inventory/review_stars_20261018/transactions-main-integration.json",
+      "blob_sha": "fe96e3f52be570b753d5076a581954a9cca3d33e",
+      "sha256": "306ca934f625ee1b02abab33bd3bc94c260883b6eced1937c48df7844c43b6cc",
+      "working_eol_only": false
+    },
+    {
+      "path": "docs/inventory/review_stars_20261018/transactions.json",
+      "blob_sha": "e37b8cf272d715c599a392407a115d6d1ec282aa",
+      "sha256": "b65653573525d0db96025d7fddf7c7547774f2fd7bd9a7bfcd069b65d1828099",
+      "working_eol_only": false
+    },
+    {
+      "path": "scripts/prepare_cloud_source.py",
+      "blob_sha": "eec1c4acdaf3ee3d2af46f2949a669784dcf6f9f",
+      "sha256": "66b6236040bff7889b90c0f5ce7825f5243bd0980bb2e6cfe179d14e8fc4797c",
+      "working_eol_only": false
+    },
+    {
+      "path": "討論的相關記錄/README.md",
+      "blob_sha": "de092397010815a82c5b0e2e486776d576c8f90a",
+      "sha256": "af50e15068b460c54b257fe07f267b04d707fbb4476eaa461db45b8aebf0a777",
+      "working_eol_only": false
+    },
+    {
+      "path": "討論的相關記錄/VibeCart_AI_MongoDB_Complete_Schema.md",
+      "blob_sha": "bde9c4e58e40e1780718df6938b4d4f810f02e6e",
+      "sha256": "efdfcbf1929ec7543ff2267afb0e00668b304e0d5a6e8a1128e5188841d860b0",
+      "working_eol_only": false
+    },
+    {
+      "path": "討論的相關記錄/VibeCart_AI_Recommendation_and_Cross_Category_Rules.md",
+      "blob_sha": "61f0fdab647a21f0bc6f9cf65c5b71b3dc3475c8",
+      "sha256": "002f42749dae38181bb86f83276d39a0cae0bb02a7398aae0ca2e6949aa6209b",
+      "working_eol_only": false
+    },
+    {
+      "path": "討論的相關記錄/商品評價與猜你喜歡6加4推薦_對話決議_2026-10-18.md",
+      "blob_sha": "9f242a3cc12815abaff37cd94e5b11150d1e2c83",
+      "sha256": "ad02b8655b7ff8d7e14e6672d2795e2b8b94163a1f6b002a09832dc18218b4cb",
+      "working_eol_only": false
+    }
+  ],
+  "original_sync": [
+    {
+      "path": "MuscleCore分析資料/website/.dockerignore",
+      "original_before_sha256": "f93536bfcef911fcda617aaf35610ee3beb4f8709f2681bedab16428957ac0ea",
+      "original_after_sha256": "e93ab8b6e4a05bb46354e2dc4ec06124c2eb241fdd872b3424250df4e35afd94",
+      "commit_remote_sha256": "e93ab8b6e4a05bb46354e2dc4ec06124c2eb241fdd872b3424250df4e35afd94",
+      "canonical_equal": true,
+      "preserved_variant": false
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/services/ai_workflows.py",
+      "original_before_sha256": "36cd71cd9d98d66ded5680abefca9a095d606224b6ec9bb682d292f1fc7b2c73",
+      "original_after_sha256": "c58a53ac7db1def62b5908b1c6d56bb6fff331abc5998386fb8766d99d526332",
+      "commit_remote_sha256": "c58a53ac7db1def62b5908b1c6d56bb6fff331abc5998386fb8766d99d526332",
+      "canonical_equal": true,
+      "preserved_variant": false
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/services/sku_gateway.py",
+      "original_before_sha256": "0239a41a4f5d4a7287aa50a0623154e0bb03f5f3eff61330780eef0d975e7e1a",
+      "original_after_sha256": "62453f330a703ef086ab4ecda99f6dc490f93e9ab4a9be967669bf9e82306f08",
+      "commit_remote_sha256": "62453f330a703ef086ab4ecda99f6dc490f93e9ab4a9be967669bf9e82306f08",
+      "canonical_equal": true,
+      "preserved_variant": false
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/services/storefront_ranking.py",
+      "original_before_sha256": null,
+      "original_after_sha256": "389105fe3ea8001980b1fa37ede86d622f9ec3d240462611c0eddcfac46fa808",
+      "commit_remote_sha256": "389105fe3ea8001980b1fa37ede86d622f9ec3d240462611c0eddcfac46fa808",
+      "canonical_equal": true,
+      "preserved_variant": false
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/static/css/main.css",
+      "original_before_sha256": "f265290cfae92e005ac92b68e5b286d21fa8f2bf55212eb2215c1fde95ac77aa",
+      "original_after_sha256": "83d5e22a1b91bbf0128710f47a9fd70448d615661c6ac1a6a587fea21295b4f4",
+      "commit_remote_sha256": "83d5e22a1b91bbf0128710f47a9fd70448d615661c6ac1a6a587fea21295b4f4",
+      "canonical_equal": true,
+      "preserved_variant": false
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/static/js/reviews.js",
+      "original_before_sha256": null,
+      "original_after_sha256": "82ef1fb2f5d8281375dfba4496dff4adc6d3c0371a3ac24626656be431219cc0",
+      "commit_remote_sha256": "82ef1fb2f5d8281375dfba4496dff4adc6d3c0371a3ac24626656be431219cc0",
+      "canonical_equal": true,
+      "preserved_variant": false
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/store_v4.py",
+      "original_before_sha256": "f332f4abb22551acd59a52e1492ff7f9bb0da5f66c3bc162e93f1de74d1ef0a1",
+      "original_after_sha256": "743150b2e6de3a5542a2df378104c96969a67f657d49c4e1fa4720110abaad12",
+      "commit_remote_sha256": "743150b2e6de3a5542a2df378104c96969a67f657d49c4e1fa4720110abaad12",
+      "canonical_equal": true,
+      "preserved_variant": false
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/templates/base.html",
+      "original_before_sha256": "5290fccb7d9a0b237dc597fb24c558e85937674d8d87048f9f53eeac3a19fd85",
+      "original_after_sha256": "c4012edac3c357b4a88f9269ada7c38474c9c9af532804dadbfa70df1002d81a",
+      "commit_remote_sha256": "b86fa4a7bf5744f53390afc68b025cb9589fbadf96324a8a2ba3511195cbc4dc",
+      "canonical_equal": false,
+      "preserved_variant": true
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/templates/store/home.html",
+      "original_before_sha256": "873536fa42a48c9f4878982a38964918842e04669ed2dacd03d6ecfa550c2f7b",
+      "original_after_sha256": "4870a3ec667a73dc7bd2d5044e1739cad0c3e632db62cb08909c8750015eee6e",
+      "commit_remote_sha256": "4870a3ec667a73dc7bd2d5044e1739cad0c3e632db62cb08909c8750015eee6e",
+      "canonical_equal": true,
+      "preserved_variant": false
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/templates/store/product.html",
+      "original_before_sha256": "1d5a8398db5aa8b0c4010b946a7a49937c76f0c52e1ffd4a3a073a7acdd07fcb",
+      "original_after_sha256": "6f70c7fa5486680107995c2594c2d996fe71e175911d1e998c0a65eb92db890b",
+      "commit_remote_sha256": "6f70c7fa5486680107995c2594c2d996fe71e175911d1e998c0a65eb92db890b",
+      "canonical_equal": true,
+      "preserved_variant": false
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/templates/store/recommendations_v4.html",
+      "original_before_sha256": null,
+      "original_after_sha256": "dc97bbb0158a4a53a756c196fa91e3c62d17ea378d8375467726c24cf400f09c",
+      "commit_remote_sha256": "dc97bbb0158a4a53a756c196fa91e3c62d17ea378d8375467726c24cf400f09c",
+      "canonical_equal": true,
+      "preserved_variant": false
+    },
+    {
+      "path": "MuscleCore分析資料/website/tests/test_behavior_scope.py",
+      "original_before_sha256": null,
+      "original_after_sha256": "a01ef7bde88ce25138c1105d6b98bab667d1406a12454a1d20b667210e30d973",
+      "commit_remote_sha256": "a01ef7bde88ce25138c1105d6b98bab667d1406a12454a1d20b667210e30d973",
+      "canonical_equal": true,
+      "preserved_variant": false
+    },
+    {
+      "path": "MuscleCore分析資料/website/tests/test_personalization_scope.py",
+      "original_before_sha256": "b88ded1c93d858eaf50b02292bef0456fde4946eb4f2ad3c312148e6f38c1f01",
+      "original_after_sha256": "ec73bdf0165aac55854c1e0066f58bf090fda05de746d6b934f19e31aeb4dc7d",
+      "commit_remote_sha256": "ec73bdf0165aac55854c1e0066f58bf090fda05de746d6b934f19e31aeb4dc7d",
+      "canonical_equal": true,
+      "preserved_variant": false
+    },
+    {
+      "path": "MuscleCore分析資料/website/tests/test_product_reviews.py",
+      "original_before_sha256": null,
+      "original_after_sha256": "38e62c035c85dd86bfaa3ffa5bd33ed5c2d2745b0baedbb22c8648769328aa93",
+      "commit_remote_sha256": "38e62c035c85dd86bfaa3ffa5bd33ed5c2d2745b0baedbb22c8648769328aa93",
+      "canonical_equal": true,
+      "preserved_variant": false
+    },
+    {
+      "path": "MuscleCore分析資料/website/tests/test_ren_auth_order.py",
+      "original_before_sha256": null,
+      "original_after_sha256": "5bcd19d01e5f6a3195a07ff60eaedc3e671a499ae98e7a9e32ecdb8b31fcc9ae",
+      "commit_remote_sha256": "5bcd19d01e5f6a3195a07ff60eaedc3e671a499ae98e7a9e32ecdb8b31fcc9ae",
+      "canonical_equal": true,
+      "preserved_variant": false
+    },
+    {
+      "path": "MuscleCore分析資料/website/tests/test_storefront_6_4.py",
+      "original_before_sha256": null,
+      "original_after_sha256": "3c88ea36effc41214acca9b3a519a57d6155498c0eb5890aa2638b1c7d1535ae",
+      "commit_remote_sha256": "3c88ea36effc41214acca9b3a519a57d6155498c0eb5890aa2638b1c7d1535ae",
+      "canonical_equal": true,
+      "preserved_variant": false
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/15_完整Schema_v4架構與遷移.md",
+      "original_before_sha256": "c12c4b1510e6bf562dae94fcec2121b8089aa4b5252b0dbabd98d459952cab13",
+      "original_after_sha256": "07cc08c3d8267504c341522fe48bc03bdf82fdadd64a12b38332b11783e45acb",
+      "commit_remote_sha256": "07cc08c3d8267504c341522fe48bc03bdf82fdadd64a12b38332b11783e45acb",
+      "canonical_equal": true,
+      "preserved_variant": false
+    },
+    {
+      "path": "VibeCart_AI/services/review_service.py",
+      "original_before_sha256": "6d703aa07e98aefd440c0a4d46edeb462f6654dd8ffe4cefe40a53ac6fd658fb",
+      "original_after_sha256": "262dd2f09ba04ad66a4a63bcb16e9214039e74bd41531271a4b8e93619a564d5",
+      "commit_remote_sha256": "262dd2f09ba04ad66a4a63bcb16e9214039e74bd41531271a4b8e93619a564d5",
+      "canonical_equal": true,
+      "preserved_variant": false
+    },
+    {
+      "path": "docs/CURRENT_CONTEXT.md",
+      "original_before_sha256": "3426c5da21300f04dee419f1d2d205b448326afd935cb2a48ec40b75d4f74140",
+      "original_after_sha256": "3979e7e12078e9ec5a6577043679b0dea61f7199cf603cf65fb1ddfcf6177482",
+      "commit_remote_sha256": "3979e7e12078e9ec5a6577043679b0dea61f7199cf603cf65fb1ddfcf6177482",
+      "canonical_equal": true,
+      "preserved_variant": false
+    },
+    {
+      "path": "docs/DOCUMENT_INDEX.md",
+      "original_before_sha256": "7428214275bea62428d02b1d179c98713e4ccb4c8385ab4a8e6e9c3e2af48d8e",
+      "original_after_sha256": "d4c5155ff0c02bcea71051847feb9ec1b5c84cf0bb7a5c39ce934226733f8fc0",
+      "commit_remote_sha256": "5cc0eec993f7bddcba5d4215fd8f4e5f7bd060f116c3459352cb5de98f93f349",
+      "canonical_equal": false,
+      "preserved_variant": true
+    },
+    {
+      "path": "docs/PRODUCT_REVIEWS_6PLUS4_DELIVERY_2026-10-18.md",
+      "original_before_sha256": "4ac3465f21005d7a81bbfa4b81263c69615da3148313be284b7ea38a02f105c4",
+      "original_after_sha256": "4ac3465f21005d7a81bbfa4b81263c69615da3148313be284b7ea38a02f105c4",
+      "commit_remote_sha256": "4ac3465f21005d7a81bbfa4b81263c69615da3148313be284b7ea38a02f105c4",
+      "canonical_equal": true,
+      "preserved_variant": false
+    },
+    {
+      "path": "docs/README.md",
+      "original_before_sha256": "a7d29595f8e592885670056aec0f37e8f1fd2abfee47a66a41bcf58f08361160",
+      "original_after_sha256": "fb0a305e3f86f4db207aaa6f78a7f18061993cce8c33c4a8370456c5ae98f48d",
+      "commit_remote_sha256": "bd9e065695f9197f4877e2f0f94981e4a887bf2220d469c402105371b0daacbc",
+      "canonical_equal": false,
+      "preserved_variant": true
+    },
+    {
+      "path": "docs/inventory/review_stars_20261018/container-boot.json",
+      "original_before_sha256": "5df3f424a2346a798f8687ce3c1bba7a8ffc80a1f8802c51629e8f9df0b7af94",
+      "original_after_sha256": "5df3f424a2346a798f8687ce3c1bba7a8ffc80a1f8802c51629e8f9df0b7af94",
+      "commit_remote_sha256": "5df3f424a2346a798f8687ce3c1bba7a8ffc80a1f8802c51629e8f9df0b7af94",
+      "canonical_equal": true,
+      "preserved_variant": false
+    },
+    {
+      "path": "docs/inventory/review_stars_20261018/home-6plus4.png",
+      "original_before_sha256": "8d5f0337014c30a583c4fb3ada034291de2469855fd46c98b15fa9e45a41f0c2",
+      "original_after_sha256": "8d5f0337014c30a583c4fb3ada034291de2469855fd46c98b15fa9e45a41f0c2",
+      "commit_remote_sha256": "8d5f0337014c30a583c4fb3ada034291de2469855fd46c98b15fa9e45a41f0c2",
+      "canonical_equal": true,
+      "preserved_variant": false
+    },
+    {
+      "path": "docs/inventory/review_stars_20261018/review-updated.png",
+      "original_before_sha256": "0b8701329bc2b49abc01438e27f55a8227a4cd385f249d75db9bbacdbfc28af8",
+      "original_after_sha256": "0b8701329bc2b49abc01438e27f55a8227a4cd385f249d75db9bbacdbfc28af8",
+      "commit_remote_sha256": "0b8701329bc2b49abc01438e27f55a8227a4cd385f249d75db9bbacdbfc28af8",
+      "canonical_equal": true,
+      "preserved_variant": false
+    },
+    {
+      "path": "docs/inventory/review_stars_20261018/transactions-main-integration.json",
+      "original_before_sha256": "306ca934f625ee1b02abab33bd3bc94c260883b6eced1937c48df7844c43b6cc",
+      "original_after_sha256": "306ca934f625ee1b02abab33bd3bc94c260883b6eced1937c48df7844c43b6cc",
+      "commit_remote_sha256": "306ca934f625ee1b02abab33bd3bc94c260883b6eced1937c48df7844c43b6cc",
+      "canonical_equal": true,
+      "preserved_variant": false
+    },
+    {
+      "path": "docs/inventory/review_stars_20261018/transactions.json",
+      "original_before_sha256": "b65653573525d0db96025d7fddf7c7547774f2fd7bd9a7bfcd069b65d1828099",
+      "original_after_sha256": "b65653573525d0db96025d7fddf7c7547774f2fd7bd9a7bfcd069b65d1828099",
+      "commit_remote_sha256": "b65653573525d0db96025d7fddf7c7547774f2fd7bd9a7bfcd069b65d1828099",
+      "canonical_equal": true,
+      "preserved_variant": false
+    },
+    {
+      "path": "scripts/prepare_cloud_source.py",
+      "original_before_sha256": "928f3c988cbc07bd79ccae598012177f594a6ff182015095b9e19f35a6a36e1c",
+      "original_after_sha256": "66b6236040bff7889b90c0f5ce7825f5243bd0980bb2e6cfe179d14e8fc4797c",
+      "commit_remote_sha256": "66b6236040bff7889b90c0f5ce7825f5243bd0980bb2e6cfe179d14e8fc4797c",
+      "canonical_equal": true,
+      "preserved_variant": false
+    },
+    {
+      "path": "討論的相關記錄/README.md",
+      "original_before_sha256": "73a6a53e57dc6f3914053b2c583b22bf55140c12597e79650fe401e54a06047a",
+      "original_after_sha256": "af50e15068b460c54b257fe07f267b04d707fbb4476eaa461db45b8aebf0a777",
+      "commit_remote_sha256": "af50e15068b460c54b257fe07f267b04d707fbb4476eaa461db45b8aebf0a777",
+      "canonical_equal": true,
+      "preserved_variant": false
+    },
+    {
+      "path": "討論的相關記錄/VibeCart_AI_MongoDB_Complete_Schema.md",
+      "original_before_sha256": "760d2639b828d614d46d264efcd77ec3b1789451e75bd09dd63231f01d9f6686",
+      "original_after_sha256": "efdfcbf1929ec7543ff2267afb0e00668b304e0d5a6e8a1128e5188841d860b0",
+      "commit_remote_sha256": "efdfcbf1929ec7543ff2267afb0e00668b304e0d5a6e8a1128e5188841d860b0",
+      "canonical_equal": true,
+      "preserved_variant": false
+    },
+    {
+      "path": "討論的相關記錄/VibeCart_AI_Recommendation_and_Cross_Category_Rules.md",
+      "original_before_sha256": "2e7bd894a89f313a2c6949a7ffc8e49c1203ca9f66a04e7213e7cdea36741afb",
+      "original_after_sha256": "002f42749dae38181bb86f83276d39a0cae0bb02a7398aae0ca2e6949aa6209b",
+      "commit_remote_sha256": "002f42749dae38181bb86f83276d39a0cae0bb02a7398aae0ca2e6949aa6209b",
+      "canonical_equal": true,
+      "preserved_variant": false
+    },
+    {
+      "path": "討論的相關記錄/商品評價與猜你喜歡6加4推薦_對話決議_2026-10-18.md",
+      "original_before_sha256": "ad02b8655b7ff8d7e14e6672d2795e2b8b94163a1f6b002a09832dc18218b4cb",
+      "original_after_sha256": "ad02b8655b7ff8d7e14e6672d2795e2b8b94163a1f6b002a09832dc18218b4cb",
+      "commit_remote_sha256": "ad02b8655b7ff8d7e14e6672d2795e2b8b94163a1f6b002a09832dc18218b4cb",
+      "canonical_equal": true,
+      "preserved_variant": false
+    }
+  ],
+  "original_backup_directory": "C:\\Users\\USER\\AppData\\Local\\Temp\\sam-hourly-106839\\original-backup",
+  "deployment_performed": false,
+  "atlas_writes_performed": false,
+  "v5": {
+    "closed": 2,
+    "total": 14
+  },
+  "scope": "Local and GitHub evidence; not same-source cloud/model/human final acceptance"
+}
