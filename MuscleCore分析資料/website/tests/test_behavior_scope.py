@@ -44,10 +44,10 @@ def test_storefront_filters_before_limit_and_preserves_owner(shop, monkeypatch):
         "event_at": now + timedelta(seconds=1), "metadata": {"synthetic_batch_id": "batch"}} for _ in range(51)])
     db.behavior_events.insert_one({"user_id": "another-user", "event_type": "PURCHASE", "event_at": now})
     captured = []
-    def recommendations(products, events, query):
+    def recommendations(products, events, rules, settings):
         captured.extend(events)
-        return {"items": [], "source": "rules"}
-    monkeypatch.setattr("app.store_v4.storefront_recommendations", recommendations)
+        return {"personalized": [], "cross_category": [], "source": "rules-6plus4"}
+    monkeypatch.setattr("app.store_v4.recommendations_6_4", recommendations)
     assert client.get("/").status_code == 200
     assert len(captured) == 1 and captured[0]["event_type"] == "PRODUCT_VIEW"
 

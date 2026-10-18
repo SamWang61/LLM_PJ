@@ -1,0 +1,123 @@
+"""Request-time 6+4 ranking. No fabricated reviews or statistical rule writes."""
+from collections import Counter
+from datetime import datetime, timezone
+import math
+
+from .behavior_scope import production_events
+
+WEIGHTS = {'PURCHASE': 4, 'ADD_TO_CART': 3, 'SEARCH': 2, 'PRODUCT_VIEW': 1}
+HALF_LIVES = dict(zip(WEIGHTS, (365, 180, 90, 30)))
+
+
+def age_days(value, now):
+    if not isinstance(value, datetime):
+        return None
+    return max(0, (now - value.replace(tzinfo=value.tzinfo or timezone.utc)).total_seconds() / 86400)
+
+
+def actual_rating(product):
+    return product.get('rating_status') == 'ACTUAL' and product.get('rating_count', 0) > 0
+
+
+def rating_key(product):
+    if not actual_rating(product):
+        return (0, 0, 0)
+    return (float(product['average_rating_display']), float(product['average_rating_raw']), product['rating_count'])
+
+
+def take_distinct(ranked, count, category_cap, excluded=()):
+    seen, categories, result = set(excluded), Counter(), []
+    for product, score, reason in ranked:
+        pid, category = str(product['_id']), str(product['minor_category_id'])
+        if pid in seen or categories[category] >= category_cap:
+            continue
+        seen.add(pid)
+        categories[category] += 1
+        result.append({'product': product, 'score': score, 'reason': reason})
+        if len(result) == count:
+            break
+    return result
+
+
+def recommendations_6_4(products, events, rules=(), settings=None, now=None):
+    settings, now = settings or {}, now or datetime.now(timezone.utc)
+    products = [p for p in products if p.get('status') == 'active'
+                and p.get('is_ai_recommendable', False) and p.get('stock', 0) > 0]
+    by_id = {str(p['_id']): p for p in products}
+    major, minor, purchases = Counter(), Counter(), {}
+    weights = settings.get('weights', WEIGHTS)
+    half_lives = settings.get('half_life_days', HALF_LIVES)
+    for event in production_events(events):
+        kind = event.get('event_type')
+        age = age_days(event.get('event_at'), now)
+        if kind not in WEIGHTS or age is None:
+            continue
+        product = by_id.get(str(event.get('product_id')))
+        mid = event.get('major_category_id') or (product or {}).get('major_category_id')
+        sid = event.get('minor_category_id') or (product or {}).get('minor_category_id')
+        value = weights[kind] * 0.5 ** (age / half_lives[kind])
+        if mid:
+            major[str(mid)] += value
+        if sid:
+            minor[str(sid)] += value
+        if kind == 'SEARCH' and not mid and not sid:
+            query = (event.get('search_query') or '').strip().casefold()
+            matches = [p for p in products if query and query in
+                       ' '.join((p['name'], p.get('summary', ''), p.get('description', ''))).casefold()]
+            for key in {str(p['major_category_id']) for p in matches}:
+                major[key] += value
+            for key in {str(p['minor_category_id']) for p in matches}:
+                minor[key] += value
+        if kind == 'PURCHASE' and product:
+            pid = str(product['_id'])
+            purchases[pid] = min(purchases.get(pid, age), age)
+    primary = max(major, key=major.get) if major else None
+    usable = []
+    for product in products:
+        age = purchases.get(str(product['_id']))
+        if age is not None:
+            interval = product.get('expected_repurchase_interval_days')
+            if product.get('product_lifecycle_type') == 'durable' and age < 365:
+                continue
+            if product.get('product_lifecycle_type') == 'consumable' and (not interval or age < interval):
+                continue
+        usable.append(product)
+    personalized = []
+    for product in usable:
+        mid, sid = str(product['major_category_id']), str(product['minor_category_id'])
+        score = min(70, major[mid]) + min(30, minor[sid])
+        # Cold-start browsing uses actual >=4.5; it is not a first-member snapshot.
+        if not major and not minor and (not actual_rating(product) or rating_key(product)[0] < 4.5):
+            continue
+        reason = '依你的分類偏好推薦' if score else (
+            '真實高星商品' if actual_rating(product) and rating_key(product)[0] >= 4.5 else '可售商品探索')
+        personalized.append((product, score, reason))
+    personalized.sort(key=lambda row: (-row[1], *(-x for x in rating_key(row[0])), str(row[0]['_id'])))
+    personal = take_distinct(personalized, 6, 3)
+    selected = {str(item['product']['_id']) for item in personal}
+    cross = []
+    for product in usable:
+        if str(product['_id']) in selected or str(product['major_category_id']) == primary:
+            continue
+        if not actual_rating(product) or rating_key(product)[0] < 4.5:
+            continue
+        relation = 0
+        for rule in rules:
+            antecedent, consequent = rule['antecedent'], rule['consequent']
+            if (not major[str(antecedent['major_category_id'])]
+                    or not minor[str(antecedent['minor_category_id'])]
+                    or consequent['major_category_id'] != product['major_category_id']
+                    or consequent['minor_category_id'] != product['minor_category_id']):
+                continue
+            if (rule.get('status') != 'active'
+                    or rule['antecedent_customer_count'] < max(rule['minimum_sample_size'], settings.get('cross_min_customers', 500))
+                    or rule['co_purchase_count'] < settings.get('cross_min_co_purchases', 50)
+                    or rule['confidence'] < settings.get('cross_min_confidence', .05)
+                    or rule['lift'] < settings.get('cross_min_lift', 1.2)):
+                continue
+            relation = max(relation, rule['confidence'] * math.log1p(rule['lift']) * math.log1p(rule['co_purchase_count']))
+        cross.append((product, relation, '跨類共購關聯・高星優先' if relation else '跨類高星探索'))
+    # New policy: rating first, then sample size and validated association strength.
+    cross.sort(key=lambda row: (*(-x for x in rating_key(row[0])), -row[1], str(row[0]['_id'])))
+    return {'personalized': personal, 'cross_category': take_distinct(cross, 4, 2, selected),
+            'source': 'rules-6plus4-rating-v1'}

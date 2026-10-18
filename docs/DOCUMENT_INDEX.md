@@ -1,5 +1,8 @@
 # 全部文件索引 / Document catalog
 
+- [商品評價、即時回填與猜你喜歡6＋4對話決議](../討論的相關記錄/商品評價與猜你喜歡6加4推薦_對話決議_2026-10-18.md)
+- [本次實作交付與驗證](PRODUCT_REVIEWS_6PLUS4_DELIVERY_2026-10-18.md)
+
 <!-- SAM N14 20261018 BEGIN -->
 **2026/10/18 10:33 SAM N14**：[加密備份／復原與續傳檢查點](SAM_N14_ENCRYPTED_RESTORE_2026-10-18.md)。[PR #77](https://github.com/SamWang61/LLM_PJ/pull/77)已合併main `d68f0f3`、CI通過；46測試／13,048檔本機還原差異0／最佳化模式啟動通過。雲端20/25片完整SHA與owner ACL已驗；第21片因本機DNS／檔案通道失敗未送入Drive。保留20物件ID待補21～25、整批認證還原與最新快照／異機key／Atlas復原。V5仍2/14完成；文件交付見[PR #78](https://github.com/SamWang61/LLM_PJ/pull/78)。
 <!-- SAM N14 20261018 END -->

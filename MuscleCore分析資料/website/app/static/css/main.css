@@ -16,3 +16,6 @@
 
 /* Keyboard access and reduced motion. */
 .skip-link{position:fixed;left:16px;top:-100px;z-index:100;padding:12px 18px;background:var(--lime);color:#10130e;border-radius:8px}.skip-link:focus{top:12px}a:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible{outline:3px solid var(--lime);outline-offset:4px}#main-content:focus{outline:none}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}.product-card{transition:none}.product-card:hover{transform:none}}
+
+#product-reviews form{max-width:44rem;margin:1.5rem 0;padding:1rem;border:1px solid var(--line,#ddd);border-radius:12px}
+#product-reviews label{display:block;margin:.8rem 0}#product-reviews input,#product-reviews textarea{display:block;width:100%;box-sizing:border-box}#product-reviews p{overflow-wrap:anywhere}

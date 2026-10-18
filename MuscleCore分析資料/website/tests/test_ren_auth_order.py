@@ -282,9 +282,9 @@ def test_synthetic_exclusion_is_before_sort_limit(shop, monkeypatch):
     db.behavior_events.insert_many([{"user_id": uid, "event_at": datetime(2026,1,1), "metadata": {"synthetic": True}} for _ in range(60)])
     from app import store_v4
     seen = []
-    def inspect(products, events, query):
+    def inspect(products, events, rules, settings):
         seen.extend(events)
-        return {"items": [], "source": "rules"}
-    monkeypatch.setattr(store_v4, "storefront_recommendations", inspect)
+        return {"personalized": [], "cross_category": [], "source": "rules-6plus4"}
+    monkeypatch.setattr(store_v4, "recommendations_6_4", inspect)
     assert client.get("/").status_code == 200
     assert len(seen) == 1 and seen[0]["event_type"] == "SEARCH"
