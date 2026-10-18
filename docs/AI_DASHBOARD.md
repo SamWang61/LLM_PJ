@@ -123,17 +123,17 @@ Existing module paths and migration history are preserved. The scoped manifest s
 ### 2026-10-18 規則推薦改用 v4 權重（JEFF，B1）
 
 - `services/recommendation.py` 原本使用舊權重（瀏覽 1、收藏 3、加購 4、購買 8），改為 v4 `recommendation_policy`：PURCHASE 4、ADD_TO_CART 3、SEARCH 2、PRODUCT_VIEW 1。
-- v4 前台會讀取 active 的政策（`policy_weights`），缺少、負數、非數字的權重以預設值補上；legacy 用預設值，舊事件名稱（view／cart／purchase／favorite）對應到 v4 名稱。
+- v4 前台會讀取 active 的政策（`policy_weights`），缺少、負數、非數字、非有限數值或錯誤settings／weights結構均以預設值補上；legacy 用預設值，舊事件名稱（view／cart／purchase／favorite）對應到 v4 名稱。
 - SEARCH 事件沒有商品 ID，改為以 `search_query` 比對商品名稱與分類，命中的商品加 2 分。
 - `ai_workflows.py` 移除舊的事件名稱轉換；推薦監控頁的說明同步更新。
-- 新增 10 項離線測試。synthetic 事件仍由 `production_events` 排除，行為不變；示範購買（`exclude_from_attribution`）是否計入個人推薦屬 B2，尚未變更。
+- B1原10項政策測試加SAM7項安全回歸，共17項。synthetic隔離保持；同輪B2已改個人推薦用personalization，監控／歸因仍用production，見下節。
 
 ### 2026-10-18 示範結帳計入個人推薦（JEFF，B2）
 
 - **問題**：真實會員完成示範結帳後，PURCHASE 事件帶 `exclude_from_attribution`，原本前台推薦和推薦監控一樣把它排除，所以買完之後「猜你喜歡」沒有任何變化。
 - **改法**：`behavior_scope.py` 新增 `personalization_behavior_query()`／`personalization_events()`，只排除 synthetic 批次（`synthetic`、`synthetic_batch_id`），保留示範結帳；前台推薦（v4、legacy、規則推薦、LangGraph 基線）改用它。
 - **不變**：推薦監控與成效／歸因統計仍用 `production_*`，示範結帳**不計入**；synthetic 事件在兩種範圍都排除。
-- 新增 7 項離線測試。注意：若正式環境設定 `BEHAVIOR_SYNTHETIC_BATCH`，真實會員的事件也會被標成 synthetic 而排除（B3 待 SAM 查）。
+- 新增7項離線測試。16:22唯讀確認正式與私有服務均無BEHAVIOR_SYNTHETIC_BATCH；本輪未改雲端設定。
 
 Taipei date filters and demo exclusions apply consistently to v4 revenue, daily totals, ranking and summaries. Inventory is current; recommendation events are bounded counts, not attribution metrics.
 
@@ -157,7 +157,7 @@ The ignored local profile contains the existing v4 connection. It is not a newly
 
 ## 線上 AI 設定 / Online AI configuration（JEFF，2026-10-18，A1／A2）
 
-**狀態：程式與建置設定已完成（PR #82）；AI 映像尚未建置、尚未部署。** 部署由 SAM 執行或授權，費用記在 `vibecart-llmai` 帳單；Claude API 費用由 JEFF 的 Key 負擔。
+**狀態：程式與建置設定已完成；SAM已實際建置精簡與AI映像、Gunicorn boot及真BGE斷網驗證。尚未執行Cloud Build／發布或部署；線上AI仍關閉。** 部署由 SAM 執行或授權，費用記在 `vibecart-llmai` 帳單；Claude API 費用由 JEFF 的 Key 負擔。
 
 | 設定 | 位置 | 預設 | 線上建議值 |
 |---|---|---|---|
@@ -165,7 +165,7 @@ The ignored local profile contains the existing v4 connection. It is not a newly
 | `AI_RECOMMENDATIONS_ENABLED` | 同上 | `false` | `true`（只開 Claude 時 `false`） |
 | `AI_FREE_QUESTION_ENABLED` | 同上 | `false` | `false`（展示只用 4 個預設問題） |
 | `CLAUDE_MODEL` | 環境變數 | 空 | `claude-sonnet-5` |
-| `ANTHROPIC_API_KEY` | Secret Manager 同名 secret，授權 `vibecart-web@` 讀取 | 無 | 由 JEFF 本人在 Console 新增版本 |
+| `ANTHROPIC_API_KEY` | Secret Manager 同名 secret，授權 `vibecart-web@` 讀取 | 無 | 由有權金鑰擁有人在Console新增版本 |
 | `BGE_MODEL` | 環境變數 | `BAAI/bge-small-zh-v1.5` | 不變 |
 | `INSTALL_AI` | Docker 建置參數（Cloud Build `_INSTALL_AI`） | `false`（映像與原本相同） | `true` |
 | 記憶體／CPU | Cloud Run | 512Mi | 2Gi、CPU 2（只開 Claude 可先試 1Gi） |
@@ -173,12 +173,12 @@ The ignored local profile contains the existing v4 connection. It is not a newly
 - 三個 AI 開關只接受 `true`／`false`，其他值會拒絕啟動；開了 AI 之後，`CLOUD_PREVIEW_READ_ONLY=true` 仍擋 `/admin`。
 - `INSTALL_AI=true` 會安裝 `requirements-cloud-ai.txt`（CPU 版 PyTorch，版本與 T5 實測相同），並在建置時把 BGE 模型下載到 `/srv/models`；執行期 `HF_HUB_OFFLINE=1`，搭配 `local_files_only=True` 載入。Cloud Build 會多跑一步離線載入檢查（日誌出現 `ai-image-ok`）。
 - 建議流程：建置 → 建立空 secret 並授權 → JEFF 貼入 Key → 部署**零流量**修訂（tag `ai-preview`）→ 量測冷啟動、BGE、Claude 4 個預設問題 → JEFF 與 SAM 都同意後才切流量；舊修訂保留以便退回。
-- **未知、待實測**：AI 映像大小、建置時間、冷啟動時間、實際記憶體用量。
+- **本機已驗／雲端待測**：本輪AI映像inspect大小505,795,251 bytes、快取build3.45秒、斷網2Gi／1CPU流程15.477秒；這些不是registry大小、Cloud Run冷啟動或整個容器peak。雲端實測仍待辦。
 - **備案**：BGE 記憶體不足或冷啟動過慢時，部署 `AI_RECOMMENDATIONS_ENABLED=false`，只開 Claude（映像不需重建）；若今天不上線，簡報使用 T5 本機實測數字。
-- **待確認（B3）**：正式修訂若設定 `BEHAVIOR_SYNTHETIC_BATCH`，真實會員事件會被標為 synthetic 而不進入推薦。
+- **B3本輪已唯讀確認**：16:22正式19與私有11均未設定 `BEHAVIOR_SYNTHETIC_BATCH`；若日後誤設，真實會員事件將被標為synthetic並排除。
 - **長期方案（B4，下一階段）**：商品向量離線批次計算存入 Atlas（schema 已有 `product_embeddings`，寫入需 SAM 同意），網站只做 cosine，降低記憶體與冷啟動。
 
-English: Online AI is code-complete (PR #82) but not yet built or deployed. Flags default to off and must be exactly true/false. The AI image (`INSTALL_AI=true`) bakes in CPU PyTorch and the BGE model. The Claude key lives in Secret Manager and is entered by JEFF. The recommended rollout is a zero-traffic revision with 2Gi memory, verified before any traffic switch, with Claude-only as the fallback.
+English: The integrated source passed local builds, Gunicorn boot, and real offline BGE checks. Cloud Build, deployment, and real Claude acceptance remain pending; production AI stays off. Flags default to off and must be exactly true/false. The AI image (`INSTALL_AI=true`) bakes in CPU PyTorch and the BGE model. The Claude key lives in Secret Manager and is entered by JEFF. The recommended rollout is a zero-traffic revision with 2Gi memory, verified before any traffic switch, with Claude-only as the fallback.
 
 ## 驗證與剩餘界線 / Validation and limits
 
