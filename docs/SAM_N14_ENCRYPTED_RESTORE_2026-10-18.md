@@ -12,8 +12,8 @@
 | 加解密與還原 | 2,439,493,848-byte原ZIP認證解密後hash相同；全新目錄逐檔核對13,048檔，差異0。五個密文分片重組hash等於完整密文。 |
 | 復原啟動 | 使用還原app來源，既有本機runtime依賴映像；Docker internal網路、來源唯讀、0公開port、停用dotenv載入、無Atlas連線。首頁／商品／登入／CSS四個實際本機HTTP GET皆200。不是使用還原Windows虛擬環境，也不是重新部署。 |
 | 本機資料演練 | 3個fixture集合、3筆BSON資料匯出→刪除隔離庫→還原、unique index重建；內容hash差異0，啟動後資料差異0。**不是正式Atlas匯出或正式資料復原驗收**。 |
-| 安全回歸 | 46 passed／0 skipped：錯key、header／密文／tag竄改、截斷／附加、空檔、來源變動、不可覆蓋及並行輸出保護；外部網路拒絕、host直接啟動拒絕、既有報告保護。 |
-| 清理 | 最後一次本機啟動08:43執行；fixture DB、兩個自建容器與internal network已清除。失敗首輪也已清除。 |
+| 安全回歸 | 46 passed／0 skipped：錯key、header／密文／tag竄改、截斷／附加、空檔、來源變動、不可覆蓋及並行輸出保護；外部網路拒絕、host直接啟動拒絕、既有報告保護；補兩項-O失敗檢查不可略過的回歸。 |
+| 清理 | 最後一次本機啟動09:01執行（host與container皆最佳化模式）；fixture DB、兩個自建容器與internal network已清除。失敗首輪也已清除。 |
 
 原ZIP SHA-256：`75f91fcf4b490a112ec1672393600d7cab5c649e60282d9f1203cc3516d9a291`。
 
