@@ -84,5 +84,14 @@
     "S04-S05 actual private acceptance cart/order flows and S03-S05 named review",
     "broad Atlas outage fault matrix beyond the two existing controlled failures",
     "refresh screenshots against PR #74 source e000d95 (current screenshots index ff65eae / production 18 / private 07), real-device mobile acceptance, demo account retirement, and final named signoff"
-  ]
+  ],
+  "latest_recheck": {
+    "checked_at_taipei": "2026-10-18T11:11:49+08:00",
+    "main_sha": "0b742bab73d9a99e28602a7b11dfd52e29cd40d9",
+    "pr76_head_sha": "72c3bffa1962f6c53156ef832a80c3025ba1c585",
+    "pr76_workflow_run_id": 39082269544,
+    "pr76_workflow_conclusion": "success",
+    "private_acceptance_unauthenticated_get_status": 403,
+    "private_acceptance_write_attempted": false
+  }
 }

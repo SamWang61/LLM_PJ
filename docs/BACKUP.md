@@ -1,5 +1,9 @@
 # 每日備份 / Daily backup
 
+## 2026-10-18 N14 本次私有快照復原
+
+[加密與隔離復原證據](SAM_N14_ENCRYPTED_RESTORE_2026-10-18.md)：歷史05:28快照13,048檔通過認證解密、逐檔hash、internal Docker來源啟動與本機fixture BSON復原。私有目錄owner-only，金鑰另存；本次不是每日固定專案備份完成。25小片密文雲端hash／最新快照／異機key／正式Atlas資料復原仍待辦。下方固定連結、ACL切換與每日23:30需求繼續保留；9月的共用狀態須執行時重新讀回。
+
 ## 固定需求 / Fixed requirements
 
 - 來源：`C:\LLM\LLM_PJ`。Source: the complete project directory, independent of Git tracking rules.
