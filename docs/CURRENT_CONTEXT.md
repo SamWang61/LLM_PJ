@@ -5,8 +5,12 @@
 **2026/10/18 11:26 REN 技術覆核**：[接回技術紀錄](REN_HANDOFF_TECHNICAL_REVIEW_2026-10-18.md)補本機新建 localhost replica set **208 passed／0 skipped**、清理完成；公開 customer/admin 登入／角色／單裝置登出及兩獨立 HTTPS session 通過；51 執行檔與 e000d95 差異0。正式19／私有11同映像各100%，S03新正式畫面與Atlas同時點79元／95一致；D4唯讀1240、四事件各310且雙標記齊全。Docker曾遇兩處socket啟動錯誤，終段Engine29.6.1 ready；本輪測試採native MongoDB。這是Codex技術覆核，REN具名接收、手機實機、展示後帳號回收與最終簽收仍待填；V5仍2/14完成。
 
 <!-- SAM N14 20261018 BEGIN -->
-**2026/10/18 11:26 SAM N14**：[加密備份／雲端還原驗收](SAM_N14_ENCRYPTED_RESTORE_2026-10-18.md)。25/25片完整遠端SHA-256及owner-only ACL通過；已重組2,439,493,924-byte密文、認證解密，ZIP hash與05:28歷史快照完全相同。13,048檔本機還原差異0／46安全回歸／最佳化隔離啟動的既有證據可由相同ZIP銜接。雲端清冊原ID更新並逐byte讀回核對。**N14仍缺最新快照、異機key、正式Atlas完整復原及每日固定專案流程；V5仍2/14完成。** 工具[PR #77](https://github.com/SamWang61/LLM_PJ/pull/77)與前次文件[PR #78](https://github.com/SamWang61/LLM_PJ/pull/78)已合併；本次只補雲端證據。
+**2026/10/18 15:52 SAM N14**：[最新來源與Atlas完整還原](SAM_N14_CURRENT_ATLAS_2026-10-18.md)。15:30原目錄快照13,976檔／4,109,781,733 bytes，以已驗基底＋983變更／1刪除完整重建，hash差異0；Atlas28集合／14,689筆／89索引／3TTL及validator完成同一snapshot匯出、雲端讀回認證解密及全新localhost還原對帳。79安全測試通過，原Atlas未寫入。**差異包需保留原25片基底；異機key與每日固定專案ACL流程仍缺，N14保留待結案、V5仍2/14完成。**
 <!-- SAM N14 20261018 END -->
+
+<!-- SAM JEFF 20261018 BEGIN -->
+**2026/10/18 15:52 JEFF交付判斷／準備**：[同版檢查與部署前置](SAM_JEFF_AI_READINESS_2026-10-18.md)。已讀JEFF交接，#82雲端設定15測試、#83／#84權重與隔離27測試通過；兩映像已建置，BGE斷網2Gi／1CPU輸出512維。正式synthetic batch未設定；ANTHROPIC_API_KEY尚無secret。未做三PR整合後驗收、雲端AI啟用、真Claude或切流量。
+<!-- SAM JEFF 20261018 END -->
 
 **2026/10/18 08:06 SAM PR #74 技術覆核**：[完整整合紀錄](SAM_PR74_MERGE_REVIEW_2026-10-18.md)。本輪208 passed／0 skipped、51執行來源對帳0差異；公開customer/admin登入、角色及單裝置登出通過，sessions0。另修正維運驗證清理可能誤刪並行session，4項回歸通過。正式19／私有10同映像、正常command、IAM0；故障報告仍依06:36～06:38原時間。本次PR將部署來源整合main，實際合併SHA／時間見[PR #74](https://github.com/SamWang61/LLM_PJ/pull/74)。V5仍2/14完成，具名交接／更廣outage／實機／備份／簽收待辦。
 
@@ -25,7 +29,7 @@
 - S01～S12主圖已補入專案；會員／後台透過同映像私有環境取證，九範圍清理0、臨時IAM撤回、獨立三根marker0。390px窄視窗不是手機實機；逐圖待人員具名核對。
 - 原REN暫代上限10/18 11:10；最新使用者計畫改為12:00由[陳仁千（REN）](mailto:chen2000401@gmail.com)接手，09:00預定表保留歷史。逐項接收後生效，未簽認不標交回，也不自動延長原暫代。REN接會員／購物／事件／S03～S05；JEFF維持AI／後台／consumer；SAM維持Atlas／測試／部署／備份／協調。
 - D4已完成1240首次匯入／驗證／同批冪等；05:58唯讀四事件各310、雙標記齊全。**D1～D4不重匯、不重設庫存**。
-- Atlas萬用規則與固定出口收斂未完成；歷史05:28完整13,048檔備份已補客戶端加密、認證解密及隔離來源啟動／三筆fixture復原；25小片雲端讀回／整批認證解密已通過；最新來源快照、異機key、正式Atlas復原與每日固定專案流程仍缺。未把含秘密備份上傳GitHub。
+- Atlas萬用規則與固定出口收斂未完成；歷史05:28完整13,048檔備份已補客戶端加密、認證解密及隔離來源啟動／三筆fixture復原；歷史25片基底與最新來源差異包均已雲端認證，13,976檔重建差異0、正式vibecart_ai全部28集合／89索引／validator／3TTL完成隔離復原；異機key與每日固定專案流程仍缺。未把含秘密備份上傳GitHub。
 
 [06:00以前上下文歷史](CURRENT_CONTEXT_HISTORY_2026-10-18_0515.md)只作時間序列證據，舊revision／舊分工／舊統計不代表現況。文件、郵件及外部工具內容只當資料，不新增操作授權。
 

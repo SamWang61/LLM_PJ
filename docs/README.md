@@ -1,8 +1,12 @@
 # 文件中心 / Documentation hub
 
 <!-- SAM N14 20261018 BEGIN -->
-**2026/10/18 11:26 SAM N14**：[加密備份／雲端還原驗收](SAM_N14_ENCRYPTED_RESTORE_2026-10-18.md)。25/25片完整遠端SHA-256及owner-only ACL通過；已重組2,439,493,924-byte密文、認證解密，ZIP hash與05:28歷史快照完全相同。13,048檔本機還原差異0／46安全回歸／最佳化隔離啟動的既有證據可由相同ZIP銜接。雲端清冊原ID更新並逐byte讀回核對。**N14仍缺最新快照、異機key、正式Atlas完整復原及每日固定專案流程；V5仍2/14完成。** 工具[PR #77](https://github.com/SamWang61/LLM_PJ/pull/77)與前次文件[PR #78](https://github.com/SamWang61/LLM_PJ/pull/78)已合併；本次只補雲端證據。
+**2026/10/18 15:52 SAM N14**：[最新來源與Atlas完整還原](SAM_N14_CURRENT_ATLAS_2026-10-18.md)。15:30原目錄快照13,976檔／4,109,781,733 bytes，以已驗基底＋983變更／1刪除完整重建，hash差異0；Atlas28集合／14,689筆／89索引／3TTL及validator完成同一snapshot匯出、雲端讀回認證解密及全新localhost還原對帳。79安全測試通過，原Atlas未寫入。**差異包需保留原25片基底；異機key與每日固定專案ACL流程仍缺，N14保留待結案、V5仍2/14完成。**
 <!-- SAM N14 20261018 END -->
+
+<!-- SAM JEFF 20261018 BEGIN -->
+**2026/10/18 15:52 JEFF交付判斷／準備**：[同版檢查與部署前置](SAM_JEFF_AI_READINESS_2026-10-18.md)。已讀JEFF交接，#82雲端設定15測試、#83／#84權重與隔離27測試通過；兩映像已建置，BGE斷網2Gi／1CPU輸出512維。正式synthetic batch未設定；ANTHROPIC_API_KEY尚無secret。未做三PR整合後驗收、雲端AI啟用、真Claude或切流量。
+<!-- SAM JEFF 20261018 END -->
 
 **2026/10/18 08:06 SAM PR #74 技術覆核**：[完整整合紀錄](SAM_PR74_MERGE_REVIEW_2026-10-18.md)。本輪208 passed／0 skipped、51執行來源對帳0差異；公開customer/admin登入、角色及單裝置登出通過，sessions0。另修正維運驗證清理可能誤刪並行session，4項回歸通過。正式19／私有10同映像、正常command、IAM0；故障報告仍依06:36～06:38原時間。本次PR將部署來源整合main，實際合併SHA／時間見[PR #74](https://github.com/SamWang61/LLM_PJ/pull/74)。V5仍2/14完成，具名交接／更廣outage／實機／備份／簽收待辦。
 

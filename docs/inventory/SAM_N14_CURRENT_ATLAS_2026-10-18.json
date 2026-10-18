@@ -1,0 +1,278 @@
+{
+  "checked_at_utc": "2026-10-18T07:52:24.513028+00:00",
+  "scope": "N14 latest eligible local-directory recovery chain and complete production application database vibecart_ai restoration; not cluster/platform disaster recovery",
+  "source_snapshot": {
+    "started_at_utc": "2026-10-18T07:30:03.182194+00:00",
+    "checked_at_utc": "2026-10-18T07:36:37.849704+00:00",
+    "status": "passed",
+    "source": "complete eligible local directory including ignored files and Git metadata",
+    "main_at_capture": "5eb392fdd9620f3dcd2745c2cb76f57baf1f6d54",
+    "original_head": "bbb8e9c640d746ee3c58bace3d027ae16e6c550e",
+    "changed_files": 983,
+    "deleted_files": 1,
+    "files": 13976,
+    "source_bytes": 4109781733,
+    "delta_archive": {
+      "size": 40278773,
+      "sha256": "904a2b850df294bfab79da9eb2562e2567895c01f105052856e5792f9fa8b260"
+    },
+    "restoration": {
+      "verified": true,
+      "files": 13976,
+      "hash_differences": 0,
+      "changed_files": 983,
+      "deleted_files": 1,
+      "base_zip_sha256": "75f91fcf4b490a112ec1672393600d7cab5c649e60282d9f1203cc3516d9a291",
+      "exclusions": [
+        {
+          "path": "MuscleCore分析資料/website/.pytest_cache",
+          "reason": "Ephemeral pytest cache; access denied in source"
+        }
+      ]
+    },
+    "cloud_uploaded": false,
+    "requires_base_backup": true,
+    "base_ciphertext_sha256": "328b9aa8194589d53d8f18e7d41b0e96809335a1329bd23ed3ba95d992fe51d5"
+  },
+  "atlas_export": {
+    "database": "vibecart_ai",
+    "checked_at_utc": "2026-10-18T07:22:44.946399+00:00",
+    "snapshot_timestamp": {
+      "time": 1792308144,
+      "inc": 20
+    },
+    "source_version": "8.0.34",
+    "documents": 14689,
+    "indexes": 89,
+    "ttl_indexes": 3,
+    "search_indexes": 0,
+    "metadata_stable": true,
+    "collections": 28,
+    "source_commands": [
+      "aggregate",
+      "buildinfo",
+      "endSessions",
+      "find",
+      "getMore",
+      "listCollections",
+      "listIndexes",
+      "saslContinue",
+      "saslStart"
+    ],
+    "source_mutations": 0
+  },
+  "atlas_cloud_restore": {
+    "status": "passed",
+    "target": "new credential-free localhost MongoDB replica set",
+    "database": "sam_n14_restore_dc2c3f064d134cdbb197550da814a859",
+    "atlas_written": false,
+    "restoration": {
+      "verified": true,
+      "collections": 28,
+      "documents": 14689,
+      "indexes": 89,
+      "ttl_indexes": 3,
+      "validators_and_index_options_equal": true,
+      "raw_bson_hash_differences": 0,
+      "ttl_monitor_disabled": true,
+      "source_database_contacted_by_restore": false,
+      "target_database": "sam_n14_restore_dc2c3f064d134cdbb197550da814a859",
+      "collections_verified": [
+        {
+          "collection": "ai_insights",
+          "documents": 0,
+          "sha256_equal": true
+        },
+        {
+          "collection": "ai_requests",
+          "documents": 0,
+          "sha256_equal": true
+        },
+        {
+          "collection": "ai_usage",
+          "documents": 0,
+          "sha256_equal": true
+        },
+        {
+          "collection": "auth_sessions",
+          "documents": 2,
+          "sha256_equal": true
+        },
+        {
+          "collection": "behavior_events",
+          "documents": 1254,
+          "sha256_equal": true
+        },
+        {
+          "collection": "brands",
+          "documents": 128,
+          "sha256_equal": true
+        },
+        {
+          "collection": "cart_events",
+          "documents": 7,
+          "sha256_equal": true
+        },
+        {
+          "collection": "carts",
+          "documents": 3,
+          "sha256_equal": true
+        },
+        {
+          "collection": "categories",
+          "documents": 32,
+          "sha256_equal": true
+        },
+        {
+          "collection": "cross_category_rules",
+          "documents": 0,
+          "sha256_equal": true
+        },
+        {
+          "collection": "first_member_recommendations",
+          "documents": 0,
+          "sha256_equal": true
+        },
+        {
+          "collection": "order_items",
+          "documents": 8973,
+          "sha256_equal": true
+        },
+        {
+          "collection": "orders",
+          "documents": 3003,
+          "sha256_equal": true
+        },
+        {
+          "collection": "product_embeddings",
+          "documents": 0,
+          "sha256_equal": true
+        },
+        {
+          "collection": "product_purchase_sequences",
+          "documents": 0,
+          "sha256_equal": true
+        },
+        {
+          "collection": "product_repurchase_stats",
+          "documents": 0,
+          "sha256_equal": true
+        },
+        {
+          "collection": "product_reviews",
+          "documents": 0,
+          "sha256_equal": true
+        },
+        {
+          "collection": "product_skus",
+          "documents": 336,
+          "sha256_equal": true
+        },
+        {
+          "collection": "products",
+          "documents": 336,
+          "sha256_equal": true
+        },
+        {
+          "collection": "recommendation_logs",
+          "documents": 0,
+          "sha256_equal": true
+        },
+        {
+          "collection": "recommendation_pools",
+          "documents": 0,
+          "sha256_equal": true
+        },
+        {
+          "collection": "recommendations",
+          "documents": 0,
+          "sha256_equal": true
+        },
+        {
+          "collection": "request_limits",
+          "documents": 0,
+          "sha256_equal": true
+        },
+        {
+          "collection": "schema_migrations",
+          "documents": 6,
+          "sha256_equal": true
+        },
+        {
+          "collection": "system_configs",
+          "documents": 1,
+          "sha256_equal": true
+        },
+        {
+          "collection": "user_events",
+          "documents": 0,
+          "sha256_equal": true
+        },
+        {
+          "collection": "user_preference_scores",
+          "documents": 0,
+          "sha256_equal": true
+        },
+        {
+          "collection": "users",
+          "documents": 608,
+          "sha256_equal": true
+        }
+      ],
+      "target_version": "8.0.20"
+    },
+    "backup_source": "cloud",
+    "negative_write_checks": [
+      11000,
+      121
+    ],
+    "restored_database_removed": true,
+    "local_process_stopped": true,
+    "checked_at_utc": "2026-10-18T07:47:55.632660+00:00"
+  },
+  "cloud_archive": {
+    "verified": true,
+    "name": "cloud-current-readback.vcbak",
+    "bytes": 42063468,
+    "sha256": "cbe9c33fffa9cc973f56ab249583401c7046a278e4d3a6525cbc5059b4126776",
+    "process_dns_fallback_used": false,
+    "drive_id": "1hY10qyR5AnBFPHgA2XyRfqdAyqTV_ADb",
+    "url": "https://drive.google.com/file/d/1hY10qyR5AnBFPHgA2XyRfqdAyqTV_ADb/view?usp=drivesdk",
+    "owner_only": true,
+    "checked_at_utc": "2026-10-18T07:46:44.808Z"
+  },
+  "authenticated_decryption": {
+    "authenticated": true,
+    "plaintext": {
+      "bytes": 42063392,
+      "sha256": "4f94608463d0d08807b4eede218799eccd9929899483b8a8e8a0724d013ed07b"
+    }
+  },
+  "cloud_source_delta_equals_locally_restored_delta": true,
+  "source_second_cloud_extraction_performed": false,
+  "catalog_verification": {
+    "checked_at_utc": "2026-10-18T07:49:47.979Z",
+    "drive_id": "1ZilMHLhfCv25WHUxWyeVuSTKIEhm3o0N",
+    "bytes": 20456,
+    "sha256": "9b5dc440190cfed11313ef8b2885a5265701b34f36994e938df6c6386ad64cdd",
+    "owner_only": true,
+    "content_readback_equal": true
+  },
+  "tool_commit": "237aa296ee7c29b90929a230f4aef6d9590999e9",
+  "backup_tests": {
+    "passed": 79,
+    "skipped": 0
+  },
+  "remaining": [
+    "Off-device recovery key and independent recovery",
+    "Daily23:30 fixed-project ACL workflow"
+  ],
+  "current_scope": {
+    "gates": 14,
+    "closed": 2,
+    "open": 12,
+    "N07_N10_excluded": true
+  },
+  "production_routing_changed": false,
+  "atlas_source_mutations": 0
+}

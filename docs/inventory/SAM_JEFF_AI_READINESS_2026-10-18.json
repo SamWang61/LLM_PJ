@@ -1,0 +1,184 @@
+{
+  "checked_at_utc": "2026-10-18T07:52:24.513028+00:00",
+  "handoff_document": "討論的相關記錄/JEFF_to_SAM_2026-10-18.md",
+  "document_main": "5eb392fdd9620f3dcd2745c2cb76f57baf1f6d54",
+  "prs": {
+    "82": {
+      "head": "148e23a400710c3493eb6687ac5b45b24c104842",
+      "ci": 39104529077,
+      "cloud_runtime_tests": 15
+    },
+    "83": {
+      "head": "f5f257d4e092be607079197e59352068d2c98d4a",
+      "ci": 39104531344
+    },
+    "84": {
+      "head": "008aa274ff0ca6ce0657f11bd5513a41e1ae02bd",
+      "ci": 39104535478,
+      "weights_personalization_and_scope_tests": 27
+    }
+  },
+  "merge_tree_preflight": {
+    "base_main": "5eb392fdd9620f3dcd2745c2cb76f57baf1f6d54",
+    "82": "197052cd504791c59e30cc8efa9cc3f0cc0d1ca1",
+    "83": "a8e92f6b7a27fd552e35bd19c1be23b215071f71",
+    "84_including83": "fe58778d72932bc8358602679f08310c455ed6b5",
+    "conflicts": 0,
+    "combined82_plus84_not_yet_tested": true
+  },
+  "local_build": {
+    "source_sha": "148e23a400710c3493eb6687ac5b45b24c104842",
+    "allowlisted_files": 52,
+    "source_archive_sha256": "ba9999cb47c487e808a997566e0a21a9678ca63a36435b08d738a6461d4575b2",
+    "started_at_utc": "2026-10-18T07:31:02.657155+00:00",
+    "cloud_resources_modified": false,
+    "real_claude_calls": 0,
+    "builds": [
+      {
+        "install_ai": "false",
+        "tag": "sam-jeff-ai-prep:148e23a-false",
+        "exit_code": 0,
+        "elapsed_seconds": 21.2,
+        "log": "docker-build-false.log",
+        "image_id": "sha256:0db91c661534fd38be6ffcade8190c8a1bb2698ad3ccfc5ee86a6ca37f19c9ea",
+        "image_bytes": 54441459
+      },
+      {
+        "install_ai": "true",
+        "tag": "sam-jeff-ai-prep:148e23a-true",
+        "exit_code": 0,
+        "elapsed_seconds": 284.47,
+        "log": "docker-build-true.log",
+        "image_id": "sha256:aea8c70eefd143245ed24a30166210a08bca6f9ed0a403dc03246a97912fe504",
+        "image_bytes": 505794413
+      }
+    ],
+    "offline_check_exit_code": 0,
+    "offline_model_check": {
+      "dimensions": 512,
+      "seconds": 12.716,
+      "python_peak_rss_bytes": 572747776
+    },
+    "status": "passed",
+    "checked_at_utc": "2026-10-18T07:36:31.473842+00:00"
+  },
+  "container_factory_checks": {
+    "checked_at_utc": "2026-10-18T07:37:50.780567+00:00",
+    "network": "none",
+    "memory_limit_bytes": 2147483648,
+    "cpu_limit": 1,
+    "real_claude_calls": 0,
+    "scope": "local factory/liveness and preview access guards; no ready/Atlas/remote acceptance claim",
+    "checks": [
+      {
+        "install_ai": "false",
+        "result": {
+          "live": 200,
+          "admin": 403,
+          "post_auth": 403,
+          "flags": {
+            "AI_RECOMMENDATIONS_ENABLED": false,
+            "AI_SUMMARY_ENABLED": false,
+            "AI_FREE_QUESTION_ENABLED": false
+          }
+        }
+      },
+      {
+        "install_ai": "true",
+        "result": {
+          "live": 200,
+          "admin": 403,
+          "post_auth": 403,
+          "flags": {
+            "AI_RECOMMENDATIONS_ENABLED": true,
+            "AI_SUMMARY_ENABLED": true,
+            "AI_FREE_QUESTION_ENABLED": false
+          }
+        }
+      }
+    ]
+  },
+  "cloud_readback": {
+    "checked_at_utc": "2026-10-18T07:40:31.763Z",
+    "mode": "read-only control-plane metadata; secret values never accessed",
+    "services": [
+      {
+        "name": "vibecart-web",
+        "revisions": [
+          {
+            "revision": "vibecart-web-00019-phf",
+            "percent": 100,
+            "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:7199fa08c711917a80e5f54dbfd580ed96f3ef632bda7337b4aa2bde2325c992",
+            "service_account": "vibecart-web@vibecart-llmai.iam.gserviceaccount.com",
+            "source_sha": "e000d952d22a64b568903641893f4ffdc71accd3",
+            "resources": {
+              "cpu": "1",
+              "memory": "512Mi"
+            },
+            "flags": {
+              "CLOUD_PREVIEW_READ_ONLY": "false"
+            },
+            "behavior_synthetic_batch_present": false,
+            "behavior_synthetic_batch_nonempty": false,
+            "secret_bindings": [
+              {
+                "environment": "MONGO_URI",
+                "secret": "vibecart-mongo-uri",
+                "version": "1"
+              },
+              {
+                "environment": "SECRET_KEY",
+                "secret": "vibecart-session-key",
+                "version": "1"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "vibecart-acceptance-pr21",
+        "revisions": [
+          {
+            "revision": "vibecart-acceptance-pr21-00011-2hq",
+            "percent": 100,
+            "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:7199fa08c711917a80e5f54dbfd580ed96f3ef632bda7337b4aa2bde2325c992",
+            "service_account": "vibecart-pr21-acceptance@vibecart-llmai.iam.gserviceaccount.com",
+            "source_sha": "e000d952d22a64b568903641893f4ffdc71accd3",
+            "resources": {
+              "cpu": "1",
+              "memory": "512Mi"
+            },
+            "flags": {
+              "CLOUD_PREVIEW_READ_ONLY": "false",
+              "CLOUD_ACCEPTANCE_MODE": "true",
+              "CLOUD_ACCEPTANCE_DB": "vibecart_acceptance_pr21"
+            },
+            "behavior_synthetic_batch_present": false,
+            "behavior_synthetic_batch_nonempty": false,
+            "secret_bindings": [
+              {
+                "environment": "SECRET_KEY",
+                "secret": "vibecart-pr21-acceptance-session-key",
+                "version": "1"
+              },
+              {
+                "environment": "MONGO_URI",
+                "secret": "vibecart-pr21-acceptance-mongo-uri",
+                "version": "1"
+              }
+            ]
+          }
+        ]
+      }
+    ],
+    "anthropic_secret": {
+      "http_status": 404,
+      "enabled_versions": null
+    },
+    "cloud_modified": false,
+    "real_claude_calls": 0
+  },
+  "real_claude_calls": 0,
+  "cloud_modified": false,
+  "online_ai_accepted": false
+}
