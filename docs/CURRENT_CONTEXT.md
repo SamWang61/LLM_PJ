@@ -2,7 +2,9 @@
 
 **2026/10/18 08:06 SAM PR #74 技術覆核**：[完整整合紀錄](SAM_PR74_MERGE_REVIEW_2026-10-18.md)。本輪208 passed／0 skipped、51執行來源對帳0差異；公開customer/admin登入、角色及單裝置登出通過，sessions0。另修正維運驗證清理可能誤刪並行session，4項回歸通過。正式19／私有10同映像、正常command、IAM0；故障報告仍依06:36～06:38原時間。本次PR將部署來源整合main，實際合併SHA／時間見[PR #74](https://github.com/SamWang61/LLM_PJ/pull/74)。V5仍2/14完成，具名交接／更廣outage／實機／備份／簽收待辦。
 
-更新：2026/10/18 07:00（Asia/Taipei）。
+更新：2026/10/18 08:15（Asia/Taipei；本次為唯讀驗收記錄，未部署或寫入業務資料）。
+
+**08:15 REN交接預檢**：[唯讀驗收證據](inventory/REN_HANDOVER_READONLY_2026-10-18.json)。最新main為 `40dbd24abd8041c66e0642f14c4dd4cc727638a9`，PR #74已合併；208 passed／0 skipped屬PR驗證版本的隔離replica-set CI，不代表REN工作站。本次在Codex主機確認Docker client/server 29.6.1；公開展示customer登入後管理頁拒絕、admin管理頁唯讀可讀、兩帳號均登出，Atlas唯讀sessions回查為0；S03 SKU／價格／庫存與公開頁一致。私有購物驗收服務匿名請求403，沒有可用invoker身分，未做購物／訂單寫入。Cloud Run revision本次未重讀；合併覆核記錄的08:03讀回與06:50部署快照各自保留原取證時間。REN本人環境、具名接收、多裝置實機、S03～S05逐圖簽認及展示帳號回收仍待本人／團隊處理。
 
 **06:55優先驗收更新**：[REN 09:00展示帳號與故障驗收](../專題進度/REN_0900展示帳號與故障驗收_2026-10-18.md)記錄兩個短期角色帳號已啟用、DPAPI私有交付，以及同映像私有測試的兩類受控資料庫錯誤回滾、交易中session撤權／會員停用回滾。該遠端測試在06:36～06:38完成；06:50唯讀回查顯示正式revision `vibecart-web-00019-phf` 與私有 `vibecart-acceptance-pr21-00010-9zg` 均為來源 `e000d95` 的同digest、各100%流量，Hosting仍導向正式服務。健康GET僅是路由證據。以上07:00分支狀態為歷史；本輪將來源納入main，現況及合併紀錄以上方08:06入口為準。06:47唯讀fault preflight發現私有服務暫時barrier command已移除，沒有冒稱重新執行。N04待REN具名接收、現場登入及展示後清理；N06待具名接受與更廣範圍outage評估。本輪清單仍2/14完成，N07～N10完全排除。部署讀回：[JSON](inventory/REN_DEPLOYMENT_READBACK_2026-10-18.json)。
 
@@ -11,7 +13,7 @@
 **現行入口：[V5本輪工作清單](../專題進度/專案未完成工作清單_2026-10-18.md)、[09:00 REN逐項接回](../專題進度/REN_0900逐項交接清單_2026-10-18.md)、[版本／部署證據](SAM_V5_DELIVERY_EVIDENCE_2026-10-18.md)、[S01～S12同版素材](../簡報文件/screenshots/S01-S12_同版取證_2026-10-18.md)。**
 
 - 依使用者與V5第12頁決定：真模型／受控自由提問、D5後台維護／180天審計與冪等收據／批量request_id、金流／物流及既定6+4擴充屬下一階段，不計本輪未完成分子與分母。本輪14關卡：2完成、12待結案；不沿用61/88或30.7%跨階段歷史數字。
-- 現行部署來源為 PR #74 的 `e000d952d22a64b568903641893f4ffdc71accd3`；06:50正式 `vibecart-web-00019-phf`、私有 `vibecart-acceptance-pr21-00010-9zg` 同pinned digest、各100%。PR #74本輪整合此來源；提交及合併狀態以08:06入口及GitHub紀錄為準。06:50六公開health GET為200、私有匿名403；這些只是路由／invoker證據。
+- PR #74已合併，最新main `40dbd24abd8041c66e0642f14c4dd4cc727638a9`；部署證據仍分別引用08:03合併覆核及06:50部署讀回，這次未重讀當前revision。06:50六公開health GET為200、私有匿名403；這些只是路由／invoker證據。
 - #65 P2已修正合併，#67／#69已整合；#72發布簡報目錄44實際文件，main基線 `625f70347e56f9fccb2ab9a27babfceae6dcce76`。V5 PPTX13頁及SAM手動封面／深淺頁尾／封底保持原bytes。
 - PR #74來源本機一次性replica set 208 passed／0 skipped；同映像私有正常交易、兩種受控DB錯誤回滾、PURCHASE中session撤銷／會員停用回滾、期限登入拒絕與consumer normal／synthetic對照有遠端報告。**尚未覆蓋真實Atlas網路中斷／全部資料庫錯誤，REN具名交接、最終展示登入及全站簽收未完成**；me-central2政策拒絕未核實。
 - S01～S12主圖已補入專案；會員／後台透過同映像私有環境取證，九範圍清理0、臨時IAM撤回、獨立三根marker0。390px窄視窗不是手機實機；逐圖待人員具名核對。

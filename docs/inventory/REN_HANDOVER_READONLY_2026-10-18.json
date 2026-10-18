@@ -1,0 +1,88 @@
+{
+  "recorded_at_taipei": "2026-10-18T08:12:28+08:00",
+  "scope": "REN handover preflight H01-H04; read-only public checks except normal demo login/logout session lifecycle",
+  "repository": {
+    "main_sha": "40dbd24abd8041c66e0642f14c4dd4cc727638a9",
+    "pr": 74,
+    "pr_head_sha": "81d7b5867cf00e763fe06e47c726d796213d9f9b",
+    "pr_state": "merged",
+    "merged": true,
+    "pr74_merged_sha": "40dbd24abd8041c66e0642f14c4dd4cc727638a9",
+    "pr74_merged_at_taipei": "2026-10-18T08:11:34+08:00",
+    "historical_ci_head_sha": "4102fb4141386133385303b9af91da9f577ecabf",
+    "validation_run_id": 39081704769,
+    "validation_conclusion": "success",
+    "historical_validation_run_id": 39077266742,
+    "real_local_mongodb_transaction_tests": {
+      "passed": 208,
+      "failed": 0,
+      "errors": 0,
+      "skipped": 0,
+      "container_removed": true,
+      "fixtures_removed": true
+    }
+  },
+  "h01_environment": {
+    "observed_environment": "current Codex execution host, not REN's workstation",
+    "docker_client": "29.6.1",
+    "docker_server": "29.6.1",
+    "ren_workstation_verified": false,
+    "note": "CI validates the PR code in a clean runner; REN must still verify their own Git/Python/Docker versions and clean checkout at handoff."
+  },
+  "h02_h03_demo_account_roles": {
+    "host": "https://vibecart-llmai.web.app",
+    "ren_customer": {
+      "login": "passed",
+      "admin_route": "denied; redirected to storefront without admin dashboard content",
+      "logout": "passed"
+    },
+    "jeff_admin": {
+      "login": "passed",
+      "admin_dashboard_read": "passed",
+      "logout": "passed"
+    },
+    "secret_handling": "DPAPI-protected local credential file was consumed in memory; credentials were not printed or persisted in this report.",
+    "session_cleanup": {
+      "read_only_auth_sessions_created_since_2026_10_18T00_05_00Z": 0,
+      "interpretation": "No auth session remained from the test window after logout; no other existing sessions were deleted."
+    },
+    "side_effect_boundary": "Normal login updates last_login_at; no cart, order, inventory, account role, or password mutation was performed."
+  },
+  "h04_s03_product_sku": {
+    "atlas_database": "vibecart_ai",
+    "collection": "product_skus",
+    "matched_documents": 1,
+    "sku_code": "CF-SKU-1210303000104",
+    "variant": "1PC支 x 1 x 4PC支",
+    "price_ntd": "79.00",
+    "available_quantity": 95,
+    "public_product_get": {
+      "url": "https://vibecart-llmai.web.app/product/02f9efd17210150f2eea7274",
+      "checked_at_taipei": "2026-10-18T08:12:28+08:00",
+      "http_status": 200,
+      "sku_present": true,
+      "variant_present": true,
+      "price_present": true,
+      "stock_95_present": true
+    },
+    "revision_boundary": "Cloud Run revision was not independently reread in this check; the latest recorded deployment metadata is the 06:50 readback in REN_DEPLOYMENT_READBACK_2026-10-18.json.",
+    "mutation": "none"
+  },
+  "h05_isolated_cart_access": {
+    "private_acceptance_health_get": {
+      "checked_at_taipei": "2026-10-18T08:12:28+08:00",
+      "http_status": 403,
+      "meaning": "Private service invoker gate blocked the unauthenticated request.",
+      "request_body_recorded": false
+    },
+    "authenticated_invoker_available_in_current_session": false,
+    "cart_or_order_mutation_attempted": false,
+    "status": "blocked_pending_authorized_private_service_identity"
+  },
+  "not_yet_done": [
+    "REN named handoff/signoff and REN workstation recovery check",
+    "S04-S05 actual private acceptance cart/order flows and S03-S05 named review",
+    "broad Atlas outage fault matrix beyond the two existing controlled failures",
+    "real-device mobile acceptance, demo account retirement, and final named signoff"
+  ]
+}
