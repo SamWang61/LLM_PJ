@@ -11,15 +11,22 @@ if str(ROOT) not in sys.path:
 from VibeCart_AI.services.sku_cart_service import CartService
 from VibeCart_AI.services.cart_service import CartError, CartConflict, oid as parse_oid
 from bson import ObjectId
-from flask import current_app
+from flask import current_app, session
 from ..db import get_db
 from .member_events import behavior_metadata
 
 
 def cart_service():
+    from ..auth import current_member
+    from .member_sessions import token_digest, fingerprint, demo_expiration
+    user = current_member()
+    guard = {'session_id': None} if not user else {
+        'session_id': token_digest(session.get('member_session')),
+        'auth_fingerprint': fingerprint(user), 'password_hash': user.get('password_hash'),
+        'role': user['role'], 'demo_expires_at': demo_expiration(user)}
     factory = current_app.config.get("CART_SERVICE_FACTORY", CartService)
     return factory(get_db(), enable_checkout=current_app.config["ENABLE_CHECKOUT"],
-                   behavior_metadata=behavior_metadata())
+                   behavior_metadata=behavior_metadata(), authorization_guard=guard)
 
 
 def oid(value):

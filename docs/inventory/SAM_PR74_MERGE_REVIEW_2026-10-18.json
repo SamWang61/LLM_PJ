@@ -1,0 +1,198 @@
+{
+  "checked_at_utc": "2026-10-18T00:07:38.861809+00:00",
+  "pr": 74,
+  "reviewed_head": "4102fb4141386133385303b9af91da9f577ecabf",
+  "tool_safety_fix_commit": "6d9dc6f56dce829be24e9d114c2c49a5416f529a",
+  "code_review": {
+    "commit_fence": "User write conflict plus session delete/reinsert inside snapshot transaction; concurrent role/password/disable/revocation causes abort/retry against revoked state. Session lifetime/fingerprint preserved.",
+    "prior_p1": "Fault runner rejects unsupported account-lifecycle mode before credentials/IAM use; regression passed.",
+    "additional_fix": "Demo verify no longer deletes the database before/after session difference. It performs CSRF-protected logout of only its own HTTP browser and requires access rejection; concurrent holder session is preserved.",
+    "public_test_endpoint_added": false
+  },
+  "local_full_regression": {
+    "checked_at": "2026-10-18T00:00:11.392494+00:00",
+    "status": "passed",
+    "target": "disposable credential-free localhost replica set",
+    "container_removed": true,
+    "tests": {
+      "tests": 208,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "remaining_databases": [
+      "admin",
+      "config",
+      "local"
+    ],
+    "fixtures_removed": true
+  },
+  "local_full_regression_execution_head": "4102fb4141386133385303b9af91da9f577ecabf",
+  "additional_tests": {
+    "python_existing_probe_safety_passed": 23,
+    "python_concurrent_demo_session_safety_passed": 4,
+    "node_fault_and_account_runner_passed": 3,
+    "failed": 0
+  },
+  "cloud_current_readback": {
+    "checked_at_utc": "2026-10-18T00:03:11.401Z",
+    "states": [
+      {
+        "service": "vibecart-web",
+        "revision": "vibecart-web-00019-phf",
+        "traffic_percent": 100,
+        "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:7199fa08c711917a80e5f54dbfd580ed96f3ef632bda7337b4aa2bde2325c992",
+        "source_sha": "e000d952d22a64b568903641893f4ffdc71accd3",
+        "normal_container_command": true
+      },
+      {
+        "service": "vibecart-acceptance-pr21",
+        "revision": "vibecart-acceptance-pr21-00010-9zg",
+        "traffic_percent": 100,
+        "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:7199fa08c711917a80e5f54dbfd580ed96f3ef632bda7337b4aa2bde2325c992",
+        "source_sha": "e000d952d22a64b568903641893f4ffdc71accd3",
+        "normal_container_command": true
+      }
+    ],
+    "temporary_iam_titles": [
+      "sam-txn-ef27b26b-df5e-4d50-9112-406a343eb904",
+      "sam-d4-bf2d98c1-a7f7-41f5-b3e2-2be28cfbdeae"
+    ],
+    "temporary_iam_grants_remaining": 0,
+    "health_readback": [
+      {
+        "url": "https://vibecart-llmai.web.app/health/ready",
+        "http": 200
+      },
+      {
+        "url": "https://vibecart-web-m44ncgz5ta-de.a.run.app/health/ready",
+        "http": 200
+      },
+      {
+        "url": "https://vibecart-acceptance-pr21-m44ncgz5ta-de.a.run.app/health/live",
+        "http": 403
+      }
+    ],
+    "mutations": false,
+    "scope": "Independent current serving revision and temporary-command/IAM retirement readback; no replay of historical fault fixtures"
+  },
+  "runtime_equivalence": {
+    "runtime_files": 51,
+    "mismatches": 0,
+    "reviewed_head": "4102fb4141386133385303b9af91da9f577ecabf",
+    "runtime_unchanged_by_tool_fix": true,
+    "deployed_source": "e000d952d22a64b568903641893f4ffdc71accd3"
+  },
+  "public_demo_login_and_own_device_logout": {
+    "checked_at_utc": "2026-10-18T00:05:46.376343+00:00",
+    "status": "passed",
+    "scope": "Existing public demo identities; login/read/own-device logout; no checkout or admin mutation",
+    "executed_tool_sha256": "50c12be6d92b049af94b3fdc1ee3815b2aa061559afa06e8663e41b2728982f4",
+    "accounts": [
+      {
+        "holder": "REN",
+        "role": "customer",
+        "login_http": 302,
+        "cart_http": 200,
+        "admin_http": 302,
+        "role_verified": true,
+        "production_checkout_performed": false,
+        "logout_http": 302,
+        "post_logout_cart_http": 302,
+        "own_device_logout_verified": true
+      },
+      {
+        "holder": "JEFF",
+        "role": "admin",
+        "login_http": 302,
+        "cart_http": 200,
+        "admin_http": 200,
+        "role_verified": true,
+        "production_checkout_performed": false,
+        "logout_http": 302,
+        "post_logout_cart_http": 302,
+        "own_device_logout_verified": true
+      }
+    ],
+    "credentials_persisted": false
+  },
+  "independent_atlas": {
+    "checked_at_utc": "2026-10-18T00:07:38.941985+00:00",
+    "acceptance_database": "vibecart_acceptance_pr21",
+    "fixture_markers": [
+      "ren-txn-fault-9a6dfa300a969d04",
+      "ren-d4-1b16cc86e1c39e5d",
+      "ren-txn-ddeddc7df2cda87a",
+      "sam-accounts-00585e21764d2dd7",
+      "sam-accounts-expiry-8f6855d050c95e9f"
+    ],
+    "marker_users_remaining": 0,
+    "marker_products_remaining": 0,
+    "marker_skus_remaining": 0,
+    "checkout_id_prefix_orders_remaining": 0,
+    "fault_probe_controls_remaining": 0,
+    "temporary_orders_indexes_remaining": 0,
+    "production_demo_sessions_after_own_logout": 0,
+    "production_demo_users": {
+      "count": 2,
+      "roles": [
+        "customer",
+        "admin"
+      ],
+      "is_active": true
+    },
+    "scope": "Separate Atlas connector reads of named root markers, checkout prefixes, control records, orders indexes and two demo session IDs. Dependent nine-scope cleanup remains historical runner evidence, not an independently repeated whole-database claim.",
+    "connector_retry": "Initial internal errors for SKU/control count were not accepted as zero; group-aggregation retries returned zero."
+  },
+  "historical_fault_evidence": {
+    "path": "docs/inventory/REN_REMOTE_FAULT_FIXED_2026-10-18.json",
+    "actual_execution_taipei": "2026-10-18 06:36-06:38",
+    "acceptance_revision": "vibecart-acceptance-pr21-00009-4z6",
+    "temporary_wrapper_sha256": "5c1d0111d5c5c4b7ba32e2b6b243c618a704ef4e7b1d1a7d642f223a5bd26a79",
+    "current_committed_wrapper_equal": true,
+    "scenarios": [
+      "server unique-index violation HTTP409; rollback and same-ID recovery",
+      "acceptance-only AutoReconnect HTTP503; rollback and same-ID recovery",
+      "session revoked during PURCHASE barrier HTTP400; rollback; next request302",
+      "account disabled during PURCHASE barrier HTTP400; rollback; next request302"
+    ],
+    "not_replayed_this_turn": "Temporary private barrier was already retired. Same executed wrapper and runtime sources verified; current normal commands and IAM retirement independently read back."
+  },
+  "artifacts_sha256": [
+    {
+      "path": "docs/inventory/REN_REMOTE_FAULT_FIXED_2026-10-18.json",
+      "sha256": "e55e613b4b53bf04f64ccacbb96152345ba68734e3c7d5e7e780906aee956287"
+    },
+    {
+      "path": "docs/inventory/REN_NORMAL_REMOTE_ACCEPTANCE_2026-10-18.json",
+      "sha256": "bc184b5572120664ce6abf2c74336922c8509633774436ba84e751ba70a11c59"
+    },
+    {
+      "path": "scripts/remote_checkout_barrier_bootstrap.py",
+      "sha256": "5c1d0111d5c5c4b7ba32e2b6b243c618a704ef4e7b1d1a7d642f223a5bd26a79"
+    },
+    {
+      "path": "scripts/provision_handover_demo.py",
+      "sha256": "50c12be6d92b049af94b3fdc1ee3815b2aa061559afa06e8663e41b2728982f4"
+    }
+  ],
+  "deployment_mutations_this_turn": false,
+  "production_checkout_performed_this_turn": false,
+  "d1_d4_reimport": false,
+  "remaining": [
+    "09:00 named REN handoff and holder operation",
+    "demo account retirement/session cleanup by20:30 Taipei",
+    "broader outage matrix and named acceptance",
+    "physical mobile/offline/second-machine/projector and human timed rehearsal",
+    "fixed egress, encrypted full backup and Atlas restore",
+    "me-central2 policy-restricted region evidence",
+    "final N18 signoff"
+  ],
+  "v5_scope": {
+    "gates": 14,
+    "closed": 2,
+    "pending": 12,
+    "N07_N10_excluded": true,
+    "manual_pptx_sha256": "43374f71c5e42fdc1725f38a8ac69ea0e2ccc696f6238ebb06425e58e00d7203"
+  }
+}
