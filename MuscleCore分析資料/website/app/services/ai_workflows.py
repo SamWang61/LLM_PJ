@@ -17,7 +17,7 @@ from time import monotonic, perf_counter
 from typing import TypedDict
 from flask import current_app, has_app_context
 from .recommendation import policy_weights, recommend_products
-from .behavior_scope import production_events
+from .behavior_scope import personalization_events
 
 logger = logging.getLogger(__name__)
 
@@ -154,7 +154,7 @@ def build_recommendation_graph(embeddings):
     from langgraph.graph import StateGraph, START, END
 
     def baseline(state):
-        clean_events = list(production_events(state["events"]))
+        clean_events = list(personalization_events(state["events"]))
         products = [p for p in state["products"] if p.get("is_ai_recommendable", True) and p.get("stock", 0) > 0]
         items = recommend_products(products, clean_events, weights=state.get("weights"))
         return {"products": products, "events": clean_events, "items": items, "source": "rules"}
@@ -196,7 +196,7 @@ def storefront_recommendations(products, events, query="", weights=None):
     if weights is None and current_app.config["DATA_MODE"] == "v4":
         from ..db import get_db
         weights = policy_weights(get_db())
-    events = list(production_events(events))
+    events = list(personalization_events(events))
     if current_app.config["AI_RECOMMENDATIONS_ENABLED"]:
         try:
             graph = build_recommendation_graph(current_app.config.get("EMBEDDINGS_FACTORY", bge_embeddings))

@@ -1,5 +1,5 @@
 from collections import Counter
-from .behavior_scope import production_events
+from .behavior_scope import personalization_events
 
 # v4 recommendation_policy defaults (system_configs); the stored policy overrides them.
 DEFAULT_WEIGHTS = {"PURCHASE": 4, "ADD_TO_CART": 3, "SEARCH": 2, "PRODUCT_VIEW": 1}
@@ -40,7 +40,7 @@ def recommend_products(products, events, limit=4, weights=None):
         product_weights[str(product["_id"])] += weight
         category_weights[product.get("category", "其他")] += weight
 
-    for event in production_events(events):
+    for event in personalization_events(events):
         kind = event_type(event)
         weight = weights.get(kind, 0)
         if not weight:

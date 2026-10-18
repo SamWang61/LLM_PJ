@@ -1,5 +1,10 @@
 # 變更紀錄 / Changelog
 
+
+## 2026-10-18 — JEFF 示範結帳計入個人推薦 / Demo checkouts shape personal recommendations (B2)
+
+- 新增 personalization 範圍：個人推薦只排除 synthetic 批次，真實會員的示範結帳會影響自己的推薦；推薦監控與歸因仍排除示範結帳。Attribution scope unchanged.
+- 新增 7 項離線測試。See [dashboard handoff](docs/AI_DASHBOARD.md).
 ## 2026-10-18 — JEFF 規則推薦改用 v4 權重 / v4 recommendation weights (B1)
 
 - 規則推薦由舊權重 1/3/4/8 改為 v4 政策 PURCHASE 4、ADD_TO_CART 3、SEARCH 2、PRODUCT_VIEW 1，v4 前台讀取資料庫政策；SEARCH 依搜尋字比對商品。Rule recommendations now follow the stored v4 policy.

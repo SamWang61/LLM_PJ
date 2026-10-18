@@ -126,6 +126,13 @@ Existing module paths and migration history are preserved. The scoped manifest s
 - `ai_workflows.py` 移除舊的事件名稱轉換；推薦監控頁的說明同步更新。
 - 新增 10 項離線測試。synthetic 事件仍由 `production_events` 排除，行為不變；示範購買（`exclude_from_attribution`）是否計入個人推薦屬 B2，尚未變更。
 
+### 2026-10-18 示範結帳計入個人推薦（JEFF，B2）
+
+- **問題**：真實會員完成示範結帳後，PURCHASE 事件帶 `exclude_from_attribution`，原本前台推薦和推薦監控一樣把它排除，所以買完之後「猜你喜歡」沒有任何變化。
+- **改法**：`behavior_scope.py` 新增 `personalization_behavior_query()`／`personalization_events()`，只排除 synthetic 批次（`synthetic`、`synthetic_batch_id`），保留示範結帳；前台推薦（v4、legacy、規則推薦、LangGraph 基線）改用它。
+- **不變**：推薦監控與成效／歸因統計仍用 `production_*`，示範結帳**不計入**；synthetic 事件在兩種範圍都排除。
+- 新增 7 項離線測試。注意：若正式環境設定 `BEHAVIOR_SYNTHETIC_BATCH`，真實會員的事件也會被標成 synthetic 而排除（B3 待 SAM 查）。
+
 Taipei date filters and demo exclusions apply consistently to v4 revenue, daily totals, ranking and summaries. Inventory is current; recommendation events are bounded counts, not attribution metrics.
 
 ## 私有連線與啟動 / Private connection and launch
