@@ -20,6 +20,7 @@ MIGRATION_SOURCES = {
         'migrate_complete_v4.py', 'schema_complete_v4.py', '13_完整Schema_v1.0_來源快照.md'),
     '20261005_05_synthetic_profile_v4': ('test_data/schema_test_profile.py',),
     '20261014_06_member_device_sessions_v4': ('auth_session_schema.py', '../../scripts/migrate_auth_sessions.py'),
+    '20261018_07_email_role_logins_v4': ('email_role_schema.py', '../../scripts/migrate_email_role_logins.py'),
 }
 
 
