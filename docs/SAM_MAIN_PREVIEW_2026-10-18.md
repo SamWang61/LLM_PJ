@@ -58,3 +58,11 @@ SAM逐一對照四Claude／四規則回覆：51.25元、5筆、客單10.25、零
 ## V5與下一步
 
 維持**14關卡、2完成／12待結案**；N07～N10屬下一階段。此輪補的是無流量最新main與私有模型／交易技術證據。正式新版發布、正式AI開放、受控自由提問、D5、具名接回／實機／最終簽收、全部consumer及受限區證據、N14異機key與每日流程等仍依各關卡保留。不把preview、push、CI或本機測試改寫成全站最終完成。
+
+## 交付時併行更新
+
+推送期間main新增REN PR #89（`5ef0c05bc6943ae15a5eabb961a9bc05c4d7ffd4`）；已保留其H05～H07證據、修正及原生HTTPS工具，解開CURRENT_CONTEXT／V5入口新增段落衝突。該PR只改文件／測試工具，52檔執行封裝仍與本次部署逐byte相同，無須為文件整合重部署應用。
+
+雲端實際執行的五支探針bytes已保存於提交`79a297ac5939a648646386bc7adddbceae956c3f`，對應JSON內tested_probe_sources；交付整合版另含#89的GET傳輸重試／選用native adapter，不冒稱這些後來的工具變更早已在本次Job執行。整合後另跑探針／傳輸安全回歸與GitHub CI；兩邊的日期證據各自保留。
+
+整合本機回歸：66項Python探針／傳輸安全與10項Node runner測試全部通過、0 skipped；origin/main 5ef0c05重新封裝52檔SHA-256仍為9d0544fb…，與已部署映像來源相同。

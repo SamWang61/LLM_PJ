@@ -19,7 +19,7 @@ function selectedRevision(service) {
     'Expected exactly one revision with 100 percent traffic');
   return active[0].revision;
 }
-function assertDeployment(production, acceptance, policy) {
+function assertDeployment(production, acceptance, policy, allowMaintainer = false) {
   requireValue(/@sha256:[a-f0-9]{64}$/.test(production.image)
     && production.image === acceptance.image, 'Pinned deployment images differ');
   const flags = Object.fromEntries((acceptance.env || []).map(e => [e.name, e.value]));
@@ -27,15 +27,25 @@ function assertDeployment(production, acceptance, policy) {
     && flags.CLOUD_ACCEPTANCE_DB === 'vibecart_acceptance_pr21'
     && flags.CLOUD_PREVIEW_READ_ONLY === 'false', 'Acceptance database mode mismatch');
   const invokers = (policy.bindings || []).filter(b => b.role === 'roles/run.invoker');
+  const members = invokers[0]?.members || [];
+  const allowed = ['serviceAccount:' + SA, ...(allowMaintainer ? [MEMBER] : [])];
   requireValue(invokers.length === 1 && !invokers[0].condition
-    && invokers[0].members?.length === 1
-    && invokers[0].members[0] === 'serviceAccount:' + SA, 'Acceptance invoker scope mismatch');
+    && members.includes('serviceAccount:' + SA)
+    && members.length === new Set(members).size
+    && members.every(member => allowed.includes(member)), 'Acceptance invoker scope mismatch');
   requireValue(acceptance.serviceAccount === SA, 'Acceptance runtime identity mismatch');
 }
 function temporaryBinding(title, expires) {
   return { role: ROLE, members: [MEMBER], condition: { title,
-    description: 'SAM isolated transaction probe; remove immediately after run',
+    description: 'Isolated acceptance probe; remove immediately after run',
     expression: 'request.time < timestamp("' + expires + '")' } };
+}
+function grantExpiry(now, deadline) {
+  const limit = now + 20 * 60000;
+  const expires = deadline ? Date.parse(deadline) : limit;
+  requireValue(Number.isFinite(expires) && expires > now && expires <= limit,
+    'IAM deadline must be in the next 20 minutes');
+  return new Date(expires).toISOString();
 }
 function removeOurBinding(policy, binding) {
   return { ...policy, bindings: (policy.bindings || []).filter(b =>
@@ -150,16 +160,18 @@ async function revoke(api, binding) {
 }
 function probeMode(args) {
   requireValue(args.length <= 1 && (!args.length
-    || ['--run-isolated', '--run-accounts-isolated'].includes(args[0])),
-    'Usage: node scripts/run_remote_transaction_acceptance_probe.cjs [--run-isolated|--run-accounts-isolated]');
+    || ['--run-isolated', '--run-accounts-isolated', '--run-h05-h07-isolated'].includes(args[0])),
+    'Usage: node scripts/run_remote_transaction_acceptance_probe.cjs [--run-isolated|--run-accounts-isolated|--run-h05-h07-isolated]');
   const accounts = args[0] === '--run-accounts-isolated';
-  return { run: args.length === 1, accounts,
+  const h05h07 = args[0] === '--run-h05-h07-isolated';
+  return { run: args.length === 1, accounts, h05h07,
     python: accounts ? 'remote_account_acceptance_probe.py' : 'remote_transaction_acceptance_probe.py',
-    prefix: accounts ? 'sam-accounts-' : 'sam-txn-' };
+    prefix: h05h07 ? 'ren-h057-' : accounts ? 'sam-accounts-' : 'sam-txn-' };
 }
 async function runPython(config, pythonFile) {
   const child = spawn(process.env.REN_PYTHON || 'python',
-    [path.join(__dirname, pythonFile)], { stdio: ['pipe', 'pipe', 'pipe'] });
+    [path.join(__dirname, pythonFile)], { stdio: ['pipe', 'pipe', 'pipe'],
+      env: { ...process.env, REN_PRIVATE_HTTP_TRANSPORT: config.http_transport || 'requests' } });
   let output = '';
   child.stdout.on('data', chunk => { output += chunk.toString(); });
   child.stderr.on('data', () => {}); // Never echo credential-related tracebacks.
@@ -182,13 +194,15 @@ async function main() {
   const [production, acceptance] = await Promise.all([
     readDeployment(api, 'vibecart-web'), readDeployment(api, SERVICE),
   ]);
-  assertDeployment(production, acceptance, acceptance.policy);
+  assertDeployment(production, acceptance, acceptance.policy, mode.h05h07);
   report.production = publicDeployment(production);
   report.acceptance = publicDeployment(acceptance);
-  report.inventory = await inventory(api);
+  report.inventory = mode.h05h07
+    ? { scope: 'existing private transaction/consumer routes only; no worker or D4 import changes', full_inventory_repeated: false }
+    : await inventory(api);
   if (!mode.run) { report.status = 'preflight-passed'; console.log(JSON.stringify(report)); return; }
   const binding = temporaryBinding(mode.prefix + randomUUID(),
-    new Date(Date.now() + 20 * 60000).toISOString());
+    grantExpiry(Date.now(), mode.h05h07 ? process.env.REN_IAM_DEADLINE : undefined));
   report.iam = { role: ROLE, member: MEMBER, expires: binding.condition.expression,
     title: binding.condition.title, revoked: false };
   let attempted = false;
@@ -217,17 +231,27 @@ async function main() {
     const secret = await api('https://secretmanager.googleapis.com/v1/projects/' + PROJECT
       + '/secrets/vibecart-pr21-acceptance-mongo-uri/versions/1:access', {}, 'secret');
     requireValue(secret.payload?.data, 'Acceptance Mongo URI unavailable');
-    const result = await runPython({ mongo_uri: Buffer.from(secret.payload.data, 'base64').toString('utf8'),
-      id_token: identity.token, service_url: acceptance.uri, revision: acceptance.revision, image: acceptance.image }, mode.python);
+    const config = { mongo_uri: Buffer.from(secret.payload.data, 'base64').toString('utf8'),
+      id_token: identity.token, service_url: acceptance.uri, revision: acceptance.revision, image: acceptance.image,
+      http_transport: mode.h05h07 ? 'node-fetch' : 'requests' };
+    report.http_transport = config.http_transport;
+    const result = await runPython(config, mode.python);
     report.probe = result.report;
     requireValue(result.code === 0 && result.report.status === 'passed'
       && result.report.cleanup?.verified === true, 'Remote probe or cleanup failed');
+    if (mode.h05h07) {
+      const consumer = await runPython(config, 'remote_d4_consumer_probe.py');
+      report.consumer = consumer.report;
+      requireValue(consumer.code === 0 && consumer.report.status === 'passed'
+        && consumer.report.cleanup?.verified === true, 'Remote consumer or cleanup failed');
+    }
     const [pAfter, aAfter] = await Promise.all([
       readDeployment(api, 'vibecart-web'), readDeployment(api, SERVICE),
     ]);
-    assertDeployment(pAfter, aAfter, aAfter.policy);
+    assertDeployment(pAfter, aAfter, aAfter.policy, mode.h05h07);
     requireValue(pAfter.revision === production.revision && aAfter.revision === acceptance.revision,
       'Traffic revision changed during probe');
+    report.deployment_after = { production: publicDeployment(pAfter), acceptance: publicDeployment(aAfter) };
     report.status = 'passed';
   } catch (error) { report.error = error.message; report.error_reasons = error.reasons || []; }
   finally {
@@ -239,7 +263,7 @@ async function main() {
   }
   if (report.status !== 'passed') process.exitCode = 1;
 }
-module.exports = { selectedRevision, assertDeployment, temporaryBinding, removeOurBinding, probeMode };
+module.exports = { selectedRevision, assertDeployment, temporaryBinding, removeOurBinding, probeMode, grantExpiry };
 if (require.main === module) main().catch(error => {
   console.error(error.message); process.exitCode = 1;
 });

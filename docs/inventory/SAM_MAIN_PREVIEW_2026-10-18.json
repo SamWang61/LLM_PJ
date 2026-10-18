@@ -1615,5 +1615,14 @@
   },
   "runner_dependency_pins": {
     "beautifulsoup4": "4.15.0"
-  }
+  },
+  "executed_probe_commit": "79a297ac5939a648646386bc7adddbceae956c3f",
+  "integrated_upstream_main": "5ef0c05bc6943ae15a5eabb961a9bc05c4d7ffd4",
+  "integration_note": "PR89 changes docs and test runners only; the 52-file deployed runtime archive is unchanged. Executed probe hashes refer to the retained pre-integration commit; delivered runner includes PR89 opt-in native transport and bounded GET retry.",
+  "integration_tests": {
+    "python_passed": 66,
+    "node_passed": 10,
+    "skipped": 0
+  },
+  "integrated_main_runtime_archive_equal": true
 }
