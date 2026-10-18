@@ -1,9 +1,16 @@
 # 變更紀錄 / Changelog
 
+
+## 2026-10-18 — JEFF 規則推薦改用 v4 權重 / v4 recommendation weights (B1)
+
+- 規則推薦由舊權重 1/3/4/8 改為 v4 政策 PURCHASE 4、ADD_TO_CART 3、SEARCH 2、PRODUCT_VIEW 1，v4 前台讀取資料庫政策；SEARCH 依搜尋字比對商品。Rule recommendations now follow the stored v4 policy.
+- 新增 10 項離線測試。See [dashboard handoff](docs/AI_DASHBOARD.md).
+
 ## 2026-10-18 — N14 最新來源／Atlas完整還原與JEFF準備
 
 - [N14](docs/SAM_N14_CURRENT_ATLAS_2026-10-18.md)：原目錄13,976檔全量重建差異0；Atlas28集合／14,691筆／89索引／validator／3TTL完成雲端認證與隔離還原，82安全回歸；修正複合索引順序比較及目錄／檔案替換，重新匯出、雲端讀回並完整還原驗證。差異包依賴保留的25片歷史基底；異機key／每日固定流程未完成。
 - [JEFF判斷與準備](docs/SAM_JEFF_AI_READINESS_2026-10-18.md)：讀交接與三PR，42項針對性測試；本機AI映像實際建置與斷網BGE通過，B3正式設定唯讀核實、API Key缺口保留；沒有啟用線上AI或切流量。
+
 
 ## 2026-10-18 — N14 私有加密與隔離復原
 

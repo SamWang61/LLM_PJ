@@ -118,6 +118,14 @@ Existing module paths and migration history are preserved. The scoped manifest s
   - 2026-10-17 第 3 回以真實 Claude 驗證（只問補貨 1 次）：範圍自動移到 10/09～10/15，因 Atlas 新增 2 筆 10/14 的示範訂單，共 3,002 筆。延遲 20.6 秒，輸入 6,726、輸出 1,186 tokens，未截斷。回覆中的 29 筆候選、可售量 3、安全庫存 10、本期銷量皆為 0，以及點名的 9 個商品，全部與送出資料一致，**不再以偏概全，也不再自行計算差額**。仍有 1 處小瑕疵：說「其餘 23 項」，是 29−6 自行相減，數字正確但違反「不自行計算」。另外回覆長度超出 prompt 要求的 400 字，接近 1200 tokens 上限。
 - **結論**：模型會正確引用程式算好的數字，但仍可能抄錯日期、以偏概全或自行計算，所以畫面上的「請人工核對」必須保留。請模型做「判斷或篩選」的部分，應盡量改由程式先做好。
 
+### 2026-10-18 規則推薦改用 v4 權重（JEFF，B1）
+
+- `services/recommendation.py` 原本使用舊權重（瀏覽 1、收藏 3、加購 4、購買 8），改為 v4 `recommendation_policy`：PURCHASE 4、ADD_TO_CART 3、SEARCH 2、PRODUCT_VIEW 1。
+- v4 前台會讀取 active 的政策（`policy_weights`），缺少、負數、非數字的權重以預設值補上；legacy 用預設值，舊事件名稱（view／cart／purchase／favorite）對應到 v4 名稱。
+- SEARCH 事件沒有商品 ID，改為以 `search_query` 比對商品名稱與分類，命中的商品加 2 分。
+- `ai_workflows.py` 移除舊的事件名稱轉換；推薦監控頁的說明同步更新。
+- 新增 10 項離線測試。synthetic 事件仍由 `production_events` 排除，行為不變；示範購買（`exclude_from_attribution`）是否計入個人推薦屬 B2，尚未變更。
+
 Taipei date filters and demo exclusions apply consistently to v4 revenue, daily totals, ranking and summaries. Inventory is current; recommendation events are bounded counts, not attribution metrics.
 
 ## 私有連線與啟動 / Private connection and launch
