@@ -1,5 +1,5 @@
 {
-  "checked_at_utc": "2026-10-18T03:25:35.126497+00:00",
+  "checked_at_utc": "2026-10-18T03:26:20+00:00",
   "basis_main": "40dbd24abd8041c66e0642f14c4dd4cc727638a9",
   "scope": "N14 historical0528 full-source encryption, remote reassembly/authenticated restoration and prior isolated local boot; gate remains open",
   "encryption_restore": {
@@ -683,7 +683,8 @@
   },
   "review_fixes": {
     "P1": "All runtime asserts replaced with explicit require checks; host and container optimized mode passed; two -O negative checks passed",
-    "P2": "Cloud reassembled ciphertext is now the documented decrypt source"
+    "P2": "Cloud reassembled ciphertext is now the documented decrypt source",
+    "PR80_P2": "Overall acceptance checkpoint03:26:20UTC is after catalog readback03:26:19UTC; document11:26 headings aligned. Remote decrypt retains its actual03:25:35UTC time."
   },
   "code_delivery": {
     "pr": 77,

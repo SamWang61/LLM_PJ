@@ -1,6 +1,6 @@
 # SAM N14 加密備份與隔離復原｜2026-10-18
 
-## 11:25 雲端整批還原驗收
+## 11:26 雲端整批還原驗收
 
 使用者回覆DNS／網路恢復後，重新列出既有私有Drive精確檔名，沿用前20個物件ID，補齊第21～25片。**25/25片已獨立下載完整內容，SHA-256、大小與owner-only ACL皆通過；最終目錄25片、同名重複0、分享0。** 備份資料夾也再次讀回只有擁有者權限。
 
@@ -8,7 +8,7 @@
 
 這條內容一致性證據銜接到先前已逐檔核對13,048檔、差異0及隔離啟動通過的同一ZIP。本次沒有重做解壓／啟動，也沒有執行正式Atlas匯出或還原。**驗收範圍僅05:28歷史來源的雲端保存及認證還原，不是最新main／工作目錄備份。**
 
-雲端索引沿用原物件ID更新為12,537 bytes，再獨立下載並與本機索引逐byte／SHA-256核對一致，ACL仍只有擁有者。清冊hash：`bd47cf82f21e2f4ed15ef449bfe31b2769269df4d24e2fb72261cb9746b93fa4`。完整機器證據見[JSON](inventory/SAM_N14_ENCRYPTED_RESTORE_2026-10-18.json)；金鑰未上傳、未列入報告。
+整批解密於11:25:35通過；最後清冊讀回於11:26:19完成，本次整體檢查點記為11:26:20（台北），不沿用解密完成時間。雲端索引沿用原物件ID更新為12,537 bytes，再獨立下載並與本機索引逐byte／SHA-256核對一致，ACL仍只有擁有者。清冊hash：`bd47cf82f21e2f4ed15ef449bfe31b2769269df4d24e2fb72261cb9746b93fa4`。完整機器證據見[JSON](inventory/SAM_N14_ENCRYPTED_RESTORE_2026-10-18.json)；金鑰未上傳、未列入報告。
 
 [PR #77](https://github.com/SamWang61/LLM_PJ/pull/77)工具及[PR #78](https://github.com/SamWang61/LLM_PJ/pull/78)前次檢查點已合併；前次main `0b742bab73d9a99e28602a7b11dfd52e29cd40d9` 的[CI](https://github.com/SamWang61/LLM_PJ/actions/runs/39090844026)通過。本次為文件證據更新，實際提交、CI及合併結果以GitHub最新紀錄為準。
 
