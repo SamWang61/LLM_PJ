@@ -1,0 +1,292 @@
+{
+  "recorded_at": "2026-10-18T21:37:14.594096+00:00",
+  "review": {
+    "checked_at": "2026-10-18T21:35:02.790176+00:00",
+    "pr": 93,
+    "head": "863e03e73147ef34b856c017ddbfb1291307a6ce",
+    "base": "9a76b1d4dd5a13aac4beeb7065702c3d58dd6abd",
+    "ci": [
+      {
+        "id": 39132844707,
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 39132840806,
+        "status": "completed",
+        "conclusion": "success"
+      }
+    ],
+    "review_findings": [],
+    "reviewed_files": [
+      {
+        "path": ".github/workflows/validate.yml",
+        "blob": "d95dff93f3d8f1d1b03798d4724c8deb0431e37a",
+        "sha256": "4c2a7de35745d40c852fc6b855d92ee3c87a4ccd95367aa518c1ada1812fa7fb"
+      },
+      {
+        "path": "deploy/README.md",
+        "blob": "8c8b49a578123974e37da96077c0b8449b97cb98",
+        "sha256": "8e6237d234a1d32637dafc379b1e8775e01c12a0a0f5292217ce076ddc3578fc"
+      },
+      {
+        "path": "docs/CURRENT_CONTEXT.md",
+        "blob": "003bcd10e4ff25b153e5a878fb64336ed593e9d9",
+        "sha256": "3529fe4ff15bf1fa003a84904cdb17ec092f2af30aef386209bae0eb29f4adc1"
+      },
+      {
+        "path": "docs/DOCUMENT_INDEX.md",
+        "blob": "aa842dd57891c6786511d295ec65d872a6c8cbe4",
+        "sha256": "b38d05debb0126a03008ead1142eb24bf594e23fa772279ad9cd4e32be571882"
+      },
+      {
+        "path": "docs/README.md",
+        "blob": "92b5d89aed45f721bd8af3bac35ae834eb364ace",
+        "sha256": "0a10f7ce9d29b9a39eaf27d910f86379f83e47d3e4642088b2bc1c8438ad00fc"
+      },
+      {
+        "path": "docs/SAM_REVIEWS_6PLUS4_PREVIEW_2026-10-18.md",
+        "blob": "bdad122e5b631ff8f179d86c66f72cbdeb67b5b1",
+        "sha256": "3fb3edd3702a83dcc3188888536043fb3cbb2f68a62a9c3510431bd27bf7dc71"
+      },
+      {
+        "path": "docs/WORK_EXECUTION_2026-10-18.md",
+        "blob": "05056ad2ff28ad8db235e6f34a10be2a04c572f9",
+        "sha256": "eca4d176ccea39d9c10199e8b10338e8690c8a581c4ca7a2c9304cc6a46dfcc7"
+      },
+      {
+        "path": "docs/evidence/reviews-preview-2026-10-18/README.md",
+        "blob": "2565b6f5c9ba7c8a9f7d39b108241a0cac6cb95a",
+        "sha256": "9fdb25918cb7f2ed9c487e20e564684863e208c273665105296d775a741bde31"
+      },
+      {
+        "path": "docs/evidence/reviews-preview-2026-10-18/browser-result.json",
+        "blob": "8f988b77bde4b6fab2c3bb76d20e453138c164f6",
+        "sha256": "40bbe1bf26a20fec56079ae8a2ade016709eb99f3ca7e71efc4a0d3289d2760d"
+      },
+      {
+        "path": "docs/evidence/reviews-preview-2026-10-18/home-6plus4.png",
+        "blob": "509a78d768e1bf2b288f72e9438bb9659f8bdade",
+        "sha256": "3e40b982fa8283caa7c048e25b55eb0ad9464d70a051b141f1dd09b0985240ea"
+      },
+      {
+        "path": "docs/evidence/reviews-preview-2026-10-18/review-after.png",
+        "blob": "1b8b18b69611c15d18c2bc843833a02d45fab515",
+        "sha256": "555ba7e2c417eff7d783ccfd75c03813b00f62b44ba05b2f4780fa5e829fcff5"
+      },
+      {
+        "path": "docs/evidence/reviews-preview-2026-10-18/review-before.png",
+        "blob": "9cc234914edae58d7e44e3daab52e78fb383b855",
+        "sha256": "e1132750ad3b5dfd4cf5cadc67addff9dd52a2474f9192fea0f0f3d30c6478e4"
+      },
+      {
+        "path": "docs/inventory/SAM_REVIEWS_6PLUS4_DELIVERY_2026-10-18.json",
+        "blob": "098a473b3166f1114a77be57ccbd2d9a67468804",
+        "sha256": "19078b92a0aead7a1209b91828f66984605e8a636fa6f2a0fb49c0af986c72bd"
+      },
+      {
+        "path": "docs/inventory/SAM_REVIEWS_6PLUS4_PREVIEW_2026-10-18.json",
+        "blob": "dda5f00e7f6c4e5373edf29942404352de7edee4",
+        "sha256": "2789f135cce6b238d4ae0b441df7820dd3bf9e42d741e86abccbc54537a423dc"
+      },
+      {
+        "path": "scripts/private_https_transport.cjs",
+        "blob": "de463743c4e3f3d9081301b8a8d0fdb9204b0931",
+        "sha256": "1dbb68eba0d83232083d1070c7215da18b46a2150e389c53d7b0cd3496497246"
+      },
+      {
+        "path": "scripts/private_https_transport.py",
+        "blob": "85975d17523caf0c6cbcc07e1011162d5322d4fc",
+        "sha256": "dc5c789b3d38da53152ffaac84073164ff44134408845cb2ac3ed709d9827cd0"
+      },
+      {
+        "path": "scripts/remote_d4_consumer_probe.py",
+        "blob": "134afdd7da1cd40bff906603bb99bf4228886780",
+        "sha256": "a31907c0ce2fcc1fbf9c9f867d32084a5ba81896e807ca7a4c48bab5afcb475c"
+      },
+      {
+        "path": "scripts/remote_reviews_acceptance_probe.py",
+        "blob": "9a602b46af8a29c988f25893b8fe686455244347",
+        "sha256": "705cdd6476d748bbf4648b767b199b63f6c1cee01e05f141dc2ce1b306561669"
+      },
+      {
+        "path": "scripts/test_private_https_transport.py",
+        "blob": "b116639944719abe11bc17c1d3510f5874e5bdc3",
+        "sha256": "2b86aa7b4cbc4dd290dd0b8ec8ed07bc024103c7ef3f13d03e36b2973fff6c10"
+      },
+      {
+        "path": "scripts/test_remote_reviews_acceptance_probe.py",
+        "blob": "5f06e78ae6903b88db61d7be6d7e1944baa15db5",
+        "sha256": "bb20d30e88bdd26c2f04c131563a4c752ff8a339aa37b861718e1adb269d37f3"
+      },
+      {
+        "path": "專題進度/專案未完成工作清單_2026-10-18.md",
+        "blob": "e812fb0a89559774a59d13583d7fa7092c80f719",
+        "sha256": "f888907dfa46938aa831b637008a9e9219c55ef585a833099fcb57244e18e723"
+      }
+    ],
+    "remote_probes_passed": 4,
+    "remote_probe_rerun_this_review": false,
+    "browser_evidence_hashes_verified": 3,
+    "local_safety_passed": 46,
+    "local_safety_skipped": 0,
+    "runtime_git_blob_count": 56,
+    "runtime_same_as_deployed_source": true,
+    "compressed_archives": {
+      "deployed_sha256": "755974a9887eca66234359bc12ce8351962fb2fba9ebf86ecd3c73a0dfff99a9",
+      "repacked_sha256": "55a2ae82895e6c9940a5387e2f90d1138f3b41994f8fde087326b808d4eb1425",
+      "uncompressed_tar_sha256": "ce9947b093473d65d589e43db88bebd5521f710a5c4d3911fdd6f72f6ceb102d",
+      "uncompressed_bytes_equal": true,
+      "note": "Compression streams differ; complete tar bytes and 56 Git blobs are identical. Deployed archive GCS generation proof remains its original exact hash."
+    },
+    "cloud_readback": {
+      "checked_at": "2026-10-18T21:33:10.496Z",
+      "source": "9a76b1d4dd5a13aac4beeb7065702c3d58dd6abd",
+      "services": {
+        "vibecart-web": {
+          "active_revision": "vibecart-web-00019-phf",
+          "percent": 100,
+          "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:7199fa08c711917a80e5f54dbfd580ed96f3ef632bda7337b4aa2bde2325c992",
+          "source": "e000d952d22a64b568903641893f4ffdc71accd3",
+          "invoker_unchanged": true
+        },
+        "vibecart-acceptance-pr21": {
+          "active_revision": "vibecart-acceptance-pr21-00011-2hq",
+          "percent": 100,
+          "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:7199fa08c711917a80e5f54dbfd580ed96f3ef632bda7337b4aa2bde2325c992",
+          "source": "e000d952d22a64b568903641893f4ffdc71accd3",
+          "invoker_unchanged": true
+        }
+      },
+      "previews": [
+        {
+          "revision": "vibecart-acceptance-pr21-rv9a76-2117",
+          "tag": "rv9a76-ai",
+          "url": "https://rv9a76-ai---vibecart-acceptance-pr21-m44ncgz5ta-de.a.run.app",
+          "percent": 0,
+          "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:15d359548b7e7343a1051b4907f78bf667cf36856a3c2680577a3ac989ea1c79",
+          "source": "9a76b1d4dd5a13aac4beeb7065702c3d58dd6abd",
+          "request_timeout": "180s",
+          "flags": {
+            "checkout": "true",
+            "bge": "true",
+            "summary": "false",
+            "free_question": "false"
+          },
+          "database": "vibecart_acceptance_pr21",
+          "service_account": "vibecart-pr21-acceptance@vibecart-llmai.iam.gserviceaccount.com"
+        },
+        {
+          "revision": "vibecart-acceptance-pr21-rv9a76-rules-2117",
+          "tag": "rv9a76-rules",
+          "url": "https://rv9a76-rules---vibecart-acceptance-pr21-m44ncgz5ta-de.a.run.app",
+          "percent": 0,
+          "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:15d359548b7e7343a1051b4907f78bf667cf36856a3c2680577a3ac989ea1c79",
+          "source": "9a76b1d4dd5a13aac4beeb7065702c3d58dd6abd",
+          "request_timeout": "180s",
+          "flags": {
+            "checkout": "true",
+            "bge": "false",
+            "summary": "false",
+            "free_question": "false"
+          },
+          "database": "vibecart_acceptance_pr21",
+          "service_account": "vibecart-pr21-acceptance@vibecart-llmai.iam.gserviceaccount.com"
+        }
+      ],
+      "hosting": {
+        "release": "sites/vibecart-llmai/releases/1791982222797000",
+        "unchanged": true
+      },
+      "own_temporary_grants": [],
+      "jobs": [
+        {
+          "name": "sam-rv9a76-acceptance-20261018",
+          "deleted": true
+        },
+        {
+          "name": "sam-rv9a76-acceptance2-20261018",
+          "deleted": true
+        },
+        {
+          "name": "sam-rv9a76-acceptance3-20261018",
+          "deleted": true
+        }
+      ]
+    },
+    "eligible_for_merge": true
+  },
+  "merge93": {
+    "checked_at": "2026-10-18T21:35:15.089724+00:00",
+    "pr": 93,
+    "head": "863e03e73147ef34b856c017ddbfb1291307a6ce",
+    "merged": true,
+    "merged_at": "2026-10-18T21:35:12Z",
+    "merge_sha": "6fbaa0c72b2c5c9771618abc0a2d777ed67a5597",
+    "result": {
+      "sha": "6fbaa0c72b2c5c9771618abc0a2d777ed67a5597",
+      "merged": true,
+      "message": "Pull Request successfully merged"
+    }
+  },
+  "main93_ci": [
+    {
+      "id": 39168496627,
+      "status": "completed",
+      "conclusion": "success"
+    }
+  ],
+  "source_tests_passed": 5,
+  "anonymous": {
+    "checked_at": "2026-10-18T21:35:43.021Z",
+    "previews": [
+      {
+        "tag": "rv9a76-ai",
+        "status": 403
+      },
+      {
+        "tag": "rv9a76-rules",
+        "status": 403
+      }
+    ]
+  },
+  "runtime_redeployed_this_review": false,
+  "atlas_writes_this_review": false,
+  "remote_probes_rerun_this_review": false,
+  "v5": {
+    "closed": 2,
+    "total": 14,
+    "human_signoff": false
+  },
+  "delivery_inventory_excludes_self": true,
+  "delivery_files": [
+    {
+      "path": "docs/CURRENT_CONTEXT.md",
+      "sha256": "453e71577d9495adca9e96f9f1dd2eed1c5eded578a93f23ad4ff00c814755b2"
+    },
+    {
+      "path": "docs/README.md",
+      "sha256": "0e4f55b2e116411ee2a9c7f05ece1b6805812c2383a0a227903617d94c80a3e9"
+    },
+    {
+      "path": "docs/DOCUMENT_INDEX.md",
+      "sha256": "530cfb260ba3430ee294cf28a7c8db4fbdff5777607d8fb8a9df5db090269f30"
+    },
+    {
+      "path": "docs/WORK_EXECUTION_2026-10-18.md",
+      "sha256": "1c9b2f635b541af4facd126ea8f4f484bbf1f784054f7e85db457ca2651ad71e"
+    },
+    {
+      "path": "deploy/README.md",
+      "sha256": "4294a895fcba5811ed88e02be4dd43861744012847ef2e94fcaf00310b00cf73"
+    },
+    {
+      "path": "專題進度/專案未完成工作清單_2026-10-18.md",
+      "sha256": "07eae7e4aa1143e5f8d2f706243a0f30086ea252683a93223f8dfcdeb25e174f"
+    },
+    {
+      "path": "docs/SAM_PR93_MERGE_REVIEW_2026-10-19.md",
+      "sha256": "218e51352b70aa52b52d138401e9d5c83b9ba9f34a625686ab5e8a598ce1a36f"
+    }
+  ]
+}

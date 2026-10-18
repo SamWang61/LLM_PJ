@@ -1,3 +1,7 @@
+<!-- SAM PR93 MERGE 20261019 BEGIN -->
+**2026/10/19 05:37 SAM PR #93 已合併**：[審查與主幹對帳](SAM_PR93_MERGE_REVIEW_2026-10-19.md)。PR HEAD `863e03e`，合併main `6fbaa0c`；46項安全與5項來源測試通過，main CI成功。既有4組同版遠端／畫面證據已重新核對，56個執行來源相同；正式19／私有base11仍各100%原版，新預覽各0%，本輪沒有重新部署或重寫Atlas。V5仍2/14，正式切換、實機與具名簽收待辦。
+<!-- SAM PR93 MERGE 20261019 END -->
+
 <!-- SAM MAIN PREVIEW 20261018 BEGIN -->
 
 <!-- SAM REVIEWS PREVIEW 20261018 BEGIN -->
