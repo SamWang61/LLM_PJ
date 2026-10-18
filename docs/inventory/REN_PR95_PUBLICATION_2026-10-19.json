@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-10-18T22:43:28.824490+00:00",
+  "base": "b038aaca2d2553a39d8fd958100f277c64a75486",
+  "scope": "PR95 review and H09 retirement documents",
+  "source_project": "C:/LLM/LLM_PJ",
+  "files": [
+    {
+      "path": "docs/CURRENT_CONTEXT.md",
+      "bytes": 16836,
+      "sha256": "267bdd0bd4b662c62e27689a653d758b460268d8669c0f10532bbc79ad9614f0"
+    },
+    {
+      "path": "docs/REN_DUAL_ROLE_LOGIN_2026-10-19.md",
+      "bytes": 5840,
+      "sha256": "69cbee2ac9d343acc9c2da4047bae94509cc4759521602a601513602d99b3668"
+    },
+    {
+      "path": "專題進度/REN_1200逐項交接清單_2026-10-18.md",
+      "bytes": 8131,
+      "sha256": "589d092f6007b6d51b5b52244f6c85525ffee68094741ab2a21fb9c60be38c27"
+    },
+    {
+      "path": "專題進度/REN_0900展示帳號與故障驗收_2026-10-18.md",
+      "bytes": 6589,
+      "sha256": "f1c288c6da2e2a024ac024f3a456a6675477146c5b625365d8cfe97131d0828b"
+    },
+    {
+      "path": "專題進度/專案未完成工作清單_2026-10-18.md",
+      "bytes": 23320,
+      "sha256": "5ab742c15e4148bd2e8dd4d2b6c028cfb57a19e4dd97da3fcdada7f1ba8194e3"
+    },
+    {
+      "path": "docs/REN_PR95_MERGE_REVIEW_2026-10-19.md",
+      "bytes": 4908,
+      "sha256": "6e632641b31c7191912e8ffeb4ffc3fe4644abde24bb34d3caedb24d316f29ab"
+    },
+    {
+      "path": "docs/inventory/REN_PR95_MERGE_REVIEW_2026-10-19.json",
+      "bytes": 5103,
+      "sha256": "50ae793f2e4118354f20edd2e6575ac2ee49ed310d0d1b86eef7a45bc301df1c"
+    },
+    {
+      "path": "docs/inventory/REN_H09_RETIREMENT_2026-10-19.json",
+      "bytes": 10241,
+      "sha256": "76b94f0b776c66c5483198022f29f4ded0be28c2bc20610e7a8f10bb5eb32abd"
+    }
+  ],
+  "preserved_unrelated_source_changes": true
+}
