@@ -1,0 +1,339 @@
+{
+  "schema_version": 1,
+  "checked_at": "2026-10-18T22:39:30.253261+00:00",
+  "database": "vibecart_ai",
+  "scope": "two-expired-handover-demo-identities-only",
+  "expires_at": "2026-10-18T12:30:00+00:00",
+  "before_accounts": [
+    {
+      "holder": "REN",
+      "id": "6ad3f7849888fd7c5f8c4a47",
+      "role": "customer",
+      "status": "active",
+      "is_active": true,
+      "sessions": 2
+    },
+    {
+      "holder": "JEFF",
+      "id": "6ad3f7859888fd7c5f8c4a48",
+      "role": "admin",
+      "status": "active",
+      "is_active": true,
+      "sessions": 0
+    }
+  ],
+  "action": {
+    "database": "vibecart_ai",
+    "mode": "retire",
+    "checked_at": "2026-10-18T22:39:18.862414+00:00",
+    "expires_at": "2026-10-18T12:30:00+00:00",
+    "credentials_logged": false,
+    "accounts": [
+      {
+        "holder": "REN",
+        "role": "customer",
+        "id": "6ad3f7849888fd7c5f8c4a47",
+        "active": false,
+        "sessions": 0
+      },
+      {
+        "holder": "JEFF",
+        "role": "admin",
+        "id": "6ad3f7859888fd7c5f8c4a48",
+        "active": false,
+        "sessions": 0
+      }
+    ],
+    "status": "passed"
+  },
+  "after_accounts": [
+    {
+      "holder": "REN",
+      "id": "6ad3f7849888fd7c5f8c4a47",
+      "role": "customer",
+      "status": "inactive",
+      "is_active": false,
+      "sessions": 0,
+      "login_http": 200,
+      "generic_rejection": true,
+      "cart_http": 302,
+      "cart_login_redirect": true
+    },
+    {
+      "holder": "JEFF",
+      "id": "6ad3f7859888fd7c5f8c4a48",
+      "role": "admin",
+      "status": "inactive",
+      "is_active": false,
+      "sessions": 0,
+      "login_http": 200,
+      "generic_rejection": true,
+      "cart_http": 302,
+      "cart_login_redirect": true
+    }
+  ],
+  "unrelated_collections_and_remaining_users_sessions_unchanged": true,
+  "before_snapshot": {
+    "ai_insights": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "ai_requests": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "ai_usage": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "auth_sessions": {
+      "count": 2,
+      "sha256": "569f511e6b4989b7c8d19a2b6e4cce7cc86538056802de729a4281da7bc0e24a"
+    },
+    "behavior_events": {
+      "count": 1272,
+      "sha256": "c70f3199933dfb1c4d08934fae95f1ab3ee84b1b58a2cdb9f39175f9bb2309d3"
+    },
+    "brands": {
+      "count": 128,
+      "sha256": "042e1bccfe41274208c96e447fc828a71fae10d77e8877ebd03c9a92b2952580"
+    },
+    "cart_events": {
+      "count": 14,
+      "sha256": "064f1c1367613b5fcac2e407132fd521fc4000b522e352f4f5c1618c6ba45b8f"
+    },
+    "carts": {
+      "count": 6,
+      "sha256": "6f88f9acd5e75172286a9147010faef360da73239d6a8319974e5df5f9070718"
+    },
+    "categories": {
+      "count": 32,
+      "sha256": "22458f72b57e4c573268c018c7f24a54a24d0474313a886bd463a8ab3d070593"
+    },
+    "cross_category_rules": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "first_member_recommendations": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "order_items": {
+      "count": 8977,
+      "sha256": "163d4ced320d372eaa364770f41fd4520af3037e7481e7c19c2f21bd426e3316"
+    },
+    "orders": {
+      "count": 3006,
+      "sha256": "90925e260d0bee0da4568543c306ae349a5a7e13e746e0994caaf782ade9be34"
+    },
+    "product_embeddings": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "product_purchase_sequences": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "product_repurchase_stats": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "product_reviews": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "product_skus": {
+      "count": 336,
+      "sha256": "029f70d9ab6028c49048c0e445b4cd65dac51a5e7efece227a85b367a8d18018"
+    },
+    "products": {
+      "count": 336,
+      "sha256": "99592b3b504d43853bc5a10480b3ed6e2b785e39ac3d181181c905c510e1dcf5"
+    },
+    "recommendation_logs": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "recommendation_pools": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "recommendations": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "request_limits": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "schema_migrations": {
+      "count": 7,
+      "sha256": "438b27f9c79833e15c09c7cae549628c610b22ddc412d0f4c0c04aab8d4b0cb9"
+    },
+    "system_configs": {
+      "count": 1,
+      "sha256": "d84bc3d0cf65f85e235eb4f75f723cf82f691c88074693bd325d930fb80c3c93"
+    },
+    "user_events": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "user_preference_scores": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "users": {
+      "count": 610,
+      "sha256": "ab812c7fea41d3b4a1dcd18011f088c87563ee8a3a00c4131f199ec3a373a96d"
+    }
+  },
+  "after_snapshot": {
+    "ai_insights": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "ai_requests": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "ai_usage": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "auth_sessions": {
+      "count": 2,
+      "sha256": "569f511e6b4989b7c8d19a2b6e4cce7cc86538056802de729a4281da7bc0e24a"
+    },
+    "behavior_events": {
+      "count": 1272,
+      "sha256": "c70f3199933dfb1c4d08934fae95f1ab3ee84b1b58a2cdb9f39175f9bb2309d3"
+    },
+    "brands": {
+      "count": 128,
+      "sha256": "042e1bccfe41274208c96e447fc828a71fae10d77e8877ebd03c9a92b2952580"
+    },
+    "cart_events": {
+      "count": 14,
+      "sha256": "064f1c1367613b5fcac2e407132fd521fc4000b522e352f4f5c1618c6ba45b8f"
+    },
+    "carts": {
+      "count": 6,
+      "sha256": "6f88f9acd5e75172286a9147010faef360da73239d6a8319974e5df5f9070718"
+    },
+    "categories": {
+      "count": 32,
+      "sha256": "22458f72b57e4c573268c018c7f24a54a24d0474313a886bd463a8ab3d070593"
+    },
+    "cross_category_rules": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "first_member_recommendations": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "order_items": {
+      "count": 8977,
+      "sha256": "163d4ced320d372eaa364770f41fd4520af3037e7481e7c19c2f21bd426e3316"
+    },
+    "orders": {
+      "count": 3006,
+      "sha256": "90925e260d0bee0da4568543c306ae349a5a7e13e746e0994caaf782ade9be34"
+    },
+    "product_embeddings": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "product_purchase_sequences": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "product_repurchase_stats": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "product_reviews": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "product_skus": {
+      "count": 336,
+      "sha256": "029f70d9ab6028c49048c0e445b4cd65dac51a5e7efece227a85b367a8d18018"
+    },
+    "products": {
+      "count": 336,
+      "sha256": "99592b3b504d43853bc5a10480b3ed6e2b785e39ac3d181181c905c510e1dcf5"
+    },
+    "recommendation_logs": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "recommendation_pools": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "recommendations": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "request_limits": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "schema_migrations": {
+      "count": 7,
+      "sha256": "438b27f9c79833e15c09c7cae549628c610b22ddc412d0f4c0c04aab8d4b0cb9"
+    },
+    "system_configs": {
+      "count": 1,
+      "sha256": "d84bc3d0cf65f85e235eb4f75f723cf82f691c88074693bd325d930fb80c3c93"
+    },
+    "user_events": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "user_preference_scores": {
+      "count": 0,
+      "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    },
+    "users": {
+      "count": 610,
+      "sha256": "ab812c7fea41d3b4a1dcd18011f088c87563ee8a3a00c4131f199ec3a373a96d"
+    }
+  },
+  "fixed_role_credentials_modified": false,
+  "business_writes": false,
+  "secrets_logged": false,
+  "human_receipt_provided": false,
+  "status": "passed",
+  "independent_connector_readback": {
+    "checked_at": "2026-10-18 22:41:12 UTC",
+    "accounts": [
+      {
+        "_id": {
+          "$oid": "6ad3f7849888fd7c5f8c4a47"
+        },
+        "email": "ren-20261018t123000z@demo.vibecart.invalid",
+        "role": "customer",
+        "is_active": false,
+        "status": "inactive",
+        "updated_at": {
+          "$date": "2026-10-18T22:39:20.001Z"
+        }
+      },
+      {
+        "_id": {
+          "$oid": "6ad3f7859888fd7c5f8c4a48"
+        },
+        "email": "jeff-20261018t123000z@demo.vibecart.invalid",
+        "role": "admin",
+        "is_active": false,
+        "status": "inactive",
+        "updated_at": {
+          "$date": "2026-10-18T22:39:20.601Z"
+        }
+      }
+    ],
+    "sessions": 0
+  }
+}

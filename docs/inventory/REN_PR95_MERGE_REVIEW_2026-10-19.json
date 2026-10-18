@@ -1,0 +1,145 @@
+{
+  "schema_version": 1,
+  "reviewed_at": "2026-10-19T06:42:40.190113+08:00",
+  "role": "REN",
+  "pr": 95,
+  "head_sha": "e5788ce12339370a8afb5e2c824a6ecd24e5f602",
+  "merge_sha": "8a29f5fbbb05deb09c2e23324f1769c5bf86c0b3",
+  "merged_at": "2026-10-19T06:26:40+08:00",
+  "review_baseline": "b038aaca2d2553a39d8fd958100f277c64a75486",
+  "already_merged_on_entry": true,
+  "merge_tree_matches_head": true,
+  "findings": [],
+  "blocking_findings": 0,
+  "inline_threads_at_readback": 0,
+  "github_review_id": 5565383890,
+  "ci": {
+    "pr": {
+      "id": 39169873088,
+      "conclusion": "success"
+    },
+    "main": {
+      "8a29f5fbbb05deb09c2e23324f1769c5bf86c0b3": [
+        {
+          "id": 39172246284,
+          "head_sha": "8a29f5fbbb05deb09c2e23324f1769c5bf86c0b3",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/SamWang61/LLM_PJ/actions/runs/39172246284"
+        }
+      ],
+      "b038aaca2d2553a39d8fd958100f277c64a75486": [
+        {
+          "id": 39173026751,
+          "head_sha": "b038aaca2d2553a39d8fd958100f277c64a75486",
+          "event": "push",
+          "status": "completed",
+          "conclusion": "success",
+          "html_url": "https://github.com/SamWang61/LLM_PJ/actions/runs/39173026751"
+        }
+      ]
+    }
+  },
+  "local_tests": {
+    "tests": 64,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "suite": "dual-role + member auth/order + database readiness",
+    "kind": "local isolated fixtures; no live Atlas writes"
+  },
+  "reviewed_code_and_manifest_blobs": [
+    {
+      "path": "MuscleCore分析資料/website/app/auth.py",
+      "sha256": "6d69044df007d4bacb3fc9b32a50b3a6df690124515841b211cc770f2e0f925d",
+      "matches_latest_main": true
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/templates/auth/login.html",
+      "sha256": "b20ab40bc3b656bbca5883665050d9128210aa276cb6ea2be4b6f35e2e658f9c",
+      "matches_latest_main": true
+    },
+    {
+      "path": "MuscleCore分析資料/website/tests/test_database_readiness.py",
+      "sha256": "fb68b9469f883e15163d63d0f5a0cc530f428aee349c7640cd9408d4bf21b508",
+      "matches_latest_main": true
+    },
+    {
+      "path": "MuscleCore分析資料/website/tests/test_dual_role_login.py",
+      "sha256": "dac48faf54d1c6f810d93fb4cb8fde64a6df6f613828e55f9c8086931aa1094a",
+      "matches_latest_main": true
+    },
+    {
+      "path": "MuscleCore分析資料/website/tests/test_role_account_transactions.py",
+      "sha256": "af1c31d983da09da59ff8000b942cf181f66f7efb312359fcbb4d0e2f42616b8",
+      "matches_latest_main": true
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/email_role_schema.py",
+      "sha256": "fe87ad9b4789eaf6939199728c21256a1e12e1271c81f067fc2405bb73092f32",
+      "matches_latest_main": true
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/schema_active_v4.py",
+      "sha256": "e0c5b14ef00ae6b440f31d53d46c8e2fc286e6e41112d4d4e4bb8e6b6486cdb3",
+      "matches_latest_main": true
+    },
+    {
+      "path": "config/role_accounts_20261018.json",
+      "sha256": "bf0bcfce72f31111332a27b0317e4ddc584a13c29ee07c918d2ad7c55a8c9fae",
+      "matches_latest_main": true
+    },
+    {
+      "path": "scripts/check_v4_database.py",
+      "sha256": "44533492e0ebacbca0b3ec3eea7845a37395429e4cd19cce0104a831d2afee8a",
+      "matches_latest_main": true
+    },
+    {
+      "path": "scripts/migrate_email_role_logins.py",
+      "sha256": "71417f24171de2fb0f042be8398ceb5f5740b46301e413f4ea04b06891e7f90b",
+      "matches_latest_main": true
+    },
+    {
+      "path": "scripts/provision_role_accounts.py",
+      "sha256": "80a477e754e7448147e5d5de434aa3e4b801c0907b502f56f9c71f43ba410470",
+      "matches_latest_main": true
+    }
+  ],
+  "review_areas": [
+    "unique password match determines role; posted role ignored",
+    "disabled/expired/ambiguous identities rejected; device session and role race guard",
+    "new unique email-role index created before dropping old email-only index",
+    "six role identities provisioned atomically; rollback/idempotence and guarded existing IDs",
+    "repository-external private credentials; fixed phase password edit forbidden",
+    "remaining email-only lookup is registration duplicate rejection"
+  ],
+  "historical_evidence": {
+    "source": "docs/SAM_PR95_PR96_MERGE_REVIEW_2026-10-19.md",
+    "real_local_mongo_tests": 275,
+    "skipped": 0,
+    "private_preview_probe_count": 4,
+    "rerun_this_turn": false
+  },
+  "serving_readback": {
+    "revision": "vibecart-web-role-auth-576b4748",
+    "percent": 100,
+    "source": "576b474822efd7464d650d7af2aa245e07fbc911",
+    "image_digest": "sha256:228862259bd96a69224132e5af73fc4e1c89165a759057470ed467c4ce80617b",
+    "new_deployment_this_turn": false,
+    "full_main_production_deployed": false
+  },
+  "next_item": {
+    "id": "H09/N04",
+    "retirement_subtask": "passed",
+    "accounts": 2,
+    "sessions": 0,
+    "human_handover_receipt": "pending",
+    "evidence": "REN_H09_RETIREMENT_2026-10-19.json"
+  },
+  "v5": {
+    "completed": 2,
+    "total": 14
+  },
+  "credentials_logged": false
+}

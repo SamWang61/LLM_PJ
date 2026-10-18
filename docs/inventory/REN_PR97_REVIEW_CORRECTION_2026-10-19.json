@@ -1,0 +1,27 @@
+{
+  "schema_version": 1,
+  "checked_at": "2026-10-18T22:49:04.781495+00:00",
+  "pr": 97,
+  "reviewed_head": "1d85f1cb822bd636b31b5a8fd4b8501dd8f49f43",
+  "finding": "P2 pre-retirement session count contradicts JSON",
+  "finding_comment_id": 4309092430,
+  "before_sessions": {
+    "REN": 2,
+    "JEFF": 0
+  },
+  "after_sessions": {
+    "REN": 0,
+    "JEFF": 0
+  },
+  "revoked_sessions": 2,
+  "original_evidence_unchanged": true,
+  "retirement_not_repeated": true,
+  "unrelated_before_after_snapshots_equal": true,
+  "historical_manifest_verified_at_commit": "1d85f1cb822bd636b31b5a8fd4b8501dd8f49f43",
+  "historical_manifest_file_entries": 8,
+  "corrected_file": {
+    "path": "docs/REN_PR95_MERGE_REVIEW_2026-10-19.md",
+    "sha256": "a608f2325e09018062cfa938ae8602152d765239cc15b3b16df2f732984523f2"
+  },
+  "secrets_logged": false
+}
