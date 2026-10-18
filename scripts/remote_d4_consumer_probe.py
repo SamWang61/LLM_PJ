@@ -72,9 +72,14 @@ def monitor_count(soup):
 def recommendations(soup):
     for section in soup.select("section"):
         heading = section.find("h2")
-        if heading and heading.get_text(strip=True) == "為你精選":
+        if heading and heading.get_text(strip=True) in ("為你精選", "猜你喜歡 · 6＋4"):
             cards = []
-            for card in section.select("article.product-card"):
+            # The new layout has separate personal and cross-category grids.
+            # Existing isolation comparisons must continue to inspect only the
+            # personal result, rather than accidentally mixing both candidate sets.
+            grid = section.select_one(".product-grid") if section.get("aria-label") == "猜你喜歡6加4" else section
+            require(grid is not None, "Personal recommendation grid missing")
+            for card in grid.select("article.product-card"):
                 link, reason = card.select_one("h3 a"), card.select_one(".reason")
                 if link and reason:
                     cards.append((link.get("href", ""), reason.get_text(strip=True)))
