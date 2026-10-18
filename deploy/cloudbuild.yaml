@@ -1,6 +1,6 @@
 steps:
   - name: gcr.io/cloud-builders/docker
-    args: [build, -t, '${_IMAGE}', .]
+    args: [build, --build-arg, 'INSTALL_AI=${_INSTALL_AI}', -t, '${_IMAGE}', .]
   - name: gcr.io/cloud-builders/docker
     args:
       - run
@@ -14,8 +14,21 @@ steps:
       - '${_IMAGE}'
       - -c
       - 'from cloud_runtime import create_cloud_app; a=create_cloud_app(); assert a.test_client().get("/health/live").status_code==200; print("container-boot-ok")'
+  # AI image only: the baked-in BGE model must load offline, exactly as the runtime does.
+  - name: gcr.io/cloud-builders/docker
+    entrypoint: bash
+    args:
+      - -c
+      - |
+        if [ "${_INSTALL_AI}" = "true" ]; then
+          docker run --rm --entrypoint python '${_IMAGE}' -c 'from langchain_huggingface import HuggingFaceEmbeddings as H; m=H(model_name="BAAI/bge-small-zh-v1.5", model_kwargs={"device":"cpu","local_files_only":True}, encode_kwargs={"normalize_embeddings":True}); assert len(m.embed_query("測試"))==512; import langchain_anthropic, langgraph; print("ai-image-ok")'
+        else
+          echo "ai-check-skipped"
+        fi
+substitutions:
+  _INSTALL_AI: 'false'
 images: ['${_IMAGE}']
-timeout: 900s
+timeout: 1800s
 options:
   logging: GCS_ONLY
 # The caller sets serviceAccount and logsBucket; no credentials belong here.
