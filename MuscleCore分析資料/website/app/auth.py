@@ -2,7 +2,7 @@ from functools import wraps
 import re
 from bson import ObjectId
 from bson.errors import InvalidId
-from flask import Blueprint, current_app, flash, g, redirect, render_template, request, session, url_for
+from flask import Blueprint, abort, current_app, flash, g, redirect, render_template, request, session, url_for
 from pymongo.errors import PyMongoError, DuplicateKeyError
 from werkzeug.security import check_password_hash, generate_password_hash
 
@@ -52,7 +52,9 @@ def start_member_session(user):
         prior_token = session.get("member_session")
         current = get_db().users.find_one({"_id": user["_id"], "schema_version": 4,
             "status": "active", "is_active": True})
-        if not current or not account_unexpired(current) or current.get("password_hash") != user.get("password_hash"):
+        if (not current or not account_unexpired(current)
+                or current.get("password_hash") != user.get("password_hash")
+                or current.get("role") != user.get("role")):
             return False
         user = current
         token = create_member_session(get_db(), user)
@@ -101,17 +103,39 @@ def login():
             query = {"email": email, "is_active": True}
             if current_app.config["DATA_MODE"] == "v4":
                 query.update(schema_version=4, status="active")
-            user = get_db().users.find_one(query)
+            if current_app.config["DATA_MODE"] == "v4":
+                query["role"] = {"$in": ["admin", "customer"]}
+                candidates = list(get_db().users.find(query).limit(3))
+            else:
+                candidate = get_db().users.find_one(query)
+                candidates = [candidate] if candidate else []
         except PyMongoError:
             flash("目前無法連線至資料庫，請先啟動 MongoDB。", "danger")
             return render_template("auth/login.html"), 503
-        if (user and account_unexpired(user) and user.get("role") in {"admin", "customer"}
-                and check_password_hash(user.get("password_hash", ""), password)
-                and start_member_session(user)):
+        matches = []
+        if len(email) <= 254 and 1 <= len(password) <= 1024 and len(candidates) <= 2:
+            for candidate in candidates:
+                try:
+                    valid = check_password_hash(candidate.get("password_hash", ""), password)
+                except (TypeError, ValueError):
+                    valid = False
+                if (valid and account_unexpired(candidate)
+                        and candidate.get("role") in {"admin", "customer"}):
+                    matches.append(candidate)
+        # A password must identify exactly one role. Never trust a posted role.
+        user = matches[0] if len(matches) == 1 else None
+        if user and start_member_session(user):
             target = "admin.dashboard" if session["role"] == "admin" else "store.home"
             return redirect(safe_return_path(request.args.get("next", "")) or url_for(target))
         flash("帳號或密碼不正確。", "danger")
     return render_template("auth/login.html")
+
+
+@bp.route("/password", methods=["GET", "POST"])
+@login_required
+def password_changes_disabled():
+    """This teaching phase accepts credentials only through the offline manifest."""
+    abort(403, description="此階段不開放會員或管理員自行修改密碼，帳號由指定文件建立。")
 
 
 @bp.route("/register", methods=["GET", "POST"])
