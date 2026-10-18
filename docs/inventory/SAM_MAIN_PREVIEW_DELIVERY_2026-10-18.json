@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-10-18T09:37:18.872423+00:00",
+  "runtime_source_commit": "20ee040110cbd6f02abb35aefde532a54d2fb120",
+  "manifest_excludes_itself": true,
+  "commit_identity": "The Git commit containing this manifest; resolve its full SHA from GitHub or git rev-parse HEAD.",
+  "changed_lfs_files": 0,
+  "files": [
+    {
+      "path": ".github/workflows/validate.yml",
+      "sha256": "7c1f827f5500d3ea583be2510e7ec2aa5214c072267d8d228c7968861c1b0fab",
+      "bytes": 2655
+    },
+    {
+      "path": "CHANGELOG.md",
+      "sha256": "6365236eb7c70a61f84bb48f3d1e339803645c6429b444abfd61bfd5c35e7a54",
+      "bytes": 11688
+    },
+    {
+      "path": "deploy/CLAUDE_SECRET_SETUP.md",
+      "sha256": "551d90675603e3ffee26c799bc99430a6a50c8eba1fd940d75488750c8cabb7e",
+      "bytes": 4027
+    },
+    {
+      "path": "deploy/README.md",
+      "sha256": "b3f2115e9cb8e0f80591035d67e4d629ab155391420b7d6bd54fb31faa670688",
+      "bytes": 5876
+    },
+    {
+      "path": "docs/AI_DASHBOARD.md",
+      "sha256": "f853d931c07dec56582d6408a14ed90cbf74d354c92e101daf124db46ee74a91",
+      "bytes": 25744
+    },
+    {
+      "path": "docs/CURRENT_CONTEXT.md",
+      "sha256": "ca198459489545731eb1833463c8b2d555e362a3ad63f35ca1833ae0b085f422",
+      "bytes": 8952
+    },
+    {
+      "path": "docs/DOCUMENT_INDEX.md",
+      "sha256": "43abfb05f59624ea6c823bc3eb40fb34b471c790d7b9307f8fac8758994df1c5",
+      "bytes": 13516
+    },
+    {
+      "path": "docs/README.md",
+      "sha256": "5f1c93e5e214de4157058dfc9954cc701d4d5b6ea7045a78e5dfc8fb4071ede0",
+      "bytes": 7978
+    },
+    {
+      "path": "docs/SAM_MAIN_PREVIEW_2026-10-18.md",
+      "sha256": "8ed7a7e67fb8cce4809f45e280c0473dbe71e6dceaec16d7b45c9ce4e4287324",
+      "bytes": 8531
+    },
+    {
+      "path": "docs/WORK_EXECUTION_2026-10-18.md",
+      "sha256": "e5d06d86d1bbede410390eede787ee68ac0e6d7b72a8765672b0593a080ab95f",
+      "bytes": 8164
+    },
+    {
+      "path": "docs/evidence/main-preview-2026-10-18/catalog.png",
+      "sha256": "d63c8f7c043db052b7d84926e98221f69b73903f98ceb75cd633a97fbbabfb6a",
+      "bytes": 47246
+    },
+    {
+      "path": "docs/evidence/main-preview-2026-10-18/product-price.png",
+      "sha256": "89611617383eb829e9286f5cb090d768cc4d2efba82c0ec93aca530fa0747390",
+      "bytes": 42707
+    },
+    {
+      "path": "docs/evidence/main-preview-2026-10-18/product.png",
+      "sha256": "9ad1885dd3c2a0fade50b8a6c148c1449353df80a5048358c720548e28002bd7",
+      "bytes": 87561
+    },
+    {
+      "path": "docs/inventory/SAM_MAIN_PREVIEW_2026-10-18.json",
+      "sha256": "e31b5e7e844480d45d881f20d818c7bbde53daa5459320b77175da5085589f7a",
+      "bytes": 67285
+    },
+    {
+      "path": "scripts/remote_d4_consumer_probe.py",
+      "sha256": "8ab73293e069114a5de1d0b66fe69193114285c1e1dbc28a5216de47d0d976ae",
+      "bytes": 11627
+    },
+    {
+      "path": "scripts/remote_preview_ai_probe.py",
+      "sha256": "71e311355aafc0948ff253dd7377bf97218db0530333bad242f65c4e57659d97",
+      "bytes": 12594
+    },
+    {
+      "path": "scripts/test_remote_preview_ai_probe.py",
+      "sha256": "590810a10e2912650ca56188c0816f7b8c5ff9177a109c0e90de69013abbc484",
+      "bytes": 2444
+    },
+    {
+      "path": "專題進度/專案未完成工作清單_2026-10-18.md",
+      "sha256": "2ee0e3013f412652b351253f2213d79875a55d20b7051a5c10b3957fc54b6e7c",
+      "bytes": 14729
+    }
+  ]
+}

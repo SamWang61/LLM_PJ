@@ -1,5 +1,10 @@
 # 變更紀錄 / Changelog
 
+## 2026-10-18 — 最新main無流量預覽與私有真模型驗收
+
+- [部署與驗收](docs/SAM_MAIN_PREVIEW_2026-10-18.md)：main20ee的52檔封裝與GCS實際讀回一致、Cloud Build三步SUCCESS；真BGE、四Claude問題／快取、角色／交易／1001 synthetic、停用規則退回及清理。
+- 使用者建立Claude secret版本1 Enabled，私有tag明確引用；正式19／私有base11仍各100%、Hosting不變，自由提問關閉。新增密鑰操作文件、私有tag探針及22安全回歸；V5仍2/14，未宣稱正式切流量或全站簽收。
+
 ## 2026-10-18 — SAM 接手JEFF三PR整合與驗收
 
 - [完整驗收](docs/SAM_JEFF_PR82_84_ACCEPTANCE_2026-10-18.md)：239／0真MongoDB回歸、32來源／fixture、52檔同版精簡與AI映像build／Gunicorn boot及真BGE斷網驗證。#83補7項錯誤政策與NaN／Infinity安全預設；#84改接main，個人示範購買與歸因隔離分開。

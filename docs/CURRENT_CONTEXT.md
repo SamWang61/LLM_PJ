@@ -1,5 +1,9 @@
 # 最新專案上下文 / Current project context
 
+<!-- SAM MAIN PREVIEW 20261018 BEGIN -->
+**2026/10/18 17:34 SAM 最新main無流量預覽**：[部署與驗收](SAM_MAIN_PREVIEW_2026-10-18.md)。來源`20ee040`、52檔封裝／GCS讀回一致、AI build三步SUCCESS；私有真BGE、Claude四固定問題／快取、角色／交易／1001 synthetic及停用退回已驗，fixture清理0。Key版本1 Enabled，只引用於私有預覽，自由提問false。**正式19／私有base11仍100%舊版，最新main只在0% tag；Hosting未重發，V5仍2/14完成。**
+<!-- SAM MAIN PREVIEW 20261018 END -->
+
 **2026/10/18 REN PR #79 已合併／手機尺寸模擬補件**：[本輪報告](REN_MOBILE_H01_H09_2026-10-18.md)。PR #79 的 b9b06be 已審查、CI #416 成功，合併 main `66a3b89`；保留 SAM N14 與後續 #85 文件。H01～H09 已補 390×844 內建瀏覽器截圖：正式登入／角色拒絕／SKU 79元與95庫存／鍵盤／本次 session 正常登出；H05～H07 改用 localhost 記憶體 fixture，完成加入2→改1→重載／移除、不收款訂單及四事件讀回，**不當遠端交易或真 MongoDB 證明**。私有兩次嘗試清理0、臨時IAM撤銷，獨立本輪binding0；再次啟動遭自動核准審查拒絕。手機實機、本人逐項接收、廣義故障矩陣及展示後回收仍待辦，V5仍2/14完成。
 
 **2026/10/18 11:31 REN 交接計畫更新**：使用者指定「預計 12:00，由陳仁千接手進行後續工作」。現行入口改為[12:00 REN逐項接回](../專題進度/REN_1200逐項交接清單_2026-10-18.md)，預定接收人為[陳仁千（REN）](mailto:chen2000401@gmail.com)。H01～H09實際接收時間／結果仍待本人逐項填寫；09:00表保留歷史，原SAM暫代上限11:10不自動延長。技術補件及交接計畫交付於[PR #79](https://github.com/SamWang61/LLM_PJ/pull/79)，V5仍2/14完成。
