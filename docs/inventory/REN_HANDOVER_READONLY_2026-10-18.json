@@ -1,6 +1,6 @@
 {
   "recorded_at_taipei": "2026-10-18T08:12:28+08:00",
-  "scope": "REN handover preflight H01-H04; read-only public checks except normal demo login/logout session lifecycle",
+  "scope": "REN handover preflight H01-H05; read-only public checks except normal demo login/logout session lifecycle",
   "repository": {
     "main_sha": "40dbd24abd8041c66e0642f14c4dd4cc727638a9",
     "pr": 74,
@@ -83,6 +83,6 @@
     "REN named handoff/signoff and REN workstation recovery check",
     "S04-S05 actual private acceptance cart/order flows and S03-S05 named review",
     "broad Atlas outage fault matrix beyond the two existing controlled failures",
-    "real-device mobile acceptance, demo account retirement, and final named signoff"
+    "refresh screenshots against PR #74 source e000d95 (current screenshots index ff65eae / production 18 / private 07), real-device mobile acceptance, demo account retirement, and final named signoff"
   ]
 }
