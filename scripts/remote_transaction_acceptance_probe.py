@@ -12,6 +12,7 @@ from werkzeug.security import generate_password_hash
 
 from remote_d4_consumer_probe import login, page, require, verify_database_roles, verify_scope
 from remote_member_transaction_checks import run as run_deep_checks
+from remote_h05_h07_checks import cart_checks, event_checks
 
 
 def cleanup_transaction_probe(db, marker, user_ids, sku_ids, product_id):
@@ -101,14 +102,9 @@ def run(config):
                 "Independent active sessions missing")
         admin = first.get(base + "/admin/", allow_redirects=False, timeout=30)
         require(admin.status_code in (302, 403), "Customer reached admin")
-        data = {"sku_id": str(sku_id), "quantity": 1,
-                "operation_id": marker + "-add"}
-        add = first.post(base + "/cart/add/" + str(product_id), json=data, timeout=30)
-        report["add_http"] = add.status_code
-        require(add.status_code == 200, "Add-to-cart failed")
-        cart = db.carts.find_one({"user_id": user_id, "status": "active"})
-        require(cart and cart.get("revision") == 1, "Cart revision readback mismatch")
-        payload = {"cart_id": str(cart["_id"]), "expected_revision": 1,
+        cart, report['h05'] = cart_checks(db, first, base, marker, user_id, product_id, sku_id)
+        report["add_http"] = report['h05']['http_statuses'][0]
+        payload = {"cart_id": str(cart["_id"]), "expected_revision": cart['revision'],
                    "checkout_id": marker + "-checkout"}
         checkout = first.post(base + "/checkout", json=payload, timeout=30)
         require(checkout.status_code == 200, "Checkout failed")
@@ -120,12 +116,13 @@ def run(config):
                 "Stock decrement missing")
         retry = first.post(base + "/checkout", json=payload, timeout=30)
         require(retry.status_code == 200, "Idempotent checkout retry failed")
-        conflict = first.post(base + "/checkout", json={**payload, "expected_revision": 2}, timeout=30)
+        conflict = first.post(base + "/checkout", json={**payload, "expected_revision": cart['revision'] + 1}, timeout=30)
         require(conflict.status_code == 409, "Checkout conflict was not rejected")
         require(db.orders.count_documents({"user_id": user_id}) == 1
                 and db.order_items.count_documents({"order_id": order["_id"]}) == 1
                 and db.product_skus.find_one({"_id": sku_id})["available_quantity"] == 1,
                 "Retry or conflict changed persisted state")
+        report['h07_events'] = event_checks(db, user_id, product_id, cart['_id'], order['_id'], marker)
         logout_form = page(first, base + "/auth/logout").select_one('input[name="csrf_token"]')
         require(logout_form and logout_form.get("value"), "Logout CSRF missing")
         logout = first.post(base + "/auth/logout", data={"csrf_token": logout_form["value"]},

@@ -1,0 +1,32 @@
+{
+  "checked_at": "2026-10-18T08:50:52.2126599Z",
+  "status": "passed",
+  "python": {
+    "passed": 30,
+    "files": [
+      "scripts/test_private_https_transport.py",
+      "scripts/test_remote_h05_h07_checks.py",
+      "scripts/test_remote_d4_consumer_probe.py",
+      "scripts/test_remote_member_transaction_checks.py"
+    ],
+    "skipped": 0,
+    "failed": 0
+  },
+  "node": {
+    "passed": 9,
+    "files": [
+      "scripts/test_remote_h05_h07_runner.cjs",
+      "scripts/test_remote_account_runner.cjs",
+      "scripts/test_remote_d4_runner.cjs"
+    ],
+    "skipped": 0,
+    "failed": 0
+  },
+  "anonymous_transport_smoke": {
+    "transport": "node-fetch",
+    "http_status": 403,
+    "node_version": "v24.16.0"
+  },
+  "git_diff_check": "passed",
+  "child_exit_regression": "passed; persistent handle cannot keep one-request child alive"
+}

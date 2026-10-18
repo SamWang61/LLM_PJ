@@ -1,0 +1,67 @@
+{
+  "checked_at": "2026-10-18T09:05:54.184164+00:00",
+  "scope": "changed documents/evidence only; manifest excluded from its own hash",
+  "source_project": "C:/LLM/LLM_PJ",
+  "files": [
+    {
+      "path": "docs/CURRENT_CONTEXT.md",
+      "sha256": "f1220fbca73d07c45b2b2fad7e68ebe4b8eb0ad7a867d5efd54a36b33ba76b5d"
+    },
+    {
+      "path": "docs/REN_H05_H07_REMOTE_ACCEPTANCE_2026-10-18.md",
+      "sha256": "89c556bed266b8d4cba8d47a07c521f2b318389a4db1e1c51ff41b3cd75a00c8"
+    },
+    {
+      "path": "docs/REN_MOBILE_H01_H09_2026-10-18.md",
+      "sha256": "2dcb56718fa7088d2a4e8ba0e5893ee469f221fa62d2080cade95c9df77acb67"
+    },
+    {
+      "path": "docs/inventory/REN_H05_H07_INDEPENDENT_CLEANUP_2026-10-18.json",
+      "sha256": "bb50a43a643e9a7515bf06d435e8a83943ac565160967b5f831e52da89bfbd2d"
+    },
+    {
+      "path": "docs/inventory/REN_H05_H07_LOCAL_CHECKS_2026-10-18.json",
+      "sha256": "219113c934033a52a00c029d604f9299947af02e7b3dc99d6016c81be5d45da3"
+    },
+    {
+      "path": "docs/inventory/REN_H05_H07_PREFLIGHT_2026-10-18.json",
+      "sha256": "643ccc319c49bc10238e540f4c696186e7d40ff8c4c79b8dc4ea3188aba6019f"
+    },
+    {
+      "path": "docs/inventory/REN_H05_H07_RECOVERY_CLEANUP_2026-10-18.json",
+      "sha256": "37eb522950425e0dc9ac9e7e1077b5589e583d087020be94b5a24516f23792e6"
+    },
+    {
+      "path": "docs/inventory/REN_H05_H07_REMOTE_2026-10-18.json",
+      "sha256": "0356c7cba18ad1b56c484e28ea10b9db6b4e256ff377cfedce43b7fdbc31bdc7"
+    },
+    {
+      "path": "docs/inventory/REN_H05_H07_REMOTE_FIRST_ATTEMPT_2026-10-18.json",
+      "sha256": "0a9c7b1bd9b9a6ee47951efe38bc2bf1034588f71cc16f919a8cfa8ea52a5df7"
+    },
+    {
+      "path": "docs/inventory/REN_H05_H07_REMOTE_RECOVERY_2026-10-18.json",
+      "sha256": "65c70b8181104c6b4761afa25210b458da3b39ab5bf562e72df885653dbb935c"
+    },
+    {
+      "path": "docs/inventory/REN_H05_H07_REMOTE_SECOND_ATTEMPT_2026-10-18.json",
+      "sha256": "4d4223b62448b0b71d5e7b0340989f88fc97f0168bc160a55465c94cacbaa21a"
+    },
+    {
+      "path": "docs/inventory/REN_H05_H07_SOURCE_2026-10-18.json",
+      "sha256": "5f6c5d5c3c0e954a92a84fd7f99ec7299233212b355637b6243d4bd99537cc9c"
+    },
+    {
+      "path": "專題進度/REN_1200逐項交接清單_2026-10-18.md",
+      "sha256": "06dd4ce54f56ba1a6516d4fd2f9fac70dd685f0e6239c3c15c071a1f78d3964c"
+    },
+    {
+      "path": "專題進度/專案未完成工作清單_2026-10-18.md",
+      "sha256": "73d2b40619bc2fe7b887bf6aef8091777664c1d102f8caeed623f9113b0fd978"
+    },
+    {
+      "path": "簡報文件/screenshots/REN_H01-H09_手機模擬_2026-10-18/README.md",
+      "sha256": "98974f278a0a2002d92afff98438cfa091584e2d47938ade8d97aedeef800743"
+    }
+  ]
+}
