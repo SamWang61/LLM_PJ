@@ -16,7 +16,7 @@ from threading import Lock
 from time import monotonic, perf_counter
 from typing import TypedDict
 from flask import current_app, has_app_context
-from .recommendation import recommend_products
+from .recommendation import policy_weights, recommend_products
 from .behavior_scope import production_events
 
 logger = logging.getLogger(__name__)
@@ -26,6 +26,7 @@ class RecommendationState(TypedDict, total=False):
     products: list
     events: list
     query: str
+    weights: dict
     items: list
     source: str
 
@@ -155,8 +156,8 @@ def build_recommendation_graph(embeddings):
     def baseline(state):
         clean_events = list(production_events(state["events"]))
         products = [p for p in state["products"] if p.get("is_ai_recommendable", True) and p.get("stock", 0) > 0]
-        events = [{**e, "event_type": {"PRODUCT_VIEW": "view", "ADD_TO_CART": "cart", "PURCHASE": "purchase"}.get(e.get("event_type"), e.get("event_type"))} for e in clean_events]
-        return {"products": products, "events": clean_events, "items": recommend_products(products, events), "source": "rules"}
+        items = recommend_products(products, clean_events, weights=state.get("weights"))
+        return {"products": products, "events": clean_events, "items": items, "source": "rules"}
 
     def rank(state):
         if not state["products"]:
@@ -190,17 +191,20 @@ def build_recommendation_graph(embeddings):
     return graph.compile()
 
 
-def storefront_recommendations(products, events, query=""):
+def storefront_recommendations(products, events, query="", weights=None):
+    """weights: v4 recommendation_policy weights; v4 reads the stored policy when omitted, legacy uses defaults."""
+    if weights is None and current_app.config["DATA_MODE"] == "v4":
+        from ..db import get_db
+        weights = policy_weights(get_db())
     events = list(production_events(events))
     if current_app.config["AI_RECOMMENDATIONS_ENABLED"]:
         try:
             graph = build_recommendation_graph(current_app.config.get("EMBEDDINGS_FACTORY", bge_embeddings))
-            return graph.invoke({"products": products, "events": events, "query": query})
+            return graph.invoke({"products": products, "events": events, "query": query, "weights": weights})
         except ImportError:
             logger.warning("Install AI requirements to enable LangGraph")
     eligible = [p for p in products if p.get("is_ai_recommendable", True) and p.get("stock", 0) > 0]
-    normalized = [{**e, "event_type": {"PRODUCT_VIEW": "view", "ADD_TO_CART": "cart", "PURCHASE": "purchase"}.get(e.get("event_type"), e.get("event_type"))} for e in events]
-    return {"items": recommend_products(eligible, normalized), "source": "rules"}
+    return {"items": recommend_products(eligible, events, weights=weights), "source": "rules"}
 
 
 def summary_metrics(insights):

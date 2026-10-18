@@ -1,5 +1,10 @@
 # 變更紀錄 / Changelog
 
+## 2026-10-18 — JEFF 規則推薦改用 v4 權重 / v4 recommendation weights (B1)
+
+- 規則推薦由舊權重 1/3/4/8 改為 v4 政策 PURCHASE 4、ADD_TO_CART 3、SEARCH 2、PRODUCT_VIEW 1，v4 前台讀取資料庫政策；SEARCH 依搜尋字比對商品。Rule recommendations now follow the stored v4 policy.
+- 新增 10 項離線測試。See [dashboard handoff](docs/AI_DASHBOARD.md).
+
 ## 2026-10-18 — N14 私有加密與隔離復原
 
 - 新增串流認證加密／解密與internal Docker還原來源啟動工具，46項安全回歸通過。歷史13,048檔逐檔還原差異0、三筆BSON fixture／索引復原及四HTTP讀回通過。

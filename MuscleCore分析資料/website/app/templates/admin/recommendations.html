@@ -15,7 +15,7 @@
         {% for action, weight in policy.weights|dictsort(by='value', reverse=true) %}<tr><td>{{ event_labels.get(action, action) }}</td><td><code>{{ action }}</code></td><td>{{ weight }}</td></tr>{% endfor %}
       </tbody></table></div>
       {% else %}<p class="empty-state">尚未讀到有效的推薦政策。</p>{% endif %}
-      <p class="insight">前台規則基線尚未改讀此政策（仍為舊權重，待後續修正）；v4 衰減計分與 6+4 推薦池尚未接線。</p>
+      <p class="insight">前台規則推薦已改讀此政策（缺少或無效的權重以 4/3/2/1 預設值補上；SEARCH 依搜尋字比對商品名稱與分類）；v4 衰減計分與 6+4 推薦池尚未接線。</p>
     {% else %}
       <p class="panel-note">舊版規則基線：瀏覽 1、收藏 3、加購 4、購買 8。</p>
     {% endif %}
