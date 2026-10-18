@@ -9,6 +9,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from VibeCart_AI.services.sku_cart_service import CartService
+from VibeCart_AI.services.review_service import ReviewService
 from VibeCart_AI.services.cart_service import CartError, CartConflict, oid as parse_oid
 from bson import ObjectId
 from flask import current_app, session
@@ -16,7 +17,7 @@ from ..db import get_db
 from .member_events import behavior_metadata
 
 
-def cart_service():
+def _member_service(factory):
     from ..auth import current_member
     from .member_sessions import token_digest, fingerprint, demo_expiration
     user = current_member()
@@ -24,9 +25,16 @@ def cart_service():
         'session_id': token_digest(session.get('member_session')),
         'auth_fingerprint': fingerprint(user), 'password_hash': user.get('password_hash'),
         'role': user['role'], 'demo_expires_at': demo_expiration(user)}
-    factory = current_app.config.get("CART_SERVICE_FACTORY", CartService)
     return factory(get_db(), enable_checkout=current_app.config["ENABLE_CHECKOUT"],
                    behavior_metadata=behavior_metadata(), authorization_guard=guard)
+
+
+def cart_service():
+    return _member_service(current_app.config.get("CART_SERVICE_FACTORY", CartService))
+
+
+def review_service():
+    return _member_service(current_app.config.get("REVIEW_SERVICE_FACTORY", ReviewService))
 
 
 def oid(value):

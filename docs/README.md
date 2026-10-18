@@ -1,5 +1,8 @@
 # 文件中心 / Documentation hub
 
+**2026-10-18 商品評價／6＋4增量**：使用者要求沿用文件無條件進位至小數一位、評價後交易回填商品並更新網頁、破圈高星優先。[對話決議](../討論的相關記錄/商品評價與猜你喜歡6加4推薦_對話決議_2026-10-18.md)；[本次實作與驗證](PRODUCT_REVIEWS_6PLUS4_DELIVERY_2026-10-18.md)。本次明確授權的增量與較早V5歷史範圍分別記錄，不改原關卡數或主責；GitHub交付不等於正式部署。
+
+
 <!-- SAM MAIN PREVIEW 20261018 BEGIN -->
 **2026/10/18 17:34 SAM 最新main無流量預覽**：[部署與驗收](SAM_MAIN_PREVIEW_2026-10-18.md)。來源`20ee040`、52檔封裝／GCS讀回一致、AI build三步SUCCESS；私有真BGE、Claude四固定問題／快取、角色／交易／1001 synthetic及停用退回已驗，fixture清理0。Key版本1 Enabled，只引用於私有預覽，自由提問false。**正式19／私有base11仍100%舊版，最新main只在0% tag；Hosting未重發，V5仍2/14完成。**
 <!-- SAM MAIN PREVIEW 20261018 END -->

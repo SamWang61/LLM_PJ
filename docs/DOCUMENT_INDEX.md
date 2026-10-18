@@ -1,5 +1,8 @@
 # 全部文件索引 / Document catalog
 
+- [商品評價、即時回填與猜你喜歡6＋4對話決議](../討論的相關記錄/商品評價與猜你喜歡6加4推薦_對話決議_2026-10-18.md)
+- [本次實作交付與驗證](PRODUCT_REVIEWS_6PLUS4_DELIVERY_2026-10-18.md)
+
 <!-- SAM MAIN PREVIEW 20261018 BEGIN -->
 **2026/10/18 17:34 SAM 最新main無流量預覽**：[部署與驗收](SAM_MAIN_PREVIEW_2026-10-18.md)。來源`20ee040`、52檔封裝／GCS讀回一致、AI build三步SUCCESS；私有真BGE、Claude四固定問題／快取、角色／交易／1001 synthetic及停用退回已驗，fixture清理0。Key版本1 Enabled，只引用於私有預覽，自由提問false。**正式19／私有base11仍100%舊版，最新main只在0% tag；Hosting未重發，V5仍2/14完成。**
 <!-- SAM MAIN PREVIEW 20261018 END -->

@@ -6,11 +6,48 @@ from pymongo.errors import PyMongoError
 from .auth import login_required, current_member
 from .services.member_events import record_read_event
 from .db import get_db
-from .services.sku_gateway import cart_service, catalog, product_view, money, oid, CartError, CartConflict
-from .services.ai_workflows import storefront_recommendations
+from .services.sku_gateway import cart_service, review_service, catalog, product_view, money, oid, CartError, CartConflict
 from .services.behavior_scope import personalization_behavior_query
+from .services.ai_workflows import storefront_recommendations
+from .services.recommendation import policy_weights
+from .services.storefront_ranking import recommendations_6_4
 
 bp = Blueprint("store", __name__)
+
+
+@bp.after_request
+def fresh_storefront(response):
+    response.headers['Cache-Control'] = 'private, no-store'
+    return response
+
+
+def recommendation_blocks(products, member, query=""):
+    db = get_db()
+    events = [] if not member else list(db.behavior_events.find(
+        personalization_behavior_query({'user_id': member['_id']})).sort('event_at', -1).limit(1000))
+    policy = db.system_configs.find_one({'config_key': 'recommendation_policy', 'status': 'active'})
+    rules = list(db.cross_category_rules.find({'status': 'active'}))
+    settings = (policy or {}).get('settings')
+    settings = dict(settings) if isinstance(settings, dict) else {}
+    settings['weights'] = policy_weights(db)
+    signals = storefront_recommendations(products, events, query, weights=settings['weights'], limit=max(1, len(products)))
+    semantics = {str(item['product']['_id']): item['score'] for item in signals['items']} if signals['source'] == 'bge' else {}
+    result = recommendations_6_4(products, events, rules, settings, semantic_scores=semantics)
+    if semantics:
+        result['source'] = 'bge+rules-6plus4-rating-v1'
+    return result
+
+
+def reviewable_lines(db, member, product_id):
+    if not member or current_app.config.get('CLOUD_PREVIEW_READ_ONLY'):
+        return []
+    orders = {o['_id']: o for o in db.orders.find({'user_id': member['_id'], 'payment_status': 'paid',
+        'status': {'$ne': 'cancelled'}, '$or': [{'status': 'completed'}, {'shipping_status': 'delivered'}]})}
+    reviewed = [r['order_item_id'] for r in db.product_reviews.find({'user_id': member['_id'], 'product_id': product_id})]
+    lines = db.order_items.find({'user_id': member['_id'], 'product_id': product_id,
+        'order_id': {'$in': list(orders)}, '_id': {'$nin': reviewed}})
+    return [{**line, 'review_order_number': orders[line['order_id']].get('order_number',
+             '尾碼' + str(line['order_id'])[-6:])} for line in lines]
 
 
 def browsing_context():
@@ -90,17 +127,24 @@ def home():
     total = len(shown)
     pages = max(1, (total + 23) // 24)
     page = min(pages, max(1, request.args.get("page", 1, type=int)))
-    events = []
     query = request.args.get("q", "")[:200].strip()
     if member:
         if query:
             record_read_event(member, "SEARCH", query=query)
-        events = list(get_db().behavior_events.find(personalization_behavior_query({"user_id": member["_id"]})).sort("event_at", -1).limit(50))
-    result = storefront_recommendations(shown, events, query)
+    result = recommendation_blocks(products, member, query)
     return render_template("store/home.html", products=shown[(page-1)*24:page*24], categories=categories,
                            selected_category=category, major_categories=major_categories, selected_major=major,
                            page=page, pages=pages, total=total,
-                           recommendations=result["items"], recommendation_source=result["source"])
+                           recommendations=result['personalized'], cross_recommendations=result['cross_category'],
+                           recommendation_source=result['source'])
+
+
+@bp.get('/recommendations')
+@handled
+def recommendations_fragment():
+    result = recommendation_blocks(catalog(get_db()), current_member(), request.args.get('q', '')[:200].strip())
+    return render_template('store/recommendations_v4.html', recommendations=result['personalized'],
+                           cross_recommendations=result['cross_category'])
 
 
 @bp.get("/product/<product_id>")
@@ -125,9 +169,35 @@ def product_detail(product_id):
         if index + 1 < len(shown):
             next_url = url_for("store.product_detail", product_id=shown[index + 1]["_id"], **context)
     return render_template("store/product.html", product=product_view(product, skus, categories),
+                           reviewable_items=reviewable_lines(db, member, product['_id']),
                            product_navigation={"previous_url": previous_url, "next_url": next_url,
                                "list_url": url_for("store.home", page=index // 24 + 1 if index is not None else 1,
                                                    _anchor="products", **context)})
+
+
+@bp.post('/reviews/<order_item_id>')
+@login_required
+def submit_review(order_item_id):
+    if current_app.config.get('CLOUD_PREVIEW_READ_ONLY'):
+        return {'error': '展示環境僅供瀏覽。'}, 403
+    try:
+        data = payload()
+        review = review_service().create_review(session['user_id'], oid(order_item_id), integer(data, 'rating'),
+            title=data.get('title', ''), content=data.get('content', ''))
+        product = get_db().products.find_one({'_id': review['product_id']})
+        if request.is_json:
+            return jsonify(review_id=str(review['_id']), product_id=str(review['product_id']),
+                rating=product['average_rating_display'], rating_count=product['rating_count'],
+                rating_status=product['rating_status'])
+        flash('評價已送出，商品星等已更新。', 'success')
+        return redirect(url_for('store.product_detail', product_id=review['product_id']), code=303)
+    except CartConflict:
+        return {'error': '此訂單明細已評價，不能改送其他星等或內容。'}, 409
+    except CartError:
+        return {'error': '請確認為本人已付款且完成或送達的訂單明細，星等須為1～5的整數。'}, 400
+    except PyMongoError:
+        current_app.logger.warning('Review database operation unavailable')
+        return {'error': '評價暫時無法確認，請保留相同星等與內容重試。'}, 503
 
 
 @bp.post("/cart/add/<product_id>")

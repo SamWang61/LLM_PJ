@@ -1,0 +1,16 @@
+{
+  "source_commit": "2e44f12513317249d00973dd383d5d8f6215eb0e",
+  "allowlisted_file_count": 56,
+  "archive_sha256": "55a2ae82895e6c9940a5387e2f90d1138f3b41994f8fde087326b808d4eb1425",
+  "image": "codex-review-stars:2e44f12",
+  "install_ai": false,
+  "docker_build": "passed",
+  "network_disabled_factory_boot": "passed",
+  "review_service_import": "passed",
+  "routes": [
+    "/reviews/<order_item_id>",
+    "/recommendations"
+  ],
+  "cloud_deployment": false,
+  "scope": "Local slim image only; no database connection or cloud traffic change"
+}

@@ -17,6 +17,7 @@ class ReviewService(CartService):
             if previous:
                 if (previous['rating'],previous['review_title'],previous['review_content'])!=(rating,title,content):
                     raise CartConflict('An order item may only be reviewed once')
+                self._authorize_commit(uid, s)
                 return previous
             line=self.db.order_items.find_one({'_id':lid,'user_id':uid},session=s)
             if not line: raise CartError('Purchased order item required')
@@ -41,5 +42,6 @@ class ReviewService(CartService):
             self.db.products.update_one({'_id':product['_id']},{'$set':{'rating_status':'ACTUAL',
                 'rating_default_value':None,'rating_sum':total,'rating_count':count,'average_rating_raw':float(mean),
                 'average_rating_display':float(display),'rating_distribution':distribution,'updated_at':now}},session=s)
+            self._authorize_commit(uid, s)
             return review
         return self._run(action)

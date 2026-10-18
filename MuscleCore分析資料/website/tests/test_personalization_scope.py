@@ -33,10 +33,10 @@ def test_storefront_learns_from_demo_checkout_not_synthetic(shop, monkeypatch):
     db.behavior_events.insert_many([{"user_id": uid, "product_id": pid, "event_type": "PURCHASE",
         "event_at": now + timedelta(seconds=1), "metadata": {"synthetic": True}} for _ in range(60)])
     seen = []
-    def inspect(products, events, query):
+    def inspect(products, events, rules, settings, **kwargs):
         seen.extend(events)
-        return {"items": [], "source": "rules"}
-    monkeypatch.setattr("app.store_v4.storefront_recommendations", inspect)
+        return {"personalized": [], "cross_category": [], "source": "rules-6plus4"}
+    monkeypatch.setattr("app.store_v4.recommendations_6_4", inspect)
     assert client.get("/").status_code == 200
     assert len(seen) == 1 and seen[0]["metadata"] == DEMO
 

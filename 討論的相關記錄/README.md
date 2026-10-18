@@ -1,5 +1,7 @@
 # 規格與討論 / Specifications and discussions
 
+- [2026-10-18 商品評價、即時回填與猜你喜歡6＋4對話決議](商品評價與猜你喜歡6加4推薦_對話決議_2026-10-18.md)
+
 本目錄包含整合規格、購物車、完整 Schema、行為計分與跨分類推薦規則，以及圖像與會議附件。規格是需求，不代表每項功能已實作。
 
 This folder contains integration specifications, cart and complete schemas, behavior scoring, cross-category recommendations, diagrams and meeting artifacts. Specifications describe requirements, not proof of implementation.

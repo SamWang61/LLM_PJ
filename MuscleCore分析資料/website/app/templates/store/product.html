@@ -1,5 +1,5 @@
 {% extends 'base.html' %}{% block title %}{{ product.name }}｜{{ "VibeCart" if config.DATA_MODE == "v4" else "MuscleCore" }}{% endblock %}{% block content %}
-<section class="detail"><div class="detail-visual">{% with p=product %}{% include "store/product_image.html" %}{% endwith %}</div><div><span class="eyebrow">{{ product.category }} · {{ product.sku }}</span><h1>{{ product.name }}</h1><p class="lead">{{ product.display_description if config.DATA_MODE == "v4" else product.description }}</p>{% if product.source_url %}<p class="hint">教學測試商品；庫存為模擬值，不提供實際出貨。名稱、规格與照片來源：<a href="{{ product.source_url }}" target="_blank" rel="noopener noreferrer">原商品頁</a>。實際資訊請以來源為準。</p>{% endif %}<div class="rating">★ {{ product.rating }}{% if product.rating_status == "DEFAULT" %}（預設值，尚無評價）{% endif %}{% if config.DATA_MODE == "legacy" %}　已售 {{ product.sales_count }}{% endif %}</div><div class="detail-price">NT$ {{ '{:,.2f}'.format(product.price) }}</div><p>現有庫存：{{ product.stock }}</p>{% if config.CLOUD_PREVIEW_READ_ONLY %}<p class="hint">展示環境僅供瀏覽，會員與購物功能尚未開放。</p>{% else %}<form method="post" action="{{ url_for('store.add_to_cart', product_id=product._id) }}"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}">{% if config.DATA_MODE == "v4" %}{% include "store/sku_fields.html" %}{% endif %}<button class="button" type="submit" {% if config.DATA_MODE == "v4" and product.stock < 1 %}disabled{% endif %}>加入購物車</button></form>{% endif %}</div></section>
+<section class="detail"><div class="detail-visual">{% with p=product %}{% include "store/product_image.html" %}{% endwith %}</div><div><span class="eyebrow">{{ product.category }} · {{ product.sku }}</span><h1>{{ product.name }}</h1><p class="lead">{{ product.display_description if config.DATA_MODE == "v4" else product.description }}</p>{% if product.source_url %}<p class="hint">教學測試商品；庫存為模擬值，不提供實際出貨。名稱、规格與照片來源：<a href="{{ product.source_url }}" target="_blank" rel="noopener noreferrer">原商品頁</a>。實際資訊請以來源為準。</p>{% endif %}<div class="rating"><span data-product-rating="{{ product._id }}">★ {{ "%.1f"|format(product.rating|default(0)) }}</span>{% if product.rating_status == "DEFAULT" %}<span data-rating-default="{{ product._id }}">（預設值，尚無評價）</span>{% endif %}{% if config.DATA_MODE == "v4" %}<span data-rating-count="{{ product._id }}">（{{ product.rating_count|default(0) }}筆評價）</span>{% endif %}{% if config.DATA_MODE == "legacy" %}　已售 {{ product.sales_count }}{% endif %}</div><div class="detail-price">NT$ {{ '{:,.2f}'.format(product.price) }}</div><p>現有庫存：{{ product.stock }}</p>{% if config.CLOUD_PREVIEW_READ_ONLY %}<p class="hint">展示環境僅供瀏覽，會員與購物功能尚未開放。</p>{% else %}<form method="post" action="{{ url_for('store.add_to_cart', product_id=product._id) }}"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}">{% if config.DATA_MODE == "v4" %}{% include "store/sku_fields.html" %}{% endif %}<button class="button" type="submit" {% if config.DATA_MODE == "v4" and product.stock < 1 %}disabled{% endif %}>加入購物車</button></form>{% endif %}</div></section>
 {% if product_navigation %}
 <nav class="product-navigation" aria-label="商品瀏覽">
   {% if product_navigation.previous_url %}<a class="button secondary" rel="prev" href="{{ product_navigation.previous_url }}">&larr; 前一項</a>{% else %}<button class="button secondary" disabled>&larr; 前一項</button>{% endif %}
@@ -7,5 +7,20 @@
   {% if product_navigation.next_url %}<a class="button secondary" rel="next" href="{{ product_navigation.next_url }}">下一項 &rarr;</a>{% else %}<button class="button secondary" disabled>下一項 &rarr;</button>{% endif %}
 </nav>
 {% endif %}
-{% endblock %}
 
+{% if config.DATA_MODE == "v4" %}
+<section class="section" id="product-reviews"><h2>購買商品評價</h2>
+<p>本人已付款且完成或送達的每筆訂單明細可評價一次。星等採真實評價平均，無條件進位至小數一位。</p>
+{% for item in reviewable_items %}
+<form method="post" action="{{ url_for('store.submit_review', order_item_id=item._id) }}" data-review-form>
+<input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+<p>訂單 {{ item.review_order_number }} · 本次購買 {{ item.quantity|default(1) }} 件</p>
+<label>星等 <select name="rating" required>{% for star in range(5, 0, -1) %}<option value="{{ star }}">{{ star }}星</option>{% endfor %}</select></label>
+<label>評價標題 <input name="title" maxlength="200"></label>
+<label>使用心得 <textarea name="content" maxlength="8000"></textarea></label>
+<button class="button" type="submit">送出評價</button><p role="status" data-review-status></p>
+</form>
+{% else %}<p>目前沒有可評價的訂單明細。請確認已登入、訂單已付款且完成或送達；已評價的明細不可重複評價。</p>{% endfor %}
+</section>
+{% endif %}
+{% endblock %}

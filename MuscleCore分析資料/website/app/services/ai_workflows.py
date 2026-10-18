@@ -27,6 +27,7 @@ class RecommendationState(TypedDict, total=False):
     events: list
     query: str
     weights: dict
+    limit: int
     items: list
     source: str
 
@@ -156,7 +157,7 @@ def build_recommendation_graph(embeddings):
     def baseline(state):
         clean_events = list(personalization_events(state["events"]))
         products = [p for p in state["products"] if p.get("is_ai_recommendable", True) and p.get("stock", 0) > 0]
-        items = recommend_products(products, clean_events, weights=state.get("weights"))
+        items = recommend_products(products, clean_events, limit=state.get('limit', 4), weights=state.get("weights"))
         return {"products": products, "events": clean_events, "items": items, "source": "rules"}
 
     def rank(state):
@@ -177,7 +178,7 @@ def build_recommendation_graph(embeddings):
             vector = model.embed_query(query)
             ranked = sorted(zip(state["products"], vectors), key=lambda pair: cosine(vector, pair[1]), reverse=True)
             return {"items": [{"product": p, "reason": "與你的搜尋或近期關注商品語意相近", "score": round(cosine(vector, v), 4)}
-                              for p, v in ranked[:4]], "source": "bge"}
+                              for p, v in ranked[:state.get('limit', 4)]], "source": "bge"}
         except Exception:
             logger.warning("BGE unavailable; using rule recommendations")
             return {}
@@ -191,7 +192,7 @@ def build_recommendation_graph(embeddings):
     return graph.compile()
 
 
-def storefront_recommendations(products, events, query="", weights=None):
+def storefront_recommendations(products, events, query="", weights=None, limit=4):
     """weights: v4 recommendation_policy weights; v4 reads the stored policy when omitted, legacy uses defaults."""
     if weights is None and current_app.config["DATA_MODE"] == "v4":
         from ..db import get_db
@@ -200,11 +201,11 @@ def storefront_recommendations(products, events, query="", weights=None):
     if current_app.config["AI_RECOMMENDATIONS_ENABLED"]:
         try:
             graph = build_recommendation_graph(current_app.config.get("EMBEDDINGS_FACTORY", bge_embeddings))
-            return graph.invoke({"products": products, "events": events, "query": query, "weights": weights})
+            return graph.invoke({"products": products, "events": events, "query": query, "weights": weights, 'limit': limit})
         except ImportError:
             logger.warning("Install AI requirements to enable LangGraph")
     eligible = [p for p in products if p.get("is_ai_recommendable", True) and p.get("stock", 0) > 0]
-    return {"items": recommend_products(eligible, events, weights=weights), "source": "rules"}
+    return {"items": recommend_products(eligible, events, limit=limit, weights=weights), "source": "rules"}
 
 
 def summary_metrics(insights):

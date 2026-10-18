@@ -15,7 +15,7 @@ REQUIRED = {
     for name in ("Dockerfile", ".dockerignore", "requirements-cloud.txt", "requirements-cloud-ai.txt", "cloud_runtime.py")
 } | {
     f"VibeCart_AI/services/{name}"
-    for name in ("cart_service.py", "sku_cart_service.py")
+    for name in ("cart_service.py", "sku_cart_service.py", "review_service.py")
 }
 APP_SUFFIXES = {".py", ".html", ".css", ".js", ".svg", ".png", ".jpg", ".webp"}
 
