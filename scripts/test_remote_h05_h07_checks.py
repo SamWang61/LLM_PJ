@@ -7,6 +7,10 @@ from bson import ObjectId
 from remote_h05_h07_checks import cart_checks, event_checks
 from remote_d4_consumer_probe import page
 import requests
+from types import SimpleNamespace
+from bson import Decimal128
+from VibeCart_AI.services.sku_cart_service import CartService
+from VibeCart_AI.services.cart_service import CartConflict
 
 
 @pytest.fixture
@@ -19,8 +23,11 @@ def evidence():
             'user_id': uid, 'event_type': kind, 'event_at': datetime.now(timezone.utc),
             'product_id': None if kind == 'SEARCH' else pid,
             'search_query': 'marker' if kind == 'SEARCH' else None,
-            'order_id': order if kind == 'PURCHASE' else None, 'cart_id': cart,
+            'order_id': order if kind == 'PURCHASE' else None, 'cart_id': cart, 'quantity': 1,
             'metadata': {'exclude_from_attribution': True} if kind == 'PURCHASE' else {}})
+    add = db.behavior_events.find_one({'event_type': 'ADD_TO_CART'})
+    add.pop('_id');add.update(event_id='ADD_TO_CART-second', quantity=2)
+    db.behavior_events.insert_one(add)
     return db, uid, pid, cart, order, 'marker'
 
 
@@ -28,7 +35,23 @@ def test_complete_evidence_is_scoped_to_its_user(evidence):
     db, *_ = evidence
     db.behavior_events.insert_one({'user_id': ObjectId(), 'event_type': 'PURCHASE'})
     assert event_checks(*evidence)['event_type_counts'] == {
-        'SEARCH': 1, 'PRODUCT_VIEW': 1, 'ADD_TO_CART': 1, 'PURCHASE': 1}
+        'SEARCH': 1, 'PRODUCT_VIEW': 1, 'ADD_TO_CART': 2, 'PURCHASE': 1}
+
+
+@pytest.mark.parametrize('field,value', [
+    ('product_id', ObjectId()), ('cart_id', ObjectId()), ('quantity', 3),
+    ('quantity', True), ('order_id', ObjectId()),
+])
+def test_each_add_event_must_match_cart_product_and_original_quantities(evidence, field, value):
+    evidence[0].behavior_events.update_one({'event_id': 'ADD_TO_CART-second'}, {'$set': {field:value}})
+    with pytest.raises(RuntimeError, match='ADD_TO_CART'):
+        event_checks(*evidence)
+
+
+def test_missing_second_add_event_fails(evidence):
+    evidence[0].behavior_events.delete_one({'event_id': 'ADD_TO_CART-second'})
+    with pytest.raises(RuntimeError, match='ADD_TO_CART'):
+        event_checks(*evidence)
 
 
 @pytest.mark.parametrize('update', [
@@ -62,6 +85,52 @@ def test_h05_refuses_production_or_foreign_fixture_before_http():
         cart_checks(db, session, 'https://unused.invalid', 'marker', *ids)
     session.get.assert_not_called()
     session.post.assert_not_called()
+
+
+@pytest.mark.parametrize('revisions', [[1, 2, 3, 4], [1, 3, 4, 6], [2, 3, 4, 5]])
+def test_h05_detects_revision_jumps_in_real_service_persistence(monkeypatch, revisions):
+    db = mongomock.MongoClient().vibecart_acceptance_pr21
+    uid, pid, sid, category = (ObjectId() for _ in range(4))
+    marker = 'ren-txn-revision-contract'
+    db.users.insert_one({'_id':uid, 'schema_version':4, 'status':'active',
+                         'is_active':True, 'acceptance_run':marker})
+    db.products.insert_one({'_id':pid, 'product_name':'fixture', 'status':'active',
+        'major_category_id':category, 'minor_category_id':category, 'acceptance_run':marker})
+    db.product_skus.insert_one({'_id':sid, 'product_id':pid, 'status':'active',
+        'price':Decimal128('10'), 'available_quantity':5, 'acceptance_run':marker})
+
+    class OfflineCart(CartService):
+        def _run(self, callback):
+            return callback(None)
+
+    service = OfflineCart(db)
+    sequence = iter(revisions)
+
+    class HTTPFixture:
+        def post(self, url, json, timeout):
+            options = {'operation_id':json['operation_id'],
+                       'expected_revision':json.get('expected_revision')}
+            try:
+                if '/cart/add/' in url:
+                    cart = service.add_item(uid, sid, json['quantity'], **options)
+                elif '/cart/update/' in url:
+                    cart = service.update_quantity(uid, sid, json['quantity'], **options)
+                else:
+                    cart = service.remove_item(uid, sid, **options)
+            except CartConflict:
+                return SimpleNamespace(status_code=409)
+            # Simulate a deployed regression in persisted state, while the real
+            # service still processes operations, stale writes and event history.
+            db.carts.update_one({'_id':cart['_id']}, {'$set':{'revision':next(sequence)}})
+            return SimpleNamespace(status_code=200)
+
+    monkeypatch.setattr('remote_h05_h07_checks.page', lambda *args: None)
+    args = (db, HTTPFixture(), 'https://unused.invalid', marker, uid, pid, sid)
+    if revisions == [1, 2, 3, 4]:
+        assert cart_checks(*args)[1]['revision_sequence'] == revisions
+    else:
+        with pytest.raises(RuntimeError, match='revision sequence'):
+            cart_checks(*args)
 
 
 def test_get_transport_retry_preserves_cookies_and_never_posts(monkeypatch):

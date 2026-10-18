@@ -50,7 +50,7 @@ def cart_checks(db, session, base, marker, user_id, product_id, sku_id):
     require(db.carts.find_one({'_id': cart['_id']})['items'] == [],
             'H05 removed item returned after reload')
     cart = mutate('/cart/add/' + str(product_id), 1, '-h05-checkout-add', cart['revision'])
-    require(revisions == sorted(set(revisions)) and cart['items'][0]['quantity'] == 1,
+    require(revisions == [1, 2, 3, 4] and cart['items'][0]['quantity'] == 1,
             'H05 revision sequence mismatch')
     return cart, {'status': 'passed', 'add_two_update_one_reload_remove_reload': True,
                   'http_statuses': statuses, 'revision_sequence': revisions,
@@ -71,6 +71,12 @@ def event_checks(db, user_id, product_id, cart_id, order_id, marker):
             'H07 search query linkage missing')
     require(any(e['event_type'] == 'PRODUCT_VIEW' and e.get('product_id') == product_id for e in events),
             'H07 product linkage missing')
+    adds = [e for e in events if e['event_type'] == 'ADD_TO_CART']
+    require(len(adds) == 2
+            and all(e.get('product_id') == product_id and e.get('cart_id') == cart_id
+                    and e.get('order_id') is None and type(e.get('quantity')) is int for e in adds)
+            and sorted(e['quantity'] for e in adds) == [1, 2],
+            'H07 ADD_TO_CART product/cart/quantity linkage mismatch')
     purchases = [e for e in events if e['event_type'] == 'PURCHASE']
     require(len(purchases) == 1 and purchases[0].get('order_id') == order_id
             and purchases[0].get('cart_id') == cart_id
@@ -78,5 +84,6 @@ def event_checks(db, user_id, product_id, cart_id, order_id, marker):
             'H07 demo purchase linkage/attribution exclusion missing')
     return {'status': 'passed', 'event_type_counts': counts, 'unique_event_ids': True,
             'required_contract_fields': True, 'search_product_order_cart_links': True,
+            'add_to_cart_links_and_quantities': True,
             'demo_purchase_excluded_from_attribution': True,
             'readback_scope': 'new disposable private user; real HTTPS-generated events'}
