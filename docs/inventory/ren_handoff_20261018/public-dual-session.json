@@ -1,0 +1,28 @@
+{
+  "checked_at": "2026-10-18T03:23:54.260405+00:00",
+  "status": "passed",
+  "scope": "two independent HTTPS cookie sessions; not physical devices",
+  "production_checkout_performed": false,
+  "logins": [
+    {
+      "http": 302,
+      "location": "/cart"
+    },
+    {
+      "http": 302,
+      "location": "/cart"
+    }
+  ],
+  "both_cart_http": [
+    200,
+    200
+  ],
+  "first_logout_http": 302,
+  "logged_out_cart_http": 302,
+  "old_cookie_cart_http": 302,
+  "other_cart_http": 200,
+  "second_logout_http": 302,
+  "second_post_logout_cart_http": 302,
+  "cleanup_logout_errors": 0,
+  "credentials_logged": false
+}
