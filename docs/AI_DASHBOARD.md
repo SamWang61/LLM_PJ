@@ -138,6 +138,31 @@ python -m venv .venv
 
 The ignored local profile contains the existing v4 connection. It is not a newly isolated database. Keep it private; default checkout and model flags remain disabled.
 
+## 線上 AI 設定 / Online AI configuration（JEFF，2026-10-18，A1／A2）
+
+**狀態：程式與建置設定已完成（PR #82）；AI 映像尚未建置、尚未部署。** 部署由 SAM 執行或授權，費用記在 `vibecart-llmai` 帳單；Claude API 費用由 JEFF 的 Key 負擔。
+
+| 設定 | 位置 | 預設 | 線上建議值 |
+|---|---|---|---|
+| `AI_SUMMARY_ENABLED` | Cloud Run 環境變數（`cloud_runtime.py` 讀取） | `false` | `true` |
+| `AI_RECOMMENDATIONS_ENABLED` | 同上 | `false` | `true`（只開 Claude 時 `false`） |
+| `AI_FREE_QUESTION_ENABLED` | 同上 | `false` | `false`（展示只用 4 個預設問題） |
+| `CLAUDE_MODEL` | 環境變數 | 空 | `claude-sonnet-5` |
+| `ANTHROPIC_API_KEY` | Secret Manager 同名 secret，授權 `vibecart-web@` 讀取 | 無 | 由 JEFF 本人在 Console 新增版本 |
+| `BGE_MODEL` | 環境變數 | `BAAI/bge-small-zh-v1.5` | 不變 |
+| `INSTALL_AI` | Docker 建置參數（Cloud Build `_INSTALL_AI`） | `false`（映像與原本相同） | `true` |
+| 記憶體／CPU | Cloud Run | 512Mi | 2Gi、CPU 2（只開 Claude 可先試 1Gi） |
+
+- 三個 AI 開關只接受 `true`／`false`，其他值會拒絕啟動；開了 AI 之後，`CLOUD_PREVIEW_READ_ONLY=true` 仍擋 `/admin`。
+- `INSTALL_AI=true` 會安裝 `requirements-cloud-ai.txt`（CPU 版 PyTorch，版本與 T5 實測相同），並在建置時把 BGE 模型下載到 `/srv/models`；執行期 `HF_HUB_OFFLINE=1`，搭配 `local_files_only=True` 載入。Cloud Build 會多跑一步離線載入檢查（日誌出現 `ai-image-ok`）。
+- 建議流程：建置 → 建立空 secret 並授權 → JEFF 貼入 Key → 部署**零流量**修訂（tag `ai-preview`）→ 量測冷啟動、BGE、Claude 4 個預設問題 → JEFF 與 SAM 都同意後才切流量；舊修訂保留以便退回。
+- **未知、待實測**：AI 映像大小、建置時間、冷啟動時間、實際記憶體用量。
+- **備案**：BGE 記憶體不足或冷啟動過慢時，部署 `AI_RECOMMENDATIONS_ENABLED=false`，只開 Claude（映像不需重建）；若今天不上線，簡報使用 T5 本機實測數字。
+- **待確認（B3）**：正式修訂若設定 `BEHAVIOR_SYNTHETIC_BATCH`，真實會員事件會被標為 synthetic 而不進入推薦。
+- **長期方案（B4，下一階段）**：商品向量離線批次計算存入 Atlas（schema 已有 `product_embeddings`，寫入需 SAM 同意），網站只做 cosine，降低記憶體與冷啟動。
+
+English: Online AI is code-complete (PR #82) but not yet built or deployed. Flags default to off and must be exactly true/false. The AI image (`INSTALL_AI=true`) bakes in CPU PyTorch and the BGE model. The Claude key lives in Secret Manager and is entered by JEFF. The recommended rollout is a zero-traffic revision with 2Gi memory, verified before any traffic switch, with Claude-only as the fallback.
+
 ## 驗證與剩餘界線 / Validation and limits
 
 2026-10-02：38 項離線測試通過；真實 Atlas 的 27 集合、86 索引與五組整合檢查通過，測試資料筆數已恢復。離線測試涵蓋日期邊界、退款與取消排除、Decimal、空資料、超額查詢、CSRF、角色撤銷、摘要快取及輸出跳脫。真實 Atlas 結果以 [讀回報告](V4_TEST_VERIFICATION.json) 為準。
