@@ -51,7 +51,7 @@
     "cloud_uploaded": false
   },
   "local_boot": {
-    "checked_at_utc": "2026-10-18T00:43:34.632566+00:00",
+    "checked_at_utc": "2026-10-18T01:00:59.774779+00:00",
     "runtime_image_id": "sha256:17626ad81d61b95aa5c7d5771ffe163e4e44d78d80d166bf1fa0dcebc6db5e65",
     "mongo_image_id": "sha256:2609aaf7a1abbff404101af896e05f243d22be742471ed857b50b9ce0270fdbd",
     "status": "passed",
@@ -61,6 +61,7 @@
     "probe": {
       "target": "disposable internal Docker MongoDB",
       "scope": "historical restored source and three local fixture collections",
+      "python_optimization": 1,
       "dotenv_loaded": false,
       "atlas_export_or_restore": false,
       "bson_restore": {
@@ -82,7 +83,7 @@
     "created_resources_removed": true
   },
   "security_tests": {
-    "passed": 44,
+    "passed": 46,
     "skipped": 0,
     "failures": 0
   },
@@ -241,5 +242,9 @@
     "closed": 2,
     "open": 12,
     "N07_N10_excluded": true
+  },
+  "review_fixes": {
+    "P1": "All runtime asserts replaced with explicit require checks; host and container optimized mode passed; two -O negative checks passed",
+    "P2": "Cloud reassembled ciphertext is now the documented decrypt source"
   }
 }

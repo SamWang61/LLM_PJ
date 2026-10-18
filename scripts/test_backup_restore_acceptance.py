@@ -3,6 +3,7 @@ from pathlib import Path
 import subprocess
 import sys
 
+import pytest
 import run_backup_restore_acceptance as runner
 
 
@@ -68,3 +69,12 @@ def test_existing_report_blocks_provisioning(tmp_path, monkeypatch):
         raise AssertionError("Existing evidence must not be replaced")
     assert report.read_text() == "original evidence"
     assert all(call[:2] == ("image", "inspect") for call in calls)
+
+
+@pytest.mark.parametrize("module", ["backup_restore_probe", "run_backup_restore_acceptance"])
+def test_failed_runtime_check_still_fails_under_optimization(module):
+    result = subprocess.run([sys.executable, "-O", "-c",
+        "from " + module + " import require; require(False, 'optimization-must-fail')"],
+        cwd=Path(__file__).parent, capture_output=True, text=True)
+    assert result.returncode != 0
+    assert "RuntimeError: optimization-must-fail" in result.stderr

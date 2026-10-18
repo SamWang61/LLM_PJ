@@ -12,6 +12,11 @@ def docker(*args):
     return subprocess.check_output(["docker", *args], text=True, encoding="utf-8").strip()
 
 
+def require(condition, message):
+    if not condition:
+        raise RuntimeError(message)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--restored-root", type=Path, required=True)
@@ -34,7 +39,8 @@ def main():
         try:
             docker("network", "create", "--internal", network)
             created.append(("network", network))
-            assert json.loads(docker("network", "inspect", network))[0]["Internal"]
+            require(json.loads(docker("network", "inspect", network))[0]["Internal"],
+                    "External Docker network rejected")
             report["network_internal"] = True
             docker("run", "--pull=never", "--detach", "--name", database,
                    "--network", network, "--network-alias", "backup-db", mongo_image)
@@ -53,22 +59,24 @@ def main():
                    "--mount", "type=bind,source=" + str(root) + ",target=/restore,readonly",
                    "--mount", "type=bind,source=" + str(probe) + ",target=/probe.py,readonly",
                    "--env", "SAM_BACKUP_INTERNAL_PROBE=true",
+                   "--env", "PYTHONOPTIMIZE=1",
                    "--env", "PYTHONDONTWRITEBYTECODE=1", "--entrypoint", "python",
                    image, "/probe.py", "--restored-root", "/restore")
             created.append(("container", boot))
             info = json.loads(docker("inspect", boot))[0]
-            assert info["HostConfig"]["ReadonlyRootfs"]
-            assert all(not mount["RW"] for mount in info["Mounts"] if mount["Type"] == "bind")
-            assert info["HostConfig"]["NetworkMode"] == network
-            assert not info["HostConfig"]["PortBindings"]
+            require(info["HostConfig"]["ReadonlyRootfs"], "Writable container root rejected")
+            require(all(not mount["RW"] for mount in info["Mounts"] if mount["Type"] == "bind"),
+                    "Writable source mount rejected")
+            require(info["HostConfig"]["NetworkMode"] == network, "Unexpected Docker network")
+            require(not info["HostConfig"]["PortBindings"], "Published probe port rejected")
             report["source_mount_readonly"] = True
             report["published_ports"] = 0
             raw = docker("start", "--attach", boot)
             code = json.loads(docker("inspect", boot))[0]["State"]["ExitCode"]
-            assert code == 0, "Restored source boot failed"
+            require(code == 0, "Restored source boot failed")
             report["probe"] = json.loads(raw.splitlines()[-1])
-            assert report["probe"]["status"] == "passed"
-            assert report["probe"]["fixture_database_removed"]
+            require(report["probe"]["status"] == "passed", "Restoration probe failed")
+            require(report["probe"]["fixture_database_removed"], "Fixture cleanup failed")
             report["status"] = "passed"
         except Exception as error:
             report["error_type"] = type(error).__name__
@@ -77,10 +85,12 @@ def main():
             for kind, name in reversed(created):
                 try:
                     if kind == "container":
-                        assert json.loads(docker("inspect", name))[0]["Name"] == "/" + name
+                        require(json.loads(docker("inspect", name))[0]["Name"] == "/" + name,
+                                "Container identity changed")
                         docker("rm", "--force", name)
                     else:
-                        assert json.loads(docker("network", "inspect", name))[0]["Name"] == name
+                        require(json.loads(docker("network", "inspect", name))[0]["Name"] == name,
+                                "Network identity changed")
                         docker("network", "rm", name)
                 except Exception:
                     failures.append(kind)

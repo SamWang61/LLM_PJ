@@ -15,6 +15,11 @@ from urllib.request import urlopen
 from uuid import uuid4
 
 
+def require(condition, message):
+    if not condition:
+        raise RuntimeError(message)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--restored-root", type=Path, required=True)
@@ -32,7 +37,8 @@ def main():
     from pymongo import MongoClient
     from werkzeug.serving import make_server
     import app as restored_app
-    assert Path(restored_app.__file__).resolve().is_relative_to(website)
+    require(Path(restored_app.__file__).resolve().is_relative_to(website),
+            "Application did not load from restored source")
     name = "sam_backup_restore_" + uuid4().hex
     # Fixed network alias, no credentials, DNS SRV or configurable Atlas URI.
     client = MongoClient("mongodb://backup-db:27017/", serverSelectionTimeoutMS=5000)
@@ -40,6 +46,7 @@ def main():
     server = None
     report = {"target": "disposable internal Docker MongoDB",
               "scope": "historical restored source and three local fixture collections",
+              "python_optimization": sys.flags.optimize,
               "dotenv_loaded": False, "atlas_export_or_restore": False}
 
     def snapshot():
@@ -73,12 +80,13 @@ def main():
                 (export / (coll + ".bson")).write_bytes(
                     b"".join(BSON.encode(doc) for doc in db[coll].find()))
             client.drop_database(name)
-            assert name not in client.list_database_names()
+            require(name not in client.list_database_names(), "Fixture database drop failed")
             for coll in fixtures:
                 db[coll].insert_many(decode_all((export / (coll + ".bson")).read_bytes()))
             db.product_skus.create_index("sku_code", unique=True, name="restore_sku_unique")
-        assert snapshot() == before
-        assert db.product_skus.index_information()["restore_sku_unique"]["unique"]
+        require(snapshot() == before, "Restored BSON snapshot differs")
+        require(db.product_skus.index_information().get("restore_sku_unique", {}).get("unique"),
+                "Restored unique index is missing")
         report["bson_restore"] = {"collections": 3, "documents": 3,
                                   "hash_differences": 0, "unique_index_restored": True}
         app = restored_app.create_app({
@@ -94,10 +102,10 @@ def main():
         for path in ("/", "/product/" + str(product), "/auth/login", "/static/css/main.css"):
             with urlopen("http://127.0.0.1:" + str(server.server_port) + path, timeout=10) as response:
                 status[path.split(str(product))[0]] = response.status
-                assert response.status == 200
-                assert response.read()
+                require(response.status == 200, "Restored HTTP status differs")
+                require(response.read(), "Restored HTTP body is empty")
         report["restored_http"] = status
-        assert snapshot() == before
+        require(snapshot() == before, "Boot changed fixture data")
         report["boot_readback_differences"] = 0
         report["status"] = "passed"
     finally:
