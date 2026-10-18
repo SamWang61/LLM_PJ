@@ -73,3 +73,20 @@ def test_storefront_uses_stored_policy(shop, monkeypatch):
     monkeypatch.setattr(workflows, "recommend_products", spy)
     assert client.get("/").status_code == 200
     assert captured["weights"]["PRODUCT_VIEW"] == 7 and captured["weights"]["PURCHASE"] == 4
+
+
+@pytest.mark.parametrize("settings", ["invalid", [1], {"weights": "invalid"}, {"weights": [4, 3, 2, 1]}])
+def test_malformed_policy_containers_fall_back_instead_of_breaking_homepage(settings):
+    db = mongomock.MongoClient().w
+    db.system_configs.insert_one({"config_key": "recommendation_policy", "status": "active", "settings": settings})
+    assert policy_weights(db) == DEFAULT_WEIGHTS
+
+
+@pytest.mark.parametrize("value", [float("nan"), float("inf"), float("-inf")])
+def test_nonfinite_policy_weights_do_not_poison_scores(value):
+    db = mongomock.MongoClient().w
+    db.system_configs.insert_one({"config_key": "recommendation_policy", "status": "active",
+                                  "settings": {"weights": {"PURCHASE": value}}})
+    weights = policy_weights(db)
+    assert weights == DEFAULT_WEIGHTS
+    assert scores([{"product_id": "whey", "event_type": "PURCHASE"}], weights)["whey"] == 12
