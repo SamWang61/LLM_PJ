@@ -64,5 +64,11 @@
     "configuration_changed": false,
     "source_sha": "e000d952d22a64b568903641893f4ffdc71accd3",
     "traffic_percent": 100
+  },
+  "historical_scope": {
+    "record": "05:38-05:45 password repair; original checks retained",
+    "superseded_by_PR": 95,
+    "current_runtime_source": "576b474822efd7464d650d7af2aa245e07fbc911",
+    "do_not_restore_obsolete_credentials": true
   }
 }

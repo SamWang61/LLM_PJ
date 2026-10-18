@@ -1,0 +1,1240 @@
+{
+  "recorded_at": "2026-10-18T22:30:01.949800+00:00",
+  "merge95": {
+    "pr": 95,
+    "head": "e5788ce12339370a8afb5e2c824a6ecd24e5f602",
+    "merge_sha": "8a29f5fbbb05deb09c2e23324f1769c5bf86c0b3",
+    "merged_at": "2026-10-18T22:26:40Z",
+    "CI": [
+      {
+        "id": 39169873088,
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 39169869377,
+        "status": "completed",
+        "conclusion": "success"
+      }
+    ]
+  },
+  "premerge95": {
+    "checked_at": "2026-10-18T22:26:39.491263+00:00",
+    "head": "e5788ce12339370a8afb5e2c824a6ecd24e5f602",
+    "base": "2e6247b222da81bf38ddbb5494f402dc56896643",
+    "CI": [
+      {
+        "id": 39169873088,
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "id": 39169869377,
+        "status": "completed",
+        "conclusion": "success"
+      }
+    ],
+    "code_review": [
+      {
+        "commit_sha": "e5788ce12339370a8afb5e2c824a6ecd24e5f602",
+        "has_any_findings": false,
+        "has_unresolved_findings": false,
+        "status": "completed"
+      }
+    ],
+    "local_transactions": 275,
+    "remote_private_passed": 4,
+    "formal_real_role_logins": 6,
+    "fixture_cleanup_verified": true,
+    "temporary_indexes_restored": true,
+    "all_jobs_deleted": true,
+    "eligible": true
+  },
+  "source": {
+    "checked_at": "2026-10-18T22:21:18.589Z",
+    "source": "e5788ce12339370a8afb5e2c824a6ecd24e5f602",
+    "source_bytes": 2157908,
+    "source_sha256": "bd85ba17567bfdcff4b7d633551841df4b02a6dafee0a701fac46d969cf7fb4e",
+    "gcs_generation": "1792361421014751",
+    "job_harness_sha256": "2a164aa976aa11f5f6392bba743adc001915d4929ed5a4f023a87a7bfe92bd72",
+    "harness_equal": true,
+    "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:8755ccb82902cf59430d5b2b76505c3fb6e4ed265d0ef98ba42821769edbcbdd",
+    "service_account": "vibecart-pr21-acceptance@vibecart-llmai.iam.gserviceaccount.com"
+  },
+  "build": {
+    "id": "4e12f368-f6fd-41a7-9404-86b276e3e66b",
+    "operation": "operations/build/vibecart-llmai/NGUxMmYzNjgtZjZmZC00MWE3LTk0MDQtODZiMjc2ZTNlNjZi",
+    "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web:role95-full-e5788ce-20261019",
+    "status": "SUCCESS",
+    "digest": "sha256:8755ccb82902cf59430d5b2b76505c3fb6e4ed265d0ef98ba42821769edbcbdd",
+    "steps": [
+      {
+        "name": "gcr.io/cloud-builders/docker",
+        "status": "SUCCESS"
+      },
+      {
+        "name": "gcr.io/cloud-builders/docker",
+        "status": "SUCCESS"
+      },
+      {
+        "name": "gcr.io/cloud-builders/docker",
+        "status": "SUCCESS"
+      }
+    ],
+    "log_url": "https://console.cloud.google.com/cloud-build/builds;region=asia-east1/4e12f368-f6fd-41a7-9404-86b276e3e66b?project=278483818008",
+    "finish_time": "2026-10-18T22:10:51.330631Z"
+  },
+  "cloud_readback": {
+    "checked_at": "2026-10-18T22:25:44.594Z",
+    "services": {
+      "vibecart-web": {
+        "revision": "vibecart-web-role-auth-576b4748",
+        "percent": 100,
+        "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:228862259bd96a69224132e5af73fc4e1c89165a759057470ed467c4ce80617b",
+        "source": "576b474822efd7464d650d7af2aa245e07fbc911",
+        "iam_unchanged": true
+      },
+      "vibecart-acceptance-pr21": {
+        "revision": "vibecart-acceptance-pr21-00011-2hq",
+        "percent": 100,
+        "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:7199fa08c711917a80e5f54dbfd580ed96f3ef632bda7337b4aa2bde2325c992",
+        "source": "e000d952d22a64b568903641893f4ffdc71accd3",
+        "iam_unchanged": true
+      }
+    },
+    "previews": [
+      {
+        "revision": "vibecart-acceptance-pr21-role95-e5788ce",
+        "tag": "role95-full",
+        "percent": 0,
+        "source": "e5788ce12339370a8afb5e2c824a6ecd24e5f602",
+        "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:8755ccb82902cf59430d5b2b76505c3fb6e4ed265d0ef98ba42821769edbcbdd",
+        "anonymous_status": 403,
+        "database": "vibecart_acceptance_pr21",
+        "AI_recommendations": "false",
+        "AI_summary": "false",
+        "free_question": "false"
+      }
+    ],
+    "jobs": [
+      {
+        "name": "sam-role95-acceptance-20261019",
+        "deleted": true
+      },
+      {
+        "name": "sam-role95-acceptance2-20261019",
+        "deleted": true
+      },
+      {
+        "name": "sam-role95-acceptance3-20261019",
+        "deleted": true
+      }
+    ],
+    "hosting": {
+      "release": "sites/vibecart-llmai/releases/1791982222797000",
+      "unchanged": true
+    }
+  },
+  "executed_probe_sources": {
+    "bundle_sha256": "2b7a1a485f92856f34ecb7a34a498ec7ba183c2c01b46f446eb1decc863f6ea3",
+    "files": [
+      {
+        "path": "scripts/remote_reviews_acceptance_probe.py",
+        "sha256": "705cdd6476d748bbf4648b767b199b63f6c1cee01e05f141dc2ce1b306561669"
+      },
+      {
+        "path": "scripts/remote_preview_ai_probe.py",
+        "sha256": "71e311355aafc0948ff253dd7377bf97218db0530333bad242f65c4e57659d97"
+      },
+      {
+        "path": "scripts/remote_d4_consumer_probe.py",
+        "sha256": "a31907c0ce2fcc1fbf9c9f867d32084a5ba81896e807ca7a4c48bab5afcb475c"
+      },
+      {
+        "path": "scripts/remote_account_acceptance_probe.py",
+        "sha256": "6bf1206fc71c2a85b69608f58b871c03b3dca44922bd2f225165097621e4c027"
+      },
+      {
+        "path": "scripts/remote_transaction_acceptance_probe.py",
+        "sha256": "929e5e6ca74e2f8f791a3a72b385d6ace1f6948c333af5525ee6818ec9830998"
+      },
+      {
+        "path": "scripts/remote_member_transaction_checks.py",
+        "sha256": "ce6869d91c116f24102bbd4d68743d80f30ff8c812855454e6ff3f71c9ce26e2"
+      },
+      {
+        "path": "scripts/remote_h05_h07_checks.py",
+        "sha256": "f4c947363c37aadc8fbb8a65d3464f7313b7f8a80f85a50a70e48102336936db"
+      },
+      {
+        "path": "scripts/remote_dual_role_acceptance_probe.py",
+        "sha256": "57d8cc5b87d69c5be491d58cb58adfc7ed36aee02beea3dfdc76d491a5f8d69c"
+      }
+    ],
+    "harness_file_sha256": "56661bbee8dc28fec96a8f1f6cd1674c40a167f897b080b5eb425893f57712c8",
+    "all_source_bytes_equal": true,
+    "harness_delivered_sha256": "623a2603cc60c47defbdd8ad453e8ab94d27a8084e1d99a76506ca6e229b8f8a",
+    "harness_normalized_LF_bytes_equal": true,
+    "harness_original_line_endings": "CRLF, preserved in actual Cloud Run code hash; delivered wrapper is normalized LF"
+  },
+  "successful_job": {
+    "name": "sam-role95-acceptance3-20261019",
+    "execution": "projects/vibecart-llmai/locations/asia-east1/jobs/sam-role95-acceptance3-20261019/executions/sam-role95-acceptance3-20261019-2984n",
+    "operation_done": true,
+    "operation_error": null,
+    "deleted_verified": true,
+    "inline_harness_sha256": "2a164aa976aa11f5f6392bba743adc001915d4929ed5a4f023a87a7bfe92bd72",
+    "results": [
+      {
+        "at": "2026-10-18T22:22:21.297774Z",
+        "sam_preview_job_probe": {
+          "file": "remote_dual_role_acceptance_probe.py",
+          "independent_cleanup": {
+            "behavior_events": 0,
+            "users": 0,
+            "auth_sessions": 0
+          },
+          "report": {
+            "other_device_preserved": true,
+            "revision": "vibecart-acceptance-pr21-role95-e5788ce",
+            "cleanup": {
+              "users_deleted": 6,
+              "behavior_events_deleted": 0,
+              "verified": true,
+              "users_remaining": 0,
+              "auth_sessions_remaining": 0,
+              "behavior_events_remaining": 0,
+              "auth_sessions_deleted": 0
+            },
+            "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:8755ccb82902cf59430d5b2b76505c3fb6e4ed265d0ef98ba42821769edbcbdd",
+            "status": "passed",
+            "disabled_role_denied": true,
+            "posted_role_ignored": true,
+            "scope": "six disposable same-email/role identities; no real people or real passwords",
+            "ambiguous_password_denied": true,
+            "role_switch_revokes_prior_device": true,
+            "probe_id": "sam-dual-role-049703e4ae6079b9",
+            "wrong_password_denied": true,
+            "fixture_ids": [
+              "6ad54664d59d13ed2481da95",
+              "6ad54664d59d13ed2481da96",
+              "6ad54664d59d13ed2481da97",
+              "6ad54664d59d13ed2481da98",
+              "6ad54664d59d13ed2481da99",
+              "6ad54664d59d13ed2481da9a"
+            ],
+            "fixture_sessions_after_logout": 0,
+            "six_roles": [
+              {
+                "own_logout": true,
+                "login": 302,
+                "role_boundary": 302,
+                "password_changes": 403,
+                "role": "customer",
+                "identity": 1
+              },
+              {
+                "role_boundary": 200,
+                "login": 302,
+                "password_changes": 403,
+                "identity": 1,
+                "own_logout": true,
+                "role": "admin"
+              },
+              {
+                "identity": 2,
+                "own_logout": true,
+                "password_changes": 403,
+                "role": "customer",
+                "login": 302,
+                "role_boundary": 302
+              },
+              {
+                "role_boundary": 200,
+                "own_logout": true,
+                "identity": 2,
+                "password_changes": 403,
+                "login": 302,
+                "role": "admin"
+              },
+              {
+                "identity": 3,
+                "role": "customer",
+                "role_boundary": 302,
+                "own_logout": true,
+                "login": 302,
+                "password_changes": 403
+              },
+              {
+                "login": 302,
+                "own_logout": true,
+                "password_changes": 403,
+                "identity": 3,
+                "role_boundary": 200,
+                "role": "admin"
+              }
+            ]
+          },
+          "code": 0
+        }
+      },
+      {
+        "at": "2026-10-18T22:23:19.811712Z",
+        "sam_preview_job_probe": {
+          "file": "remote_reviews_acceptance_probe.py",
+          "report": {
+            "fixture_scope": "isolated simulated paid states and ranking aggregates only",
+            "fixture_ids": {
+              "orders": [
+                "6ad546a37fd46435f18d35af",
+                "6ad546a37fd46435f18d35b1",
+                "6ad546a37fd46435f18d35b3",
+                "6ad546a37fd46435f18d35b5",
+                "6ad546a37fd46435f18d35b7",
+                "6ad546a37fd46435f18d35b9",
+                "6ad546a47fd46435f18d35bb",
+                "6ad546a47fd46435f18d35bd",
+                "6ad546a47fd46435f18d35bf",
+                "6ad546d17fd46435f18d39b1",
+                "6ad546d37fd46435f18d39b3"
+              ],
+              "users": [
+                "6ad5469e7fd46435f18d357e",
+                "6ad5469e7fd46435f18d357f",
+                "6ad5469e7fd46435f18d3580"
+              ],
+              "lines": [
+                "6ad546a37fd46435f18d35b0",
+                "6ad546a37fd46435f18d35b2",
+                "6ad546a37fd46435f18d35b4",
+                "6ad546a37fd46435f18d35b6",
+                "6ad546a37fd46435f18d35b8",
+                "6ad546a37fd46435f18d35ba",
+                "6ad546a47fd46435f18d35bc",
+                "6ad546a47fd46435f18d35be",
+                "6ad546a47fd46435f18d35c0",
+                "6ad546d17fd46435f18d39b2",
+                "6ad546d37fd46435f18d39b4"
+              ],
+              "products": [
+                "6ad5469e7fd46435f18d3581",
+                "6ad5469e7fd46435f18d3582",
+                "6ad5469e7fd46435f18d3583",
+                "6ad5469e7fd46435f18d3584",
+                "6ad5469e7fd46435f18d3585",
+                "6ad5469e7fd46435f18d3586",
+                "6ad5469e7fd46435f18d3587",
+                "6ad5469e7fd46435f18d3588",
+                "6ad5469e7fd46435f18d3589",
+                "6ad5469e7fd46435f18d358a",
+                "6ad5469e7fd46435f18d358b",
+                "6ad5469e7fd46435f18d358c",
+                "6ad5469e7fd46435f18d358d",
+                "6ad5469e7fd46435f18d358e",
+                "6ad5469e7fd46435f18d358f",
+                "6ad5469e7fd46435f18d3590",
+                "6ad5469e7fd46435f18d3591",
+                "6ad5469e7fd46435f18d3592"
+              ],
+              "skus": [
+                "6ad5469e7fd46435f18d3593",
+                "6ad5469e7fd46435f18d3594",
+                "6ad5469e7fd46435f18d3595",
+                "6ad5469e7fd46435f18d3596",
+                "6ad5469e7fd46435f18d3597",
+                "6ad5469e7fd46435f18d3598",
+                "6ad5469e7fd46435f18d3599",
+                "6ad5469e7fd46435f18d359a",
+                "6ad5469e7fd46435f18d359b",
+                "6ad5469e7fd46435f18d359c",
+                "6ad5469e7fd46435f18d359d",
+                "6ad5469e7fd46435f18d359e",
+                "6ad5469e7fd46435f18d359f",
+                "6ad5469e7fd46435f18d35a0",
+                "6ad5469e7fd46435f18d35a1",
+                "6ad5469e7fd46435f18d35a2",
+                "6ad5469e7fd46435f18d35a3",
+                "6ad5469e7fd46435f18d35a4"
+              ]
+            },
+            "status": "passed",
+            "ranking": {
+              "unique": 10,
+              "cross_count": 4,
+              "other_member_unchanged": true,
+              "cross_ratings": [
+                5,
+                4.9,
+                4.8,
+                4.7
+              ],
+              "synthetic_1001_unchanged": true,
+              "caps_3_and_2": true,
+              "unavailable_default_excluded": true,
+              "synthetic_monitor_count_unchanged": 21,
+              "personal_count": 6,
+              "insufficient_candidates_not_filled_with_unavailable": true
+            },
+            "revision": "vibecart-acceptance-pr21-role95-e5788ce",
+            "revoked_device_denied": true,
+            "reviews": {
+              "delivered_html_fallback_303": true,
+              "concurrent_count": 5,
+              "count": 3,
+              "after_insert_product_failure_rollback": true,
+              "display": 4.4,
+              "after_insert_product_failure_http": 409,
+              "concurrent_sum": 19,
+              "concurrent_identical_200": true,
+              "persisted_html_equal": true,
+              "sum": 13,
+              "default_excluded": true,
+              "changed_retry_409": true,
+              "concurrent_display": 3.8,
+              "concurrent_distinct_reviews_200": true
+            },
+            "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:8755ccb82902cf59430d5b2b76505c3fb6e4ed265d0ef98ba42821769edbcbdd",
+            "probe_id": "sam-reviews-878f0f107fb5ddf8",
+            "expect_bge": false,
+            "eligibility": {
+              "csrf_400": true,
+              "unpaid_incomplete_cancelled_other_owner_400": true,
+              "invalid_rating_400": true
+            },
+            "stage": "revoked_device",
+            "cleanup": {
+              "users_deleted": 3,
+              "auth_sessions_deleted": 2,
+              "product_reviews_deleted": 6,
+              "behavior_events_remaining": 0,
+              "verified": true,
+              "product_reviews_remaining": 0,
+              "order_items_deleted": 11,
+              "behavior_events_deleted": 1009,
+              "products_deleted": 18,
+              "products_remaining": 0,
+              "auth_sessions_remaining": 0,
+              "order_items_remaining": 0,
+              "product_skus_remaining": 0,
+              "product_skus_deleted": 18,
+              "orders_remaining": 0,
+              "users_remaining": 0,
+              "orders_deleted": 11
+            }
+          },
+          "code": 0
+        }
+      },
+      {
+        "at": "2026-10-18T22:23:55.342840Z",
+        "sam_preview_job_probe": {
+          "file": "remote_account_acceptance_probe.py",
+          "report": {
+            "probe_id": "sam-accounts-48b69a0c7b606683",
+            "cleanup": {
+              "verified": true,
+              "retirement": {
+                "sessions_deleted": 1,
+                "accounts_present": 2,
+                "verified": true,
+                "sessions_revoked": true,
+                "disabled": true,
+                "sessions_remaining": 0
+              },
+              "users_remaining": 0,
+              "users_deleted": 2
+            },
+            "service_image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:8755ccb82902cf59430d5b2b76505c3fb6e4ed265d0ef98ba42821769edbcbdd",
+            "database": "vibecart_acceptance_pr21",
+            "retirement_before_cleanup": {
+              "accounts_present": 2,
+              "sessions_deleted": 3,
+              "disabled": true,
+              "sessions_revoked": true,
+              "verified": true,
+              "sessions_remaining": 0
+            },
+            "checks": {
+              "customer_two_sessions_admin_denied": true,
+              "same_browser_relogin_old_cookie_denied_second_device_live": true,
+              "anonymous_member_admin_denied": true,
+              "admin_read_pages": true,
+              "reenable_requires_new_login_old_cookies_stay_invalid": true,
+              "disabled_accounts_login_and_all_devices_denied": true,
+              "all_customer_sessions_revoked_admin_unaffected": true
+            },
+            "service_revision": "vibecart-acceptance-pr21-role95-e5788ce",
+            "accounts": [
+              {
+                "role": "admin",
+                "id": "6ad546d80b8e9bb07528da5b"
+              },
+              {
+                "id": "6ad546d80b8e9bb07528da5c",
+                "role": "customer"
+              }
+            ],
+            "status": "passed",
+            "credentials_persisted": false
+          },
+          "code": 0
+        }
+      },
+      {
+        "at": "2026-10-18T22:25:03.357576Z",
+        "sam_preview_job_probe": {
+          "file": "remote_transaction_acceptance_probe.py",
+          "report": {
+            "customer_admin_denied": true,
+            "stock_failure_rollback": {
+              "order_items_scope": "fixture sku_id including orphan items",
+              "second_sku_unavailable_http": 400,
+              "persisted_before": {
+                "behavior_events": 9,
+                "cart_events": 9,
+                "order_items": 2,
+                "orders": 2
+              },
+              "persisted_after": {
+                "orders": 2,
+                "cart_events": 9,
+                "order_items": 2,
+                "behavior_events": 9
+              },
+              "arbitrary_fault_injection_tested": false,
+              "cart_revision_preserved": true,
+              "cart_event_counts_unchanged": true,
+              "order_item_event_counts_unchanged": true,
+              "first_sku_stock_preserved": true
+            },
+            "checkout_persisted": true,
+            "cleanup": {
+              "product_skus": 2,
+              "behavior_events": 9,
+              "auth_sessions": 3,
+              "order_items_remaining": 0,
+              "orders": 2,
+              "product_skus_remaining": 0,
+              "carts": 3,
+              "behavior_events_remaining": 0,
+              "auth_sessions_remaining": 0,
+              "orders_remaining": 0,
+              "order_items": 2,
+              "products_remaining": 0,
+              "users_remaining": 0,
+              "users": 3,
+              "verified": true,
+              "cart_events": 9,
+              "carts_remaining": 0,
+              "products": 1,
+              "cart_events_remaining": 0
+            },
+            "two_device_sessions": true,
+            "session_security": {
+              "inactive_customer_both_devices_denied": true,
+              "maintainer_revoke_all_denied": true,
+              "same_browser_relogin": true,
+              "old_cookie_denied": true,
+              "d5_ui_tested": false,
+              "other_device_preserved": true
+            },
+            "h05": {
+              "http_statuses": [
+                200,
+                200,
+                200,
+                200
+              ],
+              "add_two_update_one_reload_remove_reload": true,
+              "status": "passed",
+              "revision_sequence": [
+                1,
+                2,
+                3,
+                4
+              ],
+              "stale_revision_http": 409,
+              "readded_for_checkout_quantity": 1,
+              "stale_state_unchanged": true
+            },
+            "h07_events": {
+              "unique_event_ids": true,
+              "demo_purchase_excluded_from_attribution": true,
+              "status": "passed",
+              "add_to_cart_links_and_quantities": true,
+              "required_contract_fields": true,
+              "search_product_order_cart_links": true,
+              "event_type_counts": {
+                "PURCHASE": 1,
+                "ADD_TO_CART": 2,
+                "PRODUCT_VIEW": 1,
+                "SEARCH": 1
+              },
+              "readback_scope": "new disposable private user; real HTTPS-generated events"
+            },
+            "add_to_cart": true,
+            "status": "passed",
+            "per_device_logout": true,
+            "retry_same_order": true,
+            "service_image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:8755ccb82902cf59430d5b2b76505c3fb6e4ed265d0ef98ba42821769edbcbdd",
+            "service_revision": "vibecart-acceptance-pr21-role95-e5788ce",
+            "add_http": 200,
+            "last_stock_concurrency": {
+              "successful_checkouts": 1,
+              "orders_total_including_original": 2,
+              "parallel_clients": 2,
+              "stock_remaining": 0,
+              "http_statuses": [
+                200,
+                400
+              ]
+            },
+            "conflict_409": true,
+            "role_checks": {
+              "missing_csrf_400": true,
+              "active_admin_200": true,
+              "inactive_admin_denied": true
+            },
+            "probe_id": "ren-txn-36a6ff4dd09c5f1a",
+            "stock_after_checkout": 1
+          },
+          "code": 0
+        }
+      },
+      {
+        "at": "2026-10-18T22:25:03.578617Z",
+        "sam_role95_index_cleanup": {
+          "scope": "vibecart_acceptance_pr21",
+          "temporary_index_scope": {
+            "acceptance_run": "sam-dual-role-049703e4ae6079b9"
+          },
+          "before": [
+            {
+              "unique": false,
+              "name": "_id_",
+              "key": [
+                [
+                  "_id",
+                  1
+                ]
+              ]
+            }
+          ],
+          "restored": true,
+          "after": [
+            {
+              "unique": false,
+              "name": "_id_",
+              "key": [
+                [
+                  "_id",
+                  1
+                ]
+              ]
+            }
+          ]
+        }
+      },
+      {
+        "at": "2026-10-18T22:25:03.578631Z",
+        "sam_preview_job_complete": {
+          "acceptance_user_indexes_restored": true,
+          "status": "passed",
+          "probes": 4
+        }
+      }
+    ]
+  },
+  "formal_roles": {
+    "checked_at": "2026-10-18T22:15:22.756388+00:00",
+    "status": "passed",
+    "site": "https://vibecart-llmai.web.app",
+    "accounts": [
+      {
+        "email": "cashsam@gmail.com",
+        "role": "customer",
+        "login_http": 302,
+        "landing": "/",
+        "admin_http": 302,
+        "password_get_http": 403,
+        "password_post_http": 403,
+        "server_session_verified": true,
+        "logout_http": 302,
+        "post_logout_admin_http": 302,
+        "own_session_remaining": 0,
+        "direct_cleanup_used": false
+      },
+      {
+        "email": "cashsam@gmail.com",
+        "role": "admin",
+        "login_http": 302,
+        "landing": "/admin/",
+        "admin_http": 200,
+        "password_get_http": 403,
+        "password_post_http": 403,
+        "server_session_verified": true,
+        "logout_http": 302,
+        "post_logout_admin_http": 302,
+        "own_session_remaining": 0,
+        "direct_cleanup_used": false
+      },
+      {
+        "email": "jeff841117@gmail.com",
+        "role": "customer",
+        "login_http": 302,
+        "landing": "/",
+        "admin_http": 302,
+        "password_get_http": 403,
+        "password_post_http": 403,
+        "server_session_verified": true,
+        "logout_http": 302,
+        "post_logout_admin_http": 302,
+        "own_session_remaining": 0,
+        "direct_cleanup_used": false
+      },
+      {
+        "email": "jeff841117@gmail.com",
+        "role": "admin",
+        "login_http": 302,
+        "landing": "/admin/",
+        "admin_http": 200,
+        "password_get_http": 403,
+        "password_post_http": 403,
+        "server_session_verified": true,
+        "logout_http": 302,
+        "post_logout_admin_http": 302,
+        "own_session_remaining": 0,
+        "direct_cleanup_used": false
+      },
+      {
+        "email": "chen2000401@gmail.com",
+        "role": "customer",
+        "login_http": 302,
+        "landing": "/",
+        "admin_http": 302,
+        "password_get_http": 403,
+        "password_post_http": 403,
+        "server_session_verified": true,
+        "logout_http": 302,
+        "post_logout_admin_http": 302,
+        "own_session_remaining": 0,
+        "direct_cleanup_used": false
+      },
+      {
+        "email": "chen2000401@gmail.com",
+        "role": "admin",
+        "login_http": 302,
+        "landing": "/admin/",
+        "admin_http": 200,
+        "password_get_http": 403,
+        "password_post_http": 403,
+        "server_session_verified": true,
+        "logout_http": 302,
+        "post_logout_admin_http": 302,
+        "own_session_remaining": 0,
+        "direct_cleanup_used": false
+      }
+    ],
+    "credentials_in_report": false,
+    "credentials_changed": false,
+    "mail_sent": false,
+    "session_scope": "only server-issued device tokens from six fresh clients",
+    "business_before": {
+      "sku_stock_sha256": "1b430a66adde743f295ea3468a833159c768ea2aee45cc970271c9d6d01ef2da",
+      "behavior_events": 1272,
+      "behavior_sha256": "d8f0d52de282dbd21a6ce883dfe11b1bc29d09da9bf857b8b9ba9046ca536bec",
+      "orders": 3006,
+      "order_items": 8977,
+      "product_reviews": 0
+    },
+    "business_after": {
+      "sku_stock_sha256": "1b430a66adde743f295ea3468a833159c768ea2aee45cc970271c9d6d01ef2da",
+      "behavior_events": 1272,
+      "behavior_sha256": "d8f0d52de282dbd21a6ce883dfe11b1bc29d09da9bf857b8b9ba9046ca536bec",
+      "orders": 3006,
+      "order_items": 8977,
+      "product_reviews": 0
+    },
+    "business_unchanged": true,
+    "readiness": {
+      "status": "passed",
+      "collections": 28,
+      "indexes": 89,
+      "migrations": 7,
+      "relationships": 12
+    },
+    "own_sessions_remaining": 0,
+    "preexisting_session_count": 0,
+    "preexisting_sessions_still_present": 0
+  },
+  "atlas_readonly": {
+    "checked_at": "2026-10-18T22:16:14.998513+00:00",
+    "mode": "read_only",
+    "status": "passed",
+    "schema_contract": "v4-email-role-logins-20261018",
+    "collections": [
+      {
+        "name": "users",
+        "issues": [],
+        "indexes": 4,
+        "documents": 612,
+        "conforming": 612
+      },
+      {
+        "name": "categories",
+        "issues": [],
+        "indexes": 3,
+        "documents": 32,
+        "conforming": 32
+      },
+      {
+        "name": "products",
+        "issues": [],
+        "indexes": 5,
+        "documents": 336,
+        "conforming": 336
+      },
+      {
+        "name": "carts",
+        "issues": [],
+        "indexes": 5,
+        "documents": 6,
+        "conforming": 6
+      },
+      {
+        "name": "orders",
+        "issues": [],
+        "indexes": 6,
+        "documents": 3006,
+        "conforming": 3006
+      },
+      {
+        "name": "user_events",
+        "issues": [],
+        "indexes": 5,
+        "documents": 0,
+        "conforming": 0
+      },
+      {
+        "name": "ai_requests",
+        "issues": [],
+        "indexes": 3,
+        "documents": 0,
+        "conforming": 0
+      },
+      {
+        "name": "product_embeddings",
+        "issues": [],
+        "indexes": 2,
+        "documents": 0,
+        "conforming": 0
+      },
+      {
+        "name": "recommendations",
+        "issues": [],
+        "indexes": 2,
+        "documents": 0,
+        "conforming": 0
+      },
+      {
+        "name": "ai_insights",
+        "issues": [],
+        "indexes": 2,
+        "documents": 0,
+        "conforming": 0
+      },
+      {
+        "name": "ai_usage",
+        "issues": [],
+        "indexes": 1,
+        "documents": 0,
+        "conforming": 0
+      },
+      {
+        "name": "request_limits",
+        "issues": [],
+        "indexes": 2,
+        "documents": 0,
+        "conforming": 0
+      },
+      {
+        "name": "schema_migrations",
+        "issues": [],
+        "indexes": 1,
+        "documents": 7,
+        "conforming": 7
+      },
+      {
+        "name": "cart_events",
+        "issues": [],
+        "indexes": 7,
+        "documents": 14,
+        "conforming": 14
+      },
+      {
+        "name": "brands",
+        "issues": [],
+        "indexes": 3,
+        "documents": 128,
+        "conforming": 128
+      },
+      {
+        "name": "product_skus",
+        "issues": [],
+        "indexes": 3,
+        "documents": 336,
+        "conforming": 336
+      },
+      {
+        "name": "product_reviews",
+        "issues": [],
+        "indexes": 3,
+        "documents": 0,
+        "conforming": 0
+      },
+      {
+        "name": "order_items",
+        "issues": [],
+        "indexes": 5,
+        "documents": 8977,
+        "conforming": 8977
+      },
+      {
+        "name": "behavior_events",
+        "issues": [],
+        "indexes": 6,
+        "documents": 1272,
+        "conforming": 1272
+      },
+      {
+        "name": "user_preference_scores",
+        "issues": [],
+        "indexes": 2,
+        "documents": 0,
+        "conforming": 0
+      },
+      {
+        "name": "product_repurchase_stats",
+        "issues": [],
+        "indexes": 2,
+        "documents": 0,
+        "conforming": 0
+      },
+      {
+        "name": "cross_category_rules",
+        "issues": [],
+        "indexes": 3,
+        "documents": 0,
+        "conforming": 0
+      },
+      {
+        "name": "product_purchase_sequences",
+        "issues": [],
+        "indexes": 2,
+        "documents": 0,
+        "conforming": 0
+      },
+      {
+        "name": "recommendation_pools",
+        "issues": [],
+        "indexes": 2,
+        "documents": 0,
+        "conforming": 0
+      },
+      {
+        "name": "first_member_recommendations",
+        "issues": [],
+        "indexes": 2,
+        "documents": 0,
+        "conforming": 0
+      },
+      {
+        "name": "recommendation_logs",
+        "issues": [],
+        "indexes": 3,
+        "documents": 0,
+        "conforming": 0
+      },
+      {
+        "name": "system_configs",
+        "issues": [],
+        "indexes": 2,
+        "documents": 1,
+        "conforming": 1
+      },
+      {
+        "name": "auth_sessions",
+        "issues": [],
+        "indexes": 3,
+        "documents": 4,
+        "conforming": 4
+      }
+    ],
+    "issues": [],
+    "relationships": [
+      {
+        "source": "products",
+        "field": "major_category_id",
+        "target": "categories",
+        "orphans": 0
+      },
+      {
+        "source": "products",
+        "field": "minor_category_id",
+        "target": "categories",
+        "orphans": 0
+      },
+      {
+        "source": "product_skus",
+        "field": "product_id",
+        "target": "products",
+        "orphans": 0
+      },
+      {
+        "source": "carts",
+        "field": "user_id",
+        "target": "users",
+        "orphans": 0
+      },
+      {
+        "source": "orders",
+        "field": "user_id",
+        "target": "users",
+        "orphans": 0
+      },
+      {
+        "source": "order_items",
+        "field": "order_id",
+        "target": "orders",
+        "orphans": 0
+      },
+      {
+        "source": "order_items",
+        "field": "user_id",
+        "target": "users",
+        "orphans": 0
+      },
+      {
+        "source": "order_items",
+        "field": "product_id",
+        "target": "products",
+        "orphans": 0
+      },
+      {
+        "source": "order_items",
+        "field": "sku_id",
+        "target": "product_skus",
+        "orphans": 0
+      },
+      {
+        "source": "product_reviews",
+        "field": "user_id",
+        "target": "users",
+        "orphans": 0
+      },
+      {
+        "source": "product_reviews",
+        "field": "order_item_id",
+        "target": "order_items",
+        "orphans": 0
+      },
+      {
+        "source": "product_reviews",
+        "field": "product_id",
+        "target": "products",
+        "orphans": 0
+      }
+    ],
+    "extra_collections_count": 0,
+    "expected_migrations": [
+      {
+        "id": "20260916_01_initial_schema_v2",
+        "succeeded": true,
+        "checksum_match": true
+      },
+      {
+        "id": "20260916_02_cart_state_events_v3",
+        "succeeded": true,
+        "checksum_match": true
+      },
+      {
+        "id": "20260918_03_schema_document_constraints",
+        "succeeded": true,
+        "checksum_match": true
+      },
+      {
+        "id": "20260918_04_complete_catalog_schema_v4",
+        "succeeded": true,
+        "checksum_match": true
+      },
+      {
+        "id": "20261005_05_synthetic_profile_v4",
+        "succeeded": true,
+        "checksum_match": true
+      },
+      {
+        "id": "20261014_06_member_device_sessions_v4",
+        "succeeded": true,
+        "checksum_match": true
+      },
+      {
+        "id": "20261018_07_email_role_logins_v4",
+        "succeeded": true,
+        "checksum_match": true
+      }
+    ],
+    "extra_migrations_count": 0,
+    "active_recommendation_policies": 1,
+    "total_indexes": 89
+  },
+  "local_transactions": {
+    "checked_at": "2026-10-18T22:09:28.558238+00:00",
+    "status": "passed",
+    "target": "disposable credential-free localhost replica set",
+    "container_removed": true,
+    "tests": {
+      "tests": 275,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "remaining_databases": [
+      "admin",
+      "config",
+      "local"
+    ],
+    "fixtures_removed": true
+  },
+  "probe_safety_tests": 5,
+  "models_tested_this_run": false,
+  "formal_traffic_changed_this_run": false,
+  "v5": {
+    "closed": 2,
+    "total": 14,
+    "human_final_signoff": false
+  },
+  "failed_attempts": [
+    {
+      "job": "sam-role95-acceptance-20261019",
+      "failure": "missing requests before probe start",
+      "deleted_verified": true
+    },
+    {
+      "job": "sam-role95-acceptance2-20261019",
+      "failure": "pre-probe global index duplicate fixture conflict",
+      "index_restored": true,
+      "deleted_verified": true
+    }
+  ],
+  "delivery_inventory_excludes_self": true,
+  "delivery_files": [
+    {
+      "path": ".github/workflows/validate.yml",
+      "sha256": "e1069ea5036de1a945e7b00367cde9b81259e0325cdbcd3f666d7f5f4ec93dc6"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/auth.py",
+      "sha256": "6d69044df007d4bacb3fc9b32a50b3a6df690124515841b211cc770f2e0f925d"
+    },
+    {
+      "path": "MuscleCore分析資料/website/app/templates/auth/login.html",
+      "sha256": "1a5c8e29680f48cffc239fc44025432d28fc87dbc290e12e5266a30b0f7a4232"
+    },
+    {
+      "path": "MuscleCore分析資料/website/tests/test_database_readiness.py",
+      "sha256": "fb68b9469f883e15163d63d0f5a0cc530f428aee349c7640cd9408d4bf21b508"
+    },
+    {
+      "path": "MuscleCore分析資料/website/tests/test_dual_role_login.py",
+      "sha256": "dac48faf54d1c6f810d93fb4cb8fde64a6df6f613828e55f9c8086931aa1094a"
+    },
+    {
+      "path": "MuscleCore分析資料/website/tests/test_role_account_transactions.py",
+      "sha256": "af1c31d983da09da59ff8000b942cf181f66f7efb312359fcbb4d0e2f42616b8"
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/email_role_schema.py",
+      "sha256": "fe87ad9b4789eaf6939199728c21256a1e12e1271c81f067fc2405bb73092f32"
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/schema_active_v4.py",
+      "sha256": "e0c5b14ef00ae6b440f31d53d46c8e2fc286e6e41112d4d4e4bb8e6b6486cdb3"
+    },
+    {
+      "path": "config/role_accounts_20261018.json",
+      "sha256": "bf0bcfce72f31111332a27b0317e4ddc584a13c29ee07c918d2ad7c55a8c9fae"
+    },
+    {
+      "path": "deploy/README.md",
+      "sha256": "4fca7210e5d473caf0aca5110ecd8e73857b0da732c414d2d9ae126483c40891"
+    },
+    {
+      "path": "docs/CURRENT_CONTEXT.md",
+      "sha256": "9701f4604b8d743afac6bfc9dc5dc4dd91141bf880a18d9a06b845f8b1746cea"
+    },
+    {
+      "path": "docs/DOCUMENT_INDEX.md",
+      "sha256": "d973956689ff648c748534c39f7cdf360ef55e7d605e3ca4547ceff1934848f1"
+    },
+    {
+      "path": "docs/README.md",
+      "sha256": "a8b6cab19d8956aba370d44f83923e8cb46ace0a04037bb4839a5ef41f449e31"
+    },
+    {
+      "path": "docs/REN_DUAL_ROLE_LOGIN_2026-10-19.md",
+      "sha256": "31ec458a2fa9e3df392508825627b2a169e9ee8d276dd224909054df291722aa"
+    },
+    {
+      "path": "docs/SAM_ADMIN_LOGIN_REPAIR_2026-10-19.md",
+      "sha256": "bc0190023a23ad1a954d046a22690b46eec8d8b2418752e3db706187a2222972"
+    },
+    {
+      "path": "docs/SAM_PR95_PR96_MERGE_REVIEW_2026-10-19.md",
+      "sha256": "48e5b701a3c12a9c8f3d5f078d29e4e306b05969857acd32bb4e59250cbd1cdf"
+    },
+    {
+      "path": "docs/WORK_EXECUTION_2026-10-18.md",
+      "sha256": "77ef53720a6e2e54a5ffe9f6c13bf94f63b25d4f2a65594c894ca4e8da5d1e5c"
+    },
+    {
+      "path": "docs/inventory/REN_DUAL_ROLE_LOGIN_2026-10-19.json",
+      "sha256": "64ec891c736b77b6dc42acaad0afd13f3cac3625e659ecea17c960a2ef216d70"
+    },
+    {
+      "path": "docs/inventory/REN_DUAL_ROLE_PUBLICATION_2026-10-19.json",
+      "sha256": "313a306fb0bb461877cb12d5d2e5e488295f89ec3ff66000fe1ff5a395b87ae8"
+    },
+    {
+      "path": "docs/inventory/SAM_ADMIN_LOGIN_REPAIR_2026-10-19.json",
+      "sha256": "f8ed74593e637a26e4f31125933cc7394cea1af2c105c8a23ed13f880e401b55"
+    },
+    {
+      "path": "scripts/check_v4_database.py",
+      "sha256": "44533492e0ebacbca0b3ec3eea7845a37395429e4cd19cce0104a831d2afee8a"
+    },
+    {
+      "path": "scripts/migrate_email_role_logins.py",
+      "sha256": "71417f24171de2fb0f042be8398ceb5f5740b46301e413f4ea04b06891e7f90b"
+    },
+    {
+      "path": "scripts/provision_role_accounts.py",
+      "sha256": "80a477e754e7448147e5d5de434aa3e4b801c0907b502f56f9c71f43ba410470"
+    },
+    {
+      "path": "scripts/remote_dual_role_acceptance_probe.py",
+      "sha256": "57d8cc5b87d69c5be491d58cb58adfc7ed36aee02beea3dfdc76d491a5f8d69c"
+    },
+    {
+      "path": "scripts/remote_dual_role_job.py",
+      "sha256": "623a2603cc60c47defbdd8ad453e8ab94d27a8084e1d99a76506ca6e229b8f8a"
+    },
+    {
+      "path": "scripts/test_remote_dual_role_acceptance_probe.py",
+      "sha256": "d775311dbc9fc47bcf2f01c0234a16559a7397aa097f263cfd56ec94206a318f"
+    },
+    {
+      "path": "專題進度/專案未完成工作清單_2026-10-18.md",
+      "sha256": "3bd790b5bb62e42455df3dc759dbae0a280b9f528a14786151897fe746edb28f"
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+{
+  "schema_version": 1,
+  "phase": "2026-10-18-fixed-role-credentials",
+  "password_changes_enabled": false,
+  "accounts": [
+    {"name": "SAM", "email": "cashsam@gmail.com"},
+    {"name": "JEFF", "email": "jeff841117@gmail.com"},
+    {"name": "REN", "email": "chen2000401@gmail.com"}
+  ],
+  "roles": ["admin", "customer"],
+  "credential_source": "Private credentials file; never commit passwords or password hashes"
+}
