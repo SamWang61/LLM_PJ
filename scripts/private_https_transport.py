@@ -2,6 +2,7 @@
 import base64
 from email.message import Message
 import json
+import re
 from pathlib import Path
 import subprocess
 from types import SimpleNamespace
@@ -16,7 +17,8 @@ HOST = 'vibecart-acceptance-pr21-m44ncgz5ta-de.a.run.app'
 class PrivateHTTPSAdapter(requests.adapters.BaseAdapter):
     def send(self, request, stream=False, timeout=None, verify=True, cert=None, proxies=None):
         url = urlparse(request.url)
-        if (url.scheme != 'https' or url.hostname != HOST or url.port
+        tagged = re.fullmatch(r'[a-z][a-z0-9-]{0,20}---' + re.escape(HOST), url.hostname or '')
+        if (url.scheme != 'https' or (url.hostname != HOST and not tagged) or url.port
                 or url.username or url.password or verify is not True or cert
                 or any((proxies or {}).values())):
             raise requests.RequestException('Private HTTPS transport scope mismatch')
@@ -25,12 +27,16 @@ class PrivateHTTPSAdapter(requests.adapters.BaseAdapter):
             body = body.encode('utf8')
         if body is not None and not isinstance(body, bytes):
             raise requests.RequestException('Unsupported private request body')
-        payload = {'url': request.url, 'method': request.method,
+        seconds = timeout[-1] if isinstance(timeout, tuple) else timeout
+        seconds = 60 if seconds is None else seconds
+        if isinstance(seconds, bool) or not isinstance(seconds, (int, float)) or not 0 < seconds <= 200:
+            raise requests.RequestException('Private HTTPS timeout outside acceptance bound')
+        payload = {'url': request.url, 'method': request.method, 'timeout_ms': round(seconds * 1000),
                    'headers': dict(request.headers),
                    'body_base64': base64.b64encode(body).decode('ascii') if body is not None else None}
         try:
             result = subprocess.run(['node', str(Path(__file__).with_suffix('.cjs'))],
-                input=json.dumps(payload), text=True, encoding='utf8', capture_output=True, timeout=65)
+                input=json.dumps(payload), text=True, encoding='utf8', capture_output=True, timeout=seconds + 5)
             data = json.loads(result.stdout)
             if result.returncode or 'error' in data:
                 raise ValueError('transport')
