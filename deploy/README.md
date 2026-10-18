@@ -1,5 +1,9 @@
 # VibeCart Cloud Run／Firebase 展示部署
 
+<!-- SAM MAIN PRODUCTION INDEPENDENT 20261019 BEGIN -->
+**2026/10/19 06:56 SAM正式部署獨立驗收**：[完整證據](../docs/SAM_MAIN_PRODUCTION_ACCEPTANCE_2026-10-19.md)。main b038aaca的56檔已於06:47切正式revision `vibecart-web-reviews-b038aaca` 100%，Firebase於06:48發布。候選與公開網址各六角色／Atlas session驗收通過；正式受控評價4＋4＋5→4.4／3筆，原頁即時更新，八集合清理0、既有業務hash一致。同版私有4組探針驗6＋4／交易／隔離；正式高星實評候選0，不填假資料。原目錄55／56執行檔一致，既有base.html頁尾變體保留。V5仍2/14，真人簽認等待辦保留。
+<!-- SAM MAIN PRODUCTION INDEPENDENT 20261019 END -->
+
 <!-- SAM REVIEWS PRODUCTION 20261019 -->
 **2026/10/19 06:55 SAM商品評價／6＋4正式發布**：Cloud Run `vibecart-web-reviews-b038aaca`已100%，Firebase Hosting 06:48:42發布成功；正式網址Chrome不重載4.0／2筆→4.4／3筆、Atlas13／3讀回、六角色登入及清理驗證通過。275項本機測試0 skipped，同digest私有遠端4探針與高星6＋4排序通過；正式真實評價候選不足不補滿，測試商品不可推薦且已清除。[正式部署與驗收](../docs/SAM_REVIEWS_6PLUS4_PRODUCTION_2026-10-19.md)。下方較早狀態為各時點歷史；V5仍2／14，未代填真人簽收。
 
