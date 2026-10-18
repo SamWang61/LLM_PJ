@@ -1,6 +1,7 @@
 **
 !Dockerfile
 !requirements-cloud.txt
+!requirements-cloud-ai.txt
 !cloud_runtime.py
 !app/
 !app/**

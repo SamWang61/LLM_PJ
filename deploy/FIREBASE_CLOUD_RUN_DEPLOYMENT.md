@@ -15,7 +15,7 @@
 ## 可重現的 Cloud Run 發布流程
 
 1. 從待審查的完整 Git SHA 建立乾淨工作樹，核對 `docs/CURRENT_CONTEXT.md`、PR、CI 與現有 Cloud Run ready revision／流量。原 `C:\LLM\LLM_PJ` 有未提交內容，不用它直接建置。
-2. 在 repo 根目錄執行 `python scripts/prepare_cloud_source.py --output <repo 外暫存目錄>/source.tar.gz`；確認 47 個白名單檔案、沒有 `.env`／資料匯出／測試帳號，逐檔比對 Git 提交位元組並保存 SHA-256。解壓至隔離 build context。
+2. 在 repo 根目錄執行 `python scripts/prepare_cloud_source.py --output <repo 外暫存目錄>/source.tar.gz`；確認白名單檔案（10/18 為 52 個，含 AI 映像用的 `requirements-cloud-ai.txt`）、沒有 `.env`／資料匯出／測試帳號，逐檔比對 Git 提交位元組並保存 SHA-256。解壓至隔離 build context。
 3. 使用 `MuscleCore分析資料/website/Dockerfile` 建置 `linux/amd64` 映像並以假 URI／假 session key 做本機 boot、`/health/live` 與唯讀拒絕測試。Dockerfile 已用 Gunicorn 監聽 `${PORT:-8080}`，不在啟動時匯入資料或執行 migration。
 4. 推送至專案 Artifact Registry，讀回不可變 OCI digest 及 amd64 子 manifest；修訂版本若顯示子 manifest digest，應與 index 內對應項目一致。秘密僅用 Secret Manager 引用，不進入映像、命令參數或 Git。
 5. 建立預覽修訂時指定映像 digest、`CLOUD_PREVIEW_READ_ONLY=true`、`ENABLE_CHECKOUT=false`，保留既有 secret 引用；關閉「立即提供這個修訂版本」。讀回舊 revision 100%／新 revision 0%，需要遠端 HTTP 驗證時才加零流量 tag。
