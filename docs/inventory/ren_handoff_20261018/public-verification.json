@@ -1,0 +1,73 @@
+{
+  "accounts": {
+    "database": "vibecart_ai",
+    "mode": "verify",
+    "checked_at": "2026-10-18T03:17:21.078269+00:00",
+    "expires_at": "2026-10-18T12:30:00+00:00",
+    "credentials_logged": false,
+    "accounts": [
+      {
+        "holder": "REN",
+        "role": "customer",
+        "id": "6ad3f7849888fd7c5f8c4a47",
+        "active": true,
+        "sessions": 0,
+        "login_http": 302,
+        "cart_http": 200,
+        "admin_http": 302,
+        "role_verified": true,
+        "production_checkout_performed": false,
+        "logout_http": 302,
+        "post_logout_cart_http": 302,
+        "own_device_logout_verified": true
+      },
+      {
+        "holder": "JEFF",
+        "role": "admin",
+        "id": "6ad3f7859888fd7c5f8c4a48",
+        "active": true,
+        "sessions": 0,
+        "login_http": 302,
+        "cart_http": 200,
+        "admin_http": 200,
+        "role_verified": true,
+        "production_checkout_performed": false,
+        "logout_http": 302,
+        "post_logout_cart_http": 302,
+        "own_device_logout_verified": true
+      }
+    ],
+    "status": "passed"
+  },
+  "catalog": {
+    "checked_at": "2026-10-18T03:17:39.450047+00:00",
+    "database": "vibecart_ai",
+    "sku": {
+      "code": "CF-SKU-1210303000104",
+      "price": "79.00",
+      "stock": 95,
+      "status": "active"
+    },
+    "d4_count": 1240,
+    "d4_double_marked": 1240,
+    "d4_by_type": [
+      {
+        "_id": "ADD_TO_CART",
+        "count": 310
+      },
+      {
+        "_id": "PRODUCT_VIEW",
+        "count": 310
+      },
+      {
+        "_id": "PURCHASE",
+        "count": 310
+      },
+      {
+        "_id": "SEARCH",
+        "count": 310
+      }
+    ],
+    "read_only": true
+  }
+}

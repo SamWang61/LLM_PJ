@@ -1,0 +1,32 @@
+{
+  "checked_at": "2026-10-18T03:22:53.122718+00:00",
+  "git": "2.45.1.windows.1",
+  "python": "3.12.8",
+  "node": "v24.16.0",
+  "docker_desktop": "4.82.0",
+  "docker_failures": [
+    {
+      "component": "Inference manager",
+      "runtime_path": "%LOCALAPPDATA%/Docker/run/dockerInference",
+      "error": "ERROR_CANT_ACCESS_FILE / invalid listener name"
+    },
+    {
+      "component": "Secrets Engine",
+      "runtime_path": "%LOCALAPPDATA%/docker-secrets-engine/engine.sock",
+      "error": "ERROR_CANT_ACCESS_FILE / invalid listener name"
+    }
+  ],
+  "runtime_recovery": {
+    "action": "quarantined Docker/run and recreated runtime directory",
+    "backup": "%LOCALAPPDATA%/Docker/run.ren-stale-20261018-111644",
+    "result": "Inference startup progressed; next Secrets Engine socket failed"
+  },
+  "native_fallback": "MongoDB 8.0.20, new loopback-only replica set, no credentials",
+  "atlas_connector": "reauthentication required; used existing scoped app credential in memory for authorized queries",
+  "human_workstation_recovery_confirmed": false,
+  "docker_readback": {
+    "exit_code": 0,
+    "server_version": "29.6.1",
+    "status": "ready"
+  }
+}
