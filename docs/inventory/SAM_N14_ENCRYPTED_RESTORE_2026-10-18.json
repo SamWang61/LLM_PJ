@@ -1,5 +1,5 @@
 {
-  "checked_at_utc": "2026-10-18T00:48:52.468543+00:00",
+  "checked_at_utc": "2026-10-18T02:33:48.022453+00:00",
   "basis_main": "40dbd24abd8041c66e0642f14c4dd4cc727638a9",
   "scope": "N14 historical full-source client encryption and isolated local restoration; gate remains open",
   "encryption_restore": {
@@ -95,12 +95,12 @@
   },
   "cloud": {
     "catalog_id": "1ZilMHLhfCv25WHUxWyeVuSTKIEhm3o0N",
-    "catalog_bytes": 672,
+    "catalog_bytes": 7379,
     "catalog_owner_only": true,
     "catalog_readback": true,
-    "data_parts_verified": 0,
+    "data_parts_verified": 20,
     "data_parts_expected": 25,
-    "status": "25 x <=96MiB ciphertext parts upload in progress; verification remains open",
+    "status": "incomplete_local_dns_failure",
     "original_480m_attempt": "Rejected before action invocation: HTTP413 single-file100MiB limit",
     "parts": [
       {
@@ -228,10 +228,326 @@
         "bytes": 23574820,
         "sha256": "213eb9faab5c59c7e4b76f82cae9a8d9feaea8a8774b6de2e9ea2377d893a5a5"
       }
-    ]
+    ],
+    "data_parts_uploaded": 20,
+    "metadata_owner_only_parts": 20,
+    "metadata_size_bytes_each": 100663296,
+    "observed_files": [
+      {
+        "number": 1,
+        "name": "LLM_PJ_0528_source.vcbak.part001",
+        "id": "1kNjeYv6Bk93yh3u3CnyhmrD63LbR4nrs",
+        "url": "https://drive.google.com/file/d/1kNjeYv6Bk93yh3u3CnyhmrD63LbR4nrs/view?usp=drivesdk"
+      },
+      {
+        "number": 2,
+        "name": "LLM_PJ_0528_source.vcbak.part002",
+        "id": "1u-LCD1C2F4q6rxHqOqCvtzpR4YxMcEwD",
+        "url": "https://drive.google.com/file/d/1u-LCD1C2F4q6rxHqOqCvtzpR4YxMcEwD/view?usp=drivesdk"
+      },
+      {
+        "number": 3,
+        "name": "LLM_PJ_0528_source.vcbak.part003",
+        "id": "1POYRCE4Zl4toi3SQKVwxjUZXJu95EK3g",
+        "url": "https://drive.google.com/file/d/1POYRCE4Zl4toi3SQKVwxjUZXJu95EK3g/view?usp=drivesdk"
+      },
+      {
+        "number": 4,
+        "name": "LLM_PJ_0528_source.vcbak.part004",
+        "id": "1hD3tflGxCHZQoC6kPlg2YTrig2DpI-iC",
+        "url": "https://drive.google.com/file/d/1hD3tflGxCHZQoC6kPlg2YTrig2DpI-iC/view?usp=drivesdk"
+      },
+      {
+        "number": 5,
+        "name": "LLM_PJ_0528_source.vcbak.part005",
+        "id": "1z7KSCY3irg-tqG6x6RFSCRD93fZkiDab",
+        "url": "https://drive.google.com/file/d/1z7KSCY3irg-tqG6x6RFSCRD93fZkiDab/view?usp=drivesdk"
+      },
+      {
+        "number": 6,
+        "name": "LLM_PJ_0528_source.vcbak.part006",
+        "id": "1TpohRbdaL6M_bUKhoSLcWq0ehDHTmgFF",
+        "url": "https://drive.google.com/file/d/1TpohRbdaL6M_bUKhoSLcWq0ehDHTmgFF/view?usp=drivesdk"
+      },
+      {
+        "number": 7,
+        "name": "LLM_PJ_0528_source.vcbak.part007",
+        "id": "1jVeMvhg26-U6xGW7fT7sHE3hn0YxtDxF",
+        "url": "https://drive.google.com/file/d/1jVeMvhg26-U6xGW7fT7sHE3hn0YxtDxF/view?usp=drivesdk"
+      },
+      {
+        "number": 8,
+        "name": "LLM_PJ_0528_source.vcbak.part008",
+        "id": "161VLiCtul8mV2oJFGsGU4mSaC3KquZGk",
+        "url": "https://drive.google.com/file/d/161VLiCtul8mV2oJFGsGU4mSaC3KquZGk/view?usp=drivesdk"
+      },
+      {
+        "number": 9,
+        "name": "LLM_PJ_0528_source.vcbak.part009",
+        "id": "1nqiiAmiWopjociJUHS8ctDSnquVtOv8k",
+        "url": "https://drive.google.com/file/d/1nqiiAmiWopjociJUHS8ctDSnquVtOv8k/view?usp=drivesdk"
+      },
+      {
+        "number": 10,
+        "name": "LLM_PJ_0528_source.vcbak.part010",
+        "id": "1zItgxWW1ZEJVe11snfucEMFBhjMccjBD",
+        "url": "https://drive.google.com/file/d/1zItgxWW1ZEJVe11snfucEMFBhjMccjBD/view?usp=drivesdk"
+      },
+      {
+        "number": 11,
+        "name": "LLM_PJ_0528_source.vcbak.part011",
+        "id": "1QYLDExBshKAQ_g4Qs4rbuTRB-RGaLZ1E",
+        "url": "https://drive.google.com/file/d/1QYLDExBshKAQ_g4Qs4rbuTRB-RGaLZ1E/view?usp=drivesdk"
+      },
+      {
+        "number": 12,
+        "name": "LLM_PJ_0528_source.vcbak.part012",
+        "id": "1Exgs3UVsBj-3d1P0z3wT56p9hy0q16Rs",
+        "url": "https://drive.google.com/file/d/1Exgs3UVsBj-3d1P0z3wT56p9hy0q16Rs/view?usp=drivesdk"
+      },
+      {
+        "number": 13,
+        "name": "LLM_PJ_0528_source.vcbak.part013",
+        "id": "12vBP8E2nDcpYOTob0-cO_4GxtBSZKLe9",
+        "url": "https://drive.google.com/file/d/12vBP8E2nDcpYOTob0-cO_4GxtBSZKLe9/view?usp=drivesdk"
+      },
+      {
+        "number": 14,
+        "name": "LLM_PJ_0528_source.vcbak.part014",
+        "id": "1G7UEQuJqYYzBk26hPwYecli7Fm5sSyXF",
+        "url": "https://drive.google.com/file/d/1G7UEQuJqYYzBk26hPwYecli7Fm5sSyXF/view?usp=drivesdk"
+      },
+      {
+        "number": 15,
+        "name": "LLM_PJ_0528_source.vcbak.part015",
+        "id": "1vs1wDDuL2hvof9vjq8z045CazXK-wNKJ",
+        "url": "https://drive.google.com/file/d/1vs1wDDuL2hvof9vjq8z045CazXK-wNKJ/view?usp=drivesdk"
+      },
+      {
+        "number": 16,
+        "name": "LLM_PJ_0528_source.vcbak.part016",
+        "id": "13IaKIf4JP9WDjl_zfxF5inUUe7f90K5B",
+        "url": "https://drive.google.com/file/d/13IaKIf4JP9WDjl_zfxF5inUUe7f90K5B/view?usp=drivesdk"
+      },
+      {
+        "number": 17,
+        "name": "LLM_PJ_0528_source.vcbak.part017",
+        "id": "1J8Px9t_3cowv13j9sAStcCKxikinwZ4j",
+        "url": "https://drive.google.com/file/d/1J8Px9t_3cowv13j9sAStcCKxikinwZ4j/view?usp=drivesdk"
+      },
+      {
+        "number": 18,
+        "name": "LLM_PJ_0528_source.vcbak.part018",
+        "id": "1KgiQqIahyJ1aego2CyyM2kkPoMgDeHIK",
+        "url": "https://drive.google.com/file/d/1KgiQqIahyJ1aego2CyyM2kkPoMgDeHIK/view?usp=drivesdk"
+      },
+      {
+        "number": 19,
+        "name": "LLM_PJ_0528_source.vcbak.part019",
+        "id": "1woVsWTej86o-mLfVlw-9HnBg_jM4tpT7",
+        "url": "https://drive.google.com/file/d/1woVsWTej86o-mLfVlw-9HnBg_jM4tpT7/view?usp=drivesdk"
+      },
+      {
+        "number": 20,
+        "name": "LLM_PJ_0528_source.vcbak.part020",
+        "id": "1hbiVISChuF6kqVlYY8OPcTLw4LMwbLd6",
+        "url": "https://drive.google.com/file/d/1hbiVISChuF6kqVlYY8OPcTLw4LMwbLd6/view?usp=drivesdk"
+      }
+    ],
+    "verified_parts": [
+      {
+        "name": "LLM_PJ_0528_source.vcbak.part001",
+        "bytes": 100663296,
+        "sha256": "ac3394484353f7eb9782f5c67c9e1cdf8c5961711692065e0db07f39f09eb48a",
+        "number": 1,
+        "id": "1kNjeYv6Bk93yh3u3CnyhmrD63LbR4nrs",
+        "owner_only": true
+      },
+      {
+        "name": "LLM_PJ_0528_source.vcbak.part002",
+        "bytes": 100663296,
+        "sha256": "14fd7208333c7c7f667025e8d9c71ec5213aaa323ce54f16edac69b0be161198",
+        "number": 2,
+        "id": "1u-LCD1C2F4q6rxHqOqCvtzpR4YxMcEwD",
+        "owner_only": true
+      },
+      {
+        "verified": true,
+        "name": "LLM_PJ_0528_source.vcbak.part003",
+        "bytes": 100663296,
+        "sha256": "ed76f2394792d5585e5595e43cefe6e6fb4783ff28b16d54cad76941b038fa10",
+        "number": 3,
+        "id": "1POYRCE4Zl4toi3SQKVwxjUZXJu95EK3g",
+        "owner_only": true
+      },
+      {
+        "verified": true,
+        "name": "LLM_PJ_0528_source.vcbak.part004",
+        "bytes": 100663296,
+        "sha256": "9e4a2431a17ca18a65e84b1fff7aad9d4262247995701f4adf32ec8cfe6a385f",
+        "number": 4,
+        "id": "1hD3tflGxCHZQoC6kPlg2YTrig2DpI-iC",
+        "owner_only": true
+      },
+      {
+        "verified": true,
+        "name": "LLM_PJ_0528_source.vcbak.part005",
+        "bytes": 100663296,
+        "sha256": "d5296150350d8a7bf7fe0c8ef1f74aa978e53fd8763865fea6b847b9fe13076b",
+        "number": 5,
+        "id": "1z7KSCY3irg-tqG6x6RFSCRD93fZkiDab",
+        "owner_only": true
+      },
+      {
+        "verified": true,
+        "name": "LLM_PJ_0528_source.vcbak.part006",
+        "bytes": 100663296,
+        "sha256": "ff746700e27c03f3818d7e44a13a5ce04174c79d3bd655d3adf81f7efd1fa353",
+        "number": 6,
+        "id": "1TpohRbdaL6M_bUKhoSLcWq0ehDHTmgFF",
+        "owner_only": true
+      },
+      {
+        "verified": true,
+        "name": "LLM_PJ_0528_source.vcbak.part007",
+        "bytes": 100663296,
+        "sha256": "95d062c7fd7bcc64d68e0271f11e8a60f4b32b203d2e5d3d4d4c43119e8bb2ab",
+        "number": 7,
+        "id": "1jVeMvhg26-U6xGW7fT7sHE3hn0YxtDxF",
+        "owner_only": true
+      },
+      {
+        "verified": true,
+        "name": "LLM_PJ_0528_source.vcbak.part008",
+        "bytes": 100663296,
+        "sha256": "3df1209b318037966dbb523bb1aa7a9424873a1dc062cadca5e5ac8fc815d364",
+        "number": 8,
+        "id": "161VLiCtul8mV2oJFGsGU4mSaC3KquZGk",
+        "owner_only": true
+      },
+      {
+        "verified": true,
+        "name": "LLM_PJ_0528_source.vcbak.part009",
+        "bytes": 100663296,
+        "sha256": "cdc5823e3c812463677820fcee531b588e5933d22f6044eb4cb416e494de254b",
+        "number": 9,
+        "id": "1nqiiAmiWopjociJUHS8ctDSnquVtOv8k",
+        "owner_only": true
+      },
+      {
+        "verified": true,
+        "name": "LLM_PJ_0528_source.vcbak.part010",
+        "bytes": 100663296,
+        "sha256": "60f4abfdb4f7908f97511dbb56ddc8c2c525b711f3dd1a675b5451bf7ec334cc",
+        "number": 10,
+        "id": "1zItgxWW1ZEJVe11snfucEMFBhjMccjBD",
+        "owner_only": true
+      },
+      {
+        "verified": true,
+        "name": "LLM_PJ_0528_source.vcbak.part011",
+        "bytes": 100663296,
+        "sha256": "fcd35cabe5505930a9a632e9b6b28d0180ca054f366138c8597e08d3e7f09087",
+        "number": 11,
+        "id": "1QYLDExBshKAQ_g4Qs4rbuTRB-RGaLZ1E",
+        "owner_only": true
+      },
+      {
+        "verified": true,
+        "name": "LLM_PJ_0528_source.vcbak.part012",
+        "bytes": 100663296,
+        "sha256": "d277e8159004798ab0be7adfd840514bd0842d37c535de223b97be5dc8cbc9ef",
+        "number": 12,
+        "id": "1Exgs3UVsBj-3d1P0z3wT56p9hy0q16Rs",
+        "owner_only": true
+      },
+      {
+        "verified": true,
+        "name": "LLM_PJ_0528_source.vcbak.part013",
+        "bytes": 100663296,
+        "sha256": "14c729f64cccd526287184e85fe21b06097fde08195da1eba8cf6d7181cda48d",
+        "number": 13,
+        "id": "12vBP8E2nDcpYOTob0-cO_4GxtBSZKLe9",
+        "owner_only": true
+      },
+      {
+        "verified": true,
+        "name": "LLM_PJ_0528_source.vcbak.part014",
+        "bytes": 100663296,
+        "sha256": "cd3306dcf92edc30fe70b2945aaed16603dbd7ac8237980715d9672dc3528a95",
+        "number": 14,
+        "id": "1G7UEQuJqYYzBk26hPwYecli7Fm5sSyXF",
+        "owner_only": true
+      },
+      {
+        "verified": true,
+        "name": "LLM_PJ_0528_source.vcbak.part015",
+        "bytes": 100663296,
+        "sha256": "ddf9c9cdb385d773ac2ef6d26529ef5d6e1c3636b26b44e9f20ca8f26b624e60",
+        "number": 15,
+        "id": "1vs1wDDuL2hvof9vjq8z045CazXK-wNKJ",
+        "owner_only": true
+      },
+      {
+        "verified": true,
+        "name": "LLM_PJ_0528_source.vcbak.part016",
+        "bytes": 100663296,
+        "sha256": "a21b354a6ecf7874ebd83c117f4311e376d14d255f77a4ae3d27726a4631b20a",
+        "number": 16,
+        "id": "13IaKIf4JP9WDjl_zfxF5inUUe7f90K5B",
+        "owner_only": true
+      },
+      {
+        "verified": true,
+        "name": "LLM_PJ_0528_source.vcbak.part017",
+        "bytes": 100663296,
+        "sha256": "c9c984998d54af1aef14710ec20158b23eea5ad386875b6a6a6499291bca0acc",
+        "number": 17,
+        "id": "1J8Px9t_3cowv13j9sAStcCKxikinwZ4j",
+        "owner_only": true
+      },
+      {
+        "verified": true,
+        "name": "LLM_PJ_0528_source.vcbak.part018",
+        "bytes": 100663296,
+        "sha256": "b6934905aae1d64e37e64bd4a6967c6d8f9de2673a2bac71fde89a4bdf5b2636",
+        "number": 18,
+        "id": "1KgiQqIahyJ1aego2CyyM2kkPoMgDeHIK",
+        "owner_only": true
+      },
+      {
+        "verified": true,
+        "name": "LLM_PJ_0528_source.vcbak.part019",
+        "bytes": 100663296,
+        "sha256": "3fa7e99b8b1e18fb47797a4ea2eb03c17d08667540a79640fd31bd750081eb96",
+        "number": 19,
+        "id": "1woVsWTej86o-mLfVlw-9HnBg_jM4tpT7",
+        "owner_only": true
+      },
+      {
+        "verified": true,
+        "name": "LLM_PJ_0528_source.vcbak.part020",
+        "bytes": 100663296,
+        "sha256": "73321c7066a379ac1d3fbb3c6820fd90d3edf730b3031f5dd6b5383ff1613b54",
+        "process_dns_fallback_used": true,
+        "number": 20,
+        "id": "1hbiVISChuF6kqVlYY8OPcTLw4LMwbLd6",
+        "owner_only": true
+      }
+    ],
+    "retry_resolution": "Part008 reconciled without duplicates; part020 DNS failure recovered with task-local explicit DNS lookup and normal TLS verification",
+    "readback_failure": "Part002 had no completed result for >7min; its open-file directory metadata showed0, but after stopping it contained84934656bytes. Retained prefix matched local source, Range download of15728640bytes completed, full part SHA256 passed. Zero metadata was not evidence of no transfer.",
+    "next": "Restore local DNS, re-list exact Drive object names, upload missing021-025, verify their remote SHA256, then join and authenticate the joined remote ciphertext",
+    "catalog_is_older_checkpoint": true,
+    "current_blocker": "Default local DNS fails for GitHub/ChatGPT; cache flush did not recover it. File-parameter transfer for part021 failed at chatgpt.com/backend-api/files before Drive invocation.",
+    "source_archive_cloud_restore_verified": false,
+    "original_transport_failure": {
+      "part": 20,
+      "type": "local DNS getaddrinfo failure; router resolver timed out; explicit resolver succeeded"
+    }
   },
   "remaining": [
-    "Five cloud ciphertext parts and independent SHA-256 readback/reassembly/decrypt",
+    "Cloud parts021-025 upload/readback after DNS recovery, then full remote reassembly/authenticated decrypt",
     "Current main plus a fresh stable private-directory snapshot",
     "Recovery key copy on a separate device and independent recovery",
     "Real Atlas consistent export, indexes/validators/TTL metadata, and isolated full data restore",
@@ -246,5 +562,19 @@
   "review_fixes": {
     "P1": "All runtime asserts replaced with explicit require checks; host and container optimized mode passed; two -O negative checks passed",
     "P2": "Cloud reassembled ciphertext is now the documented decrypt source"
+  },
+  "code_delivery": {
+    "pr": 77,
+    "reviewed_head": "2496745e30b94d06b3abd39fcfb748e9dc102e52",
+    "merge_sha": "d68f0f34d3a8c10a327c0af4d253f88458e7175e",
+    "pr_ci": 39085154175,
+    "push_ci": 39085151748,
+    "main_ci": 39085305266,
+    "all_ci_success": true,
+    "scoped_paths": 18,
+    "source_commit_remote_equal": 18,
+    "original_canonical": 14,
+    "original_preserved_variants": 4,
+    "unrelated_variant_bytes_preserved": true
   }
 }
