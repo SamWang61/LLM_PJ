@@ -14,13 +14,17 @@ process.stdin.on('end', async () => {
   try {
     const request = JSON.parse(input);
     const url = new URL(request.url);
-    if (url.protocol !== 'https:' || url.hostname !== 'vibecart-acceptance-pr21-m44ncgz5ta-de.a.run.app'
+    const privateHost = 'vibecart-acceptance-pr21-m44ncgz5ta-de.a.run.app';
+    const taggedHost = /^[a-z][a-z0-9-]{0,20}---vibecart-acceptance-pr21-m44ncgz5ta-de\.a\.run\.app$/.test(url.hostname);
+    if (url.protocol !== 'https:' || (url.hostname !== privateHost && !taggedHost)
         || url.username || url.password || url.port) throw Error('scope');
+    const timeout = request.timeout_ms ?? 60000;
+    if (!Number.isSafeInteger(timeout) || timeout <= 0 || timeout > 200000) throw Error('timeout');
     trace('request', { method: request.method, path: url.pathname });
     const response = await fetch(url, {
       method: request.method, headers: request.headers,
       body: request.body_base64 == null ? undefined : Buffer.from(request.body_base64, 'base64'),
-      redirect: 'manual', signal: AbortSignal.timeout(60000),
+      redirect: 'manual', signal: AbortSignal.timeout(timeout),
     });
     trace('headers', { status: response.status });
     const headers = [...response.headers].filter(([name]) => name.toLowerCase() !== 'set-cookie');

@@ -25,6 +25,9 @@ def test_pipe_transport_keeps_cookie_and_redirect_semantics(monkeypatch):
 
 @pytest.mark.parametrize('url,verify', [
     ('https://example.invalid/cart', True), ('http://' + HOST + '/cart', True),
+    ('https://rv9a76-ai---' + HOST + '.evil.invalid/cart', True),
+    ('https://vibecart-web-test.a.run.app/cart', True),
+    ('https://user:pass@rv9a76-ai---' + HOST + '/cart', True),
     ('https://' + HOST + ':444/cart', True), ('https://' + HOST + '/cart', False)])
 def test_foreign_target_or_disabled_tls_is_rejected_before_process(monkeypatch, url, verify):
     runner = MagicMock()
@@ -51,3 +54,23 @@ def test_cookie_replay_preserves_the_selected_transport():
     adapter = PrivateHTTPSAdapter()
     session.mount('https://', adapter)
     assert replay_session(session).get_adapter('https://' + HOST + '/cart') is adapter
+
+
+def test_private_tag_and_bounded_model_timeout_are_preserved(monkeypatch):
+    runner = MagicMock(return_value=SimpleNamespace(returncode=0, stdout=json.dumps({
+        'status': 200, 'headers': [], 'body_base64': ''})))
+    monkeypatch.setattr('private_https_transport.subprocess.run', runner)
+    request = requests.Request('GET', 'https://rv9a76-ai---' + HOST + '/recommendations').prepare()
+    assert PrivateHTTPSAdapter().send(request, timeout=190).status_code == 200
+    assert json.loads(runner.call_args.kwargs['input'])['timeout_ms'] == 190000
+    assert runner.call_args.kwargs['timeout'] == 195
+
+
+@pytest.mark.parametrize('timeout', [0, -1, 201, True, float('inf')])
+def test_unbounded_transport_timeout_is_rejected_before_process(monkeypatch, timeout):
+    runner = MagicMock()
+    monkeypatch.setattr('private_https_transport.subprocess.run', runner)
+    request = requests.Request('GET', 'https://' + HOST + '/').prepare()
+    with pytest.raises(requests.RequestException, match='timeout'):
+        PrivateHTTPSAdapter().send(request, timeout=timeout)
+    runner.assert_not_called()

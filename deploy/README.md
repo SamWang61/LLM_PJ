@@ -1,5 +1,9 @@
 # VibeCart Cloud Run／Firebase 展示部署
 
+<!-- SAM REVIEWS PREVIEW 20261018 BEGIN -->
+**2026/10/18 21:41 SAM商品評價／6＋4無流量預覽**：[同版遠端驗收](../docs/SAM_REVIEWS_6PLUS4_PREVIEW_2026-10-18.md)。固定main9a76b1d、56檔與GCS SHA一致；BGE／規則同digest各0%，最後4探針及真Atlas回滾／角色／交易通過。瀏覽器不重載4.0／2筆→4.4／3筆、DOM6＋4；fixture／索引／Job／暫時IAM清理。正式19／私有base11仍100%原版，Hosting未變，正式評價0、D4 synthetic1240不變。正式上線、效能SLO與具名簽收未完成；V5仍2/14。
+<!-- SAM REVIEWS PREVIEW 20261018 END -->
+
 本次最新main的0%預覽、同版BGE／Claude與隔離交易證據見[2026-10-18驗收](../docs/SAM_MAIN_PREVIEW_2026-10-18.md)，Key設定見[Claude版本1](CLAUDE_SECRET_SETUP.md)。正式100%仍為`vibecart-web-00019-phf`，Hosting rewrite未改；下方01:58狀態是歷史。
 
 目前部署方式分開閱讀：[Firebase Hosting／Cloud Run 判定與操作](FIREBASE_CLOUD_RUN_DEPLOYMENT.md)、[Render 準備與驗收](RENDER_DEPLOYMENT.md)。

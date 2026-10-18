@@ -1,5 +1,9 @@
 # 最新專案上下文 / Current project context
 
+<!-- SAM REVIEWS PREVIEW 20261018 BEGIN -->
+**2026/10/18 21:41 SAM商品評價／6＋4無流量預覽**：[同版遠端驗收](SAM_REVIEWS_6PLUS4_PREVIEW_2026-10-18.md)。固定main9a76b1d、56檔與GCS SHA一致；BGE／規則同digest各0%，最後4探針及真Atlas回滾／角色／交易通過。瀏覽器不重載4.0／2筆→4.4／3筆、DOM6＋4；fixture／索引／Job／暫時IAM清理。正式19／私有base11仍100%原版，Hosting未變，正式評價0、D4 synthetic1240不變。正式上線、效能SLO與具名簽收未完成；V5仍2/14。
+<!-- SAM REVIEWS PREVIEW 20261018 END -->
+
 <!-- SAM PR81 POST MERGE 20261018 BEGIN -->
 **2026/10/18 SAM新推送核對**：[PR #81合併後增量紀錄](SAM_PR81_POST_MERGE_CHECK_2026-10-18.md)。main `1068397` CI成功；本輪真localhost MongoDB完整261／0 skipped、工具5項與32檔GitHub blob核對通過。原目錄29檔一致、3檔差異合併保留；新版未部署、Atlas／模型同版遠端與真人驗收仍缺，不能沿用20ee預覽當新版本證據。V5仍2/14，增量分開記錄。
 <!-- SAM PR81 POST MERGE 20261018 END -->
