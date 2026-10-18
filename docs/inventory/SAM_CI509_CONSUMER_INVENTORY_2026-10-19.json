@@ -1,0 +1,811 @@
+{
+  "checked_at": "2026-10-18T22:45:03.415Z",
+  "project": "vibecart-llmai",
+  "scope": "read-only control-plane inventory; candidate resources only, not proof of all runtime consumers",
+  "mutations": false,
+  "scopes": [
+    {
+      "kind": "functions",
+      "region": "-",
+      "http": 403,
+      "resources": [],
+      "pagination_remaining": false
+    },
+    {
+      "kind": "jobs",
+      "region": "africa-south1",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "jobs",
+      "region": "asia-east1",
+      "resources": [
+        {
+          "name": "projects/vibecart-llmai/locations/asia-east1/jobs/sam-reviews-prod-accept-20261019",
+          "vpcAccess": null,
+          "template_containers": [
+            {
+              "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:8755ccb82902cf59430d5b2b76505c3fb6e4ed265d0ef98ba42821769edbcbdd",
+              "environment": [],
+              "secret_variable_names": [
+                "MONGO_URI"
+              ]
+            }
+          ]
+        }
+      ],
+      "http": 200
+    },
+    {
+      "kind": "jobs",
+      "region": "asia-east2",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "jobs",
+      "region": "asia-northeast1",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "jobs",
+      "region": "asia-northeast2",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "jobs",
+      "region": "asia-northeast3",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "jobs",
+      "region": "asia-south1",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "jobs",
+      "region": "asia-south2",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "jobs",
+      "region": "asia-southeast1",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "jobs",
+      "region": "asia-southeast2",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "jobs",
+      "region": "asia-southeast3",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "jobs",
+      "region": "australia-southeast1",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "jobs",
+      "region": "australia-southeast2",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "jobs",
+      "region": "europe-central2",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "jobs",
+      "region": "europe-north1",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "jobs",
+      "region": "europe-north2",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "jobs",
+      "region": "europe-southwest1",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "jobs",
+      "region": "europe-west1",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "jobs",
+      "region": "europe-west10",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "jobs",
+      "region": "europe-west12",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "jobs",
+      "region": "europe-west2",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "jobs",
+      "region": "europe-west3",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "jobs",
+      "region": "europe-west4",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "jobs",
+      "region": "europe-west6",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "jobs",
+      "region": "europe-west8",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "jobs",
+      "region": "europe-west9",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "jobs",
+      "region": "me-central1",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "jobs",
+      "region": "me-central2",
+      "resources": [],
+      "http": 403
+    },
+    {
+      "kind": "jobs",
+      "region": "me-west1",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "jobs",
+      "region": "northamerica-northeast1",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "jobs",
+      "region": "northamerica-northeast2",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "jobs",
+      "region": "northamerica-south1",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "jobs",
+      "region": "southamerica-east1",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "jobs",
+      "region": "southamerica-west1",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "jobs",
+      "region": "us-central1",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "jobs",
+      "region": "us-east1",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "jobs",
+      "region": "us-east4",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "jobs",
+      "region": "us-east5",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "jobs",
+      "region": "us-south1",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "jobs",
+      "region": "us-west1",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "jobs",
+      "region": "us-west2",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "jobs",
+      "region": "us-west3",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "jobs",
+      "region": "us-west4",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "routers",
+      "region": "-",
+      "http": 403,
+      "resources": [],
+      "pagination_remaining": false
+    },
+    {
+      "kind": "scheduler",
+      "region": "asia-east1",
+      "http": 403,
+      "resources": [],
+      "pagination_remaining": false
+    },
+    {
+      "kind": "services",
+      "region": "africa-south1",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "services",
+      "region": "asia-east1",
+      "resources": [
+        {
+          "name": "projects/vibecart-llmai/locations/asia-east1/services/llm-pj-git",
+          "vpcAccess": null,
+          "traffic": [
+            {
+              "revision": "llm-pj-git-00002-547",
+              "percent": 100
+            }
+          ],
+          "template_containers": [
+            {
+              "image": "gcr.io/cloudrun/placeholder",
+              "environment": [],
+              "secret_variable_names": []
+            }
+          ]
+        },
+        {
+          "name": "projects/vibecart-llmai/locations/asia-east1/services/vibecart-acceptance-pr21",
+          "vpcAccess": null,
+          "traffic": [
+            {
+              "revision": "vibecart-acceptance-pr21-00011-2hq",
+              "percent": 100
+            },
+            {
+              "revision": "vibecart-acceptance-pr21-main20ee-claude1-180s",
+              "percent": 0,
+              "tag": "main20ee-ai"
+            },
+            {
+              "revision": "vibecart-acceptance-pr21-main20ee-off-180s",
+              "percent": 0,
+              "tag": "main20ee-off"
+            },
+            {
+              "revision": "vibecart-acceptance-pr21-role95-e5788ce",
+              "percent": 0,
+              "tag": "role95-full"
+            },
+            {
+              "revision": "vibecart-acceptance-pr21-rv9a76-2117",
+              "percent": 0,
+              "tag": "rv9a76-ai"
+            },
+            {
+              "revision": "vibecart-acceptance-pr21-rv9a76-rules-2117",
+              "percent": 0,
+              "tag": "rv9a76-rules"
+            }
+          ],
+          "template_containers": [
+            {
+              "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:8755ccb82902cf59430d5b2b76505c3fb6e4ed265d0ef98ba42821769edbcbdd",
+              "environment": [
+                {
+                  "name": "CLOUD_ACCEPTANCE_MODE",
+                  "value": "true"
+                },
+                {
+                  "name": "CLOUD_PREVIEW_READ_ONLY",
+                  "value": "false"
+                }
+              ],
+              "secret_variable_names": [
+                "SECRET_KEY",
+                "MONGO_URI"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "projects/vibecart-llmai/locations/asia-east1/services/vibecart-web",
+          "vpcAccess": null,
+          "traffic": [
+            {
+              "revision": "vibecart-web-00019-phf",
+              "percent": 0,
+              "tag": "ren-fence"
+            },
+            {
+              "revision": "vibecart-web-main20ee-1640",
+              "percent": 0,
+              "tag": "main20ee-preview"
+            },
+            {
+              "revision": "vibecart-web-reviews-b038aaca",
+              "percent": 0,
+              "tag": "reviews-1019"
+            },
+            {
+              "revision": "vibecart-web-role-auth-576b4748",
+              "percent": 100,
+              "tag": "role-auth-1019"
+            }
+          ],
+          "template_containers": [
+            {
+              "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:8755ccb82902cf59430d5b2b76505c3fb6e4ed265d0ef98ba42821769edbcbdd",
+              "environment": [
+                {
+                  "name": "CLOUD_PREVIEW_READ_ONLY",
+                  "value": "false"
+                }
+              ],
+              "secret_variable_names": [
+                "MONGO_URI",
+                "SECRET_KEY"
+              ]
+            }
+          ]
+        }
+      ],
+      "http": 200
+    },
+    {
+      "kind": "services",
+      "region": "asia-east2",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "services",
+      "region": "asia-northeast1",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "services",
+      "region": "asia-northeast2",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "services",
+      "region": "asia-northeast3",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "services",
+      "region": "asia-south1",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "services",
+      "region": "asia-south2",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "services",
+      "region": "asia-southeast1",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "services",
+      "region": "asia-southeast2",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "services",
+      "region": "asia-southeast3",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "services",
+      "region": "australia-southeast1",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "services",
+      "region": "australia-southeast2",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "services",
+      "region": "europe-central2",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "services",
+      "region": "europe-north1",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "services",
+      "region": "europe-north2",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "services",
+      "region": "europe-southwest1",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "services",
+      "region": "europe-west1",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "services",
+      "region": "europe-west10",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "services",
+      "region": "europe-west12",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "services",
+      "region": "europe-west2",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "services",
+      "region": "europe-west3",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "services",
+      "region": "europe-west4",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "services",
+      "region": "europe-west6",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "services",
+      "region": "europe-west8",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "services",
+      "region": "europe-west9",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "services",
+      "region": "me-central1",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "services",
+      "region": "me-central2",
+      "resources": [],
+      "http": 403
+    },
+    {
+      "kind": "services",
+      "region": "me-west1",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "services",
+      "region": "northamerica-northeast1",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "services",
+      "region": "northamerica-northeast2",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "services",
+      "region": "northamerica-south1",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "services",
+      "region": "southamerica-east1",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "services",
+      "region": "southamerica-west1",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "services",
+      "region": "us-central1",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "services",
+      "region": "us-east1",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "services",
+      "region": "us-east4",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "services",
+      "region": "us-east5",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "services",
+      "region": "us-south1",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "services",
+      "region": "us-west1",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "services",
+      "region": "us-west2",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "services",
+      "region": "us-west3",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "services",
+      "region": "us-west4",
+      "resources": [],
+      "http": 200
+    },
+    {
+      "kind": "subscriptions",
+      "region": "-",
+      "http": 200,
+      "resources": [],
+      "pagination_remaining": false
+    }
+  ],
+  "run_regions": 43,
+  "summary": {
+    "run_services": 3,
+    "run_jobs": 1,
+    "failed_scopes": [
+      {
+        "kind": "functions",
+        "region": "-",
+        "http": 403
+      },
+      {
+        "kind": "jobs",
+        "region": "me-central2",
+        "http": 403
+      },
+      {
+        "kind": "routers",
+        "region": "-",
+        "http": 403
+      },
+      {
+        "kind": "scheduler",
+        "region": "asia-east1",
+        "http": 403
+      },
+      {
+        "kind": "services",
+        "region": "me-central2",
+        "http": 403
+      }
+    ],
+    "complete_runtime_consumer_coverage": false,
+    "scheduler_regions": "asia-east1 only"
+  },
+  "api_status_readback": {
+    "checked_at": "2026-10-18T22:46:38.251Z",
+    "scopes": [
+      {
+        "kind": "functions",
+        "http": 403,
+        "reasons": [
+          "SERVICE_DISABLED"
+        ]
+      },
+      {
+        "kind": "scheduler",
+        "http": 403,
+        "reasons": [
+          "SERVICE_DISABLED"
+        ]
+      },
+      {
+        "kind": "routers",
+        "http": 403,
+        "reasons": [
+          "SERVICE_DISABLED"
+        ]
+      },
+      {
+        "kind": "restricted_services",
+        "http": 403,
+        "reasons": [
+          "LOCATION_POLICY_VIOLATED"
+        ]
+      },
+      {
+        "kind": "restricted_jobs",
+        "http": 403,
+        "reasons": [
+          "LOCATION_POLICY_VIOLATED"
+        ]
+      },
+      {
+        "kind": "enabled_apis",
+        "http": 200,
+        "reasons": [],
+        "api_names": [
+          "analyticshub.googleapis.com",
+          "appengine.googleapis.com",
+          "apptopology.googleapis.com",
+          "artifactregistry.googleapis.com",
+          "bigquery.googleapis.com",
+          "bigqueryconnection.googleapis.com",
+          "bigquerydatapolicy.googleapis.com",
+          "bigquerydatatransfer.googleapis.com",
+          "bigquerymigration.googleapis.com",
+          "bigqueryreservation.googleapis.com",
+          "bigquerystorage.googleapis.com",
+          "cloudaicompanion.googleapis.com",
+          "cloudapis.googleapis.com",
+          "cloudbuild.googleapis.com",
+          "cloudkms.googleapis.com",
+          "cloudresourcemanager.googleapis.com",
+          "cloudtrace.googleapis.com",
+          "containeranalysis.googleapis.com",
+          "containerregistry.googleapis.com",
+          "dataform.googleapis.com",
+          "dataplex.googleapis.com",
+          "datastore.googleapis.com",
+          "developerconnect.googleapis.com",
+          "fcm.googleapis.com",
+          "firebase.googleapis.com",
+          "firebasehosting.googleapis.com",
+          "firebaseinstallations.googleapis.com",
+          "firebaseremoteconfig.googleapis.com",
+          "firebaseremoteconfigrealtime.googleapis.com",
+          "firebaserules.googleapis.com",
+          "iam.googleapis.com",
+          "iamcredentials.googleapis.com",
+          "identitytoolkit.googleapis.com",
+          "logging.googleapis.com",
+          "monitoring.googleapis.com",
+          "pubsub.googleapis.com",
+          "run.googleapis.com",
+          "runtimeconfig.googleapis.com",
+          "secretmanager.googleapis.com",
+          "securetoken.googleapis.com",
+          "servicemanagement.googleapis.com",
+          "serviceusage.googleapis.com",
+          "sql-component.googleapis.com",
+          "storage-api.googleapis.com",
+          "storage-component.googleapis.com",
+          "storage.googleapis.com",
+          "telemetry.googleapis.com",
+          "testing.googleapis.com"
+        ],
+        "pagination_remaining": false
+      }
+    ]
+  },
+  "template_note": "Service template may target a 0%-traffic preview; actual 100% revision is independently read in SAM_CI509_DEPLOYMENT_2026-10-19.json.",
+  "active_job_note": "sam-reviews-prod-accept-20261019 is a concurrently observed acceptance job; not classified as orphan and not deleted by this audit."
+}

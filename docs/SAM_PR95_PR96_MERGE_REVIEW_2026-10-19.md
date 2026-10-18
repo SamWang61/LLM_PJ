@@ -5,7 +5,7 @@
 ## 合併與版本
 
 - [PR #95](https://github.com/SamWang61/LLM_PJ/pull/95) HEAD `e5788ce12339370a8afb5e2c824a6ecd24e5f602`，實際合併main `8a29f5fbbb05deb09c2e23324f1769c5bf86c0b3`，時間2026/10/19 06:26:40。PR兩組CI成功；合併後與本PR最終CI分別由GitHub讀回，不用舊CI替代新HEAD。
-- [PR #96](https://github.com/SamWang61/LLM_PJ/pull/96)原HEAD `14cffba70f80adaed9a5fd044e38486f793f3fca`僅交05:45登入修復歷史；已整合新main並處理CURRENT_CONTEXT／V5衝突，保留雙方時間序列及原始紀錄。本PR最終HEAD／合併SHA／CI見GitHub及最後交付收據。
+- [PR #96](https://github.com/SamWang61/LLM_PJ/pull/96)原HEAD `14cffba70f80adaed9a5fd044e38486f793f3fca`僅交05:45登入修復歷史；已整合新main並處理CURRENT_CONTEXT／V5衝突，保留雙方時間序列及原始紀錄。最終HEAD `6e4bd15602eb34a1e866ae7133bd93394dcac667`已於2026/10/19 06:37:12合併main `b038aaca2d2553a39d8fd958100f277c64a75486`；合併後[main CI #509](https://github.com/SamWang61/LLM_PJ/actions/runs/39173026751)同SHA於06:39:20完成success。
 - 正式仍是原展示基線加兩檔登入增量的`576b474822efd7464d650d7af2aa245e07fbc911`，不是完整main新評價／6＋4版本。只有`app/auth.py`與`app/templates/auth/login.html`兩個執行檔與原正式e000d95不同，兩檔與PR95逐byte相同。
 
 ## 本輪測試與真遠端
@@ -38,3 +38,7 @@
 - V5仍**2/14完成**。正式登入增量已上線，但完整main仍只在0%預覽；真人具名接收、手機完整矩陣、N13固定出口、N14異機key／每日流程及最終簽收未因此結案。兩個較早限時展示帳號的回收與新固定六角色分開記錄。
 
 [機器紀錄](inventory/SAM_PR95_PR96_MERGE_REVIEW_2026-10-19.json)／[REN原雙角色交付](REN_DUAL_ROLE_LOGIN_2026-10-19.md)／[PR96歷史修復](SAM_ADMIN_LOGIN_REPAIR_2026-10-19.md)。
+
+## main CI #509後續核對
+
+[本輪驗收與優先清單](SAM_CI509_ACCEPTANCE_2026-10-19.md)補兩個舊展示帳號的獨立inactive／session 0／登入拒絕、正式資料關聯稽核及雲端consumer／網路清冊；歷史測試保留原時間，沒有把後續文件CI當新正式部署或真人簽收。
