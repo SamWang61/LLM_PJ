@@ -1,0 +1,59 @@
+{
+  "checked_at": "2026-10-18T09:33:32.428061+00:00",
+  "source_project": "C:/LLM/LLM_PJ",
+  "scope": "H08 delivery files; this manifest excluded from its own hash",
+  "files": [
+    {
+      "path": "docs/CURRENT_CONTEXT.md",
+      "sha256": "f3e696ce04e365cff666285f8b7af8096b55f041285959cc04a9d165e6f4a560"
+    },
+    {
+      "path": "docs/REN_H08_MATERIAL_SIMULATION_2026-10-18.md",
+      "sha256": "254186015f2ec87d6e51fe7dff792addcfe62789f7f2be7dff2acb4d2d776309"
+    },
+    {
+      "path": "docs/REN_PR89_REVIEW_2026-10-18.md",
+      "sha256": "7bd0cb377129459a69961946a360aafdb7dedb603057a107b13f05b3304705d7"
+    },
+    {
+      "path": "docs/inventory/REN_PR89_MERGE_2026-10-18.json",
+      "sha256": "8383ec4e3d86dab2965f63d0324def1356a3ea97d8bd3597698bd21d5a2a6497"
+    },
+    {
+      "path": "專題進度/REN_1200逐項交接清單_2026-10-18.md",
+      "sha256": "ff93d1022a2d4e2fb47294eb16a1c8018d33261d6902c4dbbc776534f18d7fad"
+    },
+    {
+      "path": "專題進度/專案未完成工作清單_2026-10-18.md",
+      "sha256": "14b43c9d925323a393d95f707a1c87d4b862ac16a16728a0cc329702cc47dc80"
+    },
+    {
+      "path": "簡報文件/screenshots/REN_H08_素材模擬覆核_2026-10-18/H08-320-action-focus.jpg",
+      "sha256": "39a97b3e53134b784fe9c6b58297b268694aee379fb6e2bc7260ea74a949fe62"
+    },
+    {
+      "path": "簡報文件/screenshots/REN_H08_素材模擬覆核_2026-10-18/H08-390-keyboard.jpg",
+      "sha256": "8e77f1791b73bc11a66193558723f82ec076251447babc997307b8d26581dcbb"
+    },
+    {
+      "path": "簡報文件/screenshots/REN_H08_素材模擬覆核_2026-10-18/H08-844-landscape.jpg",
+      "sha256": "16bc716822d62727614880026ecca8865b7b829e78075044d9daac41781d7431"
+    },
+    {
+      "path": "簡報文件/screenshots/REN_H08_素材模擬覆核_2026-10-18/README.md",
+      "sha256": "18f8cd41fe92ae4a6ab86485389ab939c82647821a34ac6d1831df7fff0558a9"
+    },
+    {
+      "path": "簡報文件/screenshots/REN_H08_素材模擬覆核_2026-10-18/audit.json",
+      "sha256": "f72a549bd396d945c9bfb3bd4e6cf1716e649c91b400c05d39969baa57c88624"
+    },
+    {
+      "path": "簡報文件/screenshots/REN_H08_素材模擬覆核_2026-10-18/captures.json",
+      "sha256": "38e38e153ee96114b194510e4653ae442aaf521e150295ba8ab541a28724dd60"
+    },
+    {
+      "path": "簡報文件/超市AI版_2026-10-18/REN_S03-S05補充講稿_2026-10-18.md",
+      "sha256": "b05b4946e279f9718203a37cb02208082c7f0791bc3051742367069bee54f6bd"
+    }
+  ]
+}
