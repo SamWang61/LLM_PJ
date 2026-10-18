@@ -1,0 +1,347 @@
+{
+  "scope": "mobile-size desktop browser simulation; not physical phone acceptance",
+  "images": [
+    {
+      "id": "H01",
+      "file": "H01-home.jpg",
+      "at": "2026-10-18T08:03:56.670Z",
+      "url": "https://vibecart-llmai.web.app/",
+      "layout": {
+        "height": 844,
+        "scrollWidth": 375,
+        "width": 390
+      },
+      "result": "Public project home in 390x844 mobile-size simulation",
+      "browser": "Codex in-app browser",
+      "capture": "original JPEG viewport capture; no editing",
+      "sha256": "bb07344354cd7fbb6a9493d17066c5e347ef070daff68d2cb05a78732ce4a1f0",
+      "bytes": 36383,
+      "pixel_size": [
+        375,
+        844
+      ],
+      "viewport_css": {
+        "width": 390,
+        "height": 844
+      },
+      "environment": "public Firebase Hosting",
+      "runtime_source": "e000d952d22a64b568903641893f4ffdc71accd3",
+      "physical_phone": false,
+      "human_signoff": false
+    },
+    {
+      "id": "H02",
+      "file": "H02-login.jpg",
+      "at": "2026-10-18T08:04:18.183Z",
+      "url": "https://vibecart-llmai.web.app/auth/login?next=/cart",
+      "layout": {
+        "height": 844,
+        "scrollWidth": 375,
+        "width": 390
+      },
+      "result": "Anonymous cart redirects to login with return target",
+      "browser": "Codex in-app browser",
+      "capture": "original JPEG viewport capture; no editing",
+      "sha256": "775542578a44b95abbcc7823ae8ae2083276bc827a538e09cf97061d307b287d",
+      "bytes": 26175,
+      "pixel_size": [
+        375,
+        844
+      ],
+      "viewport_css": {
+        "width": 390,
+        "height": 844
+      },
+      "environment": "public Firebase Hosting",
+      "runtime_source": "e000d952d22a64b568903641893f4ffdc71accd3",
+      "physical_phone": false,
+      "human_signoff": false
+    },
+    {
+      "id": "H02",
+      "file": "H02-session-cart.jpg",
+      "at": "2026-10-18T08:04:23.650Z",
+      "url": "https://vibecart-llmai.web.app/cart",
+      "layout": {
+        "height": 844,
+        "scrollWidth": 390,
+        "width": 390
+      },
+      "result": "REN login returns to own empty cart; no production cart writes",
+      "browser": "Codex in-app browser",
+      "capture": "original JPEG viewport capture; no editing",
+      "sha256": "db287c5f86d76771b4df8a99aea88f13bd7dfcd9da614348e9ad6147b46f4cb4",
+      "bytes": 20565,
+      "pixel_size": [
+        375,
+        844
+      ],
+      "viewport_css": {
+        "width": 390,
+        "height": 844
+      },
+      "environment": "public Firebase Hosting",
+      "runtime_source": "e000d952d22a64b568903641893f4ffdc71accd3",
+      "physical_phone": false,
+      "human_signoff": false
+    },
+    {
+      "id": "H03",
+      "file": "H03-admin-denied.jpg",
+      "at": "2026-10-18T08:04:34.705Z",
+      "url": "https://vibecart-llmai.web.app/",
+      "layout": {
+        "height": 844,
+        "scrollWidth": 375,
+        "width": 390
+      },
+      "result": "Customer admin access rejected with admin-only notice",
+      "browser": "Codex in-app browser",
+      "capture": "original JPEG viewport capture; no editing",
+      "sha256": "9c534c89214e5cd6a171e701fc82cfb937cfae312873de266be8067dc4827faa",
+      "bytes": 39692,
+      "pixel_size": [
+        375,
+        844
+      ],
+      "viewport_css": {
+        "width": 390,
+        "height": 844
+      },
+      "environment": "public Firebase Hosting",
+      "runtime_source": "e000d952d22a64b568903641893f4ffdc71accd3",
+      "physical_phone": false,
+      "human_signoff": false
+    },
+    {
+      "id": "H04",
+      "file": "H04-product-overview.jpg",
+      "at": "2026-10-18T08:11:44.117Z",
+      "url": "https://vibecart-llmai.web.app/product/02f9efd17210150f2eea7274",
+      "layout": {
+        "height": 844,
+        "scrollWidth": 375,
+        "width": 390
+      },
+      "result": "Public product overview at mobile size; original SKU product; no cart write",
+      "browser": "Codex in-app browser",
+      "capture": "original JPEG viewport capture; no editing",
+      "sha256": "81939245ef9065092c593ca6054a2b809e4683d67215ac3c66e9f240b279857e",
+      "bytes": 50267,
+      "pixel_size": [
+        375,
+        844
+      ],
+      "viewport_css": {
+        "width": 390,
+        "height": 844
+      },
+      "environment": "public Firebase Hosting",
+      "runtime_source": "e000d952d22a64b568903641893f4ffdc71accd3",
+      "physical_phone": false,
+      "human_signoff": false
+    },
+    {
+      "id": "H04",
+      "file": "H04-product-sku.jpg",
+      "at": "2026-10-18T08:11:52.135Z",
+      "url": "https://vibecart-llmai.web.app/product/02f9efd17210150f2eea7274",
+      "browser": "Codex in-app browser",
+      "result": "Product aggregate price79 stock95 before SKU selection; selected SKU evidence is H08-keyboard-focus.jpg",
+      "layout": {
+        "height": 844,
+        "scrollTop": 590.9774169921875,
+        "scrollWidth": 375,
+        "width": 390
+      },
+      "sha256": "9876a16ed10a69ef09b6ae6a0e8a592225aa2bfa2be6b069a7b643bc2be99ed7",
+      "bytes": 38127,
+      "pixel_size": [
+        375,
+        844
+      ],
+      "viewport_css": {
+        "width": 390,
+        "height": 844
+      },
+      "environment": "public Firebase Hosting",
+      "runtime_source": "e000d952d22a64b568903641893f4ffdc71accd3",
+      "capture": "original JPEG viewport capture; no editing",
+      "physical_phone": false,
+      "human_signoff": false,
+      "sku_selected": false,
+      "selected_sku_evidence": "H08-keyboard-focus.jpg"
+    },
+    {
+      "id": "H05",
+      "file": "H05-cart.jpg",
+      "at": "2026-10-18T08:10:51.387Z",
+      "url": "http://127.0.0.1:63777/cart",
+      "layout": {
+        "height": 844,
+        "scrollWidth": 375,
+        "width": 390
+      },
+      "result": "Local in-memory UI: add2, update1, reload retains1; NT$10.25; not remote or transaction proof",
+      "browser": "Codex in-app browser",
+      "capture": "original JPEG viewport capture; no editing",
+      "sha256": "09e2581f73e7ace0b81e3d4e77e855094ec2b31de3dabef087e09e7c8cf6e7f6",
+      "bytes": 25282,
+      "pixel_size": [
+        375,
+        844
+      ],
+      "viewport_css": {
+        "width": 390,
+        "height": 844
+      },
+      "environment": "localhost mongomock UI fixture",
+      "runtime_source": "5eb392f",
+      "physical_phone": false,
+      "human_signoff": false
+    },
+    {
+      "id": "H05",
+      "file": "H05-removed.jpg",
+      "at": "2026-10-18T08:12:46.127Z",
+      "url": "http://127.0.0.1:63777/cart",
+      "browser": "Codex in-app browser",
+      "result": "Local UI: new active cart item removed; cart empty",
+      "layout": {
+        "height": 844,
+        "scrollWidth": 390,
+        "width": 390
+      },
+      "sha256": "16bea37f42bcad988fb66699c36d1a4c3d7d65dc83cb8e58bb3f0626f5238705",
+      "bytes": 17661,
+      "pixel_size": [
+        390,
+        844
+      ],
+      "viewport_css": {
+        "width": 390,
+        "height": 844
+      },
+      "environment": "localhost mongomock UI fixture",
+      "runtime_source": "5eb392f",
+      "capture": "original JPEG viewport capture; no editing",
+      "physical_phone": false,
+      "human_signoff": false
+    },
+    {
+      "id": "H06",
+      "file": "H06-demo-order.jpg",
+      "at": "2026-10-18T08:10:52.048Z",
+      "url": "http://127.0.0.1:63777/",
+      "layout": {
+        "height": 844,
+        "scrollWidth": 375,
+        "width": 390
+      },
+      "result": "Local in-memory UI: demo order success, no payment; real rollback remains covered only by earlier independent suite",
+      "browser": "Codex in-app browser",
+      "capture": "original JPEG viewport capture; no editing",
+      "sha256": "6938e612b42f088306f6ddac411bd94934c94a0810187da9772d118cfdce12de",
+      "bytes": 32583,
+      "pixel_size": [
+        375,
+        844
+      ],
+      "viewport_css": {
+        "width": 390,
+        "height": 844
+      },
+      "environment": "localhost mongomock UI fixture",
+      "runtime_source": "5eb392f",
+      "physical_phone": false,
+      "human_signoff": false
+    },
+    {
+      "id": "H07",
+      "file": "H07-event-readback.jpg",
+      "at": "2026-10-18T08:11:20.106Z",
+      "url": "http://127.0.0.1:63777/_ren_qa/readback",
+      "layout": {
+        "height": 844,
+        "scrollWidth": 390,
+        "width": 390
+      },
+      "result": "Local in-memory readback after browser checkout/search; not Atlas or consumer exclusion acceptance",
+      "browser": "Codex in-app browser",
+      "capture": "original JPEG viewport capture; no editing",
+      "sha256": "c3449252b8286c511513bc698a30f6c4db905d68b8ec6238a67893ee99eb391f",
+      "bytes": 21158,
+      "pixel_size": [
+        390,
+        844
+      ],
+      "viewport_css": {
+        "width": 390,
+        "height": 844
+      },
+      "environment": "localhost mongomock UI fixture",
+      "runtime_source": "5eb392f",
+      "physical_phone": false,
+      "human_signoff": false
+    },
+    {
+      "id": "H08",
+      "file": "H08-keyboard-focus.jpg",
+      "at": "2026-10-18T08:12:19.664Z",
+      "url": "https://vibecart-llmai.web.app/product/02f9efd17210150f2eea7274",
+      "browser": "Codex in-app browser",
+      "result": "SKU selected, Tab focuses quantity; visible lime outline; simulation only",
+      "layout": {
+        "focused": "quantity",
+        "height": 844,
+        "scrollWidth": 375,
+        "width": 390
+      },
+      "sha256": "2ff3d3a7a283bace2e969aed6cf3bd1bc267294367058192b9ec6004dd70a86e",
+      "bytes": 36911,
+      "pixel_size": [
+        375,
+        844
+      ],
+      "viewport_css": {
+        "width": 390,
+        "height": 844
+      },
+      "environment": "public Firebase Hosting",
+      "runtime_source": "e000d952d22a64b568903641893f4ffdc71accd3",
+      "capture": "original JPEG viewport capture; no editing",
+      "physical_phone": false,
+      "human_signoff": false,
+      "sku_selected": true,
+      "selected_sku": "CF-SKU-1210303000104"
+    },
+    {
+      "id": "H09",
+      "file": "H09-logged-out.jpg",
+      "at": "2026-10-18T08:12:29.177Z",
+      "url": "https://vibecart-llmai.web.app/auth/login?next=/cart",
+      "browser": "Codex in-app browser",
+      "result": "This new public REN session logged out normally; cart redirects to login; no account retirement claimed",
+      "layout": {
+        "height": 844,
+        "scrollWidth": 375,
+        "width": 390
+      },
+      "sha256": "775542578a44b95abbcc7823ae8ae2083276bc827a538e09cf97061d307b287d",
+      "bytes": 26175,
+      "pixel_size": [
+        375,
+        844
+      ],
+      "viewport_css": {
+        "width": 390,
+        "height": 844
+      },
+      "environment": "public Firebase Hosting",
+      "runtime_source": "e000d952d22a64b568903641893f4ffdc71accd3",
+      "capture": "original JPEG viewport capture; no editing",
+      "physical_phone": false,
+      "human_signoff": false
+    }
+  ]
+}

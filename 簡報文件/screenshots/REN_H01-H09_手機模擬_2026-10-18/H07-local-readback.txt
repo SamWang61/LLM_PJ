@@ -1,0 +1,1 @@
+{"available_quantity":5,"checked_at":"2026-10-18T08:11:19.579621+00:00","demo_orders":1,"environment":"localhost in-memory UI fixture; not Atlas or transaction acceptance","event_types":["ADD_TO_CART","PRODUCT_VIEW","PURCHASE","SEARCH"],"events":4,"order_items":1,"orders":1,"runtime_source":"5eb392f","sessions":2}
