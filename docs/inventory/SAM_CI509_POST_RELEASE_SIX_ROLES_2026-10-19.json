@@ -1,0 +1,88 @@
+{
+  "checked_at": "2026-10-18T22:51:53.240880+00:00",
+  "site": "https://vibecart-llmai.web.app",
+  "passwords_changed": false,
+  "other_sessions_revoked": false,
+  "credentials_in_report": false,
+  "accounts": [
+    {
+      "account": "SAM",
+      "role": "admin",
+      "stored_credential_unique_match": true,
+      "login_http": 302,
+      "login_destination": "/admin/",
+      "admin_http": 200,
+      "online_password_change_http": 403,
+      "logout_http": 302,
+      "post_logout_admin_http": 302,
+      "own_session_remaining": 0,
+      "status": "passed"
+    },
+    {
+      "account": "SAM",
+      "role": "customer",
+      "stored_credential_unique_match": true,
+      "login_http": 302,
+      "login_destination": "/",
+      "admin_http": 302,
+      "online_password_change_http": 403,
+      "logout_http": 302,
+      "post_logout_admin_http": 302,
+      "own_session_remaining": 0,
+      "status": "passed"
+    },
+    {
+      "account": "JEFF",
+      "role": "admin",
+      "stored_credential_unique_match": true,
+      "login_http": 302,
+      "login_destination": "/admin/",
+      "admin_http": 200,
+      "online_password_change_http": 403,
+      "logout_http": 302,
+      "post_logout_admin_http": 302,
+      "own_session_remaining": 0,
+      "status": "passed"
+    },
+    {
+      "account": "JEFF",
+      "role": "customer",
+      "stored_credential_unique_match": true,
+      "login_http": 302,
+      "login_destination": "/",
+      "admin_http": 302,
+      "online_password_change_http": 403,
+      "logout_http": 302,
+      "post_logout_admin_http": 302,
+      "own_session_remaining": 0,
+      "status": "passed"
+    },
+    {
+      "account": "REN",
+      "role": "admin",
+      "stored_credential_unique_match": true,
+      "login_http": 302,
+      "login_destination": "/admin/",
+      "admin_http": 200,
+      "online_password_change_http": 403,
+      "logout_http": 302,
+      "post_logout_admin_http": 302,
+      "own_session_remaining": 0,
+      "status": "passed"
+    },
+    {
+      "account": "REN",
+      "role": "customer",
+      "stored_credential_unique_match": true,
+      "login_http": 302,
+      "login_destination": "/",
+      "admin_http": 302,
+      "online_password_change_http": 403,
+      "logout_http": 302,
+      "post_logout_admin_http": 302,
+      "own_session_remaining": 0,
+      "status": "passed"
+    }
+  ],
+  "status": "passed"
+}
