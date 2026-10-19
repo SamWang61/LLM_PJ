@@ -8,7 +8,6 @@
 !MuscleCore分析資料/website/requirements-cloud-ai.txt
 !MuscleCore分析資料/website/cloud_runtime.py
 !MuscleCore分析資料/website/app/
-!MuscleCore分析資料/website/app/**/
 !MuscleCore分析資料/website/app/**/*.py
 !MuscleCore分析資料/website/app/**/*.html
 !MuscleCore分析資料/website/app/**/*.css
