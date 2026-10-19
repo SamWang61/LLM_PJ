@@ -14,7 +14,13 @@ PR #115 已合併 main `ac45394`，GitHub Actions [39230941471](https://github.c
 2. 來源 `51a616f` 的 build `81a8fb22-9c79-4c88-9ea7-5a3a21f888a7` 五步 SUCCESS，離線容器啟動通過。新 revision 沒有流量或 tag 而直接退休，故只證明映像匯入，不能當雲端容器啟動驗收。
 3. 補固定私有 tag 後，以 `4137b39` 重跑 build `96d30223-b6d8-471f-862a-8dbc44c94b89`，17:51:33 SUCCESS；17:51:58回讀候選 `vibecart-acceptance-pr21-00035-nex` 的 ContainerHealthy、Active、Ready 均成功，digest `eb8793b4…`、正常command／args及固定VPC。候選0%、原兩個revision各100%，私有服務無公開invoker、候選匿名403；正式五入口各200。[完整去敏讀回與日誌摘要](inventory/SAM_CLOUD_BUILD_PREVIEW_REPAIR_2026-10-19.json)。
 
-本機來源白名單／交付稽核5項 passed；文件政策796檔／623 UTF-8文字／0錯誤，diff 檢查通過。PR #116 的最終 HEAD、GitHub Actions、實際合併與 main 自動觸發另以 GitHub及後續 JSON 讀回記錄，不預填結果。
+本機來源白名單／交付稽核5項 passed；PR #116提交證據後文件政策798檔／625 UTF-8文字／0錯誤，diff檢查通過。PR #116固定HEAD `5bcebb6519a9456f7465aa227ecedb67fe2f591b` 的兩項offline成功後，17:55合併main `5d4cc2ea4a597ab322ee1c3f7153b313caabb7aa`。
+
+## main 自動觸發實證
+
+main合併事件自動產生build `b3a59ff3-59b1-43f0-9a5a-7e44e68aa76a`，17:57:26完成五步SUCCESS；這輪不是手動補跑。17:58:02讀回新私有候選 `vibecart-acceptance-pr21-00036-hed`，source `5d4cc2e`、digest `f721cacb…`，Ready／Active／ContainerHealthy成功，`github-preview` 0%，原正式及私有294c各100%。正常command／args及固定VPC保持；匿名候選403、公開五入口200。[去敏main讀回](inventory/SAM_CLOUD_BUILD_MAIN_READBACK_2026-10-19.json)同時記錄[main Actions](https://github.com/SamWang61/LLM_PJ/actions/runs/39233679421)和外部Cloud Build check均success。
+
+依貢獻指南刷新[檔案清冊](inventory/files.csv)及[統計](inventory/summary.json)，範圍是本工作樹可讀的專案文件／附件，排除inventory自身、依賴、秘密與快取；不宣稱是原機所有檔案的備份。本輪另修正清冊工具：跳過worktree `.git`指標／symlink，Firebase Admin SDK檔僅列機密metadata、不讀內容。既有歷史清冊仍可由Git回查；沒有刪除任何附件。
 
 ## 驗收界線
 
