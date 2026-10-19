@@ -8,10 +8,12 @@ import hashlib
 import html
 import io
 import json
+import posixpath
 from pathlib import Path, PurePosixPath
 import re
 import subprocess
 import zipfile
+from urllib.parse import quote, unquote, urlsplit
 
 ROOT = Path(__file__).resolve().parents[1]
 DECK = '簡報文件/超市AI版_2026-10-18/VibeCart_AI_超市網購與AI系統_2026-10-18_v5'
@@ -21,7 +23,12 @@ INDEX = '簡報文件/screenshots/S01-S12_取證索引_2026-10-18.json'
 RUNBOOK = '簡報文件/離線備援/README.md'
 PAGES = '簡報文件/離線備援/投影片/'
 MAX_BYTES = 50 * 1024 * 1024
-MAX_FILES = 40
+MAX_FILES = 43
+NOTES = {
+    '簡報文件/超市AI版_2026-10-18/2026-10-20_SAM模擬_N16素材覆核.md': 'updates/N16-review.md',
+    '簡報文件/超市AI版_2026-10-18/2026-10-20_SAM模擬_展示內容更新卡.md': 'updates/current-scope.md',
+    '簡報文件/離線備援/SAM模擬_N17_復原與排練_2026-10-20.md': 'updates/N17-rehearsal.md',
+}
 STAMP = (1980, 1, 1, 0, 0, 0)
 
 
@@ -74,7 +81,27 @@ def encode_json(value):
     return (json.dumps(value, ensure_ascii=False, sort_keys=True, indent=2) + '\n').encode('utf-8')
 
 
-def html_index(commit, rows):
+def note_links(data, source, target, mapping, commit):
+    """Keep bundled references local and pin other citations to GitHub."""
+    def replace(match):
+        url = urlsplit(match[2])
+        if url.scheme or url.netloc or not url.path:
+            return match[0]
+        source_path = posixpath.normpath(posixpath.join(posixpath.dirname(source), unquote(url.path)))
+        if source_path == '..' or source_path.startswith('../'):
+            raise ValueError('Note reference escapes source repository')
+        if source_path in mapping:
+            link = posixpath.relpath(mapping[source_path], posixpath.dirname(target) or '.')
+        else:
+            link = 'https://github.com/SamWang61/LLM_PJ/blob/' + commit + '/' + quote(source_path, safe='/')
+        if url.fragment:
+            link += '#' + url.fragment
+        return '[' + match[1] + '](' + link + ')'
+    text = re.sub(r'\[([^\]\n]+)\]\(([^)\s]+)\)', replace, data.decode('utf-8-sig'))
+    return (text.rstrip() + '\n\n離線包內已收錄的文件以相對路徑引用；其餘 GitHub 固定來源連結需連線，不能當離線檔案。\n').encode('utf-8')
+
+
+def html_index(commit, rows, notes=()):
     cards = []
     for row in rows:
         title = html.escape(row['file'])
@@ -82,6 +109,7 @@ def html_index(commit, rows):
                                       ('captured_at_taipei', 'role', 'revision', 'note')))
         cards.append(f'<article><h2>{title}</h2><p>{caption}</p>'
                      f'<a href="screenshots/{title}"><img src="screenshots/{title}" alt="{title}" loading="lazy"></a></article>')
+    note_nav = ''.join('<li><a href="' + html.escape(name, quote=True) + '">' + html.escape(name) + '</a></li>' for name in notes)
     return ('''<!doctype html><html lang="zh-Hant"><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>VibeCart V5 離線備援</title><style>
@@ -91,7 +119,7 @@ nav{display:flex;gap:24px;flex-wrap:wrap}article{border-top:1px solid #abc;paddi
 </style><h1>VibeCart V5 離線備援</h1>
 <p>這是已記錄畫面的離線閱讀包，沒有網站、帳號、資料庫或付款功能。截圖保留各自取證版本；不是目前線上畫面或最終簽收。V5 手動封面、頁尾與封底原樣保留。</p>
 <nav><a href="slides.html">13 頁圖片閱讀版</a><a href="presentation.pdf">PDF 閱讀版</a><a href="presentation.pptx">原始 PowerPoint</a><a href="README.md">故障替代流程與排練表</a><a href="manifest.json">檔案核對清冊</a></nav>
-<p>內容來源提交：<code>''' + html.escape(commit) + '</code></p>' + ''.join(cards) + '</html>\n').encode('utf-8')
+<p>內容來源提交：<code>''' + html.escape(commit) + '</code></p>' + ('<h2>10/20 更新說明（Markdown）</h2><p>原投影片與截圖保持歷史版本；最新展示界線請連同閱讀。</p><ul>' + note_nav + '</ul>' if note_nav else '') + ''.join(cards) + '</html>\n').encode('utf-8')
 
 
 def source_files(root, commit):
@@ -109,9 +137,14 @@ def source_files(root, commit):
     rows = json.loads(index_bytes)['files']
     if len(rows) != 20 or len({r['file'] for r in rows}) != 20:
         raise ValueError('Expected 20 uniquely named screenshot assets')
+    available = {source: target for source, target in NOTES.items() if git(root, 'ls-tree', commit, '--', source)}
+    mapping = {**available, RUNBOOK: 'README.md', DECK + '.pptx': 'presentation.pptx',
+               DECK + '.pdf': 'presentation.pdf', INDEX: 'screenshot-provenance.json'}
     files = {'presentation.pptx': pptx, 'presentation.pdf': pdf,
              'screenshot-provenance.json': index_bytes,
-             'README.md': committed_bytes(root, commit, RUNBOOK)}
+             'README.md': note_links(committed_bytes(root, commit, RUNBOOK), RUNBOOK, 'README.md', mapping, commit)}
+    for source, target in available.items():
+        files[target] = note_links(committed_bytes(root, commit, source), source, target, mapping, commit)
     for row in rows:
         name = row['file']
         if not re.fullmatch(r'S(?:0[1-9]|1[0-2])-[A-Za-z0-9_-]+\.png', name):
@@ -120,7 +153,7 @@ def source_files(root, commit):
         if not data.startswith(b'\x89PNG\r\n\x1a\n') or sha256(data) != row['sha256'] or len(data) != row['bytes']:
             raise ValueError('Screenshot provenance integrity failed')
         files['screenshots/' + name] = data
-    files['index.html'] = html_index(commit, rows)
+    files['index.html'] = html_index(commit, rows, available.values())
     page_index = committed_bytes(root, commit, PAGES + 'pages.json')
     pages = json.loads(page_index)
     names = [f'page-{i:02d}.png' for i in range(1, 14)]
