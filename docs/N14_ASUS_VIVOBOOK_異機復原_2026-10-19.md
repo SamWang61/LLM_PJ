@@ -33,3 +33,5 @@ REN 在[具名接收表](../專題進度/2026-10-19_具名接收與異機復原�
 ## SAM 同機工具預演
 
 2026/10/19 08:05 前後，在 SAM 電腦 `ASUS-VIVO-SAM` 已用兩個既有密文及外部金鑰跑 `verify_offdevice_recovery.py`：AES-GCM 認證成功，13,976 檔完整重建 hash 差異 0，28 集合／14,691 筆／89 索引／3 TTL 於新 localhost 還原差異 0，測試資料庫及進程已清理。完整結果在本機私有 `N14_OFFDEVICE_DRYRUN_20261019_0800/recovery-report.json`，未放 GitHub。這只證明 ASUS 執行前工具可用，不替代 REN 的第二台電腦實測。
+
+08:49 再從**實體 D: 的可攜Python與兩份密文**、**實體 F: 的金鑰**完整重跑同機復原，[去敏報告](inventory/SAM_N14_USB_PORTABLE_SAMEHOST_2026-10-19.json)結果同為13,976檔差異0、28集合／14,691筆／89索引／3TTL／BSON差異0，localhost測試庫與進程清除。這仍是在 `ASUS-VIVO-SAM`，不是 REN ASUS。明文測試副本 `N14_USB_PORTABLE_DRYRUN_20261019_0850` 的自動遞迴刪除遭政策阻擋；SAM需在核對另存的私有報告後於本機手動清理，不能視為已刪除。
