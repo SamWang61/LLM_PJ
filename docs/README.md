@@ -1,5 +1,9 @@
 # 文件中心 / Documentation hub
 
+<!-- SAM REMOTE ROLE RESULT 20261020 BEGIN -->
+本輪結果入口：[SAM模擬JEFF／REN遠端、USB復原及離線包執行紀錄](SAM_ROLE_PROXY_REMOTE_EXECUTION_2026-10-20.md)；[SAM新決定／Atlas工作站期限](SAM_ACCEPTANCE_DECISIONS_2026-10-20.md)。N13已結案，N14同機復原子項接受，未把實際設備改寫為異機。
+<!-- SAM REMOTE ROLE RESULT 20261020 END -->
+
 <!-- SAM ROLE PROXY PLAN 20261020 -->
 **2026/10/20本輪入口**：[12項有序分工表](../專題進度/待結案12項_執行順序與分工_2026-10-20.md)、[SAM代理執行紀錄](SAM_ROLE_SIMULATION_EXECUTION_2026-10-20.md)。REN異機操作卡已統一命名；本輪先推送／共同寄信，再依序進行技術代驗。
 

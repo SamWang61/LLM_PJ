@@ -59,7 +59,7 @@
     }
   ],
   "planned_expiry_is_not_an_applied_atlas_expiry": true,
-  "browser_limit": "Atlas access-list content blank; connector does not return deleteAfterDate",
+  "browser_limit": "Atlas access-list initially blank; browser reload redirected to signed-out login; connector does not return deleteAfterDate",
   "mutations": 0,
   "acceptance": "ownership and purpose confirmed; automatic expiry not verified or applied"
 }

@@ -3,7 +3,7 @@
   "scope": "SAM role simulations authorized by the user; not human signoff or physical-device evidence",
   "baseline": "5c55bc01455b0ee50565de234b1f5d6975638dc9",
   "table": "專題進度/待結案12項_執行順序與分工_2026-10-20.md",
-  "stage": "executing",
+  "stage": "technical_operations_recorded_pending_publication",
   "items": [
     {
       "order": 1,
@@ -138,7 +138,7 @@
       "order": 7,
       "id": "N13",
       "owner": "SAM",
-      "status": "partial",
+      "status": "passed",
       "started_at": "2026-10-19T17:55:54.040445+00:00",
       "finished_at": "2026-10-19T18:01:05.696830+00:00",
       "evidence": [
@@ -146,68 +146,129 @@
         "docs/inventory/SAM_PROXY_N13_RUNTIME_2026-10-20.json"
       ],
       "limitations": [
-        "10/31為管理期限，Atlas自動到期未核實或寫入"
+        "10月31日為SAM管理期限；本輪沒有設定或宣稱Atlas自動到期"
       ],
       "started_at_taipei": "2026-10-20T01:55:54.040445+08:00",
       "execution_identity": "SAM",
       "tool_executor": "Codex",
       "finished_at_taipei": "2026-10-20T02:01:05.696830+08:00",
-      "result": "4條/32無萬用；固定VPC與公開三入口200；SAM直接補認三條工作站主責、用途、10/31期限"
+      "result": "固定出口、4條/32無萬用與三入口200；SAM直接確認三條工作站主責／用途／10月31日管理期限，保留必要開發出口；N13管理覆核結案",
+      "status_reviewed_at": "2026-10-19T18:16:23.960610+00:00",
+      "status_review_reason": "Purpose, owner and planned expiry were supplied directly by SAM; automatic Atlas expiry was not required for this gate"
     },
     {
       "order": 8,
       "id": "N14",
       "owner": "SAM 準備 → REN 異機驗收",
-      "status": "in_progress",
+      "status": "partial",
       "started_at": "2026-10-19T18:01:05.869397+00:00",
-      "finished_at": null,
-      "evidence": [],
-      "limitations": [],
+      "finished_at": "2026-10-19T18:11:13.685346+00:00",
+      "evidence": [
+        "docs/inventory/SAM_PROXY_N14_RESTORE_2026-10-20.json",
+        "docs/SAM_ACCEPTANCE_DECISIONS_2026-10-20.md"
+      ],
+      "limitations": [
+        "新建私有明文目錄刪除遭自動核准審查拒絕（blocked by policy），待SAM手動清理；每日Drive可逆ACL及排程另待"
+      ],
       "started_at_taipei": "2026-10-20T02:01:05.869397+08:00",
       "execution_identity": "SAM 模擬 REN",
-      "tool_executor": "Codex"
+      "tool_executor": "Codex",
+      "finished_at_taipei": "2026-10-20T02:11:13.685346+08:00",
+      "result": "USB完整同機復原13976檔、28集合14691筆89索引3TTL全差異0；DB與進程清理；依SAM新決定接受復原子項"
     },
     {
       "order": 9,
       "id": "N12",
       "owner": "REN 前台、JEFF 後台、SAM 彙整",
-      "status": "not_started",
-      "started_at": null,
-      "finished_at": null,
-      "evidence": [],
-      "limitations": []
+      "status": "partial",
+      "started_at": "2026-10-19T18:08:23.995165+00:00",
+      "finished_at": "2026-10-19T18:10:18.529015+00:00",
+      "evidence": [
+        "docs/inventory/SAM_PROXY_N12_BROWSER_2026-10-20.json"
+      ],
+      "limitations": [
+        "等待關閉Chrome外掛面板；實機鍵盤與旋轉未測"
+      ],
+      "started_at_taipei": "2026-10-20T02:08:23.995165+08:00",
+      "execution_identity": "SAM 模擬 REN／JEFF",
+      "tool_executor": "Codex",
+      "finished_at_taipei": "2026-10-20T02:10:18.529015+08:00",
+      "result": "本機登入頁可見；390px視窗已設與復原；Chrome外掛面板阻擋後續操作，未冒稱錯誤提示或手機驗收通過"
     },
     {
       "order": 10,
       "id": "N16",
       "owner": "SAM 彙整；JEFF／REN 各段",
-      "status": "not_started",
-      "started_at": null,
-      "finished_at": null,
-      "evidence": [],
-      "limitations": []
+      "status": "passed",
+      "started_at": "2026-10-19T18:10:18.697596+00:00",
+      "finished_at": "2026-10-19T18:11:13.839507+00:00",
+      "evidence": [
+        "docs/inventory/SAM_PROXY_N16_ASSETS_2026-10-20.json"
+      ],
+      "limitations": [
+        "圖屬ff65eae歷史批次；本輪未逐張人工簽認或換成新正式畫面"
+      ],
+      "started_at_taipei": "2026-10-20T02:10:18.697596+08:00",
+      "execution_identity": "SAM 模擬 REN／JEFF",
+      "tool_executor": "Codex",
+      "finished_at_taipei": "2026-10-20T02:11:13.839507+08:00",
+      "result": "40檔、20張S01-S12與13頁PDF核對；S03/S06/S08代表原圖目視核對；PPTX與PDF原hash不變"
     },
     {
       "order": 11,
       "id": "N17",
       "owner": "SAM 整稿；JEFF／REN 各段",
-      "status": "not_started",
-      "started_at": null,
-      "finished_at": null,
-      "evidence": [],
-      "limitations": []
+      "status": "passed",
+      "started_at": "2026-10-19T18:11:13.990046+00:00",
+      "finished_at": "2026-10-19T18:12:10.901734+00:00",
+      "evidence": [
+        "docs/inventory/SAM_PROXY_N17_OFFLINE_2026-10-20.json"
+      ],
+      "limitations": [
+        "未做實體斷網、第二台電腦、投影或真人720秒口述計時；保留驗證器漏列manifest的更正紀錄"
+      ],
+      "started_at_taipei": "2026-10-20T02:11:13.990046+08:00",
+      "execution_identity": "SAM 模擬 REN／JEFF",
+      "tool_executor": "Codex",
+      "finished_at_taipei": "2026-10-20T02:12:10.901734+08:00",
+      "result": "40檔兩次建包位元組一致、新目錄還原差異0、59個HTML檔案引用無外部依賴；18項安全測試通過"
     },
     {
       "order": 12,
       "id": "N18",
       "owner": "SAM 統籌；各人簽自己的範圍",
-      "status": "not_started",
-      "started_at": null,
-      "finished_at": null,
-      "evidence": [],
-      "limitations": []
+      "status": "partial",
+      "started_at": "2026-10-19T18:12:11.071543+00:00",
+      "finished_at": "2026-10-19T18:16:23.819813+00:00",
+      "evidence": [
+        "docs/inventory/SAM_PROXY_N18_VERSION_2026-10-20.json",
+        "docs/inventory/SAM_PROXY_N18_RUNTIME_2026-10-20.json"
+      ],
+      "limitations": [
+        "本輪文件推送/CI/寄信另以GitHub與SENT實際紀錄驗證；不把清冊當全站簽收"
+      ],
+      "started_at_taipei": "2026-10-20T02:12:11.071543+08:00",
+      "execution_identity": "SAM 統籌；SAM 模擬 JEFF／REN 範圍彙整",
+      "tool_executor": "Codex",
+      "finished_at_taipei": "2026-10-20T02:16:23.819813+08:00",
+      "result": "版本、公開PR、原簡報hash與29份本輪證據已凍結清冊；保留新N06尚未部署與全站接受缺口"
     }
   ],
-  "updated_at": "2026-10-19T18:01:05.869397+00:00",
-  "first_notice_verified": true
+  "updated_at": "2026-10-19T18:16:23.960610+00:00",
+  "first_notice_verified": true,
+  "operation_results": {
+    "passed": 7,
+    "partial": 5
+  },
+  "current_v5_gates": {
+    "completed": [
+      "N01",
+      "N03",
+      "N13"
+    ],
+    "pending_count": 11,
+    "denominator": 14,
+    "pending_percent": 78.6
+  },
+  "n14_acceptance_policy": "SAM accepts passing same-host restoration subitem; actual different_physical_machine remains false; full gate has daily backup and cleanup gaps"
 }

@@ -1,0 +1,198 @@
+{
+  "checked_at": "2026-10-19T18:15:06.150658+00:00",
+  "status": "partial",
+  "scope": "version inventory and acceptance gaps; not final three-human acceptance",
+  "local_integration_head": "78bbaaf7ff64883d43880deb46fbd62f2e269c6d",
+  "reviewed_remote_main": "c0d7361c18a250fe5f4c46f94f53909862bfe23d",
+  "open_pull_requests": [
+    {
+      "number": 138,
+      "title": "docs: 回填 SAM 模擬 C01～C06 起訖與已合併證據",
+      "head_sha": "aad65665cb5cedd2f35bcedde63fcb14794e273a",
+      "base": "main",
+      "draft": false
+    },
+    {
+      "number": 137,
+      "title": "docs: 保存前台尺寸與購物模擬逐步原圖",
+      "head_sha": "8b6556e834170cf4fedd11a658c0e265be6a30ca",
+      "base": "main",
+      "draft": false
+    },
+    {
+      "number": 5,
+      "title": "draft: 行為計分候選實作（AI／後台由 JEFF 負責）",
+      "head_sha": "dc3114de7de0cd72b370610a1bdd6e2a707d8940",
+      "base": "main",
+      "draft": true
+    }
+  ],
+  "deployed_source_sha": "294c1fac26d6785054063b8be6eb7d9e61075be4",
+  "changes_since_deployed_source": [
+    "MuscleCore分析資料/website/tests/test_ren_transactions.py",
+    "VibeCart_AI/services/cart_service.py"
+  ],
+  "runtime_gap": "PR131 N06 abort acknowledgement fix present in main; not deployed or remotely tested by this conversation",
+  "original_pptx_sha256": "43374f71c5e42fdc1725f38a8ac69ea0e2ccc696f6238ebb06425e58e00d7203",
+  "original_pdf_sha256": "c5555c2a54d8a4200fd79fb8073d0fa5af691b40b13a4e031ddf9f8f6dc4535d",
+  "artifact_manifest": [
+    {
+      "path": "docs/inventory/SAM_PROXY_N02_LOCAL_HANDOVER_2026-10-20.json",
+      "sha256": "b0ec9da32aa0d774d0e2b1fcc9c1a9e5696e7053a06eafaf0d08c3a5c38945c3",
+      "bytes": 2477
+    },
+    {
+      "path": "docs/inventory/SAM_PROXY_N04_EXACT_SESSION_CLEANUP_2026-10-20.json",
+      "sha256": "f757e1a807b8975dc54e3a4f867c0de345f3e10151d772be155a7ea5f05fb2e0",
+      "bytes": 1233
+    },
+    {
+      "path": "docs/inventory/SAM_PROXY_N04_SIX_ROLES_2026-10-20.json",
+      "sha256": "4c2115ee2f541fe4682a19ca6375feb2c0ef43f37f8f30872a55bfeced49615f",
+      "bytes": 560
+    },
+    {
+      "path": "docs/inventory/SAM_PROXY_N04_SIX_ROLES_RETRY1_2026-10-20.json",
+      "sha256": "1b6d171863503733738d0362943646e41ff09a2512a219439c5ddc8b0c826d61",
+      "bytes": 632
+    },
+    {
+      "path": "docs/inventory/SAM_PROXY_N04_SIX_ROLES_RETRY2_2026-10-20.json",
+      "sha256": "9e3a2206d628db6c6b444a8a6eb00c2bdd9da71757aae54f9d25ef6ae10e61d6",
+      "bytes": 3200
+    },
+    {
+      "path": "docs/inventory/SAM_PROXY_N05_BUNDLE_VERIFY_2026-10-20.json",
+      "sha256": "e9b6d01e0ea243d71aa8ea212daa2c515c09ab25f332c15d5719dac292922940",
+      "bytes": 683
+    },
+    {
+      "path": "docs/inventory/SAM_PROXY_N05_PRE_RETRY_PRIVATE_READBACK_2026-10-20.json",
+      "sha256": "b2837826c58b5aedec2d211328d81c071351c3e5f88ed77795e1d6e0ffe99a8e",
+      "bytes": 1518
+    },
+    {
+      "path": "docs/inventory/SAM_PROXY_N05_RETRY1_LOGS_2026-10-20.json",
+      "sha256": "fab3d1936d7fb5ea3b98767398568fad079f0bdb8d24da1cfc544de03fc3296e",
+      "bytes": 331
+    },
+    {
+      "path": "docs/inventory/SAM_PROXY_N05_RETRY2_LOGS_2026-10-20.json",
+      "sha256": "b5453d8d867aa2f38c857de3df12e5ba72d54a4cfe95a27e934cdbcfa8e0a876",
+      "bytes": 13086
+    },
+    {
+      "path": "docs/inventory/SAM_PROXY_N05_SAME_IMAGE_2026-10-20.json",
+      "sha256": "3cf53f9c03d11d9d979baf62b4186b276a5b3ce8ff5ff1933e8a2f7b8d6f448e",
+      "bytes": 1160
+    },
+    {
+      "path": "docs/inventory/SAM_PROXY_N05_SAME_IMAGE_RETRY1_2026-10-20.json",
+      "sha256": "21ee4624c841b1e0a76d2d45542e6d47efb71392b2039a23e6f4d74f0b40d649",
+      "bytes": 1612
+    },
+    {
+      "path": "docs/inventory/SAM_PROXY_N05_SAME_IMAGE_RETRY2_2026-10-20.json",
+      "sha256": "2c9e5c50bc795dfc0c42855ca87f1f37bac8a9dd8eaaa65c7c3d6c32d91a70e3",
+      "bytes": 2013
+    },
+    {
+      "path": "docs/inventory/SAM_PROXY_N05_VERIFIED_2026-10-20.json",
+      "sha256": "ea84f14a0c7ffa15f27266e5ec7e461f75d0ae687c8bc541cb48a57c5dbea6b2",
+      "bytes": 1875
+    },
+    {
+      "path": "docs/inventory/SAM_PROXY_N06_SINGLE_2026-10-20.json",
+      "sha256": "d2673893bec41a99c0975c67e40c70c8855347e8eb782f15333f236c3c045e53",
+      "bytes": 113506
+    },
+    {
+      "path": "docs/inventory/SAM_PROXY_N06_SUMMARY_2026-10-20.json",
+      "sha256": "3c8dfb126fbbb6b3e93ad28a98ed4ade48e95f77d673195cfaf9c64c20956845",
+      "bytes": 1194
+    },
+    {
+      "path": "docs/inventory/SAM_PROXY_N06_SUSTAINED_2026-10-20.json",
+      "sha256": "db30c7c1f098a55b1e352619a2793faa55772367cdfabce7b7ca4d3a27c80a8d",
+      "bytes": 275758
+    },
+    {
+      "path": "docs/inventory/SAM_PROXY_N11_ASSET_SCOPE_2026-10-20.json",
+      "sha256": "b9d2e73580bc93e941da26e45c625f39a077260c6b2181ed27e60cb5c2fe52d0",
+      "bytes": 241
+    },
+    {
+      "path": "docs/inventory/SAM_PROXY_N11_CONSUMERS_2026-10-20.json",
+      "sha256": "4ca62d854ce3b699db764cd1abf86803a4d0c4c94e25183f169fb10996365763",
+      "bytes": 4246
+    },
+    {
+      "path": "docs/inventory/SAM_PROXY_N11_FORMAL_D4_2026-10-20.json",
+      "sha256": "187791434146571d615c9382e0edf0aa1070dc65f3ea42e0aa79d557612f50b9",
+      "bytes": 793
+    },
+    {
+      "path": "docs/inventory/SAM_PROXY_N11_SAME_IMAGE_2026-10-20.json",
+      "sha256": "7a0f262121bac3e0c47ea3b9882eb3e8839b2af5250b5d7f9b1c5bf6d484040f",
+      "bytes": 3338
+    },
+    {
+      "path": "docs/inventory/SAM_PROXY_N12_BROWSER_2026-10-20.json",
+      "sha256": "8a279f7ba8b6d912cfba7c64802f4c4550c9aa834e5a4d828103f5f3ff6a63eb",
+      "bytes": 740
+    },
+    {
+      "path": "docs/inventory/SAM_PROXY_N13_NETWORK_2026-10-20.json",
+      "sha256": "65023356b1116a003dc60c4320078c74bbf7716c79d6fe59e82305447ee7ef0c",
+      "bytes": 2103
+    },
+    {
+      "path": "docs/inventory/SAM_PROXY_N13_RUNTIME_2026-10-20.json",
+      "sha256": "9dacacd2fc85ce4ac35b3743123f6676ca27d26f6ea772bbc3e784bf07ff8cc6",
+      "bytes": 1762
+    },
+    {
+      "path": "docs/inventory/SAM_PROXY_N14_RESTORE_2026-10-20.json",
+      "sha256": "6e42fc2624283247b8aa19415005fcf7f08468c9f22cc267bb12435afcfcdfaa",
+      "bytes": 1588
+    },
+    {
+      "path": "docs/inventory/SAM_PROXY_N15_DEPLOYMENT_2026-10-20.json",
+      "sha256": "dd8b2d3b16962b4f697c43d3338238ddd6fc1f3f92eddbe0417bb97eaed3ba7b",
+      "bytes": 1762
+    },
+    {
+      "path": "docs/inventory/SAM_PROXY_N15_REVIEW_2026-10-20.json",
+      "sha256": "7699bf02262ae0901c7eb29f984a5c9420b805b031866831f99a46c9f7dfd3b8",
+      "bytes": 1915
+    },
+    {
+      "path": "docs/inventory/SAM_PROXY_N16_ASSETS_2026-10-20.json",
+      "sha256": "1b442292a4d3c07961962a0b5a228e23da8946e556c2fe029190092e7bc7aae9",
+      "bytes": 8218
+    },
+    {
+      "path": "docs/inventory/SAM_PROXY_N17_OFFLINE_2026-10-20.json",
+      "sha256": "9dc8d61e7a205a8e83aa86a9819f4322724b4ca42e76fc5967506369b25206d7",
+      "bytes": 1512
+    },
+    {
+      "path": "docs/inventory/SAM_PROXY_N18_RUNTIME_2026-10-20.json",
+      "sha256": "981047e37ccba0321c96ec6bfbce791fe23486d8e7c54bc7b6a76bcf60368520",
+      "bytes": 1762
+    }
+  ],
+  "manifest_scope": "SAM_PROXY evidence existing at this recorded time; mutable execution ledger and this manifest excluded to avoid self references",
+  "named_human_signatures_written": false,
+  "production_deployed": false,
+  "formal_d4_reimported": false,
+  "remaining_conditions": [
+    "latest N06 runtime fix deployment and same-image remote acceptance",
+    "N11 unread policy area and absent optional APIs are not proof of no consumer",
+    "N12 browser blocker and remaining actual phone checks",
+    "N14 this run plaintext cleanup blocked by automatic approval, daily fixed Drive reversible ACL and schedule unverified",
+    "N16 adoption of final current-version assets and owners acceptance",
+    "N17 physical offline/projector and timed spoken rehearsal",
+    "N18 full-site final scope acceptance and version freeze"
+  ]
+}
