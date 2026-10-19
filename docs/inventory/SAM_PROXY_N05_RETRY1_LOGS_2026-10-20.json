@@ -1,0 +1,16 @@
+{
+  "checked_at": "2026-10-19T17:34:00.249Z",
+  "job": "sam-proxy-n05-1020-608e07",
+  "entry_count": 8,
+  "probes": [
+    {
+      "report": {
+        "error_type": "ProbeReportUnavailable",
+        "status": "failed"
+      },
+      "file": "remote_transaction_acceptance_probe.py",
+      "code": 1
+    }
+  ],
+  "error_lines": []
+}

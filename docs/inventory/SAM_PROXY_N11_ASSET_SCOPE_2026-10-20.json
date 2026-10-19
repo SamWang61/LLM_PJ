@@ -1,0 +1,10 @@
+{
+  "checked_at": "2026-10-19T17:52:25.710Z",
+  "scope": "project-wide Cloud Asset resource index, read only; no API activation",
+  "status": "unavailable",
+  "mutations": 0,
+  "http_status": 403,
+  "reasons": [
+    "SERVICE_DISABLED"
+  ]
+}
