@@ -55,7 +55,7 @@ def main():
     out = ROOT / 'docs/inventory'
     out.mkdir(parents=True, exist_ok=True)
     with (out / 'files.csv').open('w', encoding='utf-8-sig', newline='') as f:
-        w = csv.writer(f)
+        w = csv.writer(f, lineterminator='\n')
         w.writerow(['path / 路徑', 'bytes / 大小', 'category / 類別', 'sha256', 'inspection / 讀取範圍'])
         w.writerows(sorted(rows))
     groups = {}

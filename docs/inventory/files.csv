@@ -334,7 +334,7 @@ scripts/cloud_egress_preflight.cjs,3468,document / 文件,ebf2fd3dfe2d01c0636274
 scripts/configure_cloud_egress.cjs,5684,document / 文件,f3fe4809380458d14df5a0903132ea7bc482b2300ebd39d2d9db6d33898066c2,binary hashed / 二進位雜湊
 scripts/enable_compute_for_egress.cjs,2075,document / 文件,c1be6998debf38152e46ca9c3ed3e49a1027e45dc6a6c252f1c448fe3d2f0e11,binary hashed / 二進位雜湊
 scripts/encrypted_backup.py,6860,source / 原始碼,82bd2b28977cad316776b8d902b295833cd250476c5c2db3ad88ff7b5e4226bc,text read / 文字讀取 (179 lines)
-scripts/inventory.py,3462,source / 原始碼,c431b784135cb111e3c5927cd3a95770b7c00bdefc149834895cec3519578998,text read / 文字讀取 (71 lines)
+scripts/inventory.py,3483,source / 原始碼,b39758d1494ff468d22d0248710361d21940cc092d634acde1faa1c3db7611d3,text read / 文字讀取 (71 lines)
 scripts/migrate_admin_audit.py,4534,source / 原始碼,113741b5ed7aaedd6836c49f8bc2cec05d79feb937996ea5adacb4d90fd4f089,text read / 文字讀取 (93 lines)
 scripts/migrate_auth_sessions.py,2187,source / 原始碼,c8d4ef030b155254b6495a4651111bf44a38d00d25f6273c453482273062cd57,text read / 文字讀取 (42 lines)
 scripts/migrate_email_role_logins.py,2072,source / 原始碼,71417f24171de2fb0f042be8398ceb5f5740b46301e413f4ea04b06891e7f90b,text read / 文字讀取 (41 lines)
