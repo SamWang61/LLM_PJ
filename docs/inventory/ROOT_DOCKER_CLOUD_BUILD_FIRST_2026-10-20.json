@@ -1,0 +1,31 @@
+{
+  "checked_at": "2026-10-19T20:21:45.638Z",
+  "build_id": "87661fd3-db9d-4e94-97a6-4039c006bb11",
+  "status": "FAILURE",
+  "source_sha": "f6af59324d6c25a4502ca07df2db05866e06781c",
+  "trigger_id": "d0b39103-7508-451d-b3e6-6c251f82855d",
+  "start_time": "2026-10-19T20:19:22.216506535Z",
+  "finish_time": "2026-10-19T20:20:16.610012Z",
+  "steps": [
+    {
+      "id": "Prepare committed allowlist",
+      "status": "SUCCESS"
+    },
+    {
+      "id": "Build",
+      "status": "SUCCESS"
+    },
+    {
+      "id": "Offline boot",
+      "status": "FAILURE"
+    },
+    {
+      "id": "Push",
+      "status": "QUEUED"
+    },
+    {
+      "id": "Stage private candidate only",
+      "status": "QUEUED"
+    }
+  ]
+}
