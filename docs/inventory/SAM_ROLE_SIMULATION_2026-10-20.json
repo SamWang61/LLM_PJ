@@ -86,11 +86,16 @@
       "order": 6,
       "id": "N11",
       "owner": "SAM 清冊 → JEFF；本輪 SAM 模擬 JEFF",
-      "status": "not_started",
-      "started_at": null,
-      "finished_at": null,
-      "evidence": [],
-      "limitations": []
+      "status": "readable_scope_technical_subitem_passed",
+      "started_at": "2026-10-20T01:45:58+08:00",
+      "finished_at": "2026-10-20T01:55:08+08:00",
+      "evidence": [
+        "docs/SAM_C03_CONSUMER_ADMIN_2026-10-20.md"
+      ],
+      "limitations": [
+        "Policy denied region, external consumer coverage and JEFF human receipt remain pending."
+      ],
+      "original_gate_closed": false
     },
     {
       "order": 7,

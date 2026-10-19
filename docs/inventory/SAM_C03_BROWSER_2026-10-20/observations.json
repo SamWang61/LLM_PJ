@@ -1,0 +1,95 @@
+{
+  "operator": "SAM simulated by Codex; existing SAM admin session, not JEFF human signoff",
+  "paid_or_generation_actions": 0,
+  "business_writes": 0,
+  "checks": [
+    {
+      "label": "AI 比較",
+      "url": "https://vibecart-llmai.web.app/admin/ai/compare",
+      "started_at": "2026-10-19T17:53:24.584Z",
+      "finished_at": "2026-10-19T17:53:24.849Z",
+      "screenshot": "01-compare.jpg"
+    },
+    {
+      "label": "營運總覽",
+      "url": "https://vibecart-llmai.web.app/admin/",
+      "finished_at": "2026-10-19T17:53:57.742Z",
+      "screenshot": "02-dashboard.jpg",
+      "headings": [
+        "    - heading \"系統狀態\" [level=2]",
+        "  - heading \"營運決策中心\" [level=1]",
+        "  - button \"套用範圍\"",
+        "    - heading \"每日有效營收\" [level=2]",
+        "    - heading \"熱銷排行 Top 10\" [level=2]",
+        "    - heading \"營運摘要\" [level=2]",
+        "    - button \"產生此範圍的 AI 摘要\"",
+        "    - heading \"目前低庫存明細\" [level=2]",
+        "    - heading \"範圍內最近訂單\" [level=2]"
+      ],
+      "note": "full-page capture timed out; original viewport retained"
+    },
+    {
+      "label": "Local 推薦",
+      "url": "https://vibecart-llmai.web.app/admin/ai/recommendation",
+      "started_at": "2026-10-19T17:54:06.523Z",
+      "finished_at": "2026-10-19T17:54:06.652Z",
+      "screenshot": "03-local.jpg",
+      "headings": [
+        "    - generic: 尚未開放",
+        "    - generic: 尚未開放",
+        "    - generic: 尚未開放",
+        "    - heading \"系統狀態\" [level=2]",
+        "      - generic: 已連線（v4）",
+        "      - generic: 尚未載入（前台未啟用）",
+        "  - heading \"相似商品推薦\" [level=1]",
+        "  - button \"更新商品向量\"",
+        "  - button \"計算相似商品\"",
+        "    - heading \"為什麼用本機模型\" [level=2]"
+      ]
+    },
+    {
+      "label": "雲端洞察",
+      "url": "https://vibecart-llmai.web.app/admin/ai/insight",
+      "started_at": "2026-10-19T17:54:11.690Z",
+      "finished_at": "2026-10-19T17:54:11.767Z",
+      "screenshot": "04-insight.jpg",
+      "headings": [
+        "    - generic: 尚未開放",
+        "    - generic: 尚未開放",
+        "    - generic: 尚未開放",
+        "    - heading \"系統狀態\" [level=2]",
+        "      - generic: 已連線（v4）",
+        "      - generic: 尚未載入（前台未啟用）",
+        "  - heading \"AI 營運洞察\" [level=1]",
+        "  - textbox \"本期開始（台北）\": 2026-10-13",
+        "  - textbox \"本期結束（含當日）\": 2026-10-19",
+        "  - button \"套用範圍\"",
+        "    - heading \"KPI 快照\" [level=2]",
+        "    - heading \"快速提問\" [level=2]",
+        "    - button \"產生本週主管摘要\"",
+        "    - button \"哪些商品該補貨？\"",
+        "    - button \"哪些商品適合促銷？\"",
+        "    - button \"營收為什麼下滑？\""
+      ]
+    },
+    {
+      "label": "推薦監控",
+      "url": "https://vibecart-llmai.web.app/admin/recommendations",
+      "started_at": "2026-10-19T17:54:18.086Z",
+      "finished_at": "2026-10-19T17:54:18.169Z",
+      "screenshot": "05-monitor.jpg",
+      "headings": [
+        "    - generic: 尚未開放",
+        "    - generic: 尚未開放",
+        "    - generic: 尚未開放",
+        "    - heading \"系統狀態\" [level=2]",
+        "      - generic: 已連線（v4）",
+        "      - generic: 尚未載入（前台未啟用）",
+        "  - heading \"推薦監控\" [level=1]",
+        "    - heading \"行為權重政策\" [level=2]",
+        "    - heading \"目前策略\" [level=2]",
+        "    - heading \"最近 1,000 筆事件\" [level=2]"
+      ]
+    }
+  ]
+}

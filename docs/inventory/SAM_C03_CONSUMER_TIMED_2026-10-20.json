@@ -1,0 +1,205 @@
+{
+  "operator": "SAM simulation performed by Codex",
+  "started_at": "2026-10-20T01:49:49+08:00",
+  "completed_at": "2026-10-20T01:49:56+08:00",
+  "timezone": "Asia/Taipei",
+  "status": "passed",
+  "scope": "isolated mongomock business-flow simulation",
+  "atlas_contacted": false,
+  "real_mongodb_transaction": false,
+  "physical_device": false,
+  "human_signoff": false,
+  "source_commit": "9771b608f151a8e1aa967577dfd31848a48defd9",
+  "cases": [
+    {
+      "case": "MuscleCore分析資料/website/tests/test_behavior_scope.py::test_each_marker_excluded_in_database_and_memory[metadata0]",
+      "started_at": "2026-10-20T01:49:53+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:49:53+08:00"
+    },
+    {
+      "case": "MuscleCore分析資料/website/tests/test_behavior_scope.py::test_each_marker_excluded_in_database_and_memory[metadata1]",
+      "started_at": "2026-10-20T01:49:53+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:49:53+08:00"
+    },
+    {
+      "case": "MuscleCore分析資料/website/tests/test_behavior_scope.py::test_each_marker_excluded_in_database_and_memory[metadata2]",
+      "started_at": "2026-10-20T01:49:53+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:49:53+08:00"
+    },
+    {
+      "case": "MuscleCore分析資料/website/tests/test_behavior_scope.py::test_monitor_filters_before_limit",
+      "started_at": "2026-10-20T01:49:53+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:49:54+08:00"
+    },
+    {
+      "case": "MuscleCore分析資料/website/tests/test_behavior_scope.py::test_storefront_filters_before_limit_and_preserves_owner",
+      "started_at": "2026-10-20T01:49:54+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:49:54+08:00"
+    },
+    {
+      "case": "MuscleCore分析資料/website/tests/test_behavior_scope.py::test_rule_scores_unchanged_by_synthetic_events",
+      "started_at": "2026-10-20T01:49:54+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:49:54+08:00"
+    },
+    {
+      "case": "MuscleCore分析資料/website/tests/test_behavior_scope.py::test_direct_graph_does_not_seed_embeddings_from_synthetic_history",
+      "started_at": "2026-10-20T01:49:54+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:49:56+08:00"
+    },
+    {
+      "case": "MuscleCore分析資料/website/tests/test_behavior_scope.py::test_legacy_writes_keep_server_synthetic_batch_on_all_events[legacy-offline-batch-legacy-offline-batch]",
+      "started_at": "2026-10-20T01:49:56+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:49:56+08:00"
+    },
+    {
+      "case": "MuscleCore分析資料/website/tests/test_behavior_scope.py::test_legacy_writes_keep_server_synthetic_batch_on_all_events[-legacy-demo]",
+      "started_at": "2026-10-20T01:49:56+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:49:56+08:00"
+    },
+    {
+      "case": "MuscleCore分析資料/website/tests/test_behavior_scope.py::test_purchase_attribution_follows_order_demo_flag",
+      "started_at": "2026-10-20T01:49:56+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:49:56+08:00"
+    },
+    {
+      "case": "scripts/test_remote_d4_consumer_probe.py::test_unsafe_scope_is_rejected_before_any_connection[mongo_uri-mongodb+srv://sam_pr21_acceptance_20261017:unused@vibecart-ai-free.odqe25w.mongodb.net/vibecart_ai]",
+      "started_at": "2026-10-20T01:49:56+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:49:56+08:00"
+    },
+    {
+      "case": "scripts/test_remote_d4_consumer_probe.py::test_unsafe_scope_is_rejected_before_any_connection[service_url-https://vibecart-web-test.a.run.app]",
+      "started_at": "2026-10-20T01:49:56+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:49:56+08:00"
+    },
+    {
+      "case": "scripts/test_remote_d4_consumer_probe.py::test_unsafe_scope_is_rejected_before_any_connection[image-registry/web:latest]",
+      "started_at": "2026-10-20T01:49:56+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:49:56+08:00"
+    },
+    {
+      "case": "scripts/test_remote_d4_consumer_probe.py::test_rejects_broad_or_wrong_database_roles",
+      "started_at": "2026-10-20T01:49:56+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:49:56+08:00"
+    },
+    {
+      "case": "scripts/test_remote_d4_consumer_probe.py::test_cleanup_is_scoped_and_every_collection_is_read_back",
+      "started_at": "2026-10-20T01:49:56+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:49:56+08:00"
+    },
+    {
+      "case": "scripts/test_remote_d4_consumer_probe.py::test_synthetic_and_normal_fixtures_must_have_distinct_major_categories",
+      "started_at": "2026-10-20T01:49:56+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:49:56+08:00"
+    },
+    {
+      "case": "scripts/test_remote_d4_consumer_probe.py::test_leading_category_reads_product_identity_instead_of_assuming_fixture_id_leads",
+      "started_at": "2026-10-20T01:49:56+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:49:56+08:00"
+    },
+    {
+      "case": "scripts/test_remote_d4_consumer_probe.py::test_current_ranking_accepts_unrated_cold_start_and_detects_cross_category_leak",
+      "started_at": "2026-10-20T01:49:56+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:49:56+08:00"
+    },
+    {
+      "case": "scripts/test_remote_d4_consumer_probe.py::test_new_category_cleanup_requires_both_owned_id_and_exact_run_code",
+      "started_at": "2026-10-20T01:49:56+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:49:56+08:00"
+    }
+  ]
+}
