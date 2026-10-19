@@ -1,0 +1,30 @@
+{
+  "observed_at_utc": "2026-10-19T00:57:17Z",
+  "project": "vibecart-llmai",
+  "region": "asia-east1",
+  "source_sha": "294c1fac26d6785054063b8be6eb7d9e61075be4",
+  "image_digest": "sha256:796a42b6d5fd80099900abc381d4c954d21ed1bea162ad0a9a49a89355deb40a",
+  "production_revision_100_percent": "vibecart-web-n06-294c-1019",
+  "private_revision_100_percent": "vibecart-acceptance-pr21-n06-294c-1019",
+  "both_revisions_vpc_egress": "ALL_TRAFFIC",
+  "hosting_release": "sites/vibecart-llmai/releases/1792363722745000",
+  "public_anonymous_routes": {
+    "/": 200,
+    "/recommendations": 200,
+    "/auth/login": 200
+  },
+  "private_acceptance": {
+    "job": "sam-reviews-n06-accept-20261019",
+    "execution": "sam-reviews-n06-accept-20261019-q646f",
+    "execution_succeeded_count": 1,
+    "probes": [
+      {"file": "remote_dual_role_acceptance_probe.py", "status": "passed", "exit_code": 0, "fixture_cleanup_verified": true},
+      {"file": "remote_reviews_acceptance_probe.py", "status": "passed", "exit_code": 0, "fixture_cleanup_verified": true},
+      {"file": "remote_account_acceptance_probe.py", "status": "passed", "exit_code": 0, "fixture_cleanup_verified": true},
+      {"file": "remote_transaction_acceptance_probe.py", "status": "passed", "exit_code": 0, "fixture_cleanup_verified": true}
+    ],
+    "temporary_user_index_restored": true,
+    "job_deleted_readback_404": true
+  },
+  "scope_limit": "This same-digest private acceptance does not repeat the formal Atlas review submission, browser no-reload UI capture, or named human signoff on the new digest."
+}
