@@ -34,6 +34,8 @@ jobs:
       - name: 網站離線測試 / Offline demo tests
         working-directory: MuscleCore分析資料/website
         run: python -m pytest tests -q -p no:cacheprovider
+      - name: 三角色單機模擬隔離 / SRJ local simulation isolation
+        run: python -m pytest scripts/test_srj_local_simulation.py -q -p no:cacheprovider
       - name: 合成資料離線回歸 / Synthetic fixture regression
         working-directory: MuscleCore分析資料/website
         run: python -m pytest ../../VibeCart_AI/MongoDB/test_data -q -p no:cacheprovider
