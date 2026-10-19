@@ -27,8 +27,13 @@ def _git(*args):
     ).stdout
 
 
-def _sources(commit):
+def _sources(commit, layout="flat"):
     """Select regular committed files; never follow checkout bytes or untracked files."""
+    if layout not in {"flat", "repository"}:
+        raise ValueError("Unknown cloud source layout")
+    required = REQUIRED if layout == "flat" else (
+        REQUIRED - {f"{WEBSITE}/Dockerfile", f"{WEBSITE}/.dockerignore"}
+    ) | {"Dockerfile", ".dockerignore"}
     selected = []
     for entry in _git("ls-tree", "-rz", commit).split(b"\0"):
         if not entry:
@@ -43,23 +48,24 @@ def _sources(commit):
             and not Path(relative_app).name.startswith(".env")
             and Path(relative_app).suffix.lower() in APP_SUFFIXES
         )
-        if path not in REQUIRED and not allowed_app:
+        if path not in required and not allowed_app:
             continue
         if kind != b"blob" or mode not in (b"100644", b"100755"):
             raise ValueError(f"Source must be a regular Git file: {path}")
-        target = path[len(WEBSITE) + 1:] if path.startswith(f"{WEBSITE}/") else path
+        target = (path[len(WEBSITE) + 1:]
+                  if layout == "flat" and path.startswith(f"{WEBSITE}/") else path)
         selected.append((object_id.decode("ascii"), path, target))
-    missing = REQUIRED - {path for _, path, _ in selected}
+    missing = required - {path for _, path, _ in selected}
     if missing:
         raise ValueError(f"Missing required committed source: {', '.join(sorted(missing))}")
     return sorted(selected, key=lambda item: item[2])
 
 
-def package(output, commit="HEAD"):
+def package(output, commit="HEAD", layout="flat"):
     output = Path(output).resolve()
     if output.is_relative_to(ROOT):
         raise ValueError("Keep the build archive outside the repository")
-    sources = _sources(commit)
+    sources = _sources(commit, layout)
     output.parent.mkdir(parents=True, exist_ok=True)
     with output.open("wb") as stream:
         with gzip.GzipFile(filename="", mode="wb", fileobj=stream, mtime=0) as compressed:
@@ -78,6 +84,8 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--output", type=Path, required=True)
     parser.add_argument("--commit", default="HEAD", help="Commit containing the deployed source")
+    parser.add_argument("--layout", choices=("flat", "repository"), default="flat",
+                        help="flat keeps the existing archive; repository uses the root Dockerfile")
     args = parser.parse_args()
-    count, digest = package(args.output, args.commit)
+    count, digest = package(args.output, args.commit, args.layout)
     print(f"{count} committed allowlisted files; sha256={digest}")
