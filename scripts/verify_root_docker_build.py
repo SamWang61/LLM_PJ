@@ -8,6 +8,7 @@ import argparse
 from datetime import datetime, timezone
 import hashlib
 import json
+import os
 from pathlib import Path
 import subprocess
 import sys
@@ -51,9 +52,10 @@ probe = task / 'ContextProbe.Dockerfile'
 probe.write_text('FROM scratch\nCOPY . /\n', encoding='utf-8')
 export = task / 'export'
 
-def build(args, log_name):
+def build(args, log_name, *, classic=False):
     with (task / log_name).open('w', encoding='utf-8') as log:
-        result = subprocess.run(['docker', *args], stdout=log, stderr=subprocess.STDOUT, text=True)
+        env = {**os.environ, 'DOCKER_BUILDKIT': '0'} if classic else os.environ
+        result = subprocess.run(['docker', *args], stdout=log, stderr=subprocess.STDOUT, text=True, env=env)
     if result.returncode:
         raise RuntimeError('Docker command failed; log at ' + str(task / log_name))
 
@@ -74,7 +76,8 @@ try:
     report['fake_secret_canaries_excluded'] = len(canaries)
     print('Building repository-root Dockerfile', flush=True)
     build(['build', '--platform', 'linux/amd64', '--build-arg', 'INSTALL_AI=false',
-           '-t', image, str(context)], 'image.log')
+           '-t', image, str(context)], 'image.log', classic=True)
+    report['image_builder'] = 'classic Docker (DOCKER_BUILDKIT=0); BuildKit context export also verified'
     files_code = ('import hashlib,json; from pathlib import Path; r=Path("/srv/app"); '
                   'print(json.dumps({str(p.relative_to(r)):hashlib.sha256(p.read_bytes()).hexdigest() '
                   'for p in r.rglob("*") if p.is_file()}))')
