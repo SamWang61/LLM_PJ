@@ -67,7 +67,7 @@ collect_catalog.py 是重新擷取工具，非日常啟動必要步驟。其本�
 
 ## 交給組員的連線設定
 
-部署現有 Flask 程式時，在伺服器的秘密設定中提供 MONGO_URI、MONGO_DB=vibecart_ai、DATA_MODE=v4 及固定 SECRET_KEY；Atlas 的 Network Access 依 2026-10-05 使用者回報已新增 `0.0.0.0/0`，生效期間允許任意 IPv4 伺服器來源；本次外掛需重新登入，Active 與到期狀態尚未核實，詳見 [Cluster 設定](../01_Cluster設定與狀態.md)。勿把 URI 密碼放入前端 JavaScript、CSV、MD 或 Git。
+部署現有 Flask 程式時，在伺服器的秘密設定中提供 MONGO_URI、MONGO_DB=vibecart_ai、DATA_MODE=v4 及固定 SECRET_KEY；Atlas Network Access 於 2026-10-19 實際讀回 4 筆 `/32`，含專用 NAT `35.229.228.204/32`，沒有 `0.0.0.0/0`；伺服器出口必須符合清單，逐筆 Active／到期未由外掛提供。詳見 [Cluster 設定](../01_Cluster設定與狀態.md)。勿把 URI 密碼放入前端 JavaScript、CSV、MD 或 Git。
 
 本機 run_supermarket.py 明確採用 v4，關閉真實結帳及外部 AI 呼叫；未改寫原 Flask .env。它只監聽本機，不能把 127.0.0.1 連結分享給同學當作公開站。正式 WSGI 部署可使用 run_supermarket:app，並在伺服器設定固定 SECRET_KEY；若需其他模式，依現有 create_app 設定 DATA_MODE=v4。
 
