@@ -1,0 +1,78 @@
+{
+  "checked_at": "2026-10-19T09:22:51.345Z",
+  "scope": "same-image private acceptance database only; isolated D4-only replay",
+  "status": "passed",
+  "production": {
+    "service": "vibecart-web",
+    "revision": "vibecart-web-n06-294c-1019",
+    "traffic_percent": 100,
+    "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:796a42b6d5fd80099900abc381d4c954d21ed1bea162ad0a9a49a89355deb40a",
+    "source_sha": "294c1fac26d6785054063b8be6eb7d9e61075be4"
+  },
+  "acceptance": {
+    "service": "vibecart-acceptance-pr21",
+    "revision": "vibecart-acceptance-pr21-n06-294c-1019",
+    "traffic_percent": 100,
+    "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:796a42b6d5fd80099900abc381d4c954d21ed1bea162ad0a9a49a89355deb40a",
+    "source_sha": "294c1fac26d6785054063b8be6eb7d9e61075be4"
+  },
+  "deployment_after": {
+    "production": {
+      "service": "vibecart-web",
+      "revision": "vibecart-web-n06-294c-1019",
+      "traffic_percent": 100,
+      "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:796a42b6d5fd80099900abc381d4c954d21ed1bea162ad0a9a49a89355deb40a",
+      "source_sha": "294c1fac26d6785054063b8be6eb7d9e61075be4"
+    },
+    "acceptance": {
+      "service": "vibecart-acceptance-pr21",
+      "revision": "vibecart-acceptance-pr21-n06-294c-1019",
+      "traffic_percent": 100,
+      "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:796a42b6d5fd80099900abc381d4c954d21ed1bea162ad0a9a49a89355deb40a",
+      "source_sha": "294c1fac26d6785054063b8be6eb7d9e61075be4"
+    }
+  },
+  "probe": {
+    "probe_id": "ren-d4-dcdc57ddad744ad8",
+    "service_revision": "vibecart-acceptance-pr21-n06-294c-1019",
+    "service_image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:796a42b6d5fd80099900abc381d4c954d21ed1bea162ad0a9a49a89355deb40a",
+    "temporary_category_branch_created": true,
+    "status": "passed",
+    "baseline_admin_count": 13,
+    "after_normal_admin_count": 14,
+    "after_synthetic_admin_count": 14,
+    "normal_visible": true,
+    "synthetic_excluded": true,
+    "distinct_major_categories": true,
+    "normal_category_led": true,
+    "fabricated_ratings": false,
+    "normal_inserted": 1,
+    "synthetic_inserted": 1001,
+    "product_ids": [
+      "6ad5e1bbddca92925124f85d",
+      "6ad5e1bbddca92925124f85e"
+    ],
+    "cleanup": {
+      "events": 1002,
+      "sessions": 2,
+      "users": 2,
+      "skus": 2,
+      "products": 2,
+      "categories": 2,
+      "events_remaining": 0,
+      "sessions_remaining": 0,
+      "users_remaining": 0,
+      "skus_remaining": 0,
+      "products_remaining": 0,
+      "categories_remaining": 0,
+      "verified": true
+    }
+  },
+  "temporary_iam_revoked": true,
+  "script_sha256": {
+    "remote_d4_consumer_probe.py": "9e998d3b7ff6a41e5faf52e11aac3d044ecb8cc22f4e021f6e3b4b82d5c31fa0",
+    "run_remote_transaction_acceptance_probe.cjs": "4a52c1d11ba12f368bca1451a59d16a67b82a6f642a7c2f14c60dd82d133d589"
+  },
+  "human_acceptance": false,
+  "production_database_mutated": false
+}
