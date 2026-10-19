@@ -3,17 +3,22 @@
   "scope": "SAM role simulations authorized by the user; not human signoff or physical-device evidence",
   "baseline": "5c55bc01455b0ee50565de234b1f5d6975638dc9",
   "table": "專題進度/待結案12項_執行順序與分工_2026-10-20.md",
-  "stage": "plan-publication-before-mail",
+  "stage": "executing; consolidated notification only after executable work is complete",
   "items": [
     {
       "order": 1,
       "id": "N15",
       "owner": "SAM",
-      "status": "not_started",
-      "started_at": null,
+      "status": "in_progress",
+      "started_at": "2026-10-20T01:12:54+08:00",
       "finished_at": null,
-      "evidence": [],
-      "limitations": []
+      "evidence": [
+        "專題進度/SAM模擬執行明細_2026-10-20.md",
+        "docs/inventory/SAM_BASELINE_READBACK_2026-10-20.json"
+      ],
+      "limitations": [
+        "PR #126 latest CI and merge pending; PR #121 closes after integration; human signoff not claimed"
+      ]
     },
     {
       "order": 2,
@@ -125,5 +130,14 @@
       "evidence": [],
       "limitations": []
     }
-  ]
+  ],
+  "notification_policy": {
+    "mode": "single_shared_message_at_end",
+    "recipients": [
+      "cashsam@gmail.com",
+      "chen2000401@gmail.com",
+      "jeff841117@gmail.com"
+    ],
+    "sent": false
+  }
 }
