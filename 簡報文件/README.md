@@ -13,10 +13,13 @@
 
 以上資料由組員提供，用於簡報封面、組員介紹與聯絡頁；衍生的 PPTX 也須保留可點擊的 Email 連結。
 
-準備日期：2026-10-15（台灣）；目標交付：2026-10-18（日）。本目錄是簡報內容與證據的共同入口，目前為準備稿，尚未輸出最終 PPTX。
+本目錄最初建立於 2026-10-15。13 頁 V5 PPTX／PDF 已於 10/18 交付；10/19 的新增事實、版本差異及待簽收項目，請先讀[展示前更新卡](超市AI版_2026-10-18/2026-10-19_展示前更新卡.md)。
 
 ## 文件入口
 
+- [V5 簡報與 PDF](超市AI版_2026-10-18/README.md)：13 頁可展示版本、講稿、預覽與來源。
+- [10/19 展示前更新卡](超市AI版_2026-10-18/2026-10-19_展示前更新卡.md)：新舊 SHA、線上版本與待具名簽收。
+- [S01～S12 取證](screenshots/S01-S12_同版取證_2026-10-18.md)：原圖、步驟、版本與接受界線。
 - [逐頁簡報內容](SLIDE_CONTENT.md)：12 頁初稿、講解重點與展示素材。
 - [架構與資料流](ARCHITECTURE.md)：可編輯 Mermaid 圖及版本界線。
 - [來源與交付盤點](SOURCE_REGISTER.md)：README、setup、測試、容器、CI、環境及部署資料。
@@ -25,4 +28,4 @@
 
 截圖是功能展示素材，也是完成標準的一部分；每項功能仍須有可重現步驟與測試／資料讀回證據。單張畫面不能證明訂單持久化、角色撤權或真模型推論成功。
 
-分工沿用專案文件：[SAM](mailto:cashsam@gmail.com) 資料庫、測試、整合協調；[JEFF](mailto:jeff841117@gmail.com) AI／後台；[REN](mailto:chen2000401@gmail.com) 會員／購物。前台完整 RWD 與最終簽收人待確認。英文摘要：Presentation preparation, evidence inventory, screenshot acceptance criteria, and delivery plan for October 18.
+分工沿用專案文件：[SAM](mailto:cashsam@gmail.com) 資料庫、測試、整合協調；[JEFF](mailto:jeff841117@gmail.com) AI／後台；[REN](mailto:chen2000401@gmail.com) 會員／購物。以下 12 頁內容與 10/18 計畫是早期草稿，現以 V5 及更新卡為展示入口；具名驗收依[接收表](../專題進度/2026-10-19_具名接收與異機復原表.md)。
