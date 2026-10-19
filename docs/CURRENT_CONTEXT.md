@@ -1,5 +1,7 @@
 # 最新專案上下文 / Current project context
 
+**2026/10/19 19:11 接續唯讀核對**：[本輪報告](SAM_1911_ACCEPTANCE_READBACK_2026-10-19.md)。main PR #117 合併 SHA `2d807ca`、同 SHA Actions 成功；公開三入口200。Atlas本次重新連線，讀回28集合、4條 `/32` 白名單且無萬用規則；D: 兩份密文雜湊符合交接卡。Cloud Run 17:58 後的控制平面狀態、REN第二台ASUS異機報告及三人本人結果尚無本次新證據；V5維持2/14，不代簽。
+
 **2026/10/19 17:58 自動建置修復已整合**：[Cloud Build專項紀錄](SAM_CLOUD_BUILD_PREVIEW_REPAIR_2026-10-19.md)。PR #116固定HEAD兩項CI成功、合併main `5d4cc2e`；main自動Cloud Build五步SUCCESS，main Actions及外部check均success。新私有候選00036-hed Ready／Healthy、0%、匿名403；正式與私有原294c各100%保持，公開五入口200。新候選尚未做業務或本人驗收。本人取證提醒17:00已寄REN、JEFF、SAM；實機／異機、Drive可逆ACL等仍待，V5維持2/14。
 
 **2026/10/19 17:25 技術子項重跑**：[完整本輪報告](SAM_ONLINE_FOLLOWUP_2026-10-19.md)補入同digest私有會員交易、5頁唯讀後台／12組固定問題，以及修正後D4-only測試：一般事件可改變分類偏好，1,001筆另一分類synthetic事件不改正式計數或推薦；沒有偽造高星評價。隔離資料與2筆自有分類清理0、暫時IAM撤除、流量前後一致。首兩輪舊探針假設／資料前置失敗保留原始紀錄；21項Python及7項Node相關回歸通過。本人簽收、實機／異機及每日備份ACL仍待，V5維持2/14。
