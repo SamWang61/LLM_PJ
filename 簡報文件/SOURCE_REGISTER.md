@@ -2,6 +2,8 @@
 
 盤點：2026-10-15；遠端 main 基線 7d10f7e。此次是文件／Git 檔案存在性核對，未重跑整站測試、Atlas 或部署驗收。
 
+**10/20 後續版本註記**：下表的「目前」均指 10/15 盤點時點。根目錄 [Dockerfile](../Dockerfile) 與 [.dockerignore](../.dockerignore) 已由 [PR #143](https://github.com/SamWang61/LLM_PJ/pull/143) 合併；兩種 builder、Cloud Build 與未切流量候選的證據見[修復紀錄](../deploy/ROOT_DOCKERFILE_2026-10-20.md)。簡報若介紹當前容器交付，請引用這份後續紀錄並於展示當日重讀 main／CI；10/15 的其他數字仍保留原日期。
+
 | 同學要求 | 來源與版本 | 目前可用素材 | 待補／負責人 |
 |---|---|---|---|
 | README | [根 README](../README.md)、[網站 README](../MuscleCore分析資料/website/README.md) | 專案定位、入口、legacy setup | [SAM](mailto:cashsam@gmail.com) 整理最終版本；舊 README 的完成宣稱须以同版驗收補強 |
@@ -9,7 +11,7 @@
 | setup | 根／網站 README、[網站環境範例](../MuscleCore分析資料/website/.env.example) | Python 3.11、venv、依賴、DB、run.py | [SAM](mailto:cashsam@gmail.com) 在乾淨環境驗 final SHA；不得對既有 Atlas 重跑 seed |
 | screenshots | [操作截圖清單](screenshots/README.md) | S01 本輪實拍；其餘按場景收集 | [REN](mailto:chen2000401@gmail.com)購物、[JEFF](mailto:jeff841117@gmail.com)後台AI、[SAM](mailto:cashsam@gmail.com)整合與證據 |
 | 測試 | 網站 tests、[CI](../.github/workflows/validate.yml) | main 的離線驗證工作流 | [SAM](mailto:cashsam@gmail.com) 保存最終 run／SHA／數字與測試範圍 |
-| Dockerfile | [整合分支 deploy](https://github.com/SamWang61/LLM_PJ/tree/a0fcad0/deploy) | 分支有部署容器資料；main 無 Dockerfile | [SAM](mailto:cashsam@gmail.com) 對最終交付版本做 build／boot smoke |
+| Dockerfile | [整合分支 deploy](https://github.com/SamWang61/LLM_PJ/tree/a0fcad0/deploy) | 10/15 分支有部署容器資料；當時 main 無根目錄 Dockerfile，後續已由 PR #143 補入 | [SAM](mailto:cashsam@gmail.com) 對最終交付版本做 build／boot smoke |
 | docker-compose | [compose](../MuscleCore分析資料/website/docker-compose.yml) | mongo:8、持久 volume、healthcheck；僅 DB | [SAM](mailto:cashsam@gmail.com) 明確列 DB 容器與本機 Flask 分開啟動 |
 | CI | .github/workflows/validate.yml | 檔案政策＋Python 3.11 網站離線 pytest | 最新 Actions 結果待附，不推定綠燈 |
 | .env.example | 網站及 [MongoDB 範例](../VibeCart_AI/MongoDB/.env.example) | 範例存在；秘密另外設定 | [SAM](mailto:cashsam@gmail.com) 核對 final 分支的完整配置，不收集真 .env |
