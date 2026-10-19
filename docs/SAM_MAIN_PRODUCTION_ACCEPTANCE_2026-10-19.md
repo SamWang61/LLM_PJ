@@ -13,7 +13,7 @@
 | Hosting | release `1792363722745000`，06:48:42發布；rewrite `**`→`vibecart-web`／`asia-east1` |
 | 回退版本（06:56紀錄） | 當時`vibecart-web-role-auth-576b4748`保留0%；N13固定出口啟用後不可直接切回，見下方更正 |
 
-**2026/10/19 08:40回退更正**：Atlas萬用IP規則已移除。現行`vibecart-web-nat-1019`接專用VPC／固定NAT出口並承接100%流量；舊`vibecart-web-role-auth-576b4748`沒有`vpcAccess`，不能僅切流量回去。評價／6＋4的安全回復步驟與舊碼重建條件，見[正式部署文件「回復與後續」](SAM_REVIEWS_6PLUS4_PRODUCTION_2026-10-19.md#回復與後續)。
+**2026/10/19 08:40回退更正**：Atlas萬用IP規則已移除。當時`vibecart-web-nat-1019`接專用VPC／固定NAT出口並承接100%流量；舊`vibecart-web-role-auth-576b4748`沒有`vpcAccess`，不能僅切流量回去。08:45正式流量已改由具相同VPC出口的`vibecart-web-n06-1019`承接100%；該新digest尚未重跑本頁六角色與評價遠端驗收。評價／6＋4的安全回復步驟與舊碼重建條件，見[正式部署文件「回復與後續」](SAM_REVIEWS_6PLUS4_PRODUCTION_2026-10-19.md#回復與後續)。
 
 獨立下載GCS generation `1792361421014751`的完整2,157,908 bytes來源包，SHA-256為`bd85ba17567bfdcff4b7d633551841df4b02a6dafee0a701fac46d969cf7fb4e`。56檔逐一對照main Git blob，差異0；Cloud Build `4e12f368-f6fd-41a7-9404-86b276e3e66b`的SUCCESS、來源generation與映像digest讀回相符。本輪重用已驗映像，沒有冒稱重新建置。
 
