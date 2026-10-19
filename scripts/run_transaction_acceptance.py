@@ -37,7 +37,8 @@ def main():
             # Keep an exited container until finally so startup logs and exit
             # status survive long enough to diagnose a failed CI run.
             docker('run','-d','--name',name,'-p','127.0.0.1::27017','mongo:8',
-                   '--replSet','rsD5Acceptance','--bind_ip_all')
+                   '--replSet','rsD5Acceptance','--bind_ip_all',
+                   '--setParameter','enableTestCommands=1')
             created=True
             port=docker('port',name,'27017/tcp')
             if not port.startswith('127.0.0.1:') or not port.split(':')[1].isdigit():

@@ -54,6 +54,11 @@ def utcnow():
 class CartService:
     TRANSACTION_RETRY_SECONDS = 8.0
     TRANSACTION_ATTEMPT_SECONDS = 6.0
+    # A topology/pool reset may need more than one heartbeat before abort can
+    # be acknowledged. A 0.5s cleanup timeout can abandon server-side locks
+    # until transactionLifetimeLimitSeconds, even after the fault is removed.
+    # This is a separate bounded cleanup grace; body/commit retries stay 8s.
+    TRANSACTION_ABORT_SECONDS = 2.0
 
     def __init__(self, db, *, enable_checkout=False):
         self.db=db
@@ -96,7 +101,7 @@ class CartService:
                     except BaseException:
                         if session.in_transaction:
                             try:
-                                with mongo_timeout(0.5):
+                                with mongo_timeout(self.TRANSACTION_ABORT_SECONDS):
                                     session.abort_transaction()
                             except PyMongoError:
                                 pass
@@ -108,7 +113,7 @@ class CartService:
                             # replay the same operation key to learn the result.
                             if session.in_transaction:
                                 try:
-                                    with mongo_timeout(0.5):
+                                    with mongo_timeout(self.TRANSACTION_ABORT_SECONDS):
                                         session.abort_transaction()
                                 except PyMongoError:
                                     pass

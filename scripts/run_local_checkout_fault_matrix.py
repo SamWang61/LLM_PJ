@@ -22,7 +22,7 @@ from uuid import uuid4
 
 from bson import ObjectId, Decimal128, json_util
 from pymongo import MongoClient, monitoring
-from pymongo.errors import PyMongoError
+from pymongo.errors import PyMongoError, OperationFailure
 from werkzeug.security import generate_password_hash
 
 
@@ -203,7 +203,8 @@ def one_case(cluster, case, names, create_app, CartService, *, sustained=False):
         serverSelectionTimeoutMS=2000, socketTimeoutMS=350, heartbeatFrequencyMS=500,
         maxPoolSize=3, waitQueueTimeoutMS=500)
     db = client[name]
-    state = {'callbacks':0,'stepdown':False,'watch_fault':False,'rollback_witnesses':[]}
+    state = {'callbacks':0,'stepdown':False,'watch_fault':False,'rollback_witnesses':[],
+             'abort_delay_injected':False}
 
     class Observed(CartService):
         def _run(self, callback):
@@ -221,6 +222,10 @@ def one_case(cluster, case, names, create_app, CartService, *, sustained=False):
                 raise
 
         def _behavior(self, *args, **kwargs):
+            if case == 'abort_ack_delay' and args[3] == 'PURCHASE' and not state['abort_delay_injected']:
+                state['abort_delay_injected'] = True
+                raise OperationFailure('local transient fault before purchase event', 112,
+                                       {'errorLabels':['TransientTransactionError']})
             if case == 'primary_change' and args[3] == 'PURCHASE' and not state['stepdown']:
                 state['stepdown'] = True
                 original = cluster.client.admin.command('hello')['primary']
@@ -268,6 +273,8 @@ def one_case(cluster, case, names, create_app, CartService, *, sustained=False):
         elif case == 'socket_reset': config.update(closeConnection=True)
         elif case == 'write_conflict': config.update(errorCode=112,errorLabels=['TransientTransactionError'],blockConnection=True,blockTimeMS=100)
         elif case == 'pool_failure': config.update(errorCode=91,errorLabels=['TransientTransactionError'],blockConnection=True,blockTimeMS=100)
+        elif case == 'abort_ack_delay': config.update(failCommands=['abortTransaction'],
+            blockConnection=True,blockTimeMS=1200)
         elif case == 'commit_unknown': config.update(failCommands=['commitTransaction'],writeConcernError={
             'code':91,'codeName':'ShutdownInProgress','errmsg':'n06 local commit acknowledgement failure'},
             errorLabels=['UnknownTransactionCommitResult'])
@@ -295,6 +302,12 @@ def one_case(cluster, case, names, create_app, CartService, *, sustained=False):
             else:
                 require(after_fault == before, 'Sustained fault left partial writes')
             require(any('failed' in row for row in rows), 'No Mongo command failure observed')
+        elif case == 'abort_ack_delay':
+            require(failed.status_code==200 and attempts==2, 'Delayed abort did not recover with one body retry')
+            after_fault = snapshot(control)
+            require(any(row.get('command')=='abortTransaction' for row in rows), 'No actual abort command observed')
+            require(not any(row.get('failed')=='abortTransaction' for row in rows), 'Abort acknowledgement timed out')
+            require(elapsed>=1.1, 'Server abort delay was not observed')
         elif case not in {'commit_unknown','primary_change'}:
             require(failed.status_code==200,'Single-fault automatic retry failed: '+case)
             after_fault = snapshot(control)
@@ -340,6 +353,8 @@ def one_case(cluster, case, names, create_app, CartService, *, sustained=False):
                          else {'replSetStepDown':15,'force':True,'during':'PURCHASE after order/item writes'},
             'failed_commands':sum('failed' in r for r in rows),'pool_clears':cleared,
             'commit_attempts':sum(r.get('command')=='commitTransaction' for r in rows),
+            'abort_attempts':sum(r.get('command')=='abortTransaction' for r in rows),
+            'failed_abort_commands':sum(r.get('failed')=='abortTransaction' for r in rows),
             'rollback_equal':all(w == before for w in state['rollback_witnesses']) if case!='commit_unknown' else None,
             'post_abort_snapshot_count':len(state['rollback_witnesses']),
             'post_abort_snapshots':state['rollback_witnesses'],'driver_commands':rows,
@@ -364,7 +379,7 @@ def main():
     parser.add_argument('--mongod',required=True,type=Path)
     parser.add_argument('--mode',choices=('single','sustained'),default='single')
     parser.add_argument('--case',choices=('network_timeout','socket_reset','write_conflict','pool_failure',
-                                          'commit_unknown','primary_change'))
+                                          'commit_unknown','primary_change','abort_ack_delay'))
     parser.add_argument('--report',required=True,type=Path)
     parser.add_argument('--repo',type=Path,default=Path(__file__).resolve().parents[1])
     args=parser.parse_args()
@@ -385,7 +400,7 @@ def main():
         cluster.start()
         with patch.object(app_module,'load_dotenv',lambda *a,**k:False),patch.dict(os.environ,{'APP_ENV_FILE':''}):
             cases = ('network_timeout','socket_reset','write_conflict','pool_failure','commit_unknown') if args.mode=='sustained' else (
-                'network_timeout','socket_reset','write_conflict','pool_failure','commit_unknown','primary_change')
+                'network_timeout','socket_reset','write_conflict','pool_failure','commit_unknown','primary_change','abort_ack_delay')
             if args.case:
                 require(args.case in cases,'Case unavailable in selected mode')
                 cases=(args.case,)
