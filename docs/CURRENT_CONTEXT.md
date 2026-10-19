@@ -1,5 +1,7 @@
 # 最新專案上下文 / Current project context
 
+**2026/10/19 08:40 評價／6＋4回復指示更正**：正式站仍使用原已驗評價／6＋4映像；Cloud Run現由接N13固定出口的`vibecart-web-nat-1019`承接100%，Firebase發布版本未變，首頁／推薦頁／登入頁各回200。舊`role-auth-576b4748`與`reviews-b038aaca`沒有VPC出口，不能僅切流量回復；已修正[評價正式部署回復步驟](SAM_REVIEWS_6PLUS4_PRODUCTION_2026-10-19.md#回復與後續)及[獨立驗收表](SAM_MAIN_PRODUCTION_ACCEPTANCE_2026-10-19.md)。這次是唯讀覆核與文件修正，沒有再次部署或重做會員評價／Atlas寫入；具名簽收與其他V5關卡仍按原清單。
+
 **2026/10/19 08:36 REN／SAM N06 整合**：main #103 `7aeb77c` 的 N13 固定出口、Cloud Run／Atlas 回查、資料庫單次連線 2.5 秒 timeout 與 N14 工作保留；重疊的 N06 交易實作採[REN 限時／同 txn commit 方案](REN_PR101_MERGE_N06_BOUNDED_2026-10-19.md)。整合後在一次性本機 replica set 跑網站及新 N14 工具 **277 passed／0 skipped**，節點清理完成；這一版 N06 尚未部署，遠端對等驗收與真人接收待辦。08:36 open PR 共13項，含本輪 #104 與重疊草稿 #102；詳[PR 清冊](inventory/REN_OPEN_PR_REVIEW_2026-10-19.json)。
 
 **2026/10/19 08:31 REN PR #101／N06／H08**：[審查與重試報告](REN_PR101_MERGE_N06_BOUNDED_2026-10-19.md)記錄 #101 以固定HEAD合併main `0467a59`，PR與main CI成功；原12個open PR剩11個，舊基底衝突／草稿／非main鏈未直接合併。交易改採8秒重試窗、6秒單次操作窗與50～400毫秒退避；本機六類單次及五類持續故障通過，持續案例約8秒回503，commit不明同txn重試且同ID僅一單；網站272／0與真交易22／0。未部署或測正式Atlas outage。H08有SAM 17:00 iPhone三項總體正常回報與Chrome版本圖；使用者確認14:00為另一場iPhone實測，正確網址`vibecart`，錯誤輸入／鍵盤／橫豎向已操作但結果與網站圖未留。[新手機尺寸模擬9張圖](../簡報文件/screenshots/REN_H08_手機尺寸模擬_2026-10-19_定稿/README.md)含8張本機隔離UI及1張08:29正式站匿名首頁200；同站稍早曾回503，模擬圖不代替實機。[完整矩陣及REN本人接收表](REN_H08_DEVICE_MATRIX_AND_RECEIPT_2026-10-19.md)保留逐項結果與具名簽收待辦，使用者確認H01～H09本人接收0；V5仍2/14。
