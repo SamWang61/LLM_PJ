@@ -1,0 +1,159 @@
+{
+  "schema_version": 1,
+  "started_at_utc": "2026-10-19T00:28:20.021Z",
+  "finished_at_utc": "2026-10-19T00:28:24.459Z",
+  "status": "passed",
+  "scope": "Chrome headless mobile-size simulation on localhost mongomock",
+  "public_url_status": "not_captured_here",
+  "physical_phone": false,
+  "native_ios_keyboard": false,
+  "remote_acceptance": false,
+  "atlas_accessed": false,
+  "ren_named_receipt": false,
+  "captures": [
+    {
+      "file": "S03-product-portrait-focus.png",
+      "label": "S03 SKU/quantity portrait focus",
+      "at_utc": "2026-10-19T00:28:21.718Z",
+      "url": "http://127.0.0.1:58851/product/6ad563ef1ccf4dab21d320b2",
+      "viewport_css": {
+        "width": 390,
+        "height": 844
+      },
+      "status": 200,
+      "environment": "localhost mongomock fixture",
+      "result": "Selected disposable SKU and focused quantity field; no physical keyboard",
+      "sha256": "519056783af4a2727505a8ec0c6f2c76eca6eb974d6e3bbea2bf30dd0b6a7eaa",
+      "bytes": 60080,
+      "physical_phone": false,
+      "native_ios_keyboard": false,
+      "human_signoff": false
+    },
+    {
+      "file": "S03-product-landscape.png",
+      "label": "S03 product landscape",
+      "at_utc": "2026-10-19T00:28:21.804Z",
+      "url": "http://127.0.0.1:58851/product/6ad563ef1ccf4dab21d320b2",
+      "viewport_css": {
+        "width": 844,
+        "height": 390
+      },
+      "status": 200,
+      "environment": "localhost mongomock fixture",
+      "result": "Same product page at landscape CSS viewport",
+      "sha256": "1fd176876f9c96687c4575287fc3667e7ff00fe5bbe9768b2c97b83ae9b4143e",
+      "bytes": 39953,
+      "physical_phone": false,
+      "native_ios_keyboard": false,
+      "human_signoff": false
+    },
+    {
+      "file": "S03-invalid-quantity.png",
+      "label": "S03 invalid quantity",
+      "at_utc": "2026-10-19T00:28:21.937Z",
+      "url": "http://127.0.0.1:58851/product/6ad563ef1ccf4dab21d320b2",
+      "viewport_css": {
+        "width": 390,
+        "height": 844
+      },
+      "status": 200,
+      "environment": "localhost mongomock fixture",
+      "result": "Quantity 0 rejected by native HTML validity; no cart write",
+      "sha256": "49f14a641fed520af1045988c1e97c7e0cd1f7b4ecdd30bbe16ce356af403e18",
+      "bytes": 60232,
+      "physical_phone": false,
+      "native_ios_keyboard": false,
+      "human_signoff": false
+    },
+    {
+      "file": "S04-invalid-login.png",
+      "label": "S04 invalid login",
+      "at_utc": "2026-10-19T00:28:22.643Z",
+      "url": "http://127.0.0.1:58851/auth/login",
+      "viewport_css": {
+        "width": 390,
+        "height": 844
+      },
+      "status": 200,
+      "environment": "localhost mongomock fixture",
+      "result": "Fake invalid credentials rejected with generic error",
+      "sha256": "4cc403c814419b6be4ef161b2994943e2498a9409c33067c22242982e0c0096a",
+      "bytes": 33574,
+      "physical_phone": false,
+      "native_ios_keyboard": false,
+      "human_signoff": false
+    },
+    {
+      "file": "S04-login-email-focus.png",
+      "label": "S04 email focus",
+      "at_utc": "2026-10-19T00:28:22.689Z",
+      "url": "http://127.0.0.1:58851/auth/login",
+      "viewport_css": {
+        "width": 390,
+        "height": 844
+      },
+      "status": 200,
+      "environment": "localhost mongomock fixture",
+      "result": "Desktop Chrome focus only; no iOS software keyboard",
+      "sha256": "d9cd0c585595cd640493eae257b23a33159993c9c4cb04e187d00be8e5699241",
+      "bytes": 34757,
+      "physical_phone": false,
+      "native_ios_keyboard": false,
+      "human_signoff": false
+    },
+    {
+      "file": "S05-cart-portrait.png",
+      "label": "S05 cart portrait",
+      "at_utc": "2026-10-19T00:28:24.244Z",
+      "url": "http://127.0.0.1:58851/cart",
+      "viewport_css": {
+        "width": 390,
+        "height": 844
+      },
+      "status": 200,
+      "environment": "localhost mongomock fixture",
+      "result": "One disposable SKU in cart, no production data",
+      "sha256": "09ec66e233ccd7f250c7ffd2dc96bf41fc1f5f3319a3913b432a90b69c395304",
+      "bytes": 47821,
+      "physical_phone": false,
+      "native_ios_keyboard": false,
+      "human_signoff": false
+    },
+    {
+      "file": "S05-cart-landscape.png",
+      "label": "S05 cart landscape",
+      "at_utc": "2026-10-19T00:28:24.302Z",
+      "url": "http://127.0.0.1:58851/cart",
+      "viewport_css": {
+        "width": 844,
+        "height": 390
+      },
+      "status": 200,
+      "environment": "localhost mongomock fixture",
+      "result": "Same cart at landscape CSS viewport",
+      "sha256": "d47e5b399d38096d55163143b868477685f7910f9894bb8da55be6999729ec02",
+      "bytes": 22446,
+      "physical_phone": false,
+      "native_ios_keyboard": false,
+      "human_signoff": false
+    },
+    {
+      "file": "S05-demo-order.png",
+      "label": "S05 demo order",
+      "at_utc": "2026-10-19T00:28:24.459Z",
+      "url": "http://127.0.0.1:58851/",
+      "viewport_css": {
+        "width": 390,
+        "height": 844
+      },
+      "status": 200,
+      "environment": "localhost mongomock fixture",
+      "result": "Disposable no-payment order; not a real MongoDB transaction",
+      "sha256": "18c2b2b7162e22b74d3e3678cd39712a648c92eca493be35496f4e91d3b05fab",
+      "bytes": 113711,
+      "physical_phone": false,
+      "native_ios_keyboard": false,
+      "human_signoff": false
+    }
+  ]
+}

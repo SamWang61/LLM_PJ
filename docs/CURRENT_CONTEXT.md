@@ -1,5 +1,7 @@
 # 最新專案上下文 / Current project context
 
+**2026/10/19 H08 草稿留存**：依使用者要求，[初版](../簡報文件/screenshots/REN_H08_手機尺寸模擬_2026-10-19/README.md)與[v2](../簡報文件/screenshots/REN_H08_手機尺寸模擬_2026-10-19_v2/README.md)各八張本機手機尺寸模擬圖及原始取圖紀錄一併存檔；[定稿](../簡報文件/screenshots/REN_H08_手機尺寸模擬_2026-10-19_定稿/README.md)仍作簡報引用。這些草稿不能補作 iPhone 實機或 REN 具名簽收證據。
+
 **2026/10/19 08:45 正式N06修訂版讀回**：在下方08:40快照之後，正式Cloud Run已由`vibecart-web-n06-1019`承接100%，Ready成功；來源`7aeb77c`、映像`sha256:c31acb1fb3949995fb7cecb0e56d59f9adee9331826f369f829326dfe1158ca0`，仍使用專用VPC／子網與`ALL_TRAFFIC`。Firebase release未變；公開首頁、推薦頁、登入頁各HTTP200。本輪只做唯讀控制平面及匿名路由核對，**尚未在這個新digest重跑遠端會員評價、6＋4排序、Atlas交易或真人簽收**；下方08:40的`nat-1019`100%是當時快照，不是目前流量。回復步驟仍須先檢查固定出口及資料相容性。
 
 **2026/10/19 08:40 評價／6＋4回復指示更正**：正式站仍使用原已驗評價／6＋4映像；Cloud Run現由接N13固定出口的`vibecart-web-nat-1019`承接100%，Firebase發布版本未變，首頁／推薦頁／登入頁各回200。舊`role-auth-576b4748`與`reviews-b038aaca`沒有VPC出口，不能僅切流量回復；已修正[評價正式部署回復步驟](SAM_REVIEWS_6PLUS4_PRODUCTION_2026-10-19.md#回復與後續)及[獨立驗收表](SAM_MAIN_PRODUCTION_ACCEPTANCE_2026-10-19.md)。這次是唯讀覆核與文件修正，沒有再次部署或重做會員評價／Atlas寫入；具名簽收與其他V5關卡仍按原清單。
