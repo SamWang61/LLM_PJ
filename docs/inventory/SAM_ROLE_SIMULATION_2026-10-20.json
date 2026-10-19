@@ -131,11 +131,16 @@
       "order": 9,
       "id": "N12",
       "owner": "REN 前台、JEFF 後台、SAM 彙整",
-      "status": "not_started",
-      "started_at": null,
-      "finished_at": null,
-      "evidence": [],
-      "limitations": []
+      "status": "frontend_simulated_passed_admin_browser_interrupted",
+      "started_at": "2026-10-20T01:59:43+08:00",
+      "finished_at": "2026-10-20T02:09:43+08:00",
+      "evidence": [
+        "docs/SAM_C05_BROWSER_MATRIX_2026-10-20.md"
+      ],
+      "limitations": [
+        "Admin narrow keyboard/error browser readback interrupted; real-phone native keyboard/touch/rotation and human receipt pending"
+      ],
+      "original_gate_closed": false
     },
     {
       "order": 10,
