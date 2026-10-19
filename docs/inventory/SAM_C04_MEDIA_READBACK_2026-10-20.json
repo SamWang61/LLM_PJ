@@ -1,0 +1,24 @@
+{
+  "started_at": "2026-10-20T01:58:08.8286863+08:00",
+  "files": [
+    {
+      "name": "cloud-reassembled.vcbak",
+      "sha256": "328b9aa8194589d53d8f18e7d41b0e96809335a1329bd23ed3ba95d992fe51d5"
+    },
+    {
+      "name": "cloud-recheck-readback.vcbak",
+      "sha256": "5ff28ee49341fa6070ab6b1e418106ed8623901071b3d4e3d54c7c97092aa885"
+    },
+    {
+      "name": "verify_offdevice_recovery.py",
+      "sha256": "3acd112a6f8401c8c655c88cfe6f0e4044610fc1a0e138b658f193069d06b646"
+    },
+    {
+      "name": "mongod.exe",
+      "sha256": "3d758eb9dd65e76477b100f4969934e1a918c94542e62dbdada8aefec053fc8b"
+    }
+  ],
+  "key_media_present": true,
+  "completed_at": "2026-10-20T01:59:24.5143678+08:00",
+  "plaintext_copy_still_present": true
+}
