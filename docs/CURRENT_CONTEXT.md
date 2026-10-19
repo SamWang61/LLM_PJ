@@ -1,5 +1,7 @@
 # 最新專案上下文 / Current project context
 
+**2026/10/19 08:20 固定出口及 N06／N14 進度**：[本輪證據與待辦](SAM_N06_N13_N14_ACCEPTANCE_2026-10-19.md)。Atlas 現有 NAT `35.229.228.204/32`，萬用規則已不在；新正式及私有 Cloud Run revision 已接專用 VPC／NAT、各自 100%，正式 Firebase 三路由恢復 200，新正式 revision 的切換後 3 筆日誌均 200、DB 不可用 0。這不代替全站交易和人員簽收。N06 新本機十案及 287 項回歸通過，但尚未部署／私有重跑；N14 同機完整復原成功，REN 的第二台 ASUS VivoBook 預計 14:00 用兩支 USB 實測，尚未簽收。V5 仍 2/14；下方舊 Atlas 萬用規則與服務狀態僅為當時歷史。
+
 **2026/10/19 07:09 REN PR #97合併與N06本機故障矩陣**：[完整紀錄](REN_PR97_MERGE_N06_2026-10-19.md)。#97的P2已依原始JSON更正為回收前REN 2／JEFF 0個session，處理後均0；新HEAD CI #513與合併main `0ab1fa1` CI成功。接續N06完成三節點本機六類單次真實伺服器故障／primary切換、五類回滾快照與commit同交易重試；28集合讀回、同識別碼重送與409拒絕均通過，12項範圍檢查通過。初輪持續故障最終503且回滾，但約120秒／大量callback重試，延遲政策仍待處理；兩輪節點及fixture均已清理。本輪未操作Atlas或部署，正式b038aaca／100%以最新讀回為準；N06、人員接收及H08仍待結案，V5仍2/14。
 
 <!-- SAM MAIN PRODUCTION INDEPENDENT 20261019 BEGIN -->
