@@ -23,6 +23,27 @@
       {"file": "remote_account_acceptance_probe.py", "status": "passed", "exit_code": 0, "fixture_cleanup_verified": true},
       {"file": "remote_transaction_acceptance_probe.py", "status": "passed", "exit_code": 0, "fixture_cleanup_verified": true}
     ],
+    "review_aggregation": {
+      "rating_sum": 13,
+      "rating_count": 3,
+      "display_average": 4.4,
+      "default_rating_excluded": true,
+      "failed_product_update_rolled_back": true
+    },
+    "recommendation_ranking": {
+      "personalized_count": 6,
+      "cross_category_count": 4,
+      "unique_products": 10,
+      "cross_category_display_ratings": [5, 4.9, 4.8, 4.7],
+      "category_caps_3_and_2_observed": true,
+      "unavailable_and_default_excluded": true,
+      "synthetic_1001_unchanged": true
+    },
+    "eligibility_guards": {
+      "unpaid_incomplete_cancelled_or_other_owner_rejected": true,
+      "invalid_rating_rejected": true,
+      "csrf_rejected": true
+    },
     "temporary_user_index_restored": true,
     "job_deleted_readback_404": true
   },
