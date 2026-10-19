@@ -1,0 +1,38 @@
+{
+  "started_at": "2026-10-19T17:22:40.921Z",
+  "completed_at": "2026-10-19T17:22:48.415Z",
+  "operator": "SAM simulation performed by Codex",
+  "scope": "read-only control-plane and anonymous HTTPS",
+  "services": [
+    {
+      "name": "vibecart-web",
+      "unavailable_http": 404
+    },
+    {
+      "name": "vibecart-acceptance-pr21",
+      "unavailable_http": 404
+    }
+  ],
+  "hosting": {
+    "name": "sites/vibecart-llmai/releases/1792363722745000",
+    "time": "2026-10-18T22:48:42.745Z",
+    "version": "sites/vibecart-llmai/versions/a33b77d8155885b8"
+  },
+  "public_routes": [
+    {
+      "route": "/",
+      "status": 200
+    },
+    {
+      "route": "/recommendations",
+      "status": 200
+    },
+    {
+      "route": "/auth/login",
+      "status": 200
+    }
+  ],
+  "deployment_performed": false,
+  "atlas_written": false,
+  "human_signoff": false
+}

@@ -1,0 +1,545 @@
+{
+  "operator": "SAM simulation performed by Codex",
+  "started_at": "2026-10-20T01:19:47+08:00",
+  "completed_at": "2026-10-20T01:20:06+08:00",
+  "timezone": "Asia/Taipei",
+  "status": "passed",
+  "scope": "isolated mongomock business-flow simulation",
+  "atlas_contacted": false,
+  "real_mongodb_transaction": false,
+  "physical_device": false,
+  "human_signoff": false,
+  "source_commit": "6293a285cf8d409ab03f0bd296b8a2b403325cb7",
+  "cases": [
+    {
+      "case": "MuscleCore分析資料/website/tests/test_ren_auth_order.py::test_v4_cart_login_returns_to_cart_and_rejects_external_next",
+      "started_at": "2026-10-20T01:19:48+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:19:49+08:00"
+    },
+    {
+      "case": "MuscleCore分析資料/website/tests/test_ren_auth_order.py::test_logout_csrf_and_copied_cookie_cannot_replay",
+      "started_at": "2026-10-20T01:19:49+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:19:50+08:00"
+    },
+    {
+      "case": "MuscleCore分析資料/website/tests/test_ren_auth_order.py::test_two_devices_can_login_and_logout_independently",
+      "started_at": "2026-10-20T01:19:50+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:19:50+08:00"
+    },
+    {
+      "case": "MuscleCore分析資料/website/tests/test_ren_auth_order.py::test_same_browser_relogin_retires_previous_cookie_only",
+      "started_at": "2026-10-20T01:19:50+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:19:51+08:00"
+    },
+    {
+      "case": "MuscleCore分析資料/website/tests/test_ren_auth_order.py::test_disabled_then_reenabled_does_not_restore_revoked_cookie",
+      "started_at": "2026-10-20T01:19:51+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:19:51+08:00"
+    },
+    {
+      "case": "MuscleCore分析資料/website/tests/test_ren_auth_order.py::test_role_is_live_and_forged_cookie_role_cannot_authorize",
+      "started_at": "2026-10-20T01:19:51+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:19:52+08:00"
+    },
+    {
+      "case": "MuscleCore分析資料/website/tests/test_ren_auth_order.py::test_pre_generation_and_malformed_identity_fail_closed",
+      "started_at": "2026-10-20T01:19:52+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:19:52+08:00"
+    },
+    {
+      "case": "MuscleCore分析資料/website/tests/test_ren_auth_order.py::test_registration_invalid_does_not_write[data0]",
+      "started_at": "2026-10-20T01:19:52+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:19:52+08:00"
+    },
+    {
+      "case": "MuscleCore分析資料/website/tests/test_ren_auth_order.py::test_registration_invalid_does_not_write[data1]",
+      "started_at": "2026-10-20T01:19:52+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:19:52+08:00"
+    },
+    {
+      "case": "MuscleCore分析資料/website/tests/test_ren_auth_order.py::test_registration_invalid_does_not_write[data2]",
+      "started_at": "2026-10-20T01:19:52+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:19:53+08:00"
+    },
+    {
+      "case": "MuscleCore分析資料/website/tests/test_ren_auth_order.py::test_registration_invalid_does_not_write[data3]",
+      "started_at": "2026-10-20T01:19:53+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:19:53+08:00"
+    },
+    {
+      "case": "MuscleCore分析資料/website/tests/test_ren_auth_order.py::test_duplicate_email_and_registration_role_allowlist",
+      "started_at": "2026-10-20T01:19:53+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:19:53+08:00"
+    },
+    {
+      "case": "MuscleCore分析資料/website/tests/test_ren_auth_order.py::test_bad_password_cannot_create_identity",
+      "started_at": "2026-10-20T01:19:53+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:19:54+08:00"
+    },
+    {
+      "case": "MuscleCore分析資料/website/tests/test_ren_auth_order.py::test_all_member_mutations_require_csrf[/auth/register]",
+      "started_at": "2026-10-20T01:19:54+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:19:54+08:00"
+    },
+    {
+      "case": "MuscleCore分析資料/website/tests/test_ren_auth_order.py::test_all_member_mutations_require_csrf[/auth/login]",
+      "started_at": "2026-10-20T01:19:54+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:19:54+08:00"
+    },
+    {
+      "case": "MuscleCore分析資料/website/tests/test_ren_auth_order.py::test_all_member_mutations_require_csrf[/auth/logout]",
+      "started_at": "2026-10-20T01:19:54+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:19:55+08:00"
+    },
+    {
+      "case": "MuscleCore分析資料/website/tests/test_ren_auth_order.py::test_registration_unique_index_race_returns_409",
+      "started_at": "2026-10-20T01:19:55+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:19:55+08:00"
+    },
+    {
+      "case": "MuscleCore分析資料/website/tests/test_ren_auth_order.py::test_v4_login_does_not_publish_legacy_demo_credentials",
+      "started_at": "2026-10-20T01:19:55+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:19:55+08:00"
+    },
+    {
+      "case": "MuscleCore分析資料/website/tests/test_ren_auth_order.py::test_session_expiry_and_digest_only_storage",
+      "started_at": "2026-10-20T01:19:55+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:19:55+08:00"
+    },
+    {
+      "case": "MuscleCore分析資料/website/tests/test_ren_auth_order.py::test_auth_database_failure_is_sanitized",
+      "started_at": "2026-10-20T01:19:55+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:19:56+08:00"
+    },
+    {
+      "case": "MuscleCore分析資料/website/tests/test_ren_auth_order.py::test_two_cart_forms_revision_conflict_and_replay",
+      "started_at": "2026-10-20T01:19:56+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:19:56+08:00"
+    },
+    {
+      "case": "MuscleCore分析資料/website/tests/test_ren_auth_order.py::test_revision_types_rejected[True]",
+      "started_at": "2026-10-20T01:19:56+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:19:56+08:00"
+    },
+    {
+      "case": "MuscleCore分析資料/website/tests/test_ren_auth_order.py::test_revision_types_rejected[-1]",
+      "started_at": "2026-10-20T01:19:56+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:19:57+08:00"
+    },
+    {
+      "case": "MuscleCore分析資料/website/tests/test_ren_auth_order.py::test_revision_types_rejected[1]",
+      "started_at": "2026-10-20T01:19:57+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:19:57+08:00"
+    },
+    {
+      "case": "MuscleCore分析資料/website/tests/test_ren_auth_order.py::test_revision_types_rejected[1.5]",
+      "started_at": "2026-10-20T01:19:57+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:19:57+08:00"
+    },
+    {
+      "case": "MuscleCore分析資料/website/tests/test_ren_auth_order.py::test_checkout_revalidates_sellable_and_stock[product]",
+      "started_at": "2026-10-20T01:19:57+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:19:57+08:00"
+    },
+    {
+      "case": "MuscleCore分析資料/website/tests/test_ren_auth_order.py::test_checkout_revalidates_sellable_and_stock[sku]",
+      "started_at": "2026-10-20T01:19:57+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:19:57+08:00"
+    },
+    {
+      "case": "MuscleCore分析資料/website/tests/test_ren_auth_order.py::test_checkout_revalidates_sellable_and_stock[stock]",
+      "started_at": "2026-10-20T01:19:57+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:19:58+08:00"
+    },
+    {
+      "case": "MuscleCore分析資料/website/tests/test_ren_auth_order.py::test_checkout_reprices_ignores_client_money_and_rejects_changed_payload",
+      "started_at": "2026-10-20T01:19:58+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:19:58+08:00"
+    },
+    {
+      "case": "MuscleCore分析資料/website/tests/test_ren_auth_order.py::test_all_four_events_are_server_marked_synthetic",
+      "started_at": "2026-10-20T01:19:58+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:19:58+08:00"
+    },
+    {
+      "case": "MuscleCore分析資料/website/tests/test_ren_auth_order.py::test_synthetic_exclusion_is_before_sort_limit",
+      "started_at": "2026-10-20T01:19:58+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:19:59+08:00"
+    },
+    {
+      "case": "MuscleCore分析資料/website/tests/test_v4_routes.py::test_add_update_remove_uses_skus_and_authenticated_owner",
+      "started_at": "2026-10-20T01:19:59+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:19:59+08:00"
+    },
+    {
+      "case": "MuscleCore分析資料/website/tests/test_v4_routes.py::test_invalid_quantity_rejected[0]",
+      "started_at": "2026-10-20T01:19:59+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:19:59+08:00"
+    },
+    {
+      "case": "MuscleCore分析資料/website/tests/test_v4_routes.py::test_invalid_quantity_rejected[-1]",
+      "started_at": "2026-10-20T01:19:59+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:19:59+08:00"
+    },
+    {
+      "case": "MuscleCore分析資料/website/tests/test_v4_routes.py::test_invalid_quantity_rejected[100]",
+      "started_at": "2026-10-20T01:19:59+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:20:00+08:00"
+    },
+    {
+      "case": "MuscleCore分析資料/website/tests/test_v4_routes.py::test_invalid_quantity_rejected[True]",
+      "started_at": "2026-10-20T01:20:00+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:20:00+08:00"
+    },
+    {
+      "case": "MuscleCore分析資料/website/tests/test_v4_routes.py::test_invalid_quantity_rejected[1.5]",
+      "started_at": "2026-10-20T01:20:00+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:20:00+08:00"
+    },
+    {
+      "case": "MuscleCore分析資料/website/tests/test_v4_routes.py::test_invalid_quantity_rejected[2]",
+      "started_at": "2026-10-20T01:20:00+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:20:00+08:00"
+    },
+    {
+      "case": "MuscleCore分析資料/website/tests/test_v4_routes.py::test_missing_sku_wrong_product_and_csrf",
+      "started_at": "2026-10-20T01:20:00+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:20:00+08:00"
+    },
+    {
+      "case": "MuscleCore分析資料/website/tests/test_v4_routes.py::test_checkout_is_disabled_then_revision_checked_and_idempotent",
+      "started_at": "2026-10-20T01:20:00+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:20:01+08:00"
+    },
+    {
+      "case": "MuscleCore分析資料/website/tests/test_v4_routes.py::test_checkout_does_not_accept_other_users_cart",
+      "started_at": "2026-10-20T01:20:01+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:20:01+08:00"
+    },
+    {
+      "case": "MuscleCore分析資料/website/tests/test_v4_routes.py::test_pages_render_sku_and_view_event",
+      "started_at": "2026-10-20T01:20:01+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:20:01+08:00"
+    },
+    {
+      "case": "MuscleCore分析資料/website/tests/test_v4_routes.py::test_v4_login_and_registration",
+      "started_at": "2026-10-20T01:20:01+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:20:02+08:00"
+    },
+    {
+      "case": "MuscleCore分析資料/website/tests/test_v4_routes.py::test_revoked_member_and_admin_permissions",
+      "started_at": "2026-10-20T01:20:02+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:20:02+08:00"
+    },
+    {
+      "case": "MuscleCore分析資料/website/tests/test_v4_routes.py::test_form_submission_and_missing_operation_key",
+      "started_at": "2026-10-20T01:20:02+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:20:02+08:00"
+    },
+    {
+      "case": "MuscleCore分析資料/website/tests/test_v4_routes.py::test_admin_v4_decimal_metrics_and_summary_post",
+      "started_at": "2026-10-20T01:20:02+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:20:03+08:00"
+    },
+    {
+      "case": "MuscleCore分析資料/website/tests/test_v4_routes.py::test_anonymous_cannot_mutate_and_database_failure_is_503",
+      "started_at": "2026-10-20T01:20:03+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:20:03+08:00"
+    },
+    {
+      "case": "MuscleCore分析資料/website/tests/test_v4_routes.py::test_legacy_mode_still_renders_with_csrf",
+      "started_at": "2026-10-20T01:20:03+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:20:03+08:00"
+    },
+    {
+      "case": "MuscleCore分析資料/website/tests/test_v4_routes.py::test_supermarket_catalog_beyond_200_paginates_filters_and_shows_source",
+      "started_at": "2026-10-20T01:20:03+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:20:05+08:00"
+    },
+    {
+      "case": "MuscleCore分析資料/website/tests/test_v4_routes.py::test_supermarket_page_parameter_is_bounded[invalid]",
+      "started_at": "2026-10-20T01:20:05+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:20:05+08:00"
+    },
+    {
+      "case": "MuscleCore分析資料/website/tests/test_v4_routes.py::test_supermarket_page_parameter_is_bounded[-5]",
+      "started_at": "2026-10-20T01:20:05+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:20:05+08:00"
+    },
+    {
+      "case": "MuscleCore分析資料/website/tests/test_v4_routes.py::test_supermarket_page_parameter_is_bounded[9999999]",
+      "started_at": "2026-10-20T01:20:05+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:20:06+08:00"
+    },
+    {
+      "case": "MuscleCore分析資料/website/tests/test_v4_routes.py::test_product_navigation_order_filters_boundaries_and_page_return",
+      "started_at": "2026-10-20T01:20:06+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:20:06+08:00"
+    }
+  ]
+}

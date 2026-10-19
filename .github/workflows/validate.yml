@@ -4,7 +4,8 @@ permissions:
   contents: read
 jobs:
   offline:
-    runs-on: ubuntu-latest
+    # MongoDB 8 currently refuses Linux 6.19+; keep the D5 replica-set check on a supported runner.
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -48,4 +49,6 @@ jobs:
           python -m pytest scripts/test_prepare_cloud_source.py scripts/test_audit_delivery_source.py -q -p no:cacheprovider
           python scripts/prepare_cloud_source.py --output "$RUNNER_TEMP/vibecart-source.tar.gz"
       - name: 真 MongoDB D5 與會員交易 / Real local MongoDB transactions
-        run: python scripts/run_transaction_acceptance.py --report "$RUNNER_TEMP/d5-local.json" --junit "$RUNNER_TEMP/d5-local.xml"
+        run: |
+          python -m pytest scripts/test_transaction_harness_startup.py -q -p no:cacheprovider
+          python scripts/run_transaction_acceptance.py --report "$RUNNER_TEMP/d5-local.json" --junit "$RUNNER_TEMP/d5-local.xml"

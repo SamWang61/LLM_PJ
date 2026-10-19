@@ -1,0 +1,167 @@
+{
+  "started_at": "2026-10-19T17:23:01.346Z",
+  "completed_at": "2026-10-19T17:23:07.876Z",
+  "operator": "SAM simulation performed by Codex",
+  "scope": "read-only control-plane and anonymous HTTPS",
+  "services": [
+    {
+      "name": "vibecart-web",
+      "region": "asia-east1",
+      "url": "https://vibecart-web-m44ncgz5ta-de.a.run.app",
+      "traffic": [
+        {
+          "revision": "vibecart-web-00019-phf",
+          "percent": 0,
+          "tag": "ren-fence"
+        },
+        {
+          "revision": "vibecart-web-ai-294c-1020",
+          "percent": 100,
+          "tag": "ai-ready"
+        },
+        {
+          "revision": "vibecart-web-main20ee-1640",
+          "percent": 0,
+          "tag": "main20ee-preview"
+        },
+        {
+          "revision": "vibecart-web-n06-1019",
+          "percent": 0,
+          "tag": "n06-1019"
+        },
+        {
+          "revision": "vibecart-web-n06-294c-1019",
+          "percent": 0,
+          "tag": "n06-294c"
+        },
+        {
+          "revision": "vibecart-web-nat-1019",
+          "percent": 0,
+          "tag": "nat-1019"
+        },
+        {
+          "revision": "vibecart-web-reviews-b038aaca",
+          "percent": 0,
+          "tag": "reviews-1019"
+        },
+        {
+          "revision": "vibecart-web-role-auth-576b4748",
+          "percent": 0,
+          "tag": "role-auth-1019"
+        }
+      ],
+      "revisions": [
+        {
+          "revision": "vibecart-web-ai-294c-1020",
+          "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:03d01cb52065e21fc96db6fb34b4de0527f2eb3966abbf0fe8719cb99bcc98f2",
+          "ready": "True",
+          "labels": {
+            "codex-source-sha": "294c1fac26d6785054063b8be6eb7d9e61075be4"
+          },
+          "flags": {
+            "DATA_MODE": "not_set",
+            "ENABLE_CHECKOUT": "true",
+            "AI_RECOMMENDATIONS_ENABLED": "false",
+            "AI_SUMMARY_ENABLED": "true",
+            "AI_FREE_QUESTION_ENABLED": "false"
+          },
+          "vpc": null,
+          "vpc_egress": "all-traffic"
+        }
+      ]
+    },
+    {
+      "name": "vibecart-acceptance-pr21",
+      "region": "asia-east1",
+      "url": "https://vibecart-acceptance-pr21-m44ncgz5ta-de.a.run.app",
+      "traffic": [
+        {
+          "revision": "vibecart-acceptance-pr21-00036-hed",
+          "percent": 0,
+          "tag": "github-preview"
+        },
+        {
+          "revision": "vibecart-acceptance-pr21-main20ee-claude1-180s",
+          "percent": 0,
+          "tag": "main20ee-ai"
+        },
+        {
+          "revision": "vibecart-acceptance-pr21-main20ee-off-180s",
+          "percent": 0,
+          "tag": "main20ee-off"
+        },
+        {
+          "revision": "vibecart-acceptance-pr21-n06-1019",
+          "percent": 0,
+          "tag": "n06-1019"
+        },
+        {
+          "revision": "vibecart-acceptance-pr21-n06-294c-1019",
+          "percent": 100,
+          "tag": "n06-294c"
+        },
+        {
+          "revision": "vibecart-acceptance-pr21-nat-1019",
+          "percent": 0,
+          "tag": "nat-1019"
+        },
+        {
+          "revision": "vibecart-acceptance-pr21-role95-e5788ce",
+          "percent": 0,
+          "tag": "role95-full"
+        },
+        {
+          "revision": "vibecart-acceptance-pr21-rv9a76-2117",
+          "percent": 0,
+          "tag": "rv9a76-ai"
+        },
+        {
+          "revision": "vibecart-acceptance-pr21-rv9a76-rules-2117",
+          "percent": 0,
+          "tag": "rv9a76-rules"
+        }
+      ],
+      "revisions": [
+        {
+          "revision": "vibecart-acceptance-pr21-n06-294c-1019",
+          "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:796a42b6d5fd80099900abc381d4c954d21ed1bea162ad0a9a49a89355deb40a",
+          "ready": "True",
+          "labels": {
+            "codex-source-sha": "294c1fac26d6785054063b8be6eb7d9e61075be4"
+          },
+          "flags": {
+            "DATA_MODE": "not_set",
+            "ENABLE_CHECKOUT": "true",
+            "AI_RECOMMENDATIONS_ENABLED": "not_set",
+            "AI_SUMMARY_ENABLED": "not_set",
+            "AI_FREE_QUESTION_ENABLED": "not_set"
+          },
+          "vpc": null,
+          "vpc_egress": "all-traffic"
+        }
+      ]
+    }
+  ],
+  "hosting": {
+    "name": "sites/vibecart-llmai/releases/1792363722745000",
+    "time": "2026-10-18T22:48:42.745Z",
+    "version": "sites/vibecart-llmai/versions/a33b77d8155885b8"
+  },
+  "public_routes": [
+    {
+      "route": "/",
+      "status": 200
+    },
+    {
+      "route": "/recommendations",
+      "status": 200
+    },
+    {
+      "route": "/auth/login",
+      "status": 200
+    }
+  ],
+  "deployment_performed": false,
+  "atlas_written": false,
+  "human_signoff": false
+}
