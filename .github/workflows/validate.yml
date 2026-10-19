@@ -16,6 +16,7 @@ jobs:
         run: python -m pip install -r 'MuscleCore分析資料/website/requirements-test.txt'
       - name: 隔離 D4 探針範圍與清理 / D4 probe safety contracts
         run: |
+          node --test scripts/test_cloud_db_health_readback.cjs
           node --test scripts/test_remote_d4_runner.cjs
           python -m pytest scripts/test_remote_d4_consumer_probe.py -q -p no:cacheprovider
           python -m pytest scripts/test_remote_member_transaction_checks.py -q -p no:cacheprovider
