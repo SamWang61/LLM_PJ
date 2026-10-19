@@ -123,6 +123,21 @@ def leading_major_category(db, cards):
     return product['major_category_id']
 
 
+def isolated_category_branch(marker, category_ids, now):
+    major, minor = category_ids
+    major_code, minor_code = marker+'-major', marker+'-minor'
+    documents = [{'_id': major, 'schema_version': 4, 'category_code': major_code,
+                  'name': '隔離事件大類 '+marker, 'level': 1, 'parent_id': None,
+                  'path': [major_code], 'status': 'active', 'sort_order': 0,
+                  'created_at': now, 'updated_at': now},
+                 {'_id': minor, 'schema_version': 4, 'category_code': minor_code,
+                  'name': '隔離事件小類 '+marker, 'level': 2, 'parent_id': major,
+                  'path': [major_code, minor_code], 'status': 'active', 'sort_order': 0,
+                  'created_at': now, 'updated_at': now}]
+    return documents, {'major_category_id': major, 'minor_category_id': minor,
+                       'category_path': [major_code, minor_code]}
+
+
 def verify_scope(config):
     mongo = urlparse(config["mongo_uri"])
     require(mongo.scheme == "mongodb+srv" and mongo.hostname == MONGO_HOST
@@ -151,14 +166,17 @@ def verify_database_roles(client):
             "Mongo authenticated user mismatch")
 
 
-def cleanup_probe(db, marker, user_ids, sku_ids, product_ids):
-    scopes = (
+def cleanup_probe(db, marker, user_ids, sku_ids, product_ids, category_ids=()):
+    scopes = [
         ("events", db.behavior_events, {"metadata.probe_id": marker}),
         ("sessions", db.auth_sessions, {"user_id": {"$in": user_ids}}),
         ("users", db.users, {"_id": {"$in": user_ids}, "acceptance_run": marker}),
         ("skus", db.product_skus, {"_id": {"$in": sku_ids}, "acceptance_run": marker}),
         ("products", db.products, {"_id": {"$in": product_ids}, "acceptance_run": marker}),
-    )
+    ]
+    if category_ids:
+        scopes.append(('categories', db.categories, {'_id': {'$in': category_ids},
+            'category_code': {'$in': [marker+'-major', marker+'-minor']}}))
     cleanup = {}
     for name, collection, query in scopes:
         try:
@@ -188,6 +206,7 @@ def run(config):
     product_ids = [ObjectId(), ObjectId()]
     sku_ids = [ObjectId(), ObjectId()]
     user_ids = [ObjectId(), ObjectId()]
+    category_ids = [ObjectId(), ObjectId()]
     emails = [f"{marker}-{role}@example.invalid" for role in ("admin", "customer")]
     password = secrets.token_urlsafe(24)
     report = {"probe_id": marker, "service_revision": config["revision"],
@@ -195,9 +214,21 @@ def run(config):
     failed = None
     try:
         # Reuse only the category IDs from the existing isolated fixture.
-        fixtures = distinct_category_fixtures(db.products.find(
+        existing = list(db.products.find(
             {"schema_version": 4, "status": "active"},
             {"major_category_id": 1, "minor_category_id": 1, "category_path": 1}).sort('_id', 1))
+        try:
+            fixtures = distinct_category_fixtures(existing)
+            report['temporary_category_branch_created'] = False
+        except RuntimeError:
+            first = next((p for p in existing if len(p.get('category_path', [])) >= 2), None)
+            require(first, 'Acceptance categories unavailable')
+            categories, second = isolated_category_branch(marker, category_ids, now)
+            # IDs and exact unique codes are registered before the first write;
+            # a partial insert is cleaned in finally without touching old categories.
+            db.categories.insert_many(categories)
+            fixtures = distinct_category_fixtures([first, second])
+            report['temporary_category_branch_created'] = True
         products = [{"_id": product_ids[i], "schema_version": 4,
                      "product_code": f"{marker}-{i}",
                      "product_name": f"REN D4 隔離探針商品 {i + 1}",
@@ -264,7 +295,7 @@ def run(config):
         report.update(status="failed", error_type=type(error).__name__,
                       error=str(error) if isinstance(error, RuntimeError) else "Probe execution failed")
     finally:
-        cleanup = cleanup_probe(db, marker, user_ids, sku_ids, product_ids)
+        cleanup = cleanup_probe(db, marker, user_ids, sku_ids, product_ids, category_ids)
         report["cleanup"] = cleanup
         if not cleanup["verified"]:
             report["status"] = "cleanup_failed"

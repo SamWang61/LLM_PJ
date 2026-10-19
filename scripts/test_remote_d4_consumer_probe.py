@@ -102,3 +102,20 @@ def test_current_ranking_accepts_unrated_cold_start_and_detects_cross_category_l
     assert recommendations_6_4(products, [normal, *synthetic], now=now)['personalized'] == expected
     leaked = [{**event, 'metadata': {}} for event in synthetic]
     assert recommendations_6_4(products, [normal, *leaked], now=now)['personalized'][0]['product']['_id'] == products[1]['_id']
+
+
+def test_new_category_cleanup_requires_both_owned_id_and_exact_run_code():
+    import mongomock
+    from datetime import datetime, timezone
+    db = mongomock.MongoClient()[probe.DATABASE]
+    owned = [ObjectId(), ObjectId()]
+    documents, _ = probe.isolated_category_branch('unique-probe', owned, datetime.now(timezone.utc))
+    db.categories.insert_many(documents)
+    unrelated_id = ObjectId()
+    db.categories.insert_one({'_id': unrelated_id, 'category_code': 'unique-probe-major'})
+    foreign_id = ObjectId()
+    db.categories.insert_one({'_id': foreign_id, 'category_code': 'other-run-major'})
+    result = probe.cleanup_probe(db, 'unique-probe', [], [], [], [*owned, foreign_id])
+    assert result['categories'] == 2 and result['categories_remaining'] == 0
+    assert result['verified'] is True
+    assert {row['_id'] for row in db.categories.find()} == {unrelated_id, foreign_id}

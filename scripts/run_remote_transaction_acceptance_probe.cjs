@@ -160,13 +160,15 @@ async function revoke(api, binding) {
 }
 function probeMode(args) {
   requireValue(args.length <= 1 && (!args.length
-    || ['--run-isolated', '--run-accounts-isolated', '--run-h05-h07-isolated'].includes(args[0])),
-    'Usage: node scripts/run_remote_transaction_acceptance_probe.cjs [--run-isolated|--run-accounts-isolated|--run-h05-h07-isolated]');
+    || ['--run-isolated', '--run-accounts-isolated', '--run-h05-h07-isolated', '--run-d4-only-isolated'].includes(args[0])),
+    'Usage: node scripts/run_remote_transaction_acceptance_probe.cjs [--run-isolated|--run-accounts-isolated|--run-h05-h07-isolated|--run-d4-only-isolated]');
   const accounts = args[0] === '--run-accounts-isolated';
   const h05h07 = args[0] === '--run-h05-h07-isolated';
-  return { run: args.length === 1, accounts, h05h07,
-    python: accounts ? 'remote_account_acceptance_probe.py' : 'remote_transaction_acceptance_probe.py',
-    prefix: h05h07 ? 'ren-h057-' : accounts ? 'sam-accounts-' : 'sam-txn-' };
+  const d4Only = args[0] === '--run-d4-only-isolated';
+  return { run: args.length === 1, accounts, h05h07, d4Only,
+    python: d4Only ? 'remote_d4_consumer_probe.py'
+      : accounts ? 'remote_account_acceptance_probe.py' : 'remote_transaction_acceptance_probe.py',
+    prefix: d4Only ? 'sam-d4-only-' : h05h07 ? 'ren-h057-' : accounts ? 'sam-accounts-' : 'sam-txn-' };
 }
 async function runPython(config, pythonFile) {
   const child = spawn(process.env.REN_PYTHON || 'python',
@@ -188,21 +190,22 @@ async function runPython(config, pythonFile) {
 async function main() {
   const args = process.argv.slice(2);
   const mode = probeMode(args);
+  const selectivePrivateProbe = mode.h05h07 || mode.d4Only;
   const api = googleApi(await credentials());
   const report = { checked_at: new Date().toISOString(), mode: args.length ? 'isolated-probe' : 'read-only',
-    purpose: mode.accounts ? 'account-lifecycle' : 'transaction', project: PROJECT, status: 'failed' };
+    purpose: mode.d4Only ? 'd4-consumer' : mode.accounts ? 'account-lifecycle' : 'transaction', project: PROJECT, status: 'failed' };
   const [production, acceptance] = await Promise.all([
     readDeployment(api, 'vibecart-web'), readDeployment(api, SERVICE),
   ]);
-  assertDeployment(production, acceptance, acceptance.policy, mode.h05h07);
+  assertDeployment(production, acceptance, acceptance.policy, selectivePrivateProbe);
   report.production = publicDeployment(production);
   report.acceptance = publicDeployment(acceptance);
-  report.inventory = mode.h05h07
+  report.inventory = selectivePrivateProbe
     ? { scope: 'existing private transaction/consumer routes only; no worker or D4 import changes', full_inventory_repeated: false }
     : await inventory(api);
   if (!mode.run) { report.status = 'preflight-passed'; console.log(JSON.stringify(report)); return; }
   const binding = temporaryBinding(mode.prefix + randomUUID(),
-    grantExpiry(Date.now(), mode.h05h07 ? process.env.REN_IAM_DEADLINE : undefined));
+    grantExpiry(Date.now(), selectivePrivateProbe ? process.env.REN_IAM_DEADLINE : undefined));
   report.iam = { role: ROLE, member: MEMBER, expires: binding.condition.expression,
     title: binding.condition.title, revoked: false };
   let attempted = false;
@@ -233,7 +236,7 @@ async function main() {
     requireValue(secret.payload?.data, 'Acceptance Mongo URI unavailable');
     const config = { mongo_uri: Buffer.from(secret.payload.data, 'base64').toString('utf8'),
       id_token: identity.token, service_url: acceptance.uri, revision: acceptance.revision, image: acceptance.image,
-      http_transport: mode.h05h07 ? 'node-fetch' : 'requests' };
+      http_transport: selectivePrivateProbe ? 'node-fetch' : 'requests' };
     report.http_transport = config.http_transport;
     const result = await runPython(config, mode.python);
     report.probe = result.report;
@@ -248,7 +251,7 @@ async function main() {
     const [pAfter, aAfter] = await Promise.all([
       readDeployment(api, 'vibecart-web'), readDeployment(api, SERVICE),
     ]);
-    assertDeployment(pAfter, aAfter, aAfter.policy, mode.h05h07);
+    assertDeployment(pAfter, aAfter, aAfter.policy, selectivePrivateProbe);
     requireValue(pAfter.revision === production.revision && aAfter.revision === acceptance.revision,
       'Traffic revision changed during probe');
     report.deployment_after = { production: publicDeployment(pAfter), acceptance: publicDeployment(aAfter) };
