@@ -11,6 +11,8 @@ from urllib.parse import urlsplit
 import pytest
 from bson import ObjectId, Decimal128
 from pymongo import MongoClient
+from pymongo import monitoring
+from pymongo.errors import OperationFailure
 from app.services.sku_gateway import CartService, CartError, CartConflict
 from app.services.member_sessions import revoke_user_sessions
 
@@ -102,3 +104,54 @@ def test_real_admin_transaction_can_rollback_revocation(replica):
         mongo_session.abort_transaction()
     assert db.auth_sessions.count_documents({"user_id": uid}) == 1
     assert db.users.find_one({"_id": uid})["is_active"] is True
+
+
+def test_delayed_abort_acknowledgement_does_not_leave_transaction_locks(replica):
+    """A real 1.2s server abort delay must recover on the original client."""
+    db, uid, _, sid = replica
+    app_name = 'sam-abort-ack-' + uuid4().hex
+
+    class AbortTrace(monitoring.CommandListener):
+        succeeded_aborts = 0
+        failed_aborts = 0
+        def started(self, event): pass
+        def succeeded(self, event):
+            if event.command_name == 'abortTransaction': self.succeeded_aborts += 1
+        def failed(self, event):
+            if event.command_name == 'abortTransaction': self.failed_aborts += 1
+
+    trace = AbortTrace()
+    client = MongoClient(os.environ['REN_TEST_MONGO_URI'], appname=app_name,
+                         event_listeners=[trace], serverSelectionTimeoutMS=3000)
+    local_db = client[db.name]
+    service = CartService(local_db, enable_checkout=True)
+    cart = service.add_item(uid, sid, 1, operation_id='abort-delay-add')
+
+    class FailOnce(CartService):
+        calls = 0
+        def _behavior(self, *args, **kwargs):
+            if args[3] == 'PURCHASE':
+                self.calls += 1
+                if self.calls == 1:
+                    raise OperationFailure('local transient checkout fault', 112,
+                                           {'errorLabels': ['TransientTransactionError']})
+            return super()._behavior(*args, **kwargs)
+
+    guarded = FailOnce(local_db, enable_checkout=True)
+    try:
+        db.client.admin.command({'configureFailPoint': 'failCommand', 'mode': {'times': 1},
+            'data': {'failCommands': ['abortTransaction'], 'appName': app_name,
+                     'blockConnection': True, 'blockTimeMS': 1200}})
+        result = guarded.checkout_cart(uid, checkout_id='abort-delay-checkout',
+            cart_id=cart['_id'], expected_revision=cart['revision'])
+        replay = service.checkout_cart(uid, checkout_id='abort-delay-checkout',
+            cart_id=cart['_id'], expected_revision=cart['revision'])
+        assert guarded.calls == 2
+        assert result['_id'] == replay['_id']
+        assert trace.succeeded_aborts == 1 and trace.failed_aborts == 0
+        assert db.orders.count_documents({}) == db.order_items.count_documents({}) == 1
+        assert db.product_skus.find_one({'_id': sid})['available_quantity'] == 1
+        assert db.behavior_events.count_documents({'event_type': 'PURCHASE'}) == 1
+    finally:
+        db.client.admin.command({'configureFailPoint': 'failCommand', 'mode': 'off'})
+        client.close()

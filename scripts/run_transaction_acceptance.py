@@ -35,7 +35,8 @@ def main():
     with args.report.open('x',encoding='utf-8',newline='\n') as output:
         try:
             docker('run','--rm','-d','--name',name,'-p','127.0.0.1::27017','mongo:8',
-                   '--replSet','rsD5Acceptance','--bind_ip_all')
+                   '--replSet','rsD5Acceptance','--bind_ip_all',
+                   '--setParameter','enableTestCommands=1')
             created=True
             port=docker('port',name,'27017/tcp')
             if not port.startswith('127.0.0.1:') or not port.split(':')[1].isdigit():
@@ -71,12 +72,19 @@ def main():
                     report['status']='passed'
         except Exception as error:
             report['error_type']=type(error).__name__
+            if isinstance(error, RuntimeError):
+                report['error']=str(error)
         finally:
             if created:
                 try:
-                    info=json.loads(docker('inspect',name))[0]
-                    if info.get('Name')!='/'+name: raise ValueError('Container identity changed')
-                    docker('rm','-f',name)
+                    # --rm may already have removed a container that exited
+                    # during startup. Absence is clean, not a cleanup failure.
+                    present=docker('ps','-a','--filter','name=^/'+name+'$','--format','{{.Names}}').splitlines()
+                    if present:
+                        if present != [name]: raise ValueError('Container identity changed')
+                        info=json.loads(docker('inspect',name))[0]
+                        if info.get('Name')!='/'+name: raise ValueError('Container identity changed')
+                        docker('rm','-f',name)
                     report['container_removed']=True
                 except Exception:
                     report['status']='cleanup-failed'

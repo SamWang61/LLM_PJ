@@ -1,0 +1,14 @@
+{
+  "operator": "SAM simulation performed by Codex",
+  "started_at": "2026-10-20T01:19:31+08:00",
+  "completed_at": "2026-10-20T01:19:33+08:00",
+  "timezone": "Asia/Taipei",
+  "status": "failed",
+  "scope": "isolated mongomock business-flow simulation",
+  "atlas_contacted": false,
+  "real_mongodb_transaction": false,
+  "physical_device": false,
+  "human_signoff": false,
+  "source_commit": "6293a285cf8d409ab03f0bd296b8a2b403325cb7",
+  "cases": []
+}

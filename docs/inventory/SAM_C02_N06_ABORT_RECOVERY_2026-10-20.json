@@ -1,0 +1,762 @@
+{
+  "operator": "SAM simulation performed by Codex",
+  "started_at": "2026-10-20T01:18:53+08:00",
+  "completed_at": "2026-10-19T17:40:27.384647+00:00",
+  "scope": "local mock flows plus disposable real localhost MongoDB; not deployed or remote Atlas acceptance",
+  "atlas_contacted": false,
+  "deployment_performed": false,
+  "human_signoff": false,
+  "retry_window_seconds": 8,
+  "abort_cleanup_grace_before_seconds": 0.5,
+  "abort_cleanup_grace_after_seconds": 2,
+  "bounded_cleanup_note": "Body/commit retry remains 8s; one cleanup grace can extend the final response to about 10s.",
+  "source_file_sha256": {
+    "VibeCart_AI/services/cart_service.py": "cb22ab2fdebfaea7cbb68e542c9077ea6fd5dcf402c4d0eb625f53fc2af7ed1f",
+    "scripts/run_local_checkout_fault_matrix.py": "b7b930f9895290db7dedaf9118b9869c6651b75c1950d37d53034af0a55f8fcb",
+    "scripts/run_transaction_acceptance.py": "9254ebbb526ab6f6362e30783de1537b2b403e514d89f0eeb3d190fa62f47fdc",
+    "MuscleCore分析資料/website/tests/test_ren_transactions.py": "b0c204e3f6c2654609e3a5abb2db3b5c4a0941d8260d4fba5233c5ff1fcc3351"
+  },
+  "long_transactions_before_fix": [
+    {
+      "run": "n06-sustained.json",
+      "time": {
+        "$date": "2026-10-20T01:22:43.428+08:00"
+      },
+      "duration_ms": 77658,
+      "termination": "aborted"
+    },
+    {
+      "run": "n06-sustained-full-retry.json",
+      "time": {
+        "$date": "2026-10-20T01:28:10.391+08:00"
+      },
+      "duration_ms": 73958,
+      "termination": "aborted"
+    }
+  ],
+  "runs": [
+    {
+      "private_raw_name": "n06-single.json",
+      "raw_sha256": "54f94d11796c501f21eb527b8fc58d29ac97111c9d73fe4a805017fdb5612afb",
+      "version": "before",
+      "started_at": "2026-10-19T17:18:54.967506+00:00",
+      "completed_at": "2026-10-19T17:19:26.085308+00:00",
+      "completion_time_source": "raw report final write timestamp",
+      "status": "passed",
+      "mode": "single",
+      "fixtures_removed": true,
+      "processes_stopped": true,
+      "cases": [
+        {
+          "case": "network_timeout",
+          "status": "passed",
+          "fault_http": 200,
+          "fault_callbacks": 2,
+          "request_elapsed_seconds": 6.254,
+          "recovery_http": 200,
+          "replay_http": 200,
+          "replay_same_order": true,
+          "recovery_client_replaced": false,
+          "recovery_attempts": 1,
+          "recovery_http_attempts": [
+            200
+          ],
+          "stock_decrements": 1,
+          "rollback_equal": true,
+          "unknown_commit_retried_same_transaction": false,
+          "commit_attempts": 1,
+          "collection_count": 28,
+          "unrelated_collections_unchanged": true
+        },
+        {
+          "case": "socket_reset",
+          "status": "passed",
+          "fault_http": 200,
+          "fault_callbacks": 2,
+          "request_elapsed_seconds": 0.369,
+          "recovery_http": 200,
+          "replay_http": 200,
+          "replay_same_order": true,
+          "recovery_client_replaced": false,
+          "recovery_attempts": 1,
+          "recovery_http_attempts": [
+            200
+          ],
+          "stock_decrements": 1,
+          "rollback_equal": true,
+          "unknown_commit_retried_same_transaction": false,
+          "commit_attempts": 1,
+          "collection_count": 28,
+          "unrelated_collections_unchanged": true
+        },
+        {
+          "case": "write_conflict",
+          "status": "passed",
+          "fault_http": 200,
+          "fault_callbacks": 2,
+          "request_elapsed_seconds": 0.185,
+          "recovery_http": 200,
+          "replay_http": 200,
+          "replay_same_order": true,
+          "recovery_client_replaced": false,
+          "recovery_attempts": 1,
+          "recovery_http_attempts": [
+            200
+          ],
+          "stock_decrements": 1,
+          "rollback_equal": true,
+          "unknown_commit_retried_same_transaction": false,
+          "commit_attempts": 1,
+          "collection_count": 28,
+          "unrelated_collections_unchanged": true
+        },
+        {
+          "case": "pool_failure",
+          "status": "passed",
+          "fault_http": 200,
+          "fault_callbacks": 2,
+          "request_elapsed_seconds": 0.347,
+          "recovery_http": 200,
+          "replay_http": 200,
+          "replay_same_order": true,
+          "recovery_client_replaced": false,
+          "recovery_attempts": 1,
+          "recovery_http_attempts": [
+            200
+          ],
+          "stock_decrements": 1,
+          "rollback_equal": true,
+          "unknown_commit_retried_same_transaction": false,
+          "commit_attempts": 1,
+          "collection_count": 28,
+          "unrelated_collections_unchanged": true
+        },
+        {
+          "case": "commit_unknown",
+          "status": "passed",
+          "fault_http": 200,
+          "fault_callbacks": 1,
+          "request_elapsed_seconds": 0.224,
+          "recovery_http": 200,
+          "replay_http": 200,
+          "replay_same_order": true,
+          "recovery_client_replaced": false,
+          "recovery_attempts": 1,
+          "recovery_http_attempts": [
+            200
+          ],
+          "stock_decrements": 1,
+          "rollback_equal": null,
+          "unknown_commit_retried_same_transaction": true,
+          "commit_attempts": 2,
+          "collection_count": 28,
+          "unrelated_collections_unchanged": true
+        },
+        {
+          "case": "primary_change",
+          "status": "passed",
+          "fault_http": 200,
+          "fault_callbacks": 2,
+          "request_elapsed_seconds": 1.147,
+          "recovery_http": 200,
+          "replay_http": 200,
+          "replay_same_order": true,
+          "recovery_client_replaced": false,
+          "recovery_attempts": 1,
+          "recovery_http_attempts": [
+            200
+          ],
+          "stock_decrements": 1,
+          "rollback_equal": true,
+          "unknown_commit_retried_same_transaction": false,
+          "commit_attempts": 1,
+          "collection_count": 28,
+          "unrelated_collections_unchanged": true
+        }
+      ],
+      "failure_category": null
+    },
+    {
+      "private_raw_name": "n06-sustained.json",
+      "raw_sha256": "16e016eb8b261d5269abf71527e10999f9dc32cf62521a12b1cfc85d03bc4364",
+      "version": "before",
+      "started_at": "2026-10-19T17:20:39.327352+00:00",
+      "completed_at": "2026-10-19T17:22:47.386278+00:00",
+      "completion_time_source": "raw report final write timestamp",
+      "status": "failed",
+      "mode": "sustained",
+      "fixtures_removed": true,
+      "processes_stopped": true,
+      "cases": [
+        {
+          "case": "network_timeout",
+          "status": "passed",
+          "fault_http": 503,
+          "fault_callbacks": 2,
+          "request_elapsed_seconds": 8.015,
+          "recovery_http": 200,
+          "replay_http": 200,
+          "replay_same_order": true,
+          "recovery_client_replaced": false,
+          "recovery_attempts": 1,
+          "recovery_http_attempts": [
+            200
+          ],
+          "stock_decrements": 1,
+          "rollback_equal": true,
+          "unknown_commit_retried_same_transaction": false,
+          "commit_attempts": 0,
+          "collection_count": 28,
+          "unrelated_collections_unchanged": true
+        },
+        {
+          "case": "socket_reset",
+          "status": "passed",
+          "fault_http": 503,
+          "fault_callbacks": 16,
+          "request_elapsed_seconds": 8.004,
+          "recovery_http": 200,
+          "replay_http": 200,
+          "replay_same_order": true,
+          "recovery_client_replaced": false,
+          "recovery_attempts": 1,
+          "recovery_http_attempts": [
+            200
+          ],
+          "stock_decrements": 1,
+          "rollback_equal": true,
+          "unknown_commit_retried_same_transaction": false,
+          "commit_attempts": 0,
+          "collection_count": 28,
+          "unrelated_collections_unchanged": true
+        },
+        {
+          "case": "write_conflict",
+          "status": "passed",
+          "fault_http": 503,
+          "fault_callbacks": 17,
+          "request_elapsed_seconds": 8.004,
+          "recovery_http": 200,
+          "replay_http": 200,
+          "replay_same_order": true,
+          "recovery_client_replaced": false,
+          "recovery_attempts": 1,
+          "recovery_http_attempts": [
+            200
+          ],
+          "stock_decrements": 1,
+          "rollback_equal": true,
+          "unknown_commit_retried_same_transaction": false,
+          "commit_attempts": 0,
+          "collection_count": 28,
+          "unrelated_collections_unchanged": true
+        }
+      ],
+      "failure_category": "recovery/replay remained 503 after fault removal"
+    },
+    {
+      "private_raw_name": "n06-write-conflict-recheck.json",
+      "raw_sha256": "3271e7083bf18a8f37367aa2a89b158d71dc7ec348ca9c093b8b5986d1638b23",
+      "version": "before",
+      "started_at": "2026-10-19T17:24:20.206361+00:00",
+      "completed_at": "2026-10-19T17:24:39.202443+00:00",
+      "completion_time_source": "raw report final write timestamp",
+      "status": "passed",
+      "mode": "sustained",
+      "fixtures_removed": true,
+      "processes_stopped": true,
+      "cases": [
+        {
+          "case": "write_conflict",
+          "status": "passed",
+          "fault_http": 503,
+          "fault_callbacks": 17,
+          "request_elapsed_seconds": 8.006,
+          "recovery_http": 200,
+          "replay_http": 200,
+          "replay_same_order": true,
+          "recovery_client_replaced": false,
+          "recovery_attempts": 1,
+          "recovery_http_attempts": [
+            200
+          ],
+          "stock_decrements": 1,
+          "rollback_equal": true,
+          "unknown_commit_retried_same_transaction": false,
+          "commit_attempts": 0,
+          "collection_count": 28,
+          "unrelated_collections_unchanged": true
+        }
+      ],
+      "failure_category": null
+    },
+    {
+      "private_raw_name": "n06-sustained-full-retry.json",
+      "raw_sha256": "99d316dee16b84cbee4dad6ce48af232f3c4c63f2e36d3ac394ae01e3707c28f",
+      "version": "before",
+      "started_at": "2026-10-19T17:26:08.561597+00:00",
+      "completed_at": "2026-10-19T17:28:14.456892+00:00",
+      "completion_time_source": "raw report final write timestamp",
+      "status": "failed",
+      "mode": "sustained",
+      "fixtures_removed": true,
+      "processes_stopped": true,
+      "cases": [
+        {
+          "case": "network_timeout",
+          "status": "passed",
+          "fault_http": 503,
+          "fault_callbacks": 2,
+          "request_elapsed_seconds": 8.024,
+          "recovery_http": 200,
+          "replay_http": 200,
+          "replay_same_order": true,
+          "recovery_client_replaced": false,
+          "recovery_attempts": 1,
+          "recovery_http_attempts": [
+            200
+          ],
+          "stock_decrements": 1,
+          "rollback_equal": true,
+          "unknown_commit_retried_same_transaction": false,
+          "commit_attempts": 0,
+          "collection_count": 28,
+          "unrelated_collections_unchanged": true
+        },
+        {
+          "case": "socket_reset",
+          "status": "passed",
+          "fault_http": 503,
+          "fault_callbacks": 16,
+          "request_elapsed_seconds": 8.003,
+          "recovery_http": 200,
+          "replay_http": 200,
+          "replay_same_order": true,
+          "recovery_client_replaced": false,
+          "recovery_attempts": 1,
+          "recovery_http_attempts": [
+            200
+          ],
+          "stock_decrements": 1,
+          "rollback_equal": true,
+          "unknown_commit_retried_same_transaction": false,
+          "commit_attempts": 0,
+          "collection_count": 28,
+          "unrelated_collections_unchanged": true
+        },
+        {
+          "case": "write_conflict",
+          "status": "passed",
+          "fault_http": 503,
+          "fault_callbacks": 17,
+          "request_elapsed_seconds": 8.003,
+          "recovery_http": 200,
+          "replay_http": 200,
+          "replay_same_order": true,
+          "recovery_client_replaced": false,
+          "recovery_attempts": 1,
+          "recovery_http_attempts": [
+            200
+          ],
+          "stock_decrements": 1,
+          "rollback_equal": true,
+          "unknown_commit_retried_same_transaction": false,
+          "commit_attempts": 0,
+          "collection_count": 28,
+          "unrelated_collections_unchanged": true
+        }
+      ],
+      "failure_category": "recovery/replay remained 503 after fault removal"
+    },
+    {
+      "private_raw_name": "n06-abort-delay-before-fix.json",
+      "raw_sha256": "a147072615ca83265a15116af61089bea883c8b19963f237c8e007740bc48495",
+      "version": "before",
+      "started_at": "2026-10-19T17:29:59.842482+00:00",
+      "completed_at": "2026-10-19T17:31:34.265638+00:00",
+      "completion_time_source": "raw report final write timestamp",
+      "status": "failed",
+      "mode": "single",
+      "fixtures_removed": true,
+      "processes_stopped": true,
+      "cases": [],
+      "failure_category": "delayed abort did not recover within contract"
+    },
+    {
+      "private_raw_name": "n06-abort-delay-after-fix.json",
+      "raw_sha256": "8d6044e23a0882035d0c89a90ca9c36b316b50819e2306af8d4c4ad35c6658d7",
+      "version": "after",
+      "started_at": "2026-10-19T17:31:51.179807+00:00",
+      "completed_at": "2026-10-19T17:31:59.957713+00:00",
+      "completion_time_source": "raw report final write timestamp",
+      "status": "passed",
+      "mode": "single",
+      "fixtures_removed": true,
+      "processes_stopped": true,
+      "cases": [
+        {
+          "case": "abort_ack_delay",
+          "status": "passed",
+          "fault_http": 200,
+          "fault_callbacks": 2,
+          "request_elapsed_seconds": 1.293,
+          "recovery_http": 200,
+          "replay_http": 200,
+          "replay_same_order": true,
+          "recovery_client_replaced": false,
+          "recovery_attempts": 1,
+          "recovery_http_attempts": [
+            200
+          ],
+          "stock_decrements": 1,
+          "rollback_equal": true,
+          "unknown_commit_retried_same_transaction": false,
+          "commit_attempts": 1,
+          "abort_attempts": 1,
+          "failed_abort_commands": 0,
+          "collection_count": 28,
+          "unrelated_collections_unchanged": true
+        }
+      ],
+      "failure_category": null
+    },
+    {
+      "private_raw_name": "n06-sustained-after-fix.json",
+      "raw_sha256": "6fbea7d275ffe3785028468c78a7989d250b2e6f2e8899d366473946e7f8d8aa",
+      "version": "after",
+      "started_at": "2026-10-19T17:32:27.042724+00:00",
+      "completed_at": "2026-10-19T17:33:31.788085+00:00",
+      "completion_time_source": "raw report final write timestamp",
+      "status": "passed",
+      "mode": "sustained",
+      "fixtures_removed": true,
+      "processes_stopped": true,
+      "cases": [
+        {
+          "case": "network_timeout",
+          "status": "passed",
+          "fault_http": 503,
+          "fault_callbacks": 2,
+          "request_elapsed_seconds": 8.019,
+          "recovery_http": 200,
+          "replay_http": 200,
+          "replay_same_order": true,
+          "recovery_client_replaced": false,
+          "recovery_attempts": 1,
+          "recovery_http_attempts": [
+            200
+          ],
+          "stock_decrements": 1,
+          "rollback_equal": true,
+          "unknown_commit_retried_same_transaction": false,
+          "commit_attempts": 0,
+          "abort_attempts": 2,
+          "failed_abort_commands": 0,
+          "collection_count": 28,
+          "unrelated_collections_unchanged": true
+        },
+        {
+          "case": "socket_reset",
+          "status": "passed",
+          "fault_http": 503,
+          "fault_callbacks": 16,
+          "request_elapsed_seconds": 8.003,
+          "recovery_http": 200,
+          "replay_http": 200,
+          "replay_same_order": true,
+          "recovery_client_replaced": false,
+          "recovery_attempts": 1,
+          "recovery_http_attempts": [
+            200
+          ],
+          "stock_decrements": 1,
+          "rollback_equal": true,
+          "unknown_commit_retried_same_transaction": false,
+          "commit_attempts": 0,
+          "abort_attempts": 16,
+          "failed_abort_commands": 0,
+          "collection_count": 28,
+          "unrelated_collections_unchanged": true
+        },
+        {
+          "case": "write_conflict",
+          "status": "passed",
+          "fault_http": 503,
+          "fault_callbacks": 17,
+          "request_elapsed_seconds": 8.003,
+          "recovery_http": 200,
+          "replay_http": 200,
+          "replay_same_order": true,
+          "recovery_client_replaced": false,
+          "recovery_attempts": 1,
+          "recovery_http_attempts": [
+            200
+          ],
+          "stock_decrements": 1,
+          "rollback_equal": true,
+          "unknown_commit_retried_same_transaction": false,
+          "commit_attempts": 0,
+          "abort_attempts": 17,
+          "failed_abort_commands": 0,
+          "collection_count": 28,
+          "unrelated_collections_unchanged": true
+        },
+        {
+          "case": "pool_failure",
+          "status": "passed",
+          "fault_http": 503,
+          "fault_callbacks": 10,
+          "request_elapsed_seconds": 8.004,
+          "recovery_http": 200,
+          "replay_http": 200,
+          "replay_same_order": true,
+          "recovery_client_replaced": false,
+          "recovery_attempts": 1,
+          "recovery_http_attempts": [
+            200
+          ],
+          "stock_decrements": 1,
+          "rollback_equal": true,
+          "unknown_commit_retried_same_transaction": false,
+          "commit_attempts": 0,
+          "abort_attempts": 10,
+          "failed_abort_commands": 0,
+          "collection_count": 28,
+          "unrelated_collections_unchanged": true
+        },
+        {
+          "case": "commit_unknown",
+          "status": "passed",
+          "fault_http": 503,
+          "fault_callbacks": 1,
+          "request_elapsed_seconds": 8.004,
+          "recovery_http": 200,
+          "replay_http": 200,
+          "replay_same_order": true,
+          "recovery_client_replaced": false,
+          "recovery_attempts": 1,
+          "recovery_http_attempts": [
+            200
+          ],
+          "stock_decrements": 1,
+          "rollback_equal": null,
+          "unknown_commit_retried_same_transaction": true,
+          "commit_attempts": 17,
+          "abort_attempts": 0,
+          "failed_abort_commands": 0,
+          "collection_count": 28,
+          "unrelated_collections_unchanged": true
+        }
+      ],
+      "failure_category": null
+    },
+    {
+      "private_raw_name": "n06-single-after-fix.json",
+      "raw_sha256": "4e7777be9f492a45e749fb670469a10c97eee1ff18ffeff0f454a6b5374c0e3e",
+      "version": "after",
+      "started_at": "2026-10-19T17:33:55.551045+00:00",
+      "completed_at": "2026-10-19T17:34:23.557101+00:00",
+      "completion_time_source": "raw report final write timestamp",
+      "status": "passed",
+      "mode": "single",
+      "fixtures_removed": true,
+      "processes_stopped": true,
+      "cases": [
+        {
+          "case": "network_timeout",
+          "status": "passed",
+          "fault_http": 200,
+          "fault_callbacks": 2,
+          "request_elapsed_seconds": 6.098,
+          "recovery_http": 200,
+          "replay_http": 200,
+          "replay_same_order": true,
+          "recovery_client_replaced": false,
+          "recovery_attempts": 1,
+          "recovery_http_attempts": [
+            200
+          ],
+          "stock_decrements": 1,
+          "rollback_equal": true,
+          "unknown_commit_retried_same_transaction": false,
+          "commit_attempts": 1,
+          "abort_attempts": 1,
+          "failed_abort_commands": 0,
+          "collection_count": 28,
+          "unrelated_collections_unchanged": true
+        },
+        {
+          "case": "socket_reset",
+          "status": "passed",
+          "fault_http": 200,
+          "fault_callbacks": 2,
+          "request_elapsed_seconds": 0.37,
+          "recovery_http": 200,
+          "replay_http": 200,
+          "replay_same_order": true,
+          "recovery_client_replaced": false,
+          "recovery_attempts": 1,
+          "recovery_http_attempts": [
+            200
+          ],
+          "stock_decrements": 1,
+          "rollback_equal": true,
+          "unknown_commit_retried_same_transaction": false,
+          "commit_attempts": 1,
+          "abort_attempts": 1,
+          "failed_abort_commands": 0,
+          "collection_count": 28,
+          "unrelated_collections_unchanged": true
+        },
+        {
+          "case": "write_conflict",
+          "status": "passed",
+          "fault_http": 200,
+          "fault_callbacks": 2,
+          "request_elapsed_seconds": 0.186,
+          "recovery_http": 200,
+          "replay_http": 200,
+          "replay_same_order": true,
+          "recovery_client_replaced": false,
+          "recovery_attempts": 1,
+          "recovery_http_attempts": [
+            200
+          ],
+          "stock_decrements": 1,
+          "rollback_equal": true,
+          "unknown_commit_retried_same_transaction": false,
+          "commit_attempts": 1,
+          "abort_attempts": 1,
+          "failed_abort_commands": 0,
+          "collection_count": 28,
+          "unrelated_collections_unchanged": true
+        },
+        {
+          "case": "pool_failure",
+          "status": "passed",
+          "fault_http": 200,
+          "fault_callbacks": 2,
+          "request_elapsed_seconds": 0.393,
+          "recovery_http": 200,
+          "replay_http": 200,
+          "replay_same_order": true,
+          "recovery_client_replaced": false,
+          "recovery_attempts": 1,
+          "recovery_http_attempts": [
+            200
+          ],
+          "stock_decrements": 1,
+          "rollback_equal": true,
+          "unknown_commit_retried_same_transaction": false,
+          "commit_attempts": 1,
+          "abort_attempts": 1,
+          "failed_abort_commands": 0,
+          "collection_count": 28,
+          "unrelated_collections_unchanged": true
+        },
+        {
+          "case": "commit_unknown",
+          "status": "passed",
+          "fault_http": 200,
+          "fault_callbacks": 1,
+          "request_elapsed_seconds": 0.315,
+          "recovery_http": 200,
+          "replay_http": 200,
+          "replay_same_order": true,
+          "recovery_client_replaced": false,
+          "recovery_attempts": 1,
+          "recovery_http_attempts": [
+            200
+          ],
+          "stock_decrements": 1,
+          "rollback_equal": null,
+          "unknown_commit_retried_same_transaction": true,
+          "commit_attempts": 2,
+          "abort_attempts": 0,
+          "failed_abort_commands": 0,
+          "collection_count": 28,
+          "unrelated_collections_unchanged": true
+        },
+        {
+          "case": "primary_change",
+          "status": "passed",
+          "fault_http": 200,
+          "fault_callbacks": 2,
+          "request_elapsed_seconds": 1.137,
+          "recovery_http": 200,
+          "replay_http": 200,
+          "replay_same_order": true,
+          "recovery_client_replaced": false,
+          "recovery_attempts": 1,
+          "recovery_http_attempts": [
+            200
+          ],
+          "stock_decrements": 1,
+          "rollback_equal": true,
+          "unknown_commit_retried_same_transaction": false,
+          "commit_attempts": 1,
+          "abort_attempts": 1,
+          "failed_abort_commands": 1,
+          "collection_count": 28,
+          "unrelated_collections_unchanged": true
+        },
+        {
+          "case": "abort_ack_delay",
+          "status": "passed",
+          "fault_http": 200,
+          "fault_callbacks": 2,
+          "request_elapsed_seconds": 1.291,
+          "recovery_http": 200,
+          "replay_http": 200,
+          "replay_same_order": true,
+          "recovery_client_replaced": false,
+          "recovery_attempts": 1,
+          "recovery_http_attempts": [
+            200
+          ],
+          "stock_decrements": 1,
+          "rollback_equal": true,
+          "unknown_commit_retried_same_transaction": false,
+          "commit_attempts": 1,
+          "abort_attempts": 1,
+          "failed_abort_commands": 0,
+          "collection_count": 28,
+          "unrelated_collections_unchanged": true
+        }
+      ],
+      "failure_category": null
+    }
+  ],
+  "website_regression": {
+    "started_at": "2026-10-19T17:38:34.606485+00:00",
+    "scope": "disposable localhost replica set",
+    "atlas_contacted": false,
+    "human_signoff": false,
+    "status": "passed",
+    "tests": {
+      "tests": 288,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "fixtures_removed": true,
+    "processes_stopped": true,
+    "completed_at": "2026-10-19T17:40:27.384647+00:00"
+  },
+  "website_dependency_setup_attempt": {
+    "started_at": "2026-10-19T17:35:10.038840+00:00",
+    "scope": "disposable localhost replica set",
+    "atlas_contacted": false,
+    "human_signoff": false,
+    "status": "failed",
+    "tests": {
+      "tests": 5,
+      "failures": 0,
+      "errors": 5,
+      "skipped": 0
+    },
+    "fixtures_removed": true,
+    "processes_stopped": true,
+    "completed_at": "2026-10-19T17:35:22.279130+00:00"
+  }
+}
