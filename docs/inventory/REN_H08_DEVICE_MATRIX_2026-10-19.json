@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "checked_at": "2026-10-19T08:31:00+08:00",
+  "source": "prior user report plus current local evidence review",
+  "device_reported": {
+    "operator": "SAM",
+    "performed_at": "2026-10-18T17:00:00+08:00",
+    "model": "iPhone 17 Pro Max",
+    "os": "iOS 27.0.1",
+    "browser": "Chrome 155.0.8059.37",
+    "general_results_reported": {
+      "S03": "normal",
+      "S04": "normal",
+      "S05": "normal"
+    },
+    "tested_url": null,
+    "tested_source_sha": null,
+    "tested_revision": null,
+    "browser_version_image": {
+      "path": "簡報文件/截圖 2026-10-18 17.44.46.png",
+      "sha256": "a224a5f10ee8ae1add3cc1a3c7b80246b1fe65c27f2d7bc3400bbff2120872b5",
+      "observed": "Chrome About page version 155.0.8059.37 and clock 17:44",
+      "website_operation_evidence": false
+    }
+  },
+  "additional_user_supplied_site_time": {
+    "performed_at_claimed": "2026-10-18T14:00:00+08:00",
+    "url_claimed": "https://vibecart-llmai.web.app",
+    "relation_to_17_00_report": "separate iPhone test, confirmed by user",
+    "operator": null,
+    "device_model": null,
+    "browser_version": null,
+    "step_results": null,
+    "website_images": null
+  },
+  "additional_user_reported_actions": {
+    "scope": "S03-S05 invalid input, keyboard and portrait-landscape actions",
+    "performed": true,
+    "which_test_time": null,
+    "per_step_results": null,
+    "website_images_retained": false
+  },
+  "current_http_readback": {
+    "checked_date": "2026-10-19",
+    "https://ibecart-llmai.web.app": 404,
+    "https://vibecart-llmai.web.app": 503,
+    "ibecart_was_a_reported_url_typo": true,
+    "vibecart_later_at": "2026-10-19T08:29:18+08:00",
+    "vibecart_later_http_status": 200,
+    "historical_device_test_proof": false
+  },
+  "new_mobile_size_simulation": {
+    "index": "簡報文件/screenshots/REN_H08_手機尺寸模擬_2026-10-19_定稿/capture-records.json",
+    "local_fixture_images": 8,
+    "public_anonymous_home_images": 1,
+    "local_fixture": "loopback mongomock; no Atlas transaction or production write",
+    "viewports_css": ["390x844", "844x390"],
+    "local_horizontal_overflow_count": 0,
+    "native_ios_keyboard": false,
+    "physical_device_proof": false,
+    "ren_receipt_proof": false
+  },
+  "project_screenshot_folder": {
+    "path": "簡報文件/screenshots/REN_H01-H09_手機模擬_2026-10-18",
+    "index": "capture-records.json",
+    "readme_scope": "390x844 desktop browser simulation; H05-H07 localhost fixture; no physical phone or named receipt",
+    "physical_device_proof": false
+  },
+  "physical_matrix": [
+    {"id": "S03-1", "scope": "product, SKU, price and stock", "status": "general_pass_reported; detailed_steps_pending"},
+    {"id": "S03-2", "scope": "portrait, landscape, touch and keyboard focus", "status": "some_actions_reported_tested; detailed_results_and_device_images_missing"},
+    {"id": "S04-1", "scope": "member login, cart return and logout", "status": "general_pass_reported; detailed_steps_pending"},
+    {"id": "S04-2", "scope": "same-email admin login and member role denial", "status": "role_general_pass_reported; same_email_details_pending"},
+    {"id": "S04-3", "scope": "invalid input, autofill and keyboard overlay", "status": "invalid_input_and_keyboard_reported_tested; detailed_results_missing"},
+    {"id": "S05-1", "scope": "cart add, update, reload, remove and revision", "status": "general_pass_reported; detailed_steps_pending"},
+    {"id": "S05-2", "scope": "demo checkout, replay and conflicting replay", "status": "general_pass_reported; detailed_steps_pending"},
+    {"id": "S05-3", "scope": "weak network, retry, back navigation and orientation", "status": "orientation_and_keyboard_reported_tested; other_substeps_and_results_missing"}
+  ],
+  "ren_named_receipt": {
+    "receiver": "陳仁千",
+    "items": ["H01", "H02", "H03", "H04", "H05", "H06", "H07", "H08", "H09"],
+    "actual_receipt_at": null,
+    "item_results": null,
+    "received_count_reported_by_user": 0,
+    "status": "pending_personal_record"
+  },
+  "physical_matrix_complete": false,
+  "named_receipt_complete": false,
+  "v5_completed_gates": 2,
+  "v5_total_gates": 14
+}
