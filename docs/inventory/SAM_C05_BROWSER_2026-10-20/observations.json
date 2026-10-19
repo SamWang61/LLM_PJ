@@ -1,0 +1,251 @@
+{
+  "operator": "SAM simulations of REN and JEFF by Codex",
+  "started_at": "2026-10-19T18:00:55.354Z",
+  "scope": "Loopback in-memory browser simulation; not real MongoDB rollback, phone or human signoff",
+  "business_origin": "http://127.0.0.1:57688",
+  "atlas_contacted": false,
+  "physical_device": false,
+  "human_signoff": false,
+  "initial_iab_focus": {
+    "screenshot": "02-iab-focus.png",
+    "css_width": 390,
+    "css_height": 844,
+    "clientWidth": 375,
+    "scrollWidth": 375,
+    "focused_input": "password",
+    "email": "invalid"
+  },
+  "checks": [
+    {
+      "label": "初輪窄視窗：錯誤格式與Tab焦點",
+      "started_at": "2026-10-19T18:01:12.175Z",
+      "finished_at": "2026-10-19T18:01:13.167Z",
+      "url": "http://127.0.0.1:57688/auth/login",
+      "expected": "email typeMismatch; focus password; no horizontal overflow",
+      "passed": true,
+      "metrics": {
+        "activeName": "password",
+        "activeTag": "INPUT",
+        "height": 675,
+        "invalidFields": [
+          "email",
+          "password"
+        ],
+        "scrollWidth": 300,
+        "width": 312
+      },
+      "screenshot": "01-login-invalid-email.jpg",
+      "headings": [
+        "  - heading \"歡迎回來\" [level=1]",
+        "- alert"
+      ],
+      "note": "Requested390x844; observed CSS312x675. Not target breakpoint proof. Connection interrupted after wrong-password POST; result not claimed."
+    },
+    {
+      "label": "IAB390×844 錯密碼",
+      "browser": "Codex in-app browser",
+      "started_at": "2026-10-19T18:04:32.879Z",
+      "finished_at": "2026-10-19T18:04:33.037Z",
+      "url": "http://127.0.0.1:57688/auth/login",
+      "expected": "錯密碼拒絕、輸入清空、無水平溢出",
+      "passed": true,
+      "metrics": {
+        "activeName": null,
+        "clientWidth": 375,
+        "height": 844,
+        "invalidFields": [
+          "email",
+          "password"
+        ],
+        "scrollWidth": 375,
+        "width": 390
+      },
+      "screenshot": "03-iab-wrong-password.png",
+      "visible_checks": []
+    },
+    {
+      "label": "商品數量0與Tab焦點",
+      "browser": "Codex in-app browser",
+      "started_at": "2026-10-19T18:05:09.294Z",
+      "finished_at": "2026-10-19T18:05:09.629Z",
+      "url": "http://127.0.0.1:57688/product/6ad65a8fca0b73faa9385fa9?major=&category=&q=",
+      "expected": "商品價10.25、庫存10、數量0不合法、焦點加入購物車",
+      "passed": true,
+      "metrics": {
+        "activeName": null,
+        "clientWidth": 375,
+        "height": 844,
+        "invalidFields": [
+          "quantity"
+        ],
+        "scrollWidth": 375,
+        "width": 390
+      },
+      "screenshot": "04-product-invalid-qty.png",
+      "visible_checks": []
+    },
+    {
+      "label": "數量0送出被拒",
+      "browser": "Codex in-app browser",
+      "started_at": "2026-10-19T18:05:13.733Z",
+      "finished_at": "2026-10-19T18:05:13.969Z",
+      "url": "http://127.0.0.1:57688/product/6ad65a8fca0b73faa9385fa9?major=&category=&q=",
+      "expected": "瀏覽器顯示值必須大於或等於1、頁面仍商品",
+      "passed": true,
+      "metrics": {
+        "activeName": "quantity",
+        "clientWidth": 375,
+        "height": 844,
+        "invalidFields": [
+          "quantity"
+        ],
+        "scrollWidth": 375,
+        "width": 390
+      },
+      "screenshot": "05-qty-validation.png",
+      "visible_checks": [
+        "The focused UI element is 24 stepper (settable, integer) 數量, Value: 0"
+      ]
+    },
+    {
+      "label": "844×390購物車",
+      "browser": "Codex in-app browser",
+      "started_at": "2026-10-19T18:05:33.256Z",
+      "finished_at": "2026-10-19T18:05:33.481Z",
+      "url": "http://127.0.0.1:57688/cart",
+      "expected": "1件10.25無水平溢出",
+      "passed": true,
+      "metrics": {
+        "activeName": null,
+        "clientWidth": 829,
+        "height": 390,
+        "invalidFields": [],
+        "scrollWidth": 829,
+        "width": 844
+      },
+      "screenshot": "06-landscape-cart.png",
+      "visible_checks": []
+    },
+    {
+      "label": "844×390更新為2件",
+      "browser": "Codex in-app browser",
+      "started_at": "2026-10-19T18:05:37.201Z",
+      "finished_at": "2026-10-19T18:05:37.335Z",
+      "url": "http://127.0.0.1:57688/cart",
+      "expected": "2件合計20.50",
+      "passed": true,
+      "metrics": {
+        "activeName": null,
+        "clientWidth": 829,
+        "height": 390,
+        "invalidFields": [],
+        "scrollWidth": 829,
+        "width": 844
+      },
+      "screenshot": "07-cart-updated.png",
+      "visible_checks": []
+    },
+    {
+      "label": "示範訂單與庫存8",
+      "browser": "Codex in-app browser",
+      "started_at": "2026-10-19T18:05:40.702Z",
+      "finished_at": "2026-10-19T18:05:40.891Z",
+      "url": "http://127.0.0.1:57688/",
+      "expected": "不收款訂單已建立;庫存10扣2為8",
+      "passed": true,
+      "metrics": {
+        "activeName": null,
+        "clientWidth": 375,
+        "height": 844,
+        "invalidFields": [],
+        "scrollWidth": 375,
+        "width": 390
+      },
+      "screenshot": "08-demo-order.png",
+      "visible_checks": []
+    },
+    {
+      "label": "本機會員已登出",
+      "browser": "Codex in-app browser",
+      "started_at": "2026-10-19T18:05:52.327Z",
+      "finished_at": "2026-10-19T18:05:53.136Z",
+      "url": "http://127.0.0.1:57688/",
+      "expected": "您已安全登出;只顯示登入入口",
+      "passed": true,
+      "metrics": {
+        "activeName": null,
+        "clientWidth": 375,
+        "height": 844,
+        "invalidFields": [],
+        "scrollWidth": 375,
+        "width": 390
+      },
+      "screenshot": "09-logout.png",
+      "visible_checks": []
+    }
+  ],
+  "interruptions": [
+    "Chrome DOM reads timed out; extension UI blocked Chrome automation.",
+    "Switched to Codex in-app browser for local-only UI.",
+    "Admin login POST returned302 in server log, but subsequent browser readback timed out; no admin keyboard acceptance claimed."
+  ],
+  "remaining": [
+    "Real phone native keyboard/touch/rotation and named receipt",
+    "Admin narrow-layout keyboard/error readback after browser connection is available"
+  ],
+  "completed_at": "2026-10-20T02:09:43+08:00",
+  "cleanup": {
+    "process_interrupted_by_CtrlC": true,
+    "graceful_shutdown_report_written": false,
+    "listener_closed_verified": true,
+    "in_memory_fixture_not_persistent": true,
+    "disposable_credential_file_removed": true
+  },
+  "images": [
+    {
+      "file": "01-login-invalid-email.jpg",
+      "bytes": 23568,
+      "sha256": "f5f1880fe964552a6d2745a5bfda6bd3a65757e121d4496318fa3636775313ac"
+    },
+    {
+      "file": "02-iab-focus.png",
+      "bytes": 23724,
+      "sha256": "fd5416d0cc40269848dfe95f7cd38398fa870133e4558d3a95d4069bd23071ac"
+    },
+    {
+      "file": "03-iab-wrong-password.png",
+      "bytes": 24156,
+      "sha256": "7f59226c4523ec960ff7248f7cf22bd46a127d891b6f19c6991ab0c80232fcf0"
+    },
+    {
+      "file": "04-product-invalid-qty.png",
+      "bytes": 38684,
+      "sha256": "16d213cd20349e4ccd7d093eb894a27949ec3fa6386dfa77c5218b41a31fa69d"
+    },
+    {
+      "file": "05-qty-validation.png",
+      "bytes": 39119,
+      "sha256": "d5501bd0cf8da748402561002c9f93c9522b121bbe2c737004bcef825a0907d5"
+    },
+    {
+      "file": "06-landscape-cart.png",
+      "bytes": 16828,
+      "sha256": "fb12f9eac3740e3ddd56060c87626ac53bee20d1a59864036876ebe4f8748248"
+    },
+    {
+      "file": "07-cart-updated.png",
+      "bytes": 16863,
+      "sha256": "09e836e24eddf2971a9d7d4ac9d011d70de0ceedbb1df5500d4a97e344791563"
+    },
+    {
+      "file": "08-demo-order.png",
+      "bytes": 43956,
+      "sha256": "0a6ecaa17040ce7c64f6d3cf0e9e821d7a8fced3ceb292b2ffcb8d6164208b84"
+    },
+    {
+      "file": "09-logout.png",
+      "bytes": 44174,
+      "sha256": "adc7c5d2624d30d1f5fce7a394b1228f707ed0231ddec1c95ab207cd3df933ca"
+    }
+  ]
+}
