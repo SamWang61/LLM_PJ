@@ -2,7 +2,7 @@
 
 ## 2026-10-19 每日固定專案前置核對
 
-本輪重新以Drive metadata核對固定project仍為原ID、owner 1／writer 2；目標folder仍為原ID、owner 1／anyone reader 1，canShare均為true。但連接器回覆省略permission ID與grantee身分，現行工具只有新增分享，沒有撤銷權限操作；無法可靠保存並恢復專案、資料夾及個別子檔案的原ACL，故本輪未變更共用或開始複製，固定連結不變。完整結果見[線上持續檢查與備份缺口](SAM_ONLINE_FOLLOWUP_2026-10-19.md)。
+本輪重新以Drive metadata核對固定project仍為原ID、owner 1／writer 2；目標folder仍為原ID、owner 1／anyone reader 1，canShare均為true。但補選grantee欄位後可讀回收件身分，但連接器回覆仍省略permission ID，現行工具只有新增分享，沒有撤銷權限操作；無法可靠保存並恢復專案、資料夾及個別子檔案的原ACL，故本輪未變更共用或開始複製，固定連結不變。完整結果見[線上持續檢查與備份缺口](SAM_ONLINE_FOLLOWUP_2026-10-19.md)。
 
 每日23:30自動化仍ACTIVE、時間不變；已更新提示，先讀最新私有加密快照及復原證據，不再將其與固定共用專案每日流程混為一談。私有加密子項已有驗證，不代表每日固定目的地機密方案及ACL前置已全部完成；不將歷史備份當成本次成功。只在新的阻礙、必要動作、失敗或完成時通知，同一阻礙維持安靜。
 

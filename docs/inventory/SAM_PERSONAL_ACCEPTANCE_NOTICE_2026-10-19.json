@@ -29,7 +29,9 @@
     "revoke_permission_tool_available": false,
     "transfer_started": false,
     "sharing_changed": false,
-    "fixed_link_changed": false
+    "fixed_link_changed": false,
+    "grantee_identities_available_after_explicit_field_selection": true,
+    "permission_ids_available": false
   },
   "atlas_connector_reauthentication_required": true,
   "pymongo_readonly_audit": "passed; see SAM_ONLINE_ATLAS_2026-10-19_1705.json"

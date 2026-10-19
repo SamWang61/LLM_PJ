@@ -82,6 +82,24 @@
       "merged_flag": false,
       "branch_deleted": false,
       "reason": "Retired competing N06 implementation; main PR101/104 uses the accepted eight-second retry policy, not this 1.5-second override. Original test evidence and branch retained for provenance."
+    },
+    {
+      "pr": 76,
+      "head_sha": "fe28e7a577073a4a54f4e387bcad603ebea4ac24",
+      "state_after": "closed",
+      "merged_flag": false,
+      "replacement_pr": 115,
+      "branch_deleted": false,
+      "reason": "Superseded by PR115; unique historical JSON preserved byte-for-byte, old context superseded. Original branch retained."
+    },
+    {
+      "pr": 86,
+      "head_sha": "dcf4f30d3c143ba207fb94812c50b8d6cc77dec2",
+      "state_after": "closed",
+      "merged_flag": false,
+      "replacement_pr": 115,
+      "branch_deleted": false,
+      "reason": "Superseded by PR115; readonly admin probe and safety tests ported, keeping current stricter opt-in IAM rules. Private admin checks passed, D4 replay separately passed. Original branch retained."
     }
   ],
   "updated_at": "2026-10-19T09:04:27.349211+00:00"
