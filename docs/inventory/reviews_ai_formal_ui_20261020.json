@@ -1,0 +1,63 @@
+{
+  "checked_at_utc": "2026-10-19T16:41:35.776Z",
+  "site": "https://vibecart-llmai.web.app/",
+  "source_label": "294c1fac26d6785054063b8be6eb7d9e61075be4",
+  "image_digest": "sha256:03d01cb52065e21fc96db6fb34b4de0527f2eb3966abbf0fe8719cb99bcc98f2",
+  "production_revision_100_percent": "vibecart-web-ai-294c-1020",
+  "production_vpc_egress": "ALL_TRAFFIC",
+  "hosting_release": "sites/vibecart-llmai/releases/1792363722745000",
+  "formal_browser": {
+    "at_local": "2026-10-20 00:12-00:13 Asia/Taipei",
+    "surface": "ChatGPT in-app browser against public Firebase URL",
+    "before": {"display_rating": 4.0, "review_count": 2},
+    "submitted_rating": 5,
+    "after": {"display_rating": 4.4, "review_count": 3},
+    "url_unchanged": true,
+    "original_form_retained_and_disabled": true,
+    "success_status": "評價已送出，商品星等已更新。",
+    "atlas_sum": 13,
+    "atlas_count": 3,
+    "atlas_raw_average": 4.333333333333333,
+    "atlas_display_average": 4.4,
+    "fixture": "Temporary unavailable non-recommendable product and temporary customer; three simulated paid/completed/delivered order lines; no real payment or shipment.",
+    "cleanup_at_local": "2026-10-20T00:13:55.507543+08:00",
+    "cleanup_eight_collections_remaining_zero": true,
+    "existing_business_snapshot_unchanged": true,
+    "temporary_login_file_removed": true,
+    "screenshots": ["review-before.png", "review-after-top.png", "review-after-form.png"]
+  },
+  "same_digest_private_acceptance": {
+    "candidate_revision_zero_percent": "vibecart-acceptance-pr21-reviews-ai-1020",
+    "existing_private_revision_100_percent": "vibecart-acceptance-pr21-n06-294c-1019",
+    "database_scope": "vibecart_acceptance_pr21",
+    "job": "sam-reviews-ai-accept-20261020",
+    "execution": "sam-reviews-ai-accept-20261020-z7jh9",
+    "succeeded_count": 1,
+    "probes": [
+      {"file": "remote_dual_role_acceptance_probe.py", "status": "passed", "exit_code": 0, "cleanup_verified": true},
+      {"file": "remote_reviews_acceptance_probe.py", "status": "passed", "exit_code": 0, "cleanup_verified": true},
+      {"file": "remote_account_acceptance_probe.py", "status": "passed", "exit_code": 0, "cleanup_verified": true},
+      {"file": "remote_transaction_acceptance_probe.py", "status": "passed", "exit_code": 0, "cleanup_verified": true}
+    ],
+    "ranking": {
+      "personal_count": 6,
+      "cross_count": 4,
+      "cross_display_ratings": [5, 4.9, 4.8, 4.7],
+      "unique_products": 10,
+      "category_caps_3_and_2": true,
+      "unavailable_and_default_excluded": true,
+      "synthetic_1001_unchanged": true
+    },
+    "review_default_excluded": true,
+    "failed_product_update_rolled_back": true,
+    "invalid_rating_csrf_unpaid_incomplete_cancelled_other_owner_rejected": true,
+    "temporary_user_index_restored": true,
+    "job_deleted_readback_404": true,
+    "candidate_tag_removed": true,
+    "candidate_retained_zero_percent_without_tag": true,
+    "candidate_delete_attempt_http_status": 400,
+    "iam_changed": false,
+    "ai_summary_tested": false
+  },
+  "scope": "Review and rule-based 6+4 technical acceptance on the current formal image; no production fake-star ranking pool, new Hosting publication, real payment/shipping, or named human signoff."
+}

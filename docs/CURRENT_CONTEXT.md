@@ -1,5 +1,7 @@
 # 最新專案上下文 / Current project context
 
+**2026/10/20 00:41 評價／6＋4接續新正式映像驗收**：[同日兩輪版本與證據](SAM_REVIEWS_N06_FORMAL_UI_ACCEPTANCE_2026-10-20.md#正式映像變更後的接續驗收)。N06補驗後正式站由另一輪發布切到`vibecart-web-ai-294c-1020`／digest`03d01cb5…`／100%；本對話在新digest正式Firebase頁面再驗4.0／2筆→4.4／3筆，Atlas13／3／4.4、八集合受控資料清理0且既有業務快照不變。相同digest的私有0%候選四組遠端探針全passed，高星6＋4為5、4.9、4.8、4.7且10件去重；fixture／索引清理、Job刪除404、測試tag移除。候選revision刪除回400，保留無tag／0%歷史；原私有N06仍100%，未改IAM。Firebase release沿用、非本輪新發布；[去敏JSON](inventory/reviews_ai_formal_ui_20261020.json)。此對話技術範圍完成，其他V5關卡與具名簽收仍按原清單。
+
 **2026/10/20 00:06 商品評價／6＋4同版正式站補驗**：[N06正式Firebase原頁驗收](SAM_REVIEWS_N06_FORMAL_UI_ACCEPTANCE_2026-10-20.md)。現行正式`vibecart-web-n06-294c-1019`／digest`796a42b6…`下，以缺貨、不可推薦的受控商品及臨時會員，在公開Firebase頁面送第三筆5星；原頁4.0／2筆即時變為4.4／3筆，表單保留停用並顯示成功。Atlas讀回13／3／4.4，八集合受控資料清理0、既有業務快照不變；[去敏證據](inventory/reviews_n06_formal_ui_20261020.json)。同digest私有6＋4／高星排序先前已過；正式當時跨類合格候選不足，依「最多6＋4」留空。既有Firebase Hosting release沿用，無本輪新部署。此對話的技術交付完成；V5其他關卡與具名本人簽收維持原清單，不代簽。
 
 **2026/10/19 19:23 Cloud Run 補核**：[19:11報告追加控制平面證據](SAM_1911_ACCEPTANCE_READBACK_2026-10-19.md#1923-cloud-run-控制平面補核)。正式與私有 `n06-294c` 同 digest `796a42b6…` 各100%；自動建置私有候選00036-hed仍0%。PR #118已合併main `f2ed417`、合併後CI成功；三人具名及REN異機證據待收，V5仍2/14。
