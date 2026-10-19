@@ -10,5 +10,27 @@
   "physical_device": false,
   "human_signoff": false,
   "source_commit": "f29007faf6edbd37969d29c1a7feba0d253f1153",
-  "cases": []
+  "cases": [],
+  "collection_error_count": 2,
+  "collection_errors": [
+    {
+      "module": "scripts/test_encrypted_backup.py",
+      "import": "from cryptography.exceptions import InvalidTag",
+      "exception": "ModuleNotFoundError",
+      "message": "No module named 'cryptography'"
+    },
+    {
+      "module": "scripts/test_backup_archive_parts.py",
+      "import_chain": [
+        "backup_archive_parts",
+        "encrypted_backup",
+        "cryptography.hazmat.primitives.ciphers"
+      ],
+      "exception": "ModuleNotFoundError",
+      "message": "No module named 'cryptography'"
+    }
+  ],
+  "evidence_source": "Original initial-run terminal output; recorded without rerunning the failed dependency state",
+  "collection_interrupted": true,
+  "executed_test_cases": 0
 }
