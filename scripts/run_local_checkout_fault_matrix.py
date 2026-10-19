@@ -309,18 +309,15 @@ def one_case(cluster, case, names, create_app, CartService, *, sustained=False):
                 require(len(commits)>=2 and len({row['txn'] for row in commits})==1 and attempts==1,
                         'Unknown commit must retry same transaction, not callback')
             else: require(state['stepdown'] and state['stepdown_rollback_equal'] and attempts>=2,'Primary retry missing')
-        if sustained:
-            # A pool-clearing server error can leave this local test client's
-            # topology stale. Model a fresh worker on recovery, with the same
-            # browser cookie and operation key against the same database.
-            client.close()
-            client = MongoClient(cluster.uri, appname=app_name,
-                serverSelectionTimeoutMS=2000, socketTimeoutMS=350, heartbeatFrequencyMS=500,
-                maxPoolSize=3, waitQueueTimeoutMS=500)
-            db = client[name]
+        # Keep the original process, Flask app, browser cookie and MongoClient.
+        # Replacing the client here would hide a pool/topology recovery failure.
+        require(db.client is client, 'Recovery must use the original MongoClient')
+        recovery_started = time.monotonic()
+        recovery_responses = []
         recovery_attempts = 0
         for recovery_attempts in range(1, 6):
             recovered = browser.post('/checkout',json=payload,headers=headers)
+            recovery_responses.append(recovered.status_code)
             if recovered.status_code != 503:
                 break
             if recovery_attempts < 5:
@@ -351,7 +348,10 @@ def one_case(cluster, case, names, create_app, CartService, *, sustained=False):
             'unknown_commit_retried_same_transaction':case=='commit_unknown',
             'primary_changed':state['stepdown'],'primary_before':state.get('old_primary'),
             'primary_after':state.get('new_primary'),'recovery_http':recovered.status_code,'replay_http':replay.status_code,
-            'replay_same_order':True,'recovery_client_replaced':sustained,'recovery_attempts':recovery_attempts,
+            'replay_same_order':True,'recovery_client_replaced':False,'recovery_attempts':recovery_attempts,
+            'recovery_http_attempts':recovery_responses,
+            'recovery_elapsed_seconds':round(time.monotonic()-recovery_started,3),
+            'recovery_worker':'original Flask app and MongoClient; no process/client restart',
             'conflicting_replay_http':conflict.status_code,'stock_decrements':1,
             'collection_count':len(before),'before':before,'after_fault':after_fault,'after_recovery':after,
             'unrelated_collections_unchanged':True,'validator_scope':'indexes only; not strict schema acceptance'}
