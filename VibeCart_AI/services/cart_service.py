@@ -9,6 +9,7 @@ import hashlib
 import json
 import time
 from bson import ObjectId, Decimal128
+from pymongo import timeout as mongo_timeout
 from pymongo.errors import DuplicateKeyError, PyMongoError
 from pymongo.read_concern import ReadConcern
 from pymongo.write_concern import WriteConcern
@@ -51,6 +52,9 @@ def utcnow():
 
 
 class CartService:
+    TRANSACTION_RETRY_SECONDS = 8.0
+    TRANSACTION_ATTEMPT_SECONDS = 6.0
+
     def __init__(self, db, *, enable_checkout=False):
         self.db=db
         self.enable_checkout=enable_checkout
@@ -60,65 +64,73 @@ class CartService:
             raise CartError('Active user required')
 
     def _run(self, callback):
-        # PyMongo's with_transaction has an unconfigurable 120-second retry
-        # window. Bound retry initiation here; the MongoClient socket and
-        # server-selection limits bound each in-flight command separately.
-        # After an unknown commit result, callers must reuse the same key.
-        budget = 8.0
-        deadline = time.monotonic() + budget
-        retries = 0
+        # PyMongo.with_transaction has a fixed 120-second retry window. Keep
+        # body retries bounded, and retry an uncertain commit on its own txn.
+        deadline = time.monotonic() + self.TRANSACTION_RETRY_SECONDS
+        retries = duplicate_retries = 0
 
-        def can_retry():
-            return time.monotonic() < deadline
+        def remaining():
+            return max(0.0, deadline - time.monotonic())
 
         def backoff():
             nonlocal retries
-            delay = min(0.02 * (2 ** min(retries, 4)), 0.25)
+            delay = min(0.4, 0.05 * (2 ** min(retries, 3)))
             retries += 1
-            remaining = deadline - time.monotonic()
-            if remaining > 0:
-                time.sleep(min(delay, remaining))
+            left = remaining()
+            if left <= 0:
+                return False
+            time.sleep(min(delay, left))
+            return remaining() > 0
 
-        # The partial unique index handles concurrent cart creation. Socket
-        # and server-selection limits bound each individual network call;
-        # this clock bounds the entire sequence of labeled retries.
-        for duplicate_attempt in range(4):
+        while True:
             try:
                 with self.db.client.start_session() as session:
-                    while True:
-                        session.start_transaction(read_concern=ReadConcern('snapshot'),
-                                                  write_concern=WriteConcern('majority'))
-                        try:
+                    session.start_transaction(read_concern=ReadConcern('snapshot'),
+                                              write_concern=WriteConcern('majority'))
+                    try:
+                        left = remaining()
+                        if left <= 0:
+                            raise PyMongoError('Transaction retry deadline exhausted')
+                        with mongo_timeout(min(left, self.TRANSACTION_ATTEMPT_SECONDS)):
                             result = callback(session)
-                        except BaseException as error:
-                            if session.in_transaction:
-                                session.abort_transaction()
-                            if (isinstance(error, PyMongoError)
-                                    and error.has_error_label('TransientTransactionError')
-                                    and can_retry()):
-                                backoff()
-                                continue
-                            raise
-                        if not session.in_transaction:
-                            return result
-                        while True:
+                    except BaseException:
+                        if session.in_transaction:
                             try:
+                                with mongo_timeout(0.5):
+                                    session.abort_transaction()
+                            except PyMongoError:
+                                pass
+                        raise
+                    while True:
+                        left = remaining()
+                        if left <= 0:
+                            # The commit might have succeeded. The caller must
+                            # replay the same operation key to learn the result.
+                            if session.in_transaction:
+                                try:
+                                    with mongo_timeout(0.5):
+                                        session.abort_transaction()
+                                except PyMongoError:
+                                    pass
+                            raise PyMongoError('Transaction commit result unconfirmed before deadline')
+                        try:
+                            with mongo_timeout(min(left, self.TRANSACTION_ATTEMPT_SECONDS)):
                                 session.commit_transaction()
-                            except PyMongoError as error:
-                                if (error.has_error_label('UnknownTransactionCommitResult')
-                                        and can_retry()):
-                                    backoff()
-                                    continue  # Retry this same commit, never the callback.
-                                if (error.has_error_label('TransientTransactionError')
-                                        and can_retry()):
-                                    backoff()
-                                    break  # Start a new transaction and rerun the callback.
-                                raise
                             return result
+                        except PyMongoError as exc:
+                            if exc.has_error_label('UnknownTransactionCommitResult'):
+                                if backoff():
+                                    continue
+                            raise
             except DuplicateKeyError:
-                if duplicate_attempt == 3 or not can_retry():
+                duplicate_retries += 1
+                if duplicate_retries >= 4 or not backoff():
                     raise CartConflict('Concurrent operation; retry using the same key') from None
-                backoff()
+            except PyMongoError as exc:
+                if (exc.has_error_label('TransientTransactionError')
+                        and not exc.has_error_label('UnknownTransactionCommitResult') and backoff()):
+                    continue
+                raise
 
     def get_active_cart(self,user_id):
         uid=oid(user_id)
