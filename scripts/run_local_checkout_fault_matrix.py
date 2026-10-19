@@ -175,8 +175,9 @@ class Cluster:
         self.cleaned = True
 
 
-def one_case(cluster, case, names, create_app, CartService):
-    name = 'ren_n06_'+cluster.run_id+'_'+case
+def one_case(cluster, case, names, create_app, CartService, sustained=False):
+    suffix = case+('_sustained' if sustained else '')
+    name = 'ren_n06_'+cluster.run_id+'_'+suffix
     owned_database(name, cluster.run_id)
     cluster.names.append(name)
     control = cluster.client[name]
@@ -198,7 +199,7 @@ def one_case(cluster, case, names, create_app, CartService):
         'sku_code':case,'variant_attributes':{},'price':Decimal128('10.00'),
         'stock_quantity':4,'available_quantity':4,'reserved_quantity':0,'safety_stock':0})
     trace = Trace()
-    app_name = 'ren-n06-'+cluster.run_id+'-'+case
+    app_name = 'ren-n06-'+cluster.run_id+'-'+suffix
     client = MongoClient(cluster.uri, appname=app_name, event_listeners=[trace],
         serverSelectionTimeoutMS=2000, socketTimeoutMS=350, heartbeatFrequencyMS=500,
         maxPoolSize=3, waitQueueTimeoutMS=500)
@@ -267,7 +268,7 @@ def one_case(cluster, case, names, create_app, CartService):
         elif case == 'commit_unknown': config.update(failCommands=['commitTransaction'],writeConcernError={
             'code':91,'codeName':'ShutdownInProgress','errmsg':'n06 local commit acknowledgement failure'},
             errorLabels=['UnknownTransactionCommitResult'])
-        if case != 'primary_change': cluster.failpoint({'times':1},config)
+        if case != 'primary_change': cluster.failpoint('alwaysOn' if sustained else {'times':1},config)
         state['watch_fault'] = True
         started = time.monotonic()
         try:
@@ -280,10 +281,20 @@ def one_case(cluster, case, names, create_app, CartService):
         attempts = state['callbacks']
         rows = list(trace.rows)
         cleared = trace.cleared
-        if case not in {'commit_unknown','primary_change'}:
+        if sustained:
+            require(case in {'network_timeout','socket_reset','write_conflict','pool_failure'},
+                    'Only rollback-safe cases support sustained faults')
+            require(failed.status_code == 503, 'Sustained fault must return 503: '+case)
+            require(elapsed < 12, 'Sustained fault exceeded bounded retry budget: '+case)
+            require(attempts >= 2 and attempts < 100, 'Sustained retry count out of bounds: '+str(attempts))
+            require(snapshot(control) == before, 'Sustained fault exposed partial transaction')
+            after_fault = snapshot(control)
+        elif case not in {'commit_unknown','primary_change'}:
             require(failed.status_code==200,'Single-fault automatic retry failed: '+case)
             after_fault = snapshot(control)
-            require(attempts >= 2 and state['rollback_witnesses'], 'No post-abort retry snapshot')
+            require(attempts >= 2 and state['rollback_witnesses'],
+                    'No post-abort retry snapshot; callbacks='+str(attempts)
+                    +' commands='+str([(r.get('command'),r.get('failed'),r.get('code')) for r in rows]))
             require(any('failed' in row for row in rows),'No actual Mongo command failure observed')
             if case in {'socket_reset','pool_failure'}: require(cleared>0,'No actual pool reset observed')
         else:
@@ -307,7 +318,7 @@ def one_case(cluster, case, names, create_app, CartService):
         require(all(before[k]==after[k] for k in before if k not in expected_changed),'Unrelated collection changed')
         conflict=browser.post('/checkout',json={**payload,'expected_revision':999},headers=headers)
         require(conflict.status_code==409 and snapshot(control)==after,'Conflict replay wrote data')
-        return {'case':case,'status':'passed','fault_http':failed.status_code,'fault_callbacks':attempts,
+        return {'case':suffix,'status':'passed','fault_http':failed.status_code,'fault_callbacks':attempts,
             'fault_spec':{k:v for k,v in config.items() if k!='appName'} if case!='primary_change'
                          else {'replSetStepDown':15,'force':True,'during':'PURCHASE after order/item writes'},
             'failed_commands':sum('failed' in r for r in rows),'pool_clears':cleared,
@@ -315,7 +326,8 @@ def one_case(cluster, case, names, create_app, CartService):
             'rollback_equal':all(w == before for w in state['rollback_witnesses']) if case!='commit_unknown' else None,
             'post_abort_snapshot_count':len(state['rollback_witnesses']),
             'post_abort_snapshots':state['rollback_witnesses'],'driver_commands':rows,
-            'request_elapsed_seconds':round(elapsed,3),'fault_mode':'single server fault; driver recovery',
+            'request_elapsed_seconds':round(elapsed,3),'fault_mode':
+                'sustained server fault; bounded failure then recovery' if sustained else 'single server fault; driver recovery',
             'unknown_commit_retried_same_transaction':case=='commit_unknown',
             'primary_changed':state['stepdown'],'primary_before':state.get('old_primary'),
             'primary_after':state.get('new_primary'),'recovery_http':recovered.status_code,'replay_http':replay.status_code,
@@ -351,6 +363,12 @@ def main():
             for case in ('network_timeout','socket_reset','write_conflict','pool_failure','commit_unknown','primary_change'):
                 print(json.dumps({'case':case,'phase':'start'}),flush=True)
                 result=one_case(cluster,case,sorted(SCHEMAS),app_module.create_app,CartService)
+                report['cases'].append(result)
+                print(json.dumps({k:v for k,v in result.items() if k not in {
+                    'before','after_fault','after_recovery','post_abort_snapshots','driver_commands'}}),flush=True)
+            for case in ('network_timeout','socket_reset','write_conflict','pool_failure'):
+                print(json.dumps({'case':case+'_sustained','phase':'start'}),flush=True)
+                result=one_case(cluster,case,sorted(SCHEMAS),app_module.create_app,CartService,sustained=True)
                 report['cases'].append(result)
                 print(json.dumps({k:v for k,v in result.items() if k not in {
                     'before','after_fault','after_recovery','post_abort_snapshots','driver_commands'}}),flush=True)
