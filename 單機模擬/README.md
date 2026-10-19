@@ -10,7 +10,7 @@
 
 每個人可開另一個瀏覽器視窗輸入本機網址與自己的**本次**帳密；不要把此密碼用於正式站。先把瀏覽器縮為 390×844，再測 844×390，記錄 URL、時間、視窗寬度、預期／實際、是否橫向溢出與去敏畫面。這是**電腦尺寸模擬**，沒有手機原生鍵盤、觸控、實際斷網或投影。
 
-預檢報告位於 `%LOCALAPPDATA%\VibeCart\SRJLocalSimulation\reports`，只有檢查結果、角色、時間與本機電腦名稱，不含密碼。請把報告及逐項結果交回[具名接收表](../專題進度/2026-10-19_具名接收與異機復原表.md)的「模擬技術子項」，**不得寫入**三人的本人簽收欄。若需要 REN 的真三節點交易故障演練，另在具有 `mongod.exe` 的隔離機器依 `scripts/run_local_checkout_fault_matrix.py --help` 執行；這套 `mongomock` 網站沒有真正的 MongoDB 交易，不能把示範訂單當 R2／R3 完整通過。ASUS 異機復原仍依 [N14 操作卡](../docs/N14_ASUS_VIVOBOOK_異機復原_2026-10-19.md)使用兩支 USB，沒有內建金鑰。
+預檢報告位於 `%LOCALAPPDATA%\VibeCart\SRJLocalSimulation\reports`，只有檢查結果、角色、時間與本機電腦名稱，不含密碼。請把報告及逐項結果交回[具名接收表](../專題進度/2026-10-19_具名接收與異機復原表.md)的「模擬技術子項」，**不得寫入**三人的本人簽收欄。若需要 REN 的真三節點交易故障演練，另在具有 `mongod.exe` 的隔離機器依 `scripts/run_local_checkout_fault_matrix.py --help` 執行；這套 `mongomock` 網站沒有真正的 MongoDB 交易，不能把示範訂單當 R2／R3 完整通過。異機復原仍依 [N14 操作卡](../docs/N14_REN_異機復原_2026-10-19.md)使用兩支 USB，沒有內建金鑰。
 
 各項與模擬範圍的對照：
 
