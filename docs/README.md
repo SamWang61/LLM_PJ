@@ -1,5 +1,8 @@
 # 文件中心 / Documentation hub
 
+<!-- SAM ROLE PROXY PLAN 20261020 -->
+**2026/10/20本輪入口**：[12項有序分工表](../專題進度/待結案12項_執行順序與分工_2026-10-20.md)、[SAM代理執行紀錄](SAM_ROLE_SIMULATION_EXECUTION_2026-10-20.md)。REN異機操作卡已統一命名；本輪先推送／共同寄信，再依序進行技術代驗。
+
 <!-- SAM MAIN PRODUCTION INDEPENDENT 20261019 BEGIN -->
 **2026/10/19 06:56 SAM正式部署獨立驗收**：[完整證據](SAM_MAIN_PRODUCTION_ACCEPTANCE_2026-10-19.md)。main b038aaca的56檔已於06:47切正式revision `vibecart-web-reviews-b038aaca` 100%，Firebase於06:48發布。候選與公開網址各六角色／Atlas session驗收通過；正式受控評價4＋4＋5→4.4／3筆，原頁即時更新，八集合清理0、既有業務hash一致。同版私有4組探針驗6＋4／交易／隔離；正式高星實評候選0，不填假資料。原目錄55／56執行檔一致，既有base.html頁尾變體保留。V5仍2/14，真人簽認等待辦保留。
 <!-- SAM MAIN PRODUCTION INDEPENDENT 20261019 END -->

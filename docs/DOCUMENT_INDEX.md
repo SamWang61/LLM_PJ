@@ -1,5 +1,9 @@
 # 全部文件索引 / Document catalog
 
+<!-- SAM ROLE PROXY PLAN 20261020 -->
+- [12項待結案工作：執行順序、SAM／JEFF／REN分工、證據與驗收](../專題進度/待結案12項_執行順序與分工_2026-10-20.md)
+- [SAM模擬JEFF／REN：逐項真實時間與結果](SAM_ROLE_SIMULATION_EXECUTION_2026-10-20.md)
+
 <!-- CONVERSATION FOLLOWUP 20261020 -->
 - [10/20 本對話遺漏補件、歷史208項／原圖／失敗證據、私有殘留唯讀核對與有序待辦](SAM_CONVERSATION_FOLLOWUP_2026-10-20.md)
 
