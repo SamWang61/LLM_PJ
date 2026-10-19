@@ -1,0 +1,515 @@
+{
+  "operator": "SAM simulation performed by Codex",
+  "started_at": "2026-10-20T01:57:22+08:00",
+  "completed_at": "2026-10-20T01:57:31+08:00",
+  "timezone": "Asia/Taipei",
+  "status": "passed",
+  "scope": "isolated synthetic encryption/filesystem/backup safety contract tests; no real database restore",
+  "atlas_contacted": false,
+  "real_mongodb_transaction": false,
+  "physical_device": false,
+  "human_signoff": false,
+  "source_commit": "f29007faf6edbd37969d29c1a7feba0d253f1153",
+  "cases": [
+    {
+      "case": "scripts/test_encrypted_backup.py::test_large_stream_roundtrip_is_exact_and_nonce_is_fresh",
+      "started_at": "2026-10-20T01:57:25+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:57:26+08:00"
+    },
+    {
+      "case": "scripts/test_encrypted_backup.py::test_any_tampering_rejects_without_plaintext_output[0]",
+      "started_at": "2026-10-20T01:57:26+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:57:26+08:00"
+    },
+    {
+      "case": "scripts/test_encrypted_backup.py::test_any_tampering_rejects_without_plaintext_output[9]",
+      "started_at": "2026-10-20T01:57:26+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:57:26+08:00"
+    },
+    {
+      "case": "scripts/test_encrypted_backup.py::test_any_tampering_rejects_without_plaintext_output[25]",
+      "started_at": "2026-10-20T01:57:26+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:57:26+08:00"
+    },
+    {
+      "case": "scripts/test_encrypted_backup.py::test_any_tampering_rejects_without_plaintext_output[50]",
+      "started_at": "2026-10-20T01:57:26+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:57:26+08:00"
+    },
+    {
+      "case": "scripts/test_encrypted_backup.py::test_any_tampering_rejects_without_plaintext_output[60]",
+      "started_at": "2026-10-20T01:57:26+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:57:26+08:00"
+    },
+    {
+      "case": "scripts/test_encrypted_backup.py::test_any_tampering_rejects_without_plaintext_output[1000]",
+      "started_at": "2026-10-20T01:57:26+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:57:26+08:00"
+    },
+    {
+      "case": "scripts/test_encrypted_backup.py::test_any_tampering_rejects_without_plaintext_output[-1]",
+      "started_at": "2026-10-20T01:57:26+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:57:26+08:00"
+    },
+    {
+      "case": "scripts/test_encrypted_backup.py::test_invalid_length_and_wrong_key_never_publish[short_header]",
+      "started_at": "2026-10-20T01:57:26+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:57:26+08:00"
+    },
+    {
+      "case": "scripts/test_encrypted_backup.py::test_invalid_length_and_wrong_key_never_publish[truncate]",
+      "started_at": "2026-10-20T01:57:26+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:57:26+08:00"
+    },
+    {
+      "case": "scripts/test_encrypted_backup.py::test_invalid_length_and_wrong_key_never_publish[append]",
+      "started_at": "2026-10-20T01:57:26+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:57:27+08:00"
+    },
+    {
+      "case": "scripts/test_encrypted_backup.py::test_invalid_length_and_wrong_key_never_publish[wrong_key]",
+      "started_at": "2026-10-20T01:57:27+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:57:27+08:00"
+    },
+    {
+      "case": "scripts/test_encrypted_backup.py::test_key_and_existing_output_are_never_overwritten",
+      "started_at": "2026-10-20T01:57:27+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:57:27+08:00"
+    },
+    {
+      "case": "scripts/test_encrypted_backup.py::test_output_race_does_not_replace_other_file",
+      "started_at": "2026-10-20T01:57:27+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:57:27+08:00"
+    },
+    {
+      "case": "scripts/test_encrypted_backup.py::test_source_change_is_detected_and_ciphertext_removed",
+      "started_at": "2026-10-20T01:57:27+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:57:27+08:00"
+    },
+    {
+      "case": "scripts/test_encrypted_backup.py::test_key_must_be_separated_and_exactly_32_bytes",
+      "started_at": "2026-10-20T01:57:27+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:57:27+08:00"
+    },
+    {
+      "case": "scripts/test_encrypted_backup.py::test_empty_archive_roundtrip",
+      "started_at": "2026-10-20T01:57:27+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:57:27+08:00"
+    },
+    {
+      "case": "scripts/test_backup_manifest.py::test_full_manifest_includes_untracked_secret_named_files",
+      "started_at": "2026-10-20T01:57:27+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:57:27+08:00"
+    },
+    {
+      "case": "scripts/test_backup_manifest.py::test_restore_allows_destination_extra_files_but_rejects_missing",
+      "started_at": "2026-10-20T01:57:27+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:57:27+08:00"
+    },
+    {
+      "case": "scripts/test_backup_manifest.py::test_incomplete_or_traversal_manifest_never_verifies",
+      "started_at": "2026-10-20T01:57:27+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:57:27+08:00"
+    },
+    {
+      "case": "scripts/test_backup_archive_parts.py::test_ordered_roundtrip_and_no_overwrites",
+      "started_at": "2026-10-20T01:57:27+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:57:27+08:00"
+    },
+    {
+      "case": "scripts/test_backup_archive_parts.py::test_invalid_parts_never_publish[missing]",
+      "started_at": "2026-10-20T01:57:27+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:57:27+08:00"
+    },
+    {
+      "case": "scripts/test_backup_archive_parts.py::test_invalid_parts_never_publish[tamper]",
+      "started_at": "2026-10-20T01:57:27+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:57:27+08:00"
+    },
+    {
+      "case": "scripts/test_backup_archive_parts.py::test_invalid_parts_never_publish[swap]",
+      "started_at": "2026-10-20T01:57:27+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:57:27+08:00"
+    },
+    {
+      "case": "scripts/test_backup_archive_parts.py::test_invalid_parts_never_publish[traversal]",
+      "started_at": "2026-10-20T01:57:27+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:57:27+08:00"
+    },
+    {
+      "case": "scripts/test_backup_archive_parts.py::test_invalid_parts_never_publish[duplicate]",
+      "started_at": "2026-10-20T01:57:27+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:57:28+08:00"
+    },
+    {
+      "case": "scripts/test_atlas_snapshot_backup.py::test_private_backup_integrity_and_raw_bson",
+      "started_at": "2026-10-20T01:57:28+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:57:28+08:00"
+    },
+    {
+      "case": "scripts/test_atlas_snapshot_backup.py::test_reject_paths_before_target_write[../escape.bson]",
+      "started_at": "2026-10-20T01:57:28+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:57:28+08:00"
+    },
+    {
+      "case": "scripts/test_atlas_snapshot_backup.py::test_reject_paths_before_target_write[/absolute.bson]",
+      "started_at": "2026-10-20T01:57:28+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:57:28+08:00"
+    },
+    {
+      "case": "scripts/test_atlas_snapshot_backup.py::test_reject_paths_before_target_write[0000.bson/../other]",
+      "started_at": "2026-10-20T01:57:28+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:57:28+08:00"
+    },
+    {
+      "case": "scripts/test_atlas_snapshot_backup.py::test_reject_paths_before_target_write[..\\\\escape.bson]",
+      "started_at": "2026-10-20T01:57:28+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:57:28+08:00"
+    },
+    {
+      "case": "scripts/test_atlas_snapshot_backup.py::test_reject_corrupt_bytes",
+      "started_at": "2026-10-20T01:57:28+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:57:28+08:00"
+    },
+    {
+      "case": "scripts/test_atlas_snapshot_backup.py::test_reject_count_mismatch",
+      "started_at": "2026-10-20T01:57:28+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:57:28+08:00"
+    },
+    {
+      "case": "scripts/test_atlas_snapshot_backup.py::test_reject_duplicate_collection",
+      "started_at": "2026-10-20T01:57:28+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:57:28+08:00"
+    },
+    {
+      "case": "scripts/test_atlas_snapshot_backup.py::test_search_index_requires_atlas_restore",
+      "started_at": "2026-10-20T01:57:28+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:57:28+08:00"
+    },
+    {
+      "case": "scripts/test_atlas_snapshot_backup.py::test_truncated_bson_rejected[\\x01]",
+      "started_at": "2026-10-20T01:57:28+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:57:28+08:00"
+    },
+    {
+      "case": "scripts/test_atlas_snapshot_backup.py::test_truncated_bson_rejected[\\x04\\x00\\x00\\x00]",
+      "started_at": "2026-10-20T01:57:28+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:57:28+08:00"
+    },
+    {
+      "case": "scripts/test_atlas_snapshot_backup.py::test_truncated_bson_rejected[d\\x00\\x00\\x00\\x00]",
+      "started_at": "2026-10-20T01:57:28+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:57:28+08:00"
+    },
+    {
+      "case": "scripts/test_atlas_snapshot_backup.py::test_compound_index_order_is_significant",
+      "started_at": "2026-10-20T01:57:28+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:57:28+08:00"
+    },
+    {
+      "case": "scripts/test_atlas_snapshot_backup.py::test_export_rejects_compound_key_reorder",
+      "started_at": "2026-10-20T01:57:28+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:57:28+08:00"
+    },
+    {
+      "case": "scripts/test_atlas_snapshot_backup.py::test_reject_production_namespace",
+      "started_at": "2026-10-20T01:57:28+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:57:28+08:00"
+    },
+    {
+      "case": "scripts/test_atlas_snapshot_backup.py::test_reject_remote_restore_target",
+      "started_at": "2026-10-20T01:57:28+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:57:28+08:00"
+    },
+    {
+      "case": "scripts/test_atlas_snapshot_backup.py::test_reject_ttl_public_binding_and_existing_db[client0]",
+      "started_at": "2026-10-20T01:57:28+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:57:28+08:00"
+    },
+    {
+      "case": "scripts/test_atlas_snapshot_backup.py::test_reject_ttl_public_binding_and_existing_db[client1]",
+      "started_at": "2026-10-20T01:57:28+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:57:28+08:00"
+    },
+    {
+      "case": "scripts/test_atlas_snapshot_backup.py::test_reject_ttl_public_binding_and_existing_db[client2]",
+      "started_at": "2026-10-20T01:57:28+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:57:28+08:00"
+    },
+    {
+      "case": "scripts/test_backup_restore_acceptance.py::test_host_probe_refuses_before_loading_restored_code",
+      "started_at": "2026-10-20T01:57:28+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:57:28+08:00"
+    },
+    {
+      "case": "scripts/test_backup_restore_acceptance.py::test_external_network_rejected_before_container_creation",
+      "started_at": "2026-10-20T01:57:28+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:57:28+08:00"
+    },
+    {
+      "case": "scripts/test_backup_restore_acceptance.py::test_existing_report_blocks_provisioning",
+      "started_at": "2026-10-20T01:57:28+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:57:28+08:00"
+    },
+    {
+      "case": "scripts/test_backup_restore_acceptance.py::test_failed_runtime_check_still_fails_under_optimization[backup_restore_probe]",
+      "started_at": "2026-10-20T01:57:28+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:57:30+08:00"
+    },
+    {
+      "case": "scripts/test_backup_restore_acceptance.py::test_failed_runtime_check_still_fails_under_optimization[run_backup_restore_acceptance]",
+      "started_at": "2026-10-20T01:57:30+08:00",
+      "phases": {
+        "setup": "passed",
+        "call": "passed",
+        "teardown": "passed"
+      },
+      "completed_at": "2026-10-20T01:57:31+08:00"
+    }
+  ]
+}
