@@ -1,0 +1,37 @@
+{
+  "verified_at": "2026-10-19 17:52:18 UTC",
+  "source": "MongoDB Atlas connector, current connection, read-only aggregation",
+  "database": "vibecart_ai",
+  "collection": "behavior_events",
+  "batch": "sam-behavior-20261011-v1",
+  "events": [
+    {
+      "_id": "ADD_TO_CART",
+      "count": 310,
+      "synthetic_true": 310,
+      "exclude_true": 310
+    },
+    {
+      "_id": "PRODUCT_VIEW",
+      "count": 310,
+      "synthetic_true": 310,
+      "exclude_true": 310
+    },
+    {
+      "_id": "PURCHASE",
+      "count": 310,
+      "synthetic_true": 310,
+      "exclude_true": 310
+    },
+    {
+      "_id": "SEARCH",
+      "count": 310,
+      "synthetic_true": 310,
+      "exclude_true": 310
+    }
+  ],
+  "total": 1240,
+  "all_synthetic_and_excluded": true,
+  "writes": 0,
+  "imports": 0
+}

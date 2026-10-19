@@ -1,0 +1,52 @@
+{
+  "checked_at": "2026-10-19T17:18:31.777556+00:00",
+  "execution_identity": "SAM",
+  "source_branch_head": "d914348fa0ebb24f13b1a6c65ffcb206d04e36f7",
+  "reviewed_simulation_head": "70418d30703264c276808f698e82ad8fab40a636",
+  "simulation_tests": {
+    "command": "python -m pytest scripts/test_srj_local_simulation.py -q -p no:cacheprovider",
+    "passed": 3,
+    "exit_code": 0,
+    "observed_before_report": true
+  },
+  "reviewed_boundaries": [
+    "loopback only",
+    "mongomock memory only",
+    "random disposable credentials",
+    "production .env and Atlas URI not loaded",
+    "no real transaction or physical-device claims"
+  ],
+  "deployed_source": "294c1fac26d6785054063b8be6eb7d9e61075be4",
+  "runtime_allowlist_count": 56,
+  "runtime_git_blob_differences": [],
+  "github_search_connector_result": "empty; REST open-PR enumeration used instead",
+  "open_prs": [
+    {
+      "number": 126,
+      "title": "feat: 整合三角色單機模擬與 SAM 計時工作明細",
+      "head": "6293a285cf8d409ab03f0bd296b8a2b403325cb7",
+      "draft": false,
+      "disposition": "requires scoped review; no automatic merge"
+    },
+    {
+      "number": 121,
+      "title": "Add one-click isolated local simulation for SAM, REN, and JEFF",
+      "head": "70418d30703264c276808f698e82ad8fab40a636",
+      "draft": false,
+      "disposition": "simulation tools integrated into current review branch; awaiting final CI/main delivery"
+    },
+    {
+      "number": 5,
+      "title": "draft: 行為計分候選實作（AI／後台由 JEFF 負責）",
+      "head": "dc3114de7de0cd72b370610a1bdd6e2a707d8940",
+      "draft": true,
+      "disposition": "next-stage scoring candidate; retain draft"
+    }
+  ],
+  "imported_document_reference_repairs": [
+    "單機模擬/README.md",
+    "docs/SRJ_LOCAL_SIMULATION_2026-10-19.md"
+  ],
+  "final_main_merge_and_ci": "pending final delivery stage",
+  "gate_closed": false
+}

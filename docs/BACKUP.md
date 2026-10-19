@@ -1,5 +1,9 @@
 # 每日備份 / Daily backup
 
+<!-- SAM REMOTE ROLE RESULT 20261020 BEGIN -->
+**2026/10/20 REN復原子項接受方式**：依[SAM本輪決定](SAM_ACCEPTANCE_DECISIONS_2026-10-20.md)，接受完整同機模擬通過；本輪[USB來源／資料庫還原對帳](inventory/SAM_PROXY_N14_RESTORE_2026-10-20.json)已通過，實際環境與機器不同與否照實保留。此決定未補齊每日固定Drive可逆ACL／排程，亦未清除自動核准審查拒絕刪除的私有明文；詳[執行與待辦](SAM_ROLE_PROXY_REMOTE_EXECUTION_2026-10-20.md)。
+<!-- SAM REMOTE ROLE RESULT 20261020 END -->
+
 ## 2026-10-19 每日固定專案前置核對
 
 本輪重新以Drive metadata核對固定project仍為原ID、owner 1／writer 2；目標folder仍為原ID、owner 1／anyone reader 1，canShare均為true。但補選grantee欄位後可讀回收件身分，但連接器回覆仍省略permission ID，現行工具只有新增分享，沒有撤銷權限操作；無法可靠保存並恢復專案、資料夾及個別子檔案的原ACL，故本輪未變更共用或開始複製，固定連結不變。完整結果見[線上持續檢查與備份缺口](SAM_ONLINE_FOLLOWUP_2026-10-19.md)。

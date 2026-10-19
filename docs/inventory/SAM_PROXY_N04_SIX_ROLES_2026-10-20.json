@@ -1,0 +1,13 @@
+{
+  "started_at": "2026-10-19T17:22:28.512188+00:00",
+  "status": "failed",
+  "scope": "production fixed six-role authentication only; no cart/checkout/model operation",
+  "tool_executor": "Codex under SAM role-simulation authorization",
+  "tls_verification": true,
+  "credential_scope": "existing CurrentUser DPAPI; no password/URI in report",
+  "cases": [],
+  "own_cleanup": [],
+  "production_mutations": "six login last_login_at updates and own transient sessions only",
+  "error_type": "RuntimeError",
+  "finished_at": "2026-10-19T17:22:35.021026+00:00"
+}

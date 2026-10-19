@@ -1,0 +1,133 @@
+{
+  "checked_at": "2026-10-19T17:50:05.916Z",
+  "scope": "read-only full returned Cloud Run region inventory plus PubSub and API activation metadata",
+  "services": [
+    "projects/vibecart-llmai/locations/asia-east1/services/llm-pj-git",
+    "projects/vibecart-llmai/locations/asia-east1/services/vibecart-acceptance-pr21",
+    "projects/vibecart-llmai/locations/asia-east1/services/vibecart-web"
+  ],
+  "jobs": [],
+  "job_regions_checked": [
+    "africa-south1",
+    "asia-east1",
+    "asia-east2",
+    "asia-northeast1",
+    "asia-northeast2",
+    "asia-northeast3",
+    "asia-south1",
+    "asia-south2",
+    "asia-southeast1",
+    "asia-southeast2",
+    "asia-southeast3",
+    "australia-southeast1",
+    "australia-southeast2",
+    "europe-central2",
+    "europe-north1",
+    "europe-north2",
+    "europe-southwest1",
+    "europe-west1",
+    "europe-west10",
+    "europe-west12",
+    "europe-west2",
+    "europe-west3",
+    "europe-west4",
+    "europe-west6",
+    "europe-west8",
+    "europe-west9",
+    "me-central1",
+    "me-central2",
+    "me-west1",
+    "northamerica-northeast1",
+    "northamerica-northeast2",
+    "northamerica-south1",
+    "southamerica-east1",
+    "southamerica-west1",
+    "us-central1",
+    "us-east1",
+    "us-east4",
+    "us-east5",
+    "us-south1",
+    "us-west1",
+    "us-west2",
+    "us-west3",
+    "us-west4"
+  ],
+  "restricted_regions": [
+    "me-central2"
+  ],
+  "restricted_reason": "LOCATION_POLICY_VIOLATED",
+  "topics": [
+    "projects/vibecart-llmai/topics/container-analysis-occurrences-v1beta1",
+    "projects/vibecart-llmai/topics/container-analysis-occurrences-v1",
+    "projects/vibecart-llmai/topics/container-analysis-notes-v1beta1",
+    "projects/vibecart-llmai/topics/container-analysis-notes-v1"
+  ],
+  "subscriptions": [],
+  "enabled_worker_apis": [],
+  "active_service_details": [
+    {
+      "service": "projects/vibecart-llmai/locations/asia-east1/services/llm-pj-git",
+      "revision": "llm-pj-git-00002-547",
+      "percent": 100,
+      "image": "gcr.io/cloudrun/placeholder@sha256:2c74c51230a0fb8f513f11ebc127ba187a0e7776aa1a06b850aca019cfddc2fd",
+      "source_sha": null,
+      "environment_names": [],
+      "mongo_reference_names": [],
+      "build_source_location": null,
+      "build_id": null
+    },
+    {
+      "service": "projects/vibecart-llmai/locations/asia-east1/services/vibecart-acceptance-pr21",
+      "revision": "vibecart-acceptance-pr21-n06-294c-1019",
+      "percent": 100,
+      "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:796a42b6d5fd80099900abc381d4c954d21ed1bea162ad0a9a49a89355deb40a",
+      "source_sha": "294c1fac26d6785054063b8be6eb7d9e61075be4",
+      "environment_names": [
+        "CLOUD_ACCEPTANCE_DB",
+        "CLOUD_ACCEPTANCE_MODE",
+        "CLOUD_PREVIEW_READ_ONLY",
+        "ENABLE_CHECKOUT",
+        "MONGO_URI",
+        "SECRET_KEY"
+      ],
+      "mongo_reference_names": [
+        {
+          "name": "MONGO_URI",
+          "uses_secret_reference": true
+        }
+      ],
+      "build_source_location": null,
+      "build_id": null
+    },
+    {
+      "service": "projects/vibecart-llmai/locations/asia-east1/services/vibecart-web",
+      "revision": "vibecart-web-ai-294c-1020",
+      "percent": 100,
+      "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:03d01cb52065e21fc96db6fb34b4de0527f2eb3966abbf0fe8719cb99bcc98f2",
+      "source_sha": "294c1fac26d6785054063b8be6eb7d9e61075be4",
+      "environment_names": [
+        "AI_FREE_QUESTION_ENABLED",
+        "AI_RECOMMENDATIONS_ENABLED",
+        "AI_SUMMARY_ENABLED",
+        "ANTHROPIC_API_KEY",
+        "BGE_MODEL",
+        "CLAUDE_MODEL",
+        "CLOUD_PREVIEW_READ_ONLY",
+        "ENABLE_CHECKOUT",
+        "MONGO_URI",
+        "SECRET_KEY"
+      ],
+      "mongo_reference_names": [
+        {
+          "name": "MONGO_URI",
+          "uses_secret_reference": true
+        }
+      ],
+      "build_source_location": null,
+      "build_id": null
+    }
+  ],
+  "inventory_function_sha256": "cc2c4bbcf88d67575f5ee46ea76159f22a67246d7982188c0ecdd4a040ccf364",
+  "mutations": 0,
+  "limitation": "Restricted regions and disabled API runtime scopes are not proven empty; metadata alone does not prove absence of hardcoded database consumers."
+}
