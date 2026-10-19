@@ -1,0 +1,91 @@
+{
+  "recorded_at": "2026-10-19T16:09:04.412060+00:00",
+  "audited_main": "f30254562bb3f9dfc4b7cb2db1dbb82b1515cfba",
+  "scope": "Previously unpublished evidence from this conversation; historical results retain original dates.",
+  "prs": [
+    {
+      "number": 61,
+      "merged": true,
+      "merge_sha": "49d18698338dc75c3808460a5d104a45e5836d22"
+    },
+    {
+      "number": 85,
+      "merged": true,
+      "merge_sha": "5eb392fdd9620f3dcd2745c2cb76f57baf1f6d54"
+    },
+    {
+      "number": 86,
+      "merged": false,
+      "state": "closed",
+      "superseded_by": 115
+    },
+    {
+      "number": 115,
+      "merged": true,
+      "merge_sha": "ac45394a77fbc7e6c63597a35164abfc692b1475"
+    }
+  ],
+  "files": [
+    {
+      "path": "docs/inventory/V5_ADMIN_LOCAL_2026-10-18.json",
+      "bytes": 358,
+      "sha256": "86ea67c69fa90e75fe08b1e984e5d41a8a737a2d04647fe4e29e966991b064d4",
+      "copied_from_original": true
+    },
+    {
+      "path": "docs/inventory/V5_ADMIN_LOCAL_2026-10-18.xml",
+      "bytes": 32984,
+      "sha256": "06bb745725f13325dca6dc3775fad96db8052f733e63a8d03cc342129137ace8",
+      "copied_from_original": true
+    },
+    {
+      "path": "docs/inventory/V5_ADMIN_BROWSER_2026-10-18.json",
+      "bytes": 1042,
+      "sha256": "c59a616b3d8de5b7550ed9b10b954db571ebecb6dc028d8762c45c454a5190ec",
+      "copied_from_original": true
+    },
+    {
+      "path": "docs/inventory/V5_ADMIN_SCOPE_2026-10-18.json",
+      "bytes": 1687,
+      "sha256": "6f18184826e3cad0a85ab5e276af9c116eca1f3656c9ab122d3e6dc8f66c1e96",
+      "copied_from_original": true
+    },
+    {
+      "path": "docs/inventory/V5_ADMIN_REMOTE_RETRY1_2026-10-18.json",
+      "bytes": 4197,
+      "sha256": "91fc1d0d51a81a534ace7f021220507f4945ada9295009ef276128e88db48a85",
+      "copied_from_original": true
+    },
+    {
+      "path": "簡報文件/screenshots/S02-V5-keyboard-main-20261018.jpg",
+      "bytes": 37049,
+      "sha256": "fafbeb6e3157da9a743b16b49de41c6445425084eda1575fc2b3491b234f9ce8",
+      "copied_from_original": true
+    },
+    {
+      "path": "docs/inventory/CONVERSATION_READBACK_2026-10-20.json",
+      "bytes": 1519,
+      "sha256": "50a3fe04f2ccfe1c87323e6ae9b166865e9bea4e859f9aecbd3237c2d3529e14",
+      "copied_from_original": false
+    },
+    {
+      "path": "docs/inventory/V5_ADMIN_INTERRUPTED_2026-10-18.json",
+      "bytes": 759,
+      "sha256": "440c6c2cb8081fc406f33e528019f5b58489af86ea206f6e0c5c330afe0599b9",
+      "copied_from_original": false
+    }
+  ],
+  "automations": {
+    "matching_current_thread": 0,
+    "settings_changed": false,
+    "other_threads_preserved": true
+  },
+  "remaining_project_gates": {
+    "closed": 2,
+    "total": 14,
+    "not_closed": 12,
+    "source": "專題進度/專案未完成工作清單_2026-10-18.md"
+  },
+  "conversation_fully_complete": false,
+  "reason": "Human acceptance, device/second-host evidence, and owner-controlled prerequisites remain pending in the shared queue."
+}

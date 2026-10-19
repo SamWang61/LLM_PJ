@@ -1,0 +1,30 @@
+{
+  "recorded_at": "2026-10-18T07:34:13.826766+00:00",
+  "url": "https://vibecart-llmai.web.app/#main-content",
+  "environment": "production Chrome, existing REN demonstration session",
+  "evidence_kind": "Codex keyboard technical check; no named human signoff",
+  "serving_control_plane": "V5_ADMIN_SCOPE_2026-10-18.json",
+  "actions": [
+    {
+      "key": "Return on skip link",
+      "result": "URL fragment main-content; AX focus main-content"
+    },
+    {
+      "key": "Tab from focused main",
+      "result": "AX focus Browse products link; visible focus ring in original screenshot"
+    }
+  ],
+  "interaction_scope": "Keyboard focus and same-document anchor only; no cart/checkout/logout operation",
+  "image": {
+    "path": "簡報文件/screenshots/S02-V5-keyboard-main-20261018.jpg",
+    "format": "JPEG",
+    "size": [
+      1125,
+      515
+    ],
+    "sha256": "fafbeb6e3157da9a743b16b49de41c6445425084eda1575fc2b3491b234f9ce8",
+    "edited": false
+  },
+  "physical_device_tested": false,
+  "full_keyboard_flow_complete": false
+}

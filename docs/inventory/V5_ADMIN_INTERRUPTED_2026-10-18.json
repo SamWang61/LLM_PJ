@@ -1,0 +1,15 @@
+{
+  "recorded_at": "2026-10-19T16:09:04.411048+00:00",
+  "original_relative_path": "docs/inventory/V5_ADMIN_REMOTE_RETRY2_2026-10-18.json",
+  "original_size": 0,
+  "original_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "original_last_write_utc": "2026-10-18T07:37:15.836048+00:00",
+  "status": "interrupted_no_result",
+  "passed": false,
+  "process_session_available": false,
+  "live_matching_probe_processes": 0,
+  "original_file_preserved_in_source_worktree": true,
+  "replacement_evidence": "SAM_ONLINE_FOLLOWUP_2026-10-19.md and PR #115",
+  "current_cleanup_readback": "CONVERSATION_READBACK_2026-10-20.json",
+  "limitation": "No original run ID or terminal result; do not infer an original pass or exact-run cleanup."
+}
