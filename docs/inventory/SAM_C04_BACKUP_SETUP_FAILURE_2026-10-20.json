@@ -1,0 +1,14 @@
+{
+  "operator": "SAM simulation performed by Codex",
+  "started_at": "2026-10-20T01:56:28+08:00",
+  "completed_at": "2026-10-20T01:56:34+08:00",
+  "timezone": "Asia/Taipei",
+  "status": "failed",
+  "scope": "isolated synthetic encryption/filesystem/backup safety contract tests; no real database restore",
+  "atlas_contacted": false,
+  "real_mongodb_transaction": false,
+  "physical_device": false,
+  "human_signoff": false,
+  "source_commit": "f29007faf6edbd37969d29c1a7feba0d253f1153",
+  "cases": []
+}
