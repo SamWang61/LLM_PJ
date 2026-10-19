@@ -13,7 +13,7 @@
 |資料|商品 336、SKU 336、分類 32、品牌 128；schema_migrations 4 筆 succeeded、system_configs 1 筆；其餘集合 0 筆|
 |驗證|歷史 v4 66 項測試通過；本次完整 Schema 讀回、832 筆文件精確比對與 Flask 336 商品讀取通過|
 
-Atlas 外掛本次 OAuth 失效，使用先前授權的 PyMongo 連線完成實際變更與讀回。控制台部署中繼資料未重新核實；原始資訊見 [Cluster 設定](01_Cluster設定與狀態.md)。
+2026-10-05 Schema 重建與商品匯入時，Atlas 外掛 OAuth 失效，當時使用先前授權的 PyMongo 連線完成變更與讀回，未重新核實控制台部署中繼資料。2026-10-19 Atlas 外掛已恢復連線，Network Access 已透過該外掛成功讀回；本次結果見下節與 [Cluster 設定](01_Cluster設定與狀態.md)。
 
 ## Network Access 實際查核（2026-10-19）
 
