@@ -1,0 +1,143 @@
+{
+  "planned_at": "2026-10-19 17:12:42 UTC",
+  "scope": "SAM role simulations authorized by the user; not human signoff or physical-device evidence",
+  "baseline": "5c55bc01455b0ee50565de234b1f5d6975638dc9",
+  "table": "專題進度/待結案12項_執行順序與分工_2026-10-20.md",
+  "stage": "executing; consolidated notification only after executable work is complete",
+  "items": [
+    {
+      "order": 1,
+      "id": "N15",
+      "owner": "SAM",
+      "status": "in_progress",
+      "started_at": "2026-10-20T01:12:54+08:00",
+      "finished_at": null,
+      "evidence": [
+        "專題進度/SAM模擬執行明細_2026-10-20.md",
+        "docs/inventory/SAM_BASELINE_READBACK_2026-10-20.json"
+      ],
+      "limitations": [
+        "PR #126 latest CI and merge pending; PR #121 closes after integration; human signoff not claimed"
+      ]
+    },
+    {
+      "order": 2,
+      "id": "N02",
+      "owner": "SAM → REN",
+      "status": "not_started",
+      "started_at": null,
+      "finished_at": null,
+      "evidence": [],
+      "limitations": []
+    },
+    {
+      "order": 3,
+      "id": "N04",
+      "owner": "SAM 準備、REN 操作",
+      "status": "not_started",
+      "started_at": null,
+      "finished_at": null,
+      "evidence": [],
+      "limitations": []
+    },
+    {
+      "order": 4,
+      "id": "N05",
+      "owner": "REN；本輪 SAM 模擬 REN",
+      "status": "not_started",
+      "started_at": null,
+      "finished_at": null,
+      "evidence": [],
+      "limitations": []
+    },
+    {
+      "order": 5,
+      "id": "N06",
+      "owner": "SAM 案例、REN 覆核",
+      "status": "not_started",
+      "started_at": null,
+      "finished_at": null,
+      "evidence": [],
+      "limitations": []
+    },
+    {
+      "order": 6,
+      "id": "N11",
+      "owner": "SAM 清冊 → JEFF；本輪 SAM 模擬 JEFF",
+      "status": "not_started",
+      "started_at": null,
+      "finished_at": null,
+      "evidence": [],
+      "limitations": []
+    },
+    {
+      "order": 7,
+      "id": "N13",
+      "owner": "SAM",
+      "status": "not_started",
+      "started_at": null,
+      "finished_at": null,
+      "evidence": [],
+      "limitations": []
+    },
+    {
+      "order": 8,
+      "id": "N14",
+      "owner": "SAM 準備 → REN 異機驗收",
+      "status": "not_started",
+      "started_at": null,
+      "finished_at": null,
+      "evidence": [],
+      "limitations": []
+    },
+    {
+      "order": 9,
+      "id": "N12",
+      "owner": "REN 前台、JEFF 後台、SAM 彙整",
+      "status": "not_started",
+      "started_at": null,
+      "finished_at": null,
+      "evidence": [],
+      "limitations": []
+    },
+    {
+      "order": 10,
+      "id": "N16",
+      "owner": "SAM 彙整；JEFF／REN 各段",
+      "status": "not_started",
+      "started_at": null,
+      "finished_at": null,
+      "evidence": [],
+      "limitations": []
+    },
+    {
+      "order": 11,
+      "id": "N17",
+      "owner": "SAM 整稿；JEFF／REN 各段",
+      "status": "not_started",
+      "started_at": null,
+      "finished_at": null,
+      "evidence": [],
+      "limitations": []
+    },
+    {
+      "order": 12,
+      "id": "N18",
+      "owner": "SAM 統籌；各人簽自己的範圍",
+      "status": "not_started",
+      "started_at": null,
+      "finished_at": null,
+      "evidence": [],
+      "limitations": []
+    }
+  ],
+  "notification_policy": {
+    "mode": "single_shared_message_at_end",
+    "recipients": [
+      "cashsam@gmail.com",
+      "chen2000401@gmail.com",
+      "jeff841117@gmail.com"
+    ],
+    "sent": false
+  }
+}
