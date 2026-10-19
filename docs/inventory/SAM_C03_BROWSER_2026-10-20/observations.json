@@ -14,7 +14,7 @@
       "label": "營運總覽",
       "url": "https://vibecart-llmai.web.app/admin/",
       "finished_at": "2026-10-19T17:53:57.742Z",
-      "screenshot": "02-dashboard.jpg",
+      "screenshot": "02-dashboard-viewport.jpg",
       "headings": [
         "    - heading \"系統狀態\" [level=2]",
         "  - heading \"營運決策中心\" [level=1]",
@@ -26,7 +26,18 @@
         "    - heading \"目前低庫存明細\" [level=2]",
         "    - heading \"範圍內最近訂單\" [level=2]"
       ],
-      "note": "full-page capture timed out; original viewport retained"
+      "note": "New original viewport capture; actual pixel size verified independently before delivery",
+      "original_attempt": {
+        "screenshot": "02-dashboard.jpg",
+        "note": "Returned capture was a 179x573 downscaled full-page thumbnail; retained only as failed evidence attempt"
+      },
+      "recaptured_started_at": "2026-10-19T17:58:42.874Z",
+      "recaptured_completed_at": "2026-10-19T17:58:42.959Z",
+      "verified_pixels": [
+        1333,
+        567
+      ],
+      "sha256": "836291255f33d9ba10989a327c78226006928b350d880e25eaa3b501d5d811de"
     },
     {
       "label": "Local 推薦",
