@@ -3,6 +3,7 @@ from types import SimpleNamespace
 from unittest.mock import MagicMock
 import pytest
 import remote_d4_consumer_probe as probe
+from bson import ObjectId
 
 
 def config():
@@ -58,3 +59,63 @@ def test_cleanup_is_scoped_and_every_collection_is_read_back():
     result = probe.cleanup_probe(db, "unique-probe", ["u"], ["s"], ["p"])
     assert result["verified"] is False
     assert result["users"] == "delete_failed"
+
+
+def test_synthetic_and_normal_fixtures_must_have_distinct_major_categories():
+    first, second = ObjectId(), ObjectId()
+    rows = [{'major_category_id': major, 'category_path': [major, ObjectId()]}
+            for major in (first, first, second)]
+    selected = probe.distinct_category_fixtures(iter(rows))
+    assert [p['major_category_id'] for p in selected] == [first, second]
+    with pytest.raises(RuntimeError, match='Two distinct'):
+        probe.distinct_category_fixtures(rows[:2])
+
+
+def test_leading_category_reads_product_identity_instead_of_assuming_fixture_id_leads():
+    pid, major = ObjectId(), ObjectId()
+    db = MagicMock(); db.products.find_one.return_value = {'major_category_id': major}
+    assert probe.leading_major_category(db, [('/product/'+str(pid)+'?q=test', 'reason')]) == major
+    db.products.find_one.assert_called_once_with({'_id': pid}, {'major_category_id': 1})
+    with pytest.raises(RuntimeError): probe.leading_major_category(db, [])
+    with pytest.raises(RuntimeError): probe.leading_major_category(db, [('https://other.invalid/login', '')])
+
+
+def test_current_ranking_accepts_unrated_cold_start_and_detects_cross_category_leak():
+    # Use the real ranking contract; do not create a Flask app or load .env.
+    import sys
+    from pathlib import Path
+    from datetime import datetime, timezone
+    sys.path.insert(0, str(Path(__file__).resolve().parents[1] / 'MuscleCore分析資料/website'))
+    from app.services.storefront_ranking import recommendations_6_4
+    now = datetime.now(timezone.utc)
+    products = [{'_id': ObjectId(), 'major_category_id': ObjectId(),
+                 'minor_category_id': ObjectId(), 'name': 'isolated fixture',
+                 'status': 'active', 'stock': 10, 'is_ai_recommendable': True,
+                 'rating_status': 'DEFAULT', 'rating_count': 0}
+                for _ in range(2)]
+    normal = probe.make_event(ObjectId(), products[0]['_id'], 'test', now, False)
+    synthetic = [probe.make_event(normal['user_id'], products[1]['_id'], 'test', now, True)
+                 for _ in range(1001)]
+    assert recommendations_6_4(products, [], now=now)['personalized'] == []
+    expected = recommendations_6_4(products, [normal], now=now)['personalized']
+    assert expected[0]['product']['_id'] == products[0]['_id']
+    assert recommendations_6_4(products, [normal, *synthetic], now=now)['personalized'] == expected
+    leaked = [{**event, 'metadata': {}} for event in synthetic]
+    assert recommendations_6_4(products, [normal, *leaked], now=now)['personalized'][0]['product']['_id'] == products[1]['_id']
+
+
+def test_new_category_cleanup_requires_both_owned_id_and_exact_run_code():
+    import mongomock
+    from datetime import datetime, timezone
+    db = mongomock.MongoClient()[probe.DATABASE]
+    owned = [ObjectId(), ObjectId()]
+    documents, _ = probe.isolated_category_branch('unique-probe', owned, datetime.now(timezone.utc))
+    db.categories.insert_many(documents)
+    unrelated_id = ObjectId()
+    db.categories.insert_one({'_id': unrelated_id, 'category_code': 'unique-probe-major'})
+    foreign_id = ObjectId()
+    db.categories.insert_one({'_id': foreign_id, 'category_code': 'other-run-major'})
+    result = probe.cleanup_probe(db, 'unique-probe', [], [], [], [*owned, foreign_id])
+    assert result['categories'] == 2 and result['categories_remaining'] == 0
+    assert result['verified'] is True
+    assert {row['_id'] for row in db.categories.find()} == {unrelated_id, foreign_id}

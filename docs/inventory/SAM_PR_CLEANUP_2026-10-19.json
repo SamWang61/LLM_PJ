@@ -1,0 +1,106 @@
+{
+  "checked_at": "2026-10-19T09:02:11.797135+00:00",
+  "main_sha": "e203f89060b3a9ff04d6e9dcbec1a450edf85e2c",
+  "actions": [
+    {
+      "pr": 13,
+      "head_sha": "f1b85174186acfd8f4e47ce66d25ad368122e1d9",
+      "head_ancestor_of_main": true,
+      "state_after": "closed",
+      "merged_flag": false,
+      "branch_deleted": false,
+      "reason": "Entire head commit already belongs to main history; close redundant branch-chain request without remerging."
+    },
+    {
+      "pr": 14,
+      "head_sha": "b9297388c207a52a976761ceea31b67322371886",
+      "head_ancestor_of_main": true,
+      "state_after": "closed",
+      "merged_flag": false,
+      "branch_deleted": false,
+      "reason": "Entire head commit already belongs to main history; close redundant branch-chain request without remerging."
+    },
+    {
+      "pr": 15,
+      "head_sha": "9d38712f66148482688d5a185cbeb7e36909d0b1",
+      "head_ancestor_of_main": true,
+      "state_after": "closed",
+      "merged_flag": false,
+      "branch_deleted": false,
+      "reason": "Entire head commit already belongs to main history; close redundant branch-chain request without remerging."
+    },
+    {
+      "pr": 16,
+      "head_sha": "a418d0853dc22d91cb70a73f433c45c1d78c1246",
+      "head_ancestor_of_main": true,
+      "state_after": "closed",
+      "merged_flag": false,
+      "branch_deleted": false,
+      "reason": "Entire head commit already belongs to main history; close redundant branch-chain request without remerging."
+    },
+    {
+      "pr": 17,
+      "head_sha": "a0fcad01acc0a5cb5672dbe55bd55236d0d89bd2",
+      "head_ancestor_of_main": true,
+      "state_after": "closed",
+      "merged_flag": false,
+      "branch_deleted": false,
+      "reason": "Entire head commit already belongs to main history; close redundant branch-chain request without remerging."
+    },
+    {
+      "pr": 18,
+      "head_sha": "505399313ca4c09b49d77484e98df806b3b30f58",
+      "head_ancestor_of_main": true,
+      "state_after": "closed",
+      "merged_flag": false,
+      "branch_deleted": false,
+      "reason": "Entire head commit already belongs to main history; close redundant branch-chain request without remerging."
+    },
+    {
+      "pr": 10,
+      "head_sha": "8a6edb1a4f6e5e7e21ce40350d30c6eec1ae44c6",
+      "head_ancestor_of_main": false,
+      "state_after": "closed",
+      "merged_flag": false,
+      "branch_deleted": false,
+      "reason": "Retired historical broad-network proposal; current fixed NAT setup supersedes 0.0.0.0/0 guidance. Original branch and six-file patch retained."
+    },
+    {
+      "pr": 19,
+      "head_sha": "d401c4e2c2c79222f7224005537f29d999461a38",
+      "head_ancestor_of_main": false,
+      "state_after": "closed",
+      "merged_flag": false,
+      "branch_deleted": false,
+      "reason": "Retired early presentation draft; current V5 and PR72 publication supersede it. Three distinct historical document blobs remain only in this original commit; no claim that every old blob is in main."
+    },
+    {
+      "pr": 102,
+      "head_sha": "3f3d31319a6016159212a8f333d21c8f00896c81",
+      "head_ancestor_of_main": false,
+      "state_after": "closed",
+      "merged_flag": false,
+      "branch_deleted": false,
+      "reason": "Retired competing N06 implementation; main PR101/104 uses the accepted eight-second retry policy, not this 1.5-second override. Original test evidence and branch retained for provenance."
+    },
+    {
+      "pr": 76,
+      "head_sha": "fe28e7a577073a4a54f4e387bcad603ebea4ac24",
+      "state_after": "closed",
+      "merged_flag": false,
+      "replacement_pr": 115,
+      "branch_deleted": false,
+      "reason": "Superseded by PR115; unique historical JSON preserved byte-for-byte, old context superseded. Original branch retained."
+    },
+    {
+      "pr": 86,
+      "head_sha": "dcf4f30d3c143ba207fb94812c50b8d6cc77dec2",
+      "state_after": "closed",
+      "merged_flag": false,
+      "replacement_pr": 115,
+      "branch_deleted": false,
+      "reason": "Superseded by PR115; readonly admin probe and safety tests ported, keeping current stricter opt-in IAM rules. Private admin checks passed, D4 replay separately passed. Original branch retained."
+    }
+  ],
+  "updated_at": "2026-10-19T09:04:27.349211+00:00"
+}

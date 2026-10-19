@@ -2,6 +2,17 @@ const test = require('node:test');
 const assert = require('node:assert/strict');
 const runner = require('./run_remote_transaction_acceptance_probe.cjs');
 
+test('D4-only replay selects the fixed consumer without replaying successful member writes', () => {
+  const mode = runner.probeMode(['--run-d4-only-isolated']);
+  assert.equal(mode.run, true);
+  assert.equal(mode.python, 'remote_d4_consumer_probe.py');
+  assert.equal(mode.d4Only, true);
+  assert.equal(mode.h05h07, false);
+  assert.equal(mode.accounts, false);
+  assert.equal(mode.prefix, 'sam-d4-only-');
+  assert.throws(() => runner.probeMode(['--run-d4-only-isolated', '--run-isolated']));
+});
+
 test('default never grants IAM or starts account writes', () => {
   assert.equal(runner.probeMode([]).run, false);
   assert.equal(runner.probeMode(['--run-isolated']).python, 'remote_transaction_acceptance_probe.py');

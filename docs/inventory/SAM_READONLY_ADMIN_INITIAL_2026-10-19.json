@@ -1,0 +1,355 @@
+{
+  "scope": "isolated acceptance database only; initial run retained as failed overall",
+  "checked_at": "2026-10-19T09:10:05.035Z",
+  "status": "failed",
+  "error": "Remote consumer or cleanup failed",
+  "production": {
+    "service": "vibecart-web",
+    "revision": "vibecart-web-n06-294c-1019",
+    "traffic_percent": 100,
+    "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:796a42b6d5fd80099900abc381d4c954d21ed1bea162ad0a9a49a89355deb40a",
+    "source_sha": "294c1fac26d6785054063b8be6eb7d9e61075be4"
+  },
+  "acceptance": {
+    "service": "vibecart-acceptance-pr21",
+    "revision": "vibecart-acceptance-pr21-n06-294c-1019",
+    "traffic_percent": 100,
+    "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:796a42b6d5fd80099900abc381d4c954d21ed1bea162ad0a9a49a89355deb40a",
+    "source_sha": "294c1fac26d6785054063b8be6eb7d9e61075be4"
+  },
+  "member_and_transaction_status": "passed",
+  "readonly_admin": {
+    "get_routes": [
+      "/admin/",
+      "/admin/recommendations",
+      "/admin/ai/insight",
+      "/admin/ai/recommendation",
+      "/admin/ai/compare"
+    ],
+    "get_http": 200,
+    "fixed_questions": [
+      {
+        "intent": "period_compare",
+        "demo": "all",
+        "http": 200,
+        "rules_only": true,
+        "free_text_ignored": true,
+        "independent_totals": {
+          "current": {
+            "all_orders": 6,
+            "valid_orders": 6,
+            "revenue": "61.25",
+            "average_order_value": "10.21"
+          },
+          "comparison": {
+            "all_orders": 0,
+            "valid_orders": 0,
+            "revenue": "0.00",
+            "average_order_value": null
+          }
+        }
+      },
+      {
+        "intent": "replenishment",
+        "demo": "all",
+        "http": 200,
+        "rules_only": true,
+        "free_text_ignored": true,
+        "independent_totals": {
+          "current": {
+            "all_orders": 6,
+            "valid_orders": 6,
+            "revenue": "61.25",
+            "average_order_value": "10.21"
+          },
+          "comparison": {
+            "all_orders": 0,
+            "valid_orders": 0,
+            "revenue": "0.00",
+            "average_order_value": null
+          }
+        }
+      },
+      {
+        "intent": "promotion",
+        "demo": "all",
+        "http": 200,
+        "rules_only": true,
+        "free_text_ignored": true,
+        "independent_totals": {
+          "current": {
+            "all_orders": 6,
+            "valid_orders": 6,
+            "revenue": "61.25",
+            "average_order_value": "10.21"
+          },
+          "comparison": {
+            "all_orders": 0,
+            "valid_orders": 0,
+            "revenue": "0.00",
+            "average_order_value": null
+          }
+        }
+      },
+      {
+        "intent": "revenue_change",
+        "demo": "all",
+        "http": 200,
+        "rules_only": true,
+        "free_text_ignored": true,
+        "independent_totals": {
+          "current": {
+            "all_orders": 6,
+            "valid_orders": 6,
+            "revenue": "61.25",
+            "average_order_value": "10.21"
+          },
+          "comparison": {
+            "all_orders": 0,
+            "valid_orders": 0,
+            "revenue": "0.00",
+            "average_order_value": null
+          }
+        }
+      },
+      {
+        "intent": "period_compare",
+        "demo": "exclude",
+        "http": 200,
+        "rules_only": true,
+        "free_text_ignored": true,
+        "independent_totals": {
+          "current": {
+            "all_orders": 0,
+            "valid_orders": 0,
+            "revenue": "0.00",
+            "average_order_value": null
+          },
+          "comparison": {
+            "all_orders": 0,
+            "valid_orders": 0,
+            "revenue": "0.00",
+            "average_order_value": null
+          }
+        }
+      },
+      {
+        "intent": "replenishment",
+        "demo": "exclude",
+        "http": 200,
+        "rules_only": true,
+        "free_text_ignored": true,
+        "independent_totals": {
+          "current": {
+            "all_orders": 0,
+            "valid_orders": 0,
+            "revenue": "0.00",
+            "average_order_value": null
+          },
+          "comparison": {
+            "all_orders": 0,
+            "valid_orders": 0,
+            "revenue": "0.00",
+            "average_order_value": null
+          }
+        }
+      },
+      {
+        "intent": "promotion",
+        "demo": "exclude",
+        "http": 200,
+        "rules_only": true,
+        "free_text_ignored": true,
+        "independent_totals": {
+          "current": {
+            "all_orders": 0,
+            "valid_orders": 0,
+            "revenue": "0.00",
+            "average_order_value": null
+          },
+          "comparison": {
+            "all_orders": 0,
+            "valid_orders": 0,
+            "revenue": "0.00",
+            "average_order_value": null
+          }
+        }
+      },
+      {
+        "intent": "revenue_change",
+        "demo": "exclude",
+        "http": 200,
+        "rules_only": true,
+        "free_text_ignored": true,
+        "independent_totals": {
+          "current": {
+            "all_orders": 0,
+            "valid_orders": 0,
+            "revenue": "0.00",
+            "average_order_value": null
+          },
+          "comparison": {
+            "all_orders": 0,
+            "valid_orders": 0,
+            "revenue": "0.00",
+            "average_order_value": null
+          }
+        }
+      },
+      {
+        "intent": "period_compare",
+        "demo": "only",
+        "http": 200,
+        "rules_only": true,
+        "free_text_ignored": true,
+        "independent_totals": {
+          "current": {
+            "all_orders": 6,
+            "valid_orders": 6,
+            "revenue": "61.25",
+            "average_order_value": "10.21"
+          },
+          "comparison": {
+            "all_orders": 0,
+            "valid_orders": 0,
+            "revenue": "0.00",
+            "average_order_value": null
+          }
+        }
+      },
+      {
+        "intent": "replenishment",
+        "demo": "only",
+        "http": 200,
+        "rules_only": true,
+        "free_text_ignored": true,
+        "independent_totals": {
+          "current": {
+            "all_orders": 6,
+            "valid_orders": 6,
+            "revenue": "61.25",
+            "average_order_value": "10.21"
+          },
+          "comparison": {
+            "all_orders": 0,
+            "valid_orders": 0,
+            "revenue": "0.00",
+            "average_order_value": null
+          }
+        }
+      },
+      {
+        "intent": "promotion",
+        "demo": "only",
+        "http": 200,
+        "rules_only": true,
+        "free_text_ignored": true,
+        "independent_totals": {
+          "current": {
+            "all_orders": 6,
+            "valid_orders": 6,
+            "revenue": "61.25",
+            "average_order_value": "10.21"
+          },
+          "comparison": {
+            "all_orders": 0,
+            "valid_orders": 0,
+            "revenue": "0.00",
+            "average_order_value": null
+          }
+        }
+      },
+      {
+        "intent": "revenue_change",
+        "demo": "only",
+        "http": 200,
+        "rules_only": true,
+        "free_text_ignored": true,
+        "independent_totals": {
+          "current": {
+            "all_orders": 6,
+            "valid_orders": 6,
+            "revenue": "61.25",
+            "average_order_value": "10.21"
+          },
+          "comparison": {
+            "all_orders": 0,
+            "valid_orders": 0,
+            "revenue": "0.00",
+            "average_order_value": null
+          }
+        }
+      }
+    ],
+    "invalid_range_http": 400,
+    "unknown_intent_http": 400,
+    "disabled_free_question_http": 403,
+    "disabled_d5_links": 3,
+    "business_counts_before": {
+      "products": 4,
+      "product_skus": 4,
+      "orders": 6,
+      "order_items": 6,
+      "users": 11,
+      "carts": 7,
+      "cart_events": 16,
+      "behavior_events": 23
+    },
+    "business_counts_after": {
+      "products": 4,
+      "product_skus": 4,
+      "orders": 6,
+      "order_items": 6,
+      "users": 11,
+      "carts": 7,
+      "cart_events": 16,
+      "behavior_events": 23
+    },
+    "model_enabled": false,
+    "vector_refresh_tested": false,
+    "browser_or_human_acceptance": false
+  },
+  "transaction_cleanup": {
+    "order_items": 2,
+    "order_items_remaining": 0,
+    "orders": 2,
+    "orders_remaining": 0,
+    "cart_events": 9,
+    "cart_events_remaining": 0,
+    "carts": 3,
+    "carts_remaining": 0,
+    "behavior_events": 9,
+    "behavior_events_remaining": 0,
+    "auth_sessions": 3,
+    "auth_sessions_remaining": 0,
+    "users": 3,
+    "users_remaining": 0,
+    "product_skus": 2,
+    "product_skus_remaining": 0,
+    "products": 1,
+    "products_remaining": 0,
+    "verified": true
+  },
+  "consumer": {
+    "probe_id": "ren-d4-d91a94b2297d1dd1",
+    "service_revision": "vibecart-acceptance-pr21-n06-294c-1019",
+    "service_image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:796a42b6d5fd80099900abc381d4c954d21ed1bea162ad0a9a49a89355deb40a",
+    "status": "failed",
+    "error_type": "RuntimeError",
+    "error": "Probe products absent from storefront",
+    "cleanup": {
+      "events": 0,
+      "sessions": 2,
+      "users": 2,
+      "skus": 2,
+      "products": 2,
+      "events_remaining": 0,
+      "sessions_remaining": 0,
+      "users_remaining": 0,
+      "skus_remaining": 0,
+      "products_remaining": 0,
+      "verified": true
+    }
+  },
+  "temporary_iam_revoked": true
+}
