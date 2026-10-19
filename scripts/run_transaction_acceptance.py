@@ -34,7 +34,9 @@ def main():
     # Reserve report before provisioning; never overwrite earlier acceptance evidence.
     with args.report.open('x',encoding='utf-8',newline='\n') as output:
         try:
-            docker('run','--rm','-d','--name',name,'-p','127.0.0.1::27017','mongo:8',
+            # Keep an exited container until finally so startup logs and exit
+            # status survive long enough to diagnose a failed CI run.
+            docker('run','-d','--name',name,'-p','127.0.0.1::27017','mongo:8',
                    '--replSet','rsD5Acceptance','--bind_ip_all',
                    '--setParameter','enableTestCommands=1')
             created=True
@@ -73,18 +75,21 @@ def main():
         except Exception as error:
             report['error_type']=type(error).__name__
             if isinstance(error, RuntimeError):
-                report['error']=str(error)
+                report['error_message']=str(error)[:500]
         finally:
             if created:
                 try:
-                    # --rm may already have removed a container that exited
-                    # during startup. Absence is clean, not a cleanup failure.
-                    present=docker('ps','-a','--filter','name=^/'+name+'$','--format','{{.Names}}').splitlines()
-                    if present:
-                        if present != [name]: raise ValueError('Container identity changed')
-                        info=json.loads(docker('inspect',name))[0]
-                        if info.get('Name')!='/'+name: raise ValueError('Container identity changed')
-                        docker('rm','-f',name)
+                    info=json.loads(docker('inspect',name))[0]
+                    if info.get('Name')!='/'+name: raise ValueError('Container identity changed')
+                    if report['status']!='passed':
+                        state=info.get('State',{})
+                        report['container_state']={key:state.get(key) for key in
+                            ('Status','ExitCode','OOMKilled','Error')}
+                        try:
+                            report['container_logs_tail']=docker('logs','--tail','30',name)[-12000:]
+                        except Exception as diagnostic_error:
+                            report['diagnostic_error_type']=type(diagnostic_error).__name__
+                    docker('rm','-f',name)
                     report['container_removed']=True
                 except Exception:
                     report['status']='cleanup-failed'

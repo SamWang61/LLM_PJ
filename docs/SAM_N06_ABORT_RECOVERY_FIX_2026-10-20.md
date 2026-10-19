@@ -25,7 +25,7 @@
 
 修正後六類單次伺服器故障＋中止回覆延遲共 7 案，以及五類持續故障共 5 案全通過；持續故障約 8 秒 503，解除後原 Flask app／原 MongoClient 第一次同 ID 重送 200，重播同單、異內容 409、庫存只扣一次，28 集合對帳與隔離資料／進程清理均通過。
 
-完整網站＋D5 migration 真本機 replica set 回歸為 **288 passed／0 skipped**，包含新增的延遲中止確認回歸；fixture 與三個 mongod 已清理。CI 的一次性 Docker MongoDB 啟用 test-only failpoint，仍只綁 localhost、使用隨機自有容器／資料庫；啟動錯誤會保留原因，已由 --rm 自動移除的容器不再誤列清理失敗。
+完整網站＋D5 migration 真本機 replica set 回歸為 **288 passed／0 skipped**，包含新增的延遲中止確認回歸；fixture 與三個 mongod 已清理。CI 的一次性 Docker MongoDB 啟用 test-only failpoint，仍只綁 localhost、使用隨機自有容器／資料庫。已保留 main PR #129 的啟動診斷：失敗容器先留存退出狀態／日誌，再核身分清理；與本次 test-only 參數整合後，2 項啟動診斷測試通過。
 
 初輪計時包裝缺時區套件、後續匯入 app 路徑，以及完整回歸缺 langchain 測試依賴均屬環境／執行前置錯誤；已修正並保留[計時蒐集失敗](inventory/SAM_C02_ROLE_CART_SETUP_FAILURE_2026-10-20.json)與去敏摘要中的依賴失敗紀錄。成功回歸使用專案鎖定的 requirements-test.txt，不啟用模型。
 

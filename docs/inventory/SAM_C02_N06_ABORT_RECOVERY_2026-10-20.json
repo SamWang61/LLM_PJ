@@ -10,12 +10,6 @@
   "abort_cleanup_grace_before_seconds": 0.5,
   "abort_cleanup_grace_after_seconds": 2,
   "bounded_cleanup_note": "Body/commit retry remains 8s; one cleanup grace can extend the final response to about 10s.",
-  "source_file_sha256": {
-    "VibeCart_AI/services/cart_service.py": "cb22ab2fdebfaea7cbb68e542c9077ea6fd5dcf402c4d0eb625f53fc2af7ed1f",
-    "scripts/run_local_checkout_fault_matrix.py": "b7b930f9895290db7dedaf9118b9869c6651b75c1950d37d53034af0a55f8fcb",
-    "scripts/run_transaction_acceptance.py": "9254ebbb526ab6f6362e30783de1537b2b403e514d89f0eeb3d190fa62f47fdc",
-    "MuscleCore分析資料/website/tests/test_ren_transactions.py": "b0c204e3f6c2654609e3a5abb2db3b5c4a0941d8260d4fba5233c5ff1fcc3351"
-  },
   "long_transactions_before_fix": [
     {
       "run": "n06-sustained.json",
@@ -758,5 +752,22 @@
     "fixtures_removed": true,
     "processes_stopped": true,
     "completed_at": "2026-10-19T17:35:22.279130+00:00"
+  },
+  "local_regression_source_file_sha256": {
+    "VibeCart_AI/services/cart_service.py": "cb22ab2fdebfaea7cbb68e542c9077ea6fd5dcf402c4d0eb625f53fc2af7ed1f",
+    "scripts/run_local_checkout_fault_matrix.py": "b7b930f9895290db7dedaf9118b9869c6651b75c1950d37d53034af0a55f8fcb",
+    "scripts/run_transaction_acceptance.py": "9254ebbb526ab6f6362e30783de1537b2b403e514d89f0eeb3d190fa62f47fdc",
+    "MuscleCore分析資料/website/tests/test_ren_transactions.py": "b0c204e3f6c2654609e3a5abb2db3b5c4a0941d8260d4fba5233c5ff1fcc3351"
+  },
+  "candidate_source_file_sha256": {
+    "VibeCart_AI/services/cart_service.py": "cb22ab2fdebfaea7cbb68e542c9077ea6fd5dcf402c4d0eb625f53fc2af7ed1f",
+    "scripts/run_local_checkout_fault_matrix.py": "b7b930f9895290db7dedaf9118b9869c6651b75c1950d37d53034af0a55f8fcb",
+    "scripts/run_transaction_acceptance.py": "809174f92ae86aa3b2b5c77a658fa7cbcb3c64f7c221b6d257b605187d3d55de",
+    "MuscleCore分析資料/website/tests/test_ren_transactions.py": "b0c204e3f6c2654609e3a5abb2db3b5c4a0941d8260d4fba5233c5ff1fcc3351"
+  },
+  "ci_harness_integration": {
+    "upstream_pr": 129,
+    "startup_tests_passed": 2,
+    "note": "Retain upstream startup diagnostics and explicit owned-container cleanup; add test-only abort failpoint. Production transaction code and real regression test are unchanged from the local successful run."
   }
 }
