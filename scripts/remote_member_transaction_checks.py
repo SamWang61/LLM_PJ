@@ -5,6 +5,7 @@ from threading import Barrier
 from bson import ObjectId
 import requests
 from remote_d4_consumer_probe import login, page, require, verify_scope
+from remote_readonly_admin_checks import run as run_readonly_admin_checks
 
 
 def csrf_headers(session, base):
@@ -62,6 +63,7 @@ def run(db, config, marker, user_id, product_id, sku_id, email, password, user_i
             'Active administrator denied')
     no_csrf = admin.post(base+'/admin/summary', allow_redirects=False, timeout=30)
     require(no_csrf.status_code == 400, 'Admin mutation accepted without CSRF')
+    run_readonly_admin_checks(db, config, admin, report)
     db.users.update_one({'_id': admin_id, 'acceptance_run': marker},
                         {'$set': {'status': 'inactive', 'is_active': False}})
     require(admin.get(base+'/admin/', allow_redirects=False, timeout=30).status_code == 302,
