@@ -13,15 +13,15 @@
 |資料|商品 336、SKU 336、分類 32、品牌 128；schema_migrations 4 筆 succeeded、system_configs 1 筆；其餘集合 0 筆|
 |驗證|歷史 v4 66 項測試通過；本次完整 Schema 讀回、832 筆文件精確比對與 Flask 336 商品讀取通過|
 
-Atlas 外掛本次 OAuth 失效，使用先前授權的 PyMongo 連線完成實際變更與讀回。控制台部署中繼資料未重新核實；原始資訊見 [Cluster 設定](01_Cluster設定與狀態.md)。
+2026-10-05 Schema 重建與商品匯入時，Atlas 外掛 OAuth 失效，當時使用先前授權的 PyMongo 連線完成變更與讀回，未重新核實控制台部署中繼資料。2026-10-19 Atlas 外掛已恢復連線，Network Access 已透過該外掛成功讀回；本次結果見下節與 [Cluster 設定](01_Cluster設定與狀態.md)。
 
-## Network Access 更新（2026-10-05）
+## Network Access 實際查核（2026-10-19）
 
-2026-10-05 網路設定更新：依專案負責人提供的資訊，Network Access 已新增 `0.0.0.0/0`，供網站後端及 Compass 從任意 IPv4 來源連線。本次 Atlas 外掛回覆需重新登入（UNAUTHORIZED），尚未讀回確認 Active 狀態、註解與到期設定；詳見 [Cluster 設定](01_Cluster設定與狀態.md)。
+2026-10-19 Atlas 實際查核：成功讀回 Project `vibecart_ai` 的 4 筆 Network Access 規則，全部為 `/32`，包含專用 NAT `35.229.228.204/32`；清單中沒有 `0.0.0.0/0`，目前不能按全 IPv4 開放設定使用。外掛未提供逐筆 Active／到期欄位，本次也未測試網站端讀寫。完整清單與查核界線見 [Cluster 設定](01_Cluster設定與狀態.md)。
 
-`0.0.0.0/0` 生效期間，IPv4 出口改變不需逐一新增 `/32`；資料庫帳密、TLS 與角色權限仍需通過，連線字串僅置於後端秘密設定。
+WEB 後端、開發電腦或 Compass 的實際出口須符合清單；更換出口後需重新核對。帳密、TLS 與角色權限仍需通過。
 
-English: The owner reports all-IPv4 access; Atlas activation and expiry remain unverified because reauthentication is required. Authentication, TLS and database permissions still apply.
+English: Atlas read-back on 2026-10-19 returned four /32 entries, including the dedicated NAT 35.229.228.204/32, and no 0.0.0.0/0. Per-entry activation and expiry are not exposed by this tool. No access-list changes or website read/write tests were performed.
 
 ## 現行文件與程式
 

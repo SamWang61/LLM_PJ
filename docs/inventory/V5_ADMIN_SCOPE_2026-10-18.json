@@ -1,0 +1,51 @@
+{
+  "checked_at": "2026-10-18T07:28:49.654Z",
+  "services": [
+    {
+      "service": "vibecart-web",
+      "revision": "vibecart-web-00019-phf",
+      "percent": 100,
+      "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:7199fa08c711917a80e5f54dbfd580ed96f3ef632bda7337b4aa2bde2325c992",
+      "source_sha": "e000d952d22a64b568903641893f4ffdc71accd3",
+      "service_account": "vibecart-web@vibecart-llmai.iam.gserviceaccount.com",
+      "nonsecret_flags": {
+        "CLOUD_PREVIEW_READ_ONLY": "false",
+        "ENABLE_CHECKOUT": "true"
+      },
+      "invokers": [
+        {
+          "members": [
+            "allUsers"
+          ],
+          "condition": null
+        }
+      ]
+    },
+    {
+      "service": "vibecart-acceptance-pr21",
+      "revision": "vibecart-acceptance-pr21-00011-2hq",
+      "percent": 100,
+      "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:7199fa08c711917a80e5f54dbfd580ed96f3ef632bda7337b4aa2bde2325c992",
+      "source_sha": "e000d952d22a64b568903641893f4ffdc71accd3",
+      "service_account": "vibecart-pr21-acceptance@vibecart-llmai.iam.gserviceaccount.com",
+      "nonsecret_flags": {
+        "CLOUD_PREVIEW_READ_ONLY": "false",
+        "CLOUD_ACCEPTANCE_MODE": "true",
+        "CLOUD_ACCEPTANCE_DB": "vibecart_acceptance_pr21",
+        "ENABLE_CHECKOUT": "true"
+      },
+      "invokers": [
+        {
+          "members": [
+            "serviceAccount:vibecart-pr21-acceptance@vibecart-llmai.iam.gserviceaccount.com",
+            "user:cashsam@gmail.com"
+          ],
+          "condition": null
+        }
+      ]
+    }
+  ],
+  "read_only": true,
+  "production_changed": false,
+  "probe_started": false
+}
