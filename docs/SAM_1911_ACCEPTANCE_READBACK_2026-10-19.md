@@ -10,4 +10,8 @@
 | N14 USB | 實體 D: 的兩份密文 SHA-256 分別為 `328b9aa8194589d53d8f18e7d41b0e96809335a1329bd23ed3ba95d992fe51d5` 與 `5ff28ee49341fa6070ab6b1e418106ed8623901071b3d4e3d54c7c97092aa885`，符合[交接卡](N14_ASUS_VIVOBOOK_異機復原_2026-10-19.md)；F: 獨立金鑰檔存在、32 bytes，本紀錄不保存金鑰內容。這是 SAM 電腦媒體讀回，不是 REN 的 ASUS VivoBook 復原。 |
 | 具名接收 | GitHub main 的[接收表](../專題進度/2026-10-19_具名接收與異機復原表.md)仍無 SAM／REN／JEFF 本人實測時間與結果；本機私有備份目錄未見 REN 異機報告。本次無法確認 14:00 現場是否實際完成，維持未簽收。 |
 
-下一步依序為：SAM／REN 補本人逐案結果與 REN ASUS 去敏異機報告；SAM 補正式服務目前 100% revision／digest、故障矩陣缺口、三條舊白名單用途與每日私有備份流程；JEFF 在約定時段覆核 AI／後台／consumer 與 S06～S08；最後三人鎖定同版程式、部署與 PPTX 並具名簽收。N06 真 Atlas 廣義故障、N14 異機與每日流程、N12 完整手機矩陣均不因本次唯讀檢查結案。本輪 V5 仍以已具證據的 2/14 計，下一階段 N07～N10 不納入分母。
+下一步依序為：SAM／REN 補本人逐案結果與 REN ASUS 去敏異機報告；SAM 補故障矩陣缺口、三條舊白名單用途與每日私有備份流程；JEFF 在約定時段覆核 AI／後台／consumer 與 S06～S08；最後三人鎖定同版程式、部署與 PPTX 並具名簽收。N06 真 Atlas 廣義故障、N14 異機與每日流程、N12 完整手機矩陣均不因本次唯讀檢查結案。本輪 V5 仍以已具證據的 2/14 計，下一階段 N07～N10 不納入分母。
+
+## 19:23 Cloud Run 控制平面補核
+
+在[正式服務修訂版本記錄](https://console.cloud.google.com/run/detail/asia-east1/vibecart-web/revisions?project=vibecart-llmai)唯讀看到 `vibecart-web-n06-294c-1019` 健康並承接 100%，映像 `sha256:796a42b6d5fd80099900abc381d4c954d21ed1bea162ad0a9a49a89355deb40a`。在[私有驗收服務修訂版本記錄](https://console.cloud.google.com/run/detail/asia-east1/vibecart-acceptance-pr21/revisions?project=vibecart-llmai)看到 `vibecart-acceptance-pr21-n06-294c-1019` 同 digest 承接 100%；自動建置候選 `vibecart-acceptance-pr21-00036-hed` 為 0%。因此上表「17:58 後控制平面狀態本次未核實」只描述 19:11 的檢查時點；到 19:23 已補核流量、revision 與 digest。這不補足正式交易、真人接收或異機復原。GitHub main `f2ed417b419630e9ab56a1ab1034f8af10942a25` 的[合併後 CI](https://github.com/SamWang61/LLM_PJ/actions/runs/39243398288) 亦已成功；該 SHA 是文件核對合併，不當作新正式部署來源。

@@ -1,5 +1,7 @@
 # 最新專案上下文 / Current project context
 
+**2026/10/19 19:23 Cloud Run 補核**：[19:11報告追加控制平面證據](SAM_1911_ACCEPTANCE_READBACK_2026-10-19.md#1923-cloud-run-控制平面補核)。正式與私有 `n06-294c` 同 digest `796a42b6…` 各100%；自動建置私有候選00036-hed仍0%。PR #118已合併main `f2ed417`、合併後CI成功；三人具名及REN異機證據待收，V5仍2/14。
+
 **2026/10/19 19:11 接續唯讀核對**：[本輪報告](SAM_1911_ACCEPTANCE_READBACK_2026-10-19.md)。main PR #117 合併 SHA `2d807ca`、同 SHA Actions 成功；公開三入口200。Atlas本次重新連線，讀回28集合、4條 `/32` 白名單且無萬用規則；D: 兩份密文雜湊符合交接卡。Cloud Run 17:58 後的控制平面狀態、REN第二台ASUS異機報告及三人本人結果尚無本次新證據；V5維持2/14，不代簽。
 
 **2026/10/19 17:58 自動建置修復已整合**：[Cloud Build專項紀錄](SAM_CLOUD_BUILD_PREVIEW_REPAIR_2026-10-19.md)。PR #116固定HEAD兩項CI成功、合併main `5d4cc2e`；main自動Cloud Build五步SUCCESS，main Actions及外部check均success。新私有候選00036-hed Ready／Healthy、0%、匿名403；正式與私有原294c各100%保持，公開五入口200。新候選尚未做業務或本人驗收。本人取證提醒17:00已寄REN、JEFF、SAM；實機／異機、Drive可逆ACL等仍待，V5維持2/14。
