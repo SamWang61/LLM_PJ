@@ -1,0 +1,40 @@
+{
+  "checked_at_utc": "2026-10-19T09:01:28.4294505Z",
+  "mode": "read-only; no deployment, IAM, Atlas or account changes",
+  "services": [
+    {
+      "service": "vibecart-acceptance-pr21",
+      "revision": "vibecart-acceptance-pr21-n06-294c-1019",
+      "traffic_percent": 100,
+      "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:796a42b6d5fd80099900abc381d4c954d21ed1bea162ad0a9a49a89355deb40a",
+      "source_sha": "294c1fac26d6785054063b8be6eb7d9e61075be4",
+      "egress": "ALL_TRAFFIC",
+      "network": "vibecart-egress-20261019",
+      "command_override": false
+    },
+    {
+      "service": "vibecart-web",
+      "revision": "vibecart-web-n06-294c-1019",
+      "traffic_percent": 100,
+      "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:796a42b6d5fd80099900abc381d4c954d21ed1bea162ad0a9a49a89355deb40a",
+      "source_sha": "294c1fac26d6785054063b8be6eb7d9e61075be4",
+      "egress": "ALL_TRAFFIC",
+      "network": "vibecart-egress-20261019",
+      "command_override": false
+    }
+  ],
+  "public_http": [
+    {
+      "route": "/health/live",
+      "http": 200
+    },
+    {
+      "route": "/health/ready",
+      "http": 200
+    },
+    {
+      "route": "/auth/login",
+      "http": 200
+    }
+  ]
+}

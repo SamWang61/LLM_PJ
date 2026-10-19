@@ -1,0 +1,42 @@
+{
+  "checked_at_utc": "2026-10-19T09:08:27.763884+00:00",
+  "status": "passed",
+  "tool_sha256": "a1c73cb55b29a0c3b90a603b45eb4adab9bafaff17aeace1c658e14074d2871b",
+  "scope": "local isolated server faults; no remote Atlas outage",
+  "application_base": "e203f89060b3a9ff04d6e9dcbec1a450edf85e2c",
+  "deployed_source": "294c1fac26d6785054063b8be6eb7d9e61075be4",
+  "matrices": {
+    "single": {
+      "passed": 6,
+      "original_client_first_recovery_200": 6,
+      "processes_stopped": true,
+      "fixtures_removed": true
+    },
+    "sustained": {
+      "passed": 5,
+      "original_client_first_recovery_200": 5,
+      "processes_stopped": true,
+      "fixtures_removed": true
+    }
+  },
+  "files": {
+    "REN_N06_SAME_WORKER_SINGLE_2026-10-19.json": "ef85dac9a4f3842cd434d87ef5644d5f3ec8eec5652dc56ad13926ac94bbdb31",
+    "REN_N06_SAME_WORKER_SUSTAINED_2026-10-19.json": "9058390442d5b25356b3849674c78539d4e4487d90b03f7aab881e4815c38f2f",
+    "REN_N06_SAME_WORKER_TESTS_2026-10-19.xml": "5dba627eedcefad5528c46859a4d6bdc4a1ea8940ca6a754931a6f51827ca673",
+    "REN_N06_SAME_WORKER_DEPLOYMENT_2026-10-19.json": "f26a9f2def9d6d21d112a878e6e8c5e363722c2e0f7878054c53326be06c5942"
+  },
+  "regression": {
+    "tests": 287,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "application_sources": {
+    "VibeCart_AI/services/cart_service.py": "2d78ae601f6cd90077bb152ac5f52a87763785d1e119a7621d23c81ee3934edb",
+    "VibeCart_AI/services/sku_cart_service.py": "6ef2272284f9c36d27923fbf4448854d6de1305dd1b4e001a82f40ef6eccd649",
+    "MuscleCore分析資料/website/app/auth.py": "6d69044df007d4bacb3fc9b32a50b3a6df690124515841b211cc770f2e0f925d",
+    "MuscleCore分析資料/website/app/store_v4.py": "743150b2e6de3a5542a2df378104c96969a67f657d49c4e1fa4720110abaad12"
+  },
+  "application_sources_differs_from_deployed": false,
+  "owned_test_containers_remaining": 0
+}
