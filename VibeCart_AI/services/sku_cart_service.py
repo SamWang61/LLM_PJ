@@ -1,15 +1,92 @@
 """Current v4 SKU cart service. The old product-as-SKU service is historical."""
 from decimal import Decimal
 from datetime import timedelta, timezone
+import time
 from bson import ObjectId,Decimal128
+from pymongo import timeout
+from pymongo.errors import ConnectionFailure, DuplicateKeyError, PyMongoError
+from pymongo.read_concern import ReadConcern
+from pymongo.write_concern import WriteConcern
 from .cart_service import CartService as LegacyCartService,CartError,CartConflict,oid,quantity,key,fingerprint,utcnow
 
 
 class CartService(LegacyCartService):
+    # PyMongo's with_transaction retries for up to 120 seconds, regardless of
+    # an enclosing timeout(). Keep the v4 request's own transaction deadline.
+    TRANSACTION_DEADLINE_SECONDS = 1.5
+    ABORT_DEADLINE_SECONDS = 1.0
+
     def __init__(self, db, *, enable_checkout=False, behavior_metadata=None, authorization_guard=None):
         super().__init__(db, enable_checkout=enable_checkout)
         self.behavior_metadata = dict(behavior_metadata or {})
         self.authorization_guard = authorization_guard
+
+    def _run(self, callback):
+        deadline = time.monotonic() + self.TRANSACTION_DEADLINE_SECONDS
+        retries = 0
+
+        def may_retry():
+            nonlocal retries
+            remaining = deadline - time.monotonic()
+            if remaining <= 0:
+                return False
+            time.sleep(min(0.025 * (2 ** min(retries, 3)), remaining))
+            retries += 1
+            return time.monotonic() < deadline
+
+        # CSOT bounds the transaction. Its scope must end before the final
+        # abort, otherwise an expired deadline prevents abortTransaction from
+        # reaching MongoDB and can delay same-key recovery until server expiry.
+        with self.db.client.start_session() as session:
+            try:
+                with timeout(self.TRANSACTION_DEADLINE_SECONDS):
+                    duplicate_retries = 0
+                    while True:
+                        session.start_transaction(read_concern=ReadConcern('snapshot'),
+                                                  write_concern=WriteConcern('majority'))
+                        try:
+                            result = callback(session)
+                        except BaseException as exc:
+                            if isinstance(exc, DuplicateKeyError):
+                                duplicate_retries += 1
+                                retry = duplicate_retries < 4 and may_retry()
+                            else:
+                                # A dropped socket can leave the server-side
+                                # transaction outcome uncertain. Never start
+                                # a new txn until this session is cleaned up;
+                                # the caller can retry its stable operation ID.
+                                retry = (isinstance(exc, PyMongoError)
+                                         and not isinstance(exc, ConnectionFailure)
+                                         and exc.has_error_label('TransientTransactionError')
+                                         and may_retry())
+                            if retry:
+                                if session.in_transaction:
+                                    session.abort_transaction()
+                                continue
+                            if isinstance(exc, DuplicateKeyError):
+                                raise CartConflict('Concurrent operation; retry using the same key') from None
+                            raise
+
+                        if not session.in_transaction:
+                            return result
+                        while True:
+                            try:
+                                session.commit_transaction()
+                            except PyMongoError as exc:
+                                if exc.has_error_label('UnknownTransactionCommitResult') and may_retry():
+                                    continue
+                                if exc.has_error_label('TransientTransactionError') and may_retry():
+                                    break  # A new transaction may run the callback again.
+                                raise
+                            return result
+            except BaseException:
+                if session.in_transaction:
+                    # Use a fresh deadline for best-effort cleanup. A commit
+                    # with unknown result cannot be assumed rolled back;
+                    # checkout_id remains the recovery key for the caller.
+                    with timeout(self.ABORT_DEADLINE_SECONDS):
+                        session.abort_transaction()
+                raise
 
     def _authorize_commit(self, uid, session):
         """Serialize commit with user changes and device-session deletion.

@@ -1,0 +1,2492 @@
+{
+  "schema_version": 1,
+  "checked_at": "2026-10-19T00:12:38.542311+00:00",
+  "status": "passed",
+  "scope": "three disposable localhost processes and local WSGI routes",
+  "remote_acceptance": false,
+  "fault_mode": "sustained",
+  "atlas_accessed": false,
+  "cases": [
+    {
+      "case": "network_timeout",
+      "status": "passed",
+      "fault_http": 503,
+      "fault_callbacks": 1,
+      "fault_spec": {
+        "failCommands": [
+          "insert"
+        ],
+        "blockConnection": true,
+        "blockTimeMS": 1200
+      },
+      "failed_commands": 1,
+      "pool_clears": 0,
+      "commit_attempts": 0,
+      "rollback_equal": true,
+      "post_abort_snapshot_count": 0,
+      "post_abort_snapshots": [],
+      "driver_commands": [
+        {
+          "command": "update",
+          "txn": 4,
+          "start": false
+        },
+        {
+          "command": "insert",
+          "txn": 4,
+          "start": false
+        },
+        {
+          "command": "insert",
+          "txn": 4,
+          "start": false
+        },
+        {
+          "failed": "insert",
+          "code": null
+        },
+        {
+          "command": "abortTransaction",
+          "txn": 4,
+          "start": false
+        },
+        {
+          "succeeded": "abortTransaction"
+        }
+      ],
+      "request_elapsed_seconds": 2.437,
+      "fault_mode": "sustained server fault; bounded request",
+      "unknown_commit_retried_same_transaction": false,
+      "primary_changed": false,
+      "primary_before": null,
+      "primary_after": null,
+      "recovery_http": 200,
+      "recovery_attempt_http": [
+        200
+      ],
+      "replay_http": 200,
+      "service_failures": [
+        {
+          "type": "NetworkTimeout",
+          "code": null,
+          "code_name": null,
+          "timeout": true,
+          "transient": true,
+          "unknown_commit": false
+        }
+      ],
+      "successful_aborts": 2,
+      "replay_same_order": true,
+      "conflicting_replay_http": 409,
+      "stock_decrements": 1,
+      "collection_count": 28,
+      "before": {
+        "ai_insights": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "ai_requests": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "ai_usage": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "auth_sessions": {
+          "count": 1,
+          "sha256": "6e7a714a7baca72e23bde57fab159b741679ee675e48e04682726d8ec691316c"
+        },
+        "behavior_events": {
+          "count": 1,
+          "sha256": "f6d82e569897d0dc930581cd2e508855fe8074134b4f086e05252d40a1ce72b2"
+        },
+        "brands": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "cart_events": {
+          "count": 1,
+          "sha256": "3ead3c1074173fb4b498d57b1c0fa95a68f460542c6a7662dc55ed19ded6a163"
+        },
+        "carts": {
+          "count": 1,
+          "sha256": "82138179ed3e66da071b7517ea18ebf3d3b6dceaa85cf58d7ba699cc6882e8d0"
+        },
+        "categories": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "cross_category_rules": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "first_member_recommendations": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "order_items": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "orders": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "product_embeddings": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "product_purchase_sequences": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "product_repurchase_stats": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "product_reviews": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "product_skus": {
+          "count": 1,
+          "sha256": "a475e8cd01eb00f5c2a82e438e5ed6fd1d43fe84899d7137da4236624b3d5016"
+        },
+        "products": {
+          "count": 1,
+          "sha256": "07c7e0af747b108e99a91ddd981e72e8aa75a6074b64630a0d1546d43d34406b"
+        },
+        "recommendation_logs": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "recommendation_pools": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "recommendations": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "request_limits": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "schema_migrations": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "system_configs": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "user_events": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "user_preference_scores": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "users": {
+          "count": 1,
+          "sha256": "209a5ccf7b934331dd7c27347b1b11cb83c83a73d8e6cf9bf7a71e98716e29b7"
+        }
+      },
+      "after_fault": {
+        "ai_insights": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "ai_requests": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "ai_usage": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "auth_sessions": {
+          "count": 1,
+          "sha256": "6e7a714a7baca72e23bde57fab159b741679ee675e48e04682726d8ec691316c"
+        },
+        "behavior_events": {
+          "count": 1,
+          "sha256": "f6d82e569897d0dc930581cd2e508855fe8074134b4f086e05252d40a1ce72b2"
+        },
+        "brands": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "cart_events": {
+          "count": 1,
+          "sha256": "3ead3c1074173fb4b498d57b1c0fa95a68f460542c6a7662dc55ed19ded6a163"
+        },
+        "carts": {
+          "count": 1,
+          "sha256": "82138179ed3e66da071b7517ea18ebf3d3b6dceaa85cf58d7ba699cc6882e8d0"
+        },
+        "categories": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "cross_category_rules": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "first_member_recommendations": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "order_items": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "orders": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "product_embeddings": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "product_purchase_sequences": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "product_repurchase_stats": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "product_reviews": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "product_skus": {
+          "count": 1,
+          "sha256": "a475e8cd01eb00f5c2a82e438e5ed6fd1d43fe84899d7137da4236624b3d5016"
+        },
+        "products": {
+          "count": 1,
+          "sha256": "07c7e0af747b108e99a91ddd981e72e8aa75a6074b64630a0d1546d43d34406b"
+        },
+        "recommendation_logs": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "recommendation_pools": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "recommendations": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "request_limits": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "schema_migrations": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "system_configs": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "user_events": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "user_preference_scores": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "users": {
+          "count": 1,
+          "sha256": "209a5ccf7b934331dd7c27347b1b11cb83c83a73d8e6cf9bf7a71e98716e29b7"
+        }
+      },
+      "after_recovery": {
+        "ai_insights": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "ai_requests": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "ai_usage": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "auth_sessions": {
+          "count": 1,
+          "sha256": "6e7a714a7baca72e23bde57fab159b741679ee675e48e04682726d8ec691316c"
+        },
+        "behavior_events": {
+          "count": 2,
+          "sha256": "0878473ada99bb12804777e4dcff08474ab35c4765fdf67f2d3096c1841d08c8"
+        },
+        "brands": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "cart_events": {
+          "count": 2,
+          "sha256": "987d808be105c21f0f1d507cdef057b318d217a507ec3dde454065d6363c38c3"
+        },
+        "carts": {
+          "count": 1,
+          "sha256": "3dcbf3b601cf0dfa6aec33f2198696e1635b756cd9f083f6b346b9781996f676"
+        },
+        "categories": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "cross_category_rules": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "first_member_recommendations": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "order_items": {
+          "count": 1,
+          "sha256": "d2abae953cbd6bb3860ed22d8a58b743a138f152ff9ccd7c2e525a92f4e4090b"
+        },
+        "orders": {
+          "count": 1,
+          "sha256": "e7797c441c840a50cda55e465ce8daac48a5bccf212e43388dd0d138c286711d"
+        },
+        "product_embeddings": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "product_purchase_sequences": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "product_repurchase_stats": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "product_reviews": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "product_skus": {
+          "count": 1,
+          "sha256": "37fbf08c46c840fc40c0413dfb9129e5ec48c73d62a04f0a6e2c7bddcbcb732d"
+        },
+        "products": {
+          "count": 1,
+          "sha256": "07c7e0af747b108e99a91ddd981e72e8aa75a6074b64630a0d1546d43d34406b"
+        },
+        "recommendation_logs": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "recommendation_pools": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "recommendations": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "request_limits": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "schema_migrations": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "system_configs": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "user_events": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "user_preference_scores": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "users": {
+          "count": 1,
+          "sha256": "ec8662e3adac661c67814322c5bb605024424f26cd5b4c3b643125237c168108"
+        }
+      },
+      "unrelated_collections_unchanged": true,
+      "validator_scope": "indexes only; not strict schema acceptance"
+    },
+    {
+      "case": "socket_reset",
+      "status": "passed",
+      "fault_http": 503,
+      "fault_callbacks": 1,
+      "fault_spec": {
+        "failCommands": [
+          "insert"
+        ],
+        "closeConnection": true
+      },
+      "failed_commands": 1,
+      "pool_clears": 1,
+      "commit_attempts": 0,
+      "rollback_equal": true,
+      "post_abort_snapshot_count": 0,
+      "post_abort_snapshots": [],
+      "driver_commands": [
+        {
+          "command": "update",
+          "txn": 4,
+          "start": false
+        },
+        {
+          "command": "insert",
+          "txn": 4,
+          "start": false
+        },
+        {
+          "failed": "insert",
+          "code": null
+        },
+        {
+          "command": "abortTransaction",
+          "txn": 4,
+          "start": false
+        },
+        {
+          "succeeded": "abortTransaction"
+        }
+      ],
+      "request_elapsed_seconds": 0.172,
+      "fault_mode": "sustained server fault; bounded request",
+      "unknown_commit_retried_same_transaction": false,
+      "primary_changed": false,
+      "primary_before": null,
+      "primary_after": null,
+      "recovery_http": 200,
+      "recovery_attempt_http": [
+        200
+      ],
+      "replay_http": 200,
+      "service_failures": [
+        {
+          "type": "AutoReconnect",
+          "code": null,
+          "code_name": null,
+          "timeout": false,
+          "transient": true,
+          "unknown_commit": false
+        }
+      ],
+      "successful_aborts": 2,
+      "replay_same_order": true,
+      "conflicting_replay_http": 409,
+      "stock_decrements": 1,
+      "collection_count": 28,
+      "before": {
+        "ai_insights": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "ai_requests": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "ai_usage": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "auth_sessions": {
+          "count": 1,
+          "sha256": "518afb0914f6567de92918f4c8393ceaa7c8479a35bf5ce59b056b2e0defa122"
+        },
+        "behavior_events": {
+          "count": 1,
+          "sha256": "8aa4a52f64f0672522d881bdd0f624919b2fd100789fb35cdf1d50fce66699cc"
+        },
+        "brands": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "cart_events": {
+          "count": 1,
+          "sha256": "3a2ac84836533c4f0446086f1a895954082abc7af320c65cd8fae3af721fbbbc"
+        },
+        "carts": {
+          "count": 1,
+          "sha256": "024a20c78dcdadc65d97258cb37a5ed7cec79c24db47aa51f2e8e10f5216f58e"
+        },
+        "categories": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "cross_category_rules": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "first_member_recommendations": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "order_items": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "orders": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "product_embeddings": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "product_purchase_sequences": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "product_repurchase_stats": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "product_reviews": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "product_skus": {
+          "count": 1,
+          "sha256": "4c24aded36e20e80a76713a22a924f2fb77dee4e1129c13ef231d6cd81b8ab60"
+        },
+        "products": {
+          "count": 1,
+          "sha256": "e1190560514798287bb9572f93c082433490840caa0d606b747f21a36b90d64b"
+        },
+        "recommendation_logs": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "recommendation_pools": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "recommendations": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "request_limits": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "schema_migrations": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "system_configs": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "user_events": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "user_preference_scores": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "users": {
+          "count": 1,
+          "sha256": "3437202404eb6e92c3c71cf4d700dc80c5200b07885386b746f558e568abbafc"
+        }
+      },
+      "after_fault": {
+        "ai_insights": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "ai_requests": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "ai_usage": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "auth_sessions": {
+          "count": 1,
+          "sha256": "518afb0914f6567de92918f4c8393ceaa7c8479a35bf5ce59b056b2e0defa122"
+        },
+        "behavior_events": {
+          "count": 1,
+          "sha256": "8aa4a52f64f0672522d881bdd0f624919b2fd100789fb35cdf1d50fce66699cc"
+        },
+        "brands": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "cart_events": {
+          "count": 1,
+          "sha256": "3a2ac84836533c4f0446086f1a895954082abc7af320c65cd8fae3af721fbbbc"
+        },
+        "carts": {
+          "count": 1,
+          "sha256": "024a20c78dcdadc65d97258cb37a5ed7cec79c24db47aa51f2e8e10f5216f58e"
+        },
+        "categories": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "cross_category_rules": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "first_member_recommendations": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "order_items": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "orders": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "product_embeddings": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "product_purchase_sequences": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "product_repurchase_stats": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "product_reviews": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "product_skus": {
+          "count": 1,
+          "sha256": "4c24aded36e20e80a76713a22a924f2fb77dee4e1129c13ef231d6cd81b8ab60"
+        },
+        "products": {
+          "count": 1,
+          "sha256": "e1190560514798287bb9572f93c082433490840caa0d606b747f21a36b90d64b"
+        },
+        "recommendation_logs": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "recommendation_pools": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "recommendations": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "request_limits": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "schema_migrations": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "system_configs": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "user_events": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "user_preference_scores": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "users": {
+          "count": 1,
+          "sha256": "3437202404eb6e92c3c71cf4d700dc80c5200b07885386b746f558e568abbafc"
+        }
+      },
+      "after_recovery": {
+        "ai_insights": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "ai_requests": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "ai_usage": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "auth_sessions": {
+          "count": 1,
+          "sha256": "518afb0914f6567de92918f4c8393ceaa7c8479a35bf5ce59b056b2e0defa122"
+        },
+        "behavior_events": {
+          "count": 2,
+          "sha256": "1520bbc62096166c87a50a8bb87f1fb0b0dd998772d142c1e54a40a764c3571d"
+        },
+        "brands": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "cart_events": {
+          "count": 2,
+          "sha256": "7058dba05cebb4eb8bb8024a5638083fb26897395361939a35046761811584bd"
+        },
+        "carts": {
+          "count": 1,
+          "sha256": "43079f2488e8ecae509345a48d158459fe90333c8d4bf8395905631320dfad28"
+        },
+        "categories": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "cross_category_rules": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "first_member_recommendations": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "order_items": {
+          "count": 1,
+          "sha256": "882790a02c701d6bf233812030e227c8272485e99ae28cc599d0026d034b427b"
+        },
+        "orders": {
+          "count": 1,
+          "sha256": "71f3f7c00a885db1c90ffa38e94d76176f18dcff56450ae54bdee5623f597b73"
+        },
+        "product_embeddings": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "product_purchase_sequences": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "product_repurchase_stats": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "product_reviews": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "product_skus": {
+          "count": 1,
+          "sha256": "7ded628eaf47a86bad730bc7180efd94017135f0a16db4adf2a2c3f30de73a97"
+        },
+        "products": {
+          "count": 1,
+          "sha256": "e1190560514798287bb9572f93c082433490840caa0d606b747f21a36b90d64b"
+        },
+        "recommendation_logs": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "recommendation_pools": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "recommendations": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "request_limits": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "schema_migrations": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "system_configs": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "user_events": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "user_preference_scores": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "users": {
+          "count": 1,
+          "sha256": "f53295c0f0a492dde3b03e7d2e13377eb0cf42e7f84197341ad3fa2a4abc6a82"
+        }
+      },
+      "unrelated_collections_unchanged": true,
+      "validator_scope": "indexes only; not strict schema acceptance"
+    },
+    {
+      "case": "write_conflict",
+      "status": "passed",
+      "fault_http": 503,
+      "fault_callbacks": 6,
+      "fault_spec": {
+        "failCommands": [
+          "insert"
+        ],
+        "errorCode": 112,
+        "errorLabels": [
+          "TransientTransactionError"
+        ],
+        "blockConnection": true,
+        "blockTimeMS": 100
+      },
+      "failed_commands": 6,
+      "pool_clears": 0,
+      "commit_attempts": 0,
+      "rollback_equal": true,
+      "post_abort_snapshot_count": 5,
+      "post_abort_snapshots": [
+        {
+          "ai_insights": {
+            "count": 0,
+            "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          "ai_requests": {
+            "count": 0,
+            "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          "ai_usage": {
+            "count": 0,
+            "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          "auth_sessions": {
+            "count": 1,
+            "sha256": "118aed680bf11cbb93f41f0761a185f806bbdefb16553b888183fb3f6c999830"
+          },
+          "behavior_events": {
+            "count": 1,
+            "sha256": "9c5e64643f2b283329028de5652c9bdcd175e9e0b90363ed30ee18653db979e8"
+          },
+          "brands": {
+            "count": 0,
+            "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          "cart_events": {
+            "count": 1,
+            "sha256": "8bdb68ca592e9c5271d1404ac81f678052adf742e3a412351cb0cdba985db50e"
+          },
+          "carts": {
+            "count": 1,
+            "sha256": "ca9d10bd716c23cd80ce4d780f2220a205784442fca3c3c66140c05ad57da82e"
+          },
+          "categories": {
+            "count": 0,
+            "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          "cross_category_rules": {
+            "count": 0,
+            "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          "first_member_recommendations": {
+            "count": 0,
+            "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          "order_items": {
+            "count": 0,
+            "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          "orders": {
+            "count": 0,
+            "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          "product_embeddings": {
+            "count": 0,
+            "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          "product_purchase_sequences": {
+            "count": 0,
+            "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          "product_repurchase_stats": {
+            "count": 0,
+            "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          "product_reviews": {
+            "count": 0,
+            "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          "product_skus": {
+            "count": 1,
+            "sha256": "1528b336b77c6c70ca1f745ce5aa31480d8c97e3bcd588db2ed5be71ca7a451b"
+          },
+          "products": {
+            "count": 1,
+            "sha256": "b8a2bc045cd5f08cdf5188764185105388d4ef98332a15d7034a590e41ed559c"
+          },
+          "recommendation_logs": {
+            "count": 0,
+            "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          "recommendation_pools": {
+            "count": 0,
+            "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          "recommendations": {
+            "count": 0,
+            "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          "request_limits": {
+            "count": 0,
+            "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          "schema_migrations": {
+            "count": 0,
+            "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          "system_configs": {
+            "count": 0,
+            "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          "user_events": {
+            "count": 0,
+            "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          "user_preference_scores": {
+            "count": 0,
+            "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          "users": {
+            "count": 1,
+            "sha256": "c00f1082905d6ce2e2b777b4239a58ddd2184f69989f36e17c7b6170538565cb"
+          }
+        },
+        {
+          "ai_insights": {
+            "count": 0,
+            "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          "ai_requests": {
+            "count": 0,
+            "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          "ai_usage": {
+            "count": 0,
+            "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          "auth_sessions": {
+            "count": 1,
+            "sha256": "118aed680bf11cbb93f41f0761a185f806bbdefb16553b888183fb3f6c999830"
+          },
+          "behavior_events": {
+            "count": 1,
+            "sha256": "9c5e64643f2b283329028de5652c9bdcd175e9e0b90363ed30ee18653db979e8"
+          },
+          "brands": {
+            "count": 0,
+            "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          "cart_events": {
+            "count": 1,
+            "sha256": "8bdb68ca592e9c5271d1404ac81f678052adf742e3a412351cb0cdba985db50e"
+          },
+          "carts": {
+            "count": 1,
+            "sha256": "ca9d10bd716c23cd80ce4d780f2220a205784442fca3c3c66140c05ad57da82e"
+          },
+          "categories": {
+            "count": 0,
+            "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          "cross_category_rules": {
+            "count": 0,
+            "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          "first_member_recommendations": {
+            "count": 0,
+            "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          "order_items": {
+            "count": 0,
+            "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          "orders": {
+            "count": 0,
+            "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          "product_embeddings": {
+            "count": 0,
+            "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          "product_purchase_sequences": {
+            "count": 0,
+            "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          "product_repurchase_stats": {
+            "count": 0,
+            "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          "product_reviews": {
+            "count": 0,
+            "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          "product_skus": {
+            "count": 1,
+            "sha256": "1528b336b77c6c70ca1f745ce5aa31480d8c97e3bcd588db2ed5be71ca7a451b"
+          },
+          "products": {
+            "count": 1,
+            "sha256": "b8a2bc045cd5f08cdf5188764185105388d4ef98332a15d7034a590e41ed559c"
+          },
+          "recommendation_logs": {
+            "count": 0,
+            "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          "recommendation_pools": {
+            "count": 0,
+            "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          "recommendations": {
+            "count": 0,
+            "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          "request_limits": {
+            "count": 0,
+            "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          "schema_migrations": {
+            "count": 0,
+            "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          "system_configs": {
+            "count": 0,
+            "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          "user_events": {
+            "count": 0,
+            "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          "user_preference_scores": {
+            "count": 0,
+            "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+          },
+          "users": {
+            "count": 1,
+            "sha256": "c00f1082905d6ce2e2b777b4239a58ddd2184f69989f36e17c7b6170538565cb"
+          }
+        }
+      ],
+      "driver_commands": [
+        {
+          "command": "update",
+          "txn": 4,
+          "start": false
+        },
+        {
+          "command": "insert",
+          "txn": 4,
+          "start": false
+        },
+        {
+          "failed": "insert",
+          "code": 112
+        },
+        {
+          "command": "abortTransaction",
+          "txn": 4,
+          "start": false
+        },
+        {
+          "succeeded": "abortTransaction"
+        },
+        {
+          "command": "update",
+          "txn": 5,
+          "start": false
+        },
+        {
+          "command": "insert",
+          "txn": 5,
+          "start": false
+        },
+        {
+          "failed": "insert",
+          "code": 112
+        },
+        {
+          "command": "abortTransaction",
+          "txn": 5,
+          "start": false
+        },
+        {
+          "succeeded": "abortTransaction"
+        },
+        {
+          "command": "update",
+          "txn": 6,
+          "start": false
+        },
+        {
+          "command": "insert",
+          "txn": 6,
+          "start": false
+        },
+        {
+          "failed": "insert",
+          "code": 112
+        },
+        {
+          "command": "abortTransaction",
+          "txn": 6,
+          "start": false
+        },
+        {
+          "succeeded": "abortTransaction"
+        },
+        {
+          "command": "update",
+          "txn": 7,
+          "start": false
+        },
+        {
+          "command": "insert",
+          "txn": 7,
+          "start": false
+        },
+        {
+          "failed": "insert",
+          "code": 112
+        },
+        {
+          "command": "abortTransaction",
+          "txn": 7,
+          "start": false
+        },
+        {
+          "succeeded": "abortTransaction"
+        },
+        {
+          "command": "update",
+          "txn": 8,
+          "start": false
+        },
+        {
+          "command": "insert",
+          "txn": 8,
+          "start": false
+        },
+        {
+          "failed": "insert",
+          "code": 112
+        },
+        {
+          "command": "abortTransaction",
+          "txn": 8,
+          "start": false
+        },
+        {
+          "succeeded": "abortTransaction"
+        },
+        {
+          "command": "update",
+          "txn": 9,
+          "start": false
+        },
+        {
+          "command": "insert",
+          "txn": 9,
+          "start": false
+        },
+        {
+          "failed": "insert",
+          "code": 112
+        },
+        {
+          "command": "abortTransaction",
+          "txn": 9,
+          "start": false
+        },
+        {
+          "succeeded": "abortTransaction"
+        }
+      ],
+      "request_elapsed_seconds": 1.5,
+      "fault_mode": "sustained server fault; bounded request",
+      "unknown_commit_retried_same_transaction": false,
+      "primary_changed": false,
+      "primary_before": null,
+      "primary_after": null,
+      "recovery_http": 200,
+      "recovery_attempt_http": [
+        200
+      ],
+      "replay_http": 200,
+      "service_failures": [
+        {
+          "type": "OperationFailure",
+          "code": 112,
+          "code_name": "WriteConflict",
+          "timeout": false,
+          "transient": true,
+          "unknown_commit": false
+        }
+      ],
+      "successful_aborts": 7,
+      "replay_same_order": true,
+      "conflicting_replay_http": 409,
+      "stock_decrements": 1,
+      "collection_count": 28,
+      "before": {
+        "ai_insights": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "ai_requests": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "ai_usage": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "auth_sessions": {
+          "count": 1,
+          "sha256": "118aed680bf11cbb93f41f0761a185f806bbdefb16553b888183fb3f6c999830"
+        },
+        "behavior_events": {
+          "count": 1,
+          "sha256": "9c5e64643f2b283329028de5652c9bdcd175e9e0b90363ed30ee18653db979e8"
+        },
+        "brands": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "cart_events": {
+          "count": 1,
+          "sha256": "8bdb68ca592e9c5271d1404ac81f678052adf742e3a412351cb0cdba985db50e"
+        },
+        "carts": {
+          "count": 1,
+          "sha256": "ca9d10bd716c23cd80ce4d780f2220a205784442fca3c3c66140c05ad57da82e"
+        },
+        "categories": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "cross_category_rules": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "first_member_recommendations": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "order_items": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "orders": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "product_embeddings": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "product_purchase_sequences": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "product_repurchase_stats": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "product_reviews": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "product_skus": {
+          "count": 1,
+          "sha256": "1528b336b77c6c70ca1f745ce5aa31480d8c97e3bcd588db2ed5be71ca7a451b"
+        },
+        "products": {
+          "count": 1,
+          "sha256": "b8a2bc045cd5f08cdf5188764185105388d4ef98332a15d7034a590e41ed559c"
+        },
+        "recommendation_logs": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "recommendation_pools": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "recommendations": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "request_limits": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "schema_migrations": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "system_configs": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "user_events": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "user_preference_scores": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "users": {
+          "count": 1,
+          "sha256": "c00f1082905d6ce2e2b777b4239a58ddd2184f69989f36e17c7b6170538565cb"
+        }
+      },
+      "after_fault": {
+        "ai_insights": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "ai_requests": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "ai_usage": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "auth_sessions": {
+          "count": 1,
+          "sha256": "118aed680bf11cbb93f41f0761a185f806bbdefb16553b888183fb3f6c999830"
+        },
+        "behavior_events": {
+          "count": 1,
+          "sha256": "9c5e64643f2b283329028de5652c9bdcd175e9e0b90363ed30ee18653db979e8"
+        },
+        "brands": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "cart_events": {
+          "count": 1,
+          "sha256": "8bdb68ca592e9c5271d1404ac81f678052adf742e3a412351cb0cdba985db50e"
+        },
+        "carts": {
+          "count": 1,
+          "sha256": "ca9d10bd716c23cd80ce4d780f2220a205784442fca3c3c66140c05ad57da82e"
+        },
+        "categories": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "cross_category_rules": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "first_member_recommendations": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "order_items": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "orders": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "product_embeddings": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "product_purchase_sequences": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "product_repurchase_stats": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "product_reviews": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "product_skus": {
+          "count": 1,
+          "sha256": "1528b336b77c6c70ca1f745ce5aa31480d8c97e3bcd588db2ed5be71ca7a451b"
+        },
+        "products": {
+          "count": 1,
+          "sha256": "b8a2bc045cd5f08cdf5188764185105388d4ef98332a15d7034a590e41ed559c"
+        },
+        "recommendation_logs": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "recommendation_pools": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "recommendations": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "request_limits": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "schema_migrations": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "system_configs": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "user_events": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "user_preference_scores": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "users": {
+          "count": 1,
+          "sha256": "c00f1082905d6ce2e2b777b4239a58ddd2184f69989f36e17c7b6170538565cb"
+        }
+      },
+      "after_recovery": {
+        "ai_insights": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "ai_requests": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "ai_usage": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "auth_sessions": {
+          "count": 1,
+          "sha256": "118aed680bf11cbb93f41f0761a185f806bbdefb16553b888183fb3f6c999830"
+        },
+        "behavior_events": {
+          "count": 2,
+          "sha256": "236cf30ca81710542438ca624779050284e92ddfd195023a63d0f9b56c807b65"
+        },
+        "brands": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "cart_events": {
+          "count": 2,
+          "sha256": "efe1a3e8ee82a6c172104c4f3abee188acc00f25e0b88ae40d9182c9c40a49eb"
+        },
+        "carts": {
+          "count": 1,
+          "sha256": "8e4b7323a5858f8586324df3b7f315a5a0ff4928a47a8c83fc737a18bfc0bd16"
+        },
+        "categories": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "cross_category_rules": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "first_member_recommendations": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "order_items": {
+          "count": 1,
+          "sha256": "7a1a4d718a98cd416d7fbc024b3ee6bfbb9225fbcda16daae6ed9d1bb7635425"
+        },
+        "orders": {
+          "count": 1,
+          "sha256": "c920c2c53fefcbb78552be506b0765a61064bc7c4046b6699aedae5c7d13fbf4"
+        },
+        "product_embeddings": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "product_purchase_sequences": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "product_repurchase_stats": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "product_reviews": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "product_skus": {
+          "count": 1,
+          "sha256": "13b99d786256c0036b18545c777be8cd37e7ad175ba941bd1c5c3d2ab7bd6730"
+        },
+        "products": {
+          "count": 1,
+          "sha256": "b8a2bc045cd5f08cdf5188764185105388d4ef98332a15d7034a590e41ed559c"
+        },
+        "recommendation_logs": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "recommendation_pools": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "recommendations": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "request_limits": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "schema_migrations": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "system_configs": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "user_events": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "user_preference_scores": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "users": {
+          "count": 1,
+          "sha256": "51c5b34f3cbbb49cb989513dfb9d6179f157bf7a643f047959eaffa5eddc7ac9"
+        }
+      },
+      "unrelated_collections_unchanged": true,
+      "validator_scope": "indexes only; not strict schema acceptance"
+    },
+    {
+      "case": "pool_failure",
+      "status": "passed",
+      "fault_http": 503,
+      "fault_callbacks": 1,
+      "fault_spec": {
+        "failCommands": [
+          "insert"
+        ],
+        "errorCode": 91,
+        "errorLabels": [
+          "TransientTransactionError"
+        ],
+        "blockConnection": true,
+        "blockTimeMS": 100
+      },
+      "failed_commands": 1,
+      "pool_clears": 1,
+      "commit_attempts": 0,
+      "rollback_equal": true,
+      "post_abort_snapshot_count": 0,
+      "post_abort_snapshots": [],
+      "driver_commands": [
+        {
+          "command": "update",
+          "txn": 4,
+          "start": false
+        },
+        {
+          "command": "insert",
+          "txn": 4,
+          "start": false
+        },
+        {
+          "failed": "insert",
+          "code": 91
+        },
+        {
+          "command": "abortTransaction",
+          "txn": 4,
+          "start": false
+        },
+        {
+          "succeeded": "abortTransaction"
+        }
+      ],
+      "request_elapsed_seconds": 0.203,
+      "fault_mode": "sustained server fault; bounded request",
+      "unknown_commit_retried_same_transaction": false,
+      "primary_changed": false,
+      "primary_before": null,
+      "primary_after": null,
+      "recovery_http": 200,
+      "recovery_attempt_http": [
+        200
+      ],
+      "replay_http": 200,
+      "service_failures": [
+        {
+          "type": "NotPrimaryError",
+          "code": null,
+          "code_name": "ShutdownInProgress",
+          "timeout": false,
+          "transient": true,
+          "unknown_commit": false
+        }
+      ],
+      "successful_aborts": 2,
+      "replay_same_order": true,
+      "conflicting_replay_http": 409,
+      "stock_decrements": 1,
+      "collection_count": 28,
+      "before": {
+        "ai_insights": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "ai_requests": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "ai_usage": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "auth_sessions": {
+          "count": 1,
+          "sha256": "18d9d013458f365b658c3011900d3472f509436e2598c7b0d32c7438471cb170"
+        },
+        "behavior_events": {
+          "count": 1,
+          "sha256": "b24686c75dd75cc2868f00f2b3fffb8a8bc5603eca38ab9f0492c500b8bc795f"
+        },
+        "brands": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "cart_events": {
+          "count": 1,
+          "sha256": "4dc6d13d3f04a0e89b92cace972e3f4e4efaba466dd8791ce1fa6d5851f77ff8"
+        },
+        "carts": {
+          "count": 1,
+          "sha256": "fd2aad31286ad153b7f706054193b863bd63dfcc2b821a4a950fae74105d8db1"
+        },
+        "categories": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "cross_category_rules": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "first_member_recommendations": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "order_items": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "orders": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "product_embeddings": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "product_purchase_sequences": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "product_repurchase_stats": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "product_reviews": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "product_skus": {
+          "count": 1,
+          "sha256": "dc4c3ce34cf5667d87f806838c2890b433e7d3f93a10edbed33c0330e25d1dba"
+        },
+        "products": {
+          "count": 1,
+          "sha256": "c9a7ce0046adb979617a883f273a8eab3ce4a58018a8589177acc7eb0ed2775a"
+        },
+        "recommendation_logs": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "recommendation_pools": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "recommendations": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "request_limits": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "schema_migrations": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "system_configs": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "user_events": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "user_preference_scores": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "users": {
+          "count": 1,
+          "sha256": "0853ac4667d21f5e7d6fc7929e9048f5ef483bdaee26c1a381312f99a0432170"
+        }
+      },
+      "after_fault": {
+        "ai_insights": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "ai_requests": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "ai_usage": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "auth_sessions": {
+          "count": 1,
+          "sha256": "18d9d013458f365b658c3011900d3472f509436e2598c7b0d32c7438471cb170"
+        },
+        "behavior_events": {
+          "count": 1,
+          "sha256": "b24686c75dd75cc2868f00f2b3fffb8a8bc5603eca38ab9f0492c500b8bc795f"
+        },
+        "brands": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "cart_events": {
+          "count": 1,
+          "sha256": "4dc6d13d3f04a0e89b92cace972e3f4e4efaba466dd8791ce1fa6d5851f77ff8"
+        },
+        "carts": {
+          "count": 1,
+          "sha256": "fd2aad31286ad153b7f706054193b863bd63dfcc2b821a4a950fae74105d8db1"
+        },
+        "categories": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "cross_category_rules": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "first_member_recommendations": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "order_items": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "orders": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "product_embeddings": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "product_purchase_sequences": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "product_repurchase_stats": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "product_reviews": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "product_skus": {
+          "count": 1,
+          "sha256": "dc4c3ce34cf5667d87f806838c2890b433e7d3f93a10edbed33c0330e25d1dba"
+        },
+        "products": {
+          "count": 1,
+          "sha256": "c9a7ce0046adb979617a883f273a8eab3ce4a58018a8589177acc7eb0ed2775a"
+        },
+        "recommendation_logs": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "recommendation_pools": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "recommendations": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "request_limits": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "schema_migrations": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "system_configs": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "user_events": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "user_preference_scores": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "users": {
+          "count": 1,
+          "sha256": "0853ac4667d21f5e7d6fc7929e9048f5ef483bdaee26c1a381312f99a0432170"
+        }
+      },
+      "after_recovery": {
+        "ai_insights": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "ai_requests": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "ai_usage": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "auth_sessions": {
+          "count": 1,
+          "sha256": "18d9d013458f365b658c3011900d3472f509436e2598c7b0d32c7438471cb170"
+        },
+        "behavior_events": {
+          "count": 2,
+          "sha256": "97136bfc5730d3ec2532da4f2e2dcb8ea7fd00c65b9ae4c5e9679e4206f65013"
+        },
+        "brands": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "cart_events": {
+          "count": 2,
+          "sha256": "a6c7d7af0ed77916f6cd8c9c1d508ee04c4f013cd1b83bb88fd0c8da83a85923"
+        },
+        "carts": {
+          "count": 1,
+          "sha256": "bf644869c4c2dc4259f1285808666e4c6a949e08562c4d853d222973ce3f2274"
+        },
+        "categories": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "cross_category_rules": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "first_member_recommendations": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "order_items": {
+          "count": 1,
+          "sha256": "7942f075a34c62e0b867b0677a3e2160aa1196ef4974e31b4936d93655f19308"
+        },
+        "orders": {
+          "count": 1,
+          "sha256": "0c5c6aca47b66781c60b84a523c02975535a3c6defde053148e5ff857f9d7b62"
+        },
+        "product_embeddings": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "product_purchase_sequences": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "product_repurchase_stats": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "product_reviews": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "product_skus": {
+          "count": 1,
+          "sha256": "30a2979d10791e169c057455657cfd123308dfbb963132547999ab53fae240d5"
+        },
+        "products": {
+          "count": 1,
+          "sha256": "c9a7ce0046adb979617a883f273a8eab3ce4a58018a8589177acc7eb0ed2775a"
+        },
+        "recommendation_logs": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "recommendation_pools": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "recommendations": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "request_limits": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "schema_migrations": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "system_configs": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "user_events": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "user_preference_scores": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "users": {
+          "count": 1,
+          "sha256": "7ffa4f7bc9ea1a697c1878feeddb0a2c350c2e74c8542dd386ccf5dce41a1729"
+        }
+      },
+      "unrelated_collections_unchanged": true,
+      "validator_scope": "indexes only; not strict schema acceptance"
+    },
+    {
+      "case": "commit_unknown",
+      "status": "passed",
+      "fault_http": 503,
+      "fault_callbacks": 1,
+      "fault_spec": {
+        "failCommands": [
+          "commitTransaction"
+        ],
+        "writeConcernError": {
+          "code": 91,
+          "codeName": "ShutdownInProgress",
+          "errmsg": "n06 local commit acknowledgement failure"
+        },
+        "errorLabels": [
+          "UnknownTransactionCommitResult"
+        ]
+      },
+      "failed_commands": 4,
+      "pool_clears": 5,
+      "commit_attempts": 4,
+      "rollback_equal": null,
+      "post_abort_snapshot_count": 0,
+      "post_abort_snapshots": [],
+      "driver_commands": [
+        {
+          "command": "update",
+          "txn": 4,
+          "start": false
+        },
+        {
+          "command": "insert",
+          "txn": 4,
+          "start": false
+        },
+        {
+          "command": "insert",
+          "txn": 4,
+          "start": false
+        },
+        {
+          "command": "insert",
+          "txn": 4,
+          "start": false
+        },
+        {
+          "command": "insert",
+          "txn": 4,
+          "start": false
+        },
+        {
+          "command": "update",
+          "txn": 4,
+          "start": false
+        },
+        {
+          "command": "update",
+          "txn": 4,
+          "start": false
+        },
+        {
+          "command": "insert",
+          "txn": 4,
+          "start": false
+        },
+        {
+          "command": "commitTransaction",
+          "txn": 4,
+          "start": false
+        },
+        {
+          "failed": "commitTransaction",
+          "code": 91
+        },
+        {
+          "command": "commitTransaction",
+          "txn": 4,
+          "start": false
+        },
+        {
+          "failed": "commitTransaction",
+          "code": 91
+        },
+        {
+          "command": "commitTransaction",
+          "txn": 4,
+          "start": false
+        },
+        {
+          "failed": "commitTransaction",
+          "code": 91
+        },
+        {
+          "command": "commitTransaction",
+          "txn": 4,
+          "start": false
+        },
+        {
+          "failed": "commitTransaction",
+          "code": 91
+        }
+      ],
+      "request_elapsed_seconds": 1.625,
+      "fault_mode": "sustained server fault; bounded request",
+      "unknown_commit_retried_same_transaction": true,
+      "primary_changed": false,
+      "primary_before": null,
+      "primary_after": null,
+      "recovery_http": 200,
+      "recovery_attempt_http": [
+        200
+      ],
+      "replay_http": 200,
+      "service_failures": [
+        {
+          "type": "NetworkTimeout",
+          "code": null,
+          "code_name": null,
+          "timeout": true,
+          "transient": false,
+          "unknown_commit": true
+        }
+      ],
+      "successful_aborts": 1,
+      "replay_same_order": true,
+      "conflicting_replay_http": 409,
+      "stock_decrements": 1,
+      "collection_count": 28,
+      "before": {
+        "ai_insights": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "ai_requests": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "ai_usage": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "auth_sessions": {
+          "count": 1,
+          "sha256": "1564c517ec6b7252e7b55e2da4feded1bc384c2a4c1e9e09e0d9d920c86bb9cf"
+        },
+        "behavior_events": {
+          "count": 1,
+          "sha256": "8a484a0cef703c21ab974b96d4f87170d78e561c93e73f589fb081184a83e66a"
+        },
+        "brands": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "cart_events": {
+          "count": 1,
+          "sha256": "6a35a136556b3580678cd74bb1a87a55725f94c91b71a62cc41a1ae9cb717bd0"
+        },
+        "carts": {
+          "count": 1,
+          "sha256": "35e75362af29d5d16e889a9dcbf55c82e7bbf82e4fb61de0ca76671d3f2802a4"
+        },
+        "categories": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "cross_category_rules": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "first_member_recommendations": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "order_items": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "orders": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "product_embeddings": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "product_purchase_sequences": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "product_repurchase_stats": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "product_reviews": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "product_skus": {
+          "count": 1,
+          "sha256": "80a6f0d0e08ddd92f42f469a365a4ccc080bdffaa026b1ca64ce5dc9db2cc1ea"
+        },
+        "products": {
+          "count": 1,
+          "sha256": "b7f1414d00591aa7c6a648289f93d43c63ec199ccbfdd56c31a1e8f2ee602657"
+        },
+        "recommendation_logs": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "recommendation_pools": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "recommendations": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "request_limits": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "schema_migrations": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "system_configs": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "user_events": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "user_preference_scores": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "users": {
+          "count": 1,
+          "sha256": "be15b9efcdcbe000accc59b0d19f221f745184200e242b1e8df6f1189c37bc39"
+        }
+      },
+      "after_fault": {
+        "ai_insights": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "ai_requests": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "ai_usage": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "auth_sessions": {
+          "count": 1,
+          "sha256": "1564c517ec6b7252e7b55e2da4feded1bc384c2a4c1e9e09e0d9d920c86bb9cf"
+        },
+        "behavior_events": {
+          "count": 2,
+          "sha256": "2d80211fb7ac8cb94242aa5ee2cd6dd591e40b608c1b6b07308e886cf2bc3c94"
+        },
+        "brands": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "cart_events": {
+          "count": 2,
+          "sha256": "b5551993e4c430721db83a8a3861612528d43b4f7e729b0f09ce75085d53346d"
+        },
+        "carts": {
+          "count": 1,
+          "sha256": "fc0a6ef6ac3049f614642fde0c224b41c05ddd31a584e000d8aa1a1f755787f2"
+        },
+        "categories": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "cross_category_rules": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "first_member_recommendations": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "order_items": {
+          "count": 1,
+          "sha256": "947b8dcab0702b0f445bd0f0c5e1b791d7c816ecd0e5945be854e5d7e4087e9c"
+        },
+        "orders": {
+          "count": 1,
+          "sha256": "fb5e6d6e14e76662a6ecd52edae9c38c5e268e521da22c075be08366433cd6ba"
+        },
+        "product_embeddings": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "product_purchase_sequences": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "product_repurchase_stats": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "product_reviews": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "product_skus": {
+          "count": 1,
+          "sha256": "1712dfc0dc78427f3ba44c0342c0c583207a4c8ce41b2b317a8a71a52c41afae"
+        },
+        "products": {
+          "count": 1,
+          "sha256": "b7f1414d00591aa7c6a648289f93d43c63ec199ccbfdd56c31a1e8f2ee602657"
+        },
+        "recommendation_logs": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "recommendation_pools": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "recommendations": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "request_limits": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "schema_migrations": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "system_configs": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "user_events": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "user_preference_scores": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "users": {
+          "count": 1,
+          "sha256": "f902a687f903404701b3132c4bcd35ff3d5d04bd5b6cdcdeaaf42603e713a5ea"
+        }
+      },
+      "after_recovery": {
+        "ai_insights": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "ai_requests": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "ai_usage": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "auth_sessions": {
+          "count": 1,
+          "sha256": "1564c517ec6b7252e7b55e2da4feded1bc384c2a4c1e9e09e0d9d920c86bb9cf"
+        },
+        "behavior_events": {
+          "count": 2,
+          "sha256": "2d80211fb7ac8cb94242aa5ee2cd6dd591e40b608c1b6b07308e886cf2bc3c94"
+        },
+        "brands": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "cart_events": {
+          "count": 2,
+          "sha256": "b5551993e4c430721db83a8a3861612528d43b4f7e729b0f09ce75085d53346d"
+        },
+        "carts": {
+          "count": 1,
+          "sha256": "fc0a6ef6ac3049f614642fde0c224b41c05ddd31a584e000d8aa1a1f755787f2"
+        },
+        "categories": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "cross_category_rules": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "first_member_recommendations": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "order_items": {
+          "count": 1,
+          "sha256": "947b8dcab0702b0f445bd0f0c5e1b791d7c816ecd0e5945be854e5d7e4087e9c"
+        },
+        "orders": {
+          "count": 1,
+          "sha256": "fb5e6d6e14e76662a6ecd52edae9c38c5e268e521da22c075be08366433cd6ba"
+        },
+        "product_embeddings": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "product_purchase_sequences": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "product_repurchase_stats": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "product_reviews": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "product_skus": {
+          "count": 1,
+          "sha256": "1712dfc0dc78427f3ba44c0342c0c583207a4c8ce41b2b317a8a71a52c41afae"
+        },
+        "products": {
+          "count": 1,
+          "sha256": "b7f1414d00591aa7c6a648289f93d43c63ec199ccbfdd56c31a1e8f2ee602657"
+        },
+        "recommendation_logs": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "recommendation_pools": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "recommendations": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "request_limits": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "schema_migrations": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "system_configs": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "user_events": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "user_preference_scores": {
+          "count": 0,
+          "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+        },
+        "users": {
+          "count": 1,
+          "sha256": "75466fae92d48e4da91eab8961dd910669e12f4b9ac3e6ecebd0b800e0bac35f"
+        }
+      },
+      "unrelated_collections_unchanged": true,
+      "validator_scope": "indexes only; not strict schema acceptance"
+    }
+  ],
+  "processes_stopped": true,
+  "fixtures_removed": true,
+  "source_sha256": "993d55c204daf04963901a119434244ed0d29659fc7c777a10bfdddc56c64e85",
+  "cleanup_method": "owned_process_stop_and_data_path_removal",
+  "local_log_directory": "C:\\Users\\USER\\AppData\\Local\\Temp\\ren-n06-local-odko29qn"
+}

@@ -45,7 +45,9 @@ class Trace(monitoring.CommandListener, monitoring.ConnectionPoolListener):
                     'start': bool(event.command.get('startTransaction'))})
 
     def succeeded(self, event):
-        pass
+        if event.command_name == 'abortTransaction':
+            with self.lock:
+                self.rows.append({'succeeded':'abortTransaction'})
 
     def failed(self, event):
         with self.lock:
@@ -148,17 +150,18 @@ class Cluster:
         for node in self.nodes:
             node.admin.command({'configureFailPoint': 'failCommand', 'mode': mode, **({'data': data} if data else {})})
 
-    def close(self):
+    def close(self, *, skip_database_drop=False):
         try:
             for node in self.nodes:
                 try: node.admin.command({'configureFailPoint': 'failCommand', 'mode': 'off'})
                 except PyMongoError: pass
             if self.client is not None:
-                for name in self.names:
-                    owned_database(name, self.run_id)
-                    self.client.drop_database(name)
-                require(not any(n.startswith('ren_n06_'+self.run_id+'_') for n in self.client.list_database_names()),
-                        'Fixture cleanup incomplete')
+                if not skip_database_drop:
+                    for name in self.names:
+                        owned_database(name, self.run_id)
+                        self.client.drop_database(name)
+                    require(not any(n.startswith('ren_n06_'+self.run_id+'_') for n in self.client.list_database_names()),
+                            'Fixture cleanup incomplete')
                 self.client.close()
         finally:
             for node in self.nodes: node.close()
@@ -175,8 +178,8 @@ class Cluster:
         self.cleaned = True
 
 
-def one_case(cluster, case, names, create_app, CartService):
-    name = 'ren_n06_'+cluster.run_id+'_'+case
+def one_case(cluster, case, names, create_app, CartService, *, sustained=False, recovery_seconds=15):
+    name = 'ren_n06_'+cluster.run_id+('_sustained_' if sustained else '_')+case
     owned_database(name, cluster.run_id)
     cluster.names.append(name)
     control = cluster.client[name]
@@ -203,7 +206,8 @@ def one_case(cluster, case, names, create_app, CartService):
         serverSelectionTimeoutMS=2000, socketTimeoutMS=350, heartbeatFrequencyMS=500,
         maxPoolSize=3, waitQueueTimeoutMS=500)
     db = client[name]
-    state = {'callbacks':0,'stepdown':False,'watch_fault':False,'rollback_witnesses':[]}
+    state = {'callbacks':0,'stepdown':False,'watch_fault':False,
+             'rollback_witnesses':[],'post_abort_count':0,'service_failures':[]}
 
     class Observed(CartService):
         def _run(self, callback):
@@ -211,10 +215,20 @@ def one_case(cluster, case, names, create_app, CartService):
                 if state['watch_fault'] and state['callbacks']:
                     witness = snapshot(control)
                     require(witness == before, 'Retry began with partial writes')
-                    state['rollback_witnesses'].append(witness)
+                    state['post_abort_count'] += 1
+                    if len(state['rollback_witnesses']) < 2:
+                        state['rollback_witnesses'].append(witness)
                 state['callbacks'] += 1
                 return callback(session)
-            return super()._run(recorded)
+            try:
+                return super()._run(recorded)
+            except PyMongoError as error:
+                state['service_failures'].append({'type':type(error).__name__,
+                    'code':getattr(error,'code',None),
+                    'code_name':(getattr(error,'details',None) or {}).get('codeName'),
+                    'timeout':error.timeout,'transient':error.has_error_label('TransientTransactionError'),
+                    'unknown_commit':error.has_error_label('UnknownTransactionCommitResult')})
+                raise
 
         def _behavior(self, *args, **kwargs):
             if case == 'primary_change' and args[3] == 'PURCHASE' and not state['stepdown']:
@@ -260,14 +274,15 @@ def one_case(cluster, case, names, create_app, CartService):
         before = snapshot(control)
         trace.rows.clear(); trace.cleared = 0; state['callbacks'] = 0
         config = {'failCommands':['insert'],'appName':app_name}
-        if case == 'network_timeout': config.update(blockConnection=True,blockTimeMS=1200)
+        if case == 'network_timeout':
+            config.update(blockConnection=True,blockTimeMS=1200 if sustained else 2500)
         elif case == 'socket_reset': config.update(closeConnection=True)
         elif case == 'write_conflict': config.update(errorCode=112,errorLabels=['TransientTransactionError'],blockConnection=True,blockTimeMS=100)
         elif case == 'pool_failure': config.update(errorCode=91,errorLabels=['TransientTransactionError'],blockConnection=True,blockTimeMS=100)
         elif case == 'commit_unknown': config.update(failCommands=['commitTransaction'],writeConcernError={
             'code':91,'codeName':'ShutdownInProgress','errmsg':'n06 local commit acknowledgement failure'},
             errorLabels=['UnknownTransactionCommitResult'])
-        if case != 'primary_change': cluster.failpoint({'times':1},config)
+        if case != 'primary_change': cluster.failpoint('alwaysOn' if sustained else {'times':1},config)
         state['watch_fault'] = True
         started = time.monotonic()
         try:
@@ -276,14 +291,36 @@ def one_case(cluster, case, names, create_app, CartService):
             state['watch_fault'] = False
             cluster.failpoint('off')
         elapsed = time.monotonic() - started
-        require(elapsed < 30, 'Single fault exceeded local observation budget')
+        require(elapsed < 3.0, 'Fault exceeded three-second local observation budget')
         attempts = state['callbacks']
         rows = list(trace.rows)
         cleared = trace.cleared
-        if case not in {'commit_unknown','primary_change'}:
-            require(failed.status_code==200,'Single-fault automatic retry failed: '+case)
+        if sustained:
+            require(failed.status_code==503,'Sustained fault must return retryable 503: '+case)
+            require(attempts < 40, 'Sustained fault caused an unbounded callback loop')
             after_fault = snapshot(control)
-            require(attempts >= 2 and state['rollback_witnesses'], 'No post-abort retry snapshot')
+            if case != 'commit_unknown':
+                require(after_fault == before, 'Sustained fault leaked partial transaction')
+                # A network timeout may end the request without a retry label.
+                # Either path is safe if the full transaction was rolled back.
+                if attempts > 1:
+                    require(state['post_abort_count'] > 0, 'Retry lacked post-abort snapshot')
+            else:
+                require(attempts == 1, 'Unknown commit must not replay callback')
+                require(sum(r.get('command')=='commitTransaction' for r in rows) >= 2,
+                        'Unknown commit was not retried on the same transaction')
+            require(any('failed' in row for row in rows), 'No actual Mongo command failure observed')
+        elif case not in {'commit_unknown','primary_change'}:
+            conservative = case in {'network_timeout','socket_reset','pool_failure'}
+            require(failed.status_code in ({200,503} if conservative else {200}),
+                    'Single-fault response did not match retry policy: '+case+
+                    ' / '+str(failed.status_code))
+            after_fault = snapshot(control)
+            if failed.status_code == 503:
+                require(after_fault == before and attempts == 1,
+                        'Uncertain network outcome must stop without replaying callback: '+str(attempts))
+            else:
+                require(attempts >= 2 and state['rollback_witnesses'], 'No post-abort retry snapshot')
             require(any('failed' in row for row in rows),'No actual Mongo command failure observed')
             if case in {'socket_reset','pool_failure'}: require(cleared>0,'No actual pool reset observed')
         else:
@@ -294,7 +331,19 @@ def one_case(cluster, case, names, create_app, CartService):
                 require(len(commits)>=2 and len({row['txn'] for row in commits})==1 and attempts==1,
                         'Unknown commit must retry same transaction, not callback')
             else: require(state['stepdown'] and state['stepdown_rollback_equal'] and attempts>=2,'Primary retry missing')
-        recovered = browser.post('/checkout',json=payload,headers=headers)
+        recovery_attempts = []
+        recovery_deadline = time.monotonic() + (recovery_seconds if sustained else 0)
+        while True:
+            recovered = browser.post('/checkout',json=payload,headers=headers)
+            recovery_attempts.append(recovered.status_code)
+            if recovered.status_code == 200 or not sustained:
+                break
+            require(recovered.status_code == 503 and time.monotonic() < recovery_deadline,
+                    'Same-key recovery failed after removing fault: '+str(recovery_attempts)+
+                    ' / '+str(state['service_failures'][-3:])+
+                    ' / failed_commands:'+str([r for r in trace.rows if 'failed' in r][-8:])+
+                    ' / successful_aborts:'+str(sum(r.get('succeeded')=='abortTransaction' for r in trace.rows)))
+            time.sleep(1)
         replay = browser.post('/checkout',json=payload,headers=headers)
         require(recovered.status_code==replay.status_code==200 and recovered.json['id']==replay.json['id'],
                 'Same-key recovery/replay mismatch')
@@ -313,12 +362,16 @@ def one_case(cluster, case, names, create_app, CartService):
             'failed_commands':sum('failed' in r for r in rows),'pool_clears':cleared,
             'commit_attempts':sum(r.get('command')=='commitTransaction' for r in rows),
             'rollback_equal':all(w == before for w in state['rollback_witnesses']) if case!='commit_unknown' else None,
-            'post_abort_snapshot_count':len(state['rollback_witnesses']),
+            'post_abort_snapshot_count':state['post_abort_count'],
             'post_abort_snapshots':state['rollback_witnesses'],'driver_commands':rows,
-            'request_elapsed_seconds':round(elapsed,3),'fault_mode':'single server fault; driver recovery',
+            'request_elapsed_seconds':round(elapsed,3),
+            'fault_mode':'sustained server fault; bounded request' if sustained else 'single server fault; driver recovery',
             'unknown_commit_retried_same_transaction':case=='commit_unknown',
             'primary_changed':state['stepdown'],'primary_before':state.get('old_primary'),
-            'primary_after':state.get('new_primary'),'recovery_http':recovered.status_code,'replay_http':replay.status_code,
+            'primary_after':state.get('new_primary'),'recovery_http':recovered.status_code,
+            'recovery_attempt_http':recovery_attempts,'replay_http':replay.status_code,
+            'service_failures':state['service_failures'],
+            'successful_aborts':sum(r.get('succeeded')=='abortTransaction' for r in trace.rows),
             'replay_same_order':True,'conflicting_replay_http':conflict.status_code,'stock_decrements':1,
             'collection_count':len(before),'before':before,'after_fault':after_fault,'after_recovery':after,
             'unrelated_collections_unchanged':True,'validator_scope':'indexes only; not strict schema acceptance'}
@@ -331,6 +384,13 @@ def main():
     parser.add_argument('--mongod',required=True,type=Path)
     parser.add_argument('--report',required=True,type=Path)
     parser.add_argument('--repo',type=Path,default=Path(__file__).resolve().parents[1])
+    parser.add_argument('--sustained',action='store_true',
+                        help='Keep each selected failpoint active until the request returns 503')
+    parser.add_argument('--case',choices=('network_timeout','socket_reset','write_conflict',
+                                          'pool_failure','commit_unknown','primary_change'),
+                        help='Run one case for a focused diagnostic')
+    parser.add_argument('--recovery-seconds',type=float,default=15,
+                        help='Maximum post-fault recovery observation window for sustained cases')
     args=parser.parse_args()
     require(not args.report.exists(),'Existing evidence report must not be overwritten')
     root=args.repo.resolve(strict=True)
@@ -343,14 +403,21 @@ def main():
     cluster=Cluster(args.mongod)
     report={'schema_version':1,'checked_at':datetime.now(timezone.utc).isoformat(),'status':'failed',
         'scope':'three disposable localhost processes and local WSGI routes','remote_acceptance':False,
+        'fault_mode':'sustained' if args.sustained else 'single',
         'atlas_accessed':False,'cases':[],'processes_stopped':False,'fixtures_removed':False,
         'source_sha256':hashlib.sha256(Path(__file__).read_bytes()).hexdigest()}
     try:
         cluster.start()
         with patch.object(app_module,'load_dotenv',lambda *a,**k:False),patch.dict(os.environ,{'APP_ENV_FILE':''}):
-            for case in ('network_timeout','socket_reset','write_conflict','pool_failure','commit_unknown','primary_change'):
+            cases = ('network_timeout','socket_reset','write_conflict','pool_failure','commit_unknown') if args.sustained else (
+                'network_timeout','socket_reset','write_conflict','pool_failure','commit_unknown','primary_change')
+            if args.case:
+                require(args.case in cases,'Primary change is a single-fault case only')
+                cases = (args.case,)
+            for case in cases:
                 print(json.dumps({'case':case,'phase':'start'}),flush=True)
-                result=one_case(cluster,case,sorted(SCHEMAS),app_module.create_app,CartService)
+                result=one_case(cluster,case,sorted(SCHEMAS),app_module.create_app,CartService,
+                                sustained=args.sustained,recovery_seconds=args.recovery_seconds)
                 report['cases'].append(result)
                 print(json.dumps({k:v for k,v in result.items() if k not in {
                     'before','after_fault','after_recovery','post_abort_snapshots','driver_commands'}}),flush=True)
@@ -358,10 +425,13 @@ def main():
     except Exception as error:
         report['error_type']=type(error).__name__
         report['error']=str(error) if isinstance(error,RuntimeError) else 'Local matrix stopped; details in local logs'
+        print(json.dumps({'phase':'case_failed','error_type':report['error_type'],
+                          'error':report['error']}),flush=True)
     finally:
         try:
-            cluster.close()
+            cluster.close(skip_database_drop=args.sustained)
             report['processes_stopped']=report['fixtures_removed']=cluster.cleaned
+            report['cleanup_method']='owned_process_stop_and_data_path_removal' if args.sustained else 'database_drop_and_data_path_removal'
         except Exception as error:
             report['status']='cleanup-failed'; report['cleanup_error_type']=type(error).__name__
         report['local_log_directory']=str(cluster.root)

@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "acceptance_scope": "N06 local bounded transaction deadline, rollback and same checkout_id retry",
+  "signed_by": "SAM",
+  "signoff_source": "user reply in this chat at 2026-10-19 08:10 Asia/Taipei",
+  "local_request_threshold_seconds_exclusive": 3.0,
+  "transaction_deadline_seconds": 1.5,
+  "abort_deadline_seconds": 1.0,
+  "single_cases": 6,
+  "sustained_cases": 5,
+  "website_test_result": "274 passed, 0 skipped, disposable localhost replica set",
+  "same_version_remote_matrix": false,
+  "atlas_total_outage_tested": false,
+  "ren_personal_acceptance": false,
+  "v5_completed": 2,
+  "v5_total": 14,
+  "files_sha256": {
+    "VibeCart_AI/services/sku_cart_service.py": "099e66148b3721041820ec3ff63c10593124029d8744a6075791df6bab013593",
+    "scripts/run_local_checkout_fault_matrix.py": "993d55c204daf04963901a119434244ed0d29659fc7c777a10bfdddc56c64e85",
+    "MuscleCore分析資料/website/tests/test_bounded_transactions.py": "37d8d0e4addf863fae4a94e50a03b2b391123b64a264e995bb9eafdd67400f26",
+    "docs/SAM_N06_BOUNDED_ACCEPTANCE_2026-10-19.md": "55e39c46ed8289c601780875afe8c1c7bb8064e68fc69bd05f89afe716a339f3",
+    "docs/inventory/SAM_N06_SINGLE_FAULT_2026-10-19.json": "dada7b904f02cf93f289b063c060379b222a9bfac10b7f4fb73f3e440f9880f3",
+    "docs/inventory/SAM_N06_SUSTAINED_FAULT_2026-10-19.json": "eba436b6eed12cd85d956c1e985df555203977bba88b74c6cd8f94379b5e13e0"
+  }
+}

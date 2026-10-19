@@ -57,6 +57,7 @@
 
 | 主題 / Topic | 入口 / Entry |
 |---|---|
+| SAM N06 持續故障期限與具名接受 | [2026-10-19 本機有界故障矩陣、來源證據與未驗邊界](SAM_N06_BOUNDED_ACCEPTANCE_2026-10-19.md) |
 | SAM 私有帳號與撤權驗收 | [10/18 N04／N05 同映像七項遠端案例、清理與展演前待辦](SAM_ACCOUNT_ACCEPTANCE_2026-10-18.md) |
 | SAM 新推送驗證 | [10/18 來源位元組、186/0 回歸、部署讀回與剩餘驗收](SAM_PUSH_VALIDATION_2026-10-18.md) |
 | 10/17 JEFF 交付與 SAM 決定 | [PR #23 合併、D4 consumer 稽核及展示邊界](SAM_JEFF_1017_HANDOFF.md) |
