@@ -23,7 +23,7 @@
 
 - 01:27 依 `簡報文件/screenshots/S01-S12_取證索引_2026-10-18.json` 逐張重算：**20/20 PNG 存在且 SHA-256 相符**，主圖 ID 為 S01～S12。索引仍是 10/18 的原始取證版本，具名覆核欄未簽；不可把舊截圖稱為 10/20 正式映像的當次畫面。
 - V5 PPTX SHA-256 仍為 `43374f71c5e42fdc1725f38a8ac69ea0e2ccc696f6238ebb06425e58e00d7203`。乾淨 worktree 的 PDF 起初是 Git LFS 指標；以精確路徑 `git lfs pull` 取得實體後，SHA-256 為 `c5555c2a54d8a4200fd79fb8073d0fa5af691b40b13a4e031ddf9f8f6dc4535d`，與既有交付紀錄一致，工作樹保持乾淨。
-- 01:27 以 main `1b2fdcdaa887e88512aa7fc0b15efff3b3118251` 重建 ZIP：40 個內容檔、9,917,409 bytes，SHA-256 `45bd30eac3ea21b8d1c7da08951817b7a4ab10f48bcebe74bfce996dbc4490c6`。全新目錄還原後 **40/40 雜湊驗證通過**；本機 ZIP 與還原目錄留在 `%TEMP%`，未提交 GitHub。新 ZIP hash 與舊版不同是來源提交及 manifest 已更新；PPTX／PDF 本體 hash 未變。
+- 01:27 以 main `1b2fdcdaa887e88512aa7fc0b15efff3b3118251` 重建 ZIP：40 個內容檔、9,917,409 bytes，SHA-256 `45bd30eac3ea21b8d1c7da08951817b7a4ab10f48bcebe74bfce996dbc4490c6`。全新目錄還原後 **40/40 雜湊驗證通過**；本機 ZIP 與還原目錄留在 `%TEMP%`。另將 ZIP 以不覆蓋既有包的檔名 `VibeCart_V5_offline_main-1b2fdcd_20261020.zip` 複製到主專案 `簡報文件/離線備援/`，複製後 SHA-256 相符。ZIP 依檔案政策不提交 GitHub；可由已推送工具與指定提交重建。新 ZIP hash 與舊版不同是來源提交及 manifest 已更新；PPTX／PDF 本體 hash 未變。
 - 尚缺三人逐段具名覆核、實體斷網、第二台電腦開檔、投影及實際講者計時。N16／N17 的技術核對完成上述部分，原關卡維持待結案。
 
 ## 本輪限制
