@@ -1,5 +1,7 @@
 # VibeCart Cloud Run／Firebase 展示部署
 
+**2026/10/20根目錄建置入口**：[Dockerfile／白名單封裝與Cloud Build驗證](ROOT_DOCKERFILE_2026-10-20.md)。新增repo根目錄Dockerfile與.dockerignore；GitHub trigger使用固定commit的repository白名單，保留私有0%候選與既有flat封裝。下方較早時點按歷史證據閱讀。
+
 <!-- SAM MAIN PRODUCTION INDEPENDENT 20261019 BEGIN -->
 **2026/10/19 06:56 SAM正式部署獨立驗收**：[完整證據](../docs/SAM_MAIN_PRODUCTION_ACCEPTANCE_2026-10-19.md)。main b038aaca的56檔已於06:47切正式revision `vibecart-web-reviews-b038aaca` 100%，Firebase於06:48發布。候選與公開網址各六角色／Atlas session驗收通過；正式受控評價4＋4＋5→4.4／3筆，原頁即時更新，八集合清理0、既有業務hash一致。同版私有4組探針驗6＋4／交易／隔離；正式高星實評候選0，不填假資料。原目錄55／56執行檔一致，既有base.html頁尾變體保留。V5仍2/14，真人簽認等待辦保留。
 <!-- SAM MAIN PRODUCTION INDEPENDENT 20261019 END -->
