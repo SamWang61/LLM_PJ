@@ -1,7 +1,7 @@
 require('dns').setDefaultResultOrder('ipv4first');
 // Fixed-scope Cloud Run transaction probe. Default is read-only;
 // --run-isolated permits an expiring ID-token grant and disposable acceptance writes.
-const { spawn } = require('node:child_process');
+const { spawn, spawnSync } = require('node:child_process');
 const { randomUUID } = require('node:crypto');
 const path = require('node:path');
 const PROJECT = 'vibecart-llmai';
@@ -29,8 +29,9 @@ function assertDeployment(production, acceptance, policy) {
     && flags.CLOUD_PREVIEW_READ_ONLY === 'false', 'Acceptance database mode mismatch');
   const invokers = (policy.bindings || []).filter(b => b.role === 'roles/run.invoker');
   requireValue(invokers.length === 1 && !invokers[0].condition
-    && invokers[0].members?.length === 1
-    && invokers[0].members[0] === 'serviceAccount:' + SA, 'Acceptance invoker scope mismatch');
+    && JSON.stringify([...invokers[0].members].sort()) === JSON.stringify([
+      'serviceAccount:' + SA, 'user:' + ACCOUNT].sort()),
+  'Acceptance invoker scope mismatch');
   requireValue(acceptance.serviceAccount === SA, 'Acceptance runtime identity mismatch');
 }
 function temporaryBinding(title, expires) {
@@ -194,6 +195,11 @@ async function main() {
   report.baseline_reproduction = process.env.REN_BASELINE_REPRODUCTION === 'true';
   report.inventory = { not_repeated: true, scope: 'private checkout fault and revocation only' };
   if (!mode.run) { report.status = 'preflight-passed'; console.log(JSON.stringify(report)); return; }
+  const python = spawnSync(process.env.REN_PYTHON || 'python', ['-c',
+    'import bson, bs4, pymongo, requests, werkzeug; import sys; sys.path.insert(0, "scripts"); import remote_checkout_fault_probe'],
+  { stdio: 'ignore', timeout: 15000 });
+  requireValue(!python.error && python.status === 0,
+    'Local probe Python dependencies unavailable; no IAM or database action taken');
   const binding = temporaryBinding(mode.prefix + randomUUID(),
     new Date(Date.now() + 20 * 60000).toISOString());
   report.iam = { role: ROLE, member: MEMBER, expires: binding.condition.expression,
