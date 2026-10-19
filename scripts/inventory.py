@@ -16,7 +16,7 @@ TEXT = {'.md', '.py', '.html', '.css', '.yml', '.yaml', '.txt', '.json', '.xml',
 
 def secret(path):
     name = path.name.lower()
-    return (name.startswith('.env') and name != '.env.example') or any(x in name for x in ('credential', 'service-account', 'service_account')) or path.suffix.lower() in {'.pem', '.key', '.p12'}
+    return (name.startswith('.env') and name != '.env.example') or any(x in name for x in ('credential', 'service-account', 'service_account', '-firebase-adminsdk-')) or path.suffix.lower() in {'.pem', '.key', '.p12'}
 
 def main():
     rows, excluded, issues = [], [], []
@@ -30,6 +30,8 @@ def main():
                 dirs.remove(name)
         for name in files:
             p = Path(folder) / name
+            if name in SKIP or p.is_symlink():
+                continue
             rel = p.relative_to(ROOT).as_posix()
             if rel.startswith('docs/inventory/'):
                 continue
