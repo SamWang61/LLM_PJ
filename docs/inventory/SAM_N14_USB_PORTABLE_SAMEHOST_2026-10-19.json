@@ -1,7 +1,7 @@
 {
   "checked_at": "2026-10-19T00:49:19.390000+00:00",
   "status": "passed",
-  "test_type": "same-host USB portable runtime and physical-media readback; not ASUS off-device acceptance",
+  "test_type": "same-host USB portable runtime and physical-media readback; not REN off-device acceptance",
   "computer_name": "ASUS-VIVO-SAM",
   "data_media": "D: ASolid USB FAT32",
   "key_media": "F: General UDisk exFAT",
