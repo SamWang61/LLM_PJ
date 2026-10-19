@@ -63,6 +63,8 @@
 
 **2026/10/19 08:40回復指示更正**：N13之後Atlas萬用IP規則已不在，正式Cloud Run改經專用VPC與固定NAT出口。08:40唯讀讀回：`vibecart-web-nat-1019`承接100%，沿用本頁評價／6＋4映像digest，`vpcAccess.egress=ALL_TRAFFIC`；舊`vibecart-web-role-auth-576b4748`及`vibecart-web-reviews-b038aaca`均沒有`vpcAccess`。因此**不可只把流量切回這兩個舊revision**；否則可能失去Atlas連線。當時的發布與驗收數據仍為歷史事實；現行網路變更見[N13驗收紀錄](SAM_N06_N13_N14_ACCEPTANCE_2026-10-19.md)。
 
+**08:45後續讀回**：正式流量已轉到具固定出口的`vibecart-web-n06-1019`，其映像digest不同於本頁06:47驗收版；公開首頁、推薦頁、登入頁各HTTP200，但新digest的會員評價與6＋4遠端驗收仍待重跑。下方回復條件仍適用。
+
 若後續新revision需快速回復，先確認`vibecart-web-nat-1019`仍Ready、沿用固定出口且與目前資料結構相容，再以0%候選路由驗證首頁、推薦頁、登入及資料庫讀取，才切回該已驗評價／6＋4映像並讀回100%與Firebase路由。若要回到更早的應用程式碼，須先以該舊映像建立**具相同VPC／子網與ALL_TRAFFIC設定**的新0% revision，完成Atlas連線、功能及資料相容性驗證後才可切流。Firebase rewrite沿用同服務；不要回放評價、重設帳密或放寬Atlas存取規則。後續正式會員累積評價後，高星商品於下一次推薦查詢即依規則入選。
 
 本次完成正式部署與受控技術驗收；具名真人簽收、完整手機矩陣、付款物流、首次會員快照、完整12個月關聯統計、每日／週／月排程及效能SLO仍按各自工作清單交付。既有V5的2／14不因本次技術驗收自行改為全部完成。GitHub PR／main合併與CI以本次交付收據及GitHub最終狀態為準。
