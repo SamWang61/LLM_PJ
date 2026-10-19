@@ -1,0 +1,49 @@
+{
+  "observed_at_local": "2026-10-20 00:04-00:06 Asia/Taipei",
+  "site": "https://vibecart-llmai.web.app/",
+  "project": "vibecart-llmai",
+  "formal_revision_100_percent": "vibecart-web-n06-294c-1019",
+  "image_digest": "sha256:796a42b6d5fd80099900abc381d4c954d21ed1bea162ad0a9a49a89355deb40a",
+  "hosting_release": "sites/vibecart-llmai/releases/1792363722745000",
+  "fixture": "One temporary unavailable, non-recommendable product, one temporary customer, and three simulated paid/completed/delivered order lines; no real payment or shipment.",
+  "browser": {
+    "surface": "ChatGPT in-app browser against the public Firebase URL",
+    "before": { "display_rating": 4.0, "review_count": 2, "eligible_unsubmitted_line_visible": true },
+    "action": "Submitted a five-star review for the third owned order line through the product page.",
+    "after_same_page": {
+      "display_rating": 4.4,
+      "review_count": 3,
+      "form_retained_and_disabled": true,
+      "success_status": "評價已送出，商品星等已更新。",
+      "url_unchanged": true
+    },
+    "screenshots": ["review-before.png", "review-after-top.png", "review-after-form.png"]
+  },
+  "atlas_readback": {
+    "rating_sum": 13,
+    "rating_count": 3,
+    "average_rating_raw": 4.333333333333333,
+    "average_rating_display": 4.4,
+    "star_4_count": 2,
+    "star_5_count": 1,
+    "fixture_excluded_from_recommendations": true
+  },
+  "cleanup": {
+    "at_local": "2026-10-20T00:06:32.084211+08:00",
+    "registered_fixture_remaining_by_collection": {
+      "product_reviews": 0,
+      "order_items": 0,
+      "orders": 0,
+      "behavior_events": 0,
+      "auth_sessions": 0,
+      "users": 0,
+      "product_skus": 0,
+      "products": 0
+    },
+    "temporary_login_file_removed": true,
+    "existing_business_snapshot_unchanged": true
+  },
+  "ranking_evidence": "Same-digest isolated remote 6+4 ranking is documented in reviews_n06_remote_20261019.json; no fabricated high-star reviews were left in the formal Atlas catalog.",
+  "deployment_note": "This run verified the already deployed N06 image and existing Firebase Hosting release; no new application or Hosting deployment was necessary.",
+  "scope_limit": "Controlled technical acceptance is complete for this conversation. This does not stand in for named human signoff, real payment/shipping, or the unrelated V5 gates."
+}
