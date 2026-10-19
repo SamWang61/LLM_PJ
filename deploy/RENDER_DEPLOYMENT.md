@@ -37,6 +37,8 @@ asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:ae3dbfbd9863e1264df
 
 ## 若要改用 GitHub 自動建置
 
+10/20更新：[根目錄Dockerfile與嚴格context](ROOT_DOCKERFILE_2026-10-20.md)已補；下段是原flat封裝限制。Render尚未因此完成連線、秘密配置或部署驗收，不沿用Cloud Build私有候選結果宣稱Render成功。
+
 目前 Dockerfile 位於 `MuscleCore分析資料/website/Dockerfile`，它的 `COPY app` 與 `COPY VibeCart_AI/services` 以**白名單解壓目錄**為 build context；共享服務的來源實際位於 repo 根目錄 `VibeCart_AI/services`。因此直接把網站子目錄設為 Render root directory 會漏掉共享模組，直接把整個 repo 當 Docker context 則可能納入不應上傳的資料。切換 Git-backed 之前，先另交 Render 專用 Dockerfile／嚴格 `.dockerignore` 或經 CI 建立白名單建置來源，驗 47 檔一致、secret 排除、容器 boot 與 CI；再連接指定 Git branch，將 auto-deploy 設為 Off 或 After CI Checks Pass 並確認 preview 不沿用正式 DB 秘密。[Render Docker](https://render.com/docs/docker)；[Render 部署與 CI](https://render.com/docs/deploys)；[預覽服務環境變數](https://render.com/docs/service-previews)。
 
 本文件是可執行的準備與驗收清單，並不宣稱 Render 已部署或已取得 Atlas 新出口授權。

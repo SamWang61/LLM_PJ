@@ -3,6 +3,7 @@ import importlib.util
 from pathlib import Path
 import subprocess
 import tarfile
+import pytest
 
 
 SCRIPT = Path(__file__).with_name("prepare_cloud_source.py")
@@ -15,13 +16,15 @@ def _git(root, *args):
     subprocess.run(["git", *args], cwd=root, check=True, capture_output=True)
 
 
-def test_package_uses_committed_bytes_when_checkout_has_crlf(tmp_path, monkeypatch):
+@pytest.mark.parametrize("layout", ["flat", "repository"])
+def test_package_uses_committed_bytes_when_checkout_has_crlf(tmp_path, monkeypatch, layout):
     root = tmp_path / "repo"
     root.mkdir()
     _git(root, "init")
     _git(root, "config", "user.email", "test@example.invalid")
     _git(root, "config", "user.name", "Cloud source test")
-    paths = sorted(source.REQUIRED | {f"{source.WEBSITE}/app/static/css/main.css"})
+    css_name = f"{source.WEBSITE}/app/static/css/main.css"
+    paths = sorted(source.REQUIRED | {"Dockerfile", ".dockerignore", css_name})
     for name in paths:
         path = root / name
         path.parent.mkdir(parents=True, exist_ok=True)
@@ -36,9 +39,20 @@ def test_package_uses_committed_bytes_when_checkout_has_crlf(tmp_path, monkeypat
 
     first = tmp_path / "first.tar.gz"
     second = tmp_path / "second.tar.gz"
-    count, digest = source.package(first)
-    assert count == len(paths)
-    assert source.package(second) == (count, digest)
+    count, digest = source.package(first, layout=layout)
+    assert count == len(paths) - 2
+    assert source.package(second, layout=layout) == (count, digest)
     with tarfile.open(first, "r:gz") as archive:
-        assert archive.extractfile("app/static/css/main.css").read() == b"first\nsecond\n"
-        assert "app/uncommitted.py" not in archive.getnames()
+        css_target = "app/static/css/main.css" if layout == "flat" else css_name
+        assert archive.extractfile(css_target).read() == b"first\nsecond\n"
+        assert not any(name.endswith("uncommitted.py") for name in archive.getnames())
+        assert "Dockerfile" in archive.getnames() and ".dockerignore" in archive.getnames()
+        assert f"{source.WEBSITE}/Dockerfile" not in archive.getnames()
+        assert "VibeCart_AI/services/cart_service.py" in archive.getnames()
+
+
+def test_unknown_layout_refuses_before_creating_archive(tmp_path):
+    output = tmp_path / "invalid.tar.gz"
+    with pytest.raises(ValueError, match="Unknown cloud source layout"):
+        source.package(output, layout="unsafe")
+    assert not output.exists()

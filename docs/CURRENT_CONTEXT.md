@@ -1,5 +1,7 @@
 # 最新專案上下文 / Current project context
 
+**2026/10/20根目錄Dockerfile／Cloud Build修復**：[檔案位置、兩種builder與逐輪證據](../deploy/ROOT_DOCKERFILE_2026-10-20.md)。根目錄Dockerfile／嚴格.dockerignore已補，GitHub trigger仍用固定commit白名單與私有0%候選；初輪抓到classic/BuildKit父目錄遍歷差異，修正後以classic本機驗54來源／8個canary／非root及Gunicorn健康通過。修正版Cloud Build `5ed3ce3e…`五步SUCCESS，候選`00046-yan` Ready且0%，digest讀回相符、匿名403；正式與私有原100%流量未動。GitHub交付／main CI與自動觸發以[PR #143](https://github.com/SamWang61/LLM_PJ/pull/143)最終紀錄為準；本輪不代替正式功能或V5簽收。
+
 <!-- SAM REMOTE ROLE RESULT 20261020 BEGIN -->
 **2026/10/20本對話實際補測與SAM新決定**：[逐項時間／結果／下一步](SAM_ROLE_PROXY_REMOTE_EXECUTION_2026-10-20.md)。六正式角色、同映像私有交易／後台／D4隔離、真本機故障、USB完整同機復原、40檔離線包已驗；N12受Chrome外掛面板阻擋。SAM已補認三條工作站主責／用途／10月31日管理期限，N13結案；V5改為3／14完成、11待結案（78.6%）。N14同機復原子項依[SAM決定](SAM_ACCEPTANCE_DECISIONS_2026-10-20.md)接受，實際仍同機；明文刪除遭自動核准審查拒絕、每日備份ACL另待。其他對話計時紀錄保留；本輪未部署、未重匯D1～D4，PR #131新修復仍待同版部署驗收。
 <!-- SAM REMOTE ROLE RESULT 20261020 END -->

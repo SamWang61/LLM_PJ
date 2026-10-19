@@ -1,0 +1,17 @@
+{
+  "checked_at_utc": "2026-10-19T20:15:34.570762+00:00",
+  "source_sha": "f71e5aa47d9a7cf0646ffce6d7b42e622e1ee9be",
+  "archive_files": 56,
+  "archive_sha256": "492d2ed8c78f6614b54f382cd2a215f7b1eb1827a02637143b7e050ab83b2986",
+  "status": "passed",
+  "context_files_exact": true,
+  "fake_secret_canaries_excluded": 8,
+  "runtime_files_exact": 54,
+  "runtime_manifest_sha256": "a70ef77e27c87c4abbc5e6924ffa2b9457118e5deabd506850ad83fa41838b0e",
+  "offline_factory_health": 200,
+  "runtime_uid": 10001,
+  "gunicorn_custom_port_health": 200,
+  "image": "vibecart-root-qa:f71e5aa47d9a",
+  "image_id": "sha256:e08b105d8b948b859149eaba3a2c5ba67f3e9c7acf161613ba5ae1193a986eca",
+  "test_container_removed": true
+}

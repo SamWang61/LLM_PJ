@@ -6,7 +6,7 @@
       "entrypoint": "bash",
       "args": [
         "-ceu",
-        "test \"$_SERVICE_NAME\" = \"vibecart-acceptance-pr21\"\ncommand -v git >/dev/null || { apt-get update -qq && apt-get install -y --no-install-recommends git; }\ngit cat-file -e \"$COMMIT_SHA^{commit}\"\npython3 scripts/prepare_cloud_source.py --commit \"$COMMIT_SHA\" --output /tmp/vibecart-preview-source.tar.gz\nmkdir -p /workspace/.cloud-preview\ntar -xzf /tmp/vibecart-preview-source.tar.gz -C /workspace/.cloud-preview\n"
+        "test \"$_SERVICE_NAME\" = \"vibecart-acceptance-pr21\"\ncommand -v git >/dev/null || { apt-get update -qq && apt-get install -y --no-install-recommends git; }\ngit cat-file -e \"$COMMIT_SHA^{commit}\"\npython3 scripts/prepare_cloud_source.py --commit \"$COMMIT_SHA\" --layout repository --output /tmp/vibecart-preview-source.tar.gz\nmkdir -p /workspace/.cloud-preview\ntar -xzf /tmp/vibecart-preview-source.tar.gz -C /workspace/.cloud-preview\ntest -f /workspace/.cloud-preview/Dockerfile\ntest -f /workspace/.cloud-preview/.dockerignore\n"
       ]
     },
     {
