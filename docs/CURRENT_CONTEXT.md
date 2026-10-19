@@ -1,5 +1,7 @@
 # 最新專案上下文 / Current project context
 
+**2026/10/19 H08 草稿留存**：依使用者要求，[初版](../簡報文件/screenshots/REN_H08_手機尺寸模擬_2026-10-19/README.md)與[v2](../簡報文件/screenshots/REN_H08_手機尺寸模擬_2026-10-19_v2/README.md)各八張本機手機尺寸模擬圖及原始取圖紀錄一併存檔；[定稿](../簡報文件/screenshots/REN_H08_手機尺寸模擬_2026-10-19_定稿/README.md)仍作簡報引用。這些草稿不能補作 iPhone 實機或 REN 具名簽收證據。
+
 **2026/10/19 08:40 評價／6＋4回復指示更正**：正式站仍使用原已驗評價／6＋4映像；Cloud Run現由接N13固定出口的`vibecart-web-nat-1019`承接100%，Firebase發布版本未變，首頁／推薦頁／登入頁各回200。舊`role-auth-576b4748`與`reviews-b038aaca`沒有VPC出口，不能僅切流量回復；已修正[評價正式部署回復步驟](SAM_REVIEWS_6PLUS4_PRODUCTION_2026-10-19.md#回復與後續)及[獨立驗收表](SAM_MAIN_PRODUCTION_ACCEPTANCE_2026-10-19.md)。這次是唯讀覆核與文件修正，沒有再次部署或重做會員評價／Atlas寫入；具名簽收與其他V5關卡仍按原清單。
 
 **2026/10/19 08:36 REN／SAM N06 整合**：main #103 `7aeb77c` 的 N13 固定出口、Cloud Run／Atlas 回查、資料庫單次連線 2.5 秒 timeout 與 N14 工作保留；重疊的 N06 交易實作採[REN 限時／同 txn commit 方案](REN_PR101_MERGE_N06_BOUNDED_2026-10-19.md)。整合後在一次性本機 replica set 跑網站及新 N14 工具 **277 passed／0 skipped**，節點清理完成；這一版 N06 尚未部署，遠端對等驗收與真人接收待辦。08:36 open PR 共13項，含本輪 #104 與重疊草稿 #102；詳[PR 清冊](inventory/REN_OPEN_PR_REVIEW_2026-10-19.json)。
