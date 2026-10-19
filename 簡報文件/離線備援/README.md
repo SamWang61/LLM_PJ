@@ -1,5 +1,7 @@
 # V5 離線備援與故障替代流程
 
+[10/20 SAM 模擬 N17 復原結果與現場排練安排](SAM模擬_N17_復原與排練_2026-10-20.md)記錄合併後 main 的固定版本、ZIP 雜湊與仍待本人實測的步驟。
+
 執行主責：[SAM](mailto:cashsam@gmail.com)。[REN](mailto:chen2000401@gmail.com)覆核會員／購物流程，[JEFF](mailto:jeff841117@gmail.com)覆核 AI／後台；講師為[Alvin 簡志璁](mailto:fcaibialvin@gmail.com)。本表是排練步驟，不是任何人的簽認。
 
 ## 建立與還原
