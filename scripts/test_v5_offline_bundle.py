@@ -5,6 +5,7 @@ import zipfile
 
 import pytest
 from v5_offline_bundle import pack, restore, verified_payload, safe_name, committed_bytes
+from v5_offline_bundle import note_links
 
 
 @pytest.mark.parametrize('name', ['../escape.txt', '/absolute', 'C:/escape', 'a\\b', 'a/../b', 'NUL.txt', 'a./b'])
@@ -20,6 +21,20 @@ def test_deterministic_archive_restores_and_reads_back(tmp_path):
     destination = tmp_path / 'fresh'
     assert restore(first, destination) == manifest
     assert all((destination / name).read_bytes() == data for name, data in files.items())
+
+
+def test_offline_notes_follow_moved_files_and_pin_unbundled_citations():
+    data = '[local](../slides/card.md#scope) [web](../../docs/evidence.md) [mail](mailto:team@example.invalid)'.encode()
+    result = note_links(data, 'notes/runbook/README.md', 'README.md',
+                        {'notes/slides/card.md': 'updates/card.md'}, 'fixed-sha').decode()
+    assert '[local](updates/card.md#scope)' in result
+    assert '[web](https://github.com/SamWang61/LLM_PJ/blob/fixed-sha/docs/evidence.md)' in result
+    assert '[mail](mailto:team@example.invalid)' in result
+
+
+def test_note_reference_cannot_escape_repository():
+    with pytest.raises(ValueError, match='escapes'):
+        note_links(b'[escape](../../outside)', 'notes/README.md', 'README.md', {}, 'sha')
 
 
 def rewrite(content, name, data):
