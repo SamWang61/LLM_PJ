@@ -1,0 +1,46 @@
+{
+  "checked_at": "2026-10-19T16:06:45.240Z",
+  "read_only": true,
+  "writes": 0,
+  "services": [
+    {
+      "service": "vibecart-web",
+      "revision": "vibecart-web-n06-294c-1019",
+      "percent": 100,
+      "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:796a42b6d5fd80099900abc381d4c954d21ed1bea162ad0a9a49a89355deb40a",
+      "source_sha": "294c1fac26d6785054063b8be6eb7d9e61075be4"
+    },
+    {
+      "service": "vibecart-acceptance-pr21",
+      "revision": "vibecart-acceptance-pr21-n06-294c-1019",
+      "percent": 100,
+      "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:796a42b6d5fd80099900abc381d4c954d21ed1bea162ad0a9a49a89355deb40a",
+      "source_sha": "294c1fac26d6785054063b8be6eb7d9e61075be4"
+    }
+  ],
+  "temporary_transaction_iam_bindings": [],
+  "private_database": {
+    "checked_at": "2026-10-19T16:06:44.688427+00:00",
+    "database": "vibecart_acceptance_pr21",
+    "writes": 0,
+    "all_transaction_root_markers": {
+      "users": 0,
+      "products": 0,
+      "product_skus": 0,
+      "orders": 0
+    },
+    "interrupted_run_objectid_window_utc": [
+      "2026-10-18T07:37:00Z",
+      "2026-10-18T08:15:00Z"
+    ],
+    "child_references_in_interrupted_window": {
+      "auth_sessions": 0,
+      "behavior_events": 0,
+      "carts": 0,
+      "orders": 0,
+      "order_items": 0,
+      "cart_events": 0
+    },
+    "limitation": "Original interrupted run ID and output unavailable; root-prefix and bounded ObjectId references read only."
+  }
+}
