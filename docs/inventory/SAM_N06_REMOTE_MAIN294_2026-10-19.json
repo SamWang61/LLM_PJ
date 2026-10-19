@@ -1,0 +1,53 @@
+{
+  "checked_at": "2026-10-19T00:47:05.342Z",
+  "status": "passed",
+  "source_sha": "294c1fac26d6785054063b8be6eb7d9e61075be4",
+  "image_digest": "sha256:796a42b6d5fd80099900abc381d4c954d21ed1bea162ad0a9a49a89355deb40a",
+  "production_candidate_revision": "vibecart-web-n06-294c-1019",
+  "production_candidate_traffic_percent": 0,
+  "private_probe_revision": "vibecart-acceptance-pr21-n06-294c-barrier-1019",
+  "private_probe_traffic_percent": 100,
+  "cases": {
+    "database_unique_write_error": {
+      "http": 409,
+      "rollback_equal": true,
+      "same_id_recovery_http": 200,
+      "same_order_replay": true,
+      "temporary_index_removed": true
+    },
+    "driver_error_after_order_item_writes": {
+      "http": 503,
+      "rollback_equal": true,
+      "same_id_recovery_http": 200,
+      "same_order_replay": true
+    },
+    "inflight_session": {
+      "http": 400,
+      "rollback_equal": true,
+      "next_request_denied_http": 302,
+      "vulnerability_reproduced": false
+    },
+    "inflight_disable": {
+      "http": 400,
+      "rollback_equal": true,
+      "next_request_denied_http": 302,
+      "vulnerability_reproduced": false
+    }
+  },
+  "cleanup": {
+    "verified": true,
+    "orders_remaining": 0,
+    "order_items_remaining": 0,
+    "carts_remaining": 0,
+    "cart_events_remaining": 0,
+    "behavior_events_remaining": 0,
+    "auth_sessions_remaining": 0,
+    "users_remaining": 0,
+    "product_skus_remaining": 0,
+    "products_remaining": 0,
+    "controls_remaining": 0,
+    "temporary_indexes_remaining": 0
+  },
+  "temporary_iam_revoked": true,
+  "scope_limit": "Private acceptance database. Driver AutoReconnect is controlled injection, not an actual Atlas-wide outage. Human signoff and physical device acceptance remain open."
+}
