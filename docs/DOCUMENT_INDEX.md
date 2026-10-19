@@ -1,5 +1,9 @@
 # 全部文件索引 / Document catalog
 
+<!-- SAM REMOTE ROLE RESULT 20261020 BEGIN -->
+本輪遠端／復原代理補測：[逐項執行與時間](SAM_ROLE_PROXY_REMOTE_EXECUTION_2026-10-20.md)、[SAM驗收決定與工作站規則](SAM_ACCEPTANCE_DECISIONS_2026-10-20.md)、[去敏機器清冊](inventory/SAM_ROLE_PROXY_REMOTE_2026-10-20.json)。
+<!-- SAM REMOTE ROLE RESULT 20261020 END -->
+
 <!-- SAM ROLE PROXY PLAN 20261020 -->
 - [12項待結案工作：執行順序、SAM／JEFF／REN分工、證據與驗收](../專題進度/待結案12項_執行順序與分工_2026-10-20.md)
 - [SAM模擬JEFF／REN：逐項真實時間與結果](SAM_ROLE_SIMULATION_EXECUTION_2026-10-20.md)

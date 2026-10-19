@@ -1,0 +1,82 @@
+{
+  "scope": "three independent in-memory CLI exercises of the same 12 contracts; not 36 distinct functions",
+  "tool_sha256": "f45ef6b8ed6c2d86a4f20a52b6c7bc9faa3564eeeb1e8aa741dc1c3d5c497394",
+  "runs": [
+    {
+      "simulated_role": "SAM",
+      "execution_identity": "SAM",
+      "started_at": "2026-10-19T17:19:06.447019+00:00",
+      "finished_at": "2026-10-19T17:19:08.847290+00:00",
+      "status": "passed",
+      "scope": "loopback mongomock simulation",
+      "checks": {
+        "SAM_login": true,
+        "SAM_admin_policy": true,
+        "SAM_product": true,
+        "SAM_cart": true,
+        "REN_login": true,
+        "REN_admin_policy": true,
+        "REN_product": true,
+        "REN_cart": true,
+        "JEFF_login": true,
+        "JEFF_admin_policy": true,
+        "JEFF_product": true,
+        "JEFF_cart": true
+      },
+      "atlas_contacted": false,
+      "named_acceptance": false
+    },
+    {
+      "simulated_role": "REN",
+      "execution_identity": "SAM 模擬 REN",
+      "started_at": "2026-10-19T17:19:08.847290+00:00",
+      "finished_at": "2026-10-19T17:19:11.190925+00:00",
+      "status": "passed",
+      "scope": "loopback mongomock simulation",
+      "checks": {
+        "SAM_login": true,
+        "SAM_admin_policy": true,
+        "SAM_product": true,
+        "SAM_cart": true,
+        "REN_login": true,
+        "REN_admin_policy": true,
+        "REN_product": true,
+        "REN_cart": true,
+        "JEFF_login": true,
+        "JEFF_admin_policy": true,
+        "JEFF_product": true,
+        "JEFF_cart": true
+      },
+      "atlas_contacted": false,
+      "named_acceptance": false
+    },
+    {
+      "simulated_role": "JEFF",
+      "execution_identity": "SAM 模擬 JEFF",
+      "started_at": "2026-10-19T17:19:11.190925+00:00",
+      "finished_at": "2026-10-19T17:19:13.617918+00:00",
+      "status": "passed",
+      "scope": "loopback mongomock simulation",
+      "checks": {
+        "SAM_login": true,
+        "SAM_admin_policy": true,
+        "SAM_product": true,
+        "SAM_cart": true,
+        "REN_login": true,
+        "REN_admin_policy": true,
+        "REN_product": true,
+        "REN_cart": true,
+        "JEFF_login": true,
+        "JEFF_admin_policy": true,
+        "JEFF_product": true,
+        "JEFF_cart": true
+      },
+      "atlas_contacted": false,
+      "named_acceptance": false
+    }
+  ],
+  "production_writes": 0,
+  "physical_device_tested": false,
+  "off_device_tested": false,
+  "human_signoff": false
+}

@@ -1,0 +1,65 @@
+{
+  "checked_at": "2026-10-19T18:01:05.502851+00:00",
+  "rules": [
+    {
+      "ipAddress": "35.229.228.204",
+      "cidrBlock": "35.229.228.204/32",
+      "comment": "VibeCart 專用 NAT",
+      "owner": "SAM / project NAT",
+      "purpose": "dedicated production and private Cloud Run NAT",
+      "planned_expiry_date": null,
+      "expiry_source": "existing service configuration",
+      "atlas_auto_expiry_verified": false
+    },
+    {
+      "ipAddress": "180.177.10.68",
+      "cidrBlock": "180.177.10.68/32",
+      "comment": "VibeCart development workstation cart validation 2026-09-17",
+      "owner": "SAM",
+      "purpose": "home network for this project development",
+      "planned_expiry_date": "2026-10-31",
+      "expiry_source": "SAM direct reply 2026-10-20",
+      "atlas_auto_expiry_verified": false
+    },
+    {
+      "ipAddress": "101.10.106.152",
+      "cidrBlock": "101.10.106.152/32",
+      "comment": "",
+      "owner": "JEFF",
+      "purpose": "home network for this project development",
+      "planned_expiry_date": "2026-10-31",
+      "expiry_source": "SAM direct reply 2026-10-20",
+      "atlas_auto_expiry_verified": false
+    },
+    {
+      "ipAddress": "180.177.24.85",
+      "cidrBlock": "180.177.24.85/32",
+      "comment": "VibeCart development workstation 2026-09-16",
+      "owner": "SAM",
+      "purpose": "home network for this project development",
+      "planned_expiry_date": "2026-10-31",
+      "expiry_source": "SAM direct reply 2026-10-20",
+      "atlas_auto_expiry_verified": false
+    }
+  ],
+  "total_count": 4,
+  "wildcard_rules": 0,
+  "public_routes": [
+    {
+      "path": "/",
+      "status": 200
+    },
+    {
+      "path": "/recommendations",
+      "status": 200
+    },
+    {
+      "path": "/auth/login",
+      "status": 200
+    }
+  ],
+  "planned_expiry_is_not_an_applied_atlas_expiry": true,
+  "browser_limit": "Atlas access-list initially blank; browser reload redirected to signed-out login; connector does not return deleteAfterDate",
+  "mutations": 0,
+  "acceptance": "ownership and purpose confirmed; automatic expiry not verified or applied"
+}

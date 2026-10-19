@@ -1,0 +1,54 @@
+{
+  "checked_at": "2026-10-19T17:59:59.235Z",
+  "scope": "read-only Cloud Run serving control plane",
+  "services": [
+    {
+      "service": "vibecart-web",
+      "revision": "vibecart-web-ai-294c-1020",
+      "percent": 100,
+      "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:03d01cb52065e21fc96db6fb34b4de0527f2eb3966abbf0fe8719cb99bcc98f2",
+      "source_sha": "294c1fac26d6785054063b8be6eb7d9e61075be4",
+      "flags": {
+        "CLOUD_PREVIEW_READ_ONLY": "false",
+        "ENABLE_CHECKOUT": "true",
+        "AI_RECOMMENDATIONS_ENABLED": "false",
+        "AI_FREE_QUESTION_ENABLED": "false",
+        "AI_SUMMARY_ENABLED": "true"
+      },
+      "command_override": false,
+      "vpc": {
+        "egress": "ALL_TRAFFIC",
+        "networkInterfaces": [
+          {
+            "network": "vibecart-egress-20261019",
+            "subnetwork": "vibecart-egress-subnet"
+          }
+        ]
+      }
+    },
+    {
+      "service": "vibecart-acceptance-pr21",
+      "revision": "vibecart-acceptance-pr21-n06-294c-1019",
+      "percent": 100,
+      "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:796a42b6d5fd80099900abc381d4c954d21ed1bea162ad0a9a49a89355deb40a",
+      "source_sha": "294c1fac26d6785054063b8be6eb7d9e61075be4",
+      "flags": {
+        "CLOUD_PREVIEW_READ_ONLY": "false",
+        "CLOUD_ACCEPTANCE_MODE": "true",
+        "CLOUD_ACCEPTANCE_DB": "vibecart_acceptance_pr21",
+        "ENABLE_CHECKOUT": "true"
+      },
+      "command_override": false,
+      "vpc": {
+        "egress": "ALL_TRAFFIC",
+        "networkInterfaces": [
+          {
+            "network": "vibecart-egress-20261019",
+            "subnetwork": "vibecart-egress-subnet"
+          }
+        ]
+      }
+    }
+  ],
+  "mutations": 0
+}

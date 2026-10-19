@@ -1,0 +1,24 @@
+{
+  "checked_at": "2026-10-19T18:10:18.373293+00:00",
+  "status": "partial",
+  "actual_environment": "Chrome desktop; disposable loopback mongomock app; no Atlas",
+  "role": "SAM simulating REN and JEFF",
+  "steps": [
+    {
+      "action": "GET login",
+      "result": "login page with labeled fields visible"
+    },
+    {
+      "action": "set viewport 390x844",
+      "result": "applied; reset after blocker"
+    },
+    {
+      "action": "submit local wrong password",
+      "result": "HTTP 200 response logged, visible error not verified"
+    }
+  ],
+  "blocker": "Chrome blocks automation while another extension UI is open; user requested to dismiss it",
+  "physical_device": false,
+  "production_changes": 0,
+  "viewport_reset": true
+}

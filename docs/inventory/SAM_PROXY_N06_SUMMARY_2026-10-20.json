@@ -1,0 +1,33 @@
+{
+  "started_at": "2026-10-19T17:43:31.009632+00:00",
+  "scope": "network-none Docker with three disposable localhost mongod processes; current mounted source; not remote Atlas failure",
+  "execution_identity": "SAM 模擬 REN",
+  "image_id": "sha256:3bd5c307dd220028d21040b2375726eb54242ae11e7d5e25f4be91e41d9fb07e",
+  "source_sha256": "a1c73cb55b29a0c3b90a603b45eb4adab9bafaff17aeace1c658e14074d2871b",
+  "runs": [
+    {
+      "mode": "single",
+      "started_at": "2026-10-19T17:43:31.022644+00:00",
+      "finished_at": "2026-10-19T17:44:38.703881+00:00",
+      "status": "passed",
+      "exit_code": 0,
+      "cases": 6,
+      "container_removed": true,
+      "report": "docs/inventory/SAM_PROXY_N06_SINGLE_2026-10-20.json"
+    },
+    {
+      "mode": "sustained",
+      "started_at": "2026-10-19T17:44:38.703881+00:00",
+      "finished_at": "2026-10-19T17:46:21.544071+00:00",
+      "status": "passed",
+      "exit_code": 0,
+      "cases": 5,
+      "container_removed": true,
+      "report": "docs/inventory/SAM_PROXY_N06_SUSTAINED_2026-10-20.json"
+    }
+  ],
+  "production_writes": 0,
+  "atlas_accessed": false,
+  "status": "passed",
+  "finished_at": "2026-10-19T17:46:21.544826+00:00"
+}

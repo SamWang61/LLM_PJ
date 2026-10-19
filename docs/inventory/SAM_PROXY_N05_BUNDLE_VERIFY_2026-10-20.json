@@ -1,0 +1,23 @@
+{
+  "checked_at": "2026-10-19T17:35:35.091846+00:00",
+  "previous_bundle_import_check": {
+    "exit_code": 1,
+    "module_errors": [
+      "ModuleNotFoundError: No module named 'remote_h05_h07_checks'"
+    ]
+  },
+  "corrected_bundle_import_check": {
+    "exit_code": 0,
+    "module_errors": []
+  },
+  "bundled_files": [
+    "private_https_transport.py",
+    "remote_d4_consumer_probe.py",
+    "remote_h05_h07_checks.py",
+    "remote_member_transaction_checks.py",
+    "remote_readonly_admin_checks.py",
+    "remote_transaction_acceptance_probe.py"
+  ],
+  "production_code_changed": false,
+  "note": "Operational bundle fixed by resolving local imports; original probes unchanged."
+}

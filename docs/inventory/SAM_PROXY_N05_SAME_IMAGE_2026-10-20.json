@@ -1,0 +1,25 @@
+{
+  "started_at": "2026-10-19T17:30:30.584Z",
+  "status": "failed",
+  "stage": "N05",
+  "tag": "sam-n05-e34ff5",
+  "job": "sam-proxy-n05-1020-e34ff5",
+  "scope": "private acceptance DB, same pinned image as production; no production writes or traffic changes",
+  "cleanup": {
+    "tag_removed": false,
+    "job_deleted": false
+  },
+  "production": {
+    "revision": "vibecart-web-ai-294c-1020",
+    "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:03d01cb52065e21fc96db6fb34b4de0527f2eb3966abbf0fe8719cb99bcc98f2",
+    "source_sha": "294c1fac26d6785054063b8be6eb7d9e61075be4"
+  },
+  "private_active_before": "vibecart-acceptance-pr21-n06-294c-1019",
+  "candidate": {
+    "revision": "vibecart-acceptance-pr21-reviews-ai-1020",
+    "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:03d01cb52065e21fc96db6fb34b4de0527f2eb3966abbf0fe8719cb99bcc98f2",
+    "source_sha": "294c1fac26d6785054063b8be6eb7d9e61075be4"
+  },
+  "error": "ENOENT: no such file or directory, open 'C:\\Users\\USER\\.codex\\worktrees\\jeff-discussion-20261018\\LLM_PJ\\.codex\\role-probe-hashes.json'",
+  "finished_at": "2026-10-19T17:30:33.147Z"
+}
