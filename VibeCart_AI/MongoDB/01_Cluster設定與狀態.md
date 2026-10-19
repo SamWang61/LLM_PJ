@@ -1,6 +1,6 @@
 # Cluster 實際設定與查核
 
-> 2026-09-19：資料庫已更新為 Complete Schema v4，最新查核見 [16](16_完整Schema_v4驗證與欄位字典.md)。下列部署、帳號及網路資訊為原日期讀回；本次外掛 OAuth 失效，未重新核實控制台中繼資料。
+> 2026-09-19：資料庫已更新為 Complete Schema v4，最新查核見 [16](16_完整Schema_v4驗證與欄位字典.md)。下列部署與帳號資訊保留原日期讀回；Network Access 已於 2026-10-19 透過 Atlas 外掛重新查核，詳見該節。
 
 初始建置日期：2026-09-16；購物車更新／查核：2026-09-17，Asia/Taipei。以下依 Atlas 外掛、PyMongo 與本機檔案實際查核。
 
@@ -60,19 +60,26 @@ ENABLE_CHECKOUT=false
 
 ## Network Access
 
-### 2026-10-05 更新
+### 2026-10-19 實際查核（Asia/Taipei）
 
-依專案負責人提供的資訊，Project `vibecart_ai` 已新增下列設定；完整 CIDR 為 `0.0.0.0/0`，不能省略 `/0`。
+**結論：`0.0.0.0/0` 不在目前 Access List，不能確認為已生效的全 IPv4 開放規則。** 本次 Atlas 管理外掛已恢復連線，使用 `atlas_inspect_access_list` 唯讀查詢 Project `6aa9bd20af3f21039447a5c0`，成功回傳 `totalCount=4`：
 
-|IP/CIDR|用途與範圍|資訊來源／驗證狀態|註解與到期|
-|---|---|---|---|
-|`0.0.0.0/0`|允許所有 IPv4 來源連至專案內 Cluster，供 WEB 後端與同學 Compass 測試|2026-10-05 使用者回報；本次未能讀回 Atlas 確認生效|尚未核實|
+|CIDR|Atlas 原始註解|
+|---|---|
+|`35.229.228.204/32`|VibeCart 專用 NAT|
+|`180.177.10.68/32`|VibeCart development workstation cart validation 2026-09-17|
+|`101.10.106.152/32`|空白|
+|`180.177.24.85/32`|VibeCart development workstation 2026-09-16|
 
-本次 Atlas 外掛回覆需重新登入（UNAUTHORIZED），因此未將此表標為實際讀回。待控制台可用時，在 LCCNET_LLM_2601 → vibecart_ai → Network Access 核對此 CIDR 的 Active 狀態、註解與到期設定；既有 `/32` 項目是否仍存在亦尚未重新核實。
+這次讀回確認的是規則存在與否及註解；外掛沒有提供逐筆 Active 狀態或到期時間，不能推定「永久有效」。本次沒有新增、移除或修改任何規則，也未執行網站端資料庫讀寫測試；不推定舊萬用規則的移除者或移除時間。
 
-此規則生效期間，WEB 伺服器或開發電腦更換 IPv4 出口時，無須逐一新增 `/32`。它只放寬資料庫的 IPv4 來源限制，仍需有效 Database User、密碼、TLS 連線及資料庫角色權限；不代表網站已部署完成，也不取代 Atlas 管理介面的登入權限。網站由 Flask 後端使用秘密設定中的 `MONGO_URI`／`MONGO_DB` 連線，瀏覽器透過網站 API 存取，不將資料庫密碼放入前端。
+WEB 後端應使用獲准的來源 IPv4；使用專用 NAT 時，應確認實際出口為 `35.229.228.204`。開發電腦與 Compass 更換出口後，須重新核對來源是否在清單內，不能沿用「任意 IPv4 都可連線」的假設。連線仍需 Database User、密碼、TLS 與適當角色；連線字串僅置於後端秘密設定。
 
-連線逾時時，先確認上述規則已生效且未到期，再檢查伺服器 DNS/SRV 解析、對外連線、防火牆、Cluster 狀態及 TLS；驗證失敗則檢查帳號、密碼與角色。來源規則說明見 [MongoDB 官方 Network Access 文件](https://www.mongodb.com/docs/atlas/security/ip-access-list/)。
+連線逾時時先核對實際出口與 Access List，再查 DNS/SRV、伺服器對外連線、防火牆、Cluster 與 TLS；驗證失敗則查帳號、密碼及角色。歷史查核報告保留原日期結果，不代表目前仍開放全網。
+
+### 2026-10-05 使用者回報（歷史）
+
+當時使用者回報新增 `0.0.0.0/0`，但外掛回覆 UNAUTHORIZED，未能獨立核實。該回報不作為現行設定；現行清單以上方 2026-10-19 實際讀回為準。
 
 ### 初始建置與歷史查核（2026-09-16～17）
 
@@ -90,7 +97,7 @@ BGE 512 維商品向量使用普通集合保存，由 Python 計算相似度；�
 
 ## 工具與驗證證據
 
-初始建置時，Atlas Free 建立工具建立 Cluster；管理工具建立帳號與單一 IP 白名單。2026-10-05 網路更新見上述 Network Access 區段。外掛 classic 索引工具不提供 unique／partial／TTL，集合工具不提供 validator，因此使用已授權的 PyMongo 4.14.1 完成這些約束，沒有以普通索引代替。
+初始建置時，Atlas Free 建立工具建立 Cluster；管理工具建立帳號與單一 IP 白名單。2026-10-19 網路實際查核見上述 Network Access 區段。外掛 classic 索引工具不提供 unique／partial／TTL，集合工具不提供 validator，因此使用已授權的 PyMongo 4.14.1 完成這些約束，沒有以普通索引代替。
 
 [完整 Schema 與索引讀回](05_實際Schema與索引.md) 包含每個 collection 的 options、validator、索引鍵與選項、筆數、遷移 checksum 及驗證 UTC 時間。[測試報告](06_實際驗證結果.md) 記錄 21 項通過結果。
 
@@ -108,4 +115,4 @@ BGE 512 維商品向量使用普通集合保存，由 Python 計算相似度；�
 
 ## Network Access update — English summary
 
-On October 5, 2026, the project owner reported adding `0.0.0.0/0` for all IPv4 client sources. Atlas access-list read-back was unavailable because the connector requires reauthentication; activation, expiry and comments remain unverified. Database authentication, TLS and role permissions still apply. Earlier `/32` entries are retained as dated historical evidence.
+Atlas read-back on 2026-10-19 returned four /32 entries, including the dedicated NAT 35.229.228.204/32, and no 0.0.0.0/0. Per-entry activation and expiry are not exposed by this tool. No access-list changes or website read/write tests were performed.

@@ -1,0 +1,33 @@
+{
+  "checked_date": "2026-10-19",
+  "timezone": "Asia/Taipei",
+  "project_id": "6aa9bd20af3f21039447a5c0",
+  "tool": "atlas_inspect_access_list",
+  "total_count": 4,
+  "all_ipv4_rule_present": false,
+  "active_and_expiry_returned": false,
+  "mutations_performed": false,
+  "website_read_write_tested": false,
+  "files": [
+    {
+      "path": "VibeCart_AI/MongoDB/01_Cluster設定與狀態.md",
+      "sha256": "48514ebcbba958542c2bdf3146d553d2609702c9404d504dab50bc7344d7cf14"
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/04_連線與維運.md",
+      "sha256": "57c920b68a5e7617a18da10888c029153716e0817bf925719bb54779f93faf90"
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/19_Atlas與Compass資料庫查詢手冊.md",
+      "sha256": "900115c0d4e18c2cbb823f46a0bce3483830974c447177a3f7e2b743fdd3509c"
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/README.md",
+      "sha256": "6a65e1dbe93b75a2d2120dc95c13a6e0792f61e7025a18cc16e72c35ec56d2b2"
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/supermarket/README.md",
+      "sha256": "96f718b70109457bcc098a3042888277dc7b30660104cd19103d655256a09e9a"
+    }
+  ]
+}
