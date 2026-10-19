@@ -144,5 +144,143 @@
       "decision": "leave_open",
       "reason": "Explicit parked historical draft for JEFF ownership; not approved as current-scope integration."
     }
-  ]
+  ],
+  "latest_open_snapshot": {
+    "checked_at": "2026-10-19T08:36:07+08:00",
+    "main_sha": "7aeb77c0a615260986d990d37fe699719f3bed1b",
+    "open_count": 13,
+    "items": [
+      {
+        "number": 104,
+        "url": "https://github.com/SamWang61/LLM_PJ/pull/104",
+        "title": "REN：限制結帳交易重試並補 H08 手機尺寸模擬證據",
+        "head_sha": "c903452744cc0639cece0465aa2d4cefeabd1e84",
+        "base_ref": "main",
+        "draft": false,
+        "decision": "review_then_merge_if_clean",
+        "reason": "Current REN N06/H08 PR; resolve latest-main conflicts and await CI before merge."
+      },
+      {
+        "number": 102,
+        "url": "https://github.com/SamWang61/LLM_PJ/pull/102",
+        "title": "fix(sam): N06 持續故障有界期限與具名技術驗收",
+        "head_sha": "3f3d31319a6016159212a8f333d21c8f00896c81",
+        "base_ref": "main",
+        "draft": true,
+        "decision": "leave_open",
+        "reason": "Draft N06 work overlapping checkout matrix and handoff files; author must reconcile against current main."
+      },
+      {
+        "number": 86,
+        "url": "https://github.com/SamWang61/LLM_PJ/pull/86",
+        "title": "test: 補驗 V5 唯讀後台固定問題與既有私有存取範圍",
+        "head_sha": "dcf4f30d3c143ba207fb94812c50b8d6cc77dec2",
+        "base_ref": "main",
+        "draft": false,
+        "decision": "leave_open",
+        "reason": "Current main reports a merge conflict; old V5 probe needs conflict resolution and current-source review."
+      },
+      {
+        "number": 76,
+        "url": "https://github.com/SamWang61/LLM_PJ/pull/76",
+        "title": "docs: update REN handover with post-PR #74 validation",
+        "head_sha": "fe28e7a577073a4a54f4e387bcad603ebea4ac24",
+        "base_ref": "main",
+        "draft": false,
+        "decision": "leave_open",
+        "reason": "Current main reports a merge conflict; handover snapshots predate current acceptance and cannot replace newer files."
+      },
+      {
+        "number": 19,
+        "url": "https://github.com/SamWang61/LLM_PJ/pull/19",
+        "title": "docs: 建立簡報文件目錄與10/18展示驗收素材",
+        "head_sha": "d401c4e2c2c79222f7224005537f29d999461a38",
+        "base_ref": "main",
+        "draft": true,
+        "decision": "leave_open",
+        "reason": "Historical draft presentation package; current main contains later delivered presentation material and this draft conflicts."
+      },
+      {
+        "number": 18,
+        "url": "https://github.com/SamWang61/LLM_PJ/pull/18",
+        "title": "REN：會員多裝置登入與 SKU 購物接口",
+        "head_sha": "505399313ca4c09b49d77484e98df806b3b30f58",
+        "base_ref": "codex/sam-integration-deploy-20261012",
+        "draft": true,
+        "decision": "leave_open",
+        "reason": "Draft targeting a historical integration branch, not main; current auth and cart have newer versions."
+      },
+      {
+        "number": 17,
+        "url": "https://github.com/SamWang61/LLM_PJ/pull/17",
+        "title": "SAM：整合 JEFF AI後台、Firebase唯讀展示與10/12驗證",
+        "head_sha": "a0fcad01acc0a5cb5672dbe55bd55236d0d89bd2",
+        "base_ref": "codex/sam-jeff-followup-20261011",
+        "draft": false,
+        "decision": "leave_open",
+        "reason": "Historical nested integration branch, base is not main; cannot treat old branch comparison as current-main review."
+      },
+      {
+        "number": 16,
+        "url": "https://github.com/SamWang61/LLM_PJ/pull/16",
+        "title": "SAM：D4 synthetic 隔離、匯入工具與 10/11 工作清單",
+        "head_sha": "a418d0853dc22d91cb70a73f433c45c1d78c1246",
+        "base_ref": "codex/sam-delivery-20261007",
+        "draft": false,
+        "decision": "leave_open",
+        "reason": "Historical nested D4 branch, base is not main; current D4 import and schema have later records."
+      },
+      {
+        "number": 15,
+        "url": "https://github.com/SamWang61/LLM_PJ/pull/15",
+        "title": "feat: AI 比較頁 /admin/ai/compare（T4／R09）",
+        "head_sha": "9d38712f66148482688d5a185cbeb7e36909d0b1",
+        "base_ref": "feature/jeff-local-ai",
+        "draft": false,
+        "decision": "leave_open",
+        "reason": "Historical JEFF feature chain, base is not main; current AI code requires separate reconciliation."
+      },
+      {
+        "number": 14,
+        "url": "https://github.com/SamWang61/LLM_PJ/pull/14",
+        "title": "feat: AI 板塊 A Local 相似商品 /admin/ai/recommendation（T3／R09）",
+        "head_sha": "b9297388c207a52a976761ceea31b67322371886",
+        "base_ref": "feature/jeff-ai-insight",
+        "draft": false,
+        "decision": "leave_open",
+        "reason": "Historical JEFF feature chain, base is not main; current AI code requires separate reconciliation."
+      },
+      {
+        "number": 13,
+        "url": "https://github.com/SamWang61/LLM_PJ/pull/13",
+        "title": "feat: AI 板塊 B 雲端洞察 /admin/ai/insight（T2／R09）",
+        "head_sha": "f1b85174186acfd8f4e47ce66d25ad368122e1d9",
+        "base_ref": "feature/jeff-admin-ai",
+        "draft": false,
+        "decision": "leave_open",
+        "reason": "Historical JEFF feature chain, base is not main; current AI code requires separate reconciliation."
+      },
+      {
+        "number": 10,
+        "url": "https://github.com/SamWang61/LLM_PJ/pull/10",
+        "title": "docs: 同步 MongoDB Network Access 為 0.0.0.0/0",
+        "head_sha": "8a6edb1a4f6e5e7e21ce40350d30c6eec1ae44c6",
+        "base_ref": "main",
+        "draft": false,
+        "decision": "leave_open",
+        "reason": "Current main reports a merge conflict; Atlas 0.0.0.0/0 and fixed egress remain unresolved N13."
+      },
+      {
+        "number": 5,
+        "url": "https://github.com/SamWang61/LLM_PJ/pull/5",
+        "title": "draft: 行為計分候選實作（AI／後台由 JEFF 負責）",
+        "head_sha": "dc3114de7de0cd72b370610a1bdd6e2a707d8940",
+        "base_ref": "main",
+        "draft": true,
+        "decision": "leave_open",
+        "reason": "Explicit parked historical draft for JEFF ownership; not approved as current-scope integration."
+      }
+    ],
+    "note": "PR #103 merged into main after initial review; PR #102 is draft; PR #104 is this branch."
+  }
 }

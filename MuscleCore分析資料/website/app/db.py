@@ -5,7 +5,9 @@ from pymongo import MongoClient
 
 def get_db():
     if "db" not in g:
-        client = MongoClient(current_app.config["MONGO_URI"], serverSelectionTimeoutMS=2500)
+        # Bound each network operation as well as transaction-level retries.
+        client = MongoClient(current_app.config["MONGO_URI"], serverSelectionTimeoutMS=2500,
+                             connectTimeoutMS=2500, socketTimeoutMS=2500)
         client.admin.command("ping")
         g.mongo_client = client
         g.db = client[current_app.config["MONGO_DB"]]
