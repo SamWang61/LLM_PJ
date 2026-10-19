@@ -12,7 +12,7 @@
 | 不可變映像 | `asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:8755ccb82902cf59430d5b2b76505c3fb6e4ed265d0ef98ba42821769edbcbdd` |
 | Firebase Hosting | 06:48:42發布；release `1792363722745000`，version `a33b77d8155885b8`，FINALIZED |
 | 路由 | `**`轉送`vibecart-web`／`asia-east1`，未固定舊revision；兩個Firebase網域均已驗證 |
-| 舊版保留 | `vibecart-web-role-auth-576b4748`目前0%，保留作回復目標 |
+| 舊版保留（06:47紀錄） | `vibecart-web-role-auth-576b4748`當時保留0%；08:40後已不適合作為直接流量回復目標，詳下方更正 |
 
 映像原由PR #95來源`e5788ce12339370a8afb5e2c824a6ecd24e5f602`建置。本輪逐一比對56個Git blob，與main b038aaca全部相同；重新封裝archive SHA-256亦相同：`bd85ba17567bfdcff4b7d633551841df4b02a6dafee0a701fac46d969cf7fb4e`。因此直接部署已驗證的digest，沒有宣稱另建新映像。原[Cloud Build](https://console.cloud.google.com/cloud-build/builds;region=asia-east1/4e12f368-f6fd-41a7-9404-86b276e3e66b?project=278483818008)為SUCCESS。
 
@@ -61,6 +61,8 @@
 
 ## 回復與後續
 
-若需回復，只將Cloud Run流量切回`vibecart-web-role-auth-576b4748`並讀回100%；Firebase rewrite沿用同服務，無須更改資料庫。不要回放評價或重設帳密。後續正式會員累積評價後，高星商品於下一次推薦查詢即依規則入選。
+**2026/10/19 08:40回復指示更正**：N13之後Atlas萬用IP規則已不在，正式Cloud Run改經專用VPC與固定NAT出口。08:40唯讀讀回：`vibecart-web-nat-1019`承接100%，沿用本頁評價／6＋4映像digest，`vpcAccess.egress=ALL_TRAFFIC`；舊`vibecart-web-role-auth-576b4748`及`vibecart-web-reviews-b038aaca`均沒有`vpcAccess`。因此**不可只把流量切回這兩個舊revision**；否則可能失去Atlas連線。當時的發布與驗收數據仍為歷史事實；現行網路變更見[N13驗收紀錄](SAM_N06_N13_N14_ACCEPTANCE_2026-10-19.md)。
+
+若後續新revision需快速回復，先確認`vibecart-web-nat-1019`仍Ready、沿用固定出口且與目前資料結構相容，再以0%候選路由驗證首頁、推薦頁、登入及資料庫讀取，才切回該已驗評價／6＋4映像並讀回100%與Firebase路由。若要回到更早的應用程式碼，須先以該舊映像建立**具相同VPC／子網與ALL_TRAFFIC設定**的新0% revision，完成Atlas連線、功能及資料相容性驗證後才可切流。Firebase rewrite沿用同服務；不要回放評價、重設帳密或放寬Atlas存取規則。後續正式會員累積評價後，高星商品於下一次推薦查詢即依規則入選。
 
 本次完成正式部署與受控技術驗收；具名真人簽收、完整手機矩陣、付款物流、首次會員快照、完整12個月關聯統計、每日／週／月排程及效能SLO仍按各自工作清單交付。既有V5的2／14不因本次技術驗收自行改為全部完成。GitHub PR／main合併與CI以本次交付收據及GitHub最終狀態為準。
