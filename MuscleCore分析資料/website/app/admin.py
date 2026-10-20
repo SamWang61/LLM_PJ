@@ -1,9 +1,11 @@
-from datetime import date, datetime, timedelta
+from datetime import date, datetime, timedelta, timezone
 from decimal import Decimal
 from importlib.util import find_spec
 from flask import Blueprint, abort, current_app, flash, redirect, render_template, request, session, url_for
 from .auth import admin_required
 from .db import get_db
+from .services.admin_catalog import AdminListError, product_list
+from .services.admin_records import member_list, order_detail, order_list
 from .services.ai_compare import comparison
 from .services.ai_payload import InsightDataError, build_insight_payload, insight_ranges
 from .services.ai_workflows import FAILURE_LABELS, INTENTS, InsightRequestError, clean_question, insight_answer, operational_summary
@@ -108,6 +110,14 @@ def compact_ntd(value):
     """Axis labels only; exact amounts are shown with the ntd filter."""
     value = float(value)
     return f"{value / 10000:.1f} 萬" if value >= 10000 else f"{value:,.0f}"
+
+
+@bp.app_template_filter('taipei')
+def taipei(value):
+    """UTC datetimes from MongoDB shown in Taipei time; missing values show a dash."""
+    if not isinstance(value, datetime):
+        return "—"
+    return value.replace(tzinfo=value.tzinfo or timezone.utc).astimezone(TAIPEI).strftime("%Y-%m-%d %H:%M")
 
 
 @bp.app_template_filter('duration')
@@ -247,3 +257,41 @@ def ai_recommendation_refresh():
 @admin_required
 def ai_compare():
     return render_template('admin/ai_compare.html', **comparison())
+
+
+LIST_PAGES = {"admin.products": "返回商品管理", "admin.orders": "返回訂單管理", "admin.members": "返回會員管理"}
+
+
+@bp.errorhandler(AdminListError)
+def invalid_list_filters(error):
+    endpoint = request.endpoint if request.endpoint in LIST_PAGES else None
+    return render_template('admin/filter_error.html', message=str(error),
+                           back_url=url_for(endpoint) if endpoint else None,
+                           back_label=LIST_PAGES.get(endpoint)), 400
+
+
+@bp.get('/products')
+@admin_required
+def products():
+    return render_template('admin/products.html', **product_list(get_db(), request.args))
+
+
+@bp.get('/orders')
+@admin_required
+def orders():
+    return render_template('admin/orders.html', **order_list(get_db(), request.args))
+
+
+@bp.get('/orders/<order_id>')
+@admin_required
+def order_detail_page(order_id):
+    detail = order_detail(get_db(), order_id)
+    if detail is None:
+        abort(404, description="找不到這筆訂單。")
+    return render_template('admin/order_detail.html', order=detail)
+
+
+@bp.get('/members')
+@admin_required
+def members():
+    return render_template('admin/members.html', **member_list(get_db(), request.args))

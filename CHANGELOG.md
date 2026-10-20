@@ -11,6 +11,11 @@
 - 後台改為淺色數據看板（設計規格 v1.3 第 8 節）；營運總覽改為 12 欄格線，加入 KPI 走勢與「近 7 天 vs 前 7 天」（只用篩選範圍內資料）、SVG 每日營收圖、熱銷橫條與低庫存水位條。Light admin theme and dashboard grid.
 - 前台不變；新增 5 項離線測試。See [dashboard handoff](docs/AI_DASHBOARD.md).
 
+## 2026-10-21 — JEFF 商品／訂單／會員管理唯讀頁 / Read-only management lists
+
+- 新增 `/admin/products`、`/admin/orders`（含明細）、`/admin/members` 唯讀列表與篩選；會員 Email 遮罩、不讀取 `password_hash`；寫入功能仍待 D5 稽核遷移。Read-only admin lists.
+- 新增 25 項離線測試。See [dashboard handoff](docs/AI_DASHBOARD.md).
+
 ## 2026-10-18 — 最新main無流量預覽與私有真模型驗收
 
 - [部署與驗收](docs/SAM_MAIN_PREVIEW_2026-10-18.md)：main20ee的52檔封裝與GCS實際讀回一致、Cloud Build三步SUCCESS；真BGE、四Claude問題／快取、角色／交易／1001 synthetic、停用規則退回及清理。

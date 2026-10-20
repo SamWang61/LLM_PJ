@@ -1,0 +1,36 @@
+{% extends 'admin/layout.html' %}
+{% from 'admin/_list_macros.html' import pager, pill, readonly_note with context %}
+{% import 'admin/_list_macros.html' as lists %}
+{% block title %}商品管理｜VibeInsight 後台{% endblock %}
+{% block eyebrow %}MANAGEMENT{% endblock %}
+{% block heading %}商品管理{% endblock %}
+{% block meta %}<span>共 {{ '{:,}'.format(paging.total) }} 項</span><span>依商品代碼排序</span>{% endblock %}
+{% block content %}
+{{ readonly_note('新增與編輯需等 D5 寫入及稽核上線（設計規格 12.3）。') }}
+<form class="panel dashboard-filters" method="get" action="{{ url_for('admin.products') }}">
+  <label class="wide">關鍵字（名稱或代碼）<input type="search" name="q" value="{{ form.q }}" maxlength="50"></label>
+  <label>大類別<select name="major"><option value="">全部</option>{% for c in majors %}<option value="{{ c.id }}" {% if form.major == c.id %}selected{% endif %}>{{ c.name }}</option>{% endfor %}</select></label>
+  <label>狀態<select name="status"><option value="">全部</option>{% for value, label in lists.status_labels.items() %}<option value="{{ value }}" {% if form.status == value %}selected{% endif %}>{{ label }}</option>{% endfor %}</select></label>
+  <label>可推薦<select name="recommendable">{% for value, label in [('', '全部'), ('yes', '是'), ('no', '否')] %}<option value="{{ value }}" {% if form.recommendable == value %}selected{% endif %}>{{ label }}</option>{% endfor %}</select></label>
+  <button class="button" type="submit">篩選</button><a class="button secondary" href="{{ url_for('admin.products') }}">重設</a>
+</form>
+<section class="panel" aria-labelledby="product-list-title">
+  <h2 id="product-list-title" class="visually-hidden">商品列表</h2>
+  <div class="table-wrap"><table>
+    <thead><tr><th>圖</th><th>商品代碼</th><th>名稱</th><th>分類</th><th class="num">SKU 數</th><th class="num">可售量合計</th><th class="num">最低可售價</th><th class="num">評價</th><th>狀態</th><th>可推薦</th></tr></thead>
+    <tbody>{% for p in rows %}<tr>
+      <td>{% if p.image %}<img class="product-thumb tiny" src="{{ p.image }}" alt="" loading="lazy" referrerpolicy="no-referrer">{% else %}<span class="product-thumb tiny" aria-hidden="true">{{ p.name[:1] }}</span>{% endif %}</td>
+      <td><code>{{ p.code }}</code></td>
+      <td class="wrap">{{ p.name }}</td>
+      <td class="wrap">{{ p.category or '—' }}</td>
+      <td class="num">{{ p.sku_count }}</td>
+      <td class="num">{{ p.available }}</td>
+      <td class="num">{{ p.min_price|ntd }}</td>
+      <td class="num">{% if p.rating is not none %}{{ '%.1f'|format(p.rating) }}（{{ p.rating_count }}）{% else %}—{% endif %}</td>
+      <td>{{ pill(lists.status_labels.get(p.status, p.status), 'ok' if p.status == 'active' else 'warn' if p.status == 'draft' else 'bad') }}</td>
+      <td>{{ pill('是', 'ok') if p.recommendable else pill('否') }}</td>
+    </tr>{% else %}<tr><td colspan="10" class="empty-cell">沒有符合條件的商品。</td></tr>{% endfor %}</tbody>
+  </table></div>
+  {{ pager(paging, 'admin.products', form) }}
+</section>
+{% endblock %}

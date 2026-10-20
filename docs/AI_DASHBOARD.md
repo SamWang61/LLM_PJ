@@ -174,6 +174,23 @@ The ignored local profile contains the existing v4 connection. It is not a newly
 - **資料**：`services/dashboard.py` 新增 `insights["trend"]`（`kpi_trend`），既有 `daily` 等欄位形狀不變。`admin.py` 新增 `spark_path`、`column_chart` 與 `pct`、`compact_ntd` 篩選器，只負責產生畫面座標與格式。
 - **驗證**：網站離線測試 317 passed／21 skipped（新增 5 項：走勢只用範圍內資料、圖表補零、水位條與橫條、圖表工具的空值與斷線）。以本機 mongomock 預覽逐頁檢查：總覽、Local 推薦、雲端洞察（含回覆）、AI 比較、推薦監控、篩選錯誤頁皆無殘留深色背景或淺色文字；375px 手機寬度無橫向溢出。
 
+## 商品／訂單／會員管理（唯讀）／ Read-only management lists（JEFF，2026-10-21）
+
+依設計規格第 6 節實作三個**唯讀**頁面；新增、編輯、狀態變更與會員停用要等 D5 寫入及稽核遷移啟用（規格 12.3），頁面上方都有說明。
+
+- **商品管理** `/admin/products`（`services/admin_catalog.py`）：
+  - 篩選：關鍵字（名稱或代碼）、大類別、狀態、可推薦。
+  - 欄位：圖、代碼、名稱、分類、SKU 數、可售量合計（只計 active SKU）、最低可售價（只計 active 且有庫存的 SKU）、評價、狀態、可推薦。
+- **訂單管理** `/admin/orders`、明細 `/admin/orders/<id>`（`services/admin_records.py`）：
+  - 篩選：台北日期（沿用營運總覽的日期檢查）、訂單狀態、付款狀態、示範、訂單編號。
+  - 明細：品項快照、金額組成、時間軸（下單／付款／完成，只顯示有紀錄的），會員只顯示名稱與遮罩 Email。
+- **會員管理** `/admin/members`：
+  - 篩選：顯示名稱、角色、狀態。
+  - Email 一律遮罩（`j***@example.com`），**不讀取 `password_hash`**；Email 不能當搜尋條件，避免從遮罩列表反推地址。
+  - 沒有停用按鈕；管理員帳號依規格 12.3-C 本來就不能從後台停用。
+- **共通規則**：每頁 50 筆；關鍵字以字面比對（先跳脫，不當成正規表示式）；篩選值不合法時回 400，並附「返回 XX 管理」連結；全部是 GET、需要 `@admin_required`；時間以台北時間顯示。導覽列不再顯示「尚未開放」。
+- **驗證**：網站離線測試 342 passed／21 skipped（新增 `tests/test_admin_lists.py` 25 項）。以本機 mongomock 預覽檢查三頁：無殘留深色、375px 無橫向溢出、會員頁 HTML 不含密碼雜湊與完整 Email。
+
 ## 線上 AI 設定 / Online AI configuration（JEFF，2026-10-18，A1／A2）
 
 **狀態：程式與建置設定已完成；SAM已實際建置精簡與AI映像、Gunicorn boot及真BGE斷網驗證。尚未執行Cloud Build／發布或部署；線上AI仍關閉。** 部署由 SAM 執行或授權，費用記在 `vibecart-llmai` 帳單；Claude API 費用由 JEFF 的 Key 負擔。
