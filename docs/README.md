@@ -79,6 +79,7 @@
 | SAM PR #21 本機驗證與最終缺口 | [2026-10-16 Docker／交易與遠端待驗](SAM_PR21_ACCEPTANCE_2026-10-16.md) |
 | 部署方式 | [Firebase Hosting／Cloud Run](../deploy/FIREBASE_CLOUD_RUN_DEPLOYMENT.md)、[Render](../deploy/RENDER_DEPLOYMENT.md) |
 | JEFF 管理後台設計與 D5／AI 契約 | [v1.2 設計規格與 10/16 啟用門檻](JEFF_ADMIN_UI_DESIGN.md) |
+| JEFF 前台使用回報（交 SAM） | [10/21 前台問題與建議](JEFF_FRONTEND_ISSUES_2026-10-21.md) |
 | SAM 最新 CI 與交易驗收 | [2026-10-15 修復與測試紀錄](SAM_CI_TRANSACTION_ACCEPTANCE_2026-10-15.md) |
 | [Flask／SKU／AI 串接](FLASK_SKU_AI_INTEGRATION.md) | v4 routes, LangGraph workflows, setup and UAT. |
 | 全部文件 / All documents | [逐份雙語索引](DOCUMENT_INDEX.md) |

@@ -1,5 +1,9 @@
 # 變更紀錄 / Changelog
 
+## 2026-10-21 — JEFF 前台使用回報 / Storefront issue report
+
+- JEFF 以會員身分操作正式站，整理 12 項前台問題交 SAM：登入／登出重複送出造成 CSRF 400、每請求新建 MongoClient 導致約 2 秒回應、庫存 0 仍可加購、規格與商品卡等。見[回報](docs/JEFF_FRONTEND_ISSUES_2026-10-21.md)。Documentation only.
+
 ## 2026-10-20 — PR #5 離線持久快照接續 / Offline scoring snapshots
 
 - 現行請求時6＋4已接續前台需求；保留尚未被取代的明確會員離線快照工具，JEFF主責計分契約、SAM負責資料庫／測試／整合。見[操作與語義差異](docs/PREFERENCE_SCORING.md)。
