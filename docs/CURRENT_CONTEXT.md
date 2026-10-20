@@ -1,5 +1,7 @@
 # 最新專案上下文 / Current project context
 
+**2026/10/20 五項技術／素材工作完成**：[實際排程、證據及逐項 GitHub 交付](SAM_FIVE_TECH_EXECUTION_2026-10-20.md)。N15／N11／N12／N06 已分別經 PR #147～#150 合併；新 N06 映像 `5efdd89f…`、來源 `fc4e7c0…`，正式 `vibecart-web-five-fc4e` 與私有 `five-fc4e-normal` 各 100%，54 執行檔與後續 main 相等；同映像會員／訂單／受控故障／D4 及獨立清理讀回通過。N12 管理端窄視窗／焦點／日期錯誤已補；N11 全專案 Cloud Asset 交叉補查完成，政策拒絕區與索引界線明載；N16 補 11 張新正式圖、S01～S12 採用索引及單筆清冊 hash 修正。Hosting 既有路由承接新版，五公開路由 200。所選五項技術／素材剩餘 0；[三人表](../專題進度/待結案篩選與三人實作表_2026-10-20.md)本人實機／異機、備份與簽收欄仍待本人回填，正式 V5 維持 3／14。下方較早「未部署／N12 受阻」均保留為當時快照。
+
 **2026/10/20根目錄Dockerfile／Cloud Build修復**：[檔案位置、兩種builder與逐輪證據](../deploy/ROOT_DOCKERFILE_2026-10-20.md)。根目錄Dockerfile／嚴格.dockerignore已補，GitHub trigger仍用固定commit白名單與私有0%候選；初輪抓到classic/BuildKit父目錄遍歷差異，修正後以classic本機驗54來源／8個canary／非root及Gunicorn健康通過。修正版Cloud Build `5ed3ce3e…`五步SUCCESS，候選`00046-yan` Ready且0%，digest讀回相符、匿名403；正式與私有原100%流量未動。GitHub交付／main CI與自動觸發以[PR #143](https://github.com/SamWang61/LLM_PJ/pull/143)最終紀錄為準；本輪不代替正式功能或V5簽收。
 
 <!-- SAM REMOTE ROLE RESULT 20261020 BEGIN -->

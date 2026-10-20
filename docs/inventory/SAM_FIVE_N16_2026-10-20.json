@@ -1,0 +1,1056 @@
+{
+  "started_at_taipei": "2026-10-20T08:34:00.289267+08:00",
+  "finished_at_taipei": "2026-10-20T08:37:55.159998+08:00",
+  "execution_identity": "Codex executing SAM simulation asset integrity and semantic audit; no human signature",
+  "source_commit": "fc4e7c071c34a43594a50f6d0407952e8f20113b",
+  "status": "selected_N16_technical_material_gap_filled_with_dated_evidence_supplement",
+  "final_validation": {
+    "new_pngs_sha_size_decode_verified": 11,
+    "selected_images": 9,
+    "covered_ids": 12,
+    "new_report_local_references_verified": 47,
+    "current_formal_private_source_digest_percent_match": true,
+    "repository_policy": {"files": 934, "utf8_texts": 729, "errors": 0},
+    "diff_check": "git -c core.whitespace=cr-at-eol diff --check: passed"
+  },
+  "final_supplement": {
+    "readme": "docs/inventory/SAM_FIVE_N16_LIVE_2026-10-20/README.md",
+    "manifest": "docs/inventory/SAM_FIVE_N16_LIVE_2026-10-20/manifest.json",
+    "source_sha": "fc4e7c071c34a43594a50f6d0407952e8f20113b",
+    "digest": "sha256:5efdd89f40c3119306a1d5f1560a039eeff5d8a1d70667d1dfacb40c81341ea3",
+    "formal_revision": "vibecart-web-five-fc4e",
+    "private_revision": "vibecart-acceptance-pr21-five-fc4e-normal",
+    "formal_and_private_percent": 100,
+    "images_decoded_and_visually_verified": 11,
+    "selected_images": 9,
+    "initial_page_top_attempts_retained": ["02-search.png", "04-no-results.png"],
+    "technical_gap_in_user_selected_scope": [],
+    "fixed_pptx_pdf_and_historical_images_unchanged": true,
+    "final_adoption_and_named_signatures_excluded_from_this_scope": true
+  },
+  "s01_s12_map": {
+    "source": "docs/inventory/SAM_FIVE_N16_LIVE_2026-10-20/manifest.json#s01_s12_selection",
+    "covered_ids": ["S01", "S02", "S03", "S04", "S05", "S06", "S07", "S08", "S09", "S10", "S11", "S12"],
+    "coverage_type": "new official images or exact versioned API/probe/CI evidence, with explicit limitations; no invented order image"
+  },
+  "formal_runtime_read_in_this_subtask": false,
+  "pptx_pdf_modified": false,
+  "historical_screenshots": [
+    {
+      "id": "S01",
+      "path": "簡報文件/screenshots/S01-home.png",
+      "bytes": 275598,
+      "sha256": "0210eb126786b584a1c508113ed76fb7a65750bfccc3a81c1f7ca133b5912b10",
+      "index_hash_matches": true,
+      "index_size_matches": true,
+      "dimensions": [
+        1429,
+        766
+      ],
+      "captured_at_taipei": "2026-10-18T05:52:43.215000+08:00",
+      "source_sha": "ff65eaef0f6db932f844893cf2f8dc42eac5b5f7",
+      "revision": "vibecart-web-00018-s59",
+      "image_digest": "sha256:ba7d34787ffda32cb944022494c0dd5da64600df64ea05c49a79c41473404f5f",
+      "role": "anonymous / read-only metadata viewer",
+      "url": "https://vibecart-llmai.web.app/",
+      "review_status": "pending named review"
+    },
+    {
+      "id": "S02",
+      "path": "簡報文件/screenshots/S02-empty.png",
+      "bytes": 510368,
+      "sha256": "bacf2d5043b91cf9ca0fe43d33d2310f395869783a9b0f79e62adb0ba2ea4a8b",
+      "index_hash_matches": true,
+      "index_size_matches": true,
+      "dimensions": [
+        1265,
+        1457
+      ],
+      "captured_at_taipei": "2026-10-18T05:57:57.643000+08:00",
+      "source_sha": "ff65eaef0f6db932f844893cf2f8dc42eac5b5f7",
+      "revision": "vibecart-web-00018-s59",
+      "image_digest": "sha256:ba7d34787ffda32cb944022494c0dd5da64600df64ea05c49a79c41473404f5f",
+      "role": "anonymous / read-only metadata viewer",
+      "url": "https://vibecart-llmai.web.app/?q=%E9%A9%97%E6%94%B6%E4%B8%8D%E5%AD%98%E5%9C%A8%E5%95%86%E5%93%8120261018&major=&category=",
+      "review_status": "pending named review"
+    },
+    {
+      "id": "S02",
+      "path": "簡報文件/screenshots/S02-search-result.png",
+      "bytes": 723820,
+      "sha256": "41803982fde236998f7433db23c1e74f1513a115dc5f0b981dafdf0a82e51d36",
+      "index_hash_matches": true,
+      "index_size_matches": true,
+      "dimensions": [
+        1265,
+        2484
+      ],
+      "captured_at_taipei": "2026-10-18T05:57:55.098000+08:00",
+      "source_sha": "ff65eaef0f6db932f844893cf2f8dc42eac5b5f7",
+      "revision": "vibecart-web-00018-s59",
+      "image_digest": "sha256:ba7d34787ffda32cb944022494c0dd5da64600df64ea05c49a79c41473404f5f",
+      "role": "anonymous / read-only metadata viewer",
+      "url": "https://vibecart-llmai.web.app/?q=%E5%88%B7%E6%A8%82%E9%86%AB%E7%94%9F%E7%89%99%E5%88%B7&major=&category=",
+      "review_status": "pending named review"
+    },
+    {
+      "id": "S02",
+      "path": "簡報文件/screenshots/S02-search.png",
+      "bytes": 310255,
+      "sha256": "904f3d8594f1a568fcc0d96176160a948ee27837c53a58fcc1c39532dfc3d197",
+      "index_hash_matches": true,
+      "index_size_matches": true,
+      "dimensions": [
+        1429,
+        766
+      ],
+      "captured_at_taipei": "2026-10-18T05:53:16.661000+08:00",
+      "source_sha": "ff65eaef0f6db932f844893cf2f8dc42eac5b5f7",
+      "revision": "vibecart-web-00018-s59",
+      "image_digest": "sha256:ba7d34787ffda32cb944022494c0dd5da64600df64ea05c49a79c41473404f5f",
+      "role": "anonymous / read-only metadata viewer",
+      "url": "https://vibecart-llmai.web.app/?q=%E5%88%B7%E6%A8%82%E9%86%AB%E7%94%9F%E7%89%99%E5%88%B7&major=&category=",
+      "review_status": "pending named review"
+    },
+    {
+      "id": "S03",
+      "path": "簡報文件/screenshots/S03-product.png",
+      "bytes": 445498,
+      "sha256": "ca49bf8499e877167a82032d55eaa639e4b4cfad5eeaa957c5a90f29fcf50cc4",
+      "index_hash_matches": true,
+      "index_size_matches": true,
+      "dimensions": [
+        1429,
+        766
+      ],
+      "captured_at_taipei": "2026-10-18T05:53:48.525000+08:00",
+      "source_sha": "ff65eaef0f6db932f844893cf2f8dc42eac5b5f7",
+      "revision": "vibecart-web-00018-s59",
+      "image_digest": "sha256:ba7d34787ffda32cb944022494c0dd5da64600df64ea05c49a79c41473404f5f",
+      "role": "anonymous / read-only metadata viewer",
+      "url": "https://vibecart-llmai.web.app/product/02f9efd17210150f2eea7274",
+      "review_status": "pending named review"
+    },
+    {
+      "id": "S04",
+      "path": "簡報文件/screenshots/S04-auth.png",
+      "bytes": 115304,
+      "sha256": "c2fa624ee36b6e91b1d101f81967ab7a6ea22fc3a7dbf347e51de005458675bc",
+      "index_hash_matches": true,
+      "index_size_matches": true,
+      "dimensions": [
+        1143,
+        613
+      ],
+      "captured_at_taipei": "2026-10-18T05:54:03.878000+08:00",
+      "source_sha": "ff65eaef0f6db932f844893cf2f8dc42eac5b5f7",
+      "revision": "vibecart-acceptance-pr21-00007-wcd",
+      "image_digest": "sha256:ba7d34787ffda32cb944022494c0dd5da64600df64ea05c49a79c41473404f5f",
+      "role": "customer",
+      "url": "http://127.0.0.1:51767/cart",
+      "review_status": "pending named review"
+    },
+    {
+      "id": "S04",
+      "path": "簡報文件/screenshots/S04-customer-admin-denied.png",
+      "bytes": 212626,
+      "sha256": "026a416d7d2601f4be0b8480d9fe4e760fa76fc8504171363888af4947d254ce",
+      "index_hash_matches": true,
+      "index_size_matches": true,
+      "dimensions": [
+        1143,
+        613
+      ],
+      "captured_at_taipei": "2026-10-18T05:54:06.915000+08:00",
+      "source_sha": "ff65eaef0f6db932f844893cf2f8dc42eac5b5f7",
+      "revision": "vibecart-acceptance-pr21-00007-wcd",
+      "image_digest": "sha256:ba7d34787ffda32cb944022494c0dd5da64600df64ea05c49a79c41473404f5f",
+      "role": "customer",
+      "url": "http://127.0.0.1:51767/",
+      "review_status": "pending named review"
+    },
+    {
+      "id": "S05",
+      "path": "簡報文件/screenshots/S05-cart.png",
+      "bytes": 146816,
+      "sha256": "31c10381ce6c8bb79ff77527552beb24381ccbea3f514a506cc8b9989a1a2382",
+      "index_hash_matches": true,
+      "index_size_matches": true,
+      "dimensions": [
+        1143,
+        613
+      ],
+      "captured_at_taipei": "2026-10-18T05:54:43.338000+08:00",
+      "source_sha": "ff65eaef0f6db932f844893cf2f8dc42eac5b5f7",
+      "revision": "vibecart-acceptance-pr21-00007-wcd",
+      "image_digest": "sha256:ba7d34787ffda32cb944022494c0dd5da64600df64ea05c49a79c41473404f5f",
+      "role": "customer",
+      "url": "http://127.0.0.1:51767/cart",
+      "review_status": "pending named review"
+    },
+    {
+      "id": "S05",
+      "path": "簡報文件/screenshots/S05-order.png",
+      "bytes": 231517,
+      "sha256": "f42ef272bd3fa16178585e55207bedc9e91677cc1119c122234c1ce7fd8b8986",
+      "index_hash_matches": true,
+      "index_size_matches": true,
+      "dimensions": [
+        1143,
+        613
+      ],
+      "captured_at_taipei": "2026-10-18T05:54:51.357000+08:00",
+      "source_sha": "ff65eaef0f6db932f844893cf2f8dc42eac5b5f7",
+      "revision": "vibecart-acceptance-pr21-00007-wcd",
+      "image_digest": "sha256:ba7d34787ffda32cb944022494c0dd5da64600df64ea05c49a79c41473404f5f",
+      "role": "customer",
+      "url": "http://127.0.0.1:51767/",
+      "review_status": "pending named review"
+    },
+    {
+      "id": "S06",
+      "path": "簡報文件/screenshots/S06-admin.png",
+      "bytes": 315182,
+      "sha256": "16f373acaa241fe2adf6c8d93f42798ddacd5cd888b84ab7e65e785e91866af7",
+      "index_hash_matches": true,
+      "index_size_matches": true,
+      "dimensions": [
+        1143,
+        613
+      ],
+      "captured_at_taipei": "2026-10-18T05:55:06.167000+08:00",
+      "source_sha": "ff65eaef0f6db932f844893cf2f8dc42eac5b5f7",
+      "revision": "vibecart-acceptance-pr21-00007-wcd",
+      "image_digest": "sha256:ba7d34787ffda32cb944022494c0dd5da64600df64ea05c49a79c41473404f5f",
+      "role": "admin",
+      "url": "http://127.0.0.1:51767/admin/?start=2026-10-18&end=2026-10-18&demo=only",
+      "review_status": "pending named review"
+    },
+    {
+      "id": "S07",
+      "path": "簡報文件/screenshots/S07-recommend.png",
+      "bytes": 370448,
+      "sha256": "15915ddd1ab7a65b6b5a7f500001b1f39803c13cb18cee54e6b737aaae63ca33",
+      "index_hash_matches": true,
+      "index_size_matches": true,
+      "dimensions": [
+        1429,
+        766
+      ],
+      "captured_at_taipei": "2026-10-18T05:52:50.081000+08:00",
+      "source_sha": "ff65eaef0f6db932f844893cf2f8dc42eac5b5f7",
+      "revision": "vibecart-web-00018-s59",
+      "image_digest": "sha256:ba7d34787ffda32cb944022494c0dd5da64600df64ea05c49a79c41473404f5f",
+      "role": "anonymous / read-only metadata viewer",
+      "url": "https://vibecart-llmai.web.app/",
+      "review_status": "pending named review"
+    },
+    {
+      "id": "S08",
+      "path": "簡報文件/screenshots/S08-ai-compare.png",
+      "bytes": 335432,
+      "sha256": "b525d790a614d4e5d79590138e80b3993e3d5b02c640ff95d89be9e9cf888c64",
+      "index_hash_matches": true,
+      "index_size_matches": true,
+      "dimensions": [
+        1143,
+        613
+      ],
+      "captured_at_taipei": "2026-10-18T05:55:13.952000+08:00",
+      "source_sha": "ff65eaef0f6db932f844893cf2f8dc42eac5b5f7",
+      "revision": "vibecart-acceptance-pr21-00007-wcd",
+      "image_digest": "sha256:ba7d34787ffda32cb944022494c0dd5da64600df64ea05c49a79c41473404f5f",
+      "role": "admin",
+      "url": "http://127.0.0.1:51767/admin/ai/compare",
+      "review_status": "pending named review"
+    },
+    {
+      "id": "S08",
+      "path": "簡報文件/screenshots/S08-ai.png",
+      "bytes": 301630,
+      "sha256": "5aec96513975b908771065fd38eec87bef6a59e3a51a9d23ee280cfeed96ca31",
+      "index_hash_matches": true,
+      "index_size_matches": true,
+      "dimensions": [
+        1143,
+        613
+      ],
+      "captured_at_taipei": "2026-10-18T05:55:16.550000+08:00",
+      "source_sha": "ff65eaef0f6db932f844893cf2f8dc42eac5b5f7",
+      "revision": "vibecart-acceptance-pr21-00007-wcd",
+      "image_digest": "sha256:ba7d34787ffda32cb944022494c0dd5da64600df64ea05c49a79c41473404f5f",
+      "role": "admin",
+      "url": "http://127.0.0.1:51767/admin/ai/insight",
+      "review_status": "pending named review"
+    },
+    {
+      "id": "S09",
+      "path": "簡報文件/screenshots/S09-ci.png",
+      "bytes": 314174,
+      "sha256": "4ce79047472ddb2f3fa7d3efad235732a31ae4dea0f04f3ce2bbaac64250c423",
+      "index_hash_matches": true,
+      "index_size_matches": true,
+      "dimensions": [
+        1805,
+        968
+      ],
+      "captured_at_taipei": "2026-10-18T05:56:29.815000+08:00",
+      "source_sha": "ff65eaef0f6db932f844893cf2f8dc42eac5b5f7",
+      "revision": null,
+      "image_digest": "sha256:ba7d34787ffda32cb944022494c0dd5da64600df64ea05c49a79c41473404f5f",
+      "role": "GitHub Actions viewer",
+      "url": "https://github.com/SamWang61/LLM_PJ/actions/runs/39070827406",
+      "review_status": "pending named review"
+    },
+    {
+      "id": "S10",
+      "path": "簡報文件/screenshots/S10-data.png",
+      "bytes": 161648,
+      "sha256": "0888ce88b79be96233ae8a643cf03f62285e4d73c0cd32261ec2ae582079fa00",
+      "index_hash_matches": true,
+      "index_size_matches": true,
+      "dimensions": [
+        1155,
+        619
+      ],
+      "captured_at_taipei": "2026-10-18T05:54:52.478000+08:00",
+      "source_sha": "ff65eaef0f6db932f844893cf2f8dc42eac5b5f7",
+      "revision": "vibecart-acceptance-pr21-00007-wcd",
+      "image_digest": "sha256:ba7d34787ffda32cb944022494c0dd5da64600df64ea05c49a79c41473404f5f",
+      "role": "anonymous / read-only metadata viewer",
+      "url": "http://127.0.0.1:51767/__evidence/data",
+      "review_status": "pending named review"
+    },
+    {
+      "id": "S11",
+      "path": "簡報文件/screenshots/S11-deploy.png",
+      "bytes": 393811,
+      "sha256": "1a26d56c68561e8e5528c060f58339adf4e1d39b1a0db2654fca668e902d6b93",
+      "index_hash_matches": true,
+      "index_size_matches": true,
+      "dimensions": [
+        1143,
+        613
+      ],
+      "captured_at_taipei": "2026-10-18T05:56:17.908000+08:00",
+      "source_sha": "ff65eaef0f6db932f844893cf2f8dc42eac5b5f7",
+      "revision": "production18 / acceptance07; see API report",
+      "image_digest": "sha256:ba7d34787ffda32cb944022494c0dd5da64600df64ea05c49a79c41473404f5f",
+      "role": "read-only API result viewer",
+      "url": "http://127.0.0.1:51767/__evidence/deploy",
+      "review_status": "pending named review"
+    },
+    {
+      "id": "S11",
+      "path": "簡報文件/screenshots/S11-health.png",
+      "bytes": 15492,
+      "sha256": "83e1bca9caa95657642e02400b5c4b2ecc16f4df703424cab87f8e5dca55e0bf",
+      "index_hash_matches": true,
+      "index_size_matches": true,
+      "dimensions": [
+        1443,
+        774
+      ],
+      "captured_at_taipei": "2026-10-18T05:56:32.831000+08:00",
+      "source_sha": "ff65eaef0f6db932f844893cf2f8dc42eac5b5f7",
+      "revision": "production18 / acceptance07; see API report",
+      "image_digest": "sha256:ba7d34787ffda32cb944022494c0dd5da64600df64ea05c49a79c41473404f5f",
+      "role": "read-only API result viewer",
+      "url": "https://vibecart-llmai.web.app/health/ready",
+      "review_status": "pending named review"
+    },
+    {
+      "id": "S12",
+      "path": "簡報文件/screenshots/S12-mobile-admin.png",
+      "bytes": 170980,
+      "sha256": "90d6b56b0902ba6296b443c858d458900a021f6da9c2e478f3368e46a75df9a2",
+      "index_hash_matches": true,
+      "index_size_matches": true,
+      "dimensions": [
+        375,
+        844
+      ],
+      "captured_at_taipei": "2026-10-18T05:56:01.270000+08:00",
+      "source_sha": "ff65eaef0f6db932f844893cf2f8dc42eac5b5f7",
+      "revision": "vibecart-acceptance-pr21-00007-wcd",
+      "image_digest": "sha256:ba7d34787ffda32cb944022494c0dd5da64600df64ea05c49a79c41473404f5f",
+      "role": "admin",
+      "url": "http://127.0.0.1:51767/admin/",
+      "review_status": "pending named review"
+    },
+    {
+      "id": "S12",
+      "path": "簡報文件/screenshots/S12-mobile-cart.png",
+      "bytes": 137910,
+      "sha256": "2458ede3f80e57a62f9c7d132e4bb9c86adb7ff1521cef38612086fe5cc6eee4",
+      "index_hash_matches": true,
+      "index_size_matches": true,
+      "dimensions": [
+        375,
+        844
+      ],
+      "captured_at_taipei": "2026-10-18T05:56:17.260000+08:00",
+      "source_sha": "ff65eaef0f6db932f844893cf2f8dc42eac5b5f7",
+      "revision": "vibecart-acceptance-pr21-00007-wcd",
+      "image_digest": "sha256:ba7d34787ffda32cb944022494c0dd5da64600df64ea05c49a79c41473404f5f",
+      "role": "customer",
+      "url": "http://127.0.0.1:51767/cart",
+      "review_status": "pending named review"
+    },
+    {
+      "id": "S12",
+      "path": "簡報文件/screenshots/S12-mobile.png",
+      "bytes": 187419,
+      "sha256": "8bf3f8d12816fc1708b736e7fb5d65da50fb1b8d08e4d839fe45a8ca4f368144",
+      "index_hash_matches": true,
+      "index_size_matches": true,
+      "dimensions": [
+        375,
+        844
+      ],
+      "captured_at_taipei": "2026-10-18T05:55:57.456000+08:00",
+      "source_sha": "ff65eaef0f6db932f844893cf2f8dc42eac5b5f7",
+      "revision": "vibecart-web-00018-s59",
+      "image_digest": "sha256:ba7d34787ffda32cb944022494c0dd5da64600df64ea05c49a79c41473404f5f",
+      "role": "anonymous / read-only metadata viewer",
+      "url": "https://vibecart-llmai.web.app/",
+      "review_status": "pending named review"
+    }
+  ],
+  "historical_pending_named_reviews": 20,
+  "v5_assets": {
+    "pptx_sha256": "43374f71c5e42fdc1725f38a8ac69ea0e2ccc696f6238ebb06425e58e00d7203",
+    "pptx_bytes": 2603358,
+    "pdf_sha256": "c5555c2a54d8a4200fd79fb8073d0fa5af691b40b13a4e031ddf9f8f6dc4535d",
+    "pdf_bytes": 812156,
+    "slides": 13,
+    "manifest_file": "簡報文件/超市AI版_2026-10-18/SHA256.json",
+    "manifest_rows": [
+      {
+        "path": "內容資料.json",
+        "sha256": "33903177b80a2b2998955eeb31b4fe6df0fdba1b3943636858980ee24fedb7a7",
+        "matches": true
+      },
+      {
+        "path": "來源登錄.md",
+        "sha256": "6fab5359f785dd20c9cc368b476f9c2ebc22e754b7402a3b3b5683b6c2b9462a",
+        "matches": true
+      },
+      {
+        "path": "版面與素材規範.md",
+        "sha256": "93b306f641bf9723e5ee040622c84ee57fd69f56e7556a57df25ebded0b06851",
+        "matches": true
+      },
+      {
+        "path": "逐頁內容與講稿.md",
+        "sha256": "0801ddf61fe2db7e26ad76802bb047e71616b139d4411053c007febfa35abb7c",
+        "matches": true
+      },
+      {
+        "path": "截圖對照與待補清單.md",
+        "sha256": "c12f746104dd210ed4f570b495eded7f1894bcf646b65c6644fe08ffb5982617",
+        "matches": true
+      },
+      {
+        "path": "README.md",
+        "sha256": "4e3b3820e48ba4dba07169c821ed14f00b76f8cc1ecdf3a2105ef670eb02c1a3",
+        "matches": true
+      },
+      {
+        "path": "VibeCart_AI_超市網購與AI系統_2026-10-18_v3.pdf",
+        "sha256": "61ea74a6a4fe6fadde866b9854ed5aa39e8d82d9ba56926879fd60916b4bbaac",
+        "matches": true
+      },
+      {
+        "path": "VibeCart_AI_超市網購與AI系統_2026-10-18_v3.pptx",
+        "sha256": "9985caa029d1aa8475226a54efc3ac6ef91288b451f207719e50ad57daf04a0e",
+        "matches": true
+      },
+      {
+        "path": "VibeCart_AI_超市網購與AI系統_2026-10-18_v5.pdf",
+        "sha256": "c5555c2a54d8a4200fd79fb8073d0fa5af691b40b13a4e031ddf9f8f6dc4535d",
+        "matches": true
+      },
+      {
+        "path": "VibeCart_AI_超市網購與AI系統_2026-10-18_v5.pptx",
+        "sha256": "43374f71c5e42fdc1725f38a8ac69ea0e2ccc696f6238ebb06425e58e00d7203",
+        "matches": true
+      },
+      {
+        "path": "assets/image-generation-prompt.txt",
+        "sha256": "31ae235409f7a0c9fffbe678a9e246d2de06264d59e67593ccf77ef3f325882c",
+        "matches": true
+      },
+      {
+        "path": "assets/S02-desktop-cloud-preview-20261018.png",
+        "sha256": "e7c534b36e4f855f64523ffb6d2da4dc310e70418a93c81c0b5da93b1d35d28d",
+        "matches": true
+      },
+      {
+        "path": "assets/S02-mobile-card-source.png",
+        "sha256": "39ca1004151dc2f70357cb97b127009c0899e85d695e44edef3c2d93da0abcf3",
+        "matches": true
+      },
+      {
+        "path": "assets/S03-product.png",
+        "sha256": "eb894676383db01208dbabc6202e102fa3b79ba4ddb82480b4d65abc9cb6658c",
+        "matches": true
+      },
+      {
+        "path": "assets/S11-login-deploy-20261018.png",
+        "sha256": "8c0cda52cc1a446539a7200d67cb3f1aeb602ee6460808642c2b122ddc6c3721",
+        "matches": true
+      },
+      {
+        "path": "assets/supermarket-ai-cover.png",
+        "sha256": "fc7bfd40f7a40f000187fe746af909b95c1e678e483fc84136a9cb1c811f3c23",
+        "matches": true
+      },
+      {
+        "path": "assets/team-photo-original.jpg",
+        "sha256": "c44ca3e15fd7f5859854f1141de227cb60a4af6e0ba360f4baed666de00101f9",
+        "matches": true
+      },
+      {
+        "path": "預覽/slide-01.png",
+        "sha256": "23d2c56ca471b936eec35b5caf59c86521d88c8b50698a864fe56199faa23e64",
+        "matches": true
+      },
+      {
+        "path": "預覽/slide-02.png",
+        "sha256": "a418c74c6980a9a699a37476ce51891ee66021aa491749038cff9673b25fa410",
+        "matches": true
+      },
+      {
+        "path": "預覽/slide-03.png",
+        "sha256": "281e202cb4c1d46464c03186a0230f37ed826ec93944d7b98eb9a694b21197d3",
+        "matches": true
+      },
+      {
+        "path": "預覽/slide-04.png",
+        "sha256": "e9f2a39e0935af448c6f06b34f25a0a0bfe451a232474a274a1fd5f6551e32c5",
+        "matches": true
+      },
+      {
+        "path": "預覽/slide-05.png",
+        "sha256": "e0ed63ccce5451254d9bd981ffe5acf6c35c01e76a3dd65070b048b06bfcf7be",
+        "matches": true
+      },
+      {
+        "path": "預覽/slide-06.png",
+        "sha256": "67fc0b52908c9750eac7643bf488b92123c67ec85c509f44edae67e6b2ba8162",
+        "matches": true
+      },
+      {
+        "path": "預覽/slide-07.png",
+        "sha256": "dafe6df9363c8a33166ea4e34bafc412678c03867eda9371c770e2e7351b868d",
+        "matches": true
+      },
+      {
+        "path": "預覽/slide-08.png",
+        "sha256": "e4bb04f1499f3f9fb28d535a60a6f4f648a9b6069f243b40469d639b0ec3d1ad",
+        "matches": true
+      },
+      {
+        "path": "預覽/slide-09.png",
+        "sha256": "b5665c76ae86d2265934936f77ede84b12a5166a7de03c951d16b33189c6bdbe",
+        "matches": true
+      },
+      {
+        "path": "預覽/slide-10.png",
+        "sha256": "b93b1062376a13823780b0a4b454e4580050d318781509caf13dea5040dcd282",
+        "matches": true
+      },
+      {
+        "path": "預覽/slide-11.png",
+        "sha256": "7f59e790c49165ac602afedd2eda1ed264f808dedb244dd63f528f0711717e92",
+        "matches": true
+      },
+      {
+        "path": "預覽/slide-12.png",
+        "sha256": "01f6850425d5dea5e646ab96f07563c12a7980d4ae05f5108a468cb7bb472e2d",
+        "matches": true
+      },
+      {
+        "path": "預覽/slide-13.png",
+        "sha256": "638553d9c20446f7f5073a8f22018a7af7bd20587a9e8f4aea9379f9e65ed2cc",
+        "matches": true
+      }
+    ],
+    "manifest_repair": {
+      "path": "README.md",
+      "before": "476509f36b952edc4b49354d109bc83cfb08f9d0c2e24072baf6e02b29569879",
+      "after": "4e3b3820e48ba4dba07169c821ed14f00b76f8cc1ecdf3a2105ef670eb02c1a3",
+      "all_other_29_entries_unchanged": true
+    }
+  },
+  "current_source_bundle": {
+    "content_count": 43,
+    "content_files": [
+      "presentation.pptx",
+      "presentation.pdf",
+      "screenshot-provenance.json",
+      "README.md",
+      "updates/N16-review.md",
+      "updates/current-scope.md",
+      "updates/N17-rehearsal.md",
+      "screenshots/S01-home.png",
+      "screenshots/S02-empty.png",
+      "screenshots/S02-search-result.png",
+      "screenshots/S02-search.png",
+      "screenshots/S03-product.png",
+      "screenshots/S04-auth.png",
+      "screenshots/S04-customer-admin-denied.png",
+      "screenshots/S05-cart.png",
+      "screenshots/S05-order.png",
+      "screenshots/S06-admin.png",
+      "screenshots/S07-recommend.png",
+      "screenshots/S08-ai-compare.png",
+      "screenshots/S08-ai.png",
+      "screenshots/S09-ci.png",
+      "screenshots/S10-data.png",
+      "screenshots/S11-deploy.png",
+      "screenshots/S11-health.png",
+      "screenshots/S12-mobile-admin.png",
+      "screenshots/S12-mobile-cart.png",
+      "screenshots/S12-mobile.png",
+      "index.html",
+      "slides/page-01.png",
+      "slides/page-02.png",
+      "slides/page-03.png",
+      "slides/page-04.png",
+      "slides/page-05.png",
+      "slides/page-06.png",
+      "slides/page-07.png",
+      "slides/page-08.png",
+      "slides/page-09.png",
+      "slides/page-10.png",
+      "slides/page-11.png",
+      "slides/page-12.png",
+      "slides/page-13.png",
+      "slides/pages.json",
+      "slides.html"
+    ],
+    "contains_current_review_png": false
+  },
+  "local_existing_candidate": {
+    "path": "C:\\LLM\\LLM_PJ\\簡報文件\\離線備援\\VibeCart_V5_offline_028cb22_20261020.zip",
+    "bytes": 9900273,
+    "sha256": "42db02e4df00136cb8c04ff29e843cf3d9ca3e9b2a7d5397d0603149f30c93d9",
+    "source_commit": "028cb22a6801ff0f9a01705cdc5f41bfd569cfe0",
+    "entries_including_manifest": 44,
+    "contains_current_review_png": false
+  },
+  "supplemental_images": [
+    {
+      "path": "docs/inventory/SAM_C03_BROWSER_2026-10-20/01-compare.jpg",
+      "bytes": 135166,
+      "sha256": "66421555fe613e905d1f21b7cb6bcd6906869f0e75a862eaf3218b3b153348c5",
+      "dimensions": [
+        1333,
+        1157
+      ],
+      "scope": "2026-10-20 01:53-01:58 public Firebase read-only admin; historically recorded production ai-294c",
+      "usable_for_presentation": true,
+      "limitation": "retain original date, environment and version caption"
+    },
+    {
+      "path": "docs/inventory/SAM_C03_BROWSER_2026-10-20/02-dashboard-viewport.jpg",
+      "bytes": 76610,
+      "sha256": "836291255f33d9ba10989a327c78226006928b350d880e25eaa3b501d5d811de",
+      "dimensions": [
+        1333,
+        567
+      ],
+      "scope": "2026-10-20 01:53-01:58 public Firebase read-only admin; historically recorded production ai-294c",
+      "usable_for_presentation": true,
+      "limitation": "retain original date, environment and version caption"
+    },
+    {
+      "path": "docs/inventory/SAM_C03_BROWSER_2026-10-20/02-dashboard.jpg",
+      "bytes": 17051,
+      "sha256": "748feaed2ccc12c76f3f2a6c3579e8cae060e3b62efa6aacdc81c66d2b21376a",
+      "dimensions": [
+        179,
+        573
+      ],
+      "scope": "2026-10-20 01:53-01:58 public Firebase read-only admin; historically recorded production ai-294c",
+      "usable_for_presentation": false,
+      "limitation": "179x573 failed thumbnail"
+    },
+    {
+      "path": "docs/inventory/SAM_C03_BROWSER_2026-10-20/03-local.jpg",
+      "bytes": 61677,
+      "sha256": "2377839c5e38348c9ab1cfcfe90989cd6f55bc1654411307fb7508e2e3719a53",
+      "dimensions": [
+        1333,
+        567
+      ],
+      "scope": "2026-10-20 01:53-01:58 public Firebase read-only admin; historically recorded production ai-294c",
+      "usable_for_presentation": true,
+      "limitation": "retain original date, environment and version caption"
+    },
+    {
+      "path": "docs/inventory/SAM_C03_BROWSER_2026-10-20/04-insight.jpg",
+      "bytes": 67039,
+      "sha256": "2a429a91abf1495a8c4558605137597d2d797cd212a053477a7abc53698bc052",
+      "dimensions": [
+        1333,
+        567
+      ],
+      "scope": "2026-10-20 01:53-01:58 public Firebase read-only admin; historically recorded production ai-294c",
+      "usable_for_presentation": true,
+      "limitation": "retain original date, environment and version caption"
+    },
+    {
+      "path": "docs/inventory/SAM_C03_BROWSER_2026-10-20/05-monitor.jpg",
+      "bytes": 74575,
+      "sha256": "769ef840fcf1acfc1fe62fd57729679cc733ba67638d1f7c9e2ad3c88df299c1",
+      "dimensions": [
+        1333,
+        567
+      ],
+      "scope": "2026-10-20 01:53-01:58 public Firebase read-only admin; historically recorded production ai-294c",
+      "usable_for_presentation": true,
+      "limitation": "retain original date, environment and version caption"
+    },
+    {
+      "path": "docs/inventory/SAM_C05_BROWSER_2026-10-20/01-login-invalid-email.jpg",
+      "bytes": 23568,
+      "sha256": "f5f1880fe964552a6d2745a5bfda6bd3a65757e121d4496318fa3636775313ac",
+      "dimensions": [
+        300,
+        649
+      ],
+      "scope": "2026-10-20 02:00-02:09 loopback in-memory mock; not formal site",
+      "usable_for_presentation": false,
+      "limitation": "initial CSS312x675, not target390 proof"
+    },
+    {
+      "path": "docs/inventory/SAM_C05_BROWSER_2026-10-20/02-iab-focus.png",
+      "bytes": 23724,
+      "sha256": "fd5416d0cc40269848dfe95f7cd38398fa870133e4558d3a95d4069bd23071ac",
+      "dimensions": [
+        375,
+        844
+      ],
+      "scope": "2026-10-20 02:00-02:09 loopback in-memory mock; not formal site",
+      "usable_for_presentation": true,
+      "limitation": "retain original date, environment and version caption"
+    },
+    {
+      "path": "docs/inventory/SAM_C05_BROWSER_2026-10-20/03-iab-wrong-password.png",
+      "bytes": 24156,
+      "sha256": "7f59226c4523ec960ff7248f7cf22bd46a127d891b6f19c6991ab0c80232fcf0",
+      "dimensions": [
+        375,
+        844
+      ],
+      "scope": "2026-10-20 02:00-02:09 loopback in-memory mock; not formal site",
+      "usable_for_presentation": true,
+      "limitation": "retain original date, environment and version caption"
+    },
+    {
+      "path": "docs/inventory/SAM_C05_BROWSER_2026-10-20/04-product-invalid-qty.png",
+      "bytes": 38684,
+      "sha256": "16d213cd20349e4ccd7d093eb894a27949ec3fa6386dfa77c5218b41a31fa69d",
+      "dimensions": [
+        375,
+        844
+      ],
+      "scope": "2026-10-20 02:00-02:09 loopback in-memory mock; not formal site",
+      "usable_for_presentation": true,
+      "limitation": "retain original date, environment and version caption"
+    },
+    {
+      "path": "docs/inventory/SAM_C05_BROWSER_2026-10-20/05-qty-validation.png",
+      "bytes": 39119,
+      "sha256": "d5501bd0cf8da748402561002c9f93c9522b121bbe2c737004bcef825a0907d5",
+      "dimensions": [
+        375,
+        844
+      ],
+      "scope": "2026-10-20 02:00-02:09 loopback in-memory mock; not formal site",
+      "usable_for_presentation": true,
+      "limitation": "retain original date, environment and version caption"
+    },
+    {
+      "path": "docs/inventory/SAM_C05_BROWSER_2026-10-20/06-landscape-cart.png",
+      "bytes": 16828,
+      "sha256": "fb12f9eac3740e3ddd56060c87626ac53bee20d1a59864036876ebe4f8748248",
+      "dimensions": [
+        829,
+        390
+      ],
+      "scope": "2026-10-20 02:00-02:09 loopback in-memory mock; not formal site",
+      "usable_for_presentation": true,
+      "limitation": "retain original date, environment and version caption"
+    },
+    {
+      "path": "docs/inventory/SAM_C05_BROWSER_2026-10-20/07-cart-updated.png",
+      "bytes": 16863,
+      "sha256": "09e836e24eddf2971a9d7d4ac9d011d70de0ceedbb1df5500d4a97e344791563",
+      "dimensions": [
+        829,
+        390
+      ],
+      "scope": "2026-10-20 02:00-02:09 loopback in-memory mock; not formal site",
+      "usable_for_presentation": true,
+      "limitation": "retain original date, environment and version caption"
+    },
+    {
+      "path": "docs/inventory/SAM_C05_BROWSER_2026-10-20/08-demo-order.png",
+      "bytes": 43956,
+      "sha256": "0a6ecaa17040ce7c64f6d3cf0e9e821d7a8fced3ceb292b2ffcb8d6164208b84",
+      "dimensions": [
+        375,
+        844
+      ],
+      "scope": "2026-10-20 02:00-02:09 loopback in-memory mock; not formal site",
+      "usable_for_presentation": true,
+      "limitation": "retain original date, environment and version caption"
+    },
+    {
+      "path": "docs/inventory/SAM_C05_BROWSER_2026-10-20/09-logout.png",
+      "bytes": 44174,
+      "sha256": "adc7c5d2624d30d1f5fce7a394b1228f707ed0231ddec1c95ab207cd3df933ca",
+      "dimensions": [
+        375,
+        844
+      ],
+      "scope": "2026-10-20 02:00-02:09 loopback in-memory mock; not formal site",
+      "usable_for_presentation": true,
+      "limitation": "retain original date, environment and version caption"
+    },
+    {
+      "path": "docs/inventory/reviews_ai_formal_ui_20261020/review-after-form.png",
+      "bytes": 38908,
+      "sha256": "2f4ca1046d8dc3a96011d9435f6930817ae0087a928d3770c351f433634f8944",
+      "dimensions": [
+        1265,
+        711
+      ],
+      "scope": "2026-10-20 00:12-00:13 public Firebase controlled unavailable non-recommendable product; digest03d01cb5",
+      "usable_for_presentation": true,
+      "limitation": "retain original date, environment and version caption"
+    },
+    {
+      "path": "docs/inventory/reviews_ai_formal_ui_20261020/review-after-top.png",
+      "bytes": 63613,
+      "sha256": "73121669e498e10a0da467d3a55d4ed292bf4934a5c0b39a4b5d8fac97e46f14",
+      "dimensions": [
+        1265,
+        711
+      ],
+      "scope": "2026-10-20 00:12-00:13 public Firebase controlled unavailable non-recommendable product; digest03d01cb5",
+      "usable_for_presentation": true,
+      "limitation": "retain original date, environment and version caption"
+    },
+    {
+      "path": "docs/inventory/reviews_ai_formal_ui_20261020/review-before.png",
+      "bytes": 63594,
+      "sha256": "a1b53871d38ccc5ffd55e009d07b7e398ff4d2705a1ae185ad1a8b7bc58a864d",
+      "dimensions": [
+        1265,
+        711
+      ],
+      "scope": "2026-10-20 00:12-00:13 public Firebase controlled unavailable non-recommendable product; digest03d01cb5",
+      "usable_for_presentation": true,
+      "limitation": "retain original date, environment and version caption"
+    }
+  ],
+  "reference_audit": {
+    "local_count": 73,
+    "local_missing": [],
+    "fixed_blob_count": 12,
+    "fixed_blob_missing": [],
+    "sources": [
+      "簡報文件/超市AI版_2026-10-18/README.md",
+      "簡報文件/超市AI版_2026-10-18/2026-10-20_SAM模擬_N16素材覆核.md",
+      "簡報文件/超市AI版_2026-10-18/2026-10-20_SAM模擬_展示內容更新卡.md",
+      "簡報文件/超市AI版_2026-10-18/2026-10-20_SAM模擬_簡報內容增刪與版本導覽.md",
+      "簡報文件/超市AI版_2026-10-18/2026-10-20_SAM模擬_N18版本鎖定候選.md",
+      "簡報文件/screenshots/S01-S12_同版取證_2026-10-18.md",
+      "簡報文件/超市AI版_2026-10-18/截圖對照與待補清單.md"
+    ]
+  },
+  "initial_s01_s12_map": [
+    {
+      "id": "S01",
+      "slide_pages": "1 / context",
+      "historical_files": [
+        "S01-home.png"
+      ],
+      "required_scenario": "首頁／教學聲明／頁尾人物；正式匿名",
+      "current_evidence_and_remaining": "現行首頁與頁尾；舊圖只能作10/18歷史",
+      "target": "/",
+      "new_capture_in_this_subtask": false
+    },
+    {
+      "id": "S02",
+      "slide_pages": "2,5",
+      "historical_files": [
+        "S02-search.png",
+        "S02-search-result.png",
+        "S02-empty.png"
+      ],
+      "required_scenario": "搜尋成功、空結果、分類分頁",
+      "current_evidence_and_remaining": "價庫與推薦區已有變化；重拍成功及空結果並保留分類／頁碼",
+      "target": "/?q=刷樂醫生牙刷#products",
+      "new_capture_in_this_subtask": false
+    },
+    {
+      "id": "S03",
+      "slide_pages": "5",
+      "historical_files": [
+        "S03-product.png"
+      ],
+      "required_scenario": "SKU／價格／庫存／規格；正式匿名",
+      "current_evidence_and_remaining": "商品評價筆數與即時星等已新增；重拍一般商品詳情，評價三圖另保留00:12歷史",
+      "target": "/product/02f9efd17210150f2eea7274",
+      "new_capture_in_this_subtask": false
+    },
+    {
+      "id": "S04",
+      "slide_pages": "6",
+      "historical_files": [
+        "S04-auth.png",
+        "S04-customer-admin-denied.png"
+      ],
+      "required_scenario": "正式登入角色、錯密碼與customer拒絕admin",
+      "current_evidence_and_remaining": "同Email依密碼選角色提示已新增；新固定角色正常／拒絕圖不能用舊一次性私有帳號代替",
+      "target": "/auth/login; /admin/",
+      "new_capture_in_this_subtask": false
+    },
+    {
+      "id": "S05",
+      "slide_pages": "7",
+      "historical_files": [
+        "S05-cart.png",
+        "S05-order.png"
+      ],
+      "required_scenario": "cart／示範checkout／同ID與庫存資料",
+      "current_evidence_and_remaining": "最新同版私有交易與清理報告可佐證技術；若要新UI圖，隔離fixture捕捉後清理，標私有而非正式真訂單",
+      "target": "/cart",
+      "new_capture_in_this_subtask": false
+    },
+    {
+      "id": "S06",
+      "slide_pages": "9",
+      "historical_files": [
+        "S06-admin.png"
+      ],
+      "required_scenario": "正式管理總覽；日期、demo範圍及KPI",
+      "current_evidence_and_remaining": "可用C03的02-dashboard-viewport.jpg作01:58正式歷史；最終同版日期錯誤／焦點／窄視窗待根任務取證",
+      "target": "/admin/",
+      "new_capture_in_this_subtask": false
+    },
+    {
+      "id": "S07",
+      "slide_pages": "8",
+      "historical_files": [
+        "S07-recommend.png"
+      ],
+      "required_scenario": "推薦理由、冷啟動／最多6+4",
+      "current_evidence_and_remaining": "舊四件熱門卡早於6+4；補現行個人與跨類區，缺合格候選可留空，不編造十件高星",
+      "target": "/; /recommendations",
+      "new_capture_in_this_subtask": false
+    },
+    {
+      "id": "S08",
+      "slide_pages": "10",
+      "historical_files": [
+        "S08-ai.png",
+        "S08-ai-compare.png"
+      ],
+      "required_scenario": "比較／洞察／Local狀態；不觸發模型",
+      "current_evidence_and_remaining": "可用C03 compare/local/insight/monitor作01:53-01:54正式歷史，需附實際AI旗標；舊圖的雲端未啟用不能說當下狀態",
+      "target": "/admin/ai/compare; /admin/ai/insight; /admin/ai/recommendation",
+      "new_capture_in_this_subtask": false
+    },
+    {
+      "id": "S09",
+      "slide_pages": "11",
+      "historical_files": [
+        "S09-ci.png"
+      ],
+      "required_scenario": "固定最終main SHA的成功Actions",
+      "current_evidence_and_remaining": "舊CI39070827406為歷史；最終main合併CI頁／原始run JSON另補",
+      "target": "GitHub Actions for final main SHA",
+      "new_capture_in_this_subtask": false
+    },
+    {
+      "id": "S10",
+      "slide_pages": "4",
+      "historical_files": [
+        "S10-data.png"
+      ],
+      "required_scenario": "去敏Atlas schema／關聯／synthetic",
+      "current_evidence_and_remaining": "舊fixture已清零；用最終唯讀摘要及N06隔離新結果，不重建正式假資料拍圖",
+      "target": "read-only sanitized Atlas result",
+      "new_capture_in_this_subtask": false
+    },
+    {
+      "id": "S11",
+      "slide_pages": "6,11",
+      "historical_files": [
+        "S11-deploy.png",
+        "S11-health.png"
+      ],
+      "required_scenario": "正式／私有100% revision、digest、Hosting路由及ready",
+      "current_evidence_and_remaining": "原圖production18/private07已過時；最終N15控制平面與公開ready新原圖／JSON補齊",
+      "target": "/health/ready; Cloud Run Admin v2",
+      "new_capture_in_this_subtask": false
+    },
+    {
+      "id": "S12",
+      "slide_pages": "11",
+      "historical_files": [
+        "S12-mobile.png",
+        "S12-mobile-cart.png",
+        "S12-mobile-admin.png"
+      ],
+      "required_scenario": "390x844、844x390；首頁／cart／admin焦點及錯誤",
+      "current_evidence_and_remaining": "C05前台是本機mock，舊窄視窗是10/18；根任務補正式admin窄視窗，尺寸模擬照實標示",
+      "target": "/; /cart; /admin/",
+      "new_capture_in_this_subtask": false
+    }
+  ],
+  "source_semantics": {
+    "historical_source": "ff65eaef0f6db932f844893cf2f8dc42eac5b5f7",
+    "historical_image_digest": "sha256:ba7d34787ffda32cb944022494c0dd5da64600df64ea05c49a79c41473404f5f",
+    "website_app_changed_files": 18,
+    "material_changes": [
+      "Same Email role selection hint and dual-role authentication",
+      "Review form, rating count, AJAX rating update",
+      "Storefront maximum6+4 ranking and candidate semantics",
+      "Behavior policy wording and synthetic exclusion fixes",
+      "Session/transaction timing fixes after old captures"
+    ],
+    "initial_formal_version_required_root_n15": true,
+    "final_formal_version_resolved_by": "docs/inventory/SAM_FIVE_FINAL_CONTROL_2026-10-20.json"
+  },
+  "validation": {
+    "repository_file_policy": {
+      "files": 919,
+      "utf8_texts": 719,
+      "errors": 0
+    },
+    "bundle_images_decoded": 33,
+    "diff_check": {
+      "command": "git -c core.whitespace=cr-at-eol diff --check",
+      "exit_code": 0,
+      "reason": "historical SHA256.json is byte-preserved CRLF; no normalization"
+    }
+  },
+  "followup_documentation_started_at_taipei": "2026-10-20T08:56:22.615025+08:00",
+  "followup_image_verification_finished_at_taipei": "2026-10-20T08:59:02.217889+08:00",
+  "followup_source_document_head": "79c1c92d3cca729130f57f45f77a011acc669aa3",
+  "initial_remaining_material_work": [
+    "Link new final formal captures to root N15 source/digest; keep historical originals",
+    "Provide dated presentation supplement for S01-S12, distinguish reused dated evidence and new capture",
+    "If newest review or admin PNGs must work offline, create separately bounded supplement package and manifest; current43-file contract excludes them",
+    "Update final Actions/deployment/Atlas readbacks at adopted version",
+    "PPTX/PDF adoption decision remains with final delivery; originalV5 fixed files preserved"
+  ]
+}
