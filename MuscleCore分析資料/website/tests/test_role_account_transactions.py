@@ -1,5 +1,6 @@
 """Real local MongoDB: role index, strict validators and all-six atomic writes."""
 from flask import g
+from bs4 import BeautifulSoup
 import pytest
 
 from app import create_app
@@ -19,8 +20,13 @@ def prepare(db):
 
 
 def test_six_valid_roles_authenticate_with_real_index_and_sessions(replica):
-    db, _, _, _ = replica
+    db, _, product_id, _ = replica
     prepare(db)
+    # The logout control now lives in the storefront, so this transaction-only
+    # fixture also needs the catalog fields required to render that page.
+    db.products.update_one({'_id': product_id}, {'$set': {
+        'category_path': ['local'], 'average_rating_display': 0,
+    }})
     result = provision(db, SPEC, SECRETS)
     assert result['role_identities'] == 6
     assert db.users.count_documents(SCHEMAS['users']) == 6
@@ -39,10 +45,14 @@ def test_six_valid_roles_authenticate_with_real_index_and_sessions(replica):
                 assert state['role'] == role
                 uid = state['user_id']
             assert (browser.get('/admin/').status_code == 200) is (role == 'admin')
-            browser.get('/')
-            with browser.session_transaction() as state:
-                csrf = state['csrf_token']
-            assert browser.post('/auth/logout', data={'csrf_token': csrf}).status_code == 302
+            home = browser.get('/')
+            assert home.status_code == 200
+            form = BeautifulSoup(home.text, 'html.parser').select_one('form[action="/auth/logout"]')
+            assert form is not None
+            result = browser.post(form['action'], data={
+                'csrf_token': form.select_one('input[name="csrf_token"]')['value'],
+            }, follow_redirects=True)
+            assert result.status_code == 200 and '您已安全登出。' in result.text
     assert db.auth_sessions.count_documents({}) == 0
     assert all(r['action'] == 'unchanged' for r in provision(db, SPEC, SECRETS)['accounts'])
 
