@@ -1,5 +1,7 @@
 # LLM_PJ｜VibeCart AI 智慧購物與營運分析
 
+**2026/10/20 PR #5離線快照接續**：[偏好快照操作](docs/PREFERENCE_SCORING.md)提供現行6＋4請求時計分之外的opt-in離線持久快照，JEFF主責計分契約、SAM整合。預設dry-run，apply需明確會員、資料庫確認與服務層唯一索引；本輪不連Atlas、不接前台、不啟排程。10/2測試與Atlas紀錄保留歷史日期，新驗證及GitHub交付另記。
+
 **下一輪工作入口（2026-10-18）**：[依全部PR整理的未完成工作清單](專題進度/專案未完成工作清單_2026-10-18.md)，先做N01；[60筆PR完整核對清冊](docs/PR_AUDIT_2026-10-18.md)。驗收里程碑估算未完成度約38%，計算與範圍見清單。
 
 中文為主，英文為輔。Chinese is authoritative; English summaries support collaboration.

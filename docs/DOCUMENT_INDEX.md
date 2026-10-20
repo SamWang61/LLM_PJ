@@ -1,5 +1,8 @@
 # 全部文件索引 / Document catalog
 
+- [2026/10/20 PR #5離線偏好快照](PREFERENCE_SCORING.md)：現行請求時6＋4之外的opt-in工具；JEFF主責、SAM整合，未啟排程或本輪Atlas操作。
+- [10/2 SAM計畫歷史](SAM_WORK_PLAN.md)：保留舊責任、50項測試及Atlas證據日期；現行契約以前項為準。
+
 <!-- SAM REMOTE ROLE RESULT 20261020 BEGIN -->
 本輪遠端／復原代理補測：[逐項執行與時間](SAM_ROLE_PROXY_REMOTE_EXECUTION_2026-10-20.md)、[SAM驗收決定與工作站規則](SAM_ACCEPTANCE_DECISIONS_2026-10-20.md)、[去敏機器清冊](inventory/SAM_ROLE_PROXY_REMOTE_2026-10-20.json)。
 <!-- SAM REMOTE ROLE RESULT 20261020 END -->

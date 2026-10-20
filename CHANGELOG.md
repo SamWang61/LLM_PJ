@@ -1,5 +1,11 @@
 # 變更紀錄 / Changelog
 
+## 2026-10-20 — PR #5 離線持久快照接續 / Offline scoring snapshots
+
+- 現行請求時6＋4已接續前台需求；保留尚未被取代的明確會員離線快照工具，JEFF主責計分契約、SAM負責資料庫／測試／整合。見[操作與語義差異](docs/PREFERENCE_SCORING.md)。
+- 快照version1保持分類raw權重70／30上限、商品逐事件衰減與明確ObjectId搜尋；採personalization先排synthetic再limit，真人有效示範購買可影響本人，正式歸因仍排除。預設dry-run，apply另驗唯一索引、會員／政策重讀與完整前像CAS。
+- 本輪不接前台、不啟排程、不連線或寫入Atlas；原10/2的50項測試／Atlas證據維持歷史，新測試、CI及合併結果另由本輪交付報告記錄。
+
 ## 2026-10-18 — 最新main無流量預覽與私有真模型驗收
 
 - [部署與驗收](docs/SAM_MAIN_PREVIEW_2026-10-18.md)：main20ee的52檔封裝與GCS實際讀回一致、Cloud Build三步SUCCESS；真BGE、四Claude問題／快取、角色／交易／1001 synthetic、停用規則退回及清理。

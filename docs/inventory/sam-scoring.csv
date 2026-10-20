@@ -1,0 +1,14 @@
+﻿path,git_blob_bytes,sha256,scope
+CHANGELOG.md,2556,d9b6a5e7def07bdc985fcf56ac197dbd185721003db6054e2f0a9c54c1f8d92c,SAM scoring delivery 2026-10-02
+MuscleCore分析資料/website/tests/test_preference_scores.py,6174,583336f1e32bca99752a1c608666bf1cd01a013b44ed922f7a92ddadf94d46c0,SAM scoring delivery 2026-10-02
+README.md,4804,160058a70e8aa80e58616796acba746fcf7ae6c4669605d67afab6edda9d83ea,SAM scoring delivery 2026-10-02
+VibeCart_AI/services/preference_service.py,7144,1fd0331928fcf6bbc258b6b8cb5b3a3e9ec216e09f97f70cb33b2cab9be1d2d8,SAM scoring delivery 2026-10-02
+docs/AI_DASHBOARD.md,6353,b3f4c43deffe4c60bceb627b06d43150b0ed6971621dbf37c28dc66c66252395,SAM scoring delivery 2026-10-02
+docs/DOCUMENT_INDEX.md,8051,f7638b28ae78d06baf296e35d190ac307a4e78d722409445e4eca58bfd30f21f,SAM scoring delivery 2026-10-02
+docs/PREFERENCE_SCORING.md,4551,b3723f2306f7069dc26cc3f5beee4c79a1ded06b3ee06795e70810ee94fd37fa,SAM scoring delivery 2026-10-02
+docs/README.md,2229,77f25b73a2d370c70ecab7ed5c97714ed959db3c0abebb906d8154514df336f2,SAM scoring delivery 2026-10-02
+docs/SAM_SCORING_VERIFICATION.json,3768,d2df572d56513085b319d209ed4ff1d5646e32a9ee306c858bf1df87436bb986,SAM scoring delivery 2026-10-02
+docs/SAM_WORK_PLAN.md,3098,83227a767ff4571daaaa120fbf723881eb69fcb7d07c1ea86d52025f9e7e1667,SAM scoring delivery 2026-10-02
+docs/分支(Branch)規劃與協作機制.md,7645,88131b7fc9b6d0685d94c4707cd1dc84c81cc7468bd05d336b6e324c60a37470,SAM scoring delivery 2026-10-02
+scripts/rebuild_preference_scores.py,2760,8342c489907d6b5e8289ad846fa1a0589bb08fcc4881a6fb4656ff334b22170e,SAM scoring delivery 2026-10-02
+scripts/verify_v4_test.py,10616,c8898594f616f1a5285bd3478812fe741151c58abb74a7bf29e8393f9d634b77,SAM scoring delivery 2026-10-02

@@ -1,5 +1,7 @@
 # 文件中心 / Documentation hub
 
+**2026/10/20 PR #5離線快照**：[操作、score_version1語義與寫入界線](PREFERENCE_SCORING.md)。現行請求時計分與離線持久快照分開，JEFF主責／SAM整合；[10/2工作清單](SAM_WORK_PLAN.md)及原Atlas證據只保留歷史，新驗證由本輪PR另記。
+
 <!-- SAM REMOTE ROLE RESULT 20261020 BEGIN -->
 本輪結果入口：[SAM模擬JEFF／REN遠端、USB復原及離線包執行紀錄](SAM_ROLE_PROXY_REMOTE_EXECUTION_2026-10-20.md)；[SAM新決定／Atlas工作站期限](SAM_ACCEPTANCE_DECISIONS_2026-10-20.md)。N13已結案，N14同機復原子項接受，未把實際設備改寫為異機。
 <!-- SAM REMOTE ROLE RESULT 20261020 END -->
