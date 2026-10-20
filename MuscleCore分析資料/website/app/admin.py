@@ -5,6 +5,7 @@ from flask import Blueprint, abort, current_app, flash, redirect, render_templat
 from .auth import admin_required
 from .db import get_db
 from .services.ai_compare import comparison
+from .services.recommendation_logs import recommendation_metrics
 from .services.ai_payload import InsightDataError, build_insight_payload, insight_ranges
 from .services.ai_workflows import FAILURE_LABELS, INTENTS, InsightRequestError, clean_question, insight_answer, operational_summary
 from .services.local_ai import (LocalModelUnavailable, install_commands, refresh_vectors, sellable_products,
@@ -81,7 +82,8 @@ def summary():
 @admin_required
 def recommendations():
     result = recommendation_monitor(get_db(), current_app.config['DATA_MODE'])
-    return render_template('admin/recommendations.html', **result)
+    funnel = recommendation_metrics(get_db()) if current_app.config['DATA_MODE'] == 'v4' else None
+    return render_template('admin/recommendations.html', funnel=funnel, **result)
 
 
 def insight_page(values, intent=None, answer=None, error=None, status=200):
