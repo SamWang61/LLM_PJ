@@ -1,0 +1,192 @@
+{
+  "started_at": "2026-10-20T00:50:39.317Z",
+  "services": [
+    {
+      "service": "vibecart-acceptance-pr21",
+      "active": [
+        {
+          "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+          "revision": "vibecart-acceptance-pr21-five-fc4e-normal",
+          "percent": 100,
+          "tag": "five-n06",
+          "uri": "https://five-n06---vibecart-acceptance-pr21-m44ncgz5ta-de.a.run.app"
+        }
+      ],
+      "revision": {
+        "revision": "vibecart-acceptance-pr21-five-fc4e-normal",
+        "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:5efdd89f40c3119306a1d5f1560a039eeff5d8a1d70667d1dfacb40c81341ea3",
+        "source_sha": "fc4e7c071c34a43594a50f6d0407952e8f20113b",
+        "ready": [
+          {
+            "type": "Ready",
+            "state": "CONDITION_SUCCEEDED",
+            "message": "Updating revision scaling succeeded.",
+            "lastTransitionTime": "2026-10-20T00:50:13.655462Z"
+          },
+          {
+            "type": "Active",
+            "state": "CONDITION_SUCCEEDED",
+            "lastTransitionTime": "2026-10-20T00:43:52.566205Z",
+            "severity": "INFO"
+          },
+          {
+            "type": "ResourcesAvailable",
+            "state": "CONDITION_SUCCEEDED",
+            "message": "Provisioning imported containers completed in 1.82s. Checking container health. This will wait for up to 2m for the configured startup probe, including an initial delay of 0s.",
+            "lastTransitionTime": "2026-10-20T00:43:41.434746Z"
+          },
+          {
+            "type": "ContainerReady",
+            "state": "CONDITION_SUCCEEDED",
+            "message": "Container image import completed.",
+            "lastTransitionTime": "2026-10-20T00:43:39.612115Z"
+          },
+          {
+            "type": "ContainerHealthy",
+            "state": "CONDITION_SUCCEEDED",
+            "message": "Containers became healthy in 10.01s.",
+            "lastTransitionTime": "2026-10-20T00:43:52.414453Z"
+          }
+        ],
+        "service_account": "vibecart-pr21-acceptance@vibecart-llmai.iam.gserviceaccount.com",
+        "vpc": {
+          "egress": "ALL_TRAFFIC",
+          "networkInterfaces": [
+            {
+              "network": "vibecart-egress-20261019",
+              "subnetwork": "vibecart-egress-subnet"
+            }
+          ]
+        },
+        "command": [],
+        "args_count": 0,
+        "env_names": [
+          "CLOUD_ACCEPTANCE_DB",
+          "CLOUD_ACCEPTANCE_MODE",
+          "CLOUD_PREVIEW_READ_ONLY",
+          "ENABLE_CHECKOUT",
+          "MONGO_URI",
+          "SECRET_KEY"
+        ]
+      }
+    },
+    {
+      "service": "vibecart-web",
+      "active": [
+        {
+          "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+          "revision": "vibecart-web-five-fc4e",
+          "percent": 100,
+          "tag": "five-n06",
+          "uri": "https://five-n06---vibecart-web-m44ncgz5ta-de.a.run.app"
+        }
+      ],
+      "revision": {
+        "revision": "vibecart-web-five-fc4e",
+        "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:5efdd89f40c3119306a1d5f1560a039eeff5d8a1d70667d1dfacb40c81341ea3",
+        "source_sha": "fc4e7c071c34a43594a50f6d0407952e8f20113b",
+        "ready": [
+          {
+            "type": "Ready",
+            "state": "CONDITION_SUCCEEDED",
+            "message": "Updating revision scaling succeeded.",
+            "lastTransitionTime": "2026-10-20T00:50:16.308405Z"
+          },
+          {
+            "type": "Active",
+            "state": "CONDITION_SUCCEEDED",
+            "lastTransitionTime": "2026-10-20T00:44:46.996380Z",
+            "severity": "INFO"
+          },
+          {
+            "type": "ResourcesAvailable",
+            "state": "CONDITION_SUCCEEDED",
+            "message": "Provisioning imported containers completed in 1.79s. Checking container health. This will wait for up to 2m for the configured startup probe, including an initial delay of 0s.",
+            "lastTransitionTime": "2026-10-20T00:44:36.250614Z"
+          },
+          {
+            "type": "ContainerReady",
+            "state": "CONDITION_SUCCEEDED",
+            "message": "Container image import completed.",
+            "lastTransitionTime": "2026-10-20T00:44:34.461520Z"
+          },
+          {
+            "type": "ContainerHealthy",
+            "state": "CONDITION_SUCCEEDED",
+            "message": "Containers became healthy in 10.01s.",
+            "lastTransitionTime": "2026-10-20T00:44:46.839503Z"
+          }
+        ],
+        "service_account": "vibecart-web@vibecart-llmai.iam.gserviceaccount.com",
+        "vpc": {
+          "egress": "ALL_TRAFFIC",
+          "networkInterfaces": [
+            {
+              "network": "vibecart-egress-20261019",
+              "subnetwork": "vibecart-egress-subnet"
+            }
+          ]
+        },
+        "command": [],
+        "args_count": 0,
+        "env_names": [
+          "AI_FREE_QUESTION_ENABLED",
+          "AI_RECOMMENDATIONS_ENABLED",
+          "AI_SUMMARY_ENABLED",
+          "ANTHROPIC_API_KEY",
+          "BGE_MODEL",
+          "CLAUDE_MODEL",
+          "CLOUD_PREVIEW_READ_ONLY",
+          "ENABLE_CHECKOUT",
+          "MONGO_URI",
+          "SECRET_KEY"
+        ]
+      }
+    }
+  ],
+  "cleanup": {
+    "fault_route_removed": true,
+    "fault_revision_deleted": false,
+    "fault_revision_error": "DELETE /v2/projects/vibecart-llmai/locations/asia-east1/services/vibecart-acceptance-pr21/revisions/vibecart-acceptance-pr21-five-fc4e-fault HTTP 400 FAILED_PRECONDITION",
+    "temporary_iam_remaining": 0
+  },
+  "build": {
+    "id": "c92c8cf5-6dda-46ca-8fdc-f46ff76fab19",
+    "status": "SUCCESS",
+    "started": "2026-10-20T00:39:25.648524149Z",
+    "finished": "2026-10-20T00:40:22.136795Z",
+    "images": [
+      {
+        "name": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web:n06-fc4e7c0-20261020",
+        "digest": "sha256:5efdd89f40c3119306a1d5f1560a039eeff5d8a1d70667d1dfacb40c81341ea3",
+        "pushTiming": {
+          "startTime": "2026-10-20T00:40:20.893565717Z",
+          "endTime": "2026-10-20T00:40:21.963253645Z"
+        },
+        "artifactRegistryPackage": "projects/vibecart-llmai/locations/asia-east1/repositories/vibecart/packages/web/versions/sha256:5efdd89f40c3119306a1d5f1560a039eeff5d8a1d70667d1dfacb40c81341ea3"
+      }
+    ],
+    "steps": [
+      {
+        "id": "Overlay committed N06 onto pinned AI base",
+        "status": "SUCCESS"
+      },
+      {
+        "id": "54 source hashes, AI dependencies and offline health",
+        "status": "SUCCESS"
+      },
+      {
+        "id": "Push verified immutable image",
+        "status": "SUCCESS"
+      }
+    ],
+    "source": {
+      "source_sha": "fc4e7c071c34a43594a50f6d0407952e8f20113b",
+      "base": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:03d01cb52065e21fc96db6fb34b4de0527f2eb3966abbf0fe8719cb99bcc98f2",
+      "runtime_files": 54,
+      "cart_service_sha256": "cb22ab2fdebfaea7cbb68e542c9077ea6fd5dcf402c4d0eb625f53fc2af7ed1f",
+      "archive_sha256": "521465f5286e5a3076ed37bf89472ada5f4956c9d41af73af1fd077976b012f8"
+    }
+  },
+  "ended_at": "2026-10-20T00:50:47.040Z"
+}
