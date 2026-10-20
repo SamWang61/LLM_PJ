@@ -1,0 +1,45 @@
+{
+  "scope": "isolated acceptance database only; prerequisite failure retained",
+  "checked_at": "2026-10-19T09:16:49.914Z",
+  "status": "failed",
+  "error": "Remote consumer or cleanup failed",
+  "production": {
+    "service": "vibecart-web",
+    "revision": "vibecart-web-n06-294c-1019",
+    "traffic_percent": 100,
+    "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:796a42b6d5fd80099900abc381d4c954d21ed1bea162ad0a9a49a89355deb40a",
+    "source_sha": "294c1fac26d6785054063b8be6eb7d9e61075be4"
+  },
+  "acceptance": {
+    "service": "vibecart-acceptance-pr21",
+    "revision": "vibecart-acceptance-pr21-n06-294c-1019",
+    "traffic_percent": 100,
+    "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:796a42b6d5fd80099900abc381d4c954d21ed1bea162ad0a9a49a89355deb40a",
+    "source_sha": "294c1fac26d6785054063b8be6eb7d9e61075be4"
+  },
+  "member_and_transaction_status": "passed",
+  "readonly_admin_fixed_questions": 12,
+  "transaction_cleanup_verified": true,
+  "consumer": {
+    "probe_id": "ren-d4-a10d910962e0f41b",
+    "service_revision": "vibecart-acceptance-pr21-n06-294c-1019",
+    "service_image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:796a42b6d5fd80099900abc381d4c954d21ed1bea162ad0a9a49a89355deb40a",
+    "status": "failed",
+    "error_type": "RuntimeError",
+    "error": "Two distinct acceptance category branches required",
+    "cleanup": {
+      "events": 0,
+      "sessions": 0,
+      "users": 0,
+      "skus": 0,
+      "products": 0,
+      "events_remaining": 0,
+      "sessions_remaining": 0,
+      "users_remaining": 0,
+      "skus_remaining": 0,
+      "products_remaining": 0,
+      "verified": true
+    }
+  },
+  "temporary_iam_revoked": true
+}

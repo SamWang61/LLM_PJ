@@ -1,0 +1,48 @@
+{
+  "checked_at": "2026-10-18T22:45:29.151716+00:00",
+  "database": "vibecart_ai",
+  "scope": "two expired handover accounts only",
+  "status": "passed",
+  "credentials_in_report": false,
+  "current_role_accounts_modified": false,
+  "stock_or_orders_written": false,
+  "fixed_role_count": 6,
+  "before": [
+    {
+      "holder": "REN",
+      "role": "customer",
+      "active": false,
+      "status": "inactive",
+      "sessions": 0
+    },
+    {
+      "holder": "JEFF",
+      "role": "admin",
+      "active": false,
+      "status": "inactive",
+      "sessions": 0
+    }
+  ],
+  "retirement_action": "already_retired_no_write",
+  "after": [
+    {
+      "holder": "REN",
+      "role": "customer",
+      "active": false,
+      "status": "inactive",
+      "sessions": 0,
+      "public_login_denied": true,
+      "protected_cart_http": 302
+    },
+    {
+      "holder": "JEFF",
+      "role": "admin",
+      "active": false,
+      "status": "inactive",
+      "sessions": 0,
+      "public_login_denied": true,
+      "protected_cart_http": 302
+    }
+  ],
+  "six_fixed_role_accounts_unchanged": true
+}

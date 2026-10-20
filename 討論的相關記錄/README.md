@@ -1,5 +1,7 @@
 # 規格與討論 / Specifications and discussions
 
+- [2026-10-18 商品評價、即時回填與猜你喜歡6＋4對話決議](商品評價與猜你喜歡6加4推薦_對話決議_2026-10-18.md)
+
 本目錄包含整合規格、購物車、完整 Schema、行為計分與跨分類推薦規則，以及圖像與會議附件。規格是需求，不代表每項功能已實作。
 
 This folder contains integration specifications, cart and complete schemas, behavior scoring, cross-category recommendations, diagrams and meeting artifacts. Specifications describe requirements, not proof of implementation.
@@ -7,3 +9,7 @@ This folder contains integration specifications, cart and complete schemas, beha
 現行資料層以 [v4 架構](../VibeCart_AI/MongoDB/15_完整Schema_v4架構與遷移.md) 的實作決策為準，舊規範與新規格差異請依版本判讀。See the v4 implementation guide to resolve differences between historical and current models.
 
 完整雙語導航見 [文件索引](../docs/DOCUMENT_INDEX.md)。PDF 與錄影保留本機，排除於 Git。The catalog provides bilingual navigation; PDFs and recordings are kept outside Git.
+
+## 2026-10-18 交付討論
+
+[JEFF → SAM：AI 交付與線上啟用說明](JEFF_to_SAM_2026-10-18.md)保留 JEFF 提供的 PR #82～#84 說明、費用與部署選項，供討論查閱；文件中的建議與操作步驟不表示已獲決定、執行或驗收。

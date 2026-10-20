@@ -1,0 +1,157 @@
+"""Opt-in transactions on a local, disposable replica set only.
+
+Set REN_TEST_MONGO_URI to mongodb://127.0.0.1:<port>/?replicaSet=<name>.
+This suite never uses .env or the production database. It drops only its own
+randomly generated ren_acceptance_* database after the test.
+"""
+import os
+from concurrent.futures import ThreadPoolExecutor
+from uuid import uuid4
+from urllib.parse import urlsplit
+import pytest
+from bson import ObjectId, Decimal128
+from pymongo import MongoClient
+from pymongo import monitoring
+from pymongo.errors import OperationFailure
+from app.services.sku_gateway import CartService, CartError, CartConflict
+from app.services.member_sessions import revoke_user_sessions
+
+
+@pytest.fixture
+def replica():
+    uri = os.getenv("REN_TEST_MONGO_URI")
+    if not uri:
+        pytest.skip("REN_TEST_MONGO_URI absent; local replica set required")
+    parsed = urlsplit(uri)
+    if (parsed.scheme != "mongodb" or parsed.hostname not in {"localhost", "127.0.0.1"}
+            or parsed.username or parsed.password or "," in parsed.netloc or parsed.path not in {"", "/"}):
+        pytest.fail("Only a credential-free localhost replica set is permitted")
+    client = MongoClient(uri, serverSelectionTimeoutMS=3000)
+    hello = client.admin.command("hello")
+    assert hello.get("setName"), "Replica set required; standalone cannot verify transactions"
+    name = "ren_acceptance_" + uuid4().hex
+    db = client[name]
+    # Existing idempotency indexes, without installing production migrations.
+    db.carts.create_index([("user_id", 1)], unique=True, partialFilterExpression={"status": "active"})
+    db.cart_events.create_index([("user_id", 1), ("operation_id", 1)], unique=True)
+    db.orders.create_index([("user_id", 1), ("checkout_id", 1)], unique=True)
+    db.behavior_events.create_index("event_id", unique=True)
+    uid, pid, sid, category = (ObjectId() for _ in range(4))
+    db.users.insert_one({"_id": uid, "schema_version": 4, "status": "active", "is_active": True})
+    db.products.insert_one({"_id": pid, "schema_version": 4, "product_code": "LOCAL", "product_name": "隔離商品",
+        "major_category_id": category, "minor_category_id": category, "status": "active"})
+    db.product_skus.insert_one({"_id": sid, "product_id": pid, "status": "active", "price": Decimal128("10.25"),
+        "available_quantity": 2, "stock_quantity": 2, "reserved_quantity": 0, "safety_stock": 0})
+    try:
+        yield db, uid, pid, sid
+    finally:
+        assert name.startswith("ren_acceptance_") and len(name) == len("ren_acceptance_") + 32
+        client.drop_database(name)
+        client.close()
+
+
+def test_real_replay_and_rollback(replica):
+    db, uid, pid, sid = replica
+    service = CartService(db, enable_checkout=True)
+    cart = service.add_item(uid, sid, 1, operation_id="add")
+    class Failing(CartService):
+        def _behavior(self, *args, **kwargs):
+            raise RuntimeError("injected after stock/order writes")
+    with pytest.raises(RuntimeError):
+        Failing(db, enable_checkout=True).checkout_cart(uid, checkout_id="checkout",
+            cart_id=cart["_id"], expected_revision=cart["revision"])
+    assert db.orders.count_documents({}) == db.order_items.count_documents({}) == 0
+    assert db.product_skus.find_one()["available_quantity"] == 2
+    assert db.carts.find_one()["status"] == "active"
+    result = service.checkout_cart(uid, checkout_id="checkout", cart_id=cart["_id"], expected_revision=cart["revision"])
+    assert service.checkout_cart(uid, checkout_id="checkout", cart_id=cart["_id"], expected_revision=cart["revision"])["_id"] == result["_id"]
+    assert db.orders.count_documents({}) == db.order_items.count_documents({}) == 1
+    assert db.product_skus.find_one()["available_quantity"] == 1
+    assert db.behavior_events.count_documents({"event_type": "PURCHASE"}) == 1
+
+
+def test_real_concurrent_last_stock_cannot_oversell(replica):
+    db, uid, pid, sid = replica
+    service = CartService(db, enable_checkout=True)
+    second = ObjectId()
+    db.users.insert_one({"_id": second, "schema_version": 4, "status": "active", "is_active": True})
+    carts = [service.add_item(user, sid, 1, operation_id="add") for user in (uid, second)]
+    db.product_skus.update_one({"_id": sid}, {"$set": {"available_quantity": 1, "stock_quantity": 1}})
+    from threading import Barrier
+    barrier = Barrier(2)
+    def checkout(pair):
+        user, cart = pair
+        barrier.wait(timeout=5)
+        try:
+            service.checkout_cart(user, checkout_id="checkout", cart_id=cart["_id"], expected_revision=cart["revision"])
+            return "success"
+        except (CartError, CartConflict):
+            return "rejected"
+    with ThreadPoolExecutor(max_workers=2) as pool:
+        results = list(pool.map(checkout, zip((uid, second), carts)))
+    assert sorted(results) == ["rejected", "success"]
+    assert db.orders.count_documents({}) == 1
+    assert db.product_skus.find_one()["available_quantity"] == 0
+
+
+def test_real_admin_transaction_can_rollback_revocation(replica):
+    db, uid, _, _ = replica
+    db.auth_sessions.insert_one({"user_id": uid})
+    with db.client.start_session() as mongo_session:
+        mongo_session.start_transaction()
+        assert revoke_user_sessions(db, uid, mongo_session=mongo_session) == 1
+        db.users.update_one({"_id": uid}, {"$set": {"status": "inactive", "is_active": False}}, session=mongo_session)
+        mongo_session.abort_transaction()
+    assert db.auth_sessions.count_documents({"user_id": uid}) == 1
+    assert db.users.find_one({"_id": uid})["is_active"] is True
+
+
+def test_delayed_abort_acknowledgement_does_not_leave_transaction_locks(replica):
+    """A real 1.2s server abort delay must recover on the original client."""
+    db, uid, _, sid = replica
+    app_name = 'sam-abort-ack-' + uuid4().hex
+
+    class AbortTrace(monitoring.CommandListener):
+        succeeded_aborts = 0
+        failed_aborts = 0
+        def started(self, event): pass
+        def succeeded(self, event):
+            if event.command_name == 'abortTransaction': self.succeeded_aborts += 1
+        def failed(self, event):
+            if event.command_name == 'abortTransaction': self.failed_aborts += 1
+
+    trace = AbortTrace()
+    client = MongoClient(os.environ['REN_TEST_MONGO_URI'], appname=app_name,
+                         event_listeners=[trace], serverSelectionTimeoutMS=3000)
+    local_db = client[db.name]
+    service = CartService(local_db, enable_checkout=True)
+    cart = service.add_item(uid, sid, 1, operation_id='abort-delay-add')
+
+    class FailOnce(CartService):
+        calls = 0
+        def _behavior(self, *args, **kwargs):
+            if args[3] == 'PURCHASE':
+                self.calls += 1
+                if self.calls == 1:
+                    raise OperationFailure('local transient checkout fault', 112,
+                                           {'errorLabels': ['TransientTransactionError']})
+            return super()._behavior(*args, **kwargs)
+
+    guarded = FailOnce(local_db, enable_checkout=True)
+    try:
+        db.client.admin.command({'configureFailPoint': 'failCommand', 'mode': {'times': 1},
+            'data': {'failCommands': ['abortTransaction'], 'appName': app_name,
+                     'blockConnection': True, 'blockTimeMS': 1200}})
+        result = guarded.checkout_cart(uid, checkout_id='abort-delay-checkout',
+            cart_id=cart['_id'], expected_revision=cart['revision'])
+        replay = service.checkout_cart(uid, checkout_id='abort-delay-checkout',
+            cart_id=cart['_id'], expected_revision=cart['revision'])
+        assert guarded.calls == 2
+        assert result['_id'] == replay['_id']
+        assert trace.succeeded_aborts == 1 and trace.failed_aborts == 0
+        assert db.orders.count_documents({}) == db.order_items.count_documents({}) == 1
+        assert db.product_skus.find_one({'_id': sid})['available_quantity'] == 1
+        assert db.behavior_events.count_documents({'event_type': 'PURCHASE'}) == 1
+    finally:
+        db.client.admin.command({'configureFailPoint': 'failCommand', 'mode': 'off'})
+        client.close()

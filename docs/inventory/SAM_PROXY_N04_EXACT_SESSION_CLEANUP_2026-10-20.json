@@ -1,0 +1,31 @@
+{
+  "checked_at": "2026-10-19T17:24:46.297821+00:00",
+  "status": "passed",
+  "scope": "two failed verifier logins only",
+  "ownership_proof": "complete Cloud Logging windows: exactly one successful python-requests login in each; exact first manifest role and session creation within each HTTP latency interval",
+  "source_windows": [
+    {
+      "source_report": "docs/inventory/SAM_PROXY_N04_SIX_ROLES_2026-10-20.json",
+      "started_at": "2026-10-19T17:22:28.512188+00:00",
+      "finished_at": "2026-10-19T17:22:35.021026+00:00",
+      "login_timestamp": "2026-10-19T17:22:33.435080Z",
+      "latency": "1.441523499s",
+      "post_login_count": 1,
+      "user_agent_class": "python-requests"
+    },
+    {
+      "source_report": "docs/inventory/SAM_PROXY_N04_SIX_ROLES_RETRY1_2026-10-20.json",
+      "started_at": "2026-10-19T17:23:05.150087+00:00",
+      "finished_at": "2026-10-19T17:23:09.322045+00:00",
+      "login_timestamp": "2026-10-19T17:23:07.791683Z",
+      "latency": "1.381049691s",
+      "post_login_count": 1,
+      "user_agent_class": "python-requests"
+    }
+  ],
+  "exact_sessions_deleted": 2,
+  "remaining": 0,
+  "other_preexisting_sessions_unchanged": true,
+  "password_changes": 0,
+  "broad_revocations": 0
+}

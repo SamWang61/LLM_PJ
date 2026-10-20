@@ -1,0 +1,22 @@
+{
+  "checked_at": "2026-10-19T00:49:19.390000+00:00",
+  "status": "passed",
+  "test_type": "same-host USB portable runtime and physical-media readback; not REN off-device acceptance",
+  "computer_name": "ASUS-VIVO-SAM",
+  "data_media": "D: ASolid USB FAT32",
+  "key_media": "F: General UDisk exFAT",
+  "portable_python": "3.13.13 x64 official embeddable",
+  "base_ciphertext_sha256": "328b9aa8194589d53d8f18e7d41b0e96809335a1329bd23ed3ba95d992fe51d5",
+  "latest_ciphertext_sha256": "5ff28ee49341fa6070ab6b1e418106ed8623901071b3d4e3d54c7c97092aa885",
+  "authenticated_decryption": true,
+  "source_files": 13976,
+  "source_hash_differences": 0,
+  "database_collections": 28,
+  "database_documents": 14691,
+  "database_indexes": 89,
+  "database_ttl_indexes": 3,
+  "raw_bson_hash_differences": 0,
+  "disposable_database_removed": true,
+  "disposable_process_stopped": true,
+  "source_database_contacted": false
+}

@@ -1,0 +1,174 @@
+{
+  "checked_at": "2026-10-19T09:07:28.912Z",
+  "scope": "read-only active revisions, public routes and paginated logs",
+  "api_retries": 0,
+  "services": [
+    {
+      "name": "vibecart-web",
+      "active_revisions": [
+        {
+          "revision": "vibecart-web-n06-294c-1019",
+          "percent": 100,
+          "source_sha": "294c1fac26d6785054063b8be6eb7d9e61075be4",
+          "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:796a42b6d5fd80099900abc381d4c954d21ed1bea162ad0a9a49a89355deb40a",
+          "vpc": {
+            "egress": "ALL_TRAFFIC",
+            "networkInterfaces": [
+              {
+                "network": "vibecart-egress-20261019",
+                "subnetwork": "vibecart-egress-subnet"
+              }
+            ]
+          },
+          "flags": {
+            "CLOUD_PREVIEW_READ_ONLY": "false",
+            "ENABLE_CHECKOUT": "true",
+            "AI_RECOMMENDATIONS_ENABLED": "false",
+            "AI_SUMMARY_ENABLED": "false",
+            "AI_FREE_QUESTION_ENABLED": "false"
+          }
+        }
+      ]
+    },
+    {
+      "name": "vibecart-acceptance-pr21",
+      "active_revisions": [
+        {
+          "revision": "vibecart-acceptance-pr21-n06-294c-1019",
+          "percent": 100,
+          "source_sha": "294c1fac26d6785054063b8be6eb7d9e61075be4",
+          "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:796a42b6d5fd80099900abc381d4c954d21ed1bea162ad0a9a49a89355deb40a",
+          "vpc": {
+            "egress": "ALL_TRAFFIC",
+            "networkInterfaces": [
+              {
+                "network": "vibecart-egress-20261019",
+                "subnetwork": "vibecart-egress-subnet"
+              }
+            ]
+          },
+          "flags": {
+            "CLOUD_PREVIEW_READ_ONLY": "false",
+            "ENABLE_CHECKOUT": "true"
+          }
+        }
+      ]
+    }
+  ],
+  "api_errors": [],
+  "hosting": [
+    {
+      "name": "sites/vibecart-llmai/releases/1792363722745000",
+      "release_time": "2026-10-18T22:48:42.745Z",
+      "version": "sites/vibecart-llmai/versions/a33b77d8155885b8"
+    }
+  ],
+  "public_routes": [
+    {
+      "path": "/health/live",
+      "status": 200,
+      "expected": [
+        200
+      ],
+      "passed": true,
+      "duration_ms": 385,
+      "cache_control": "private, no-store"
+    },
+    {
+      "path": "/health/ready",
+      "status": 200,
+      "expected": [
+        200
+      ],
+      "passed": true,
+      "duration_ms": 1362,
+      "cache_control": "private, no-store"
+    },
+    {
+      "path": "/",
+      "status": 200,
+      "expected": [
+        200
+      ],
+      "passed": true,
+      "duration_ms": 2388,
+      "cache_control": "private, no-store"
+    },
+    {
+      "path": "/recommendations",
+      "status": 200,
+      "expected": [
+        200
+      ],
+      "passed": true,
+      "duration_ms": 2207,
+      "cache_control": "private, no-store"
+    },
+    {
+      "path": "/auth/login",
+      "status": 200,
+      "expected": [
+        200
+      ],
+      "passed": true,
+      "duration_ms": 1359,
+      "cache_control": "private, no-store"
+    },
+    {
+      "path": "/admin/",
+      "status": 302,
+      "expected": [
+        302,
+        303
+      ],
+      "passed": true,
+      "duration_ms": 373,
+      "cache_control": "private, no-store"
+    },
+    {
+      "path": "/cart",
+      "status": 302,
+      "expected": [
+        302,
+        303
+      ],
+      "passed": true,
+      "duration_ms": 370,
+      "cache_control": "private, no-store"
+    },
+    {
+      "path": "/?q=SAM_NO_MATCH_20261019",
+      "status": 200,
+      "expected": [
+        200
+      ],
+      "passed": true,
+      "duration_ms": 2215,
+      "cache_control": "private, no-store"
+    }
+  ],
+  "logs": {
+    "checked_at": "2026-10-19T09:07:34.202Z",
+    "period_start": "2026-10-19T00:50:00.000Z",
+    "revision": "vibecart-web-n06-294c-1019",
+    "entries": 110,
+    "pages": 2,
+    "next_page": false,
+    "complete": true,
+    "status": "no_errors_observed",
+    "http_statuses": {
+      "200": 51,
+      "302": 2,
+      "404": 2
+    },
+    "classes": {
+      "mongo_selection": 0,
+      "mongo_other": 0,
+      "app_database_unavailable": 0,
+      "http_5xx": 0,
+      "other_error": 0
+    }
+  },
+  "completed_at": "2026-10-19T09:07:34.202Z",
+  "status": "passed"
+}

@@ -4,7 +4,8 @@ permissions:
   contents: read
 jobs:
   offline:
-    runs-on: ubuntu-latest
+    # MongoDB 8 currently refuses Linux 6.19+; keep the D5 replica-set check on a supported runner.
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
@@ -14,6 +15,42 @@ jobs:
         run: python scripts/check_repository.py
       - name: 安裝展示網站依賴 / Install demo dependencies
         run: python -m pip install -r 'MuscleCore分析資料/website/requirements-test.txt'
+      - name: 隔離 D4 探針範圍與清理 / D4 probe safety contracts
+        run: |
+          node --test scripts/test_cloud_db_health_readback.cjs
+          node --test scripts/test_remote_d4_runner.cjs
+          python -m pytest scripts/test_remote_d4_consumer_probe.py -q -p no:cacheprovider
+          python -m pytest scripts/test_remote_member_transaction_checks.py -q -p no:cacheprovider
+          python -m pytest scripts/test_remote_readonly_admin_checks.py -q -p no:cacheprovider
+          node --test scripts/test_remote_account_runner.cjs
+          node --test scripts/test_remote_h05_h07_runner.cjs
+          python -m pytest scripts/test_remote_h05_h07_checks.py -q -p no:cacheprovider
+          python -m pytest scripts/test_private_https_transport.py -q -p no:cacheprovider
+          node --test scripts/test_remote_checkout_fault_runner.cjs
+          python -m pytest scripts/test_remote_account_acceptance_probe.py -q -p no:cacheprovider
+          python -m pytest scripts/test_remote_preview_ai_probe.py -q -p no:cacheprovider
+          python -m pytest scripts/test_remote_reviews_acceptance_probe.py -q -p no:cacheprovider
+          python -m pytest scripts/test_remote_dual_role_acceptance_probe.py -q -p no:cacheprovider
+          python -m pytest scripts/test_provision_handover_demo.py -q -p no:cacheprovider
       - name: 網站離線測試 / Offline demo tests
         working-directory: MuscleCore分析資料/website
         run: python -m pytest tests -q -p no:cacheprovider
+      - name: 持久偏好快照 CLI 隔離 / Preference snapshot CLI isolation
+        run: python -m pytest scripts/test_preference_cli.py -q -p no:cacheprovider
+      - name: 三角色單機模擬隔離 / SRJ local simulation isolation
+        run: python -m pytest scripts/test_srj_local_simulation.py -q -p no:cacheprovider
+      - name: 合成資料離線回歸 / Synthetic fixture regression
+        working-directory: MuscleCore分析資料/website
+        run: python -m pytest ../../VibeCart_AI/MongoDB/test_data -q -p no:cacheprovider
+      - name: 備份清冊與復原比對工具 / Backup manifest contracts
+        run: |
+          python -m pip install -r scripts/requirements-backup.txt
+          python -m pytest scripts/test_backup_manifest.py scripts/test_v5_offline_bundle.py scripts/test_encrypted_backup.py scripts/test_backup_restore_acceptance.py scripts/test_backup_archive_parts.py scripts/test_atlas_snapshot_backup.py scripts/test_source_snapshot_delta.py scripts/test_verify_offdevice_recovery.py -q -p no:cacheprovider
+      - name: 雲端來源白名單封裝 / Cloud source allowlist
+        run: |
+          python -m pytest scripts/test_prepare_cloud_source.py scripts/test_audit_delivery_source.py scripts/test_cloudbuild_entrypoint.py -q -p no:cacheprovider
+          python scripts/prepare_cloud_source.py --output "$RUNNER_TEMP/vibecart-source.tar.gz"
+      - name: 真 MongoDB D5 與會員交易 / Real local MongoDB transactions
+        run: |
+          python -m pytest scripts/test_transaction_harness_startup.py -q -p no:cacheprovider
+          python scripts/run_transaction_acceptance.py --report "$RUNNER_TEMP/d5-local.json" --junit "$RUNNER_TEMP/d5-local.xml"

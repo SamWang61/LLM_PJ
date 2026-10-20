@@ -1,0 +1,11 @@
+{
+  "checked_at": "2026-10-17T16:13:54.681Z",
+  "active_revisions": [
+    {
+      "revision": "vibecart-web-00013-ds5",
+      "percent": 100,
+      "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:57c8fd038d7c231a4e417471a66b9c7996c296efd2d7b1ff70302c46a45f0fab",
+      "source_commit": "80513a951d0dff67fd47a153a45918522b5ffbb5"
+    }
+  ]
+}

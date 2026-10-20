@@ -1,0 +1,179 @@
+{
+  "started_at": "2026-10-20T00:48:54.172Z",
+  "mode": "fault",
+  "status": "passed",
+  "scope": "tagged zero-traffic isolated acceptance DB; production unchanged",
+  "candidates": {
+    "private_revision": "vibecart-acceptance-pr21-five-fc4e-fault",
+    "production_revision": "vibecart-web-five-fc4e",
+    "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:5efdd89f40c3119306a1d5f1560a039eeff5d8a1d70667d1dfacb40c81341ea3",
+    "source_sha": "fc4e7c071c34a43594a50f6d0407952e8f20113b",
+    "private_percent": 0,
+    "production_percent": 0
+  },
+  "probes": [
+    {
+      "script": "remote_checkout_fault_probe.py",
+      "code": 0,
+      "result": {
+        "probe_id": "ren-txn-fault-dc58eab59f9d6226",
+        "checked_at": "2026-10-20T00:49:00.964189+00:00",
+        "status": "passed",
+        "baseline_reproduction": false,
+        "acceptance_passed": true,
+        "cases": {
+          "database_unique_write_error": {
+            "mongo_error_code": 11000,
+            "fault_point": "orders.insert_one after SKU writes",
+            "http": 409,
+            "before": {
+              "available": 3,
+              "stock": 3,
+              "cart_revision": 1,
+              "cart_status": "active",
+              "orders": 1,
+              "items": 1,
+              "behavior": 3,
+              "cart_events": 3
+            },
+            "after": {
+              "available": 3,
+              "stock": 3,
+              "cart_revision": 1,
+              "cart_status": "active",
+              "orders": 1,
+              "items": 1,
+              "behavior": 3,
+              "cart_events": 3
+            },
+            "rollback_equal": true,
+            "same_id_recovery_http": 200,
+            "same_order_replay": true,
+            "recovered": {
+              "available": 2,
+              "stock": 2,
+              "cart_revision": null,
+              "cart_status": null,
+              "orders": 2,
+              "items": 2,
+              "behavior": 4,
+              "cart_events": 4
+            },
+            "temporary_index_removed": true
+          },
+          "driver_error_after_order_item_writes": {
+            "http": 503,
+            "injection": "acceptance-only AutoReconnect exception; not an actual Atlas outage",
+            "phase": "fault_injected",
+            "before": {
+              "available": 4,
+              "stock": 4,
+              "cart_revision": 1,
+              "cart_status": "active",
+              "orders": 0,
+              "items": 0,
+              "behavior": 1,
+              "cart_events": 1
+            },
+            "after": {
+              "available": 4,
+              "stock": 4,
+              "cart_revision": 1,
+              "cart_status": "active",
+              "orders": 0,
+              "items": 0,
+              "behavior": 1,
+              "cart_events": 1
+            },
+            "rollback_equal": true,
+            "same_id_recovery_http": 200,
+            "same_order_replay": true
+          },
+          "inflight_session": {
+            "barrier": "PURCHASE after stock/order/item writes",
+            "barrier_reached_at": "2026-10-20 00:49:40.878000",
+            "revoked_at": "2026-10-20T00:49:40.843639+00:00",
+            "http": 400,
+            "before": {
+              "available": 4,
+              "stock": 4,
+              "cart_revision": 1,
+              "cart_status": "active",
+              "orders": 0,
+              "items": 0,
+              "behavior": 1,
+              "cart_events": 1
+            },
+            "after": {
+              "available": 4,
+              "stock": 4,
+              "cart_revision": 1,
+              "cart_status": "active",
+              "orders": 0,
+              "items": 0,
+              "behavior": 1,
+              "cart_events": 1
+            },
+            "rollback_equal": true,
+            "next_request_denied_http": 302,
+            "vulnerability_reproduced": false
+          },
+          "inflight_disable": {
+            "barrier": "PURCHASE after stock/order/item writes",
+            "barrier_reached_at": "2026-10-20 00:49:51.970000",
+            "revoked_at": "2026-10-20T00:49:51.839876+00:00",
+            "http": 400,
+            "before": {
+              "available": 4,
+              "stock": 4,
+              "cart_revision": 1,
+              "cart_status": "active",
+              "orders": 0,
+              "items": 0,
+              "behavior": 1,
+              "cart_events": 1
+            },
+            "after": {
+              "available": 4,
+              "stock": 4,
+              "cart_revision": 1,
+              "cart_status": "active",
+              "orders": 0,
+              "items": 0,
+              "behavior": 1,
+              "cart_events": 1
+            },
+            "rollback_equal": true,
+            "next_request_denied_http": 302,
+            "vulnerability_reproduced": false
+          }
+        },
+        "cleanup": {
+          "order_items": 3,
+          "order_items_remaining": 0,
+          "orders": 3,
+          "orders_remaining": 0,
+          "cart_events": 8,
+          "cart_events_remaining": 0,
+          "carts": 5,
+          "carts_remaining": 0,
+          "behavior_events": 8,
+          "behavior_events_remaining": 0,
+          "auth_sessions": 3,
+          "auth_sessions_remaining": 0,
+          "users": 4,
+          "users_remaining": 0,
+          "product_skus": 4,
+          "product_skus_remaining": 0,
+          "products": 1,
+          "products_remaining": 0,
+          "verified": true,
+          "controls_remaining": 0,
+          "temporary_indexes_remaining": 0
+        }
+      }
+    }
+  ],
+  "temporary_iam_revoked": true,
+  "ended_at": "2026-10-20T00:49:59.496Z"
+}

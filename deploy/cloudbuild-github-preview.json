@@ -1,0 +1,82 @@
+{
+  "steps": [
+    {
+      "name": "gcr.io/google.com/cloudsdktool/cloud-sdk:slim",
+      "id": "Prepare committed allowlist",
+      "entrypoint": "bash",
+      "args": [
+        "-ceu",
+        "test \"$_SERVICE_NAME\" = \"vibecart-acceptance-pr21\"\ncommand -v git >/dev/null || { apt-get update -qq && apt-get install -y --no-install-recommends git; }\ngit cat-file -e \"$COMMIT_SHA^{commit}\"\npython3 scripts/prepare_cloud_source.py --commit \"$COMMIT_SHA\" --layout repository --output /tmp/vibecart-preview-source.tar.gz\nmkdir -p /workspace/.cloud-preview\ntar -xzf /tmp/vibecart-preview-source.tar.gz -C /workspace/.cloud-preview\ntest -f /workspace/.cloud-preview/Dockerfile\ntest -f /workspace/.cloud-preview/.dockerignore\n"
+      ]
+    },
+    {
+      "name": "gcr.io/cloud-builders/docker",
+      "id": "Build",
+      "dir": ".cloud-preview",
+      "args": [
+        "build",
+        "--build-arg",
+        "INSTALL_AI=false",
+        "-t",
+        "$_AR_HOSTNAME/$_AR_PROJECT_ID/$_AR_REPOSITORY/vibecart-acceptance-pr21:$COMMIT_SHA",
+        ".",
+        "-f",
+        "Dockerfile"
+      ]
+    },
+    {
+      "name": "gcr.io/cloud-builders/docker",
+      "id": "Offline boot",
+      "args": [
+        "run",
+        "--rm",
+        "--network=none",
+        "-e",
+        "MONGO_URI=mongodb+srv://vibecart-ai-free.odqe25w.mongodb.net/",
+        "-e",
+        "SECRET_KEY=cloud-build-isolated-smoke-secret-32chars",
+        "--entrypoint",
+        "python",
+        "$_AR_HOSTNAME/$_AR_PROJECT_ID/$_AR_REPOSITORY/vibecart-acceptance-pr21:$COMMIT_SHA",
+        "-c",
+        "from cloud_runtime import create_cloud_app; app=create_cloud_app(); response=app.test_client().get(\"/health/live\"); response.status_code == 200 or (_ for _ in ()).throw(RuntimeError(\"Offline boot failed\")); print(\"offline-container-boot-ok\")"
+      ]
+    },
+    {
+      "name": "gcr.io/cloud-builders/docker",
+      "id": "Push",
+      "args": [
+        "push",
+        "$_AR_HOSTNAME/$_AR_PROJECT_ID/$_AR_REPOSITORY/vibecart-acceptance-pr21:$COMMIT_SHA"
+      ]
+    },
+    {
+      "name": "gcr.io/google.com/cloudsdktool/cloud-sdk:slim",
+      "id": "Stage private candidate only",
+      "entrypoint": "gcloud",
+      "args": [
+        "run",
+        "services",
+        "update",
+        "vibecart-acceptance-pr21",
+        "--platform=managed",
+        "--image=$_AR_HOSTNAME/$_AR_PROJECT_ID/$_AR_REPOSITORY/vibecart-acceptance-pr21:$COMMIT_SHA",
+        "--labels=managed-by=gcp-cloud-build-deploy-cloud-run,commit-sha=$COMMIT_SHA,codex-source-sha=$COMMIT_SHA,gcb-build-id=$BUILD_ID,gcb-trigger-id=$_TRIGGER_ID",
+        "--region=asia-east1",
+        "--no-traffic",
+        "--tag=github-preview",
+        "--command=",
+        "--args=",
+        "--quiet"
+      ]
+    }
+  ],
+  "images": [
+    "$_AR_HOSTNAME/$_AR_PROJECT_ID/$_AR_REPOSITORY/vibecart-acceptance-pr21:$COMMIT_SHA"
+  ],
+  "timeout": "1800s",
+  "options": {
+    "substitutionOption": "ALLOW_LOOSE",
+    "logging": "CLOUD_LOGGING_ONLY"
+  }
+}

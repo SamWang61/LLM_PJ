@@ -1,6 +1,6 @@
 # VibeCart AI MongoDB 建置紀錄
 
-更新：2026-09-19（Asia/Taipei）。依新增的 VibeCart_AI_MongoDB_Complete_Schema.md，已完成指定 Atlas 資料庫的 Complete Schema v4 更新與實際驗證。
+更新：2026-10-05（Asia/Taipei）。已依使用者指示重建 Schema 並匯入超市測試資料；[最新重建與匯入報告](18_2026-10-05_Schema重建與超市商品匯入.md)。原 Schema 依據不變。依新增的 VibeCart_AI_MongoDB_Complete_Schema.md，已完成指定 Atlas 資料庫的 Complete Schema v4 更新與實際驗證。
 
 |項目|實際結果|
 |---|---|
@@ -10,10 +10,18 @@
 |方案／地區|原建置 Free，AWS AP_SOUTHEAST_1；本次未變更部署方案|
 |資料結構|19 個新版核心 v4 集合 + 8 個保留集合，共 27 個 strict/error validators|
 |索引|59 個自訂索引 + 27 個 _id_，共 86 個；24 個自訂唯一索引、2 個 TTL|
-|資料|schema_migrations 4 筆 succeeded，system_configs 1 筆，其餘集合 0 筆；測試資料已清除|
-|驗證|新版 66 項 Atlas 整合測試通過；遷移重跑及唯讀查核成功|
+|資料|商品 336、SKU 336、分類 32、品牌 128；schema_migrations 4 筆 succeeded、system_configs 1 筆；其餘集合 0 筆|
+|驗證|歷史 v4 66 項測試通過；本次完整 Schema 讀回、832 筆文件精確比對與 Flask 336 商品讀取通過|
 
-Atlas 外掛本次 OAuth 失效，使用先前授權的 PyMongo 連線完成實際變更與讀回。控制台部署中繼資料未重新核實；原始資訊見 [Cluster 設定](01_Cluster設定與狀態.md)。
+2026-10-05 Schema 重建與商品匯入時，Atlas 外掛 OAuth 失效，當時使用先前授權的 PyMongo 連線完成變更與讀回，未重新核實控制台部署中繼資料。2026-10-19 Atlas 外掛已恢復連線，Network Access 已透過該外掛成功讀回；本次結果見下節與 [Cluster 設定](01_Cluster設定與狀態.md)。
+
+## Network Access 實際查核（2026-10-19）
+
+2026-10-19 Atlas 實際查核：成功讀回 Project `vibecart_ai` 的 4 筆 Network Access 規則，全部為 `/32`，包含專用 NAT `35.229.228.204/32`；清單中沒有 `0.0.0.0/0`，目前不能按全 IPv4 開放設定使用。外掛未提供逐筆 Active／到期欄位，本次也未測試網站端讀寫。完整清單與查核界線見 [Cluster 設定](01_Cluster設定與狀態.md)。
+
+WEB 後端、開發電腦或 Compass 的實際出口須符合清單；更換出口後需重新核對。帳密、TLS 與角色權限仍需通過。
+
+English: Atlas read-back on 2026-10-19 returned four /32 entries, including the dedicated NAT 35.229.228.204/32, and no 0.0.0.0/0. Per-entry activation and expiry are not exposed by this tool. No access-list changes or website read/write tests were performed.
 
 ## 現行文件與程式
 
@@ -50,3 +58,5 @@ Atlas 外掛本次 OAuth 失效，使用先前授權的 PyMongo 連線完成實�
 ## English summary
 
 This directory preserves schema definitions, immutable migrations and dated Atlas evidence. Start with documents 15–17 for Complete Schema v4. The recorded 66 passing tests and 27 collections describe the September 19 validation, not a fresh run. Use sku_cart_service.py for the current SKU cart interface. Legacy tests target older schema versions. Do not run all historical migrations or tests against a populated production database without an explicit migration plan.
+
+- [Atlas／Compass 資料庫查詢手冊](19_Atlas與Compass資料庫查詢手冊.md)：連線、商品與 SKU 搜尋、分類、示範訂單及 Schema 查閱。

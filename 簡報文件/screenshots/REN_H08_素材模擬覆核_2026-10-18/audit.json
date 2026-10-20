@@ -1,0 +1,158 @@
+{
+  "checked_at": "2026-10-18T09:29:57.312056+00:00",
+  "reviewer": "Codex technical review",
+  "user_direction": "No physical test; perform material and browser-size simulation checks first",
+  "physical_device_tested": false,
+  "human_acceptance_signed": false,
+  "historical_assets": [
+    {
+      "path": "簡報文件/screenshots/S03-product.png",
+      "sha256": "ca49bf8499e877167a82032d55eaa639e4b4cfad5eeaa957c5a90f29fcf50cc4",
+      "index_equal": true,
+      "image_size": [
+        1429,
+        766
+      ],
+      "format": "PNG",
+      "captured_at_taipei": "2026-10-18T05:53:48.525000+08:00",
+      "source_sha": "ff65eaef0f6db932f844893cf2f8dc42eac5b5f7",
+      "revision": "vibecart-web-00018-s59",
+      "named_review": false
+    },
+    {
+      "path": "簡報文件/screenshots/S04-auth.png",
+      "sha256": "c2fa624ee36b6e91b1d101f81967ab7a6ea22fc3a7dbf347e51de005458675bc",
+      "index_equal": true,
+      "image_size": [
+        1143,
+        613
+      ],
+      "format": "PNG",
+      "captured_at_taipei": "2026-10-18T05:54:03.878000+08:00",
+      "source_sha": "ff65eaef0f6db932f844893cf2f8dc42eac5b5f7",
+      "revision": "vibecart-acceptance-pr21-00007-wcd",
+      "named_review": false
+    },
+    {
+      "path": "簡報文件/screenshots/S04-customer-admin-denied.png",
+      "sha256": "026a416d7d2601f4be0b8480d9fe4e760fa76fc8504171363888af4947d254ce",
+      "index_equal": true,
+      "image_size": [
+        1143,
+        613
+      ],
+      "format": "PNG",
+      "captured_at_taipei": "2026-10-18T05:54:06.915000+08:00",
+      "source_sha": "ff65eaef0f6db932f844893cf2f8dc42eac5b5f7",
+      "revision": "vibecart-acceptance-pr21-00007-wcd",
+      "named_review": false
+    },
+    {
+      "path": "簡報文件/screenshots/S05-cart.png",
+      "sha256": "31c10381ce6c8bb79ff77527552beb24381ccbea3f514a506cc8b9989a1a2382",
+      "index_equal": true,
+      "image_size": [
+        1143,
+        613
+      ],
+      "format": "PNG",
+      "captured_at_taipei": "2026-10-18T05:54:43.338000+08:00",
+      "source_sha": "ff65eaef0f6db932f844893cf2f8dc42eac5b5f7",
+      "revision": "vibecart-acceptance-pr21-00007-wcd",
+      "named_review": false
+    },
+    {
+      "path": "簡報文件/screenshots/S05-order.png",
+      "sha256": "f42ef272bd3fa16178585e55207bedc9e91677cc1119c122234c1ce7fd8b8986",
+      "index_equal": true,
+      "image_size": [
+        1143,
+        613
+      ],
+      "format": "PNG",
+      "captured_at_taipei": "2026-10-18T05:54:51.357000+08:00",
+      "source_sha": "ff65eaef0f6db932f844893cf2f8dc42eac5b5f7",
+      "revision": "vibecart-acceptance-pr21-00007-wcd",
+      "named_review": false
+    }
+  ],
+  "captures": [
+    {
+      "file": "H08-390-keyboard.jpg",
+      "captured_at_utc": "2026-10-18T09:25:46.289Z",
+      "url": "https://vibecart-llmai.web.app/product/02f9efd17210150f2eea7274",
+      "role": "anonymous",
+      "steps": "Select exact SKU; press Tab to quantity",
+      "focusName": "quantity",
+      "focusTag": "INPUT",
+      "height": 844,
+      "scrollWidth": 375,
+      "selected": "CF-SKU-1210303000104 · 1PC支 x 1 x 4PC支 · NT$ 79.00 · 庫存 95",
+      "width": 390,
+      "image_size": [
+        375,
+        844
+      ],
+      "format": "JPEG",
+      "sha256": "8e77f1791b73bc11a66193558723f82ec076251447babc997307b8d26581dcbb",
+      "no_horizontal_overflow": true,
+      "source_sha": "e000d952d22a64b568903641893f4ffdc71accd3",
+      "revision": "vibecart-web-00019-phf",
+      "deployment_evidence": "REN_PR89_REVIEW_REMOTE_2026-10-18.json"
+    },
+    {
+      "file": "H08-320-action-focus.jpg",
+      "captured_at_utc": "2026-10-18T09:26:00.035Z",
+      "url": "https://vibecart-llmai.web.app/product/02f9efd17210150f2eea7274",
+      "role": "anonymous",
+      "steps": "Resize to 320x568; Tab from quantity to Add button without submitting",
+      "focusTag": "BUTTON",
+      "focusText": "加入購物車",
+      "height": 568,
+      "scrollWidth": 305,
+      "selected": "CF-SKU-1210303000104 · 1PC支 x 1 x 4PC支 · NT$ 79.00 · 庫存 95",
+      "width": 320,
+      "image_size": [
+        305,
+        568
+      ],
+      "format": "JPEG",
+      "sha256": "39a97b3e53134b784fe9c6b58297b268694aee379fb6e2bc7260ea74a949fe62",
+      "no_horizontal_overflow": true,
+      "source_sha": "e000d952d22a64b568903641893f4ffdc71accd3",
+      "revision": "vibecart-web-00019-phf",
+      "deployment_evidence": "REN_PR89_REVIEW_REMOTE_2026-10-18.json"
+    },
+    {
+      "file": "H08-844-landscape.jpg",
+      "captured_at_utc": "2026-10-18T09:26:06.419Z",
+      "url": "https://vibecart-llmai.web.app/product/02f9efd17210150f2eea7274",
+      "role": "anonymous",
+      "steps": "Resize to 844x390; Tab from selected SKU to quantity",
+      "focusName": "quantity",
+      "focusTag": "INPUT",
+      "height": 390,
+      "scrollWidth": 829,
+      "selected": "CF-SKU-1210303000104 · 1PC支 x 1 x 4PC支 · NT$ 79.00 · 庫存 95",
+      "width": 844,
+      "image_size": [
+        829,
+        390
+      ],
+      "format": "JPEG",
+      "sha256": "16bc716822d62727614880026ecca8865b7b829e78075044d9daac41781d7431",
+      "no_horizontal_overflow": true,
+      "source_sha": "e000d952d22a64b568903641893f4ffdc71accd3",
+      "revision": "vibecart-web-00019-phf",
+      "deployment_evidence": "REN_PR89_REVIEW_REMOTE_2026-10-18.json"
+    }
+  ],
+  "pptx": {
+    "path": "簡報文件/超市AI版_2026-10-18/VibeCart_AI_超市網購與AI系統_2026-10-18_v5.pptx",
+    "worktree_sha256": "43374f71c5e42fdc1725f38a8ac69ea0e2ccc696f6238ebb06425e58e00d7203",
+    "original_project_sha256": "43374f71c5e42fdc1725f38a8ac69ea0e2ccc696f6238ebb06425e58e00d7203",
+    "modified_by_this_work": false
+  },
+  "login_negative_case": "not counted: browser changed to authenticated state during the check; this task entered no credentials; current session was not revoked",
+  "scope": "Public product selection/keyboard/layout only; no cart/checkout actions; separate private HTTP acceptance remains separate"
+}

@@ -1,0 +1,13 @@
+{
+  "checked_at": "2026-10-17T16:13:23.830Z",
+  "production_revision": "vibecart-web-00013-ds5",
+  "private_revision": "vibecart-acceptance-pr21-00004-9qr",
+  "source_sha": "80513a951d0dff67fd47a153a45918522b5ffbb5",
+  "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:57c8fd038d7c231a4e417471a66b9c7996c296efd2d7b1ff70302c46a45f0fab",
+  "private_env_preserved": true,
+  "private_runtime_identity_preserved": true,
+  "private_invoker": [
+    "serviceAccount:vibecart-pr21-acceptance@vibecart-llmai.iam.gserviceaccount.com"
+  ],
+  "operation": "projects/vibecart-llmai/locations/asia-east1/operations/433c7bd0-a256-4fae-a5d9-dd876c6794b0"
+}

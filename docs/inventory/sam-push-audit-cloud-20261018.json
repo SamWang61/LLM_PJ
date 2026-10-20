@@ -1,0 +1,88 @@
+{
+  "checked_at_utc": "2026-10-17T17:58:04.503Z",
+  "scope": "Read-only control-plane and public GET requests; no cloud mutation",
+  "services": [
+    {
+      "name": "vibecart-web",
+      "uri": "https://vibecart-web-m44ncgz5ta-de.a.run.app",
+      "terminal_condition": "CONDITION_SUCCEEDED",
+      "revisions": [
+        {
+          "revision": "vibecart-web-00015-nlk",
+          "percent": 100,
+          "tag": "pr56-1d2abf2",
+          "uri": "https://pr56-1d2abf2---vibecart-web-m44ncgz5ta-de.a.run.app",
+          "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:1686638380b8cb8dc792423b059918b292e94f095d68c623ea9136da1ff9813b",
+          "source_sha": "1d2abf2cfa7465636e49474062e11f6aca571dda",
+          "condition": "CONDITION_SUCCEEDED"
+        }
+      ]
+    },
+    {
+      "name": "vibecart-acceptance-pr21",
+      "uri": "https://vibecart-acceptance-pr21-m44ncgz5ta-de.a.run.app",
+      "terminal_condition": "CONDITION_SUCCEEDED",
+      "revisions": [
+        {
+          "revision": "vibecart-acceptance-pr21-00005-5j5",
+          "percent": 100,
+          "tag": null,
+          "uri": null,
+          "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:1686638380b8cb8dc792423b059918b292e94f095d68c623ea9136da1ff9813b",
+          "source_sha": "1d2abf2cfa7465636e49474062e11f6aca571dda",
+          "condition": "CONDITION_SUCCEEDED"
+        }
+      ]
+    }
+  ],
+  "routes": [
+    {
+      "url": "https://vibecart-web-m44ncgz5ta-de.a.run.app/",
+      "status": 200
+    },
+    {
+      "url": "https://vibecart-web-m44ncgz5ta-de.a.run.app/auth/login",
+      "status": 200
+    },
+    {
+      "url": "https://vibecart-web-m44ncgz5ta-de.a.run.app/health/live",
+      "status": 200
+    },
+    {
+      "url": "https://vibecart-web-m44ncgz5ta-de.a.run.app/health/ready",
+      "status": 200
+    },
+    {
+      "url": "https://vibecart-llmai.web.app/",
+      "status": 200
+    },
+    {
+      "url": "https://vibecart-llmai.web.app/auth/login",
+      "status": 200
+    },
+    {
+      "url": "https://vibecart-llmai.web.app/health/live",
+      "status": 200
+    },
+    {
+      "url": "https://vibecart-llmai.web.app/health/ready",
+      "status": 200
+    },
+    {
+      "url": "https://pr56-1d2abf2---vibecart-web-m44ncgz5ta-de.a.run.app/",
+      "status": 200
+    },
+    {
+      "url": "https://pr56-1d2abf2---vibecart-web-m44ncgz5ta-de.a.run.app/auth/login",
+      "status": 200
+    },
+    {
+      "url": "https://pr56-1d2abf2---vibecart-web-m44ncgz5ta-de.a.run.app/health/live",
+      "status": 200
+    },
+    {
+      "url": "https://pr56-1d2abf2---vibecart-web-m44ncgz5ta-de.a.run.app/health/ready",
+      "status": 200
+    }
+  ]
+}

@@ -1,0 +1,417 @@
+{
+  "checked_at": "2026-10-19T17:41:41.575Z",
+  "job": "sam-proxy-n05-1020-108736",
+  "entry_count": 8,
+  "probes": [
+    {
+      "report": {
+        "stock_after_checkout": 1,
+        "retry_same_order": true,
+        "h05": {
+          "status": "passed",
+          "revision_sequence": [
+            1,
+            2,
+            3,
+            4
+          ],
+          "stale_revision_http": 409,
+          "add_two_update_one_reload_remove_reload": true,
+          "readded_for_checkout_quantity": 1,
+          "stale_state_unchanged": true,
+          "http_statuses": [
+            200,
+            200,
+            200,
+            200
+          ]
+        },
+        "two_device_sessions": true,
+        "service_revision": "vibecart-acceptance-pr21-reviews-ai-1020",
+        "add_http": 200,
+        "status": "passed",
+        "probe_id": "ren-txn-af05af1597d42c24",
+        "conflict_409": true,
+        "checkout_persisted": true,
+        "service_image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:03d01cb52065e21fc96db6fb34b4de0527f2eb3966abbf0fe8719cb99bcc98f2",
+        "last_stock_concurrency": {
+          "http_statuses": [
+            400,
+            200
+          ],
+          "successful_checkouts": 1,
+          "parallel_clients": 2,
+          "stock_remaining": 0,
+          "orders_total_including_original": 2
+        },
+        "h07_events": {
+          "required_contract_fields": true,
+          "status": "passed",
+          "demo_purchase_excluded_from_attribution": true,
+          "search_product_order_cart_links": true,
+          "add_to_cart_links_and_quantities": true,
+          "event_type_counts": {
+            "SEARCH": 1,
+            "ADD_TO_CART": 2,
+            "PRODUCT_VIEW": 1,
+            "PURCHASE": 1
+          },
+          "unique_event_ids": true,
+          "readback_scope": "new disposable private user; real HTTPS-generated events"
+        },
+        "role_checks": {
+          "active_admin_200": true,
+          "missing_csrf_400": true,
+          "inactive_admin_denied": true
+        },
+        "stock_failure_rollback": {
+          "second_sku_unavailable_http": 400,
+          "order_item_event_counts_unchanged": true,
+          "cart_revision_preserved": true,
+          "arbitrary_fault_injection_tested": false,
+          "cart_event_counts_unchanged": true,
+          "order_items_scope": "fixture sku_id including orphan items",
+          "persisted_before": {
+            "behavior_events": 9,
+            "cart_events": 9,
+            "order_items": 2,
+            "orders": 2
+          },
+          "persisted_after": {
+            "cart_events": 9,
+            "behavior_events": 9,
+            "orders": 2,
+            "order_items": 2
+          },
+          "first_sku_stock_preserved": true
+        },
+        "per_device_logout": true,
+        "cleanup": {
+          "orders": 2,
+          "behavior_events": 9,
+          "users_remaining": 0,
+          "products_remaining": 0,
+          "product_skus_remaining": 0,
+          "orders_remaining": 0,
+          "cart_events_remaining": 0,
+          "products": 1,
+          "cart_events": 9,
+          "users": 3,
+          "order_items": 2,
+          "auth_sessions_remaining": 0,
+          "carts": 3,
+          "auth_sessions": 3,
+          "carts_remaining": 0,
+          "order_items_remaining": 0,
+          "verified": true,
+          "behavior_events_remaining": 0,
+          "product_skus": 2
+        },
+        "customer_admin_denied": true,
+        "add_to_cart": true,
+        "session_security": {
+          "maintainer_revoke_all_denied": true,
+          "other_device_preserved": true,
+          "old_cookie_denied": true,
+          "same_browser_relogin": true,
+          "d5_ui_tested": false,
+          "inactive_customer_both_devices_denied": true
+        },
+        "readonly_admin": {
+          "fixed_questions": [
+            {
+              "intent": "period_compare",
+              "http": 200,
+              "free_text_ignored": true,
+              "independent_totals": {
+                "current": {
+                  "average_order_value": "10.21",
+                  "all_orders": 6,
+                  "valid_orders": 6,
+                  "revenue": "61.25"
+                },
+                "comparison": {
+                  "average_order_value": null,
+                  "all_orders": 0,
+                  "revenue": "0.00",
+                  "valid_orders": 0
+                }
+              },
+              "rules_only": true,
+              "demo": "all"
+            },
+            {
+              "independent_totals": {
+                "comparison": {
+                  "all_orders": 0,
+                  "average_order_value": null,
+                  "valid_orders": 0,
+                  "revenue": "0.00"
+                },
+                "current": {
+                  "revenue": "61.25",
+                  "valid_orders": 6,
+                  "average_order_value": "10.21",
+                  "all_orders": 6
+                }
+              },
+              "rules_only": true,
+              "http": 200,
+              "intent": "replenishment",
+              "demo": "all",
+              "free_text_ignored": true
+            },
+            {
+              "http": 200,
+              "demo": "all",
+              "independent_totals": {
+                "current": {
+                  "revenue": "61.25",
+                  "all_orders": 6,
+                  "valid_orders": 6,
+                  "average_order_value": "10.21"
+                },
+                "comparison": {
+                  "valid_orders": 0,
+                  "average_order_value": null,
+                  "revenue": "0.00",
+                  "all_orders": 0
+                }
+              },
+              "rules_only": true,
+              "intent": "promotion",
+              "free_text_ignored": true
+            },
+            {
+              "rules_only": true,
+              "demo": "all",
+              "independent_totals": {
+                "current": {
+                  "revenue": "61.25",
+                  "valid_orders": 6,
+                  "average_order_value": "10.21",
+                  "all_orders": 6
+                },
+                "comparison": {
+                  "average_order_value": null,
+                  "all_orders": 0,
+                  "revenue": "0.00",
+                  "valid_orders": 0
+                }
+              },
+              "free_text_ignored": true,
+              "intent": "revenue_change",
+              "http": 200
+            },
+            {
+              "free_text_ignored": true,
+              "http": 200,
+              "independent_totals": {
+                "comparison": {
+                  "revenue": "0.00",
+                  "average_order_value": null,
+                  "all_orders": 0,
+                  "valid_orders": 0
+                },
+                "current": {
+                  "average_order_value": null,
+                  "valid_orders": 0,
+                  "revenue": "0.00",
+                  "all_orders": 0
+                }
+              },
+              "rules_only": true,
+              "demo": "exclude",
+              "intent": "period_compare"
+            },
+            {
+              "demo": "exclude",
+              "free_text_ignored": true,
+              "http": 200,
+              "intent": "replenishment",
+              "rules_only": true,
+              "independent_totals": {
+                "comparison": {
+                  "average_order_value": null,
+                  "valid_orders": 0,
+                  "revenue": "0.00",
+                  "all_orders": 0
+                },
+                "current": {
+                  "revenue": "0.00",
+                  "average_order_value": null,
+                  "all_orders": 0,
+                  "valid_orders": 0
+                }
+              }
+            },
+            {
+              "demo": "exclude",
+              "http": 200,
+              "rules_only": true,
+              "independent_totals": {
+                "current": {
+                  "average_order_value": null,
+                  "revenue": "0.00",
+                  "all_orders": 0,
+                  "valid_orders": 0
+                },
+                "comparison": {
+                  "revenue": "0.00",
+                  "average_order_value": null,
+                  "valid_orders": 0,
+                  "all_orders": 0
+                }
+              },
+              "intent": "promotion",
+              "free_text_ignored": true
+            },
+            {
+              "independent_totals": {
+                "comparison": {
+                  "all_orders": 0,
+                  "average_order_value": null,
+                  "valid_orders": 0,
+                  "revenue": "0.00"
+                },
+                "current": {
+                  "revenue": "0.00",
+                  "all_orders": 0,
+                  "average_order_value": null,
+                  "valid_orders": 0
+                }
+              },
+              "demo": "exclude",
+              "rules_only": true,
+              "http": 200,
+              "free_text_ignored": true,
+              "intent": "revenue_change"
+            },
+            {
+              "independent_totals": {
+                "current": {
+                  "valid_orders": 6,
+                  "average_order_value": "10.21",
+                  "revenue": "61.25",
+                  "all_orders": 6
+                },
+                "comparison": {
+                  "valid_orders": 0,
+                  "revenue": "0.00",
+                  "all_orders": 0,
+                  "average_order_value": null
+                }
+              },
+              "free_text_ignored": true,
+              "intent": "period_compare",
+              "http": 200,
+              "rules_only": true,
+              "demo": "only"
+            },
+            {
+              "intent": "replenishment",
+              "free_text_ignored": true,
+              "http": 200,
+              "independent_totals": {
+                "current": {
+                  "valid_orders": 6,
+                  "all_orders": 6,
+                  "average_order_value": "10.21",
+                  "revenue": "61.25"
+                },
+                "comparison": {
+                  "revenue": "0.00",
+                  "average_order_value": null,
+                  "valid_orders": 0,
+                  "all_orders": 0
+                }
+              },
+              "demo": "only",
+              "rules_only": true
+            },
+            {
+              "independent_totals": {
+                "comparison": {
+                  "all_orders": 0,
+                  "average_order_value": null,
+                  "valid_orders": 0,
+                  "revenue": "0.00"
+                },
+                "current": {
+                  "valid_orders": 6,
+                  "all_orders": 6,
+                  "revenue": "61.25",
+                  "average_order_value": "10.21"
+                }
+              },
+              "rules_only": true,
+              "free_text_ignored": true,
+              "http": 200,
+              "demo": "only",
+              "intent": "promotion"
+            },
+            {
+              "http": 200,
+              "free_text_ignored": true,
+              "rules_only": true,
+              "intent": "revenue_change",
+              "independent_totals": {
+                "current": {
+                  "valid_orders": 6,
+                  "average_order_value": "10.21",
+                  "all_orders": 6,
+                  "revenue": "61.25"
+                },
+                "comparison": {
+                  "revenue": "0.00",
+                  "all_orders": 0,
+                  "valid_orders": 0,
+                  "average_order_value": null
+                }
+              },
+              "demo": "only"
+            }
+          ],
+          "invalid_range_http": 400,
+          "model_enabled": false,
+          "unknown_intent_http": 400,
+          "disabled_d5_links": 3,
+          "disabled_free_question_http": 403,
+          "get_http": 200,
+          "business_counts_after": {
+            "order_items": 6,
+            "behavior_events": 23,
+            "users": 11,
+            "product_skus": 4,
+            "orders": 6,
+            "products": 4,
+            "carts": 7,
+            "cart_events": 16
+          },
+          "vector_refresh_tested": false,
+          "browser_or_human_acceptance": false,
+          "business_counts_before": {
+            "product_skus": 4,
+            "behavior_events": 23,
+            "users": 11,
+            "cart_events": 16,
+            "order_items": 6,
+            "orders": 6,
+            "carts": 7,
+            "products": 4
+          },
+          "get_routes": [
+            "/admin/",
+            "/admin/recommendations",
+            "/admin/ai/insight",
+            "/admin/ai/recommendation",
+            "/admin/ai/compare"
+          ]
+        }
+      },
+      "file": "remote_transaction_acceptance_probe.py",
+      "code": 0
+    }
+  ],
+  "error_lines": []
+}

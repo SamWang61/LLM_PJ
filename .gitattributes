@@ -1,14 +1,36 @@
 * text=auto
+.gitattributes text eol=lf
+Dockerfile text eol=lf
+.dockerignore text eol=lf
 *.md text eol=lf
 *.py text eol=lf
 *.yml text eol=lf
 *.yaml text eol=lf
 *.json text eol=lf
+*.css text eol=lf
+*.cjs text eol=lf
 *.csv text eol=lf
 *.bat text eol=crlf
 *.ps1 text eol=crlf
 *.png binary
 *.jpg binary
-*.pdf binary
+*.pdf filter=lfs diff=lfs merge=lfs -text
 *.mp4 binary
 *.zip binary
+
+# Preserve synchronized documents byte for byte.
+*.md -text !eol
+*.txt -text !eol
+*.rst -text !eol
+*.csv -text !eol
+docs/inventory/mongodb_query_manual_checks_2026-10-05.json -text !eol
+docs/inventory/sam_work_document_scan_2026-10-05.json -text !eol
+# Migration checksum depends on original overlay bytes; disable EOL conversion.
+VibeCart_AI/MongoDB/test_data/schema_test_profile.py -text
+MuscleCore分析資料/website/app/templates/base.html -text !eol
+# Preserve the exact bytes of the remote D4 run and its executed runner.
+docs/inventory/sam-d4-*-20261018.json -text !eol whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+scripts/run_remote_d4_consumer_probe.cjs -text !eol whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol
+
+# Keep published presentation metadata byte-identical.
+簡報文件/**/*.json -text !eol

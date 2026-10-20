@@ -1,0 +1,20 @@
+{
+  "checked_at": "2026-10-18T08:13:16.452158+00:00",
+  "environment": "localhost in-memory UI fixture; not Atlas or transaction acceptance",
+  "runtime_source": "5eb392f",
+  "orders": 1,
+  "demo_orders": 1,
+  "order_items": 1,
+  "available_quantity": 5,
+  "event_types": [
+    "ADD_TO_CART",
+    "PRODUCT_VIEW",
+    "PURCHASE",
+    "SEARCH"
+  ],
+  "events": 6,
+  "sessions": 2,
+  "database_removed": true,
+  "server_stopped": true,
+  "fixture_type": "mongomock UI fixture; transactions not tested here"
+}

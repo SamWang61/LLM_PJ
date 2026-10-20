@@ -1,0 +1,185 @@
+{
+  "planned_at": "2026-10-19 17:12:42 UTC",
+  "scope": "SAM role simulations authorized by the user; not human signoff or physical-device evidence",
+  "baseline": "5c55bc01455b0ee50565de234b1f5d6975638dc9",
+  "table": "專題進度/待結案12項_執行順序與分工_2026-10-20.md",
+  "stage": "executing; consolidated notification only after executable work is complete",
+  "items": [
+    {
+      "order": 1,
+      "id": "N15",
+      "owner": "SAM",
+      "status": "technical_checkpoint_complete",
+      "started_at": "2026-10-20T01:12:54+08:00",
+      "finished_at": "2026-10-20T01:40:59+08:00",
+      "evidence": [
+        "https://github.com/SamWang61/LLM_PJ/pull/126",
+        "https://github.com/SamWang61/LLM_PJ/actions/runs/39294747184"
+      ],
+      "limitations": [
+        "Main CI first startup failed; second attempt succeeded. New N06 candidate and independent PR #130 remain separately classified; no global freeze."
+      ],
+      "original_gate_closed": false
+    },
+    {
+      "order": 2,
+      "id": "N02",
+      "owner": "SAM → REN",
+      "status": "technical_subitem_passed",
+      "started_at": "2026-10-20T01:19:47+08:00",
+      "finished_at": "2026-10-20T01:20:06+08:00",
+      "evidence": [
+        "docs/inventory/SAM_C02_ROLE_CART_TIMED_2026-10-20.json"
+      ],
+      "limitations": [
+        "Browser matrix and REN human receipt remain separate."
+      ],
+      "original_gate_closed": false
+    },
+    {
+      "order": 3,
+      "id": "N04",
+      "owner": "SAM 準備、REN 操作",
+      "status": "technical_subitem_passed",
+      "started_at": "2026-10-20T01:19:47+08:00",
+      "finished_at": "2026-10-20T01:20:06+08:00",
+      "evidence": [
+        "docs/inventory/SAM_C02_ROLE_CART_TIMED_2026-10-20.json"
+      ],
+      "limitations": [
+        "Three local roles; six production accounts and private human receipt not re-verified."
+      ],
+      "original_gate_closed": false
+    },
+    {
+      "order": 4,
+      "id": "N05",
+      "owner": "REN；本輪 SAM 模擬 REN",
+      "status": "technical_subitem_passed",
+      "started_at": "2026-10-20T01:19:47+08:00",
+      "finished_at": "2026-10-20T01:20:06+08:00",
+      "evidence": [
+        "docs/inventory/SAM_C02_ROLE_CART_TIMED_2026-10-20.json"
+      ],
+      "limitations": [
+        "Independent test clients; no physical second device or human signoff."
+      ],
+      "original_gate_closed": false
+    },
+    {
+      "order": 5,
+      "id": "N06",
+      "owner": "SAM 案例、REN 覆核",
+      "status": "local_fix_passed_remote_pending",
+      "started_at": "2026-10-20T01:18:53+08:00",
+      "finished_at": "2026-10-20T01:40:27+08:00",
+      "evidence": [
+        "docs/SAM_N06_ABORT_RECOVERY_FIX_2026-10-20.md",
+        "docs/inventory/SAM_C02_N06_ABORT_RECOVERY_2026-10-20.json"
+      ],
+      "limitations": [
+        "New code is not deployed or remotely accepted; human acceptance and broad Atlas outage remain pending."
+      ],
+      "original_gate_closed": false
+    },
+    {
+      "order": 6,
+      "id": "N11",
+      "owner": "SAM 清冊 → JEFF；本輪 SAM 模擬 JEFF",
+      "status": "readable_scope_technical_subitem_passed",
+      "started_at": "2026-10-20T01:45:58+08:00",
+      "finished_at": "2026-10-20T01:59:11+08:00",
+      "evidence": [
+        "docs/SAM_C03_CONSUMER_ADMIN_2026-10-20.md"
+      ],
+      "limitations": [
+        "Policy denied region, external consumer coverage and JEFF human receipt remain pending."
+      ],
+      "original_gate_closed": false
+    },
+    {
+      "order": 7,
+      "id": "N13",
+      "owner": "SAM",
+      "status": "technical_preflight_passed_human_or_acl_pending",
+      "started_at": "2026-10-20T01:55:38+08:00",
+      "finished_at": "2026-10-20T02:00:40+08:00",
+      "evidence": [
+        "docs/SAM_C04_BACKUP_EGRESS_2026-10-20.md"
+      ],
+      "limitations": [
+        "Unknown workstation purpose/expiry, reversible daily backup ACL, manual plaintext cleanup and real REN off-device restore remain pending."
+      ],
+      "original_gate_closed": false
+    },
+    {
+      "order": 8,
+      "id": "N14",
+      "owner": "SAM 準備 → REN 異機驗收",
+      "status": "technical_preflight_passed_human_or_acl_pending",
+      "started_at": "2026-10-20T01:55:38+08:00",
+      "finished_at": "2026-10-20T02:00:40+08:00",
+      "evidence": [
+        "docs/SAM_C04_BACKUP_EGRESS_2026-10-20.md"
+      ],
+      "limitations": [
+        "Unknown workstation purpose/expiry, reversible daily backup ACL, manual plaintext cleanup and real REN off-device restore remain pending."
+      ],
+      "original_gate_closed": false
+    },
+    {
+      "order": 9,
+      "id": "N12",
+      "owner": "REN 前台、JEFF 後台、SAM 彙整",
+      "status": "frontend_simulated_passed_admin_browser_interrupted",
+      "started_at": "2026-10-20T01:59:43+08:00",
+      "finished_at": "2026-10-20T02:09:43+08:00",
+      "evidence": [
+        "docs/SAM_C05_BROWSER_MATRIX_2026-10-20.md"
+      ],
+      "limitations": [
+        "Admin narrow keyboard/error browser readback interrupted; real-phone native keyboard/touch/rotation and human receipt pending"
+      ],
+      "original_gate_closed": false
+    },
+    {
+      "order": 10,
+      "id": "N16",
+      "owner": "SAM 彙整；JEFF／REN 各段",
+      "status": "not_started",
+      "started_at": null,
+      "finished_at": null,
+      "evidence": [],
+      "limitations": []
+    },
+    {
+      "order": 11,
+      "id": "N17",
+      "owner": "SAM 整稿；JEFF／REN 各段",
+      "status": "not_started",
+      "started_at": null,
+      "finished_at": null,
+      "evidence": [],
+      "limitations": []
+    },
+    {
+      "order": 12,
+      "id": "N18",
+      "owner": "SAM 統籌；各人簽自己的範圍",
+      "status": "not_started",
+      "started_at": null,
+      "finished_at": null,
+      "evidence": [],
+      "limitations": []
+    }
+  ],
+  "notification_policy": {
+    "mode": "single_shared_message_at_end",
+    "recipients": [
+      "cashsam@gmail.com",
+      "chen2000401@gmail.com",
+      "jeff841117@gmail.com"
+    ],
+    "sent": false
+  }
+}

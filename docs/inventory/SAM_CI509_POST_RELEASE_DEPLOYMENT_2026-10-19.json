@@ -1,0 +1,57 @@
+{
+  "checked_at": "2026-10-18T22:51:31.887Z",
+  "service": "projects/vibecart-llmai/locations/asia-east1/services/vibecart-web",
+  "traffic": [
+    {
+      "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+      "revision": "vibecart-web-00019-phf",
+      "tag": "ren-fence",
+      "uri": "https://ren-fence---vibecart-web-m44ncgz5ta-de.a.run.app"
+    },
+    {
+      "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+      "revision": "vibecart-web-main20ee-1640",
+      "tag": "main20ee-preview",
+      "uri": "https://main20ee-preview---vibecart-web-m44ncgz5ta-de.a.run.app"
+    },
+    {
+      "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+      "revision": "vibecart-web-reviews-b038aaca",
+      "percent": 100,
+      "tag": "reviews-1019",
+      "uri": "https://reviews-1019---vibecart-web-m44ncgz5ta-de.a.run.app"
+    },
+    {
+      "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+      "revision": "vibecart-web-role-auth-576b4748",
+      "tag": "role-auth-1019",
+      "uri": "https://role-auth-1019---vibecart-web-m44ncgz5ta-de.a.run.app"
+    }
+  ],
+  "latestReadyRevision": "projects/vibecart-llmai/locations/asia-east1/services/vibecart-web/revisions/vibecart-web-reviews-b038aaca",
+  "revision": {
+    "name": "projects/vibecart-llmai/locations/asia-east1/services/vibecart-web/revisions/vibecart-web-reviews-b038aaca",
+    "source_sha": "b038aaca2d2553a39d8fd958100f277c64a75486",
+    "createTime": "2026-10-18T22:44:06.451351Z",
+    "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:8755ccb82902cf59430d5b2b76505c3fb6e4ed265d0ef98ba42821769edbcbdd",
+    "vpcAccess": null,
+    "secret_refs": [
+      {
+        "name": "MONGO_URI",
+        "secret": "vibecart-mongo-uri",
+        "version": "1"
+      },
+      {
+        "name": "SECRET_KEY",
+        "secret": "vibecart-session-key",
+        "version": "1"
+      }
+    ],
+    "runtime_flags": [
+      {
+        "name": "CLOUD_PREVIEW_READ_ONLY",
+        "value": "false"
+      }
+    ]
+  }
+}

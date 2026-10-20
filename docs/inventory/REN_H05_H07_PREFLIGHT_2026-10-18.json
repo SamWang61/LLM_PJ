@@ -1,0 +1,30 @@
+{
+  "checked_at": "2026-10-18T08:38:58.277Z",
+  "git_base": "20ee040110cbd6f02abb35aefde532a54d2fb120",
+  "deployed_source_sha": "e000d952d22a64b568903641893f4ffdc71accd3",
+  "production_revision": "vibecart-web-00019-phf",
+  "acceptance_revision": "vibecart-acceptance-pr21-00011-2hq",
+  "same_pinned_image": true,
+  "image_digest": "sha256:7199fa08c711917a80e5f54dbfd580ed96f3ef632bda7337b4aa2bde2325c992",
+  "private_user_id_token_http": 401,
+  "existing_service_account_generate_id_token_http": 403,
+  "existing_service_account_error_reason": "IAM_PERMISSION_DENIED",
+  "own_temporary_bindings_before": 0,
+  "existing_private_invokers": [
+    "serviceAccount:vibecart-pr21-acceptance@vibecart-llmai.iam.gserviceaccount.com",
+    "user:cashsam@gmail.com"
+  ],
+  "authorization": {
+    "human_reply": "allowed; revoke immediately after test",
+    "scope": "direct HTTPS probes only; private disposable database; no browser proxy restart",
+    "role": "roles/iam.serviceAccountOpenIdTokenCreator",
+    "maximum_minutes": 20
+  },
+  "probe_source_sha256": {
+    "scripts/remote_transaction_acceptance_probe.py": "929e5e6ca74e2f8f791a3a72b385d6ace1f6948c333af5525ee6818ec9830998",
+    "scripts/run_remote_transaction_acceptance_probe.cjs": "7433c3e7326db293fd57a3e9a3598de43f7905a8ec045bf0a409653198da3b74",
+    "scripts/remote_h05_h07_checks.py": "20761ed607fc2a3590c4ca0b67856f4d2b77f2e7602c240d11b65860b9f4461e",
+    "scripts/remote_member_transaction_checks.py": "ab25e4eb6f1d7a49e00d6e78756e1628c35168616deee7fe26702d12a1d3d86e",
+    "scripts/remote_d4_consumer_probe.py": "150c015c3fd151b0c2acbb27f443fc874245cd14fdaa4f185eab826f951c7e35"
+  }
+}

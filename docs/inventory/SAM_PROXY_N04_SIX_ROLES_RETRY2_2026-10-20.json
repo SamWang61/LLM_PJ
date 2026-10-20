@@ -1,0 +1,111 @@
+{
+  "started_at": "2026-10-19T17:26:20.004574+00:00",
+  "status": "passed",
+  "scope": "production fixed six-role authentication only; no cart/checkout/model operation",
+  "tool_executor": "Codex under SAM role-simulation authorization",
+  "tls_verification": true,
+  "stage": "fixed-role-http",
+  "credential_scope": "existing CurrentUser DPAPI; no password/URI in report",
+  "cases": [
+    {
+      "identity": "SAM",
+      "role": "admin",
+      "execution_identity": "SAM",
+      "started_at": "2026-10-19T17:26:23.895258+00:00",
+      "finished_at": "2026-10-19T17:26:30.057036+00:00",
+      "login_http": 302,
+      "admin_http": 200,
+      "password_guard_http": 403,
+      "logout_http": 302,
+      "logged_out_cart_denied": true
+    },
+    {
+      "identity": "SAM",
+      "role": "customer",
+      "execution_identity": "SAM",
+      "started_at": "2026-10-19T17:26:30.186793+00:00",
+      "finished_at": "2026-10-19T17:26:35.671494+00:00",
+      "login_http": 302,
+      "admin_http": 302,
+      "password_guard_http": 403,
+      "logout_http": 302,
+      "logged_out_cart_denied": true
+    },
+    {
+      "identity": "JEFF",
+      "role": "admin",
+      "execution_identity": "SAM 模擬 JEFF",
+      "started_at": "2026-10-19T17:26:35.799356+00:00",
+      "finished_at": "2026-10-19T17:26:41.846201+00:00",
+      "login_http": 302,
+      "admin_http": 200,
+      "password_guard_http": 403,
+      "logout_http": 302,
+      "logged_out_cart_denied": true
+    },
+    {
+      "identity": "JEFF",
+      "role": "customer",
+      "execution_identity": "SAM 模擬 JEFF",
+      "started_at": "2026-10-19T17:26:41.973597+00:00",
+      "finished_at": "2026-10-19T17:26:47.488736+00:00",
+      "login_http": 302,
+      "admin_http": 302,
+      "password_guard_http": 403,
+      "logout_http": 302,
+      "logged_out_cart_denied": true
+    },
+    {
+      "identity": "REN",
+      "role": "admin",
+      "execution_identity": "SAM 模擬 REN",
+      "started_at": "2026-10-19T17:26:47.634347+00:00",
+      "finished_at": "2026-10-19T17:26:53.937184+00:00",
+      "login_http": 302,
+      "admin_http": 200,
+      "password_guard_http": 403,
+      "logout_http": 302,
+      "logged_out_cart_denied": true
+    },
+    {
+      "identity": "REN",
+      "role": "customer",
+      "execution_identity": "SAM 模擬 REN",
+      "started_at": "2026-10-19T17:26:54.093394+00:00",
+      "finished_at": "2026-10-19T17:26:59.576328+00:00",
+      "login_http": 302,
+      "admin_http": 302,
+      "password_guard_http": 403,
+      "logout_http": 302,
+      "logged_out_cart_denied": true
+    }
+  ],
+  "own_cleanup": [
+    0,
+    0,
+    0,
+    0,
+    0,
+    0
+  ],
+  "production_mutations": "six login last_login_at updates and own transient sessions only",
+  "preexisting_sessions_unchanged": true,
+  "own_sessions_remaining": 0,
+  "retired_reserved_accounts_read_only": [
+    {
+      "role": "admin",
+      "inactive": true,
+      "sessions": 0
+    },
+    {
+      "role": "customer",
+      "inactive": true,
+      "sessions": 0
+    }
+  ],
+  "password_changes": 0,
+  "broad_session_revocations": 0,
+  "human_signoff": false,
+  "physical_device_tested": false,
+  "finished_at": "2026-10-19T17:27:00.096004+00:00"
+}

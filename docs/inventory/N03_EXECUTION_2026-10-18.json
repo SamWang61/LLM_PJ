@@ -1,0 +1,86 @@
+{
+  "checked_at": "2026-10-17T18:54:02.663Z",
+  "mode": "read-only",
+  "project": "vibecart-llmai",
+  "status": "preflight-passed",
+  "production": {
+    "service": "vibecart-web",
+    "revision": "vibecart-web-00015-nlk",
+    "traffic_percent": 100,
+    "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:1686638380b8cb8dc792423b059918b292e94f095d68c623ea9136da1ff9813b",
+    "source_sha": "1d2abf2cfa7465636e49474062e11f6aca571dda"
+  },
+  "acceptance": {
+    "service": "vibecart-acceptance-pr21",
+    "revision": "vibecart-acceptance-pr21-00005-5j5",
+    "traffic_percent": 100,
+    "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:1686638380b8cb8dc792423b059918b292e94f095d68c623ea9136da1ff9813b",
+    "source_sha": "1d2abf2cfa7465636e49474062e11f6aca571dda"
+  },
+  "inventory": {
+    "services": [
+      "projects/vibecart-llmai/locations/asia-east1/services/vibecart-acceptance-pr21",
+      "projects/vibecart-llmai/locations/asia-east1/services/vibecart-web"
+    ],
+    "jobs": [],
+    "job_regions_checked": [
+      "africa-south1",
+      "asia-east1",
+      "asia-east2",
+      "asia-northeast1",
+      "asia-northeast2",
+      "asia-northeast3",
+      "asia-south1",
+      "asia-south2",
+      "asia-southeast1",
+      "asia-southeast2",
+      "asia-southeast3",
+      "australia-southeast1",
+      "australia-southeast2",
+      "europe-central2",
+      "europe-north1",
+      "europe-north2",
+      "europe-southwest1",
+      "europe-west1",
+      "europe-west10",
+      "europe-west12",
+      "europe-west2",
+      "europe-west3",
+      "europe-west4",
+      "europe-west6",
+      "europe-west8",
+      "europe-west9",
+      "me-central1",
+      "me-central2",
+      "me-west1",
+      "northamerica-northeast1",
+      "northamerica-northeast2",
+      "northamerica-south1",
+      "southamerica-east1",
+      "southamerica-west1",
+      "us-central1",
+      "us-east1",
+      "us-east4",
+      "us-east5",
+      "us-south1",
+      "us-west1",
+      "us-west2",
+      "us-west3",
+      "us-west4"
+    ],
+    "restricted_regions": [
+      "me-central2"
+    ],
+    "restricted_reason": "LOCATION_POLICY_VIOLATED",
+    "topics": [],
+    "subscriptions": [],
+    "enabled_worker_apis": []
+  },
+  "task": "N03",
+  "source_allowlist_match": {
+    "head": "bed1db5b002603ecfaafc516c265de013882ff74",
+    "deployed_source": "1d2abf2cfa7465636e49474062e11f6aca571dda",
+    "files": 47,
+    "mismatches": 0
+  }
+}

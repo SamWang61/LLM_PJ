@@ -1,0 +1,38 @@
+{
+  "checked_at_utc": "2026-10-19T09:07:34.202Z",
+  "message_id": "1a153645e137295f",
+  "sent_at_taipei": "2026-10-19T17:00:49+08:00",
+  "recipients": [
+    "chen2000401@gmail.com",
+    "jeff841117@gmail.com",
+    "cashsam@gmail.com"
+  ],
+  "subject": "LLM_PJ 本人操作、截圖上傳及具名驗收提醒",
+  "sent_label_readback": true,
+  "recipient_headers_readback": true,
+  "scope": "User explicitly requested this reminder. Sent receipt is not recipient acceptance.",
+  "drive_preflight": {
+    "project_id": "1rQrO8v6bl3_y_B0BwpZXhlHFHS8swQc5",
+    "project_mime": "application/vnd.google-apps.project",
+    "project_permissions": {
+      "owner": 1,
+      "writer": 2
+    },
+    "folder_id": "1lXZv3hn3CgYmotpxgcna8i27wEodL8Gh",
+    "folder_mime": "application/vnd.google-apps.folder",
+    "folder_permissions": {
+      "owner": 1,
+      "anyone_reader": 1
+    },
+    "can_share_metadata": true,
+    "permission_ids_and_grantee_identities_available": false,
+    "revoke_permission_tool_available": false,
+    "transfer_started": false,
+    "sharing_changed": false,
+    "fixed_link_changed": false,
+    "grantee_identities_available_after_explicit_field_selection": true,
+    "permission_ids_available": false
+  },
+  "atlas_connector_reauthentication_required": true,
+  "pymongo_readonly_audit": "passed; see SAM_ONLINE_ATLAS_2026-10-19_1705.json"
+}

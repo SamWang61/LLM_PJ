@@ -1,0 +1,15 @@
+﻿path,git_blob_bytes,sha256,scope
+CHANGELOG.md,2630,3f7be197c4114643db033703ec36b2ef10a5421be8483c1c25248aafe8ef3023,SAM database testing 2026-10-02
+CONTRIBUTING.md,2752,52e9aa0bb2b6bcd74ec8b1f14163c56baf8a52eddbd23c29104f89abbd716998,SAM database testing 2026-10-02
+MuscleCore分析資料/website/tests/test_database_readiness.py,6072,162cb3cb580494a90f81f853869508c9f1f2524f7fd4c3f8505dcbed1ef86422,SAM database testing 2026-10-02
+README.md,4874,00d59ca1d351ff028dcb729af9f3f195c6169d252ae980b3749f5b36c94b8aed,SAM database testing 2026-10-02
+docs/AI_DASHBOARD.md,6263,879c2fb7f19d9183ff92a831cf1f91a7a0f9c7f997730c3c2721d084e38dbfe7,SAM database testing 2026-10-02
+docs/DOCUMENT_INDEX.md,7959,3e159fa74febed8a9efda9f7666139fc840fd842d2c9de4401b95f43405576e6,SAM database testing 2026-10-02
+docs/README.md,2137,60f01d1312727beb293dd5c5443097ab79cae301cdf1b231bd3387c38eb9a065,SAM database testing 2026-10-02
+docs/SAM_DATABASE_CHECK_2026-10-02.json,5589,c58808504bb757370702f5d88e3b30ca2945fc8a213d5306162efa71db09dffd,SAM database testing 2026-10-02
+docs/SAM_DATABASE_POSTCHECK_2026-10-02.json,5589,523d8421e21e8347664e6332b34dca5d2eaddc199085426a565157608e58701c,SAM database testing 2026-10-02
+docs/SAM_DATABASE_TESTING.md,4459,3dbecfba0f36abdb683081e2767138fb8018ca9cfad78a6ffaf0b3c31587ab4d,SAM database testing 2026-10-02
+docs/SAM_DATABASE_TESTS_2026-10-02.json,2532,a46bfbccaaef8cd286fe283e6feb4562c6fcdba36ba2e266ed82e753e18e477b,SAM database testing 2026-10-02
+docs/TEAM_OWNERSHIP.md,2446,d7702a2c0bcd212d086c7b22eaa23e0cb405334f2968b1a025f75b926caa91bc,SAM database testing 2026-10-02
+docs/分支(Branch)規劃與協作機制.md,7484,f1d206951003dc62e70427611ee90bc96835db11194d48cecca9ecee9ee7b535,SAM database testing 2026-10-02
+scripts/check_v4_database.py,7680,a6ecd8562422ad69d866ae24a210823bb6cf0c636bf704b32c7ed97c6557f4ff,SAM database testing 2026-10-02

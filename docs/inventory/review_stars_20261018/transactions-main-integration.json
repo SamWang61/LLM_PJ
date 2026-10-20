@@ -1,0 +1,18 @@
+{
+  "checked_at": "2026-10-18T10:53:53.007418+00:00",
+  "status": "passed",
+  "target": "disposable credential-free localhost replica set",
+  "container_removed": true,
+  "tests": {
+    "tests": 261,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "remaining_databases": [
+    "admin",
+    "config",
+    "local"
+  ],
+  "fixtures_removed": true
+}

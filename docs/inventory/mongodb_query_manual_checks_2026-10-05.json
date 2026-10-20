@@ -1,0 +1,20 @@
+{
+  "checked_at": "2026-10-05T10:38:20.595049+00:00",
+  "database": "vibecart_ai",
+  "mode": "read-only query counts; no document contents or credentials exported",
+  "collections": 27,
+  "results": {
+    "fresh_milk": 10,
+    "source_products": 336,
+    "major_categories": 8,
+    "minor_categories": 24,
+    "drink_products": 42,
+    "example_sku_id": 1,
+    "example_sku_code": 1,
+    "available_under_100": 148,
+    "out_of_stock": 12,
+    "demo_orders": 3000,
+    "paid_demo_orders": 1800,
+    "synthetic_users": 600
+  }
+}

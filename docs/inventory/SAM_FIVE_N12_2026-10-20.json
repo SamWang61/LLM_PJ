@@ -1,0 +1,61 @@
+{
+  "scope": "official Firebase admin UI; SAM simulated JEFF; no model or order submission",
+  "images": [
+    {
+      "path": "docs/inventory/SAM_FIVE_N12_2026-10-20/01-admin-390.png",
+      "sha256": "138e8e287a53159829a7752ed5531933800493fe481f852597c057950a933d02",
+      "size": [
+        375,
+        844
+      ],
+      "captured_file_utc": "2026-10-20T00:41:02.626956+00:00"
+    },
+    {
+      "path": "docs/inventory/SAM_FIVE_N12_2026-10-20/02-admin-keyboard.png",
+      "sha256": "a90dbb561abf2b264d4420192c99e162311df03b0c7dcd322503a0225a19a159",
+      "size": [
+        375,
+        844
+      ],
+      "captured_file_utc": "2026-10-20T00:41:10.351454+00:00"
+    },
+    {
+      "path": "docs/inventory/SAM_FIVE_N12_2026-10-20/03-admin-date-error.png",
+      "sha256": "30cf22243ae6e74fd55f50fa44fc5583a1536388e65d484526bbe911da5c182b",
+      "size": [
+        390,
+        844
+      ],
+      "captured_file_utc": "2026-10-20T00:41:12.307602+00:00"
+    },
+    {
+      "path": "docs/inventory/SAM_FIVE_N12_2026-10-20/04-admin-mobile-menu.png",
+      "sha256": "c2c0b9a2d2fe4e9e83cec0e2ffc5bb436d1744d4ad9ab67a08a7c6929f1f5648",
+      "size": [
+        375,
+        844
+      ],
+      "captured_file_utc": "2026-10-20T00:41:20.020462+00:00"
+    },
+    {
+      "path": "docs/inventory/SAM_FIVE_N12_2026-10-20/05-admin-844.png",
+      "sha256": "2db28b6641601b25f20ee178828946f1e747e9e0c01ebbc5db378ed1b6d7dc73",
+      "size": [
+        829,
+        390
+      ],
+      "captured_file_utc": "2026-10-20T00:41:20.099242+00:00"
+    }
+  ],
+  "checks": {
+    "390_no_horizontal_overflow": true,
+    "844_no_horizontal_overflow": true,
+    "date_order_error_alert": true,
+    "mobile_nav_expanded": true,
+    "date_keyboard_outline_visible": true,
+    "normal_logout_verified": true,
+    "viewport_reset": true
+  },
+  "source_sha": "294c1fac26d6785054063b8be6eb7d9e61075be4",
+  "revision": "vibecart-web-ai-294c-1020"
+}

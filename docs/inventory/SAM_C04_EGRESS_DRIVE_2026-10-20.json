@@ -1,0 +1,176 @@
+{
+  "started_at": "2026-10-20T01:55:38+08:00",
+  "readback_completed_at": "2026-10-19 17:56:26 UTC",
+  "operator": "SAM simulation by Codex",
+  "mutations": false,
+  "atlas": {
+    "project_id": "6aa9bd20af3f21039447a5c0",
+    "total": 4,
+    "wildcard": false,
+    "entries": [
+      {
+        "alias": "dedicated-nat",
+        "prefix": "32",
+        "nat_matches": true,
+        "comment": "VibeCart 專用 NAT",
+        "owner_verified": true,
+        "expiry_verified": false
+      },
+      {
+        "alias": "workstation-1",
+        "prefix": "32",
+        "nat_matches": false,
+        "comment": "VibeCart development workstation cart validation 2026-09-17",
+        "owner_verified": false,
+        "expiry_verified": false
+      },
+      {
+        "alias": "workstation-2",
+        "prefix": "32",
+        "nat_matches": false,
+        "comment": "",
+        "owner_verified": false,
+        "expiry_verified": false
+      },
+      {
+        "alias": "workstation-3",
+        "prefix": "32",
+        "nat_matches": false,
+        "comment": "VibeCart development workstation 2026-09-16",
+        "owner_verified": false,
+        "expiry_verified": false
+      }
+    ],
+    "primary_connection": "reauthentication required; other existing MongoDB link read succeeded; no access changes"
+  },
+  "drive": {
+    "id": "1uKNBZZmXYm6ff09Yl83O7gA8BENxcSLC",
+    "name": "LLM_PJ_Backup",
+    "permissions": [
+      {
+        "role": "reader",
+        "email": "chen2000401@gmail.com",
+        "type": "user"
+      },
+      {
+        "role": "reader",
+        "email": "jeff841117@gmail.com",
+        "type": "user"
+      },
+      {
+        "role": "owner",
+        "email": "cashsam@gmail.com",
+        "type": "user"
+      }
+    ],
+    "children_found": 0,
+    "revocable_acl_workflow_verified": false
+  },
+  "egress": [
+    {
+      "label": "compute-api",
+      "state": "ENABLED"
+    },
+    {
+      "label": "billing",
+      "billingEnabled": true,
+      "billingAccountLinked": true
+    },
+    {
+      "label": "services",
+      "services": [
+        {
+          "name": "llm-pj-git",
+          "traffic": [
+            {
+              "revision": "llm-pj-git-00002-547",
+              "percent": 100
+            }
+          ],
+          "vpcAccess": null
+        },
+        {
+          "name": "vibecart-acceptance-pr21",
+          "traffic": [
+            {
+              "revision": "vibecart-acceptance-pr21-n06-294c-1019",
+              "percent": 100
+            }
+          ],
+          "vpcAccess": {
+            "egress": "ALL_TRAFFIC",
+            "networkInterfaces": [
+              {
+                "network": "vibecart-egress-20261019",
+                "subnetwork": "vibecart-egress-subnet"
+              }
+            ]
+          }
+        },
+        {
+          "name": "vibecart-web",
+          "traffic": [
+            {
+              "revision": "vibecart-web-ai-294c-1020",
+              "percent": 100
+            }
+          ],
+          "vpcAccess": {
+            "egress": "ALL_TRAFFIC",
+            "networkInterfaces": [
+              {
+                "network": "vibecart-egress-20261019",
+                "subnetwork": "vibecart-egress-subnet"
+              }
+            ]
+          }
+        }
+      ],
+      "nextPageToken": false
+    },
+    {
+      "label": "jobs",
+      "jobs": [],
+      "nextPageToken": false
+    },
+    {
+      "label": "networks",
+      "networks": [
+        {
+          "name": "default",
+          "autoCreateSubnetworks": true
+        },
+        {
+          "name": "vibecart-egress-20261019",
+          "autoCreateSubnetworks": false
+        }
+      ]
+    },
+    {
+      "label": "routers",
+      "routers": [
+        {
+          "name": "vibecart-egress-router",
+          "natNames": [
+            "vibecart-egress-nat"
+          ]
+        }
+      ]
+    },
+    {
+      "label": "addresses",
+      "addresses": [
+        {
+          "name": "serverless-ipv4-cloudrun-1792398483506993223",
+          "address": "10.91.0.16",
+          "status": "RESERVED"
+        },
+        {
+          "name": "vibecart-egress-ip",
+          "address": "35.229.228.204",
+          "status": "IN_USE"
+        }
+      ]
+    }
+  ]
+}

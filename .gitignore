@@ -41,7 +41,9 @@ node_modules/
 *.p12
 *service-account*.json
 *service_account*.json
+*-firebase-adminsdk-*.json
 credentials*.json
 token*.json
 desktop.ini
 *.log
+deploy/firebase/.firebase/

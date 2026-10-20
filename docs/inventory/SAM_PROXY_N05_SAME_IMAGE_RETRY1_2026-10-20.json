@@ -1,0 +1,34 @@
+{
+  "started_at": "2026-10-19T17:31:18.055Z",
+  "status": "failed",
+  "stage": "N05",
+  "tag": "sam-n05-608e07",
+  "job": "sam-proxy-n05-1020-608e07",
+  "scope": "private acceptance DB, same pinned image as production; no production writes or traffic changes",
+  "cleanup": {
+    "tag_removed": true,
+    "job_deleted": true
+  },
+  "production": {
+    "revision": "vibecart-web-ai-294c-1020",
+    "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:03d01cb52065e21fc96db6fb34b4de0527f2eb3966abbf0fe8719cb99bcc98f2",
+    "source_sha": "294c1fac26d6785054063b8be6eb7d9e61075be4"
+  },
+  "private_active_before": "vibecart-acceptance-pr21-n06-294c-1019",
+  "candidate": {
+    "revision": "vibecart-acceptance-pr21-reviews-ai-1020",
+    "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:03d01cb52065e21fc96db6fb34b4de0527f2eb3966abbf0fe8719cb99bcc98f2",
+    "source_sha": "294c1fac26d6785054063b8be6eb7d9e61075be4"
+  },
+  "probe_source_sha256": {
+    "remote_transaction_acceptance_probe.py": "929e5e6ca74e2f8f791a3a72b385d6ace1f6948c333af5525ee6818ec9830998",
+    "remote_member_transaction_checks.py": "cafe0a80910222635f28a88f9166b1e43661f62fecfe194dc042990b9de9fc9e",
+    "remote_readonly_admin_checks.py": "ed4ef96914eb6487634a2fadfd3e9597cc91e1a4f537bd8be9c4c522abb6cbd8",
+    "remote_d4_consumer_probe.py": "9e998d3b7ff6a41e5faf52e11aac3d044ecb8cc22f4e021f6e3b4b82d5c31fa0"
+  },
+  "tag_ready": true,
+  "job_created": true,
+  "error": "Operation error 10",
+  "private_active_after": "vibecart-acceptance-pr21-n06-294c-1019",
+  "finished_at": "2026-10-19T17:31:53.773Z"
+}

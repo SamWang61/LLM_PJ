@@ -72,6 +72,8 @@ flowchart LR
 
 ## 評價規則
 
+2026-10-18增量：沿用無條件進位；前台評價入口、提交前撤權、商品彙總與網頁更新，以及6＋4高星優先，依[對話決議](../../討論的相關記錄/商品評價與猜你喜歡6加4推薦_對話決議_2026-10-18.md)與[交付證據](../../docs/PRODUCT_REVIEWS_6PLUS4_DELIVERY_2026-10-18.md)。文末「尚未部署」保留原建置時間的歷史邊界，現況以此增量紀錄分別判讀實作、GitHub與正式部署。
+
 新商品的DEFAULT資料必須是rating_count=0、rating_sum=0、rating_default_value=4.0、average_rating_raw=null、average_rating_display=4.0，星數分佈均0。Validator不會自動填預設值；商品建立服務須提供完整文件。
 
 rating_count>0時必須為ACTUAL，rating_sum／count與星數分佈一致；平均顯示使用ceil((sum/count)*10)/10。ReviewService僅接受本人已付款且completed或delivered的order_item，發布評價與商品彙總在同一transaction中；同會員同明細唯一。只統計published，不將預設4.0納入。後續隱藏／刪除評價需另外實作管理服務與重算，不能只改review.status而不重算商品。

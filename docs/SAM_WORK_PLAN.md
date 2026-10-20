@@ -1,5 +1,9 @@
 # SAM 執行與接手清單 / SAM delivery plan
 
+> **歷史文件：以下保留2026-10-02原始計畫及50項測試／Atlas紀錄，不代表目前分工、功能缺口或本輪驗收。** 現行AI／推薦契約主責為[黃健維（JEFF）](mailto:jeff841117@gmail.com)，[汪文彥（SAM）](mailto:cashsam@gmail.com)負責資料庫、測試與整合，見[現行分工](TEAM_OWNERSHIP.md)。
+>
+> 2026-10-20接續：前台請求時6＋4及其衰減／70－30已由新實作接續；PR #5補的是尚未被取代的opt-in離線持久快照。新契約、personalization範圍、CAS與維護時段見[離線快照操作](PREFERENCE_SCORING.md)。本輪不連Atlas、不接前台、不啟排程；新測試／CI與交付結果由本輪PR另記，不沿用下方歷史數字。
+
 2026-10-02：因團隊人力調整，SAM 除組長整合工作外，需承擔額外一份分工。原四組工作保留；尚未確認額外接手的是前台、會員流程或資料庫測試，不擅自變更其他同學的負責範圍。以下先推進已確定由 SAM 負責的 AI／後台與跨模組驗證。
 
 SAM is delivering the confirmed AI/dashboard and integration work first. The additional ownership assignment is pending team confirmation; personal circumstances are not part of this repository record.

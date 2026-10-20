@@ -1,5 +1,25 @@
 # 每日備份 / Daily backup
 
+<!-- SAM REMOTE ROLE RESULT 20261020 BEGIN -->
+**2026/10/20 REN復原子項接受方式**：依[SAM本輪決定](SAM_ACCEPTANCE_DECISIONS_2026-10-20.md)，接受完整同機模擬通過；本輪[USB來源／資料庫還原對帳](inventory/SAM_PROXY_N14_RESTORE_2026-10-20.json)已通過，實際環境與機器不同與否照實保留。此決定未補齊每日固定Drive可逆ACL／排程，亦未清除自動核准審查拒絕刪除的私有明文；詳[執行與待辦](SAM_ROLE_PROXY_REMOTE_EXECUTION_2026-10-20.md)。
+<!-- SAM REMOTE ROLE RESULT 20261020 END -->
+
+## 2026-10-19 每日固定專案前置核對
+
+本輪重新以Drive metadata核對固定project仍為原ID、owner 1／writer 2；目標folder仍為原ID、owner 1／anyone reader 1，canShare均為true。但補選grantee欄位後可讀回收件身分，但連接器回覆仍省略permission ID，現行工具只有新增分享，沒有撤銷權限操作；無法可靠保存並恢復專案、資料夾及個別子檔案的原ACL，故本輪未變更共用或開始複製，固定連結不變。完整結果見[線上持續檢查與備份缺口](SAM_ONLINE_FOLLOWUP_2026-10-19.md)。
+
+每日23:30自動化仍ACTIVE、時間不變；已更新提示，先讀最新私有加密快照及復原證據，不再將其與固定共用專案每日流程混為一談。私有加密子項已有驗證，不代表每日固定目的地機密方案及ACL前置已全部完成；不將歷史備份當成本次成功。只在新的阻礙、必要動作、失敗或完成時通知，同一阻礙維持安靜。
+
+下方「機密保存方案仍待選擇」為9月固定共用目的地的原始限制；10/18私有加密子項與10/19雙USB同機預演依上方及專項紀錄判讀。REN異機復原、人員簽收及每日固定專案ACL流程仍待辦。
+
+## 2026-10-18 16:10 最新快照與正式Atlas子項驗收
+
+[完整證據](SAM_N14_CURRENT_ATLAS_2026-10-18.md)：13,976檔原目錄快照以歷史基底＋差異包完整重建，全部hash一致；正式vibecart_ai28集合／89索引／validator／3TTL完成雲端認證解密後的隔離還原。差異包不是獨立全備份，原25片基底及外部key必須保留。異機key及下方每日固定專案／ACL流程仍待辦。舊05:28段落為歷史。
+
+## 2026-10-18 N14 本次私有快照復原
+
+[加密與隔離復原證據](SAM_N14_ENCRYPTED_RESTORE_2026-10-18.md)：歷史05:28快照13,048檔通過認證解密、逐檔hash、internal Docker來源啟動與本機fixture BSON復原。私有目錄owner-only，金鑰另存；本次不是每日固定專案備份完成。25/25片密文已獨立遠端SHA驗證、重組與認證解密通過；ZIP與05:28原備份相同。最新快照／異機key／正式Atlas資料與中繼資料完整復原仍待辦。下方固定連結、ACL切換與每日23:30需求繼續保留；9月的共用狀態須執行時重新讀回。
+
 ## 固定需求 / Fixed requirements
 
 - 來源：`C:\LLM\LLM_PJ`。Source: the complete project directory, independent of Git tracking rules.

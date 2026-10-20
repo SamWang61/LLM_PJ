@@ -1,0 +1,64 @@
+{
+  "images": [
+    {
+      "path": "S03-current-detail.jpg",
+      "sha256": "f51f5a6531e797956e877b0590b015ae1baa863b510eeb0085eae8cdf781d934",
+      "bytes": 42495,
+      "size": [
+        1140,
+        522
+      ],
+      "format": "JPEG",
+      "saved_at": "2026-10-18T03:19:07.879197+00:00",
+      "url": "https://vibecart-llmai.web.app/product/02f9efd17210150f2eea7274",
+      "role": "anonymous",
+      "database": "vibecart_ai",
+      "source_commit": "e000d952d22a64b568903641893f4ffdc71accd3",
+      "revision": "vibecart-web-00019-phf",
+      "viewport": "default desktop; not a physical phone",
+      "human_signoff": false
+    },
+    {
+      "path": "S03-current-price.jpg",
+      "sha256": "c4f07cb5c292eb59abec34e5cb52efcc02ffe77b3f1794b194ec485f70b00d72",
+      "bytes": 65436,
+      "size": [
+        1140,
+        522
+      ],
+      "format": "JPEG",
+      "saved_at": "2026-10-18T03:19:32.331589+00:00",
+      "url": "https://vibecart-llmai.web.app/product/02f9efd17210150f2eea7274",
+      "role": "anonymous",
+      "database": "vibecart_ai",
+      "source_commit": "e000d952d22a64b568903641893f4ffdc71accd3",
+      "revision": "vibecart-web-00019-phf",
+      "viewport": "default desktop; not a physical phone",
+      "human_signoff": false
+    },
+    {
+      "path": "S03-current-product.jpg",
+      "sha256": "870f91caae3d0aedf528a907af26ff0a91a36a32487839fb35c0b649842615a1",
+      "bytes": 57611,
+      "size": [
+        1125,
+        515
+      ],
+      "format": "JPEG",
+      "saved_at": "2026-10-18T03:15:34.211211+00:00",
+      "url": "https://vibecart-llmai.web.app/product/02f9efd17210150f2eea7274",
+      "role": "anonymous",
+      "database": "vibecart_ai",
+      "source_commit": "e000d952d22a64b568903641893f4ffdc71accd3",
+      "revision": "vibecart-web-00019-phf",
+      "viewport": "default desktop; not a physical phone",
+      "human_signoff": false
+    }
+  ],
+  "edited": false,
+  "browser_selected_sku": "CF-SKU-1210303000104",
+  "quantity_keyboard_focus": true,
+  "inner_width": 1140,
+  "scroll_width": 1140,
+  "physical_mobile_verified": false
+}

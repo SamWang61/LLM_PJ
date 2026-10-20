@@ -1,0 +1,15 @@
+{
+  "started_at": "2026-10-19T17:23:05.150087+00:00",
+  "status": "failed",
+  "scope": "production fixed six-role authentication only; no cart/checkout/model operation",
+  "tool_executor": "Codex under SAM role-simulation authorization",
+  "tls_verification": true,
+  "stage": "fixed-role-http",
+  "credential_scope": "existing CurrentUser DPAPI; no password/URI in report",
+  "cases": [],
+  "own_cleanup": [],
+  "production_mutations": "six login last_login_at updates and own transient sessions only",
+  "error_type": "RuntimeError",
+  "reason": "Own session cookie missing",
+  "finished_at": "2026-10-19T17:23:09.322045+00:00"
+}

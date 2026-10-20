@@ -1,0 +1,14 @@
+{
+  "checked_at": "2026-10-17T11:05:21.349888+00:00",
+  "mode": "read_only",
+  "source": "Atlas active v4 products/SKUs and public Firebase Hosting HTML",
+  "products": 336,
+  "active_skus": 336,
+  "pages_checked": 14,
+  "details_checked": 336,
+  "searches_checked": 4,
+  "listing_issues": [],
+  "search_issues": [],
+  "detail_issues": [],
+  "status": "passed"
+}

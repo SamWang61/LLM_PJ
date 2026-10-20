@@ -1,0 +1,28 @@
+{
+  "checked_at": "2026-10-19T17:13:29.762040+00:00",
+  "baseline": "5c55bc01455b0ee50565de234b1f5d6975638dc9",
+  "rename_pr": 122,
+  "rename_merged": true,
+  "legacy_brand_named_paths": 0,
+  "legacy_card_references": 0,
+  "current_card": "docs/N14_REN_異機復原_2026-10-19.md",
+  "current_card_sha256": "17af2e6b4daba4b10926c8a312e7ae5beac3acdd5318b9283898b004be7da463",
+  "preserved_source_machine_identity_paths": [
+    "VibeCart_AI/MongoDB/cart_v3_test_results.xml",
+    "VibeCart_AI/MongoDB/complete_v4_test_results.xml",
+    "VibeCart_AI/MongoDB/schema_complete_test_results.xml",
+    "docs/N14_REN_異機復原_2026-10-19.md",
+    "docs/SAM_N06_N13_N14_ACCEPTANCE_2026-10-19.md",
+    "docs/inventory/N08_LOCAL_RETRY1_2026-10-18.xml",
+    "docs/inventory/SAM_N14_USB_PORTABLE_SAMEHOST_2026-10-19.json",
+    "docs/inventory/SAM_REN_TRANSACTION_2026-10-15.xml",
+    "docs/inventory/V5_ADMIN_LOCAL_2026-10-18.xml",
+    "docs/inventory/ren_20261014/multidevice-tests.xml",
+    "docs/inventory/ren_20261014/offline-tests.xml",
+    "docs/inventory/ren_handoff_20261018/transactions.xml",
+    "docs/inventory/sam-push-audit-regression-20261018.json",
+    "docs/inventory/sam-push-audit-regression-20261018.xml",
+    "docs/inventory/sam-release-80513a9-tests.xml"
+  ],
+  "preservation_reason": "Actual historical machine identity fields are evidence, not acceptance labels; no device or person is fabricated."
+}

@@ -1,0 +1,24 @@
+{
+  "checked_at": "2026-10-18T09:33:32.187255+00:00",
+  "pr": 89,
+  "reviewed_head": "37a5c6c560e7232d890bf7a318557e18b9b31d83",
+  "merged": true,
+  "merged_at": "2026-10-18T09:31:05Z",
+  "main_sha": "5ef0c05bc6943ae15a5eabb961a9bc05c4d7ffd4",
+  "reviewed_and_merged_tree": "721f45e6df024baf3159ec62bf8cf724bbf8e203",
+  "unresolved_review_threads_at_merge": 0,
+  "pr_ci": {
+    "run_id": 39115506646,
+    "conclusion": "success"
+  },
+  "main_ci": {
+    "run_id": 39115649618,
+    "conclusion": "success"
+  },
+  "publication_verification": {
+    "head": "37a5c6c560e7232d890bf7a318557e18b9b31d83",
+    "git_remote_files_equal": 31,
+    "original_documents_equal": 20,
+    "mismatches": 0
+  }
+}

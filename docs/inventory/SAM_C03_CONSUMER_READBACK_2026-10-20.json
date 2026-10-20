@@ -1,0 +1,828 @@
+{
+  "started_at": "2026-10-19T17:46:01.619Z",
+  "completed_at": "2026-10-19T17:46:32.961Z",
+  "operator": "SAM simulation of JEFF review performed by Codex",
+  "project": "vibecart-llmai",
+  "regions": 43,
+  "scope": "Read-only candidate runtime inventory; not proof of all possible consumers",
+  "mutations": false,
+  "source_regions": "existing verified 2026-10-19 inventory",
+  "apis": [
+    {
+      "api": "compute.googleapis.com",
+      "http": 200,
+      "state": "ENABLED",
+      "reason": []
+    },
+    {
+      "api": "cloudfunctions.googleapis.com",
+      "http": 200,
+      "state": "DISABLED",
+      "reason": []
+    },
+    {
+      "api": "cloudscheduler.googleapis.com",
+      "http": 200,
+      "state": "DISABLED",
+      "reason": []
+    },
+    {
+      "api": "pubsub.googleapis.com",
+      "http": 200,
+      "state": "ENABLED",
+      "reason": []
+    }
+  ],
+  "scopes": [
+    {
+      "kind": "functions",
+      "state": "DISABLED",
+      "queried": false,
+      "note": "Disabled or unread API is not proof that historical consumers never existed."
+    },
+    {
+      "region": "africa-south1",
+      "kind": "jobs",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "asia-east1",
+      "kind": "jobs",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "asia-east2",
+      "kind": "jobs",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "asia-northeast1",
+      "kind": "jobs",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "asia-northeast2",
+      "kind": "jobs",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "asia-northeast3",
+      "kind": "jobs",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "asia-south1",
+      "kind": "jobs",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "asia-south2",
+      "kind": "jobs",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "asia-southeast1",
+      "kind": "jobs",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "asia-southeast2",
+      "kind": "jobs",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "asia-southeast3",
+      "kind": "jobs",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "australia-southeast1",
+      "kind": "jobs",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "australia-southeast2",
+      "kind": "jobs",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "europe-central2",
+      "kind": "jobs",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "europe-north1",
+      "kind": "jobs",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "europe-north2",
+      "kind": "jobs",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "europe-southwest1",
+      "kind": "jobs",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "europe-west1",
+      "kind": "jobs",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "europe-west10",
+      "kind": "jobs",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "europe-west12",
+      "kind": "jobs",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "europe-west2",
+      "kind": "jobs",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "europe-west3",
+      "kind": "jobs",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "europe-west4",
+      "kind": "jobs",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "europe-west6",
+      "kind": "jobs",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "europe-west8",
+      "kind": "jobs",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "europe-west9",
+      "kind": "jobs",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "me-central1",
+      "kind": "jobs",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "me-central2",
+      "kind": "jobs",
+      "resources": [],
+      "pages": 1,
+      "http": 403,
+      "reason": [
+        "LOCATION_POLICY_VIOLATED"
+      ],
+      "status": "PERMISSION_DENIED",
+      "pagination_remaining": false
+    },
+    {
+      "region": "me-west1",
+      "kind": "jobs",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "northamerica-northeast1",
+      "kind": "jobs",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "northamerica-northeast2",
+      "kind": "jobs",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "northamerica-south1",
+      "kind": "jobs",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "southamerica-east1",
+      "kind": "jobs",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "southamerica-west1",
+      "kind": "jobs",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "us-central1",
+      "kind": "jobs",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "us-east1",
+      "kind": "jobs",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "us-east4",
+      "kind": "jobs",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "us-east5",
+      "kind": "jobs",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "us-south1",
+      "kind": "jobs",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "us-west1",
+      "kind": "jobs",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "us-west2",
+      "kind": "jobs",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "us-west3",
+      "kind": "jobs",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "us-west4",
+      "kind": "jobs",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "kind": "pubsub-subscriptions",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "kind": "scheduler",
+      "state": "DISABLED",
+      "queried": false,
+      "note": "Disabled or unread API is not proof that historical consumers never existed."
+    },
+    {
+      "region": "africa-south1",
+      "kind": "services",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "asia-east1",
+      "kind": "services",
+      "resources": [
+        {
+          "name": "projects/vibecart-llmai/locations/asia-east1/services/llm-pj-git",
+          "url": "https://llm-pj-git-m44ncgz5ta-de.a.run.app",
+          "traffic": [
+            {
+              "revision": "llm-pj-git-00002-547",
+              "percent": 100
+            }
+          ],
+          "template_images": [
+            "gcr.io/cloudrun/placeholder"
+          ],
+          "template_is_active_revision_proof": false
+        },
+        {
+          "name": "projects/vibecart-llmai/locations/asia-east1/services/vibecart-acceptance-pr21",
+          "url": "https://vibecart-acceptance-pr21-m44ncgz5ta-de.a.run.app",
+          "traffic": [
+            {
+              "revision": "vibecart-acceptance-pr21-n06-294c-1019",
+              "percent": 100
+            }
+          ],
+          "template_images": [
+            "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:03d01cb52065e21fc96db6fb34b4de0527f2eb3966abbf0fe8719cb99bcc98f2"
+          ],
+          "template_is_active_revision_proof": false
+        },
+        {
+          "name": "projects/vibecart-llmai/locations/asia-east1/services/vibecart-web",
+          "url": "https://vibecart-web-m44ncgz5ta-de.a.run.app",
+          "traffic": [
+            {
+              "revision": "vibecart-web-ai-294c-1020",
+              "percent": 100
+            }
+          ],
+          "template_images": [
+            "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:03d01cb52065e21fc96db6fb34b4de0527f2eb3966abbf0fe8719cb99bcc98f2"
+          ],
+          "template_is_active_revision_proof": false
+        }
+      ],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "asia-east2",
+      "kind": "services",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "asia-northeast1",
+      "kind": "services",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "asia-northeast2",
+      "kind": "services",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "asia-northeast3",
+      "kind": "services",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "asia-south1",
+      "kind": "services",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "asia-south2",
+      "kind": "services",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "asia-southeast1",
+      "kind": "services",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "asia-southeast2",
+      "kind": "services",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "asia-southeast3",
+      "kind": "services",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "australia-southeast1",
+      "kind": "services",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "australia-southeast2",
+      "kind": "services",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "europe-central2",
+      "kind": "services",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "europe-north1",
+      "kind": "services",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "europe-north2",
+      "kind": "services",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "europe-southwest1",
+      "kind": "services",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "europe-west1",
+      "kind": "services",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "europe-west10",
+      "kind": "services",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "europe-west12",
+      "kind": "services",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "europe-west2",
+      "kind": "services",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "europe-west3",
+      "kind": "services",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "europe-west4",
+      "kind": "services",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "europe-west6",
+      "kind": "services",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "europe-west8",
+      "kind": "services",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "europe-west9",
+      "kind": "services",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "me-central1",
+      "kind": "services",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "me-central2",
+      "kind": "services",
+      "resources": [],
+      "pages": 1,
+      "http": 403,
+      "reason": [
+        "LOCATION_POLICY_VIOLATED"
+      ],
+      "status": "PERMISSION_DENIED",
+      "pagination_remaining": false
+    },
+    {
+      "region": "me-west1",
+      "kind": "services",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "northamerica-northeast1",
+      "kind": "services",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "northamerica-northeast2",
+      "kind": "services",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "northamerica-south1",
+      "kind": "services",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "southamerica-east1",
+      "kind": "services",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "southamerica-west1",
+      "kind": "services",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "us-central1",
+      "kind": "services",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "us-east1",
+      "kind": "services",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "us-east4",
+      "kind": "services",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "us-east5",
+      "kind": "services",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "us-south1",
+      "kind": "services",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "us-west1",
+      "kind": "services",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "us-west2",
+      "kind": "services",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "us-west3",
+      "kind": "services",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    },
+    {
+      "region": "us-west4",
+      "kind": "services",
+      "resources": [],
+      "pages": 1,
+      "http": 200,
+      "pagination_remaining": false
+    }
+  ],
+  "active_revisions": [
+    {
+      "service": "projects/vibecart-llmai/locations/asia-east1/services/llm-pj-git",
+      "revision": "llm-pj-git-00002-547",
+      "percent": 100,
+      "ready": "True",
+      "image": "gcr.io/cloudrun/placeholder@sha256:2c74c51230a0fb8f513f11ebc127ba187a0e7776aa1a06b850aca019cfddc2fd",
+      "source": null,
+      "egress": null,
+      "network_interfaces": null
+    },
+    {
+      "service": "projects/vibecart-llmai/locations/asia-east1/services/vibecart-acceptance-pr21",
+      "revision": "vibecart-acceptance-pr21-n06-294c-1019",
+      "percent": 100,
+      "ready": "True",
+      "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:796a42b6d5fd80099900abc381d4c954d21ed1bea162ad0a9a49a89355deb40a",
+      "source": "294c1fac26d6785054063b8be6eb7d9e61075be4",
+      "egress": "all-traffic",
+      "network_interfaces": "[{\"network\":\"vibecart-egress-20261019\",\"subnetwork\":\"vibecart-egress-subnet\"}]"
+    },
+    {
+      "service": "projects/vibecart-llmai/locations/asia-east1/services/vibecart-web",
+      "revision": "vibecart-web-ai-294c-1020",
+      "percent": 100,
+      "ready": "True",
+      "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:03d01cb52065e21fc96db6fb34b4de0527f2eb3966abbf0fe8719cb99bcc98f2",
+      "source": "294c1fac26d6785054063b8be6eb7d9e61075be4",
+      "egress": "all-traffic",
+      "network_interfaces": "[{\"network\":\"vibecart-egress-20261019\",\"subnetwork\":\"vibecart-egress-subnet\"}]"
+    }
+  ]
+}

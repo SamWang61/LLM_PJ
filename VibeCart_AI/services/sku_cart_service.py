@@ -1,10 +1,51 @@
 """Current v4 SKU cart service. The old product-as-SKU service is historical."""
 from decimal import Decimal
+from datetime import timedelta, timezone
 from bson import ObjectId,Decimal128
 from .cart_service import CartService as LegacyCartService,CartError,CartConflict,oid,quantity,key,fingerprint,utcnow
 
 
 class CartService(LegacyCartService):
+    def __init__(self, db, *, enable_checkout=False, behavior_metadata=None, authorization_guard=None):
+        super().__init__(db, enable_checkout=enable_checkout)
+        self.behavior_metadata = dict(behavior_metadata or {})
+        self.authorization_guard = authorization_guard
+
+    def _authorize_commit(self, uid, session):
+        """Serialize commit with user changes and device-session deletion.
+
+        Touch an existing schema field and lease the session with an atomic
+        delete/reinsert. No schema relaxation or extra session fields are needed.
+        Concurrent revocation conflicts and retries against the revoked state.
+        """
+        now = utcnow()
+        query = {'_id': uid, 'schema_version': 4, 'status': 'active', 'is_active': True}
+        guard = self.authorization_guard
+        if guard is not None:
+            if not guard.get('session_id'):
+                raise CartError('Device authorization required')
+            expiry = guard.get('demo_expires_at')
+            if expiry is not None and expiry <= now:
+                raise CartError('Demonstration account expired')
+            query.update(role=guard['role'], password_hash=guard['password_hash'])
+        user = self.db.users.find_one(query, session=session)
+        if not user:
+            raise CartError('User authorization revoked')
+        previous = user.get('updated_at')
+        if previous is not None:
+            previous = previous.replace(tzinfo=timezone.utc) if previous.tzinfo is None else previous
+            now = max(now, previous + timedelta(milliseconds=1))
+        result = self.db.users.update_one(query, {'$set': {'updated_at': now}}, session=session)
+        if result.matched_count != 1:
+            raise CartError('User authorization revoked')
+        if guard is not None:
+            selected = {'_id': guard['session_id'], 'user_id': uid,
+                        'auth_fingerprint': guard['auth_fingerprint'], 'expires_at': {'$gt': utcnow()}}
+            row = self.db.auth_sessions.find_one(selected, session=session)
+            if not row or self.db.auth_sessions.delete_one(selected, session=session).deleted_count != 1:
+                raise CartError('Device authorization revoked')
+            self.db.auth_sessions.insert_one(row, session=session)
+
     def _user(self,uid,session=None):
         if not self.db.users.find_one({'_id':uid,'schema_version':4,'status':'active','is_active':True},session=session):
             raise CartError('Active schema v4 user required')
@@ -23,27 +64,39 @@ class CartService(LegacyCartService):
         event.update(schema_version=4,sku_id=sku_id,event_id='cart:'+str(event['_id']))
         return event
 
-    def _behavior(self,uid,product,qty,kind,event_id,now,cart_id,order_id=None):
+    def _behavior(self,uid,product,qty,kind,event_id,now,cart_id,order_id=None,*,is_demo=False):
         return {'_id':ObjectId(),'schema_version':4,'event_id':event_id,'user_id':uid,'anonymous_id':None,
             'session_id':'cart:'+str(cart_id),'event_type':kind,'product_id':product['_id'],
             'major_category_id':product['major_category_id'],'minor_category_id':product['minor_category_id'],
             'quantity':qty,'order_id':order_id,'cart_id':cart_id,'search_query':None,'source':'organic',
-            'recommendation_id':None,'event_at':now,'score_version':1,'processed_at':None,'metadata':{},'created_at':now}
+            'recommendation_id':None,'event_at':now,'score_version':1,'processed_at':None,'metadata':{
+                **self.behavior_metadata,
+                **({'demo_checkout':True,'exclude_from_attribution':True} if is_demo else {})},'created_at':now}
 
-    def _mutate(self,user_id,sku_id,qty,operation_id,kind):
+    def _mutate(self,user_id,sku_id,qty,operation_id,kind,expected_revision=None):
         uid,sid=oid(user_id),oid(sku_id)
-        operation_id=key(operation_id); request_hash=fingerprint([kind,str(sid),qty])
+        if expected_revision is not None and (type(expected_revision) is not int or expected_revision<0):
+            raise CartError('Non-negative cart revision required')
+        operation_id=key(operation_id)
+        content=[kind,str(sid),qty]
+        if expected_revision is not None: content.append(expected_revision)
+        request_hash=fingerprint(content)
         def action(s):
             self._user(uid,s)
             prior=self._replay(uid,operation_id,request_hash,s)
-            if prior: return self.db.carts.find_one({'_id':prior['cart_id'],'user_id':uid},session=s)
+            if prior:
+                self._authorize_commit(uid, s)
+                return self.db.carts.find_one({'_id':prior['cart_id'],'user_id':uid},session=s)
             now=utcnow()
             cart=self.db.carts.find_one({'user_id':uid,'status':'active'},session=s)
             if not cart:
+                if expected_revision not in (None,0): raise CartConflict('Cart changed')
                 if kind!='ADD': raise CartError('No active cart')
                 cart={'_id':ObjectId(),'schema_version':4,'user_id':uid,'status':'active','revision':0,
                       'items':[],'created_at':now,'updated_at':now}
                 self.db.carts.insert_one(cart,session=s)
+            if expected_revision is not None and cart['revision']!=expected_revision:
+                raise CartConflict('Cart changed')
             item=next((i for i in cart['items'] if i['sku_id']==sid),None)
             before=item['quantity'] if item else 0
             if kind!='ADD' and not item: raise CartError('SKU not in cart')
@@ -70,17 +123,18 @@ class CartService(LegacyCartService):
                 self.db.behavior_events.insert_one(self._behavior(uid,product,qty,'ADD_TO_CART',
                     'cart-add:'+str(event['_id']),now,cart['_id']),session=s)
             cart.update(revision=cart['revision']+1,updated_at=now)
+            self._authorize_commit(uid, s)
             return cart
         return self._run(action)
 
-    def add_item(self,user_id,sku_id,quantity_value,*,operation_id):
-        return self._mutate(user_id,sku_id,quantity(quantity_value),operation_id,'ADD')
+    def add_item(self,user_id,sku_id,quantity_value,*,operation_id,expected_revision=None):
+        return self._mutate(user_id,sku_id,quantity(quantity_value),operation_id,'ADD',expected_revision)
 
-    def update_quantity(self,user_id,sku_id,quantity_value,*,operation_id):
-        return self._mutate(user_id,sku_id,quantity(quantity_value),operation_id,'QTY_CHANGE')
+    def update_quantity(self,user_id,sku_id,quantity_value,*,operation_id,expected_revision=None):
+        return self._mutate(user_id,sku_id,quantity(quantity_value),operation_id,'QTY_CHANGE',expected_revision)
 
-    def remove_item(self,user_id,sku_id,*,operation_id):
-        return self._mutate(user_id,sku_id,None,operation_id,'REMOVE')
+    def remove_item(self,user_id,sku_id,*,operation_id,expected_revision=None):
+        return self._mutate(user_id,sku_id,None,operation_id,'REMOVE',expected_revision)
 
     def checkout_cart(self,user_id,*,checkout_id,cart_id,expected_revision):
         if not self.enable_checkout: raise CartError('Demo checkout disabled')
@@ -90,7 +144,9 @@ class CartService(LegacyCartService):
         def action(s):
             self._user(uid,s)
             prior=self._replay(uid,checkout_id,request_hash,s)
-            if prior: return self.db.orders.find_one({'_id':prior['metadata']['order_id'],'user_id':uid},session=s)
+            if prior:
+                self._authorize_commit(uid, s)
+                return self.db.orders.find_one({'_id':prior['metadata']['order_id'],'user_id':uid},session=s)
             cart=self.db.carts.find_one({'_id':cid,'user_id':uid,'status':'active','revision':expected_revision},session=s)
             if not cart or not cart['items']: raise CartConflict('Cart empty, stale, or converted')
             now=utcnow();order_id=ObjectId();lines=[];total=Decimal('0');purchases={}
@@ -119,10 +175,12 @@ class CartService(LegacyCartService):
             self.db.order_items.insert_many(lines,session=s)
             for product,qty in purchases.values():
                 self.db.behavior_events.insert_one(self._behavior(uid,product,qty,'PURCHASE',
-                    'purchase:'+str(order_id)+':'+str(product['_id']),now,cid,order_id),session=s)
+                    'purchase:'+str(order_id)+':'+str(product['_id']),now,cid,order_id,
+                    is_demo=order['is_demo']),session=s)
             self.db.cart_events.insert_one(self._event(cart,'CHECKOUT',checkout_id,request_hash,now,metadata={'order_id':order_id}),session=s)
             result=self.db.carts.update_one({'_id':cid,'status':'active','revision':expected_revision},
                 {'$set':{'status':'converted','updated_at':now},'$inc':{'revision':1}},session=s)
             if result.modified_count!=1: raise CartConflict('Cart changed')
+            self._authorize_commit(uid, s)
             return order
         return self._run(action)

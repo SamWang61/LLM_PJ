@@ -1,0 +1,18 @@
+{
+  "checked_at_utc": "2026-10-19T20:24:13.707835+00:00",
+  "source_sha": "75de8de31f8122b5602dad4f73f5669387c46e68",
+  "archive_files": 56,
+  "archive_sha256": "515a7b4cc6246505a64ab10977c61ba00dcf9bfb351761452ab822b7f6b808aa",
+  "status": "passed",
+  "context_files_exact": true,
+  "fake_secret_canaries_excluded": 8,
+  "image_builder": "classic Docker (DOCKER_BUILDKIT=0); BuildKit context export also verified",
+  "runtime_files_exact": 54,
+  "runtime_manifest_sha256": "a70ef77e27c87c4abbc5e6924ffa2b9457118e5deabd506850ad83fa41838b0e",
+  "offline_factory_health": 200,
+  "runtime_uid": 10001,
+  "gunicorn_custom_port_health": 200,
+  "image": "vibecart-root-qa:75de8de31f81",
+  "image_id": "sha256:92b95fe63099df894405b87d217b97d0d81246693ae3a9badb4ad5ceb616f9ca",
+  "test_container_removed": true
+}

@@ -1,0 +1,6 @@
+{
+  "status": "error",
+  "action": "preflight",
+  "error_type": "ValueError",
+  "message": "No completion claimed; inspect target, schema, source and transaction evidence."
+}

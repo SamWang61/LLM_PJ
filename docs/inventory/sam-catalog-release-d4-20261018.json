@@ -1,0 +1,86 @@
+{
+  "checked_at": "2026-10-17T17:52:37.431Z",
+  "status": "passed",
+  "candidate": {
+    "service": "vibecart-web",
+    "revision": "vibecart-web-00015-nlk",
+    "traffic_percent": 0,
+    "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:1686638380b8cb8dc792423b059918b292e94f095d68c623ea9136da1ff9813b",
+    "source_sha": "1d2abf2cfa7465636e49474062e11f6aca571dda"
+  },
+  "acceptance": {
+    "service": "vibecart-acceptance-pr21",
+    "revision": "vibecart-acceptance-pr21-00005-5j5",
+    "traffic_percent": 100,
+    "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:1686638380b8cb8dc792423b059918b292e94f095d68c623ea9136da1ff9813b",
+    "source_sha": "1d2abf2cfa7465636e49474062e11f6aca571dda"
+  },
+  "probe": {
+    "probe_id": "ren-d4-6efcf1dbe36f02d8",
+    "status": "passed",
+    "baseline_admin_count": 13,
+    "after_normal_admin_count": 14,
+    "after_synthetic_admin_count": 14,
+    "normal_visible": true,
+    "synthetic_excluded": true,
+    "normal_inserted": 1,
+    "synthetic_inserted": 1001,
+    "cleanup": {
+      "events": 1002,
+      "sessions": 2,
+      "users": 2,
+      "skus": 2,
+      "products": 2,
+      "events_remaining": 0,
+      "sessions_remaining": 0,
+      "users_remaining": 0,
+      "skus_remaining": 0,
+      "products_remaining": 0,
+      "verified": true
+    }
+  },
+  "iam": {
+    "role": "roles/iam.serviceAccountOpenIdTokenCreator",
+    "id_token_attempts": 11,
+    "revoked": true,
+    "independent_token_creator_bindings": 0
+  },
+  "inventory": {
+    "services": [
+      "projects/vibecart-llmai/locations/asia-east1/services/vibecart-acceptance-pr21",
+      "projects/vibecart-llmai/locations/asia-east1/services/vibecart-web"
+    ],
+    "jobs": [],
+    "regions_checked": 43,
+    "restricted_regions": [
+      "me-central2"
+    ],
+    "topics": [],
+    "subscriptions": [],
+    "enabled_worker_apis": []
+  },
+  "independent_atlas_marker_counts": {
+    "behavior_events": 0,
+    "users": 0,
+    "product_skus": 0,
+    "products": 0
+  },
+  "live": {
+    "production_revision": "vibecart-web-00015-nlk",
+    "production_percent": 100,
+    "rollback_revision": "vibecart-web-00013-ds5",
+    "rollback_percent": 0,
+    "hosting_http_200": [
+      "/",
+      "/auth/login",
+      "/health/live",
+      "/health/ready"
+    ],
+    "chrome_viewport_no_horizontal_overflow": [
+      320,
+      375,
+      768,
+      1280
+    ]
+  }
+}

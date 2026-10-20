@@ -1,0 +1,382 @@
+{
+  "checkedAt": "2026-10-19T09:51:58.539Z",
+  "build": {
+    "id": "96d30223-b6d8-471f-862a-8dbc44c94b89",
+    "status": "SUCCESS",
+    "createTime": "2026-10-19T09:49:47.393755Z",
+    "startTime": "2026-10-19T09:49:48.107249194Z",
+    "finishTime": "2026-10-19T09:51:33.892765Z",
+    "source": {
+      "gitSource": {
+        "url": "https://github.com/SamWang61/LLM_PJ.git",
+        "revision": "4137b394131f400aac083becf0ec66735a1bebc1"
+      }
+    },
+    "sourceProvenance": {
+      "resolvedGitSource": {
+        "url": "https://github.com/SamWang61/LLM_PJ.git",
+        "revision": "4137b394131f400aac083becf0ec66735a1bebc1"
+      }
+    },
+    "images": [
+      {
+        "name": "asia-east1-docker.pkg.dev/vibecart-llmai/cloud-run-source-deploy/vibecart-acceptance-pr21:4137b394131f400aac083becf0ec66735a1bebc1",
+        "digest": "sha256:eb8793b411069e83fb29911b9939f43d5beee42189cdba984bbba5a1ad3899a7",
+        "pushTiming": {
+          "startTime": "2026-10-19T09:51:31.001930613Z",
+          "endTime": "2026-10-19T09:51:34.584907296Z"
+        },
+        "artifactRegistryPackage": "projects/vibecart-llmai/locations/asia-east1/repositories/cloud-run-source-deploy/packages/vibecart-acceptance-pr21/versions/sha256:eb8793b411069e83fb29911b9939f43d5beee42189cdba984bbba5a1ad3899a7"
+      }
+    ],
+    "steps": [
+      {
+        "id": "Prepare committed allowlist",
+        "status": "SUCCESS"
+      },
+      {
+        "id": "Build",
+        "status": "SUCCESS"
+      },
+      {
+        "id": "Offline boot",
+        "status": "SUCCESS"
+      },
+      {
+        "id": "Push",
+        "status": "SUCCESS"
+      },
+      {
+        "id": "Stage private candidate only",
+        "status": "SUCCESS"
+      }
+    ]
+  },
+  "trigger": {
+    "id": "d0b39103-7508-451d-b3e6-6c251f82855d",
+    "name": "rmgpgab-vibecart-acceptance-pr21-asia-east1-SamWang61-LLM-PJrwp",
+    "filename": "deploy/cloudbuild-github-preview.json",
+    "includedFiles": [
+      "MuscleCore分析資料/website/app/**",
+      "MuscleCore分析資料/website/Dockerfile",
+      "MuscleCore分析資料/website/.dockerignore",
+      "MuscleCore分析資料/website/requirements-cloud*.txt",
+      "MuscleCore分析資料/website/cloud_runtime.py",
+      "VibeCart_AI/services/**",
+      "scripts/prepare_cloud_source.py",
+      "deploy/cloudbuild-github-preview.json"
+    ],
+    "serviceAccount": "projects/vibecart-llmai/serviceAccounts/278483818008-compute@developer.gserviceaccount.com",
+    "github": {
+      "push": {
+        "branch": "^main$"
+      },
+      "owner": "SamWang61",
+      "name": "LLM_PJ"
+    },
+    "hasInlineBuild": false
+  },
+  "services": [
+    {
+      "name": "vibecart-web",
+      "latestReadyRevision": "vibecart-web-n06-294c-1019",
+      "latestCreatedRevision": "vibecart-web-n06-294c-1019",
+      "terminalCondition": {
+        "type": "Ready",
+        "state": "CONDITION_SUCCEEDED",
+        "lastTransitionTime": "2026-10-19T00:50:16.276807Z"
+      },
+      "traffic": [
+        {
+          "revision": "vibecart-web-00019-phf",
+          "percent": 0,
+          "tag": "ren-fence",
+          "uri": "https://ren-fence---vibecart-web-m44ncgz5ta-de.a.run.app"
+        },
+        {
+          "revision": "vibecart-web-main20ee-1640",
+          "percent": 0,
+          "tag": "main20ee-preview",
+          "uri": "https://main20ee-preview---vibecart-web-m44ncgz5ta-de.a.run.app"
+        },
+        {
+          "revision": "vibecart-web-n06-1019",
+          "percent": 0,
+          "tag": "n06-1019",
+          "uri": "https://n06-1019---vibecart-web-m44ncgz5ta-de.a.run.app"
+        },
+        {
+          "revision": "vibecart-web-n06-294c-1019",
+          "percent": 100,
+          "tag": "n06-294c",
+          "uri": "https://n06-294c---vibecart-web-m44ncgz5ta-de.a.run.app"
+        },
+        {
+          "revision": "vibecart-web-nat-1019",
+          "percent": 0,
+          "tag": "nat-1019",
+          "uri": "https://nat-1019---vibecart-web-m44ncgz5ta-de.a.run.app"
+        },
+        {
+          "revision": "vibecart-web-reviews-b038aaca",
+          "percent": 0,
+          "tag": "reviews-1019",
+          "uri": "https://reviews-1019---vibecart-web-m44ncgz5ta-de.a.run.app"
+        },
+        {
+          "revision": "vibecart-web-role-auth-576b4748",
+          "percent": 0,
+          "tag": "role-auth-1019",
+          "uri": "https://role-auth-1019---vibecart-web-m44ncgz5ta-de.a.run.app"
+        }
+      ],
+      "publicInvokers": [
+        "allUsers"
+      ],
+      "candidate": {
+        "name": "vibecart-web-n06-294c-1019",
+        "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:796a42b6d5fd80099900abc381d4c954d21ed1bea162ad0a9a49a89355deb40a",
+        "commands": [],
+        "args": [],
+        "labels": {
+          "codex-source-sha": "294c1fac26d6785054063b8be6eb7d9e61075be4"
+        },
+        "conditions": [
+          {
+            "type": "Ready",
+            "state": "CONDITION_SUCCEEDED",
+            "message": "Updating revision scaling succeeded.",
+            "lastTransitionTime": "2026-10-19T00:50:14.781364Z"
+          },
+          {
+            "type": "Active",
+            "state": "CONDITION_SUCCEEDED",
+            "lastTransitionTime": "2026-10-19T00:45:57.868894Z",
+            "severity": "INFO"
+          },
+          {
+            "type": "ResourcesAvailable",
+            "state": "CONDITION_SUCCEEDED",
+            "message": "Provisioning imported containers completed in 1.86s. Checking container health. This will wait for up to 2m for the configured startup probe, including an initial delay of 0s.",
+            "lastTransitionTime": "2026-10-19T00:45:46.900955Z"
+          },
+          {
+            "type": "ContainerReady",
+            "state": "CONDITION_SUCCEEDED",
+            "message": "Container image import completed.",
+            "lastTransitionTime": "2026-10-19T00:45:45.042011Z"
+          },
+          {
+            "type": "ContainerHealthy",
+            "state": "CONDITION_SUCCEEDED",
+            "message": "Containers became healthy in 10.01s.",
+            "lastTransitionTime": "2026-10-19T00:45:57.718819Z"
+          }
+        ],
+        "vpcAccess": {
+          "egress": "ALL_TRAFFIC",
+          "networkInterfaces": [
+            {
+              "network": "vibecart-egress-20261019",
+              "subnetwork": "vibecart-egress-subnet"
+            }
+          ]
+        }
+      }
+    },
+    {
+      "name": "vibecart-acceptance-pr21",
+      "latestReadyRevision": "vibecart-acceptance-pr21-00035-nex",
+      "latestCreatedRevision": "vibecart-acceptance-pr21-00035-nex",
+      "terminalCondition": {
+        "type": "Ready",
+        "state": "CONDITION_SUCCEEDED",
+        "lastTransitionTime": "2026-10-19T09:51:27.444688Z"
+      },
+      "traffic": [
+        {
+          "revision": "vibecart-acceptance-pr21-00035-nex",
+          "percent": 0,
+          "tag": "github-preview",
+          "uri": "https://github-preview---vibecart-acceptance-pr21-m44ncgz5ta-de.a.run.app"
+        },
+        {
+          "revision": "vibecart-acceptance-pr21-main20ee-claude1-180s",
+          "percent": 0,
+          "tag": "main20ee-ai",
+          "uri": "https://main20ee-ai---vibecart-acceptance-pr21-m44ncgz5ta-de.a.run.app"
+        },
+        {
+          "revision": "vibecart-acceptance-pr21-main20ee-off-180s",
+          "percent": 0,
+          "tag": "main20ee-off",
+          "uri": "https://main20ee-off---vibecart-acceptance-pr21-m44ncgz5ta-de.a.run.app"
+        },
+        {
+          "revision": "vibecart-acceptance-pr21-n06-1019",
+          "percent": 0,
+          "tag": "n06-1019",
+          "uri": "https://n06-1019---vibecart-acceptance-pr21-m44ncgz5ta-de.a.run.app"
+        },
+        {
+          "revision": "vibecart-acceptance-pr21-n06-294c-1019",
+          "percent": 100,
+          "tag": "n06-294c",
+          "uri": "https://n06-294c---vibecart-acceptance-pr21-m44ncgz5ta-de.a.run.app"
+        },
+        {
+          "revision": "vibecart-acceptance-pr21-nat-1019",
+          "percent": 0,
+          "tag": "nat-1019",
+          "uri": "https://nat-1019---vibecart-acceptance-pr21-m44ncgz5ta-de.a.run.app"
+        },
+        {
+          "revision": "vibecart-acceptance-pr21-role95-e5788ce",
+          "percent": 0,
+          "tag": "role95-full",
+          "uri": "https://role95-full---vibecart-acceptance-pr21-m44ncgz5ta-de.a.run.app"
+        },
+        {
+          "revision": "vibecart-acceptance-pr21-rv9a76-2117",
+          "percent": 0,
+          "tag": "rv9a76-ai",
+          "uri": "https://rv9a76-ai---vibecart-acceptance-pr21-m44ncgz5ta-de.a.run.app"
+        },
+        {
+          "revision": "vibecart-acceptance-pr21-rv9a76-rules-2117",
+          "percent": 0,
+          "tag": "rv9a76-rules",
+          "uri": "https://rv9a76-rules---vibecart-acceptance-pr21-m44ncgz5ta-de.a.run.app"
+        }
+      ],
+      "publicInvokers": [],
+      "candidate": {
+        "name": "vibecart-acceptance-pr21-00035-nex",
+        "image": "asia-east1-docker.pkg.dev/vibecart-llmai/cloud-run-source-deploy/vibecart-acceptance-pr21@sha256:eb8793b411069e83fb29911b9939f43d5beee42189cdba984bbba5a1ad3899a7",
+        "commands": [],
+        "args": [],
+        "labels": {
+          "codex-source-sha": "4137b394131f400aac083becf0ec66735a1bebc1",
+          "commit-sha": "4137b394131f400aac083becf0ec66735a1bebc1",
+          "gcb-build-id": "96d30223-b6d8-471f-862a-8dbc44c94b89",
+          "gcb-trigger-id": "d0b39103-7508-451d-b3e6-6c251f82855d",
+          "gcb-trigger-region": "global",
+          "managed-by": "gcp-cloud-build-deploy-cloud-run",
+          "purpose": "pr21-acceptance"
+        },
+        "conditions": [
+          {
+            "type": "Ready",
+            "state": "CONDITION_SUCCEEDED",
+            "message": "Deploying revision succeeded in 16.98s.",
+            "lastTransitionTime": "2026-10-19T09:51:26.010599Z"
+          },
+          {
+            "type": "Active",
+            "state": "CONDITION_SUCCEEDED",
+            "lastTransitionTime": "2026-10-19T09:51:26.123379Z",
+            "severity": "INFO"
+          },
+          {
+            "type": "ResourcesAvailable",
+            "state": "CONDITION_SUCCEEDED",
+            "message": "Provisioning imported containers completed in 2.99s. Checking container health. This will wait for up to 2m for the configured startup probe, including an initial delay of 0s.",
+            "lastTransitionTime": "2026-10-19T09:51:14.962361Z"
+          },
+          {
+            "type": "ContainerReady",
+            "state": "CONDITION_SUCCEEDED",
+            "message": "Container image import completed in 2.27s.",
+            "lastTransitionTime": "2026-10-19T09:51:11.984918Z"
+          },
+          {
+            "type": "ContainerHealthy",
+            "state": "CONDITION_SUCCEEDED",
+            "message": "Containers became healthy in 10.01s.",
+            "lastTransitionTime": "2026-10-19T09:51:25.953166Z"
+          }
+        ],
+        "vpcAccess": {
+          "egress": "ALL_TRAFFIC",
+          "networkInterfaces": [
+            {
+              "network": "vibecart-egress-20261019",
+              "subnetwork": "vibecart-egress-subnet"
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "publicReadback": [
+    {
+      "url": "https://vibecart-llmai.web.app/health/live",
+      "status": 200
+    },
+    {
+      "url": "https://vibecart-llmai.web.app/health/ready",
+      "status": 200
+    },
+    {
+      "url": "https://vibecart-llmai.web.app/",
+      "status": 200
+    },
+    {
+      "url": "https://vibecart-llmai.web.app/recommendations",
+      "status": 200
+    },
+    {
+      "url": "https://vibecart-llmai.web.app/auth/login",
+      "status": 200
+    },
+    {
+      "url": "https://github-preview---vibecart-acceptance-pr21-m44ncgz5ta-de.a.run.app/health/live",
+      "status": 403
+    }
+  ],
+  "productionLogs": {
+    "checked_at": "2026-10-19T09:51:27.327Z",
+    "period_start": "2026-10-19T09:07:34.202Z",
+    "revision": "vibecart-web-n06-294c-1019",
+    "entries": 25,
+    "pages": 1,
+    "next_page": false,
+    "complete": true,
+    "status": "no_errors_observed",
+    "http_statuses": {
+      "200": 16
+    },
+    "classes": {
+      "mongo_selection": 0,
+      "mongo_other": 0,
+      "app_database_unavailable": 0,
+      "http_5xx": 0,
+      "other_error": 0
+    }
+  },
+  "earlierAttempts": [
+    {
+      "buildId": "4d3d7372-26b0-4cd2-a5df-9619eec9845d",
+      "source": "ac45394a77fbc7e6c63597a35164abfc692b1475",
+      "status": "FAILURE",
+      "failingStep": "Build",
+      "githubActionsRun": "39230941471",
+      "githubActionsStatus": "success"
+    },
+    {
+      "buildId": "81a8fb22-9c79-4c88-9ea7-5a3a21f888a7",
+      "source": "51a616fc570dfc02f454c1ba59911ff0606c42c3",
+      "status": "SUCCESS",
+      "limitation": "Untagged zero-traffic candidate retired; no remote startup acceptance claimed."
+    }
+  ],
+  "boundaries": {
+    "productionTrafficChanged": false,
+    "hostingReleased": false,
+    "productionAtlasWritten": false,
+    "candidateBusinessAcceptance": false,
+    "humanAcceptanceSubstituted": false,
+    "v5Closed": 2,
+    "v5Total": 14
+  }
+}

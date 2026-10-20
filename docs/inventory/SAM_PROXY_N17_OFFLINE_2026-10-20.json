@@ -1,0 +1,33 @@
+{
+  "started_at": "2026-10-19T18:12:01.430347+00:00",
+  "finished_at": "2026-10-19T18:12:10.557534+00:00",
+  "status": "passed",
+  "execution_identity": "SAM simulating JEFF and REN rehearsal preparation",
+  "source_commit": "276861a34f898355fe40ff86cf588f6efe9e6847",
+  "payload_files": 40,
+  "archive_sha256": "37cde4fa1882e30bef45efac9d0ac0e27bfc26fd96e32d4a9f9e969068462314",
+  "archive_bytes": 9891981,
+  "two_builds_identical": true,
+  "fresh_restored_files": 40,
+  "hash_differences": 0,
+  "html_relative_references": 59,
+  "external_dependencies": 0,
+  "pdf_pages": 13,
+  "original_pptx_sha256": "43374f71c5e42fdc1725f38a8ac69ea0e2ccc696f6238ebb06425e58e00d7203",
+  "original_pdf_sha256": "c5555c2a54d8a4200fd79fb8073d0fa5af691b40b13a4e031ddf9f8f6dc4535d",
+  "fallback_scope": "dated offline screenshots and 13 recorded slides; no live app, login, order, Atlas, payment or model call",
+  "limitations": [
+    "No actual physical internet disconnection",
+    "No second physical PC or projector",
+    "No human 720-second spoken rehearsal measured"
+  ],
+  "security_tests": {
+    "passed": 18,
+    "tests": [
+      "scripts/test_v5_offline_bundle.py",
+      "scripts/test_backup_manifest.py"
+    ],
+    "observed_result": "18 passed in 0.31s"
+  },
+  "prior_validator_failure": "Initial operational assertion omitted generated manifest.json; actual archive and restored manifest valid. Validator corrected to require restored manifest file; new output directory used, original attempt retained locally."
+}

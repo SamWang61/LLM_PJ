@@ -1,0 +1,280 @@
+{
+  "checked_at": "2026-10-17T16:09:32.681Z",
+  "project_id": "vibecart-llmai",
+  "regional_jobs": [
+    {
+      "region": "africa-south1",
+      "http": 200,
+      "jobs": [],
+      "next_page": false
+    },
+    {
+      "region": "asia-east1",
+      "http": 200,
+      "jobs": [],
+      "next_page": false
+    },
+    {
+      "region": "asia-east2",
+      "http": 200,
+      "jobs": [],
+      "next_page": false
+    },
+    {
+      "region": "asia-northeast1",
+      "http": 200,
+      "jobs": [],
+      "next_page": false
+    },
+    {
+      "region": "asia-northeast2",
+      "http": 200,
+      "jobs": [],
+      "next_page": false
+    },
+    {
+      "region": "asia-northeast3",
+      "http": 200,
+      "jobs": [],
+      "next_page": false
+    },
+    {
+      "region": "asia-south1",
+      "http": 200,
+      "jobs": [],
+      "next_page": false
+    },
+    {
+      "region": "asia-south2",
+      "http": 200,
+      "jobs": [],
+      "next_page": false
+    },
+    {
+      "region": "asia-southeast1",
+      "http": 200,
+      "jobs": [],
+      "next_page": false
+    },
+    {
+      "region": "asia-southeast2",
+      "http": 200,
+      "jobs": [],
+      "next_page": false
+    },
+    {
+      "region": "asia-southeast3",
+      "http": 200,
+      "jobs": [],
+      "next_page": false
+    },
+    {
+      "region": "australia-southeast1",
+      "http": 200,
+      "jobs": [],
+      "next_page": false
+    },
+    {
+      "region": "australia-southeast2",
+      "http": 200,
+      "jobs": [],
+      "next_page": false
+    },
+    {
+      "region": "europe-central2",
+      "http": 200,
+      "jobs": [],
+      "next_page": false
+    },
+    {
+      "region": "europe-north1",
+      "http": 200,
+      "jobs": [],
+      "next_page": false
+    },
+    {
+      "region": "europe-north2",
+      "http": 200,
+      "jobs": [],
+      "next_page": false
+    },
+    {
+      "region": "europe-southwest1",
+      "http": 200,
+      "jobs": [],
+      "next_page": false
+    },
+    {
+      "region": "europe-west1",
+      "http": 200,
+      "jobs": [],
+      "next_page": false
+    },
+    {
+      "region": "europe-west10",
+      "http": 200,
+      "jobs": [],
+      "next_page": false
+    },
+    {
+      "region": "europe-west12",
+      "http": 200,
+      "jobs": [],
+      "next_page": false
+    },
+    {
+      "region": "europe-west2",
+      "http": 200,
+      "jobs": [],
+      "next_page": false
+    },
+    {
+      "region": "europe-west3",
+      "http": 200,
+      "jobs": [],
+      "next_page": false
+    },
+    {
+      "region": "europe-west4",
+      "http": 200,
+      "jobs": [],
+      "next_page": false
+    },
+    {
+      "region": "europe-west6",
+      "http": 200,
+      "jobs": [],
+      "next_page": false
+    },
+    {
+      "region": "europe-west8",
+      "http": 200,
+      "jobs": [],
+      "next_page": false
+    },
+    {
+      "region": "europe-west9",
+      "http": 200,
+      "jobs": [],
+      "next_page": false
+    },
+    {
+      "region": "me-central1",
+      "http": 200,
+      "jobs": [],
+      "next_page": false
+    },
+    {
+      "region": "me-central2",
+      "http": 403,
+      "jobs": [],
+      "next_page": false,
+      "error": {
+        "status": "PERMISSION_DENIED",
+        "message": "Permission denied on 'locations/me-central2' (or it may not exist).",
+        "reasons": [
+          "LOCATION_POLICY_VIOLATED",
+          null,
+          null
+        ]
+      }
+    },
+    {
+      "region": "me-west1",
+      "http": 200,
+      "jobs": [],
+      "next_page": false
+    },
+    {
+      "region": "northamerica-northeast1",
+      "http": 200,
+      "jobs": [],
+      "next_page": false
+    },
+    {
+      "region": "northamerica-northeast2",
+      "http": 200,
+      "jobs": [],
+      "next_page": false
+    },
+    {
+      "region": "northamerica-south1",
+      "http": 200,
+      "jobs": [],
+      "next_page": false
+    },
+    {
+      "region": "southamerica-east1",
+      "http": 200,
+      "jobs": [],
+      "next_page": false
+    },
+    {
+      "region": "southamerica-west1",
+      "http": 200,
+      "jobs": [],
+      "next_page": false
+    },
+    {
+      "region": "us-central1",
+      "http": 200,
+      "jobs": [],
+      "next_page": false
+    },
+    {
+      "region": "us-east1",
+      "http": 200,
+      "jobs": [],
+      "next_page": false
+    },
+    {
+      "region": "us-east4",
+      "http": 200,
+      "jobs": [],
+      "next_page": false
+    },
+    {
+      "region": "us-east5",
+      "http": 200,
+      "jobs": [],
+      "next_page": false
+    },
+    {
+      "region": "us-south1",
+      "http": 200,
+      "jobs": [],
+      "next_page": false
+    },
+    {
+      "region": "us-west1",
+      "http": 200,
+      "jobs": [],
+      "next_page": false
+    },
+    {
+      "region": "us-west2",
+      "http": 200,
+      "jobs": [],
+      "next_page": false
+    },
+    {
+      "region": "us-west3",
+      "http": 200,
+      "jobs": [],
+      "next_page": false
+    },
+    {
+      "region": "us-west4",
+      "http": 200,
+      "jobs": [],
+      "next_page": false
+    }
+  ],
+  "global_v1_jobs": {
+    "http": 200,
+    "data": {
+      "apiVersion": "run.googleapis.com/v1",
+      "kind": "JobList"
+    }
+  }
+}

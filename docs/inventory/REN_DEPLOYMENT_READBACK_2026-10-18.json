@@ -1,0 +1,39 @@
+{
+  "checked_at_taipei": "2026-10-18T06:50:43.881+08:00",
+  "method": "Cloud Run v2 and Firebase Hosting read-only API; public health GET only",
+  "project": "vibecart-llmai",
+  "production": {
+    "service": "vibecart-web",
+    "revision": "vibecart-web-00019-phf",
+    "traffic_percent": 100,
+    "source_sha": "e000d952d22a64b568903641893f4ffdc71accd3",
+    "image_digest": "sha256:7199fa08c711917a80e5f54dbfd580ed96f3ef632bda7337b4aa2bde2325c992",
+    "configured_database": "vibecart_ai",
+    "public_invoker": true
+  },
+  "private_acceptance": {
+    "service": "vibecart-acceptance-pr21",
+    "revision": "vibecart-acceptance-pr21-00010-9zg",
+    "traffic_percent": 100,
+    "source_sha": "e000d952d22a64b568903641893f4ffdc71accd3",
+    "image_digest": "sha256:7199fa08c711917a80e5f54dbfd580ed96f3ef632bda7337b4aa2bde2325c992",
+    "configured_database": "vibecart_acceptance_pr21",
+    "invoker": "dedicated service account only",
+    "anonymous_health_http": 403
+  },
+  "hosting": {
+    "release": "sites/vibecart-llmai/releases/1791982222797000",
+    "version": "sites/vibecart-llmai/versions/c3772dcc7c906211",
+    "status": "FINALIZED",
+    "rewrite": "** -> asia-east1/vibecart-web"
+  },
+  "public_health_gets": {
+    "hosting_home": 200,
+    "hosting_live": 200,
+    "hosting_ready": 200,
+    "run_home": 200,
+    "run_live": 200,
+    "run_ready": 200
+  },
+  "boundary": "Health GET and deployment metadata only; no production login, checkout, model, Atlas data mutation, deployment or traffic change was performed. Source commit e000d95 is present on open PR #74 but was not in main at readback."
+}

@@ -1,0 +1,93 @@
+{
+  "schema_version": 1,
+  "created_at": "2026-10-19T07:05:31.357892+08:00",
+  "base": "8be14a1d7faacbf2d9a8881fb94b747d07628fae",
+  "files": [
+    {
+      "path": "docs/inventory/REN_N06_LOCAL_FAULT_MATRIX_2026-10-19.json",
+      "worktree_sha256": "be986aa33e0b8eed6175102eb36a362d743b700d8d330c00db6fe5baa99ea1be",
+      "source_sha256": "be986aa33e0b8eed6175102eb36a362d743b700d8d330c00db6fe5baa99ea1be",
+      "before_source_sha256": null,
+      "full_file_equal": true,
+      "preserved_concurrent_source_variant": false
+    },
+    {
+      "path": "docs/inventory/REN_N06_SUSTAINED_FAULT_OBSERVATION_2026-10-19.json",
+      "worktree_sha256": "026c7063cd52d054633cf8c4e10bc35f84df5252e0b4569c44ff79a5ab00521e",
+      "source_sha256": "026c7063cd52d054633cf8c4e10bc35f84df5252e0b4569c44ff79a5ab00521e",
+      "before_source_sha256": null,
+      "full_file_equal": true,
+      "preserved_concurrent_source_variant": false
+    },
+    {
+      "path": "docs/inventory/REN_PR97_MERGE_REVIEW_2026-10-19.json",
+      "worktree_sha256": "8969e29573e0db62c533d0ba45353c0a0e69ac2e91db9b93458609738372040e",
+      "source_sha256": "8969e29573e0db62c533d0ba45353c0a0e69ac2e91db9b93458609738372040e",
+      "before_source_sha256": null,
+      "full_file_equal": true,
+      "preserved_concurrent_source_variant": false
+    },
+    {
+      "path": "docs/CURRENT_CONTEXT.md",
+      "worktree_sha256": "6106cac4088d470c31433d1d8b55a1e695cf2013772b8c4071ce82e05911e09f",
+      "source_sha256": "6106cac4088d470c31433d1d8b55a1e695cf2013772b8c4071ce82e05911e09f",
+      "before_source_sha256": "828dd2fd41432eca8cc241e6908693d13c380feb6481db8180cca08d73bdcb5a",
+      "full_file_equal": true,
+      "preserved_concurrent_source_variant": false
+    },
+    {
+      "path": "專題進度/專案未完成工作清單_2026-10-18.md",
+      "worktree_sha256": "282727fcb9a230e0ea22c71622b29707bcdfc91046eee2952bb8f644428877c1",
+      "source_sha256": "282727fcb9a230e0ea22c71622b29707bcdfc91046eee2952bb8f644428877c1",
+      "before_source_sha256": "f46e15eeaaa3f010568305b2dcbd2d7de204a240f87e1eb6ecca0c4b80038603",
+      "full_file_equal": true,
+      "preserved_concurrent_source_variant": false
+    },
+    {
+      "path": "專題進度/REN_1200逐項交接清單_2026-10-18.md",
+      "worktree_sha256": "19588af43256666212db80241ded817795f8f2bdff3d31c8222b4427ca1f1b92",
+      "source_sha256": "19588af43256666212db80241ded817795f8f2bdff3d31c8222b4427ca1f1b92",
+      "before_source_sha256": "589d092f6007b6d51b5b52244f6c85525ffee68094741ab2a21fb9c60be38c27",
+      "full_file_equal": true,
+      "preserved_concurrent_source_variant": false
+    },
+    {
+      "path": "docs/REN_PR97_MERGE_N06_2026-10-19.md",
+      "worktree_sha256": "8855f86e3a0a49822f1fa1f63f31c76f6299a8e3c0ee5be8dc0e2c2b1dfef847",
+      "source_sha256": "8855f86e3a0a49822f1fa1f63f31c76f6299a8e3c0ee5be8dc0e2c2b1dfef847",
+      "before_source_sha256": null,
+      "full_file_equal": true,
+      "preserved_concurrent_source_variant": false
+    },
+    {
+      "path": "scripts/run_local_checkout_fault_matrix.py",
+      "worktree_sha256": "d2f445848978bc8f6f68e00dc9edca8989264a0352070e301e04687e62fd5ae7",
+      "source_sha256": "d2f445848978bc8f6f68e00dc9edca8989264a0352070e301e04687e62fd5ae7",
+      "before_source_sha256": null,
+      "full_file_equal": true,
+      "preserved_concurrent_source_variant": false
+    },
+    {
+      "path": "MuscleCore分析資料/website/tests/test_local_checkout_fault_matrix.py",
+      "worktree_sha256": "992b680a01163b008b0eafb5cc44c34203304440f16a9931ca494453543f9f32",
+      "source_sha256": "992b680a01163b008b0eafb5cc44c34203304440f16a9931ca494453543f9f32",
+      "before_source_sha256": null,
+      "full_file_equal": true,
+      "preserved_concurrent_source_variant": false
+    },
+    {
+      "path": "docs/inventory/REN_N06_INITIAL_TOOL_SOURCE_2026-10-19.txt",
+      "worktree_sha256": "4beac0e8fffba3a745981e78d91c83b791922d4f5d55c1de0dc4dd6eb8a0b265",
+      "source_sha256": "4beac0e8fffba3a745981e78d91c83b791922d4f5d55c1de0dc4dd6eb8a0b265",
+      "before_source_sha256": null,
+      "full_file_equal": true,
+      "preserved_concurrent_source_variant": false
+    }
+  ],
+  "shared_current_context_scope_sha256": "cf6ea748c5cf7f974585f2ad3bb76e776fa69b59f4b9b0b85c5e5d2f777c37a6",
+  "current_context_block_equal": true,
+  "exception": null,
+  "unrelated_source_changes_preserved": true,
+  "concurrent_variant_resolved_by_main": "d681d9926cd5a88f7598242c6d1df2a17ec221c2",
+  "finalized_at": "2026-10-19T07:09:24.956580+08:00"
+}

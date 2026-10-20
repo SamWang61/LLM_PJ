@@ -1,14 +1,6 @@
-# 現行分支決策 / Current branch decision
+**2026/10/20 PR #5接續規則**：在現行main上修復未被完整取代的[離線偏好快照工具](PREFERENCE_SCORING.md)，JEFF仍為推薦／計分契約主責，SAM負責資料庫、測試與整合；不因歷史Git作者或[SAM 10/2計畫](SAM_WORK_PLAN.md)改變[現行分工](TEAM_OWNERSHIP.md)。合併、工具apply、排程啟用及正式部署各自留證，本輪修復不操作Atlas。
 
-SAM 擴充分工與逐項進度見 [執行清單](SAM_WORK_PLAN.md)。新增計分工作從已整合的 main 建立 `codex/sam-preference-scoring`；舊 AI 相依分支流程保留作歷史。SAM scoring builds on the integrated main branch.
-
-2026-10-02：SAM 直接負責 `feature/ai-dashboard` 與 v4 Atlas 連線。後台分支基於 `feature/flask-sku-ai-integration`；PR 先指向此整合分支，再由整合分支合併 main。下方歷史四人分工與一律從 main 建分支的指引，在本功能由此決策取代。詳見 [SAM 交接文件](AI_DASHBOARD.md)。
-
-完成狀態：PR #3 與 PR #2 已依序合併到 main，詳見 [合併紀錄](MERGE_RECORD_2026-10-02.md)。此處合併方向保留為本次相依分支的協作紀錄。
-
-SAM owns the stacked dashboard feature and private test connection. Both PRs are now merged. The original plan below is retained for history.
-
----
+下列四人分工與初始建倉流程保留為歷史參考；現行責任以前述文件為準。
 
 建立 GitHub 儲存庫後，從分支規劃到建立協作機制的標準執行流程與步驟如下：
 
