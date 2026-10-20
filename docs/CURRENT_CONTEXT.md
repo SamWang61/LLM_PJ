@@ -1,5 +1,7 @@
 # 最新專案上下文 / Current project context
 
+**2026/10/21 登出流程優化**：依 JEFF、SAM 意見，前台與後台改為按一次「登出」即直接提交，移除確認頁；保留 CSRF 與單裝置 Session 撤銷。原因、行為及驗證方式見[優化系統](優化系統.md)。GitHub 交付與正式站部署分列，不據此變更 V5 本人驗收狀態。
+
 **2026/10/21 代理文件寄送**：[12項起訖與三人獨立重做文件](../專題進度/SAM代理操作簽收與組員獨立重做_2026-10-20.md)已於02:17:42以同封 Markdown 附件寄 SAM、JEFF、REN；02:18 Gmail SENT／三人 To／附件名稱回讀通過。寄送不代表已讀或本人重做完成。GitHub 最新 main 與後續工作以當次讀回為準。
 
 **2026/10/20 PR #5 持久快照接續**：[比對、修正、測試及交付](PR5_SCORING_DELIVERY_2026-10-20.md)。PR #5 未完整被新版取代：現行前台已有請求時6＋4，離線持久快照／CLI與事件去重／CAS仍缺。本輪以最新main整合候選、採personalization雙synthetic排除及真人demo契約，保留snapshot v1與request-time不同的數值語義。74項唯一測試通過（含7項真localhost MongoDB），隨機庫0、所屬程序已停；54網站執行檔不變，未寫Atlas或啟用排程。GitHub最新HEAD檢查及合併以[PR #5](https://github.com/SamWang61/LLM_PJ/pull/5)為準；原「保留舊草稿」是下方較早快照，V5本人關卡不改。
