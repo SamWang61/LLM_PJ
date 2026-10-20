@@ -50,7 +50,7 @@ def run(config):
                 'price': Decimal128('10.00'), 'available_quantity': 4, 'stock_quantity': 4,
                 'reserved_quantity': 0, 'safety_stock': 0, 'created_at': now, 'acceptance_run': marker})
             browser = login(base, config['id_token'], email, password)
-            field = page(browser, base + '/auth/logout').select_one('input[name="csrf_token"]')
+            field = page(browser, base + '/').select_one('form[action="/auth/logout"] input[name="csrf_token"]')
             browser.headers['X-CSRF-Token'] = field['value']
             return uid, sid, browser
 

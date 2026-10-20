@@ -95,7 +95,7 @@ def run(config):
         second = login(base, config["id_token"], email, password)
         page(first, base + "/cart")
         page(second, base + "/cart")
-        csrf = page(first, base + "/auth/logout").select_one('input[name="csrf_token"]')
+        csrf = page(first, base + "/").select_one('form[action="/auth/logout"] input[name="csrf_token"]')
         require(csrf and csrf.get("value"), "Cart CSRF missing")
         first.headers["X-CSRF-Token"] = csrf["value"]
         require(db.auth_sessions.count_documents({"user_id": user_id, "revoked_at": None}) == 2,
@@ -123,7 +123,7 @@ def run(config):
                 and db.product_skus.find_one({"_id": sku_id})["available_quantity"] == 1,
                 "Retry or conflict changed persisted state")
         report['h07_events'] = event_checks(db, user_id, product_id, cart['_id'], order['_id'], marker)
-        logout_form = page(first, base + "/auth/logout").select_one('input[name="csrf_token"]')
+        logout_form = page(first, base + "/").select_one('form[action="/auth/logout"] input[name="csrf_token"]')
         require(logout_form and logout_form.get("value"), "Logout CSRF missing")
         logout = first.post(base + "/auth/logout", data={"csrf_token": logout_form["value"]},
                             allow_redirects=False, timeout=30)
