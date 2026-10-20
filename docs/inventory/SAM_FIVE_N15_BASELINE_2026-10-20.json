@@ -1,0 +1,841 @@
+{
+  "started_at": "2026-10-20T00:36:22.259Z",
+  "ended_at": "2026-10-20T00:36:23.327Z",
+  "services": [
+    {
+      "service": "vibecart-web",
+      "traffic": [
+        {
+          "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+          "revision": "vibecart-web-00019-phf",
+          "tag": "ren-fence",
+          "uri": "https://ren-fence---vibecart-web-m44ncgz5ta-de.a.run.app"
+        },
+        {
+          "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+          "revision": "vibecart-web-ai-294c-1020",
+          "percent": 100,
+          "tag": "ai-ready",
+          "uri": "https://ai-ready---vibecart-web-m44ncgz5ta-de.a.run.app"
+        },
+        {
+          "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+          "revision": "vibecart-web-main20ee-1640",
+          "tag": "main20ee-preview",
+          "uri": "https://main20ee-preview---vibecart-web-m44ncgz5ta-de.a.run.app"
+        },
+        {
+          "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+          "revision": "vibecart-web-n06-1019",
+          "tag": "n06-1019",
+          "uri": "https://n06-1019---vibecart-web-m44ncgz5ta-de.a.run.app"
+        },
+        {
+          "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+          "revision": "vibecart-web-n06-294c-1019",
+          "tag": "n06-294c",
+          "uri": "https://n06-294c---vibecart-web-m44ncgz5ta-de.a.run.app"
+        },
+        {
+          "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+          "revision": "vibecart-web-nat-1019",
+          "tag": "nat-1019",
+          "uri": "https://nat-1019---vibecart-web-m44ncgz5ta-de.a.run.app"
+        },
+        {
+          "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+          "revision": "vibecart-web-reviews-b038aaca",
+          "tag": "reviews-1019",
+          "uri": "https://reviews-1019---vibecart-web-m44ncgz5ta-de.a.run.app"
+        },
+        {
+          "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+          "revision": "vibecart-web-role-auth-576b4748",
+          "tag": "role-auth-1019",
+          "uri": "https://role-auth-1019---vibecart-web-m44ncgz5ta-de.a.run.app"
+        }
+      ],
+      "latest": "projects/vibecart-llmai/locations/asia-east1/services/vibecart-web/revisions/vibecart-web-ai-294c-1020",
+      "revisions": [
+        {
+          "revision": "vibecart-web-ai-294c-1020",
+          "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:03d01cb52065e21fc96db6fb34b4de0527f2eb3966abbf0fe8719cb99bcc98f2",
+          "source_sha": "294c1fac26d6785054063b8be6eb7d9e61075be4",
+          "ready": [
+            {
+              "type": "Ready",
+              "state": "CONDITION_SUCCEEDED",
+              "message": "Updating revision scaling succeeded.",
+              "lastTransitionTime": "2026-10-19T16:07:52.244357Z"
+            },
+            {
+              "type": "Active",
+              "state": "CONDITION_SUCCEEDED",
+              "lastTransitionTime": "2026-10-19T16:07:20.447060Z",
+              "severity": "INFO"
+            },
+            {
+              "type": "ResourcesAvailable",
+              "state": "CONDITION_SUCCEEDED",
+              "message": "Provisioning imported containers completed in 3.2s. Checking container health. This will wait for up to 2m for the configured startup probe, including an initial delay of 0s.",
+              "lastTransitionTime": "2026-10-19T16:07:09.057629Z"
+            },
+            {
+              "type": "ContainerReady",
+              "state": "CONDITION_SUCCEEDED",
+              "message": "Container image import completed in 38.39s.",
+              "lastTransitionTime": "2026-10-19T16:07:05.852051Z"
+            },
+            {
+              "type": "ContainerHealthy",
+              "state": "CONDITION_SUCCEEDED",
+              "message": "Containers became healthy in 10.01s.",
+              "lastTransitionTime": "2026-10-19T16:07:20.310700Z"
+            }
+          ],
+          "service_account": "vibecart-web@vibecart-llmai.iam.gserviceaccount.com",
+          "vpc": {
+            "egress": "ALL_TRAFFIC",
+            "networkInterfaces": [
+              {
+                "network": "vibecart-egress-20261019",
+                "subnetwork": "vibecart-egress-subnet"
+              }
+            ]
+          },
+          "command": [],
+          "args_count": 0,
+          "env_names": [
+            "AI_FREE_QUESTION_ENABLED",
+            "AI_RECOMMENDATIONS_ENABLED",
+            "AI_SUMMARY_ENABLED",
+            "ANTHROPIC_API_KEY",
+            "BGE_MODEL",
+            "CLAUDE_MODEL",
+            "CLOUD_PREVIEW_READ_ONLY",
+            "ENABLE_CHECKOUT",
+            "MONGO_URI",
+            "SECRET_KEY"
+          ]
+        }
+      ]
+    },
+    {
+      "service": "vibecart-acceptance-pr21",
+      "traffic": [
+        {
+          "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+          "revision": "vibecart-acceptance-pr21-00047-tis",
+          "tag": "github-preview",
+          "uri": "https://github-preview---vibecart-acceptance-pr21-m44ncgz5ta-de.a.run.app"
+        },
+        {
+          "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+          "revision": "vibecart-acceptance-pr21-main20ee-claude1-180s",
+          "tag": "main20ee-ai",
+          "uri": "https://main20ee-ai---vibecart-acceptance-pr21-m44ncgz5ta-de.a.run.app"
+        },
+        {
+          "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+          "revision": "vibecart-acceptance-pr21-main20ee-off-180s",
+          "tag": "main20ee-off",
+          "uri": "https://main20ee-off---vibecart-acceptance-pr21-m44ncgz5ta-de.a.run.app"
+        },
+        {
+          "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+          "revision": "vibecart-acceptance-pr21-n06-1019",
+          "tag": "n06-1019",
+          "uri": "https://n06-1019---vibecart-acceptance-pr21-m44ncgz5ta-de.a.run.app"
+        },
+        {
+          "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+          "revision": "vibecart-acceptance-pr21-n06-294c-1019",
+          "percent": 100,
+          "tag": "n06-294c",
+          "uri": "https://n06-294c---vibecart-acceptance-pr21-m44ncgz5ta-de.a.run.app"
+        },
+        {
+          "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+          "revision": "vibecart-acceptance-pr21-nat-1019",
+          "tag": "nat-1019",
+          "uri": "https://nat-1019---vibecart-acceptance-pr21-m44ncgz5ta-de.a.run.app"
+        },
+        {
+          "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+          "revision": "vibecart-acceptance-pr21-role95-e5788ce",
+          "tag": "role95-full",
+          "uri": "https://role95-full---vibecart-acceptance-pr21-m44ncgz5ta-de.a.run.app"
+        },
+        {
+          "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+          "revision": "vibecart-acceptance-pr21-rv9a76-2117",
+          "tag": "rv9a76-ai",
+          "uri": "https://rv9a76-ai---vibecart-acceptance-pr21-m44ncgz5ta-de.a.run.app"
+        },
+        {
+          "type": "TRAFFIC_TARGET_ALLOCATION_TYPE_REVISION",
+          "revision": "vibecart-acceptance-pr21-rv9a76-rules-2117",
+          "tag": "rv9a76-rules",
+          "uri": "https://rv9a76-rules---vibecart-acceptance-pr21-m44ncgz5ta-de.a.run.app"
+        }
+      ],
+      "latest": "projects/vibecart-llmai/locations/asia-east1/services/vibecart-acceptance-pr21/revisions/vibecart-acceptance-pr21-00047-tis",
+      "revisions": [
+        {
+          "revision": "vibecart-acceptance-pr21-00047-tis",
+          "image": "asia-east1-docker.pkg.dev/vibecart-llmai/cloud-run-source-deploy/vibecart-acceptance-pr21@sha256:11159fba9ddfbc10daf28f0b71c9ea3fc4b4ae1065f2e93007cf094811777dcf",
+          "source_sha": "b998d09c788c704fec70ffa2977c937eeb1545e5",
+          "ready": [
+            {
+              "type": "Ready",
+              "state": "CONDITION_SUCCEEDED",
+              "message": "Deploying revision succeeded in 14.26s.",
+              "lastTransitionTime": "2026-10-19T20:36:32.189902Z"
+            },
+            {
+              "type": "Active",
+              "state": "CONDITION_SUCCEEDED",
+              "lastTransitionTime": "2026-10-19T20:36:32.286645Z",
+              "severity": "INFO"
+            },
+            {
+              "type": "ResourcesAvailable",
+              "state": "CONDITION_SUCCEEDED",
+              "message": "Provisioning imported containers completed in 1.72s. Checking container health. This will wait for up to 2m for the configured startup probe, including an initial delay of 0s.",
+              "lastTransitionTime": "2026-10-19T20:36:21.363169Z"
+            },
+            {
+              "type": "ContainerReady",
+              "state": "CONDITION_SUCCEEDED",
+              "message": "Container image import completed in 1.2s.",
+              "lastTransitionTime": "2026-10-19T20:36:19.637028Z"
+            },
+            {
+              "type": "ContainerHealthy",
+              "state": "CONDITION_SUCCEEDED",
+              "message": "Containers became healthy in 10.01s.",
+              "lastTransitionTime": "2026-10-19T20:36:32.141908Z"
+            }
+          ],
+          "service_account": "vibecart-pr21-acceptance@vibecart-llmai.iam.gserviceaccount.com",
+          "vpc": {
+            "egress": "ALL_TRAFFIC",
+            "networkInterfaces": [
+              {
+                "network": "vibecart-egress-20261019",
+                "subnetwork": "vibecart-egress-subnet"
+              }
+            ]
+          },
+          "command": [],
+          "args_count": 0,
+          "env_names": [
+            "CLOUD_ACCEPTANCE_DB",
+            "CLOUD_ACCEPTANCE_MODE",
+            "CLOUD_PREVIEW_READ_ONLY",
+            "ENABLE_CHECKOUT",
+            "MONGO_URI",
+            "SECRET_KEY"
+          ]
+        },
+        {
+          "revision": "vibecart-acceptance-pr21-n06-294c-1019",
+          "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:796a42b6d5fd80099900abc381d4c954d21ed1bea162ad0a9a49a89355deb40a",
+          "source_sha": "294c1fac26d6785054063b8be6eb7d9e61075be4",
+          "ready": [
+            {
+              "type": "Ready",
+              "state": "CONDITION_SUCCEEDED",
+              "message": "Updating revision scaling succeeded.",
+              "lastTransitionTime": "2026-10-19T00:49:54.687505Z"
+            },
+            {
+              "type": "Active",
+              "state": "CONDITION_SUCCEEDED",
+              "lastTransitionTime": "2026-10-19T00:45:26.712193Z",
+              "severity": "INFO"
+            },
+            {
+              "type": "ResourcesAvailable",
+              "state": "CONDITION_SUCCEEDED",
+              "message": "Provisioning imported containers completed in 1.75s. Checking container health. This will wait for up to 2m for the configured startup probe, including an initial delay of 0s.",
+              "lastTransitionTime": "2026-10-19T00:45:15.995916Z"
+            },
+            {
+              "type": "ContainerReady",
+              "state": "CONDITION_SUCCEEDED",
+              "message": "Container image import completed in 2.97s.",
+              "lastTransitionTime": "2026-10-19T00:45:14.242934Z"
+            },
+            {
+              "type": "ContainerHealthy",
+              "state": "CONDITION_SUCCEEDED",
+              "message": "Containers became healthy in 10.01s.",
+              "lastTransitionTime": "2026-10-19T00:45:26.574697Z"
+            }
+          ],
+          "service_account": "vibecart-pr21-acceptance@vibecart-llmai.iam.gserviceaccount.com",
+          "vpc": {
+            "egress": "ALL_TRAFFIC",
+            "networkInterfaces": [
+              {
+                "network": "vibecart-egress-20261019",
+                "subnetwork": "vibecart-egress-subnet"
+              }
+            ]
+          },
+          "command": [],
+          "args_count": 0,
+          "env_names": [
+            "CLOUD_ACCEPTANCE_DB",
+            "CLOUD_ACCEPTANCE_MODE",
+            "CLOUD_PREVIEW_READ_ONLY",
+            "ENABLE_CHECKOUT",
+            "MONGO_URI",
+            "SECRET_KEY"
+          ]
+        }
+      ]
+    }
+  ],
+  "builds": [
+    {
+      "id": "1743fef8-24e3-470c-a6f5-872da2b6dc4c",
+      "status": "SUCCESS",
+      "source": {
+        "storageSource": {
+          "bucket": "vibecart-llmai-sam-build-278483818008",
+          "object": "local-ai-install-294c-20261019.tar.gz",
+          "generation": "1792425628680441"
+        }
+      },
+      "provenance": {
+        "resolvedStorageSource": {
+          "bucket": "vibecart-llmai-sam-build-278483818008",
+          "object": "local-ai-install-294c-20261019.tar.gz",
+          "generation": "1792425628680441"
+        },
+        "fileHashes": {
+          "gs://vibecart-llmai-sam-build-278483818008/local-ai-install-294c-20261019.tar.gz#1792425628680441": {
+            "fileHash": [
+              {
+                "type": "MD5",
+                "value": "O3FeUza/jV6q8mKA0jc7QQ=="
+              },
+              {
+                "type": "SHA256",
+                "value": "G3z/tZanadmF7eF4psti04brpRKi8kFXYPLQcrnEImo="
+              }
+            ]
+          }
+        }
+      },
+      "images": [
+        {
+          "name": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web:ai-294c-20261019",
+          "digest": "sha256:03d01cb52065e21fc96db6fb34b4de0527f2eb3966abbf0fe8719cb99bcc98f2",
+          "pushTiming": {
+            "startTime": "2026-10-19T16:04:12.736398134Z",
+            "endTime": "2026-10-19T16:05:34.798526391Z"
+          },
+          "artifactRegistryPackage": "projects/vibecart-llmai/locations/asia-east1/repositories/vibecart/packages/web/versions/sha256:03d01cb52065e21fc96db6fb34b4de0527f2eb3966abbf0fe8719cb99bcc98f2"
+        }
+      ],
+      "steps": [
+        {
+          "id": "Install AI and bake BGE",
+          "status": "SUCCESS"
+        },
+        {
+          "id": "Verify offline BGE and Flask",
+          "status": "SUCCESS"
+        }
+      ]
+    },
+    {
+      "id": "97f935ec-399e-4fbb-b6f9-cda90dc697b8",
+      "status": "SUCCESS",
+      "source": {
+        "storageSource": {
+          "bucket": "vibecart-llmai-sam-build-278483818008",
+          "object": "n06-main-294c1fa-20261019.tar.gz",
+          "generation": "1792370650819527"
+        }
+      },
+      "provenance": {
+        "resolvedStorageSource": {
+          "bucket": "vibecart-llmai-sam-build-278483818008",
+          "object": "n06-main-294c1fa-20261019.tar.gz",
+          "generation": "1792370650819527"
+        },
+        "fileHashes": {
+          "gs://vibecart-llmai-sam-build-278483818008/n06-main-294c1fa-20261019.tar.gz#1792370650819527": {
+            "fileHash": [
+              {
+                "type": "MD5",
+                "value": "x4n+0JvdbAno9O0o1VxD7Q=="
+              },
+              {
+                "type": "SHA256",
+                "value": "OZi3t2xUb5TrJjSP7S6IrwpD6AVFXcRIXY+d2r1+KVo="
+              }
+            ]
+          }
+        }
+      },
+      "images": [
+        {
+          "name": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web:n06-main-294c1fa-20261019",
+          "digest": "sha256:796a42b6d5fd80099900abc381d4c954d21ed1bea162ad0a9a49a89355deb40a",
+          "pushTiming": {
+            "startTime": "2026-10-19T00:44:38.707142381Z",
+            "endTime": "2026-10-19T00:44:42.111164578Z"
+          },
+          "artifactRegistryPackage": "projects/vibecart-llmai/locations/asia-east1/repositories/vibecart/packages/web/versions/sha256:796a42b6d5fd80099900abc381d4c954d21ed1bea162ad0a9a49a89355deb40a"
+        }
+      ],
+      "steps": [
+        {
+          "status": "SUCCESS"
+        },
+        {
+          "status": "SUCCESS"
+        },
+        {
+          "status": "SUCCESS"
+        }
+      ]
+    },
+    {
+      "id": "56b8644c-3017-42e0-869f-3ff0f37173e4",
+      "status": "SUCCESS",
+      "source": {
+        "storageSource": {
+          "bucket": "vibecart-llmai-sam-build-278483818008",
+          "object": "n06-main-7aeb77c-20261019.tar.gz",
+          "generation": "1792369784120386"
+        }
+      },
+      "provenance": {
+        "resolvedStorageSource": {
+          "bucket": "vibecart-llmai-sam-build-278483818008",
+          "object": "n06-main-7aeb77c-20261019.tar.gz",
+          "generation": "1792369784120386"
+        },
+        "fileHashes": {
+          "gs://vibecart-llmai-sam-build-278483818008/n06-main-7aeb77c-20261019.tar.gz#1792369784120386": {
+            "fileHash": [
+              {
+                "type": "MD5",
+                "value": "edyv4pq5uxvMEnrNY9BQeg=="
+              },
+              {
+                "type": "SHA256",
+                "value": "aUtQCxb1LHDNXt/UOf5S3ygWoi18BVw0iEbH6blCHOo="
+              }
+            ]
+          }
+        }
+      },
+      "images": [
+        {
+          "name": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web:n06-main-7aeb77c-20261019",
+          "digest": "sha256:c31acb1fb3949995fb7cecb0e56d59f9adee9331826f369f829326dfe1158ca0",
+          "pushTiming": {
+            "startTime": "2026-10-19T00:30:33.065851600Z",
+            "endTime": "2026-10-19T00:30:36.571574695Z"
+          },
+          "artifactRegistryPackage": "projects/vibecart-llmai/locations/asia-east1/repositories/vibecart/packages/web/versions/sha256:c31acb1fb3949995fb7cecb0e56d59f9adee9331826f369f829326dfe1158ca0"
+        }
+      ],
+      "steps": [
+        {
+          "status": "SUCCESS"
+        },
+        {
+          "status": "SUCCESS"
+        },
+        {
+          "status": "SUCCESS"
+        }
+      ]
+    },
+    {
+      "id": "4e12f368-f6fd-41a7-9404-86b276e3e66b",
+      "status": "SUCCESS",
+      "source": {
+        "storageSource": {
+          "bucket": "vibecart-llmai-sam-build-278483818008",
+          "object": "role95-full-e5788ce-20261019.tar.gz",
+          "generation": "1792361421014751"
+        }
+      },
+      "provenance": {
+        "resolvedStorageSource": {
+          "bucket": "vibecart-llmai-sam-build-278483818008",
+          "object": "role95-full-e5788ce-20261019.tar.gz",
+          "generation": "1792361421014751"
+        },
+        "fileHashes": {
+          "gs://vibecart-llmai-sam-build-278483818008/role95-full-e5788ce-20261019.tar.gz#1792361421014751": {
+            "fileHash": [
+              {
+                "type": "MD5",
+                "value": "HMB1chXwnjr8GBRowpWl9Q=="
+              },
+              {
+                "type": "SHA256",
+                "value": "vYW6F1Z7/c/0t9YzVRhB30sCptr+4KcB+sRtlpz3+04="
+              }
+            ]
+          }
+        }
+      },
+      "images": [
+        {
+          "name": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web:role95-full-e5788ce-20261019",
+          "digest": "sha256:8755ccb82902cf59430d5b2b76505c3fb6e4ed265d0ef98ba42821769edbcbdd",
+          "pushTiming": {
+            "startTime": "2026-10-18T22:10:45.524536883Z",
+            "endTime": "2026-10-18T22:10:51.001842462Z"
+          },
+          "artifactRegistryPackage": "projects/vibecart-llmai/locations/asia-east1/repositories/vibecart/packages/web/versions/sha256:8755ccb82902cf59430d5b2b76505c3fb6e4ed265d0ef98ba42821769edbcbdd"
+        }
+      ],
+      "steps": [
+        {
+          "status": "SUCCESS"
+        },
+        {
+          "status": "SUCCESS"
+        },
+        {
+          "status": "SUCCESS"
+        }
+      ]
+    },
+    {
+      "id": "9971323c-5772-4273-aec5-ad8dd59d3cf0",
+      "status": "SUCCESS",
+      "source": {
+        "storageSource": {
+          "bucket": "vibecart-llmai-sam-build-278483818008",
+          "object": "ren-role-auth-20261019-576b474822ef.tar.gz",
+          "generation": "1792359860249275"
+        }
+      },
+      "provenance": {
+        "resolvedStorageSource": {
+          "bucket": "vibecart-llmai-sam-build-278483818008",
+          "object": "ren-role-auth-20261019-576b474822ef.tar.gz",
+          "generation": "1792359860249275"
+        },
+        "fileHashes": {
+          "gs://vibecart-llmai-sam-build-278483818008/ren-role-auth-20261019-576b474822ef.tar.gz#1792359860249275": {
+            "fileHash": [
+              {
+                "type": "MD5",
+                "value": "QMNd4Fxx1DetxE1qM1xZpQ=="
+              },
+              {
+                "type": "SHA256",
+                "value": "Hv+SIROGLERfpWCf/i19ihnoZKzN8ap8sUtRSLZMde0="
+              }
+            ]
+          }
+        }
+      },
+      "images": [
+        {
+          "name": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web:ren-role-auth-576b474822ef",
+          "digest": "sha256:228862259bd96a69224132e5af73fc4e1c89165a759057470ed467c4ce80617b",
+          "pushTiming": {
+            "startTime": "2026-10-18T21:44:41.151795225Z",
+            "endTime": "2026-10-18T21:44:44.219372447Z"
+          },
+          "artifactRegistryPackage": "projects/vibecart-llmai/locations/asia-east1/repositories/vibecart/packages/web/versions/sha256:228862259bd96a69224132e5af73fc4e1c89165a759057470ed467c4ce80617b"
+        }
+      ],
+      "steps": [
+        {
+          "status": "SUCCESS"
+        },
+        {
+          "status": "SUCCESS"
+        }
+      ]
+    },
+    {
+      "id": "ae8a4735-c2d8-464f-baa5-b03b0f6345fc",
+      "status": "SUCCESS",
+      "source": {
+        "storageSource": {
+          "bucket": "vibecart-llmai-sam-build-278483818008",
+          "object": "rv9a76-preview-ai-20261018-2117.tar.gz",
+          "generation": "1792329441242043"
+        }
+      },
+      "provenance": {
+        "resolvedStorageSource": {
+          "bucket": "vibecart-llmai-sam-build-278483818008",
+          "object": "rv9a76-preview-ai-20261018-2117.tar.gz",
+          "generation": "1792329441242043"
+        },
+        "fileHashes": {
+          "gs://vibecart-llmai-sam-build-278483818008/rv9a76-preview-ai-20261018-2117.tar.gz#1792329441242043": {
+            "fileHash": [
+              {
+                "type": "MD5",
+                "value": "2bcgy5gp3KoEbPQy71j97A=="
+              },
+              {
+                "type": "SHA256",
+                "value": "dVl0qYh+ymYjQ1m8Es6DUZYvsvup6/huzTxzoN//mak="
+              }
+            ]
+          }
+        }
+      },
+      "images": [
+        {
+          "name": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web:rv9a76-ai-20261018-2117",
+          "digest": "sha256:15d359548b7e7343a1051b4907f78bf667cf36856a3c2680577a3ac989ea1c79",
+          "pushTiming": {
+            "startTime": "2026-10-18T13:21:22.402321436Z",
+            "endTime": "2026-10-18T13:22:51.074140800Z"
+          },
+          "artifactRegistryPackage": "projects/vibecart-llmai/locations/asia-east1/repositories/vibecart/packages/web/versions/sha256:15d359548b7e7343a1051b4907f78bf667cf36856a3c2680577a3ac989ea1c79"
+        }
+      ],
+      "steps": [
+        {
+          "status": "SUCCESS"
+        },
+        {
+          "status": "SUCCESS"
+        },
+        {
+          "status": "SUCCESS"
+        }
+      ]
+    },
+    {
+      "id": "606b023b-3489-4bc2-b98e-123c7e543d18",
+      "status": "SUCCESS",
+      "source": {
+        "storageSource": {
+          "bucket": "vibecart-llmai-sam-build-278483818008",
+          "object": "main20ee-preview-ai-20261018-1640.tar.gz",
+          "generation": "1792312817433061"
+        }
+      },
+      "provenance": {
+        "resolvedStorageSource": {
+          "bucket": "vibecart-llmai-sam-build-278483818008",
+          "object": "main20ee-preview-ai-20261018-1640.tar.gz",
+          "generation": "1792312817433061"
+        },
+        "fileHashes": {
+          "gs://vibecart-llmai-sam-build-278483818008/main20ee-preview-ai-20261018-1640.tar.gz#1792312817433061": {
+            "fileHash": [
+              {
+                "type": "MD5",
+                "value": "/G9zHM1RBPOb+q8fzC05EQ=="
+              },
+              {
+                "type": "SHA256",
+                "value": "nQVE+zOTVmx1lUb+tG2kIenj9CAvNrWcz/TQ4E3v0oU="
+              }
+            ]
+          }
+        }
+      },
+      "images": [
+        {
+          "name": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web:main20ee-ai-20261018-1640",
+          "digest": "sha256:1d7b666db5b3f927e6fecf484617c2a0842694c0bfdc61150e6f3683434b4074",
+          "pushTiming": {
+            "startTime": "2026-10-18T08:44:23.198831587Z",
+            "endTime": "2026-10-18T08:45:53.914032119Z"
+          },
+          "artifactRegistryPackage": "projects/vibecart-llmai/locations/asia-east1/repositories/vibecart/packages/web/versions/sha256:1d7b666db5b3f927e6fecf484617c2a0842694c0bfdc61150e6f3683434b4074"
+        }
+      ],
+      "steps": [
+        {
+          "status": "SUCCESS"
+        },
+        {
+          "status": "SUCCESS"
+        },
+        {
+          "status": "SUCCESS"
+        }
+      ]
+    },
+    {
+      "id": "2fd35cca-1e64-40e6-96ed-4f3bbd9db0dc",
+      "status": "SUCCESS",
+      "source": {
+        "storageSource": {
+          "bucket": "vibecart-llmai-sam-build-278483818008",
+          "object": "ren-fence-20261018.tar.gz"
+        }
+      },
+      "provenance": {
+        "resolvedStorageSource": {
+          "bucket": "vibecart-llmai-sam-build-278483818008",
+          "object": "ren-fence-20261018.tar.gz",
+          "generation": "1792276239465985"
+        },
+        "fileHashes": {
+          "gs://vibecart-llmai-sam-build-278483818008/ren-fence-20261018.tar.gz#1792276239465985": {
+            "fileHash": [
+              {
+                "type": "MD5",
+                "value": "j5/5btGkzNV9V1bD1Wojgg=="
+              },
+              {
+                "type": "SHA256",
+                "value": "sbUhmHl3nf44/m+xWS7mE1HCF+nwOAe1z6W4x1Oxwb0="
+              }
+            ]
+          }
+        }
+      },
+      "images": [
+        {
+          "name": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web:ren-fence-20261018",
+          "digest": "sha256:7199fa08c711917a80e5f54dbfd580ed96f3ef632bda7337b4aa2bde2325c992",
+          "pushTiming": {
+            "startTime": "2026-10-17T22:30:57.506372122Z",
+            "endTime": "2026-10-17T22:31:01.374074220Z"
+          },
+          "artifactRegistryPackage": "projects/vibecart-llmai/locations/asia-east1/repositories/vibecart/packages/web/versions/sha256:7199fa08c711917a80e5f54dbfd580ed96f3ef632bda7337b4aa2bde2325c992"
+        }
+      ],
+      "steps": [
+        {
+          "status": "SUCCESS"
+        }
+      ]
+    },
+    {
+      "id": "976b8ed9-c1d3-406b-afc1-567f83c36ffb",
+      "status": "SUCCESS",
+      "source": {
+        "storageSource": {
+          "bucket": "vibecart-llmai-sam-build-278483818008",
+          "object": "final-ff65ea-20261018.tar.gz"
+        }
+      },
+      "provenance": {
+        "resolvedStorageSource": {
+          "bucket": "vibecart-llmai-sam-build-278483818008",
+          "object": "final-ff65ea-20261018.tar.gz",
+          "generation": "1792272245624807"
+        },
+        "fileHashes": {
+          "gs://vibecart-llmai-sam-build-278483818008/final-ff65ea-20261018.tar.gz#1792272245624807": {
+            "fileHash": [
+              {
+                "type": "MD5",
+                "value": "kRRUvaZ6r5gcMBWse4siag=="
+              },
+              {
+                "type": "SHA256",
+                "value": "8xuWH6/ch4/G6KfJYsZz72O7mPuWWEo8ymi6Hlw7+Yo="
+              }
+            ]
+          }
+        }
+      },
+      "images": [
+        {
+          "name": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web:final-ff65ea-20261018",
+          "digest": "sha256:ba7d34787ffda32cb944022494c0dd5da64600df64ea05c49a79c41473404f5f",
+          "pushTiming": {
+            "startTime": "2026-10-17T21:24:25.252521883Z",
+            "endTime": "2026-10-17T21:24:28.253492855Z"
+          },
+          "artifactRegistryPackage": "projects/vibecart-llmai/locations/asia-east1/repositories/vibecart/packages/web/versions/sha256:ba7d34787ffda32cb944022494c0dd5da64600df64ea05c49a79c41473404f5f"
+        }
+      ],
+      "steps": [
+        {
+          "status": "SUCCESS"
+        }
+      ]
+    },
+    {
+      "id": "f0f1fbc2-2980-477e-8a77-d9eb467ad503",
+      "status": "SUCCESS",
+      "source": {
+        "storageSource": {
+          "bucket": "vibecart-llmai-sam-build-278483818008",
+          "object": "pr56-20261018-1d2abf2-exact.tar.gz",
+          "generation": "1792259026901918"
+        }
+      },
+      "provenance": {
+        "resolvedStorageSource": {
+          "bucket": "vibecart-llmai-sam-build-278483818008",
+          "object": "pr56-20261018-1d2abf2-exact.tar.gz",
+          "generation": "1792259026901918"
+        },
+        "fileHashes": {
+          "gs://vibecart-llmai-sam-build-278483818008/pr56-20261018-1d2abf2-exact.tar.gz#1792259026901918": {
+            "fileHash": [
+              {
+                "type": "MD5",
+                "value": "57wxygwUOwPmafkdymtcpQ=="
+              },
+              {
+                "type": "SHA256",
+                "value": "M3NtRU//oFvHu9ETNhqxl9TBxLJgg1oHeMxUPsRtpdE="
+              }
+            ]
+          }
+        }
+      },
+      "images": [
+        {
+          "name": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web:pr56-20261018-1d2abf2-exact",
+          "digest": "sha256:1686638380b8cb8dc792423b059918b292e94f095d68c623ea9136da1ff9813b",
+          "pushTiming": {
+            "startTime": "2026-10-17T17:44:25.932092813Z",
+            "endTime": "2026-10-17T17:44:29.605690925Z"
+          },
+          "artifactRegistryPackage": "projects/vibecart-llmai/locations/asia-east1/repositories/vibecart/packages/web/versions/sha256:1686638380b8cb8dc792423b059918b292e94f095d68c623ea9136da1ff9813b"
+        }
+      ],
+      "steps": [
+        {
+          "status": "SUCCESS"
+        },
+        {
+          "status": "SUCCESS"
+        }
+      ]
+    }
+  ],
+  "hosting": [
+    {
+      "name": "sites/vibecart-llmai/releases/1792363722745000",
+      "releaseTime": "2026-10-18T22:48:42.745Z",
+      "version": "sites/vibecart-llmai/versions/a33b77d8155885b8",
+      "status": "FINALIZED",
+      "config": {
+        "rewrites": [
+          {
+            "glob": "**",
+            "run": {
+              "serviceId": "vibecart-web",
+              "region": "asia-east1"
+            }
+          }
+        ]
+      }
+    }
+  ]
+}
