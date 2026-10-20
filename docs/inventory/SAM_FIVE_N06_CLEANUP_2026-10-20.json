@@ -1,0 +1,23 @@
+{
+  "checked_at": "2026-10-20T00:52:48.044781+00:00",
+  "markers": [
+    "ren-txn-166d3d96881b9a07",
+    "ren-d4-2676edd7319f74ee",
+    "ren-txn-fault-dc58eab59f9d6226"
+  ],
+  "remaining": {
+    "products": 0,
+    "product_reviews": 0,
+    "order_items": 0,
+    "acceptance_probe_controls": 0,
+    "categories": 0,
+    "carts": 0,
+    "users": 0,
+    "cart_events": 0,
+    "auth_sessions": 0,
+    "orders": 0,
+    "behavior_events": 0,
+    "product_skus": 0
+  },
+  "verified": true
+}

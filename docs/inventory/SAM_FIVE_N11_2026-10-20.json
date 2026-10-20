@@ -1,0 +1,4323 @@
+{
+  "started_at": "2026-10-20T08:35:09.181+08:00",
+  "operator": "Codex; SAM simulation of JEFF technical review",
+  "project": "vibecart-llmai",
+  "method": "Control-plane inventory plus one authorized Cloud Asset API activation; runtime and IAM unchanged",
+  "mutations": 1,
+  "atlas_access": false,
+  "credential_output": false,
+  "scopes": [
+    {
+      "scope": "Cloud Run locations",
+      "http": 200,
+      "reasons": [],
+      "pages": 1,
+      "complete": true,
+      "pagination_remaining": false,
+      "unreachable": [],
+      "resources": [
+        "vibecart-llmai/locations/africa-south1",
+        "vibecart-llmai/locations/asia-east1",
+        "vibecart-llmai/locations/asia-east2",
+        "vibecart-llmai/locations/asia-northeast1",
+        "vibecart-llmai/locations/asia-northeast2",
+        "vibecart-llmai/locations/asia-northeast3",
+        "vibecart-llmai/locations/asia-south1",
+        "vibecart-llmai/locations/asia-south2",
+        "vibecart-llmai/locations/asia-southeast1",
+        "vibecart-llmai/locations/asia-southeast2",
+        "vibecart-llmai/locations/asia-southeast3",
+        "vibecart-llmai/locations/australia-southeast1",
+        "vibecart-llmai/locations/australia-southeast2",
+        "vibecart-llmai/locations/europe-central2",
+        "vibecart-llmai/locations/europe-north1",
+        "vibecart-llmai/locations/europe-north2",
+        "vibecart-llmai/locations/europe-southwest1",
+        "vibecart-llmai/locations/europe-west1",
+        "vibecart-llmai/locations/europe-west10",
+        "vibecart-llmai/locations/europe-west12",
+        "vibecart-llmai/locations/europe-west2",
+        "vibecart-llmai/locations/europe-west3",
+        "vibecart-llmai/locations/europe-west4",
+        "vibecart-llmai/locations/europe-west6",
+        "vibecart-llmai/locations/europe-west8",
+        "vibecart-llmai/locations/europe-west9",
+        "vibecart-llmai/locations/me-central1",
+        "vibecart-llmai/locations/me-central2",
+        "vibecart-llmai/locations/me-west1",
+        "vibecart-llmai/locations/northamerica-northeast1",
+        "vibecart-llmai/locations/northamerica-northeast2",
+        "vibecart-llmai/locations/northamerica-south1",
+        "vibecart-llmai/locations/southamerica-east1",
+        "vibecart-llmai/locations/southamerica-west1",
+        "vibecart-llmai/locations/us-central1",
+        "vibecart-llmai/locations/us-east1",
+        "vibecart-llmai/locations/us-east4",
+        "vibecart-llmai/locations/us-east5",
+        "vibecart-llmai/locations/us-south1",
+        "vibecart-llmai/locations/us-west1",
+        "vibecart-llmai/locations/us-west2",
+        "vibecart-llmai/locations/us-west3",
+        "vibecart-llmai/locations/us-west4"
+      ]
+    },
+    {
+      "scope": "Pub/Sub topics",
+      "http": 200,
+      "reasons": [],
+      "pages": 1,
+      "complete": true,
+      "pagination_remaining": false,
+      "unreachable": [],
+      "resources": [
+        "projects/vibecart-llmai/topics/container-analysis-occurrences-v1beta1",
+        "projects/vibecart-llmai/topics/container-analysis-occurrences-v1",
+        "projects/vibecart-llmai/topics/container-analysis-notes-v1beta1",
+        "projects/vibecart-llmai/topics/container-analysis-notes-v1"
+      ]
+    },
+    {
+      "scope": "Pub/Sub subscriptions",
+      "http": 200,
+      "reasons": [],
+      "pages": 1,
+      "complete": true,
+      "pagination_remaining": false,
+      "unreachable": [],
+      "resources": []
+    },
+    {
+      "scope": "Cloud Run wildcard services",
+      "http": 200,
+      "reasons": [],
+      "pages": 1,
+      "complete": false,
+      "pagination_remaining": false,
+      "unreachable": [
+        "europe-west15",
+        "me-central2",
+        "us-central2",
+        "us-east7",
+        "us-west8"
+      ],
+      "resources": [
+        "projects/vibecart-llmai/locations/asia-east1/services/llm-pj-git",
+        "projects/vibecart-llmai/locations/asia-east1/services/vibecart-acceptance-pr21",
+        "projects/vibecart-llmai/locations/asia-east1/services/vibecart-web"
+      ]
+    },
+    {
+      "scope": "Cloud Run wildcard jobs",
+      "http": 400,
+      "reasons": [],
+      "pages": 1,
+      "complete": false,
+      "resources": []
+    },
+    {
+      "scope": "Cloud Asset project resource search",
+      "http": 403,
+      "reasons": [
+        "SERVICE_DISABLED"
+      ],
+      "pages": 1,
+      "complete": false,
+      "resources": []
+    }
+  ],
+  "enabled_apis": [
+    "analyticshub.googleapis.com",
+    "appengine.googleapis.com",
+    "apptopology.googleapis.com",
+    "artifactregistry.googleapis.com",
+    "bigquery.googleapis.com",
+    "bigqueryconnection.googleapis.com",
+    "bigquerydatapolicy.googleapis.com",
+    "bigquerydatatransfer.googleapis.com",
+    "bigquerymigration.googleapis.com",
+    "bigqueryreservation.googleapis.com",
+    "bigquerystorage.googleapis.com",
+    "cloudaicompanion.googleapis.com",
+    "cloudapis.googleapis.com",
+    "cloudbuild.googleapis.com",
+    "cloudkms.googleapis.com",
+    "cloudresourcemanager.googleapis.com",
+    "cloudtrace.googleapis.com",
+    "compute.googleapis.com",
+    "containeranalysis.googleapis.com",
+    "containerregistry.googleapis.com",
+    "dataform.googleapis.com",
+    "dataplex.googleapis.com",
+    "datastore.googleapis.com",
+    "developerconnect.googleapis.com",
+    "fcm.googleapis.com",
+    "firebase.googleapis.com",
+    "firebasehosting.googleapis.com",
+    "firebaseinstallations.googleapis.com",
+    "firebaseremoteconfig.googleapis.com",
+    "firebaseremoteconfigrealtime.googleapis.com",
+    "firebaserules.googleapis.com",
+    "iam.googleapis.com",
+    "iamcredentials.googleapis.com",
+    "identitytoolkit.googleapis.com",
+    "logging.googleapis.com",
+    "monitoring.googleapis.com",
+    "oslogin.googleapis.com",
+    "pubsub.googleapis.com",
+    "run.googleapis.com",
+    "runtimeconfig.googleapis.com",
+    "secretmanager.googleapis.com",
+    "securetoken.googleapis.com",
+    "servicemanagement.googleapis.com",
+    "serviceusage.googleapis.com",
+    "sql-component.googleapis.com",
+    "storage-api.googleapis.com",
+    "storage-component.googleapis.com",
+    "storage.googleapis.com",
+    "telemetry.googleapis.com",
+    "testing.googleapis.com"
+  ],
+  "enabled_api_listing": {
+    "scope": "Enabled Google APIs",
+    "http": 200,
+    "reasons": [],
+    "pages": 1,
+    "complete": true,
+    "pagination_remaining": false,
+    "unreachable": [],
+    "resources": [
+      "projects/278483818008/services/analyticshub.googleapis.com",
+      "projects/278483818008/services/appengine.googleapis.com",
+      "projects/278483818008/services/apptopology.googleapis.com",
+      "projects/278483818008/services/artifactregistry.googleapis.com",
+      "projects/278483818008/services/bigquery.googleapis.com",
+      "projects/278483818008/services/bigqueryconnection.googleapis.com",
+      "projects/278483818008/services/bigquerydatapolicy.googleapis.com",
+      "projects/278483818008/services/bigquerydatatransfer.googleapis.com",
+      "projects/278483818008/services/bigquerymigration.googleapis.com",
+      "projects/278483818008/services/bigqueryreservation.googleapis.com",
+      "projects/278483818008/services/bigquerystorage.googleapis.com",
+      "projects/278483818008/services/cloudaicompanion.googleapis.com",
+      "projects/278483818008/services/cloudapis.googleapis.com",
+      "projects/278483818008/services/cloudbuild.googleapis.com",
+      "projects/278483818008/services/cloudkms.googleapis.com",
+      "projects/278483818008/services/cloudresourcemanager.googleapis.com",
+      "projects/278483818008/services/cloudtrace.googleapis.com",
+      "projects/278483818008/services/compute.googleapis.com",
+      "projects/278483818008/services/containeranalysis.googleapis.com",
+      "projects/278483818008/services/containerregistry.googleapis.com",
+      "projects/278483818008/services/dataform.googleapis.com",
+      "projects/278483818008/services/dataplex.googleapis.com",
+      "projects/278483818008/services/datastore.googleapis.com",
+      "projects/278483818008/services/developerconnect.googleapis.com",
+      "projects/278483818008/services/fcm.googleapis.com",
+      "projects/278483818008/services/firebase.googleapis.com",
+      "projects/278483818008/services/firebasehosting.googleapis.com",
+      "projects/278483818008/services/firebaseinstallations.googleapis.com",
+      "projects/278483818008/services/firebaseremoteconfig.googleapis.com",
+      "projects/278483818008/services/firebaseremoteconfigrealtime.googleapis.com",
+      "projects/278483818008/services/firebaserules.googleapis.com",
+      "projects/278483818008/services/iam.googleapis.com",
+      "projects/278483818008/services/iamcredentials.googleapis.com",
+      "projects/278483818008/services/identitytoolkit.googleapis.com",
+      "projects/278483818008/services/logging.googleapis.com",
+      "projects/278483818008/services/monitoring.googleapis.com",
+      "projects/278483818008/services/oslogin.googleapis.com",
+      "projects/278483818008/services/pubsub.googleapis.com",
+      "projects/278483818008/services/run.googleapis.com",
+      "projects/278483818008/services/runtimeconfig.googleapis.com",
+      "projects/278483818008/services/secretmanager.googleapis.com",
+      "projects/278483818008/services/securetoken.googleapis.com",
+      "projects/278483818008/services/servicemanagement.googleapis.com",
+      "projects/278483818008/services/serviceusage.googleapis.com",
+      "projects/278483818008/services/sql-component.googleapis.com",
+      "projects/278483818008/services/storage-api.googleapis.com",
+      "projects/278483818008/services/storage-component.googleapis.com",
+      "projects/278483818008/services/storage.googleapis.com",
+      "projects/278483818008/services/telemetry.googleapis.com",
+      "projects/278483818008/services/testing.googleapis.com"
+    ]
+  },
+  "regional": [
+    {
+      "region": "africa-south1",
+      "services": {
+        "scope": "africa-south1 services",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      },
+      "jobs": {
+        "scope": "africa-south1 jobs",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      }
+    },
+    {
+      "region": "asia-east1",
+      "services": {
+        "scope": "asia-east1 services",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": [
+          "projects/vibecart-llmai/locations/asia-east1/services/llm-pj-git",
+          "projects/vibecart-llmai/locations/asia-east1/services/vibecart-acceptance-pr21",
+          "projects/vibecart-llmai/locations/asia-east1/services/vibecart-web"
+        ]
+      },
+      "jobs": {
+        "scope": "asia-east1 jobs",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": [
+          "projects/vibecart-llmai/locations/asia-east1/jobs/sam-n06-bd2d-accept-20261020"
+        ]
+      }
+    },
+    {
+      "region": "asia-east2",
+      "services": {
+        "scope": "asia-east2 services",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      },
+      "jobs": {
+        "scope": "asia-east2 jobs",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      }
+    },
+    {
+      "region": "asia-northeast1",
+      "services": {
+        "scope": "asia-northeast1 services",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      },
+      "jobs": {
+        "scope": "asia-northeast1 jobs",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      }
+    },
+    {
+      "region": "asia-northeast2",
+      "services": {
+        "scope": "asia-northeast2 services",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      },
+      "jobs": {
+        "scope": "asia-northeast2 jobs",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      }
+    },
+    {
+      "region": "asia-northeast3",
+      "services": {
+        "scope": "asia-northeast3 services",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      },
+      "jobs": {
+        "scope": "asia-northeast3 jobs",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      }
+    },
+    {
+      "region": "asia-south1",
+      "services": {
+        "scope": "asia-south1 services",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      },
+      "jobs": {
+        "scope": "asia-south1 jobs",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      }
+    },
+    {
+      "region": "asia-south2",
+      "services": {
+        "scope": "asia-south2 services",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      },
+      "jobs": {
+        "scope": "asia-south2 jobs",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      }
+    },
+    {
+      "region": "asia-southeast1",
+      "services": {
+        "scope": "asia-southeast1 services",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      },
+      "jobs": {
+        "scope": "asia-southeast1 jobs",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      }
+    },
+    {
+      "region": "asia-southeast2",
+      "services": {
+        "scope": "asia-southeast2 services",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      },
+      "jobs": {
+        "scope": "asia-southeast2 jobs",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      }
+    },
+    {
+      "region": "asia-southeast3",
+      "services": {
+        "scope": "asia-southeast3 services",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      },
+      "jobs": {
+        "scope": "asia-southeast3 jobs",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      }
+    },
+    {
+      "region": "australia-southeast1",
+      "services": {
+        "scope": "australia-southeast1 services",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      },
+      "jobs": {
+        "scope": "australia-southeast1 jobs",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      }
+    },
+    {
+      "region": "australia-southeast2",
+      "services": {
+        "scope": "australia-southeast2 services",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      },
+      "jobs": {
+        "scope": "australia-southeast2 jobs",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      }
+    },
+    {
+      "region": "europe-central2",
+      "services": {
+        "scope": "europe-central2 services",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      },
+      "jobs": {
+        "scope": "europe-central2 jobs",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      }
+    },
+    {
+      "region": "europe-north1",
+      "services": {
+        "scope": "europe-north1 services",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      },
+      "jobs": {
+        "scope": "europe-north1 jobs",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      }
+    },
+    {
+      "region": "europe-north2",
+      "services": {
+        "scope": "europe-north2 services",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      },
+      "jobs": {
+        "scope": "europe-north2 jobs",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      }
+    },
+    {
+      "region": "europe-southwest1",
+      "services": {
+        "scope": "europe-southwest1 services",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      },
+      "jobs": {
+        "scope": "europe-southwest1 jobs",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      }
+    },
+    {
+      "region": "europe-west1",
+      "services": {
+        "scope": "europe-west1 services",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      },
+      "jobs": {
+        "scope": "europe-west1 jobs",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      }
+    },
+    {
+      "region": "europe-west10",
+      "services": {
+        "scope": "europe-west10 services",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      },
+      "jobs": {
+        "scope": "europe-west10 jobs",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      }
+    },
+    {
+      "region": "europe-west12",
+      "services": {
+        "scope": "europe-west12 services",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      },
+      "jobs": {
+        "scope": "europe-west12 jobs",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      }
+    },
+    {
+      "region": "europe-west2",
+      "services": {
+        "scope": "europe-west2 services",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      },
+      "jobs": {
+        "scope": "europe-west2 jobs",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      }
+    },
+    {
+      "region": "europe-west3",
+      "services": {
+        "scope": "europe-west3 services",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      },
+      "jobs": {
+        "scope": "europe-west3 jobs",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      }
+    },
+    {
+      "region": "europe-west4",
+      "services": {
+        "scope": "europe-west4 services",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      },
+      "jobs": {
+        "scope": "europe-west4 jobs",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      }
+    },
+    {
+      "region": "europe-west6",
+      "services": {
+        "scope": "europe-west6 services",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      },
+      "jobs": {
+        "scope": "europe-west6 jobs",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      }
+    },
+    {
+      "region": "europe-west8",
+      "services": {
+        "scope": "europe-west8 services",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      },
+      "jobs": {
+        "scope": "europe-west8 jobs",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      }
+    },
+    {
+      "region": "europe-west9",
+      "services": {
+        "scope": "europe-west9 services",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      },
+      "jobs": {
+        "scope": "europe-west9 jobs",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      }
+    },
+    {
+      "region": "me-central1",
+      "services": {
+        "scope": "me-central1 services",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      },
+      "jobs": {
+        "scope": "me-central1 jobs",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      }
+    },
+    {
+      "region": "me-central2",
+      "services": {
+        "scope": "me-central2 services",
+        "http": 403,
+        "reasons": [
+          "LOCATION_POLICY_VIOLATED"
+        ],
+        "pages": 1,
+        "complete": false,
+        "resources": []
+      },
+      "jobs": {
+        "scope": "me-central2 jobs",
+        "http": 403,
+        "reasons": [
+          "LOCATION_POLICY_VIOLATED"
+        ],
+        "pages": 1,
+        "complete": false,
+        "resources": []
+      }
+    },
+    {
+      "region": "me-west1",
+      "services": {
+        "scope": "me-west1 services",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      },
+      "jobs": {
+        "scope": "me-west1 jobs",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      }
+    },
+    {
+      "region": "northamerica-northeast1",
+      "services": {
+        "scope": "northamerica-northeast1 services",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      },
+      "jobs": {
+        "scope": "northamerica-northeast1 jobs",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      }
+    },
+    {
+      "region": "northamerica-northeast2",
+      "services": {
+        "scope": "northamerica-northeast2 services",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      },
+      "jobs": {
+        "scope": "northamerica-northeast2 jobs",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      }
+    },
+    {
+      "region": "northamerica-south1",
+      "services": {
+        "scope": "northamerica-south1 services",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      },
+      "jobs": {
+        "scope": "northamerica-south1 jobs",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      }
+    },
+    {
+      "region": "southamerica-east1",
+      "services": {
+        "scope": "southamerica-east1 services",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      },
+      "jobs": {
+        "scope": "southamerica-east1 jobs",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      }
+    },
+    {
+      "region": "southamerica-west1",
+      "services": {
+        "scope": "southamerica-west1 services",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      },
+      "jobs": {
+        "scope": "southamerica-west1 jobs",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      }
+    },
+    {
+      "region": "us-central1",
+      "services": {
+        "scope": "us-central1 services",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      },
+      "jobs": {
+        "scope": "us-central1 jobs",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      }
+    },
+    {
+      "region": "us-east1",
+      "services": {
+        "scope": "us-east1 services",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      },
+      "jobs": {
+        "scope": "us-east1 jobs",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      }
+    },
+    {
+      "region": "us-east4",
+      "services": {
+        "scope": "us-east4 services",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      },
+      "jobs": {
+        "scope": "us-east4 jobs",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      }
+    },
+    {
+      "region": "us-east5",
+      "services": {
+        "scope": "us-east5 services",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      },
+      "jobs": {
+        "scope": "us-east5 jobs",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      }
+    },
+    {
+      "region": "us-south1",
+      "services": {
+        "scope": "us-south1 services",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      },
+      "jobs": {
+        "scope": "us-south1 jobs",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      }
+    },
+    {
+      "region": "us-west1",
+      "services": {
+        "scope": "us-west1 services",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      },
+      "jobs": {
+        "scope": "us-west1 jobs",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      }
+    },
+    {
+      "region": "us-west2",
+      "services": {
+        "scope": "us-west2 services",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      },
+      "jobs": {
+        "scope": "us-west2 jobs",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      }
+    },
+    {
+      "region": "us-west3",
+      "services": {
+        "scope": "us-west3 services",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      },
+      "jobs": {
+        "scope": "us-west3 jobs",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      }
+    },
+    {
+      "region": "us-west4",
+      "services": {
+        "scope": "us-west4 services",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      },
+      "jobs": {
+        "scope": "us-west4 jobs",
+        "http": 200,
+        "reasons": [],
+        "pages": 1,
+        "complete": true,
+        "pagination_remaining": false,
+        "unreachable": [],
+        "resources": []
+      }
+    }
+  ],
+  "service_count": 3,
+  "job_count": 1,
+  "services": [
+    {
+      "name": "projects/vibecart-llmai/locations/asia-east1/services/llm-pj-git",
+      "uri": "https://llm-pj-git-m44ncgz5ta-de.a.run.app",
+      "latest_ready_revision": "projects/vibecart-llmai/locations/asia-east1/services/llm-pj-git/revisions/llm-pj-git-00002-547",
+      "traffic": [
+        {
+          "revision": "llm-pj-git-00002-547",
+          "percent": 100,
+          "tag": null,
+          "uri": null
+        }
+      ],
+      "revisions_count": 2,
+      "revisions_list_complete": true,
+      "routed_revisions": [
+        {
+          "revision": "llm-pj-git-00002-547",
+          "image": "gcr.io/cloudrun/placeholder@sha256:2c74c51230a0fb8f513f11ebc127ba187a0e7776aa1a06b850aca019cfddc2fd",
+          "source_sha": null,
+          "environment_names": [],
+          "safe_flags": {},
+          "command": [],
+          "args_count": 0,
+          "first_arg_sha256": null,
+          "service_account": "278483818008-compute@developer.gserviceaccount.com",
+          "vpc_egress": null,
+          "vpc_network": null
+        }
+      ]
+    },
+    {
+      "name": "projects/vibecart-llmai/locations/asia-east1/services/vibecart-acceptance-pr21",
+      "uri": "https://vibecart-acceptance-pr21-m44ncgz5ta-de.a.run.app",
+      "latest_ready_revision": "projects/vibecart-llmai/locations/asia-east1/services/vibecart-acceptance-pr21/revisions/vibecart-acceptance-pr21-00047-tis",
+      "traffic": [
+        {
+          "revision": "vibecart-acceptance-pr21-00047-tis",
+          "percent": 0,
+          "tag": "github-preview",
+          "uri": "https://github-preview---vibecart-acceptance-pr21-m44ncgz5ta-de.a.run.app"
+        },
+        {
+          "revision": "vibecart-acceptance-pr21-main20ee-claude1-180s",
+          "percent": 0,
+          "tag": "main20ee-ai",
+          "uri": "https://main20ee-ai---vibecart-acceptance-pr21-m44ncgz5ta-de.a.run.app"
+        },
+        {
+          "revision": "vibecart-acceptance-pr21-main20ee-off-180s",
+          "percent": 0,
+          "tag": "main20ee-off",
+          "uri": "https://main20ee-off---vibecart-acceptance-pr21-m44ncgz5ta-de.a.run.app"
+        },
+        {
+          "revision": "vibecart-acceptance-pr21-n06-1019",
+          "percent": 0,
+          "tag": "n06-1019",
+          "uri": "https://n06-1019---vibecart-acceptance-pr21-m44ncgz5ta-de.a.run.app"
+        },
+        {
+          "revision": "vibecart-acceptance-pr21-n06-294c-1019",
+          "percent": 100,
+          "tag": "n06-294c",
+          "uri": "https://n06-294c---vibecart-acceptance-pr21-m44ncgz5ta-de.a.run.app"
+        },
+        {
+          "revision": "vibecart-acceptance-pr21-nat-1019",
+          "percent": 0,
+          "tag": "nat-1019",
+          "uri": "https://nat-1019---vibecart-acceptance-pr21-m44ncgz5ta-de.a.run.app"
+        },
+        {
+          "revision": "vibecart-acceptance-pr21-role95-e5788ce",
+          "percent": 0,
+          "tag": "role95-full",
+          "uri": "https://role95-full---vibecart-acceptance-pr21-m44ncgz5ta-de.a.run.app"
+        },
+        {
+          "revision": "vibecart-acceptance-pr21-rv9a76-2117",
+          "percent": 0,
+          "tag": "rv9a76-ai",
+          "uri": "https://rv9a76-ai---vibecart-acceptance-pr21-m44ncgz5ta-de.a.run.app"
+        },
+        {
+          "revision": "vibecart-acceptance-pr21-rv9a76-rules-2117",
+          "percent": 0,
+          "tag": "rv9a76-rules",
+          "uri": "https://rv9a76-rules---vibecart-acceptance-pr21-m44ncgz5ta-de.a.run.app"
+        }
+      ],
+      "revisions_count": 30,
+      "revisions_list_complete": true,
+      "routed_revisions": [
+        {
+          "revision": "vibecart-acceptance-pr21-00047-tis",
+          "image": "asia-east1-docker.pkg.dev/vibecart-llmai/cloud-run-source-deploy/vibecart-acceptance-pr21@sha256:11159fba9ddfbc10daf28f0b71c9ea3fc4b4ae1065f2e93007cf094811777dcf",
+          "source_sha": "b998d09c788c704fec70ffa2977c937eeb1545e5",
+          "environment_names": [
+            "CLOUD_ACCEPTANCE_DB",
+            "CLOUD_ACCEPTANCE_MODE",
+            "CLOUD_PREVIEW_READ_ONLY",
+            "ENABLE_CHECKOUT",
+            "MONGO_URI",
+            "SECRET_KEY"
+          ],
+          "safe_flags": {
+            "CLOUD_PREVIEW_READ_ONLY": "false",
+            "CLOUD_ACCEPTANCE_MODE": "true"
+          },
+          "command": [],
+          "args_count": 0,
+          "first_arg_sha256": null,
+          "service_account": "vibecart-pr21-acceptance@vibecart-llmai.iam.gserviceaccount.com",
+          "vpc_egress": "ALL_TRAFFIC",
+          "vpc_network": "vibecart-egress-20261019"
+        },
+        {
+          "revision": "vibecart-acceptance-pr21-n06-294c-1019",
+          "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:796a42b6d5fd80099900abc381d4c954d21ed1bea162ad0a9a49a89355deb40a",
+          "source_sha": "294c1fac26d6785054063b8be6eb7d9e61075be4",
+          "environment_names": [
+            "CLOUD_ACCEPTANCE_DB",
+            "CLOUD_ACCEPTANCE_MODE",
+            "CLOUD_PREVIEW_READ_ONLY",
+            "ENABLE_CHECKOUT",
+            "MONGO_URI",
+            "SECRET_KEY"
+          ],
+          "safe_flags": {
+            "CLOUD_PREVIEW_READ_ONLY": "false",
+            "CLOUD_ACCEPTANCE_MODE": "true"
+          },
+          "command": [],
+          "args_count": 0,
+          "first_arg_sha256": null,
+          "service_account": "vibecart-pr21-acceptance@vibecart-llmai.iam.gserviceaccount.com",
+          "vpc_egress": "ALL_TRAFFIC",
+          "vpc_network": "vibecart-egress-20261019"
+        },
+        {
+          "revision": "vibecart-acceptance-pr21-n06-1019",
+          "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:c31acb1fb3949995fb7cecb0e56d59f9adee9331826f369f829326dfe1158ca0",
+          "source_sha": "7aeb77c0a615260986d990d37fe699719f3bed1b",
+          "environment_names": [
+            "CLOUD_ACCEPTANCE_DB",
+            "CLOUD_ACCEPTANCE_MODE",
+            "CLOUD_PREVIEW_READ_ONLY",
+            "ENABLE_CHECKOUT",
+            "MONGO_URI",
+            "SECRET_KEY"
+          ],
+          "safe_flags": {
+            "CLOUD_PREVIEW_READ_ONLY": "false",
+            "CLOUD_ACCEPTANCE_MODE": "true"
+          },
+          "command": [],
+          "args_count": 0,
+          "first_arg_sha256": null,
+          "service_account": "vibecart-pr21-acceptance@vibecart-llmai.iam.gserviceaccount.com",
+          "vpc_egress": "ALL_TRAFFIC",
+          "vpc_network": "vibecart-egress-20261019"
+        },
+        {
+          "revision": "vibecart-acceptance-pr21-nat-1019",
+          "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:7199fa08c711917a80e5f54dbfd580ed96f3ef632bda7337b4aa2bde2325c992",
+          "source_sha": "e000d952d22a64b568903641893f4ffdc71accd3",
+          "environment_names": [
+            "CLOUD_ACCEPTANCE_DB",
+            "CLOUD_ACCEPTANCE_MODE",
+            "CLOUD_PREVIEW_READ_ONLY",
+            "ENABLE_CHECKOUT",
+            "MONGO_URI",
+            "SECRET_KEY"
+          ],
+          "safe_flags": {
+            "CLOUD_PREVIEW_READ_ONLY": "false",
+            "CLOUD_ACCEPTANCE_MODE": "true"
+          },
+          "command": [],
+          "args_count": 0,
+          "first_arg_sha256": null,
+          "service_account": "vibecart-pr21-acceptance@vibecart-llmai.iam.gserviceaccount.com",
+          "vpc_egress": "ALL_TRAFFIC",
+          "vpc_network": "vibecart-egress-20261019"
+        },
+        {
+          "revision": "vibecart-acceptance-pr21-role95-e5788ce",
+          "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:8755ccb82902cf59430d5b2b76505c3fb6e4ed265d0ef98ba42821769edbcbdd",
+          "source_sha": "e5788ce12339370a8afb5e2c824a6ecd24e5f602",
+          "environment_names": [
+            "AI_FREE_QUESTION_ENABLED",
+            "AI_RECOMMENDATIONS_ENABLED",
+            "AI_SUMMARY_ENABLED",
+            "CLOUD_ACCEPTANCE_DB",
+            "CLOUD_ACCEPTANCE_MODE",
+            "CLOUD_PREVIEW_READ_ONLY",
+            "ENABLE_CHECKOUT",
+            "MONGO_URI",
+            "SECRET_KEY"
+          ],
+          "safe_flags": {
+            "CLOUD_ACCEPTANCE_MODE": "true",
+            "CLOUD_PREVIEW_READ_ONLY": "false",
+            "AI_RECOMMENDATIONS_ENABLED": "false",
+            "AI_SUMMARY_ENABLED": "false",
+            "AI_FREE_QUESTION_ENABLED": "false"
+          },
+          "command": [],
+          "args_count": 0,
+          "first_arg_sha256": null,
+          "service_account": "vibecart-pr21-acceptance@vibecart-llmai.iam.gserviceaccount.com",
+          "vpc_egress": null,
+          "vpc_network": null
+        },
+        {
+          "revision": "vibecart-acceptance-pr21-rv9a76-rules-2117",
+          "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:15d359548b7e7343a1051b4907f78bf667cf36856a3c2680577a3ac989ea1c79",
+          "source_sha": "9a76b1d4dd5a13aac4beeb7065702c3d58dd6abd",
+          "environment_names": [
+            "AI_FREE_QUESTION_ENABLED",
+            "AI_RECOMMENDATIONS_ENABLED",
+            "AI_SUMMARY_ENABLED",
+            "CLOUD_ACCEPTANCE_DB",
+            "CLOUD_ACCEPTANCE_MODE",
+            "CLOUD_PREVIEW_READ_ONLY",
+            "ENABLE_CHECKOUT",
+            "MONGO_URI",
+            "SECRET_KEY"
+          ],
+          "safe_flags": {
+            "CLOUD_ACCEPTANCE_MODE": "true",
+            "CLOUD_PREVIEW_READ_ONLY": "false",
+            "AI_RECOMMENDATIONS_ENABLED": "false",
+            "AI_SUMMARY_ENABLED": "false",
+            "AI_FREE_QUESTION_ENABLED": "false"
+          },
+          "command": [],
+          "args_count": 0,
+          "first_arg_sha256": null,
+          "service_account": "vibecart-pr21-acceptance@vibecart-llmai.iam.gserviceaccount.com",
+          "vpc_egress": null,
+          "vpc_network": null
+        },
+        {
+          "revision": "vibecart-acceptance-pr21-rv9a76-2117",
+          "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:15d359548b7e7343a1051b4907f78bf667cf36856a3c2680577a3ac989ea1c79",
+          "source_sha": "9a76b1d4dd5a13aac4beeb7065702c3d58dd6abd",
+          "environment_names": [
+            "AI_FREE_QUESTION_ENABLED",
+            "AI_RECOMMENDATIONS_ENABLED",
+            "AI_SUMMARY_ENABLED",
+            "CLOUD_ACCEPTANCE_DB",
+            "CLOUD_ACCEPTANCE_MODE",
+            "CLOUD_PREVIEW_READ_ONLY",
+            "ENABLE_CHECKOUT",
+            "MONGO_URI",
+            "SECRET_KEY"
+          ],
+          "safe_flags": {
+            "CLOUD_ACCEPTANCE_MODE": "true",
+            "CLOUD_PREVIEW_READ_ONLY": "false",
+            "AI_RECOMMENDATIONS_ENABLED": "true",
+            "AI_SUMMARY_ENABLED": "false",
+            "AI_FREE_QUESTION_ENABLED": "false"
+          },
+          "command": [],
+          "args_count": 0,
+          "first_arg_sha256": null,
+          "service_account": "vibecart-pr21-acceptance@vibecart-llmai.iam.gserviceaccount.com",
+          "vpc_egress": null,
+          "vpc_network": null
+        },
+        {
+          "revision": "vibecart-acceptance-pr21-main20ee-off-180s",
+          "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:1d7b666db5b3f927e6fecf484617c2a0842694c0bfdc61150e6f3683434b4074",
+          "source_sha": "20ee040110cbd6f02abb35aefde532a54d2fb120",
+          "environment_names": [
+            "AI_FREE_QUESTION_ENABLED",
+            "AI_RECOMMENDATIONS_ENABLED",
+            "AI_SUMMARY_ENABLED",
+            "CLOUD_ACCEPTANCE_DB",
+            "CLOUD_ACCEPTANCE_MODE",
+            "CLOUD_PREVIEW_READ_ONLY",
+            "ENABLE_CHECKOUT",
+            "MONGO_URI",
+            "SECRET_KEY"
+          ],
+          "safe_flags": {
+            "CLOUD_ACCEPTANCE_MODE": "true",
+            "CLOUD_PREVIEW_READ_ONLY": "false",
+            "AI_RECOMMENDATIONS_ENABLED": "true",
+            "AI_SUMMARY_ENABLED": "false",
+            "AI_FREE_QUESTION_ENABLED": "false"
+          },
+          "command": [],
+          "args_count": 0,
+          "first_arg_sha256": null,
+          "service_account": "vibecart-pr21-acceptance@vibecart-llmai.iam.gserviceaccount.com",
+          "vpc_egress": null,
+          "vpc_network": null
+        },
+        {
+          "revision": "vibecart-acceptance-pr21-main20ee-claude1-180s",
+          "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:1d7b666db5b3f927e6fecf484617c2a0842694c0bfdc61150e6f3683434b4074",
+          "source_sha": "20ee040110cbd6f02abb35aefde532a54d2fb120",
+          "environment_names": [
+            "AI_FREE_QUESTION_ENABLED",
+            "AI_RECOMMENDATIONS_ENABLED",
+            "AI_SUMMARY_ENABLED",
+            "ANTHROPIC_API_KEY",
+            "CLAUDE_MODEL",
+            "CLOUD_ACCEPTANCE_DB",
+            "CLOUD_ACCEPTANCE_MODE",
+            "CLOUD_PREVIEW_READ_ONLY",
+            "ENABLE_CHECKOUT",
+            "MONGO_URI",
+            "SECRET_KEY"
+          ],
+          "safe_flags": {
+            "CLOUD_ACCEPTANCE_MODE": "true",
+            "CLOUD_PREVIEW_READ_ONLY": "false",
+            "AI_RECOMMENDATIONS_ENABLED": "true",
+            "AI_SUMMARY_ENABLED": "true",
+            "AI_FREE_QUESTION_ENABLED": "false"
+          },
+          "command": [],
+          "args_count": 0,
+          "first_arg_sha256": null,
+          "service_account": "vibecart-pr21-acceptance@vibecart-llmai.iam.gserviceaccount.com",
+          "vpc_egress": null,
+          "vpc_network": null
+        }
+      ]
+    },
+    {
+      "name": "projects/vibecart-llmai/locations/asia-east1/services/vibecart-web",
+      "uri": "https://vibecart-web-m44ncgz5ta-de.a.run.app",
+      "latest_ready_revision": "projects/vibecart-llmai/locations/asia-east1/services/vibecart-web/revisions/vibecart-web-ai-294c-1020",
+      "traffic": [
+        {
+          "revision": "vibecart-web-00019-phf",
+          "percent": 0,
+          "tag": "ren-fence",
+          "uri": "https://ren-fence---vibecart-web-m44ncgz5ta-de.a.run.app"
+        },
+        {
+          "revision": "vibecart-web-ai-294c-1020",
+          "percent": 100,
+          "tag": "ai-ready",
+          "uri": "https://ai-ready---vibecart-web-m44ncgz5ta-de.a.run.app"
+        },
+        {
+          "revision": "vibecart-web-main20ee-1640",
+          "percent": 0,
+          "tag": "main20ee-preview",
+          "uri": "https://main20ee-preview---vibecart-web-m44ncgz5ta-de.a.run.app"
+        },
+        {
+          "revision": "vibecart-web-n06-1019",
+          "percent": 0,
+          "tag": "n06-1019",
+          "uri": "https://n06-1019---vibecart-web-m44ncgz5ta-de.a.run.app"
+        },
+        {
+          "revision": "vibecart-web-n06-294c-1019",
+          "percent": 0,
+          "tag": "n06-294c",
+          "uri": "https://n06-294c---vibecart-web-m44ncgz5ta-de.a.run.app"
+        },
+        {
+          "revision": "vibecart-web-nat-1019",
+          "percent": 0,
+          "tag": "nat-1019",
+          "uri": "https://nat-1019---vibecart-web-m44ncgz5ta-de.a.run.app"
+        },
+        {
+          "revision": "vibecart-web-reviews-b038aaca",
+          "percent": 0,
+          "tag": "reviews-1019",
+          "uri": "https://reviews-1019---vibecart-web-m44ncgz5ta-de.a.run.app"
+        },
+        {
+          "revision": "vibecart-web-role-auth-576b4748",
+          "percent": 0,
+          "tag": "role-auth-1019",
+          "uri": "https://role-auth-1019---vibecart-web-m44ncgz5ta-de.a.run.app"
+        }
+      ],
+      "revisions_count": 26,
+      "revisions_list_complete": true,
+      "routed_revisions": [
+        {
+          "revision": "vibecart-web-ai-294c-1020",
+          "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:03d01cb52065e21fc96db6fb34b4de0527f2eb3966abbf0fe8719cb99bcc98f2",
+          "source_sha": "294c1fac26d6785054063b8be6eb7d9e61075be4",
+          "environment_names": [
+            "AI_FREE_QUESTION_ENABLED",
+            "AI_RECOMMENDATIONS_ENABLED",
+            "AI_SUMMARY_ENABLED",
+            "ANTHROPIC_API_KEY",
+            "BGE_MODEL",
+            "CLAUDE_MODEL",
+            "CLOUD_PREVIEW_READ_ONLY",
+            "ENABLE_CHECKOUT",
+            "MONGO_URI",
+            "SECRET_KEY"
+          ],
+          "safe_flags": {
+            "CLOUD_PREVIEW_READ_ONLY": "false",
+            "AI_RECOMMENDATIONS_ENABLED": "false",
+            "AI_FREE_QUESTION_ENABLED": "false",
+            "AI_SUMMARY_ENABLED": "true"
+          },
+          "command": [],
+          "args_count": 0,
+          "first_arg_sha256": null,
+          "service_account": "vibecart-web@vibecart-llmai.iam.gserviceaccount.com",
+          "vpc_egress": "ALL_TRAFFIC",
+          "vpc_network": "vibecart-egress-20261019"
+        },
+        {
+          "revision": "vibecart-web-n06-294c-1019",
+          "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:796a42b6d5fd80099900abc381d4c954d21ed1bea162ad0a9a49a89355deb40a",
+          "source_sha": "294c1fac26d6785054063b8be6eb7d9e61075be4",
+          "environment_names": [
+            "AI_FREE_QUESTION_ENABLED",
+            "AI_RECOMMENDATIONS_ENABLED",
+            "AI_SUMMARY_ENABLED",
+            "CLOUD_PREVIEW_READ_ONLY",
+            "ENABLE_CHECKOUT",
+            "MONGO_URI",
+            "SECRET_KEY"
+          ],
+          "safe_flags": {
+            "CLOUD_PREVIEW_READ_ONLY": "false",
+            "AI_RECOMMENDATIONS_ENABLED": "false",
+            "AI_SUMMARY_ENABLED": "false",
+            "AI_FREE_QUESTION_ENABLED": "false"
+          },
+          "command": [],
+          "args_count": 0,
+          "first_arg_sha256": null,
+          "service_account": "vibecart-web@vibecart-llmai.iam.gserviceaccount.com",
+          "vpc_egress": "ALL_TRAFFIC",
+          "vpc_network": "vibecart-egress-20261019"
+        },
+        {
+          "revision": "vibecart-web-n06-1019",
+          "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:c31acb1fb3949995fb7cecb0e56d59f9adee9331826f369f829326dfe1158ca0",
+          "source_sha": "7aeb77c0a615260986d990d37fe699719f3bed1b",
+          "environment_names": [
+            "AI_FREE_QUESTION_ENABLED",
+            "AI_RECOMMENDATIONS_ENABLED",
+            "AI_SUMMARY_ENABLED",
+            "CLOUD_PREVIEW_READ_ONLY",
+            "ENABLE_CHECKOUT",
+            "MONGO_URI",
+            "SECRET_KEY"
+          ],
+          "safe_flags": {
+            "CLOUD_PREVIEW_READ_ONLY": "false",
+            "AI_RECOMMENDATIONS_ENABLED": "false",
+            "AI_SUMMARY_ENABLED": "false",
+            "AI_FREE_QUESTION_ENABLED": "false"
+          },
+          "command": [],
+          "args_count": 0,
+          "first_arg_sha256": null,
+          "service_account": "vibecart-web@vibecart-llmai.iam.gserviceaccount.com",
+          "vpc_egress": "ALL_TRAFFIC",
+          "vpc_network": "vibecart-egress-20261019"
+        },
+        {
+          "revision": "vibecart-web-nat-1019",
+          "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:8755ccb82902cf59430d5b2b76505c3fb6e4ed265d0ef98ba42821769edbcbdd",
+          "source_sha": "b038aaca2d2553a39d8fd958100f277c64a75486",
+          "environment_names": [
+            "AI_FREE_QUESTION_ENABLED",
+            "AI_RECOMMENDATIONS_ENABLED",
+            "AI_SUMMARY_ENABLED",
+            "CLOUD_PREVIEW_READ_ONLY",
+            "ENABLE_CHECKOUT",
+            "MONGO_URI",
+            "SECRET_KEY"
+          ],
+          "safe_flags": {
+            "CLOUD_PREVIEW_READ_ONLY": "false",
+            "AI_RECOMMENDATIONS_ENABLED": "false",
+            "AI_SUMMARY_ENABLED": "false",
+            "AI_FREE_QUESTION_ENABLED": "false"
+          },
+          "command": [],
+          "args_count": 0,
+          "first_arg_sha256": null,
+          "service_account": "vibecart-web@vibecart-llmai.iam.gserviceaccount.com",
+          "vpc_egress": "ALL_TRAFFIC",
+          "vpc_network": "vibecart-egress-20261019"
+        },
+        {
+          "revision": "vibecart-web-reviews-b038aaca",
+          "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:8755ccb82902cf59430d5b2b76505c3fb6e4ed265d0ef98ba42821769edbcbdd",
+          "source_sha": "b038aaca2d2553a39d8fd958100f277c64a75486",
+          "environment_names": [
+            "AI_FREE_QUESTION_ENABLED",
+            "AI_RECOMMENDATIONS_ENABLED",
+            "AI_SUMMARY_ENABLED",
+            "CLOUD_PREVIEW_READ_ONLY",
+            "ENABLE_CHECKOUT",
+            "MONGO_URI",
+            "SECRET_KEY"
+          ],
+          "safe_flags": {
+            "CLOUD_PREVIEW_READ_ONLY": "false",
+            "AI_RECOMMENDATIONS_ENABLED": "false",
+            "AI_SUMMARY_ENABLED": "false",
+            "AI_FREE_QUESTION_ENABLED": "false"
+          },
+          "command": [],
+          "args_count": 0,
+          "first_arg_sha256": null,
+          "service_account": "vibecart-web@vibecart-llmai.iam.gserviceaccount.com",
+          "vpc_egress": null,
+          "vpc_network": null
+        },
+        {
+          "revision": "vibecart-web-role-auth-576b4748",
+          "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:228862259bd96a69224132e5af73fc4e1c89165a759057470ed467c4ce80617b",
+          "source_sha": "576b474822efd7464d650d7af2aa245e07fbc911",
+          "environment_names": [
+            "CLOUD_PREVIEW_READ_ONLY",
+            "ENABLE_CHECKOUT",
+            "MONGO_URI",
+            "SECRET_KEY"
+          ],
+          "safe_flags": {
+            "CLOUD_PREVIEW_READ_ONLY": "false"
+          },
+          "command": [],
+          "args_count": 0,
+          "first_arg_sha256": null,
+          "service_account": "vibecart-web@vibecart-llmai.iam.gserviceaccount.com",
+          "vpc_egress": null,
+          "vpc_network": null
+        },
+        {
+          "revision": "vibecart-web-main20ee-1640",
+          "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:1d7b666db5b3f927e6fecf484617c2a0842694c0bfdc61150e6f3683434b4074",
+          "source_sha": "20ee040110cbd6f02abb35aefde532a54d2fb120",
+          "environment_names": [
+            "AI_FREE_QUESTION_ENABLED",
+            "AI_RECOMMENDATIONS_ENABLED",
+            "AI_SUMMARY_ENABLED",
+            "CLOUD_PREVIEW_READ_ONLY",
+            "ENABLE_CHECKOUT",
+            "MONGO_URI",
+            "SECRET_KEY"
+          ],
+          "safe_flags": {
+            "CLOUD_PREVIEW_READ_ONLY": "true",
+            "AI_RECOMMENDATIONS_ENABLED": "false",
+            "AI_SUMMARY_ENABLED": "false",
+            "AI_FREE_QUESTION_ENABLED": "false"
+          },
+          "command": [],
+          "args_count": 0,
+          "first_arg_sha256": null,
+          "service_account": "vibecart-web@vibecart-llmai.iam.gserviceaccount.com",
+          "vpc_egress": null,
+          "vpc_network": null
+        },
+        {
+          "revision": "vibecart-web-00019-phf",
+          "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:7199fa08c711917a80e5f54dbfd580ed96f3ef632bda7337b4aa2bde2325c992",
+          "source_sha": "e000d952d22a64b568903641893f4ffdc71accd3",
+          "environment_names": [
+            "CLOUD_PREVIEW_READ_ONLY",
+            "ENABLE_CHECKOUT",
+            "MONGO_URI",
+            "SECRET_KEY"
+          ],
+          "safe_flags": {
+            "CLOUD_PREVIEW_READ_ONLY": "false"
+          },
+          "command": [],
+          "args_count": 0,
+          "first_arg_sha256": null,
+          "service_account": "vibecart-web@vibecart-llmai.iam.gserviceaccount.com",
+          "vpc_egress": null,
+          "vpc_network": null
+        }
+      ]
+    }
+  ],
+  "jobs": [
+    {
+      "name": "projects/vibecart-llmai/locations/asia-east1/jobs/sam-n06-bd2d-accept-20261020"
+    }
+  ],
+  "effective_location_policy": {
+    "method": "POST read-only getEffectiveOrgPolicy",
+    "http": 200,
+    "reasons": [],
+    "constraint": "constraints/gcp.resourceLocations",
+    "list_policy": {
+      "allValues": "ALLOW"
+    },
+    "boolean_policy": null
+  },
+  "other_worker_api_states": [
+    {
+      "api": "cloudfunctions.googleapis.com",
+      "http": 200,
+      "state": "DISABLED",
+      "enabled": false,
+      "reasons": [],
+      "resource_query_performed": false,
+      "note": "Current API state; disabled/historical/external scope not represented as a global absence claim"
+    },
+    {
+      "api": "cloudscheduler.googleapis.com",
+      "http": 200,
+      "state": "DISABLED",
+      "enabled": false,
+      "reasons": [],
+      "resource_query_performed": false,
+      "note": "Current API state; disabled/historical/external scope not represented as a global absence claim"
+    },
+    {
+      "api": "workflows.googleapis.com",
+      "http": 200,
+      "state": "DISABLED",
+      "enabled": false,
+      "reasons": [],
+      "resource_query_performed": false,
+      "note": "Current API state; disabled/historical/external scope not represented as a global absence claim"
+    },
+    {
+      "api": "cloudtasks.googleapis.com",
+      "http": 200,
+      "state": "DISABLED",
+      "enabled": false,
+      "reasons": [],
+      "resource_query_performed": false,
+      "note": "Current API state; disabled/historical/external scope not represented as a global absence claim"
+    },
+    {
+      "api": "container.googleapis.com",
+      "http": 200,
+      "state": "DISABLED",
+      "enabled": false,
+      "reasons": [],
+      "resource_query_performed": false,
+      "note": "Current API state; disabled/historical/external scope not represented as a global absence claim"
+    },
+    {
+      "api": "appengine.googleapis.com",
+      "http": 200,
+      "state": "ENABLED",
+      "enabled": true,
+      "reasons": [],
+      "resource_query_performed": true,
+      "note": "Current API state; disabled/historical/external scope not represented as a global absence claim"
+    }
+  ],
+  "compute_instances": {
+    "http": 200,
+    "reasons": [],
+    "pagination_remaining": false,
+    "resources": [],
+    "warnings": []
+  },
+  "completed_at": "2026-10-20T08:41:05.732+08:00",
+  "unresolved_scope": [
+    "Direct Run APIs still deny five locations; project-wide Cloud Asset metadata inventory returned no assets there, subject to documented eventual consistency",
+    "Cloud Scheduler API remains DISABLED and no API activation was requested for it; historical inactive scheduler definitions are outside current runtime scope",
+    "Other projects, unmanaged workstations and external unowned consumers are outside bounded LLM_PJ project runtime scope",
+    "Historical routed revision digests recorded; latest adopted image behavioral acceptance must be tied to its separate N06/N11 probe evidence"
+  ],
+  "wildcard_additional_regions": [
+    {
+      "region": "europe-west15",
+      "reads": [
+        {
+          "kind": "services",
+          "http": 403,
+          "reasons": [
+            "LOCATION_POLICY_VIOLATED"
+          ],
+          "resources": [],
+          "pagination_remaining": false
+        },
+        {
+          "kind": "jobs",
+          "http": 403,
+          "reasons": [
+            "LOCATION_POLICY_VIOLATED"
+          ],
+          "resources": [],
+          "pagination_remaining": false
+        }
+      ]
+    },
+    {
+      "region": "us-central2",
+      "reads": [
+        {
+          "kind": "services",
+          "http": 403,
+          "reasons": [
+            "LOCATION_POLICY_VIOLATED"
+          ],
+          "resources": [],
+          "pagination_remaining": false
+        },
+        {
+          "kind": "jobs",
+          "http": 403,
+          "reasons": [
+            "LOCATION_POLICY_VIOLATED"
+          ],
+          "resources": [],
+          "pagination_remaining": false
+        }
+      ]
+    },
+    {
+      "region": "us-east7",
+      "reads": [
+        {
+          "kind": "services",
+          "http": 403,
+          "reasons": [
+            "LOCATION_POLICY_VIOLATED"
+          ],
+          "resources": [],
+          "pagination_remaining": false
+        },
+        {
+          "kind": "jobs",
+          "http": 403,
+          "reasons": [
+            "LOCATION_POLICY_VIOLATED"
+          ],
+          "resources": [],
+          "pagination_remaining": false
+        }
+      ]
+    },
+    {
+      "region": "us-west8",
+      "reads": [
+        {
+          "kind": "services",
+          "http": 403,
+          "reasons": [
+            "LOCATION_POLICY_VIOLATED"
+          ],
+          "resources": [],
+          "pagination_remaining": false
+        },
+        {
+          "kind": "jobs",
+          "http": 403,
+          "reasons": [
+            "LOCATION_POLICY_VIOLATED"
+          ],
+          "resources": [],
+          "pagination_remaining": false
+        }
+      ]
+    }
+  ],
+  "app_engine": {
+    "scope": "App Engine application",
+    "http": 404,
+    "reasons": [],
+    "application_found": false
+  },
+  "job_details": [
+    {
+      "name": "projects/vibecart-llmai/locations/asia-east1/jobs/sam-n06-bd2d-accept-20261020",
+      "http": 200,
+      "reasons": [],
+      "create_time": "2026-10-19T18:25:29.422635Z",
+      "update_time": "2026-10-19T18:25:29.422635Z",
+      "label_names": [],
+      "image": "asia-east1-docker.pkg.dev/vibecart-llmai/cloud-run-source-deploy/vibecart-acceptance-pr21@sha256:95038c58f727917797e7f9df7b7dca6cc70051b3c8126d77ca08a3dfa7186ef6",
+      "source_sha": null,
+      "env_names": [
+        "MONGO_URI"
+      ],
+      "command": [
+        "python"
+      ],
+      "args_count": 2,
+      "first_arg_sha256": "0c3603e13e24a40b4bf215e3795a9a40d60a8456fb7b63c2d11e81701a231e85",
+      "execution_count": 1,
+      "latest_created_execution": {
+        "name": "sam-n06-bd2d-accept-20261020-mh552",
+        "createTime": "2026-10-19T18:25:39.401367Z",
+        "completionTime": "2026-10-19T18:26:45.981596Z",
+        "completionStatus": "EXECUTION_FAILED"
+      },
+      "task_count": 1,
+      "service_account": "vibecart-pr21-acceptance@vibecart-llmai.iam.gserviceaccount.com",
+      "vpc_egress": "ALL_TRAFFIC"
+    }
+  ],
+  "supplement": {
+    "started_at": "2026-10-20T08:36:25.990+08:00",
+    "completed_at": "2026-10-20T08:36:28.736+08:00",
+    "scope": "Follow-up only for new wildcard unreachable locations, enabled App Engine and current Job; read only"
+  },
+  "source_review": {
+    "checked_at": "2026-10-20T08:36:59.911+08:00",
+    "head": "fc4e7c071c34a43594a50f6d0407952e8f20113b",
+    "production_label_source": "294c1fac26d6785054063b8be6eb7d9e61075be4",
+    "runtime_diff_names": [
+      "VibeCart_AI/services/cart_service.py"
+    ],
+    "consumer_files": [
+      {
+        "path": "MuscleCore分析資料/website/app/services/behavior_scope.py",
+        "working_sha256": "57b611a8602f18ea2e725f7429caa11e898233c25f9405a2335ee2b34b6dc6ba",
+        "deployed_source_sha256": "57b611a8602f18ea2e725f7429caa11e898233c25f9405a2335ee2b34b6dc6ba"
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/services/dashboard.py",
+        "working_sha256": "a89a2b61ee1a53656ecd78ee3cb02d6fa07e1f76d9006c328a6b81784558b5c6",
+        "deployed_source_sha256": "a89a2b61ee1a53656ecd78ee3cb02d6fa07e1f76d9006c328a6b81784558b5c6"
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/services/recommendation.py",
+        "working_sha256": "93f0ca7725135e43981c3024e7a5d6ab4eed7a7d315e9db10fc50d7e012988cf",
+        "deployed_source_sha256": "93f0ca7725135e43981c3024e7a5d6ab4eed7a7d315e9db10fc50d7e012988cf"
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/services/storefront_ranking.py",
+        "working_sha256": "389105fe3ea8001980b1fa37ede86d622f9ec3d240462611c0eddcfac46fa808",
+        "deployed_source_sha256": "389105fe3ea8001980b1fa37ede86d622f9ec3d240462611c0eddcfac46fa808"
+      },
+      {
+        "path": "MuscleCore分析資料/website/app/services/ai_workflows.py",
+        "working_sha256": "c58a53ac7db1def62b5908b1c6d56bb6fff331abc5998386fb8766d99d526332",
+        "deployed_source_sha256": "c58a53ac7db1def62b5908b1c6d56bb6fff331abc5998386fb8766d99d526332"
+      }
+    ],
+    "note": "Static byte comparison only. Historical synthetic execution evidence stays at original image/time; no new remote writes in this round."
+  },
+  "asset_prerequisite_permissions": {
+    "checked_at": "2026-10-20T08:37:20.810+08:00",
+    "method": "POST read-only project testIamPermissions",
+    "http": 200,
+    "requested": [
+      "serviceusage.services.enable",
+      "serviceusage.services.get",
+      "serviceusage.services.use",
+      "cloudasset.assets.searchAllResources",
+      "cloudasset.assets.listResource",
+      "cloudasset.assets.exportResource"
+    ],
+    "allowed": [
+      "cloudasset.assets.exportResource",
+      "cloudasset.assets.listResource",
+      "cloudasset.assets.searchAllResources",
+      "serviceusage.services.enable",
+      "serviceusage.services.get",
+      "serviceusage.services.use"
+    ],
+    "reasons": [],
+    "mutations": 0
+  },
+  "cloud_asset_activation": {
+    "authorization": "N11 explicit root delegation: enable Cloud Asset API only; no IAM grants or new identities requested",
+    "started_at": "2026-10-20T08:39:05.267+08:00",
+    "service": "cloudasset.googleapis.com",
+    "before": {
+      "http": 200,
+      "state": "DISABLED",
+      "reasons": []
+    },
+    "enable_requests": 1,
+    "operation_polls": [
+      {
+        "at": "2026-10-20T08:39:07.859+08:00",
+        "http": 200,
+        "done": true,
+        "error_code": null
+      }
+    ],
+    "enable_response": {
+      "http": 200,
+      "reasons": [],
+      "operation": "operations/acat.p2-278483818008-15000caa-ac28-447f-a0fc-85808a95d642",
+      "done": false
+    },
+    "operation_done": true,
+    "operation_error": null,
+    "after": {
+      "http": 200,
+      "state": "ENABLED",
+      "reasons": []
+    },
+    "completed_at": "2026-10-20T08:39:08.892+08:00"
+  },
+  "runtime_mutations": 0,
+  "iam_mutations": 0,
+  "cloud_asset_inventory": {
+    "started_at": "2026-10-20T08:40:27.904+08:00",
+    "scope": "projects/278483818008",
+    "api": "searchAllResources",
+    "read_mask": "name,assetType,location,state,createTime,updateTime",
+    "attempts": [
+      {
+        "at": "2026-10-20T08:40:29.479+08:00",
+        "http": 200,
+        "reasons": [],
+        "error_metadata": []
+      }
+    ],
+    "pages": [
+      {
+        "http": 200,
+        "reasons": [],
+        "count": 322,
+        "next_page": false
+      }
+    ],
+    "resources": [
+      {
+        "name": "//serviceusage.googleapis.com/projects/278483818008/services/dataform.googleapis.com",
+        "assetType": "serviceusage.googleapis.com/Service",
+        "location": "global",
+        "state": "ENABLED"
+      },
+      {
+        "name": "//serviceusage.googleapis.com/projects/278483818008/services/testing.googleapis.com",
+        "assetType": "serviceusage.googleapis.com/Service",
+        "location": "global",
+        "state": "ENABLED"
+      },
+      {
+        "name": "//serviceusage.googleapis.com/projects/278483818008/services/cloudtrace.googleapis.com",
+        "assetType": "serviceusage.googleapis.com/Service",
+        "location": "global",
+        "state": "ENABLED"
+      },
+      {
+        "name": "//serviceusage.googleapis.com/projects/278483818008/services/bigquerydatatransfer.googleapis.com",
+        "assetType": "serviceusage.googleapis.com/Service",
+        "location": "global",
+        "state": "ENABLED"
+      },
+      {
+        "name": "//serviceusage.googleapis.com/projects/278483818008/services/firebaseinstallations.googleapis.com",
+        "assetType": "serviceusage.googleapis.com/Service",
+        "location": "global",
+        "state": "ENABLED"
+      },
+      {
+        "name": "//serviceusage.googleapis.com/projects/278483818008/services/secretmanager.googleapis.com",
+        "assetType": "serviceusage.googleapis.com/Service",
+        "location": "global",
+        "state": "ENABLED"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/regions/asia-east1/addresses/serverless-ipv4-cloudrun-1792451758356381450",
+        "assetType": "compute.googleapis.com/Address",
+        "location": "asia-east1",
+        "state": "RESERVED",
+        "createTime": "2026-10-19T23:15:58Z"
+      },
+      {
+        "name": "//dataplex.googleapis.com/projects/vibecart-llmai/locations/global/entryGroups/@analyticshub",
+        "assetType": "dataplex.googleapis.com/EntryGroup",
+        "location": "global",
+        "createTime": "2026-10-19T21:15:18Z"
+      },
+      {
+        "name": "//artifactregistry.googleapis.com/projects/vibecart-llmai/locations/asia-east1/repositories/cloud-run-source-deploy/dockerImages/vibecart-acceptance-pr21@sha256:09538be5ccd0b7ff7866afd2e4667e43c3ae73c7ef35656e300f7174f778cb9e",
+        "assetType": "artifactregistry.googleapis.com/DockerImage",
+        "location": "asia-east1"
+      },
+      {
+        "name": "//artifactregistry.googleapis.com/projects/vibecart-llmai/locations/asia-east1/repositories/cloud-run-source-deploy/dockerImages/vibecart-acceptance-pr21@sha256:fb04c8a54fa144293c6e4cb1ef7691506ea4c197c8524d648c5bb6e9562efbb3",
+        "assetType": "artifactregistry.googleapis.com/DockerImage",
+        "location": "asia-east1"
+      },
+      {
+        "name": "//artifactregistry.googleapis.com/projects/vibecart-llmai/locations/asia-east1/repositories/cloud-run-source-deploy/dockerImages/vibecart-acceptance-pr21@sha256:11159fba9ddfbc10daf28f0b71c9ea3fc4b4ae1065f2e93007cf094811777dcf",
+        "assetType": "artifactregistry.googleapis.com/DockerImage",
+        "location": "asia-east1"
+      },
+      {
+        "name": "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/revisions/vibecart-acceptance-pr21-00047-tis",
+        "assetType": "run.googleapis.com/Revision",
+        "location": "asia-east1",
+        "createTime": "2026-10-19T20:36:17Z"
+      },
+      {
+        "name": "//artifactregistry.googleapis.com/projects/vibecart-llmai/locations/asia-east1/repositories/cloud-run-source-deploy/dockerImages/vibecart-acceptance-pr21@sha256:3aabbdd14873420a97a07caa284741bb0263bb34d94671a5f308a66ad4ae47fd",
+        "assetType": "artifactregistry.googleapis.com/DockerImage",
+        "location": "asia-east1"
+      },
+      {
+        "name": "//artifactregistry.googleapis.com/projects/vibecart-llmai/locations/asia-east1/repositories/cloud-run-source-deploy/dockerImages/vibecart-acceptance-pr21@sha256:458c3dcc8d4d0b1351e4921820f7c5df15e144130fb43cdddf53e9f6064655cc",
+        "assetType": "artifactregistry.googleapis.com/DockerImage",
+        "location": "asia-east1"
+      },
+      {
+        "name": "//artifactregistry.googleapis.com/projects/vibecart-llmai/locations/asia-east1/repositories/cloud-run-source-deploy/dockerImages/vibecart-acceptance-pr21@sha256:5cba6eeea8d191791e8ac4ec76c6a4f6a18df301a0df188e64756ac26510f55f",
+        "assetType": "artifactregistry.googleapis.com/DockerImage",
+        "location": "asia-east1"
+      },
+      {
+        "name": "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/revisions/vibecart-acceptance-pr21-00046-yan",
+        "assetType": "run.googleapis.com/Revision",
+        "location": "asia-east1",
+        "createTime": "2026-10-19T20:27:16Z"
+      },
+      {
+        "name": "//dataplex.googleapis.com/projects/vibecart-llmai/locations/global/entryGroups/@storage",
+        "assetType": "dataplex.googleapis.com/EntryGroup",
+        "location": "global",
+        "createTime": "2026-10-19T20:17:32Z"
+      },
+      {
+        "name": "//dataplex.googleapis.com/projects/vibecart-llmai/locations/global/entryGroups/@pubsub",
+        "assetType": "dataplex.googleapis.com/EntryGroup",
+        "location": "global",
+        "createTime": "2026-10-19T20:17:03Z"
+      },
+      {
+        "name": "//dataplex.googleapis.com/projects/vibecart-llmai/locations/global/entryGroups/@spanner",
+        "assetType": "dataplex.googleapis.com/EntryGroup",
+        "location": "global",
+        "createTime": "2026-10-19T19:55:45Z"
+      },
+      {
+        "name": "//dataplex.googleapis.com/projects/vibecart-llmai/locations/global/entryGroups/@dataprocmetastore",
+        "assetType": "dataplex.googleapis.com/EntryGroup",
+        "location": "global",
+        "createTime": "2026-10-19T19:26:09Z"
+      },
+      {
+        "name": "//dataplex.googleapis.com/projects/vibecart-llmai/locations/global/entryGroups/@bigtable",
+        "assetType": "dataplex.googleapis.com/EntryGroup",
+        "location": "global",
+        "createTime": "2026-10-19T19:12:29Z"
+      },
+      {
+        "name": "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/executions/sam-n06-bd2d-accept-20261020-mh552",
+        "assetType": "run.googleapis.com/Execution",
+        "location": "asia-east1",
+        "createTime": "2026-10-19T18:25:39Z"
+      },
+      {
+        "name": "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/jobs/sam-n06-bd2d-accept-20261020",
+        "assetType": "run.googleapis.com/Job",
+        "location": "asia-east1",
+        "createTime": "2026-10-19T18:25:29Z"
+      },
+      {
+        "name": "//dataplex.googleapis.com/projects/vibecart-llmai/locations/global/entryGroups/@vertexai",
+        "assetType": "dataplex.googleapis.com/EntryGroup",
+        "location": "global",
+        "createTime": "2026-10-19T18:14:38Z"
+      },
+      {
+        "name": "//artifactregistry.googleapis.com/projects/vibecart-llmai/locations/asia-east1/repositories/cloud-run-source-deploy/dockerImages/vibecart-acceptance-pr21@sha256:997c56701838a132f924b6f6d35885334fe1af2f404c649cf34db9d8ab3d6fb6",
+        "assetType": "artifactregistry.googleapis.com/DockerImage",
+        "location": "asia-east1"
+      },
+      {
+        "name": "//artifactregistry.googleapis.com/projects/vibecart-llmai/locations/asia-east1/repositories/cloud-run-source-deploy/dockerImages/vibecart-acceptance-pr21@sha256:f624991c6302ad3a656af7b44bfa46302b740186c787397f94a15b74828b88dc",
+        "assetType": "artifactregistry.googleapis.com/DockerImage",
+        "location": "asia-east1"
+      },
+      {
+        "name": "//artifactregistry.googleapis.com/projects/vibecart-llmai/locations/asia-east1/repositories/cloud-run-source-deploy/dockerImages/vibecart-acceptance-pr21@sha256:95038c58f727917797e7f9df7b7dca6cc70051b3c8126d77ca08a3dfa7186ef6",
+        "assetType": "artifactregistry.googleapis.com/DockerImage",
+        "location": "asia-east1"
+      },
+      {
+        "name": "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/revisions/vibecart-acceptance-pr21-00045-gus",
+        "assetType": "run.googleapis.com/Revision",
+        "location": "asia-east1",
+        "createTime": "2026-10-19T17:54:41Z"
+      },
+      {
+        "name": "//dataplex.googleapis.com/projects/vibecart-llmai/locations/global/entryGroups/@bigquery",
+        "assetType": "dataplex.googleapis.com/EntryGroup",
+        "location": "global",
+        "createTime": "2026-10-19T17:50:49Z"
+      },
+      {
+        "name": "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/revisions/vibecart-acceptance-pr21-reviews-ai-1020",
+        "assetType": "run.googleapis.com/Revision",
+        "location": "asia-east1",
+        "createTime": "2026-10-19T16:34:52Z"
+      },
+      {
+        "name": "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/revisions/vibecart-web-ai-294c-1020",
+        "assetType": "run.googleapis.com/Revision",
+        "location": "asia-east1",
+        "createTime": "2026-10-19T16:06:26Z"
+      },
+      {
+        "name": "//artifactregistry.googleapis.com/projects/vibecart-llmai/locations/asia-east1/repositories/vibecart/dockerImages/web@sha256:03d01cb52065e21fc96db6fb34b4de0527f2eb3966abbf0fe8719cb99bcc98f2",
+        "assetType": "artifactregistry.googleapis.com/DockerImage",
+        "location": "asia-east1"
+      },
+      {
+        "name": "//artifactregistry.googleapis.com/projects/vibecart-llmai/locations/asia-east1/repositories/cloud-run-source-deploy/dockerImages/vibecart-acceptance-pr21@sha256:d6facaf477c496dd007e5688ece2b6d8a95f1e7c9283d542769c9b9c43d5c8c6",
+        "assetType": "artifactregistry.googleapis.com/DockerImage",
+        "location": "asia-east1"
+      },
+      {
+        "name": "//artifactregistry.googleapis.com/projects/vibecart-llmai/locations/asia-east1/repositories/cloud-run-source-deploy/dockerImages/vibecart-acceptance-pr21@sha256:014a8c77424048c808b34f70e567f465d718b2c2243043076b6334d8b1fd02bd",
+        "assetType": "artifactregistry.googleapis.com/DockerImage",
+        "location": "asia-east1"
+      },
+      {
+        "name": "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/revisions/vibecart-acceptance-pr21-00036-hed",
+        "assetType": "run.googleapis.com/Revision",
+        "location": "asia-east1",
+        "createTime": "2026-10-19T09:56:58Z"
+      },
+      {
+        "name": "//artifactregistry.googleapis.com/projects/vibecart-llmai/locations/asia-east1/repositories/cloud-run-source-deploy/dockerImages/vibecart-acceptance-pr21@sha256:f721cacb298e51c3885d4605507ba5ce61d5ad64f50a8abb8b6f5d25d4c80fbb",
+        "assetType": "artifactregistry.googleapis.com/DockerImage",
+        "location": "asia-east1"
+      },
+      {
+        "name": "//artifactregistry.googleapis.com/projects/vibecart-llmai/locations/asia-east1/repositories/cloud-run-source-deploy/dockerImages/vibecart-acceptance-pr21@sha256:06b6a00305fbd9d9dbadb3c04cfe66b3c9bb3ece802abc78c39378f3803f99ac",
+        "assetType": "artifactregistry.googleapis.com/DockerImage",
+        "location": "asia-east1"
+      },
+      {
+        "name": "//artifactregistry.googleapis.com/projects/vibecart-llmai/locations/asia-east1/repositories/cloud-run-source-deploy/dockerImages/vibecart-acceptance-pr21@sha256:6bdcb861a367dac5be5cf5d87ef8e836c3632563cb962c8789671fcc266cb125",
+        "assetType": "artifactregistry.googleapis.com/DockerImage",
+        "location": "asia-east1"
+      },
+      {
+        "name": "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/revisions/vibecart-acceptance-pr21-00035-nex",
+        "assetType": "run.googleapis.com/Revision",
+        "location": "asia-east1",
+        "createTime": "2026-10-19T09:51:09Z"
+      },
+      {
+        "name": "//artifactregistry.googleapis.com/projects/vibecart-llmai/locations/asia-east1/repositories/cloud-run-source-deploy/dockerImages/vibecart-acceptance-pr21@sha256:eb8793b411069e83fb29911b9939f43d5beee42189cdba984bbba5a1ad3899a7",
+        "assetType": "artifactregistry.googleapis.com/DockerImage",
+        "location": "asia-east1"
+      },
+      {
+        "name": "//artifactregistry.googleapis.com/projects/vibecart-llmai/locations/asia-east1/repositories/cloud-run-source-deploy/dockerImages/vibecart-acceptance-pr21@sha256:f68c081d2dfefeb14ad33c14135c38172e91d3b99955a2c7d3ad3b25b31a5da5",
+        "assetType": "artifactregistry.googleapis.com/DockerImage",
+        "location": "asia-east1"
+      },
+      {
+        "name": "//artifactregistry.googleapis.com/projects/vibecart-llmai/locations/asia-east1/repositories/cloud-run-source-deploy/dockerImages/vibecart-acceptance-pr21@sha256:7ad0943847e1e92c627619f3e5925fc6948f82be2569b032a4a0c2f0787e0080",
+        "assetType": "artifactregistry.googleapis.com/DockerImage",
+        "location": "asia-east1"
+      },
+      {
+        "name": "//pubsub.googleapis.com/projects/vibecart-llmai/topics/container-analysis-occurrences-v1",
+        "assetType": "pubsub.googleapis.com/Topic",
+        "location": "global"
+      },
+      {
+        "name": "//pubsub.googleapis.com/projects/vibecart-llmai/topics/container-analysis-notes-v1",
+        "assetType": "pubsub.googleapis.com/Topic",
+        "location": "global"
+      },
+      {
+        "name": "//pubsub.googleapis.com/projects/vibecart-llmai/topics/container-analysis-occurrences-v1beta1",
+        "assetType": "pubsub.googleapis.com/Topic",
+        "location": "global"
+      },
+      {
+        "name": "//pubsub.googleapis.com/projects/vibecart-llmai/topics/container-analysis-notes-v1beta1",
+        "assetType": "pubsub.googleapis.com/Topic",
+        "location": "global"
+      },
+      {
+        "name": "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/revisions/vibecart-acceptance-pr21-00024-f9x",
+        "assetType": "run.googleapis.com/Revision",
+        "location": "asia-east1",
+        "createTime": "2026-10-19T09:45:22Z"
+      },
+      {
+        "name": "//artifactregistry.googleapis.com/projects/vibecart-llmai/locations/asia-east1/repositories/cloud-run-source-deploy/dockerImages/vibecart-acceptance-pr21@sha256:d94f19cee0a2f1892b2947232c60a4c7cc66c1777f0fc30f9edbb5e05fbc80e4",
+        "assetType": "artifactregistry.googleapis.com/DockerImage",
+        "location": "asia-east1"
+      },
+      {
+        "name": "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/revisions/vibecart-acceptance-pr21-n06-294c-barrier-1019",
+        "assetType": "run.googleapis.com/Revision",
+        "location": "asia-east1",
+        "createTime": "2026-10-19T00:46:22Z"
+      },
+      {
+        "name": "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/revisions/vibecart-web-n06-294c-1019",
+        "assetType": "run.googleapis.com/Revision",
+        "location": "asia-east1",
+        "createTime": "2026-10-19T00:45:44Z"
+      },
+      {
+        "name": "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/revisions/vibecart-acceptance-pr21-n06-294c-1019",
+        "assetType": "run.googleapis.com/Revision",
+        "location": "asia-east1",
+        "createTime": "2026-10-19T00:45:10Z"
+      },
+      {
+        "name": "//artifactregistry.googleapis.com/projects/vibecart-llmai/locations/asia-east1/repositories/vibecart/dockerImages/web@sha256:796a42b6d5fd80099900abc381d4c954d21ed1bea162ad0a9a49a89355deb40a",
+        "assetType": "artifactregistry.googleapis.com/DockerImage",
+        "location": "asia-east1"
+      },
+      {
+        "name": "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/revisions/vibecart-acceptance-pr21-n06-barrier-1019",
+        "assetType": "run.googleapis.com/Revision",
+        "location": "asia-east1",
+        "createTime": "2026-10-19T00:37:28Z"
+      },
+      {
+        "name": "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/revisions/vibecart-web-n06-1019",
+        "assetType": "run.googleapis.com/Revision",
+        "location": "asia-east1",
+        "createTime": "2026-10-19T00:35:47Z"
+      },
+      {
+        "name": "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/revisions/vibecart-acceptance-pr21-n06-1019",
+        "assetType": "run.googleapis.com/Revision",
+        "location": "asia-east1",
+        "createTime": "2026-10-19T00:34:07Z"
+      },
+      {
+        "name": "//artifactregistry.googleapis.com/projects/vibecart-llmai/locations/asia-east1/repositories/vibecart/dockerImages/web@sha256:c31acb1fb3949995fb7cecb0e56d59f9adee9331826f369f829326dfe1158ca0",
+        "assetType": "artifactregistry.googleapis.com/DockerImage",
+        "location": "asia-east1"
+      },
+      {
+        "name": "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/revisions/vibecart-web-nat-1019",
+        "assetType": "run.googleapis.com/Revision",
+        "location": "asia-east1",
+        "createTime": "2026-10-19T00:16:58Z"
+      },
+      {
+        "name": "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/revisions/vibecart-acceptance-pr21-nat-1019",
+        "assetType": "run.googleapis.com/Revision",
+        "location": "asia-east1",
+        "createTime": "2026-10-19T00:16:20Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/regions/asia-east1/routers/vibecart-egress-router",
+        "assetType": "compute.googleapis.com/Router",
+        "location": "asia-east1",
+        "createTime": "2026-10-18T23:59:40Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/regions/asia-east1/addresses/vibecart-egress-ip",
+        "assetType": "compute.googleapis.com/Address",
+        "location": "asia-east1",
+        "state": "IN_USE",
+        "createTime": "2026-10-18T23:59:34Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/global/routes/default-route-r-32ec98be797478d7",
+        "assetType": "compute.googleapis.com/Route",
+        "location": "global",
+        "createTime": "2026-10-18T23:58:24Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/regions/asia-east1/subnetworks/vibecart-egress-subnet",
+        "assetType": "compute.googleapis.com/Subnetwork",
+        "location": "asia-east1",
+        "createTime": "2026-10-18T23:58:19Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/global/routes/default-route-1b25565b24f327fe",
+        "assetType": "compute.googleapis.com/Route",
+        "location": "global",
+        "createTime": "2026-10-18T23:58:08Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/global/networks/vibecart-egress-20261019",
+        "assetType": "compute.googleapis.com/Network",
+        "location": "global",
+        "createTime": "2026-10-18T23:58:04Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/global/firewalls/default-allow-ssh",
+        "assetType": "compute.googleapis.com/Firewall",
+        "location": "global",
+        "state": "ENABLED",
+        "createTime": "2026-10-18T23:51:43Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/global/firewalls/default-allow-icmp",
+        "assetType": "compute.googleapis.com/Firewall",
+        "location": "global",
+        "state": "ENABLED",
+        "createTime": "2026-10-18T23:51:43Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/global/firewalls/default-allow-internal",
+        "assetType": "compute.googleapis.com/Firewall",
+        "location": "global",
+        "state": "ENABLED",
+        "createTime": "2026-10-18T23:51:43Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/global/firewalls/default-allow-rdp",
+        "assetType": "compute.googleapis.com/Firewall",
+        "location": "global",
+        "state": "ENABLED",
+        "createTime": "2026-10-18T23:51:43Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/global/routes/default-route-r-101b56b4e0414e77",
+        "assetType": "compute.googleapis.com/Route",
+        "location": "global",
+        "createTime": "2026-10-18T23:51:27Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/global/routes/default-route-r-3631e7bae5045251",
+        "assetType": "compute.googleapis.com/Route",
+        "location": "global",
+        "createTime": "2026-10-18T23:51:27Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/global/routes/default-route-r-dfecaa45e5b7c92c",
+        "assetType": "compute.googleapis.com/Route",
+        "location": "global",
+        "createTime": "2026-10-18T23:51:27Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/global/routes/default-route-r-940a2390d1703f98",
+        "assetType": "compute.googleapis.com/Route",
+        "location": "global",
+        "createTime": "2026-10-18T23:51:27Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/global/routes/default-route-r-eb334a085b06f7ab",
+        "assetType": "compute.googleapis.com/Route",
+        "location": "global",
+        "createTime": "2026-10-18T23:51:26Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/global/routes/default-route-r-93d9091aaefb111e",
+        "assetType": "compute.googleapis.com/Route",
+        "location": "global",
+        "createTime": "2026-10-18T23:51:26Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/global/routes/default-route-r-4a184074598ed4a3",
+        "assetType": "compute.googleapis.com/Route",
+        "location": "global",
+        "createTime": "2026-10-18T23:51:26Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/global/routes/default-route-r-cbe66942f42eaf58",
+        "assetType": "compute.googleapis.com/Route",
+        "location": "global",
+        "createTime": "2026-10-18T23:51:25Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/global/routes/default-route-r-38f7b946540370ce",
+        "assetType": "compute.googleapis.com/Route",
+        "location": "global",
+        "createTime": "2026-10-18T23:51:25Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/global/routes/default-route-r-5e57d1e00bca0f79",
+        "assetType": "compute.googleapis.com/Route",
+        "location": "global",
+        "createTime": "2026-10-18T23:51:25Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/global/routes/default-route-r-d1993e3833455cf9",
+        "assetType": "compute.googleapis.com/Route",
+        "location": "global",
+        "createTime": "2026-10-18T23:51:25Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/global/routes/default-route-r-91948383be8f40bf",
+        "assetType": "compute.googleapis.com/Route",
+        "location": "global",
+        "createTime": "2026-10-18T23:51:25Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/global/routes/default-route-r-5d8aa5e15e800a43",
+        "assetType": "compute.googleapis.com/Route",
+        "location": "global",
+        "createTime": "2026-10-18T23:51:25Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/global/routes/default-route-r-e5591e454ca9e6ca",
+        "assetType": "compute.googleapis.com/Route",
+        "location": "global",
+        "createTime": "2026-10-18T23:51:24Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/global/routes/default-route-r-75655a6f6ab966be",
+        "assetType": "compute.googleapis.com/Route",
+        "location": "global",
+        "createTime": "2026-10-18T23:51:24Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/global/routes/default-route-r-f562e327c15b9015",
+        "assetType": "compute.googleapis.com/Route",
+        "location": "global",
+        "createTime": "2026-10-18T23:51:24Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/global/routes/default-route-r-d33cd8b8518f9fdd",
+        "assetType": "compute.googleapis.com/Route",
+        "location": "global",
+        "createTime": "2026-10-18T23:51:24Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/global/routes/default-route-r-7aa4d429d2657f9c",
+        "assetType": "compute.googleapis.com/Route",
+        "location": "global",
+        "createTime": "2026-10-18T23:51:24Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/global/routes/default-route-r-dfa8833b7c5855b2",
+        "assetType": "compute.googleapis.com/Route",
+        "location": "global",
+        "createTime": "2026-10-18T23:51:24Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/global/routes/default-route-r-08aff417dc48137b",
+        "assetType": "compute.googleapis.com/Route",
+        "location": "global",
+        "createTime": "2026-10-18T23:51:24Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/global/routes/default-route-r-8fd7dba56b65245e",
+        "assetType": "compute.googleapis.com/Route",
+        "location": "global",
+        "createTime": "2026-10-18T23:51:24Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/global/routes/default-route-r-a8614febfe2ff8c0",
+        "assetType": "compute.googleapis.com/Route",
+        "location": "global",
+        "createTime": "2026-10-18T23:51:24Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/global/routes/default-route-r-721ac3f8b771f056",
+        "assetType": "compute.googleapis.com/Route",
+        "location": "global",
+        "createTime": "2026-10-18T23:51:24Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/global/routes/default-route-r-a7d210bdb28ae60e",
+        "assetType": "compute.googleapis.com/Route",
+        "location": "global",
+        "createTime": "2026-10-18T23:51:24Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/global/routes/default-route-r-bcdbf7292b7c41e2",
+        "assetType": "compute.googleapis.com/Route",
+        "location": "global",
+        "createTime": "2026-10-18T23:51:24Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/global/routes/default-route-r-36f213098f3bfae6",
+        "assetType": "compute.googleapis.com/Route",
+        "location": "global",
+        "createTime": "2026-10-18T23:51:24Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/global/routes/default-route-r-e211101c676e90fb",
+        "assetType": "compute.googleapis.com/Route",
+        "location": "global",
+        "createTime": "2026-10-18T23:51:24Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/global/routes/default-route-r-479823fd023ecea2",
+        "assetType": "compute.googleapis.com/Route",
+        "location": "global",
+        "createTime": "2026-10-18T23:51:23Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/global/routes/default-route-r-06bbde23a337029a",
+        "assetType": "compute.googleapis.com/Route",
+        "location": "global",
+        "createTime": "2026-10-18T23:51:23Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/global/routes/default-route-r-889528eac2d0699d",
+        "assetType": "compute.googleapis.com/Route",
+        "location": "global",
+        "createTime": "2026-10-18T23:51:23Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/global/routes/default-route-r-52464f285be13996",
+        "assetType": "compute.googleapis.com/Route",
+        "location": "global",
+        "createTime": "2026-10-18T23:51:23Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/global/routes/default-route-r-35b1ca1e29a18554",
+        "assetType": "compute.googleapis.com/Route",
+        "location": "global",
+        "createTime": "2026-10-18T23:51:23Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/global/routes/default-route-r-ad54171ddd474749",
+        "assetType": "compute.googleapis.com/Route",
+        "location": "global",
+        "createTime": "2026-10-18T23:51:23Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/global/routes/default-route-r-f67f46c93e7018aa",
+        "assetType": "compute.googleapis.com/Route",
+        "location": "global",
+        "createTime": "2026-10-18T23:51:23Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/global/routes/default-route-r-049ae24d83e50161",
+        "assetType": "compute.googleapis.com/Route",
+        "location": "global",
+        "createTime": "2026-10-18T23:51:23Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/global/routes/default-route-r-0629483a2123f9e6",
+        "assetType": "compute.googleapis.com/Route",
+        "location": "global",
+        "createTime": "2026-10-18T23:51:23Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/global/routes/default-route-r-b33ed53f5c794ff3",
+        "assetType": "compute.googleapis.com/Route",
+        "location": "global",
+        "createTime": "2026-10-18T23:51:22Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/global/routes/default-route-r-ef0feb3d2a79b859",
+        "assetType": "compute.googleapis.com/Route",
+        "location": "global",
+        "createTime": "2026-10-18T23:51:22Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/global/routes/default-route-r-86e65e57ce208556",
+        "assetType": "compute.googleapis.com/Route",
+        "location": "global",
+        "createTime": "2026-10-18T23:51:22Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/global/routes/default-route-r-d50045e72ad5275d",
+        "assetType": "compute.googleapis.com/Route",
+        "location": "global",
+        "createTime": "2026-10-18T23:51:22Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/global/routes/default-route-r-a1b7ccec7eef1a64",
+        "assetType": "compute.googleapis.com/Route",
+        "location": "global",
+        "createTime": "2026-10-18T23:51:22Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/global/routes/default-route-r-54b6d4d19a6597f1",
+        "assetType": "compute.googleapis.com/Route",
+        "location": "global",
+        "createTime": "2026-10-18T23:51:22Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/regions/europe-west1/subnetworks/default",
+        "assetType": "compute.googleapis.com/Subnetwork",
+        "location": "europe-west1",
+        "createTime": "2026-10-18T23:51:21Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/regions/europe-southwest1/subnetworks/default",
+        "assetType": "compute.googleapis.com/Subnetwork",
+        "location": "europe-southwest1",
+        "createTime": "2026-10-18T23:51:21Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/regions/europe-west3/subnetworks/default",
+        "assetType": "compute.googleapis.com/Subnetwork",
+        "location": "europe-west3",
+        "createTime": "2026-10-18T23:51:21Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/regions/asia-south1/subnetworks/default",
+        "assetType": "compute.googleapis.com/Subnetwork",
+        "location": "asia-south1",
+        "createTime": "2026-10-18T23:51:21Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/regions/europe-west8/subnetworks/default",
+        "assetType": "compute.googleapis.com/Subnetwork",
+        "location": "europe-west8",
+        "createTime": "2026-10-18T23:51:21Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/regions/southamerica-east1/subnetworks/default",
+        "assetType": "compute.googleapis.com/Subnetwork",
+        "location": "southamerica-east1",
+        "createTime": "2026-10-18T23:51:21Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/regions/asia-northeast3/subnetworks/default",
+        "assetType": "compute.googleapis.com/Subnetwork",
+        "location": "asia-northeast3",
+        "createTime": "2026-10-18T23:51:21Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/regions/asia-northeast2/subnetworks/default",
+        "assetType": "compute.googleapis.com/Subnetwork",
+        "location": "asia-northeast2",
+        "createTime": "2026-10-18T23:51:21Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/regions/us-east5/subnetworks/default",
+        "assetType": "compute.googleapis.com/Subnetwork",
+        "location": "us-east5",
+        "createTime": "2026-10-18T23:51:21Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/regions/europe-west6/subnetworks/default",
+        "assetType": "compute.googleapis.com/Subnetwork",
+        "location": "europe-west6",
+        "createTime": "2026-10-18T23:51:21Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/regions/asia-southeast1/subnetworks/default",
+        "assetType": "compute.googleapis.com/Subnetwork",
+        "location": "asia-southeast1",
+        "createTime": "2026-10-18T23:51:21Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/regions/asia-east2/subnetworks/default",
+        "assetType": "compute.googleapis.com/Subnetwork",
+        "location": "asia-east2",
+        "createTime": "2026-10-18T23:51:21Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/regions/asia-northeast1/subnetworks/default",
+        "assetType": "compute.googleapis.com/Subnetwork",
+        "location": "asia-northeast1",
+        "createTime": "2026-10-18T23:51:21Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/regions/us-west4/subnetworks/default",
+        "assetType": "compute.googleapis.com/Subnetwork",
+        "location": "us-west4",
+        "createTime": "2026-10-18T23:51:21Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/regions/southamerica-west1/subnetworks/default",
+        "assetType": "compute.googleapis.com/Subnetwork",
+        "location": "southamerica-west1",
+        "createTime": "2026-10-18T23:51:21Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/regions/europe-west10/subnetworks/default",
+        "assetType": "compute.googleapis.com/Subnetwork",
+        "location": "europe-west10",
+        "createTime": "2026-10-18T23:51:21Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/regions/europe-north1/subnetworks/default",
+        "assetType": "compute.googleapis.com/Subnetwork",
+        "location": "europe-north1",
+        "createTime": "2026-10-18T23:51:21Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/regions/australia-southeast1/subnetworks/default",
+        "assetType": "compute.googleapis.com/Subnetwork",
+        "location": "australia-southeast1",
+        "createTime": "2026-10-18T23:51:21Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/regions/europe-north2/subnetworks/default",
+        "assetType": "compute.googleapis.com/Subnetwork",
+        "location": "europe-north2",
+        "createTime": "2026-10-18T23:51:21Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/regions/europe-central2/subnetworks/default",
+        "assetType": "compute.googleapis.com/Subnetwork",
+        "location": "europe-central2",
+        "createTime": "2026-10-18T23:51:21Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/regions/me-west1/subnetworks/default",
+        "assetType": "compute.googleapis.com/Subnetwork",
+        "location": "me-west1",
+        "createTime": "2026-10-18T23:51:21Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/regions/australia-southeast2/subnetworks/default",
+        "assetType": "compute.googleapis.com/Subnetwork",
+        "location": "australia-southeast2",
+        "createTime": "2026-10-18T23:51:21Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/regions/africa-south1/subnetworks/default",
+        "assetType": "compute.googleapis.com/Subnetwork",
+        "location": "africa-south1",
+        "createTime": "2026-10-18T23:51:21Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/regions/asia-east1/subnetworks/default",
+        "assetType": "compute.googleapis.com/Subnetwork",
+        "location": "asia-east1",
+        "createTime": "2026-10-18T23:51:21Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/regions/europe-west2/subnetworks/default",
+        "assetType": "compute.googleapis.com/Subnetwork",
+        "location": "europe-west2",
+        "createTime": "2026-10-18T23:51:21Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/regions/asia-south2/subnetworks/default",
+        "assetType": "compute.googleapis.com/Subnetwork",
+        "location": "asia-south2",
+        "createTime": "2026-10-18T23:51:21Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/regions/me-central1/subnetworks/default",
+        "assetType": "compute.googleapis.com/Subnetwork",
+        "location": "me-central1",
+        "createTime": "2026-10-18T23:51:21Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/regions/us-west2/subnetworks/default",
+        "assetType": "compute.googleapis.com/Subnetwork",
+        "location": "us-west2",
+        "createTime": "2026-10-18T23:51:21Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/regions/europe-west9/subnetworks/default",
+        "assetType": "compute.googleapis.com/Subnetwork",
+        "location": "europe-west9",
+        "createTime": "2026-10-18T23:51:21Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/regions/europe-west4/subnetworks/default",
+        "assetType": "compute.googleapis.com/Subnetwork",
+        "location": "europe-west4",
+        "createTime": "2026-10-18T23:51:21Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/regions/asia-southeast2/subnetworks/default",
+        "assetType": "compute.googleapis.com/Subnetwork",
+        "location": "asia-southeast2",
+        "createTime": "2026-10-18T23:51:21Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/regions/europe-west12/subnetworks/default",
+        "assetType": "compute.googleapis.com/Subnetwork",
+        "location": "europe-west12",
+        "createTime": "2026-10-18T23:51:21Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/regions/asia-southeast3/subnetworks/default",
+        "assetType": "compute.googleapis.com/Subnetwork",
+        "location": "asia-southeast3",
+        "createTime": "2026-10-18T23:51:21Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/regions/us-west1/subnetworks/default",
+        "assetType": "compute.googleapis.com/Subnetwork",
+        "location": "us-west1",
+        "createTime": "2026-10-18T23:51:20Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/regions/northamerica-northeast1/subnetworks/default",
+        "assetType": "compute.googleapis.com/Subnetwork",
+        "location": "northamerica-northeast1",
+        "createTime": "2026-10-18T23:51:20Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/regions/us-central1/subnetworks/default",
+        "assetType": "compute.googleapis.com/Subnetwork",
+        "location": "us-central1",
+        "createTime": "2026-10-18T23:51:20Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/regions/us-west3/subnetworks/default",
+        "assetType": "compute.googleapis.com/Subnetwork",
+        "location": "us-west3",
+        "createTime": "2026-10-18T23:51:20Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/regions/northamerica-northeast2/subnetworks/default",
+        "assetType": "compute.googleapis.com/Subnetwork",
+        "location": "northamerica-northeast2",
+        "createTime": "2026-10-18T23:51:20Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/regions/northamerica-south1/subnetworks/default",
+        "assetType": "compute.googleapis.com/Subnetwork",
+        "location": "northamerica-south1",
+        "createTime": "2026-10-18T23:51:20Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/regions/us-east4/subnetworks/default",
+        "assetType": "compute.googleapis.com/Subnetwork",
+        "location": "us-east4",
+        "createTime": "2026-10-18T23:51:20Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/regions/us-south1/subnetworks/default",
+        "assetType": "compute.googleapis.com/Subnetwork",
+        "location": "us-south1",
+        "createTime": "2026-10-18T23:51:20Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/regions/us-east1/subnetworks/default",
+        "assetType": "compute.googleapis.com/Subnetwork",
+        "location": "us-east1",
+        "createTime": "2026-10-18T23:51:20Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/global/routes/default-route-73351a08ee11b80b",
+        "assetType": "compute.googleapis.com/Route",
+        "location": "global",
+        "createTime": "2026-10-18T23:51:17Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai/global/networks/default",
+        "assetType": "compute.googleapis.com/Network",
+        "location": "global",
+        "createTime": "2026-10-18T23:51:13Z"
+      },
+      {
+        "name": "//compute.googleapis.com/projects/vibecart-llmai",
+        "assetType": "compute.googleapis.com/Project",
+        "location": "global",
+        "createTime": "2026-10-18T23:51:08Z"
+      },
+      {
+        "name": "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/revisions/vibecart-web-reviews-b038aaca",
+        "assetType": "run.googleapis.com/Revision",
+        "location": "asia-east1",
+        "createTime": "2026-10-18T22:44:06Z"
+      },
+      {
+        "name": "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/revisions/vibecart-acceptance-pr21-role95-e5788ce",
+        "assetType": "run.googleapis.com/Revision",
+        "location": "asia-east1",
+        "createTime": "2026-10-18T22:12:46Z"
+      },
+      {
+        "name": "//artifactregistry.googleapis.com/projects/vibecart-llmai/locations/asia-east1/repositories/vibecart/dockerImages/web@sha256:8755ccb82902cf59430d5b2b76505c3fb6e4ed265d0ef98ba42821769edbcbdd",
+        "assetType": "artifactregistry.googleapis.com/DockerImage",
+        "location": "asia-east1"
+      },
+      {
+        "name": "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/revisions/vibecart-web-role-auth-576b4748",
+        "assetType": "run.googleapis.com/Revision",
+        "location": "asia-east1",
+        "createTime": "2026-10-18T21:46:03Z"
+      },
+      {
+        "name": "//artifactregistry.googleapis.com/projects/vibecart-llmai/locations/asia-east1/repositories/vibecart/dockerImages/web@sha256:228862259bd96a69224132e5af73fc4e1c89165a759057470ed467c4ce80617b",
+        "assetType": "artifactregistry.googleapis.com/DockerImage",
+        "location": "asia-east1"
+      },
+      {
+        "name": "//cloudbilling.googleapis.com/projects/vibecart-llmai/billingInfo",
+        "assetType": "cloudbilling.googleapis.com/ProjectBillingInfo",
+        "location": "global",
+        "state": "ACTIVE"
+      },
+      {
+        "name": "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/revisions/vibecart-acceptance-pr21-rv9a76-rules-2117",
+        "assetType": "run.googleapis.com/Revision",
+        "location": "asia-east1",
+        "createTime": "2026-10-18T13:25:15Z"
+      },
+      {
+        "name": "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/revisions/vibecart-acceptance-pr21-rv9a76-2117",
+        "assetType": "run.googleapis.com/Revision",
+        "location": "asia-east1",
+        "createTime": "2026-10-18T13:23:30Z"
+      },
+      {
+        "name": "//artifactregistry.googleapis.com/projects/vibecart-llmai/locations/asia-east1/repositories/vibecart/dockerImages/web@sha256:15d359548b7e7343a1051b4907f78bf667cf36856a3c2680577a3ac989ea1c79",
+        "assetType": "artifactregistry.googleapis.com/DockerImage",
+        "location": "asia-east1"
+      },
+      {
+        "name": "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/revisions/vibecart-acceptance-pr21-main20ee-off-180s",
+        "assetType": "run.googleapis.com/Revision",
+        "location": "asia-east1",
+        "createTime": "2026-10-18T09:25:28Z"
+      },
+      {
+        "name": "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/revisions/vibecart-acceptance-pr21-main20ee-claude1-180s",
+        "assetType": "run.googleapis.com/Revision",
+        "location": "asia-east1",
+        "createTime": "2026-10-18T09:25:11Z"
+      },
+      {
+        "name": "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/revisions/vibecart-acceptance-pr21-main20ee-claude1-1640",
+        "assetType": "run.googleapis.com/Revision",
+        "location": "asia-east1",
+        "createTime": "2026-10-18T08:50:04Z"
+      },
+      {
+        "name": "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/revisions/vibecart-acceptance-pr21-main20ee-1640",
+        "assetType": "run.googleapis.com/Revision",
+        "location": "asia-east1",
+        "createTime": "2026-10-18T08:48:54Z"
+      },
+      {
+        "name": "//secretmanager.googleapis.com/projects/278483818008/secrets/ANTHROPIC_API_KEY/versions/1",
+        "assetType": "secretmanager.googleapis.com/SecretVersion",
+        "location": "global",
+        "state": "ENABLED",
+        "createTime": "2026-10-18T08:48:44Z"
+      },
+      {
+        "name": "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/revisions/vibecart-web-main20ee-1640",
+        "assetType": "run.googleapis.com/Revision",
+        "location": "asia-east1",
+        "createTime": "2026-10-18T08:47:14Z"
+      },
+      {
+        "name": "//artifactregistry.googleapis.com/projects/vibecart-llmai/locations/asia-east1/repositories/vibecart/dockerImages/web@sha256:1d7b666db5b3f927e6fecf484617c2a0842694c0bfdc61150e6f3683434b4074",
+        "assetType": "artifactregistry.googleapis.com/DockerImage",
+        "location": "asia-east1"
+      },
+      {
+        "name": "//secretmanager.googleapis.com/projects/278483818008/secrets/ANTHROPIC_API_KEY",
+        "assetType": "secretmanager.googleapis.com/Secret",
+        "location": "global",
+        "createTime": "2026-10-18T08:40:54Z"
+      },
+      {
+        "name": "//cloudbuild.googleapis.com/projects/278483818008/locations/europe-west1/triggers/41319ff4-7367-401b-918a-7444f97a68c0",
+        "assetType": "cloudbuild.googleapis.com/BuildTrigger",
+        "location": "europe-west1",
+        "createTime": "2026-10-18T01:44:48Z"
+      },
+      {
+        "name": "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/revisions/llm-pj-git-00002-547",
+        "assetType": "run.googleapis.com/Revision",
+        "location": "asia-east1",
+        "createTime": "2026-10-18T01:44:48Z"
+      },
+      {
+        "name": "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/revisions/llm-pj-git-00001-lhh",
+        "assetType": "run.googleapis.com/Revision",
+        "location": "asia-east1",
+        "createTime": "2026-10-18T01:44:46Z"
+      },
+      {
+        "name": "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/services/llm-pj-git",
+        "assetType": "run.googleapis.com/Service",
+        "location": "asia-east1",
+        "createTime": "2026-10-18T01:44:45Z"
+      },
+      {
+        "name": "//developerconnect.googleapis.com/projects/vibecart-llmai/locations/europe-west1/connections/connection-bvnih2z/gitRepositoryLinks/SamWang61-LLM_PJ",
+        "assetType": "developerconnect.googleapis.com/GitRepositoryLink",
+        "location": "europe-west1",
+        "createTime": "2026-10-18T01:42:47Z",
+        "updateTime": "2026-10-18T01:42:48Z"
+      },
+      {
+        "name": "//developerconnect.googleapis.com/projects/vibecart-llmai/locations/europe-west1/connections/connection-bvnih63",
+        "assetType": "developerconnect.googleapis.com/Connection",
+        "location": "europe-west1",
+        "createTime": "2026-10-18T01:40:00Z",
+        "updateTime": "2026-10-18T01:40:00Z"
+      },
+      {
+        "name": "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/revisions/vibecart-acceptance-pr21-00011-2hq",
+        "assetType": "run.googleapis.com/Revision",
+        "location": "asia-east1",
+        "createTime": "2026-10-18T01:39:56Z"
+      },
+      {
+        "name": "//cloudbuild.googleapis.com/projects/278483818008/locations/global/triggers/d0b39103-7508-451d-b3e6-6c251f82855d",
+        "assetType": "cloudbuild.googleapis.com/BuildTrigger",
+        "location": "global",
+        "createTime": "2026-10-18T01:39:55Z"
+      },
+      {
+        "name": "//artifactregistry.googleapis.com/projects/vibecart-llmai/locations/asia-east1/repositories/cloud-run-source-deploy",
+        "assetType": "artifactregistry.googleapis.com/Repository",
+        "location": "asia-east1",
+        "createTime": "2026-10-18T01:39:53Z",
+        "updateTime": "2026-10-19T09:57:36Z"
+      },
+      {
+        "name": "//secretmanager.googleapis.com/projects/278483818008/locations/europe-west1/secrets/connection-bvnih2z-github-oauthtoken-0e4bf9",
+        "assetType": "secretmanager.googleapis.com/Secret",
+        "location": "europe-west1",
+        "createTime": "2026-10-18T01:24:00Z"
+      },
+      {
+        "name": "//secretmanager.googleapis.com/projects/278483818008/locations/europe-west1/secrets/connection-bvnih2z-github-oauthtoken-0e4bf9/versions/1",
+        "assetType": "secretmanager.googleapis.com/SecretVersion",
+        "location": "europe-west1",
+        "state": "ENABLED",
+        "createTime": "2026-10-18T01:24:00Z"
+      },
+      {
+        "name": "//developerconnect.googleapis.com/projects/vibecart-llmai/locations/europe-west1/connections/connection-bvnih2z",
+        "assetType": "developerconnect.googleapis.com/Connection",
+        "location": "europe-west1",
+        "createTime": "2026-10-18T01:22:58Z",
+        "updateTime": "2026-10-18T01:24:36Z"
+      },
+      {
+        "name": "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/revisions/vibecart-acceptance-pr21-00010-9zg",
+        "assetType": "run.googleapis.com/Revision",
+        "location": "asia-east1",
+        "createTime": "2026-10-17T22:38:13Z"
+      },
+      {
+        "name": "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/revisions/vibecart-acceptance-pr21-00009-4z6",
+        "assetType": "run.googleapis.com/Revision",
+        "location": "asia-east1",
+        "createTime": "2026-10-17T22:34:53Z"
+      },
+      {
+        "name": "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/revisions/vibecart-web-00019-phf",
+        "assetType": "run.googleapis.com/Revision",
+        "location": "asia-east1",
+        "createTime": "2026-10-17T22:31:26Z"
+      },
+      {
+        "name": "//artifactregistry.googleapis.com/projects/vibecart-llmai/locations/asia-east1/repositories/vibecart/dockerImages/web@sha256:7199fa08c711917a80e5f54dbfd580ed96f3ef632bda7337b4aa2bde2325c992",
+        "assetType": "artifactregistry.googleapis.com/DockerImage",
+        "location": "asia-east1"
+      },
+      {
+        "name": "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/revisions/vibecart-acceptance-pr21-00008-v72",
+        "assetType": "run.googleapis.com/Revision",
+        "location": "asia-east1",
+        "createTime": "2026-10-17T22:28:30Z"
+      },
+      {
+        "name": "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/revisions/vibecart-acceptance-pr21-00007-wcd",
+        "assetType": "run.googleapis.com/Revision",
+        "location": "asia-east1",
+        "createTime": "2026-10-17T21:25:38Z"
+      },
+      {
+        "name": "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/revisions/vibecart-web-00018-s59",
+        "assetType": "run.googleapis.com/Revision",
+        "location": "asia-east1",
+        "createTime": "2026-10-17T21:25:14Z"
+      },
+      {
+        "name": "//artifactregistry.googleapis.com/projects/vibecart-llmai/locations/asia-east1/repositories/vibecart/dockerImages/web@sha256:ba7d34787ffda32cb944022494c0dd5da64600df64ea05c49a79c41473404f5f",
+        "assetType": "artifactregistry.googleapis.com/DockerImage",
+        "location": "asia-east1"
+      },
+      {
+        "name": "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/revisions/vibecart-acceptance-pr21-00006-cb6",
+        "assetType": "run.googleapis.com/Revision",
+        "location": "asia-east1",
+        "createTime": "2026-10-17T21:03:31Z"
+      },
+      {
+        "name": "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/revisions/vibecart-web-00017-5xb",
+        "assetType": "run.googleapis.com/Revision",
+        "location": "asia-east1",
+        "createTime": "2026-10-17T20:15:50Z"
+      },
+      {
+        "name": "//artifactregistry.googleapis.com/projects/vibecart-llmai/locations/asia-east1/repositories/vibecart/dockerImages/web@sha256:8acadcedc08f80aaa7e484a771289d1d6ef3fa8f35f2ed644425ef4ebce99c4b",
+        "assetType": "artifactregistry.googleapis.com/DockerImage",
+        "location": "asia-east1"
+      },
+      {
+        "name": "//artifactregistry.googleapis.com/projects/vibecart-llmai/locations/asia-east1/repositories/vibecart/dockerImages/web@sha256:e9ebfaab91b6ff43c73a21bbd9b60d7adb3d2b7b8bb4f34af9942e45e652bdec",
+        "assetType": "artifactregistry.googleapis.com/DockerImage",
+        "location": "asia-east1"
+      },
+      {
+        "name": "//artifactregistry.googleapis.com/projects/vibecart-llmai/locations/asia-east1/repositories/vibecart/dockerImages/web@sha256:8bf5ee37923b61faad488fcf4406de2d647f0ea2a8e5eccc86a54689e13995a5",
+        "assetType": "artifactregistry.googleapis.com/DockerImage",
+        "location": "asia-east1"
+      },
+      {
+        "name": "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/revisions/vibecart-web-00016-j5d",
+        "assetType": "run.googleapis.com/Revision",
+        "location": "asia-east1",
+        "createTime": "2026-10-17T20:12:00Z"
+      },
+      {
+        "name": "//artifactregistry.googleapis.com/projects/vibecart-llmai/locations/asia-east1/repositories/vibecart/dockerImages/web@sha256:8652b62025c63f10f683f801881fb26c0cbf49fa122bb9a5cc29735106066a2f",
+        "assetType": "artifactregistry.googleapis.com/DockerImage",
+        "location": "asia-east1"
+      },
+      {
+        "name": "//artifactregistry.googleapis.com/projects/vibecart-llmai/locations/asia-east1/repositories/vibecart/dockerImages/web@sha256:f6fcead59211b726e7abbd8a05cc1dd40eae5c08f4462e815844d077ad2147af",
+        "assetType": "artifactregistry.googleapis.com/DockerImage",
+        "location": "asia-east1"
+      },
+      {
+        "name": "//artifactregistry.googleapis.com/projects/vibecart-llmai/locations/asia-east1/repositories/vibecart/dockerImages/web@sha256:ef6c52a05dab1626e0d2da28588b16f3d8c259b41b0eeda0a11c828bee80ba76",
+        "assetType": "artifactregistry.googleapis.com/DockerImage",
+        "location": "asia-east1"
+      },
+      {
+        "name": "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/revisions/vibecart-acceptance-pr21-00005-5j5",
+        "assetType": "run.googleapis.com/Revision",
+        "location": "asia-east1",
+        "createTime": "2026-10-17T17:51:06Z"
+      },
+      {
+        "name": "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/revisions/vibecart-web-00015-nlk",
+        "assetType": "run.googleapis.com/Revision",
+        "location": "asia-east1",
+        "createTime": "2026-10-17T17:44:56Z"
+      },
+      {
+        "name": "//artifactregistry.googleapis.com/projects/vibecart-llmai/locations/asia-east1/repositories/vibecart/dockerImages/web@sha256:1686638380b8cb8dc792423b059918b292e94f095d68c623ea9136da1ff9813b",
+        "assetType": "artifactregistry.googleapis.com/DockerImage",
+        "location": "asia-east1"
+      },
+      {
+        "name": "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/revisions/vibecart-web-00014-kq8",
+        "assetType": "run.googleapis.com/Revision",
+        "location": "asia-east1",
+        "createTime": "2026-10-17T17:40:29Z"
+      },
+      {
+        "name": "//artifactregistry.googleapis.com/projects/vibecart-llmai/locations/asia-east1/repositories/vibecart/dockerImages/web@sha256:52c0ca65adb1c5b56d18bd758dcc77e5583c0291d3dfe52da761d0ca0736f17b",
+        "assetType": "artifactregistry.googleapis.com/DockerImage",
+        "location": "asia-east1"
+      },
+      {
+        "name": "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/revisions/vibecart-acceptance-pr21-00004-9qr",
+        "assetType": "run.googleapis.com/Revision",
+        "location": "asia-east1",
+        "createTime": "2026-10-17T16:13:07Z"
+      },
+      {
+        "name": "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/revisions/vibecart-web-00013-ds5",
+        "assetType": "run.googleapis.com/Revision",
+        "location": "asia-east1",
+        "createTime": "2026-10-17T16:08:57Z"
+      },
+      {
+        "name": "//artifactregistry.googleapis.com/projects/vibecart-llmai/locations/asia-east1/repositories/vibecart/dockerImages/web@sha256:57c8fd038d7c231a4e417471a66b9c7996c296efd2d7b1ff70302c46a45f0fab",
+        "assetType": "artifactregistry.googleapis.com/DockerImage",
+        "location": "asia-east1"
+      },
+      {
+        "name": "//artifactregistry.googleapis.com/projects/vibecart-llmai/locations/asia-east1/repositories/vibecart/dockerImages/web@sha256:f7a47f976147abccd2205ef34a138194578bd9326014bf22a1df5d6162469243",
+        "assetType": "artifactregistry.googleapis.com/DockerImage",
+        "location": "asia-east1"
+      },
+      {
+        "name": "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/revisions/vibecart-web-00012-85f",
+        "assetType": "run.googleapis.com/Revision",
+        "location": "asia-east1",
+        "createTime": "2026-10-17T08:03:07Z"
+      },
+      {
+        "name": "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/revisions/vibecart-acceptance-pr21-00003-8hr",
+        "assetType": "run.googleapis.com/Revision",
+        "location": "asia-east1",
+        "createTime": "2026-10-17T07:50:29Z"
+      },
+      {
+        "name": "//secretmanager.googleapis.com/projects/278483818008/secrets/vibecart-pr21-acceptance-mongo-uri/versions/1",
+        "assetType": "secretmanager.googleapis.com/SecretVersion",
+        "location": "global",
+        "state": "ENABLED",
+        "createTime": "2026-10-17T06:54:35Z"
+      },
+      {
+        "name": "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/revisions/vibecart-web-00011-dx2",
+        "assetType": "run.googleapis.com/Revision",
+        "location": "asia-east1",
+        "createTime": "2026-10-17T05:38:37Z"
+      },
+      {
+        "name": "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/revisions/vibecart-acceptance-pr21-00002-n5g",
+        "assetType": "run.googleapis.com/Revision",
+        "location": "asia-east1",
+        "createTime": "2026-10-17T05:25:30Z"
+      },
+      {
+        "name": "//artifactregistry.googleapis.com/projects/vibecart-llmai/locations/asia-east1/repositories/vibecart/dockerImages/web@sha256:fe90d277fedb4c5b290e36d157d7a5cae50776de2b8d787f34f3227cfe6f5648",
+        "assetType": "artifactregistry.googleapis.com/DockerImage",
+        "location": "asia-east1"
+      },
+      {
+        "name": "//artifactregistry.googleapis.com/projects/vibecart-llmai/locations/asia-east1/repositories/vibecart/dockerImages/web@sha256:f680bb4afc2401d2e4fe1c230c088341d5554f8e9e04abda58f4322371894815",
+        "assetType": "artifactregistry.googleapis.com/DockerImage",
+        "location": "asia-east1"
+      },
+      {
+        "name": "//artifactregistry.googleapis.com/projects/vibecart-llmai/locations/asia-east1/repositories/vibecart/dockerImages/web@sha256:d933a5d8bf3f9264beac3bc9738e2bb84d11cf92e1b8ce097b0cd3000be40b91",
+        "assetType": "artifactregistry.googleapis.com/DockerImage",
+        "location": "asia-east1"
+      },
+      {
+        "name": "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/revisions/vibecart-acceptance-pr21-00001-657",
+        "assetType": "run.googleapis.com/Revision",
+        "location": "asia-east1",
+        "createTime": "2026-10-17T03:36:41Z"
+      },
+      {
+        "name": "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/services/vibecart-acceptance-pr21",
+        "assetType": "run.googleapis.com/Service",
+        "location": "asia-east1",
+        "createTime": "2026-10-17T03:36:41Z"
+      },
+      {
+        "name": "//artifactregistry.googleapis.com/projects/vibecart-llmai/locations/asia-east1/repositories/vibecart/dockerImages/web@sha256:2710f45b7c465ee5164ef1b29c4d6f9f8b3700bf582d5d3575b07f69c5934f62",
+        "assetType": "artifactregistry.googleapis.com/DockerImage",
+        "location": "asia-east1"
+      },
+      {
+        "name": "//artifactregistry.googleapis.com/projects/vibecart-llmai/locations/asia-east1/repositories/vibecart/dockerImages/web@sha256:2983cab46b86d385c111f2e9be28b5bf874174e1c0ed1caa92a5d350cef7a93a",
+        "assetType": "artifactregistry.googleapis.com/DockerImage",
+        "location": "asia-east1"
+      },
+      {
+        "name": "//artifactregistry.googleapis.com/projects/vibecart-llmai/locations/asia-east1/repositories/vibecart/dockerImages/web@sha256:b79b972bf116359619219cdee03d750067e6fd80d177571ed8432d78d6c318ae",
+        "assetType": "artifactregistry.googleapis.com/DockerImage",
+        "location": "asia-east1"
+      },
+      {
+        "name": "//secretmanager.googleapis.com/projects/278483818008/secrets/vibecart-pr21-acceptance-session-key/versions/1",
+        "assetType": "secretmanager.googleapis.com/SecretVersion",
+        "location": "global",
+        "state": "ENABLED",
+        "createTime": "2026-10-17T03:35:34Z"
+      },
+      {
+        "name": "//secretmanager.googleapis.com/projects/278483818008/secrets/vibecart-pr21-acceptance-session-key",
+        "assetType": "secretmanager.googleapis.com/Secret",
+        "location": "global",
+        "createTime": "2026-10-17T03:34:36Z"
+      },
+      {
+        "name": "//secretmanager.googleapis.com/projects/278483818008/secrets/vibecart-pr21-acceptance-mongo-uri",
+        "assetType": "secretmanager.googleapis.com/Secret",
+        "location": "global",
+        "createTime": "2026-10-17T03:34:35Z"
+      },
+      {
+        "name": "//iam.googleapis.com/projects/vibecart-llmai/serviceAccounts/vibecart-pr21-acceptance@vibecart-llmai.iam.gserviceaccount.com",
+        "assetType": "iam.googleapis.com/ServiceAccount",
+        "location": "global",
+        "state": "ENABLED"
+      },
+      {
+        "name": "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/revisions/vibecart-web-00010-q8l",
+        "assetType": "run.googleapis.com/Revision",
+        "location": "asia-east1",
+        "createTime": "2026-10-17T03:29:04Z"
+      },
+      {
+        "name": "//artifactregistry.googleapis.com/projects/vibecart-llmai/locations/asia-east1/repositories/vibecart/dockerImages/web@sha256:1fc2a3e01380cdb67a9117ed1db2e04d315e369533ba86e28f409749376dca47",
+        "assetType": "artifactregistry.googleapis.com/DockerImage",
+        "location": "asia-east1"
+      },
+      {
+        "name": "//artifactregistry.googleapis.com/projects/vibecart-llmai/locations/asia-east1/repositories/vibecart/dockerImages/web@sha256:b3dda027d1477c4b3d4e71b81cfd5d88d24e004456c73effabbb18a7be60266b",
+        "assetType": "artifactregistry.googleapis.com/DockerImage",
+        "location": "asia-east1"
+      },
+      {
+        "name": "//artifactregistry.googleapis.com/projects/vibecart-llmai/locations/asia-east1/repositories/vibecart/dockerImages/web@sha256:c21ed9ae7032e1ddd75740845db5e9ba8fde805a81fac27762a5e97b8ff790d0",
+        "assetType": "artifactregistry.googleapis.com/DockerImage",
+        "location": "asia-east1"
+      },
+      {
+        "name": "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/revisions/vibecart-web-00009-xfq",
+        "assetType": "run.googleapis.com/Revision",
+        "location": "asia-east1",
+        "createTime": "2026-10-17T03:13:53Z"
+      },
+      {
+        "name": "//artifactregistry.googleapis.com/projects/vibecart-llmai/locations/asia-east1/repositories/vibecart/dockerImages/web@sha256:d7bcded0c84fc3b5af058b02f9e8aaa47b34e2fbfbc6ff7f2ae75887c9f8ca52",
+        "assetType": "artifactregistry.googleapis.com/DockerImage",
+        "location": "asia-east1"
+      },
+      {
+        "name": "//artifactregistry.googleapis.com/projects/vibecart-llmai/locations/asia-east1/repositories/vibecart/dockerImages/web@sha256:331f6d00e72e6f0e1dfe607e9e873a6403b973f5bcff426df5169dc9322a7929",
+        "assetType": "artifactregistry.googleapis.com/DockerImage",
+        "location": "asia-east1"
+      },
+      {
+        "name": "//artifactregistry.googleapis.com/projects/vibecart-llmai/locations/asia-east1/repositories/vibecart/dockerImages/web@sha256:70f369133ca0cd35e4a874d6dcc4cf9ba930b31a5e5ef769d153d24b7bdf4fbc",
+        "assetType": "artifactregistry.googleapis.com/DockerImage",
+        "location": "asia-east1"
+      },
+      {
+        "name": "//iam.googleapis.com/projects/vibecart-llmai/serviceAccounts/102672429068701933808/keys/d083cbaa8eab2aba654ee009ba0dcd457dd6c5d7",
+        "assetType": "iam.googleapis.com/ServiceAccountKey",
+        "location": "global",
+        "createTime": "2026-10-17T01:26:23Z"
+      },
+      {
+        "name": "//iam.googleapis.com/projects/vibecart-llmai/serviceAccounts/103515384886453458279/keys/0763fed8da5a27a342b0db21235e6582a863926e",
+        "assetType": "iam.googleapis.com/ServiceAccountKey",
+        "location": "global",
+        "createTime": "2026-10-17T01:26:23Z"
+      },
+      {
+        "name": "//iam.googleapis.com/projects/vibecart-llmai/serviceAccounts/103576793592202343600/keys/afe46169c62ccdb9e28dfff751b08b55e02bbd01",
+        "assetType": "iam.googleapis.com/ServiceAccountKey",
+        "location": "global",
+        "createTime": "2026-10-17T01:26:23Z"
+      },
+      {
+        "name": "//iam.googleapis.com/projects/vibecart-llmai/serviceAccounts/106782362763273654528/keys/f7724690a21edbb7ac2311f6bfbfb1e6a2f2a89a",
+        "assetType": "iam.googleapis.com/ServiceAccountKey",
+        "location": "global",
+        "createTime": "2026-10-17T01:26:23Z"
+      },
+      {
+        "name": "//iam.googleapis.com/projects/vibecart-llmai/serviceAccounts/106782362763273654528/keys/8f3175996e01af030b5373b59de5bf726edf584a",
+        "assetType": "iam.googleapis.com/ServiceAccountKey",
+        "location": "global",
+        "createTime": "2026-10-16T12:12:23Z"
+      },
+      {
+        "name": "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/revisions/vibecart-web-00008-5bw",
+        "assetType": "run.googleapis.com/Revision",
+        "location": "asia-east1",
+        "createTime": "2026-10-16T11:42:00Z"
+      },
+      {
+        "name": "//artifactregistry.googleapis.com/projects/vibecart-llmai/locations/asia-east1/repositories/vibecart/dockerImages/web@sha256:ae3dbfbd9863e1264dfb840714101f8d80be0d8a0b44bf8119ef9c91c0f18783",
+        "assetType": "artifactregistry.googleapis.com/DockerImage",
+        "location": "asia-east1"
+      },
+      {
+        "name": "//artifactregistry.googleapis.com/projects/vibecart-llmai/locations/asia-east1/repositories/vibecart/dockerImages/web@sha256:f1c437e7e3dda072de508631edf350ca6baeb586925df5cbc1d21ad11e7c0d53",
+        "assetType": "artifactregistry.googleapis.com/DockerImage",
+        "location": "asia-east1"
+      },
+      {
+        "name": "//artifactregistry.googleapis.com/projects/vibecart-llmai/locations/asia-east1/repositories/vibecart/dockerImages/web@sha256:c97a35c9a63bef3cd46e52522a01fbad181fe66a3f5ea06cd909c4f1691bdd73",
+        "assetType": "artifactregistry.googleapis.com/DockerImage",
+        "location": "asia-east1"
+      },
+      {
+        "name": "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/revisions/vibecart-web-00007-m9k",
+        "assetType": "run.googleapis.com/Revision",
+        "location": "asia-east1",
+        "createTime": "2026-10-14T13:12:06Z"
+      },
+      {
+        "name": "//artifactregistry.googleapis.com/projects/vibecart-llmai/locations/asia-east1/repositories/vibecart/dockerImages/web@sha256:5f148596fa8570fba21608d0e029b3fa6ed59f4c805d13f512deafcbd1998148",
+        "assetType": "artifactregistry.googleapis.com/DockerImage",
+        "location": "asia-east1"
+      },
+      {
+        "name": "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/revisions/vibecart-web-00006-pvf",
+        "assetType": "run.googleapis.com/Revision",
+        "location": "asia-east1",
+        "createTime": "2026-10-14T13:05:56Z"
+      },
+      {
+        "name": "//artifactregistry.googleapis.com/projects/vibecart-llmai/locations/asia-east1/repositories/vibecart/dockerImages/web@sha256:934921d212a5bdbd9b22beada27a9b48f1fc189319d0b5f2a6ad4a80208b10d5",
+        "assetType": "artifactregistry.googleapis.com/DockerImage",
+        "location": "asia-east1"
+      },
+      {
+        "name": "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/revisions/vibecart-web-00005-qbf",
+        "assetType": "run.googleapis.com/Revision",
+        "location": "asia-east1",
+        "createTime": "2026-10-14T13:00:40Z"
+      },
+      {
+        "name": "//artifactregistry.googleapis.com/projects/vibecart-llmai/locations/asia-east1/repositories/vibecart/dockerImages/web@sha256:088cb1126d51f4b6e39a8e66121e7b0041d83c9cb1be963486e5da09b9df1f39",
+        "assetType": "artifactregistry.googleapis.com/DockerImage",
+        "location": "asia-east1"
+      },
+      {
+        "name": "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/revisions/vibecart-web-00004-r5q",
+        "assetType": "run.googleapis.com/Revision",
+        "location": "asia-east1",
+        "createTime": "2026-10-14T12:49:32Z"
+      },
+      {
+        "name": "//artifactregistry.googleapis.com/projects/vibecart-llmai/locations/asia-east1/repositories/vibecart/dockerImages/web@sha256:c2d5a4d75bcf32ad2e545cf065ef6390ccf58c6e15910f798a376d63984bfb87",
+        "assetType": "artifactregistry.googleapis.com/DockerImage",
+        "location": "asia-east1"
+      },
+      {
+        "name": "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/revisions/vibecart-web-00003-gb5",
+        "assetType": "run.googleapis.com/Revision",
+        "location": "asia-east1",
+        "createTime": "2026-10-12T13:23:35Z"
+      },
+      {
+        "name": "//artifactregistry.googleapis.com/projects/vibecart-llmai/locations/asia-east1/repositories/vibecart/dockerImages/web@sha256:3beb33dea617f19877ed1d8f7390cedb608c8c2f041294def5dd564aeb22abd9",
+        "assetType": "artifactregistry.googleapis.com/DockerImage",
+        "location": "asia-east1"
+      },
+      {
+        "name": "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/revisions/vibecart-web-00002-nqv",
+        "assetType": "run.googleapis.com/Revision",
+        "location": "asia-east1",
+        "createTime": "2026-10-12T13:18:28Z"
+      },
+      {
+        "name": "//artifactregistry.googleapis.com/projects/vibecart-llmai/locations/asia-east1/repositories/vibecart/dockerImages/web@sha256:06d048fb34c9d02c229bc9b6e85bda2b4f79e4a1d2dc2d11ee8fbf01f8b711a9",
+        "assetType": "artifactregistry.googleapis.com/DockerImage",
+        "location": "asia-east1"
+      },
+      {
+        "name": "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/revisions/vibecart-web-00001-j4b",
+        "assetType": "run.googleapis.com/Revision",
+        "location": "asia-east1",
+        "createTime": "2026-10-12T13:14:37Z"
+      },
+      {
+        "name": "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/services/vibecart-web",
+        "assetType": "run.googleapis.com/Service",
+        "location": "asia-east1",
+        "createTime": "2026-10-12T13:14:36Z"
+      },
+      {
+        "name": "//secretmanager.googleapis.com/projects/278483818008/secrets/vibecart-session-key/versions/1",
+        "assetType": "secretmanager.googleapis.com/SecretVersion",
+        "location": "global",
+        "state": "ENABLED",
+        "createTime": "2026-10-12T13:14:34Z"
+      },
+      {
+        "name": "//secretmanager.googleapis.com/projects/278483818008/secrets/vibecart-session-key",
+        "assetType": "secretmanager.googleapis.com/Secret",
+        "location": "global",
+        "createTime": "2026-10-12T13:14:32Z"
+      },
+      {
+        "name": "//secretmanager.googleapis.com/projects/278483818008/secrets/vibecart-mongo-uri/versions/1",
+        "assetType": "secretmanager.googleapis.com/SecretVersion",
+        "location": "global",
+        "state": "ENABLED",
+        "createTime": "2026-10-12T13:14:31Z"
+      },
+      {
+        "name": "//secretmanager.googleapis.com/projects/278483818008/secrets/vibecart-mongo-uri",
+        "assetType": "secretmanager.googleapis.com/Secret",
+        "location": "global",
+        "createTime": "2026-10-12T13:14:29Z"
+      },
+      {
+        "name": "//iam.googleapis.com/projects/vibecart-llmai/serviceAccounts/vibecart-web@vibecart-llmai.iam.gserviceaccount.com",
+        "assetType": "iam.googleapis.com/ServiceAccount",
+        "location": "global",
+        "state": "ENABLED"
+      },
+      {
+        "name": "//artifactregistry.googleapis.com/projects/vibecart-llmai/locations/asia-east1/repositories/vibecart/dockerImages/web@sha256:9d088cf43c2bc70558996c976f6eb19e474a90fc2ca95f6af03e4ebdb4ab46ec",
+        "assetType": "artifactregistry.googleapis.com/DockerImage",
+        "location": "asia-east1"
+      },
+      {
+        "name": "//storage.googleapis.com/vibecart-llmai-sam-build-278483818008",
+        "assetType": "storage.googleapis.com/Bucket",
+        "location": "asia-east1",
+        "createTime": "2026-10-12T13:13:08Z",
+        "updateTime": "2026-10-12T13:13:09Z"
+      },
+      {
+        "name": "//artifactregistry.googleapis.com/projects/vibecart-llmai/locations/asia-east1/repositories/vibecart",
+        "assetType": "artifactregistry.googleapis.com/Repository",
+        "location": "asia-east1",
+        "createTime": "2026-10-12T13:12:28Z",
+        "updateTime": "2026-10-19T00:44:41Z"
+      },
+      {
+        "name": "//iam.googleapis.com/projects/vibecart-llmai/serviceAccounts/278483818008-compute@developer.gserviceaccount.com",
+        "assetType": "iam.googleapis.com/ServiceAccount",
+        "location": "global",
+        "state": "ENABLED"
+      },
+      {
+        "name": "//iam.googleapis.com/projects/vibecart-llmai/serviceAccounts/firebase-adminsdk-fbsvc@vibecart-llmai.iam.gserviceaccount.com",
+        "assetType": "iam.googleapis.com/ServiceAccount",
+        "location": "global",
+        "state": "ENABLED"
+      },
+      {
+        "name": "//apikeys.googleapis.com/projects/278483818008/locations/global/keys/1c5818b1-0177-4d51-b1fb-1a5d561e6988",
+        "assetType": "apikeys.googleapis.com/Key",
+        "createTime": "2026-10-03T03:52:15Z",
+        "updateTime": "2026-10-03T03:52:15Z"
+      },
+      {
+        "name": "//cloudresourcemanager.googleapis.com/projects/vibecart-llmai",
+        "assetType": "cloudresourcemanager.googleapis.com/Project",
+        "location": "global",
+        "state": "ACTIVE",
+        "createTime": "2026-10-03T03:51:56Z"
+      },
+      {
+        "name": "//serviceusage.googleapis.com/projects/278483818008/services/logging.googleapis.com",
+        "assetType": "serviceusage.googleapis.com/Service",
+        "location": "global",
+        "state": "ENABLED"
+      },
+      {
+        "name": "//firebase.googleapis.com/projects/278483818008",
+        "assetType": "firebase.googleapis.com/FirebaseProject",
+        "state": "ACTIVE"
+      },
+      {
+        "name": "//serviceusage.googleapis.com/projects/278483818008/services/bigqueryreservation.googleapis.com",
+        "assetType": "serviceusage.googleapis.com/Service",
+        "location": "global",
+        "state": "ENABLED"
+      },
+      {
+        "name": "//logging.googleapis.com/projects/278483818008/sinks/_Default",
+        "assetType": "logging.googleapis.com/LogSink",
+        "location": "global"
+      },
+      {
+        "name": "//serviceusage.googleapis.com/projects/278483818008/services/firebaserules.googleapis.com",
+        "assetType": "serviceusage.googleapis.com/Service",
+        "location": "global",
+        "state": "ENABLED"
+      },
+      {
+        "name": "//serviceusage.googleapis.com/projects/278483818008/services/pubsub.googleapis.com",
+        "assetType": "serviceusage.googleapis.com/Service",
+        "location": "global",
+        "state": "ENABLED"
+      },
+      {
+        "name": "//cloudbuild.googleapis.com/projects/278483818008/locations/global/globalTriggerSettings/278483818008",
+        "assetType": "cloudbuild.googleapis.com/GlobalTriggerSettings",
+        "location": "global"
+      },
+      {
+        "name": "//serviceusage.googleapis.com/projects/278483818008/services/firebase.googleapis.com",
+        "assetType": "serviceusage.googleapis.com/Service",
+        "location": "global",
+        "state": "ENABLED"
+      },
+      {
+        "name": "//serviceusage.googleapis.com/projects/278483818008/services/apptopology.googleapis.com",
+        "assetType": "serviceusage.googleapis.com/Service",
+        "location": "global",
+        "state": "ENABLED"
+      },
+      {
+        "name": "//serviceusage.googleapis.com/projects/278483818008/services/servicemanagement.googleapis.com",
+        "assetType": "serviceusage.googleapis.com/Service",
+        "location": "global",
+        "state": "ENABLED"
+      },
+      {
+        "name": "//serviceusage.googleapis.com/projects/278483818008/services/containeranalysis.googleapis.com",
+        "assetType": "serviceusage.googleapis.com/Service",
+        "location": "global",
+        "state": "ENABLED"
+      },
+      {
+        "name": "//serviceusage.googleapis.com/projects/278483818008/services/iamcredentials.googleapis.com",
+        "assetType": "serviceusage.googleapis.com/Service",
+        "location": "global",
+        "state": "ENABLED"
+      },
+      {
+        "name": "//serviceusage.googleapis.com/projects/278483818008/services/storage-api.googleapis.com",
+        "assetType": "serviceusage.googleapis.com/Service",
+        "location": "global",
+        "state": "ENABLED"
+      },
+      {
+        "name": "//serviceusage.googleapis.com/projects/278483818008/services/identitytoolkit.googleapis.com",
+        "assetType": "serviceusage.googleapis.com/Service",
+        "location": "global",
+        "state": "ENABLED"
+      },
+      {
+        "name": "//serviceusage.googleapis.com/projects/278483818008/services/firebaseremoteconfig.googleapis.com",
+        "assetType": "serviceusage.googleapis.com/Service",
+        "location": "global",
+        "state": "ENABLED"
+      },
+      {
+        "name": "//serviceusage.googleapis.com/projects/278483818008/services/run.googleapis.com",
+        "assetType": "serviceusage.googleapis.com/Service",
+        "location": "global",
+        "state": "ENABLED"
+      },
+      {
+        "name": "//serviceusage.googleapis.com/projects/278483818008/services/firebaseremoteconfigrealtime.googleapis.com",
+        "assetType": "serviceusage.googleapis.com/Service",
+        "location": "global",
+        "state": "ENABLED"
+      },
+      {
+        "name": "//logging.googleapis.com/projects/278483818008/locations/global/buckets/_Required",
+        "assetType": "logging.googleapis.com/LogBucket",
+        "location": "global",
+        "state": "ACTIVE"
+      },
+      {
+        "name": "//serviceusage.googleapis.com/projects/278483818008/services/storage-component.googleapis.com",
+        "assetType": "serviceusage.googleapis.com/Service",
+        "location": "global",
+        "state": "ENABLED"
+      },
+      {
+        "name": "//serviceusage.googleapis.com/projects/278483818008/services/containerregistry.googleapis.com",
+        "assetType": "serviceusage.googleapis.com/Service",
+        "location": "global",
+        "state": "ENABLED"
+      },
+      {
+        "name": "//serviceusage.googleapis.com/projects/278483818008/services/cloudresourcemanager.googleapis.com",
+        "assetType": "serviceusage.googleapis.com/Service",
+        "location": "global",
+        "state": "ENABLED"
+      },
+      {
+        "name": "//serviceusage.googleapis.com/projects/278483818008/services/securetoken.googleapis.com",
+        "assetType": "serviceusage.googleapis.com/Service",
+        "location": "global",
+        "state": "ENABLED"
+      },
+      {
+        "name": "//serviceusage.googleapis.com/projects/278483818008/services/fcm.googleapis.com",
+        "assetType": "serviceusage.googleapis.com/Service",
+        "location": "global",
+        "state": "ENABLED"
+      },
+      {
+        "name": "//serviceusage.googleapis.com/projects/278483818008/services/artifactregistry.googleapis.com",
+        "assetType": "serviceusage.googleapis.com/Service",
+        "location": "global",
+        "state": "ENABLED"
+      },
+      {
+        "name": "//serviceusage.googleapis.com/projects/278483818008/services/sql-component.googleapis.com",
+        "assetType": "serviceusage.googleapis.com/Service",
+        "location": "global",
+        "state": "ENABLED"
+      },
+      {
+        "name": "//serviceusage.googleapis.com/projects/278483818008/services/bigqueryconnection.googleapis.com",
+        "assetType": "serviceusage.googleapis.com/Service",
+        "location": "global",
+        "state": "ENABLED"
+      },
+      {
+        "name": "//serviceusage.googleapis.com/projects/278483818008/services/bigquery.googleapis.com",
+        "assetType": "serviceusage.googleapis.com/Service",
+        "location": "global",
+        "state": "ENABLED"
+      },
+      {
+        "name": "//serviceusage.googleapis.com/projects/278483818008/services/telemetry.googleapis.com",
+        "assetType": "serviceusage.googleapis.com/Service",
+        "location": "global",
+        "state": "ENABLED"
+      },
+      {
+        "name": "//serviceusage.googleapis.com/projects/278483818008/services/cloudkms.googleapis.com",
+        "assetType": "serviceusage.googleapis.com/Service",
+        "location": "global",
+        "state": "ENABLED"
+      },
+      {
+        "name": "//serviceusage.googleapis.com/projects/278483818008/services/analyticshub.googleapis.com",
+        "assetType": "serviceusage.googleapis.com/Service",
+        "location": "global",
+        "state": "ENABLED"
+      },
+      {
+        "name": "//serviceusage.googleapis.com/projects/278483818008/services/compute.googleapis.com",
+        "assetType": "serviceusage.googleapis.com/Service",
+        "location": "global",
+        "state": "ENABLED"
+      },
+      {
+        "name": "//serviceusage.googleapis.com/projects/278483818008/services/firebasehosting.googleapis.com",
+        "assetType": "serviceusage.googleapis.com/Service",
+        "location": "global",
+        "state": "ENABLED"
+      },
+      {
+        "name": "//serviceusage.googleapis.com/projects/278483818008/services/serviceusage.googleapis.com",
+        "assetType": "serviceusage.googleapis.com/Service",
+        "location": "global",
+        "state": "ENABLED"
+      },
+      {
+        "name": "//serviceusage.googleapis.com/projects/278483818008/services/iam.googleapis.com",
+        "assetType": "serviceusage.googleapis.com/Service",
+        "location": "global",
+        "state": "ENABLED"
+      },
+      {
+        "name": "//serviceusage.googleapis.com/projects/278483818008/services/cloudasset.googleapis.com",
+        "assetType": "serviceusage.googleapis.com/Service",
+        "location": "global",
+        "state": "ENABLED"
+      },
+      {
+        "name": "//serviceusage.googleapis.com/projects/278483818008/services/datastore.googleapis.com",
+        "assetType": "serviceusage.googleapis.com/Service",
+        "location": "global",
+        "state": "ENABLED"
+      },
+      {
+        "name": "//logging.googleapis.com/projects/278483818008/sinks/_Required",
+        "assetType": "logging.googleapis.com/LogSink",
+        "location": "global"
+      },
+      {
+        "name": "//serviceusage.googleapis.com/projects/278483818008/services/oslogin.googleapis.com",
+        "assetType": "serviceusage.googleapis.com/Service",
+        "location": "global",
+        "state": "ENABLED"
+      },
+      {
+        "name": "//serviceusage.googleapis.com/projects/278483818008/services/bigquerymigration.googleapis.com",
+        "assetType": "serviceusage.googleapis.com/Service",
+        "location": "global",
+        "state": "ENABLED"
+      },
+      {
+        "name": "//serviceusage.googleapis.com/projects/278483818008/services/storage.googleapis.com",
+        "assetType": "serviceusage.googleapis.com/Service",
+        "location": "global",
+        "state": "ENABLED"
+      },
+      {
+        "name": "//serviceusage.googleapis.com/projects/278483818008/services/bigquerystorage.googleapis.com",
+        "assetType": "serviceusage.googleapis.com/Service",
+        "location": "global",
+        "state": "ENABLED"
+      },
+      {
+        "name": "//serviceusage.googleapis.com/projects/278483818008/services/appengine.googleapis.com",
+        "assetType": "serviceusage.googleapis.com/Service",
+        "location": "global",
+        "state": "ENABLED"
+      },
+      {
+        "name": "//serviceusage.googleapis.com/projects/278483818008/services/dataplex.googleapis.com",
+        "assetType": "serviceusage.googleapis.com/Service",
+        "location": "global",
+        "state": "ENABLED"
+      },
+      {
+        "name": "//serviceusage.googleapis.com/projects/278483818008/services/bigquerydatapolicy.googleapis.com",
+        "assetType": "serviceusage.googleapis.com/Service",
+        "location": "global",
+        "state": "ENABLED"
+      },
+      {
+        "name": "//logging.googleapis.com/projects/278483818008/locations/global/buckets/_Default",
+        "assetType": "logging.googleapis.com/LogBucket",
+        "location": "global",
+        "state": "ACTIVE"
+      },
+      {
+        "name": "//serviceusage.googleapis.com/projects/278483818008/services/runtimeconfig.googleapis.com",
+        "assetType": "serviceusage.googleapis.com/Service",
+        "location": "global",
+        "state": "ENABLED"
+      },
+      {
+        "name": "//serviceusage.googleapis.com/projects/278483818008/services/cloudapis.googleapis.com",
+        "assetType": "serviceusage.googleapis.com/Service",
+        "location": "global",
+        "state": "ENABLED"
+      },
+      {
+        "name": "//serviceusage.googleapis.com/projects/278483818008/services/developerconnect.googleapis.com",
+        "assetType": "serviceusage.googleapis.com/Service",
+        "location": "global",
+        "state": "ENABLED"
+      },
+      {
+        "name": "//serviceusage.googleapis.com/projects/278483818008/services/cloudaicompanion.googleapis.com",
+        "assetType": "serviceusage.googleapis.com/Service",
+        "location": "global",
+        "state": "ENABLED"
+      },
+      {
+        "name": "//serviceusage.googleapis.com/projects/278483818008/services/monitoring.googleapis.com",
+        "assetType": "serviceusage.googleapis.com/Service",
+        "location": "global",
+        "state": "ENABLED"
+      },
+      {
+        "name": "//serviceusage.googleapis.com/projects/278483818008/services/cloudbuild.googleapis.com",
+        "assetType": "serviceusage.googleapis.com/Service",
+        "location": "global",
+        "state": "ENABLED"
+      },
+      {
+        "name": "//monitoring.googleapis.com/projects/278483818008/dashboards/cloud-run-service-monitoring",
+        "assetType": "monitoring.googleapis.com/Dashboard",
+        "location": "global"
+      }
+    ],
+    "complete": true,
+    "completed_at": "2026-10-20T08:40:29.480+08:00",
+    "type_counts": {
+      "serviceusage.googleapis.com/Service": 51,
+      "compute.googleapis.com/Address": 2,
+      "dataplex.googleapis.com/EntryGroup": 8,
+      "artifactregistry.googleapis.com/DockerImage": 59,
+      "run.googleapis.com/Revision": 58,
+      "run.googleapis.com/Execution": 1,
+      "run.googleapis.com/Job": 1,
+      "pubsub.googleapis.com/Topic": 4,
+      "compute.googleapis.com/Router": 1,
+      "compute.googleapis.com/Route": 45,
+      "compute.googleapis.com/Subnetwork": 43,
+      "compute.googleapis.com/Network": 2,
+      "compute.googleapis.com/Firewall": 4,
+      "compute.googleapis.com/Project": 1,
+      "cloudbilling.googleapis.com/ProjectBillingInfo": 1,
+      "secretmanager.googleapis.com/SecretVersion": 6,
+      "secretmanager.googleapis.com/Secret": 6,
+      "cloudbuild.googleapis.com/BuildTrigger": 2,
+      "run.googleapis.com/Service": 3,
+      "developerconnect.googleapis.com/GitRepositoryLink": 1,
+      "developerconnect.googleapis.com/Connection": 2,
+      "artifactregistry.googleapis.com/Repository": 2,
+      "iam.googleapis.com/ServiceAccount": 4,
+      "iam.googleapis.com/ServiceAccountKey": 5,
+      "storage.googleapis.com/Bucket": 1,
+      "apikeys.googleapis.com/Key": 1,
+      "cloudresourcemanager.googleapis.com/Project": 1,
+      "firebase.googleapis.com/FirebaseProject": 1,
+      "logging.googleapis.com/LogSink": 2,
+      "cloudbuild.googleapis.com/GlobalTriggerSettings": 1,
+      "logging.googleapis.com/LogBucket": 2,
+      "monitoring.googleapis.com/Dashboard": 1
+    },
+    "unreachable_locations_from_direct_run": [
+      "europe-west15",
+      "me-central2",
+      "us-central2",
+      "us-east7",
+      "us-west8"
+    ],
+    "resources_in_unreachable_locations": [],
+    "consumer_resources": [
+      {
+        "name": "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/jobs/sam-n06-bd2d-accept-20261020",
+        "assetType": "run.googleapis.com/Job",
+        "location": "asia-east1",
+        "createTime": "2026-10-19T18:25:29Z"
+      },
+      {
+        "name": "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/services/llm-pj-git",
+        "assetType": "run.googleapis.com/Service",
+        "location": "asia-east1",
+        "createTime": "2026-10-18T01:44:45Z"
+      },
+      {
+        "name": "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/services/vibecart-acceptance-pr21",
+        "assetType": "run.googleapis.com/Service",
+        "location": "asia-east1",
+        "createTime": "2026-10-17T03:36:41Z"
+      },
+      {
+        "name": "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/services/vibecart-web",
+        "assetType": "run.googleapis.com/Service",
+        "location": "asia-east1",
+        "createTime": "2026-10-12T13:14:36Z"
+      }
+    ],
+    "quota_project": "vibecart-llmai"
+  },
+  "scheduler_direct_locations": {
+    "checked_at": "2026-10-20T08:41:04.244+08:00",
+    "quota_project": "vibecart-llmai",
+    "http": 403,
+    "reasons": [
+      "SERVICE_DISABLED"
+    ],
+    "error_metadata": [
+      {
+        "consumer": "projects/vibecart-llmai",
+        "service": "cloudscheduler.googleapis.com"
+      }
+    ],
+    "resources": [],
+    "pagination_remaining": false,
+    "api_enabled_by_this_round": false
+  },
+  "cloud_asset_propagation_initial": {
+    "started_at": "2026-10-20T08:39:08.893+08:00",
+    "scope": "projects/278483818008",
+    "api": "searchAllResources",
+    "read_mask": "name,assetType,location,state,createTime,updateTime",
+    "pages": [
+      {
+        "http": 403,
+        "reasons": [
+          "SERVICE_DISABLED"
+        ],
+        "count": 0,
+        "next_page": false
+      }
+    ],
+    "resources": [],
+    "complete": false,
+    "completed_at": "2026-10-20T08:39:09.052+08:00",
+    "type_counts": {},
+    "unreachable_locations_from_direct_run": [
+      "europe-west15",
+      "me-central2",
+      "us-central2",
+      "us-east7",
+      "us-west8"
+    ],
+    "resources_in_unreachable_locations": [],
+    "consumer_resources": []
+  },
+  "cloud_asset_without_quota_project": {
+    "started_at": "2026-10-20T08:39:36.982+08:00",
+    "scope": "projects/278483818008",
+    "api": "searchAllResources",
+    "read_mask": "name,assetType,location,state,createTime,updateTime",
+    "attempts": [
+      {
+        "at": "2026-10-20T08:39:37.204+08:00",
+        "http": 403,
+        "reasons": [
+          "SERVICE_DISABLED"
+        ],
+        "error_metadata": [
+          {
+            "consumer": "projects/563584335869",
+            "service": "cloudasset.googleapis.com",
+            "containerInfo": "563584335869"
+          }
+        ]
+      },
+      {
+        "at": "2026-10-20T08:39:39.247+08:00",
+        "http": 403,
+        "reasons": [
+          "SERVICE_DISABLED"
+        ],
+        "error_metadata": [
+          {
+            "consumer": "projects/563584335869",
+            "service": "cloudasset.googleapis.com",
+            "containerInfo": "563584335869"
+          }
+        ]
+      },
+      {
+        "at": "2026-10-20T08:39:43.477+08:00",
+        "http": 403,
+        "reasons": [
+          "SERVICE_DISABLED"
+        ],
+        "error_metadata": [
+          {
+            "consumer": "projects/563584335869",
+            "service": "cloudasset.googleapis.com",
+            "containerInfo": "563584335869"
+          }
+        ]
+      },
+      {
+        "at": "2026-10-20T08:39:51.693+08:00",
+        "http": 403,
+        "reasons": [
+          "SERVICE_DISABLED"
+        ],
+        "error_metadata": [
+          {
+            "consumer": "projects/563584335869",
+            "service": "cloudasset.googleapis.com",
+            "containerInfo": "563584335869"
+          }
+        ]
+      },
+      {
+        "at": "2026-10-20T08:40:03.952+08:00",
+        "http": 403,
+        "reasons": [
+          "SERVICE_DISABLED"
+        ],
+        "error_metadata": [
+          {
+            "consumer": "projects/563584335869",
+            "service": "cloudasset.googleapis.com",
+            "containerInfo": "563584335869"
+          }
+        ]
+      },
+      {
+        "at": "2026-10-20T08:40:19.030+08:00",
+        "http": 403,
+        "reasons": [
+          "SERVICE_DISABLED"
+        ],
+        "error_metadata": [
+          {
+            "consumer": "projects/563584335869",
+            "service": "cloudasset.googleapis.com",
+            "containerInfo": "563584335869"
+          }
+        ]
+      }
+    ],
+    "pages": [
+      {
+        "http": 403,
+        "reasons": [
+          "SERVICE_DISABLED"
+        ],
+        "count": 0,
+        "next_page": false
+      }
+    ],
+    "resources": [],
+    "complete": false,
+    "completed_at": "2026-10-20T08:40:19.030+08:00",
+    "type_counts": {},
+    "unreachable_locations_from_direct_run": [
+      "europe-west15",
+      "me-central2",
+      "us-central2",
+      "us-east7",
+      "us-west8"
+    ],
+    "resources_in_unreachable_locations": [],
+    "consumer_resources": []
+  },
+  "scheduler_direct_locations_without_quota_project": {
+    "checked_at": "2026-10-20T08:39:09.282+08:00",
+    "http": 403,
+    "reasons": [
+      "SERVICE_DISABLED"
+    ],
+    "resources": [],
+    "pagination_remaining": false,
+    "api_enabled_by_this_round": false
+  },
+  "scope_reconciliation": {
+    "checked_at": "2026-10-20T08:41:05.732+08:00",
+    "direct_run_services": [
+      "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/services/llm-pj-git",
+      "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/services/vibecart-acceptance-pr21",
+      "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/services/vibecart-web"
+    ],
+    "indexed_run_services": [
+      "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/services/llm-pj-git",
+      "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/services/vibecart-acceptance-pr21",
+      "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/services/vibecart-web"
+    ],
+    "service_names_equal": true,
+    "direct_run_jobs": [
+      "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/jobs/sam-n06-bd2d-accept-20261020"
+    ],
+    "indexed_run_jobs": [
+      "//run.googleapis.com/projects/vibecart-llmai/locations/asia-east1/jobs/sam-n06-bd2d-accept-20261020"
+    ],
+    "job_names_equal": true,
+    "direct_revision_count": 58,
+    "asset_revision_count": 58,
+    "asset_resources_in_direct_denied_locations": 0,
+    "scope": "Current configured vibecart-llmai runtime inventory; external projects, unmanaged workstations and historical inactive consumers not part of this technical closure"
+  },
+  "status": "project_runtime_inventory_completed"
+}

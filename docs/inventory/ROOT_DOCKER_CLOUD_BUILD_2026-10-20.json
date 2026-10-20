@@ -1,0 +1,79 @@
+{
+  "checked_at": "2026-10-19T20:28:31.665Z",
+  "build_id": "5ed3ce3e-adec-44f7-8d10-4af0c5d66fbd",
+  "status": "SUCCESS",
+  "source_sha": "75de8de31f8122b5602dad4f73f5669387c46e68",
+  "trigger_id": "d0b39103-7508-451d-b3e6-6c251f82855d",
+  "start_time": "2026-10-19T20:25:52.210311954Z",
+  "finish_time": "2026-10-19T20:27:42.890772Z",
+  "steps": [
+    {
+      "id": "Prepare committed allowlist",
+      "status": "SUCCESS"
+    },
+    {
+      "id": "Build",
+      "status": "SUCCESS"
+    },
+    {
+      "id": "Offline boot",
+      "status": "SUCCESS"
+    },
+    {
+      "id": "Push",
+      "status": "SUCCESS"
+    },
+    {
+      "id": "Stage private candidate only",
+      "status": "SUCCESS"
+    }
+  ],
+  "images": [
+    {
+      "name": "asia-east1-docker.pkg.dev/vibecart-llmai/cloud-run-source-deploy/vibecart-acceptance-pr21:75de8de31f8122b5602dad4f73f5669387c46e68",
+      "digest": "sha256:5cba6eeea8d191791e8ac4ec76c6a4f6a18df301a0df188e64756ac26510f55f"
+    }
+  ],
+  "deployment": {
+    "service": "vibecart-acceptance-pr21",
+    "revision": "vibecart-acceptance-pr21-00046-yan",
+    "ready": true,
+    "image_digest": "asia-east1-docker.pkg.dev/vibecart-llmai/cloud-run-source-deploy/vibecart-acceptance-pr21@sha256:5cba6eeea8d191791e8ac4ec76c6a4f6a18df301a0df188e64756ac26510f55f",
+    "normal_traffic_percent": 0,
+    "tags": [
+      "github-preview"
+    ],
+    "fixed_vpc": {
+      "egress": "ALL_TRAFFIC",
+      "networkInterfaces": [
+        {
+          "network": "vibecart-egress-20261019",
+          "subnetwork": "vibecart-egress-subnet"
+        }
+      ]
+    },
+    "normal_command": true,
+    "public_invoker": false,
+    "anonymous_http": 403
+  },
+  "active_after": {
+    "production": {
+      "revision": "vibecart-web-ai-294c-1020",
+      "percent": 100
+    },
+    "private": {
+      "revision": "vibecart-acceptance-pr21-n06-294c-1019",
+      "percent": 100
+    }
+  },
+  "active_before": {
+    "production": {
+      "revision": "vibecart-web-ai-294c-1020",
+      "percent": 100
+    },
+    "private": {
+      "revision": "vibecart-acceptance-pr21-n06-294c-1019",
+      "percent": 100
+    }
+  }
+}
