@@ -5,7 +5,7 @@ from flask import Blueprint, abort, current_app, flash, redirect, render_templat
 from .auth import admin_required
 from .db import get_db
 from .services.admin_catalog import AdminListError, product_list
-from .services.admin_records import member_list, order_detail, order_list
+from .services.admin_records import member_list, order_detail, order_list, revoke_customer_sessions
 from .services.ai_compare import comparison
 from .services.ai_payload import InsightDataError, build_insight_payload, insight_ranges
 from .services.ai_workflows import FAILURE_LABELS, INTENTS, InsightRequestError, clean_question, insight_answer, operational_summary
@@ -295,3 +295,22 @@ def order_detail_page(order_id):
 @admin_required
 def members():
     return render_template('admin/members.html', **member_list(get_db(), request.args))
+
+
+MEMBER_FILTER_KEYS = ("q", "role", "status", "page")
+
+
+@bp.post('/members/<user_id>/revoke-sessions')
+@admin_required
+def revoke_member_sessions(user_id):
+    """Sign a customer out of all devices (CSRF is enforced for every POST by security.py)."""
+    back = {key: request.form[key] for key in MEMBER_FILTER_KEYS if request.form.get(key)}
+    try:
+        count = revoke_customer_sessions(get_db(), user_id)
+    except LookupError:
+        abort(404, description="找不到這位會員。")
+    except PermissionError:
+        abort(403, description="只能撤銷一般會員的裝置登入，管理員帳號不可從後台操作。")
+    current_app.logger.info("admin %s revoked %s device sessions of member %s", session.get("user_id"), count, user_id)
+    flash(f"已撤銷 {count} 個裝置", "success")
+    return redirect(url_for('admin.members', **back))

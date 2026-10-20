@@ -6,7 +6,7 @@
 {% block heading %}會員管理{% endblock %}
 {% block meta %}<span>共 {{ '{:,}'.format(paging.total) }} 位</span><span>Email 已遮罩</span><span>時間為台北時間</span>{% endblock %}
 {% block content %}
-{{ readonly_note('停用一般會員需等 D5 寫入及稽核上線；管理員帳號不能從後台停用（設計規格 12.3-C）。') }}
+{{ readonly_note('停用一般會員需等 D5 寫入及稽核上線；管理員帳號不能從後台停用或撤銷登入（設計規格 12.3-C）。「撤銷全部裝置」會讓該會員在所有裝置上登出。') }}
 <form class="panel dashboard-filters" method="get" action="{{ url_for('admin.members') }}">
   <label class="wide">關鍵字（顯示名稱）<input type="search" name="q" value="{{ form.q }}" maxlength="50"></label>
   <label>角色<select name="role"><option value="">全部</option>{% for value, label in lists.role_labels.items() %}<option value="{{ value }}" {% if form.role == value %}selected{% endif %}>{{ label }}</option>{% endfor %}</select></label>
@@ -16,7 +16,7 @@
 <section class="panel" aria-labelledby="member-list-title">
   <h2 id="member-list-title" class="visually-hidden">會員列表</h2>
   <div class="table-wrap"><table>
-    <thead><tr><th>顯示名稱</th><th>Email（遮罩）</th><th>角色</th><th>等級</th><th>狀態</th><th>註冊時間</th><th>最後登入</th></tr></thead>
+    <thead><tr><th>顯示名稱</th><th>Email（遮罩）</th><th>角色</th><th>等級</th><th>狀態</th><th>註冊時間</th><th>最後登入</th><th>操作</th></tr></thead>
     <tbody>{% for m in rows %}<tr>
       <td>{{ m.name or '—' }}</td>
       <td class="mono">{{ m.email }}</td>
@@ -25,7 +25,10 @@
       <td>{{ pill(lists.member_status_labels.get(m.status, m.status), 'ok' if m.status == 'active' else 'bad') }}</td>
       <td class="mono">{{ m.registered_at|taipei }}</td>
       <td class="mono">{{ m.last_login_at|taipei }}</td>
-    </tr>{% else %}<tr><td colspan="7" class="empty-cell">沒有符合條件的會員。</td></tr>{% endfor %}</tbody>
+      <td>{% if m.role == 'customer' %}<form method="post" action="{{ url_for('admin.revoke_member_sessions', user_id=m.id) }}" data-confirm="確定要讓「{{ m.name or m.email }}」在所有裝置上登出嗎？">
+        <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">{% for key in ('q', 'role', 'status') %}{% if form[key] %}<input type="hidden" name="{{ key }}" value="{{ form[key] }}">{% endif %}{% endfor %}{% if paging.page > 1 %}<input type="hidden" name="page" value="{{ paging.page }}">{% endif %}
+        <button class="button secondary small" type="submit">撤銷全部裝置</button></form>{% else %}<span class="muted-text">—</span>{% endif %}</td>
+    </tr>{% else %}<tr><td colspan="8" class="empty-cell">沒有符合條件的會員。</td></tr>{% endfor %}</tbody>
   </table></div>
   {{ pager(paging, 'admin.members', form) }}
 </section>

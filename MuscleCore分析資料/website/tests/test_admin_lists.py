@@ -145,10 +145,76 @@ def test_member_filters_and_email_not_searchable(admin):
     assert "返回會員管理" in page(client, "/admin/members?role=root", status=400)
 
 
-def test_member_list_has_no_deactivate_action(admin):
+def test_member_list_has_no_deactivate_action_and_no_revoke_for_admins(admin):
     _, client, _, _, _, _ = admin
-    html = page(client, "/admin/members")
-    assert "管理員帳號不能從後台停用" in html and 'method="post"' not in html
+    html = page(client, "/admin/members")  # only the admin fixture user exists
+    assert "管理員帳號不能從後台停用" in html and 'method="post"' not in html and "停用帳號" not in html
+
+
+# ---------- revoke all device sessions (customers only; audit added with D5) ----------
+
+def customer_with_sessions(app, db, count):
+    from app.services.member_sessions import create_member_session
+    cid = db.users.insert_one({"schema_version": 4, "display_name": "被撤銷會員", "email": "kick@example.test",
+                               "role": "customer", "status": "active", "is_active": True,
+                               "password_hash": "x"}).inserted_id
+    with app.app_context():
+        tokens = [create_member_session(db, db.users.find_one({"_id": cid})) for _ in range(count)]
+    return cid, tokens
+
+
+def revoke(client, user_id, csrf="test-csrf", **form):
+    return client.post(f"/admin/members/{user_id}/revoke-sessions", data={"csrf_token": csrf, **form})
+
+
+def test_revoke_signs_customer_out_of_every_device(admin):
+    app, client, db, uid, _, _ = admin
+    cid, tokens = customer_with_sessions(app, db, 2)
+    assert 'action="/admin/members/%s/revoke-sessions"' % cid in page(client, "/admin/members")
+    response = revoke(client, cid, q="被撤銷", role="customer")
+    assert response.status_code == 302 and "/admin/members?" in response.location
+    assert "q=" in response.location and "role=customer" in response.location
+    assert db.auth_sessions.count_documents({"user_id": cid}) == 0
+    assert db.auth_sessions.count_documents({"user_id": uid}) == 1  # the admin's own session is untouched
+    assert "已撤銷 2 個裝置" in page(client, response.location)
+    # The revoked customer's old session no longer reaches member pages.
+    kicked = app.test_client()
+    with kicked.session_transaction() as state:
+        state.update(user_id=str(cid), role="customer", member_session=tokens[0], csrf_token="t")
+    assert kicked.get("/cart").status_code == 302
+
+
+def test_revoke_with_no_sessions_reports_zero(admin):
+    app, client, db, _, _, _ = admin
+    cid, _ = customer_with_sessions(app, db, 0)
+    assert "已撤銷 0 個裝置" in page(client, revoke(client, cid).location)
+
+
+def test_revoke_refuses_admin_accounts(admin):
+    app, client, db, uid, _, _ = admin
+    other_admin = db.users.insert_one({"schema_version": 4, "display_name": "另一位管理員", "role": "admin",
+                                       "status": "active", "is_active": True}).inserted_id
+    db.auth_sessions.insert_one({"_id": "x" * 64, "user_id": other_admin})
+    assert revoke(client, other_admin).status_code == 403
+    assert revoke(client, uid).status_code == 403  # including yourself
+    assert db.auth_sessions.count_documents({"user_id": other_admin}) == 1
+    assert db.auth_sessions.count_documents({"user_id": uid}) == 1
+
+
+def test_revoke_requires_csrf_and_existing_member(admin):
+    app, client, db, _, _, _ = admin
+    cid, _ = customer_with_sessions(app, db, 1)
+    assert revoke(client, cid, csrf="wrong").status_code == 400
+    assert db.auth_sessions.count_documents({"user_id": cid}) == 1
+    assert revoke(client, ObjectId()).status_code == 404
+    assert revoke(client, "not-an-id").status_code == 404
+
+
+def test_revoke_requires_admin(shop):
+    app, client, db, _, _, _ = shop
+    cid, _ = customer_with_sessions(app, db, 1)
+    assert revoke(client, cid).status_code == 302
+    assert db.auth_sessions.count_documents({"user_id": cid}) == 1
 
 
 @pytest.mark.parametrize("email,masked", [("ab@x.io", "a***@x.io"), ("", "—"), (None, "—"), ("no-at-sign", "—")])

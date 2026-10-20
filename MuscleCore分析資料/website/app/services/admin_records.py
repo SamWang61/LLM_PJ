@@ -110,7 +110,26 @@ def member_list(db, values):
     paging = pagination(db.users.count_documents(query), page)
     users = list(db.users.find(query, MEMBER_FIELDS).sort([("registered_at", -1), ("_id", -1)])
                  .skip((paging["page"] - 1) * PAGE_SIZE).limit(PAGE_SIZE))
-    rows = [{"name": u.get("display_name", ""), "email": mask_email(u.get("email")), "role": u.get("role", ""),
+    rows = [{"id": str(u["_id"]), "name": u.get("display_name", ""), "email": mask_email(u.get("email")), "role": u.get("role", ""),
              "level": u.get("member_level", ""), "status": u.get("status") or ("active" if u.get("is_active") else "inactive"),
              "registered_at": u.get("registered_at"), "last_login_at": u.get("last_login_at")} for u in users]
     return {"rows": rows, "form": form, "paging": paging}
+
+
+def revoke_customer_sessions(db, user_id):
+    """Sign a customer out of every device. Returns the number of device sessions removed.
+
+    Only role='customer' accounts qualify (design spec 12.3-C); admins are refused. Audit records
+    are added when the D5 audit migration is enabled.
+    """
+    from .member_sessions import revoke_user_sessions
+    try:
+        oid = ObjectId(user_id)
+    except (InvalidId, TypeError):
+        raise LookupError("member not found") from None
+    user = db.users.find_one({"_id": oid}, {"role": 1})
+    if not user:
+        raise LookupError("member not found")
+    if user.get("role") != "customer":
+        raise PermissionError("only customers can be signed out from the admin")
+    return revoke_user_sessions(db, oid)

@@ -191,6 +191,14 @@ The ignored local profile contains the existing v4 connection. It is not a newly
 - **共通規則**：每頁 50 筆；關鍵字以字面比對（先跳脫，不當成正規表示式）；篩選值不合法時回 400，並附「返回 XX 管理」連結；全部是 GET、需要 `@admin_required`；時間以台北時間顯示。導覽列不再顯示「尚未開放」。
 - **驗證**：網站離線測試 342 passed／21 skipped（新增 `tests/test_admin_lists.py` 25 項）。以本機 mongomock 預覽檢查三頁：無殘留深色、375px 無橫向溢出、會員頁 HTML 不含密碼雜湊與完整 Email。
 
+### 2026-10-21 撤銷會員全部裝置（JEFF）
+
+- 會員管理每一列一般會員都有「撤銷全部裝置」按鈕：`POST /admin/members/<id>/revoke-sessions`，CSRF（全站 POST 檢查）＋`@admin_required`，送出前瀏覽器會再確認一次。
+- 呼叫 REN 的 `revoke_user_sessions()`，刪除該會員所有裝置 session，完成後顯示「已撤銷 N 個裝置」並回到原本的篩選頁；N 是刪除的 session 筆數（含已過期但尚未清除的）。
+- **只能對 `role='customer'` 操作**：管理員帳號（包含自己）伺服器端回 403，畫面上也不顯示按鈕；會員不存在或 ID 不合法回 404。
+- **依 JEFF 決定，暫不寫稽核紀錄**；只在應用程式日誌記錄操作者 ID、會員 ID 與筆數（不含個資）。D5 稽核遷移上線後要補上稽核，並與撤銷放在同一筆交易（`revoke_user_sessions` 已支援 `mongo_session`）。
+- 新增 5 項離線測試：撤銷後舊 session 失效、管理員自己的 session 不受影響、0 個裝置、拒絕管理員（含自己）、缺 CSRF、會員不存在、非管理員。
+
 ## 線上 AI 設定 / Online AI configuration（JEFF，2026-10-18，A1／A2）
 
 **狀態：程式與建置設定已完成；SAM已實際建置精簡與AI映像、Gunicorn boot及真BGE斷網驗證。尚未執行Cloud Build／發布或部署；線上AI仍關閉。** 部署由 SAM 執行或授權，費用記在 `vibecart-llmai` 帳單；Claude API 費用由 JEFF 的 Key 負擔。
