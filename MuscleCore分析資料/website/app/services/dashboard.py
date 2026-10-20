@@ -8,6 +8,7 @@ from .behavior_scope import production_behavior_query
 
 TAIPEI = timezone(timedelta(hours=8))
 MAX_RANGE_ORDERS = 5000
+TREND_DAYS = 14
 
 
 class DashboardFilterError(ValueError):
@@ -91,7 +92,48 @@ def load_dashboard(db, mode, filters):
             daily[key]["revenue"] += money(order["total_amount"]) if mode == "v4" else Decimal(str(order.get("total", 0)))
     insights["daily"] = [{"date": key, **value} for key, value in sorted(daily.items())]
     insights["undated_orders"] = len(paid) - sum(v["orders"] for v in daily.values())
+    insights["trend"] = kpi_trend(insights["daily"], filters)
     return insights, recent
+
+
+def pct_change(current, base):
+    if current is None or base is None or base == 0:
+        return None
+    return float((Decimal(current) - Decimal(base)) / Decimal(base) * 100)
+
+
+def kpi_trend(daily, filters):
+    """KPI sparklines: the 14 Taipei days ending at the range end, counting only orders inside the current filter.
+
+    Days before the range start are marked out of range rather than read from the database, so the
+    sparkline and the "last 7 vs previous 7 days" change always agree with the filtered KPIs.
+    """
+    if "after" in filters:
+        first, last = date.fromisoformat(filters["start"]), date.fromisoformat(filters["end"])
+    elif daily:
+        first, last = date.fromisoformat(daily[0]["date"]), date.fromisoformat(daily[-1]["date"])
+    else:
+        return None
+    by_day = {row["date"]: row for row in daily}
+    points = []
+    for offset in range(TREND_DAYS - 1, -1, -1):
+        day = last - timedelta(days=offset)
+        row = by_day.get(day.isoformat(), {"orders": 0, "revenue": Decimal("0")})
+        inside = day >= first
+        points.append({"date": day.isoformat(), "in_range": inside,
+                       "orders": row["orders"] if inside else None, "revenue": row["revenue"] if inside else None,
+                       "avg_order": (row["revenue"] / row["orders"]) if inside and row["orders"] else None})
+    complete = all(point["in_range"] for point in points)
+    change = None
+    if complete:
+        def window(part):
+            revenue = sum((point["revenue"] for point in part), Decimal("0"))
+            orders = sum(point["orders"] for point in part)
+            return revenue, orders, (revenue / orders if orders else None)
+        prior, recent = window(points[:7]), window(points[7:])
+        change = {"revenue": pct_change(recent[0], prior[0]), "orders": pct_change(recent[1], prior[1]),
+                  "avg_order": pct_change(recent[2], prior[2])}
+    return {"points": points, "complete": complete, "change": change, "start": points[0]["date"], "end": last.isoformat()}
 
 
 def recommendation_monitor(db, mode):
