@@ -1,11 +1,12 @@
-# JEFF｜管理後台 設計與版面規格 v1.2
+# JEFF｜管理後台 設計與版面規格 v1.3
 
-> 建立：2026-10-03；定案：2026-10-05；v1.1 修訂：2026-10-09；v1.2 契約補充：2026-10-16（Asia/Taipei）
+> 建立：2026-10-03；定案：2026-10-05；v1.1 修訂：2026-10-09；v1.2 契約補充：2026-10-16；v1.3 同步實作與視覺：2026-10-21（Asia/Taipei）
 > 負責人：JEFF（AI／管理後台，見 [TEAM_OWNERSHIP.md](TEAM_OWNERSHIP.md)）
 > 狀態：**版面已定案**（決策見第 10 節）；第 7 節資料來源對照、第 12 節 D5／AI 契約回覆供 SAM 對接 v4 資料庫。
 > v1.1 依 SAM 審查（PR #11 `docs/JEFF_PUSH_REVIEW_2026-10-07.md`）與契約提案（`docs/SAM_DATA_CONTRACT_2026-10-07.md`）修訂。
 > 配套文件：[AI_DASHBOARD.md](AI_DASHBOARD.md)（既有後台實作與驗證）。
 > v1.2 由專案負責人接續確認啟用與驗收門檻、保存期限及批量重送語義。第 7.5 節的數量是 10/09 歷史讀回；即時狀態先看 [CURRENT_CONTEXT.md](CURRENT_CONTEXT.md)。本文件是設計契約，不代表 D5 寫入、自由提問、真模型或 D4 已部署驗收。
+> **v1.3（2026-10-21，JEFF）**：依 main `c66f731` 同步 10/12～10/20 已合併的實作（T5 真模型調整、線上 AI 開關與 AI 映像、v4 權重、個人推薦範圍、SAM 的 6＋4 與 #5 快照），更新第 2、5、7、11、12.4 節並新增第 13 節；第 8 節改為 10/21 定案的淺色數據看板 token（`admin.css` 尚未改版）。
 
 ---
 
@@ -16,7 +17,7 @@
 - 文件中的線框圖**不含任何示範數字**；`{欄位}` 表示由資料庫或執行結果帶入的值。
 - 實作一律讀取 v4 真實資料；資料為空時顯示空狀態，不以假資料填充。
 
-English summary: Admin layout and v4 field mapping with explicit KPI and sellable-SKU rules. Section 12 defines a separate release gate for administrator free-text questions, 180-day audit and idempotency-record retention, batch request IDs, and no admin-to-admin deactivation. D5 writes, live model inference, and D4 import remain separate acceptance items.
+English summary (v1.3): Syncs the spec with merged work through main `c66f731` (real-model adjustments, online AI flags and image, v4 weights, the personalization scope, SAM's 6+4 ranking) and adopts the light dashboard tokens decided on 10/21, not yet applied to `admin.css`. Earlier summary: Admin layout and v4 field mapping with explicit KPI and sellable-SKU rules. Section 12 defines a separate release gate for administrator free-text questions, 180-day audit and idempotency-record retention, batch request IDs, and no admin-to-admin deactivation. D5 writes, live model inference, and D4 import remain separate acceptance items.
 
 ---
 
@@ -29,16 +30,21 @@ English summary: Admin layout and v4 field mapping with explicit KPI and sellabl
 
 ---
 
-## 2. 現況（main，2026-10-05）
+## 2. 現況（main `c66f731`，2026-10-21）
 
-| 頁面 | 路由 | 內容 |
+| 頁面 | 路由 | 狀態 |
 |---|---|---|
-| 營運決策中心 | `GET /admin/` | 日期／示範訂單篩選、4 張 KPI、營運摘要＋AI 摘要按鈕、熱銷排行、每日營收表、低庫存表、最近訂單表 |
-| AI 摘要結果 | `POST /admin/summary` | 同上頁面，摘要區換成 Claude 輸出 |
-| 推薦行為監控 | `GET /admin/recommendations` | 策略說明、旗標狀態、v4 權重政策、最近 1,000 筆事件前 20 組 |
-| 篩選錯誤 | — | 錯誤訊息＋返回 |
+| 營運總覽 | `GET /admin/`、`POST /admin/summary` | ✅ 已實作（T1）：共用版型、有效／全部訂單 KPI、每日營收長條圖＋表、熱銷、規則／AI 摘要、低庫存、最近訂單 |
+| AI 板塊 A｜Local 推薦 | `GET /admin/ai/recommendation`、`POST /admin/ai/recommendation/refresh` | ✅ 已實作（T3）；T5 本機真 BGE 實測 |
+| AI 板塊 B｜雲端洞察 | `GET`／`POST /admin/ai/insight` | ✅ 已實作（T2）；4 個預設 intent；自由提問有旗標且預設關閉；T5 真 Claude 實測後調整（第 5.3 節） |
+| AI 比較 | `GET /admin/ai/compare` | ✅ 已實作（T4）：只用實際呼叫的量測 |
+| 推薦監控 | `GET /admin/recommendations` | ✅ 權重讀 v4 政策；曝光／點擊／加購／購買**未實作**（需 `recommendation_logs`） |
+| 商品／訂單／會員管理 | `/admin/products`、`/admin/orders`、`/admin/members` | ❌ 未實作；導覽顯示「尚未開放」 |
+| D5 後台寫入 | — | ❌ 未實作；SAM 的 `schema_d5_v1.py`（migration `20261018_07_admin_audit_receipts_v4`）為未啟用草案 |
+| 線上 AI | Cloud Run | 🟨 程式與 AI 映像選項已合併（第 13 節）；Claude Key 版本 1 已建立，私有 0% 預覽已驗 BGE＋Claude。正式站是否開啟以 [CURRENT_CONTEXT.md](CURRENT_CONTEXT.md) 為準 |
+| 視覺改版 | `static/css/admin.css` | 📝 10/21 定案淺色數據看板（第 8 節），**尚未實作** |
 
-**待改善**：沒有後台導覽；首頁區塊過多、AI 摘要不突出；共用前台頁首；推薦監控說明仍為舊權重 1/3/4/8。
+10/05 的舊版現況（無後台導覽、共用前台頁首、舊權重 1/3/4/8）已由 T1～T4 與 B1 解決，保留於 git 歷史。
 
 ---
 
@@ -148,6 +154,7 @@ EYEBROW: LOCAL AI · 本機模型
 - 相似度以數值＋水平條顯示（條長＝分數）。
 - 商品圖片取 `products.image_urls[0]`；無圖片時以商品名稱縮寫佔位。
 - 狀態：模型未安裝 → 黃色提示＋安裝指令；無商品 → 空狀態「資料庫尚無可推薦商品」；不顯示假結果。
+- **實作備註（v1.3）**：模型輸入使用 `categories.name` 的大／小類名稱（`category_path` 存的是分類代碼，見第 7.2 節）。「更新商品向量」清除快取後全部重算。T5 本機實測（CPU、324 筆可售商品）：模型載入 5.0 秒、全量向量化 7.6 秒、查詢中位數 26.5 ms；同一商品不同包裝（單入／箱購）相似度最高，前台推薦需合併。
 
 ### 5.3 AI 板塊 B｜雲端洞察 `/admin/ai/insight`
 
@@ -177,6 +184,13 @@ AI 營運洞察
 - 單次問答，不保留歷史；不提供模型切換選單。
 - 「營收為什麼下滑？」：資料不足以判斷因果時，模型須回答資料不足，不得捏造原因。
 - 來源標籤：`Claude`（綠）／`規則退回`（黃）；失敗只顯示原因類型（未設定 Key／逾時／服務錯誤）。
+- **T5 真模型實測後的規則（v1.3，已實作）**：
+  - 回覆上限 `max_tokens` 1200、逾時 45 秒（營運總覽摘要維持 600）；`stop_reason=max_tokens` 時標示「內容可能不完整」。
+  - 送給模型的商品依 intent 限量：`period_compare`／`revenue_change` 20 筆、`replenishment`／`promotion` 50 筆、自由提問 100 筆（白名單上限仍為 100）；JSON 縮排 1。實測輸入由約 18,000 降到 5,000～10,000 tokens。
+  - `replenishment` 候選由程式先篩選 `available_quantity <= safety_stock`，模型只排序與說明。
+  - System prompt 要求日期照抄範圍欄位、不得自行加減乘除產生新數字、不使用 Markdown 標題。
+  - 「營收為什麼下滑？」改為列出兩期各自營收最高／最低的日期，不由模型判斷「差異最大」。
+  - 未指定日期時，本期為最近有訂單日往前 7 天；展示時建議手動指定完整區間。
 
 ### 5.4 AI 比較 `/admin/ai/compare`
 
@@ -197,11 +211,13 @@ Local AI vs Cloud LLM
 
 - 實測值來自 A、B 的實際呼叫紀錄；尚未量測時顯示「尚未量測，請先到 A／B 執行一次」。
 - 「推論不需網路」僅指 BGE 模型已下載後的本機推論；網站讀取 Atlas 資料與遠端商品圖片仍需網路，整站並非可離線運作。
+- **實作備註（v1.3）**：N＝最近 10 次成功呼叫；Local 只計相似商品計算，Cloud 計洞察與總覽摘要的實際 API 呼叫（快取命中與失敗不計）。成本只在設定 `CLAUDE_INPUT_USD_PER_MTOK`／`CLAUDE_OUTPUT_USD_PER_MTOK` 時估算，未設定則只顯示 token。另列最近 20 筆呼叫紀錄（不含問題內容）；量測存在程序記憶體，重新啟動即清空。
 
 ### 5.5 推薦監控 `/admin/recommendations`
 
-- 沿用現有內容，套用新版型；權重說明改為讀取 v4 `recommendation_policy`（4/3/2/1）。
-- 預留：推薦曝光、點擊、加購、購買數（依 `recommendation_logs`）。
+- 沿用現有內容，套用新版型；權重說明改為讀取 v4 `recommendation_policy`（4/3/2/1）。**已實作（B1，#83）**：規則推薦讀 active 政策，缺少、負數、非數字、NaN／Infinity 的權重以預設值補上；SEARCH 事件以 `search_query` 比對商品名稱與分類計分。
+- **事件範圍（B2，#84）**：推薦監控與成效／歸因統計使用 `production_*`（排除 synthetic 與 `exclude_from_attribution`）；會員自己的前台推薦使用 `personalization_*`（只排除 synthetic），真實會員的示範結帳會影響本人推薦但不計入成效。
+- 預留（**未實作**）：推薦曝光、點擊、加購、購買數（依 `recommendation_logs`；目前沒有程式寫入）。
 
 ---
 
@@ -265,7 +281,7 @@ v4 集合與欄位依 `VibeCart_AI/MongoDB/schema_complete_v4.py`。
 | 畫面元素 | 來源 | 規則 |
 |---|---|---|
 | 商品下拉選單／候選 | `products`＋`product_skus` | `products.status='active'`、`is_ai_recommendable=true`，且至少一個 SKU `status='active'` 並 `available_quantity > 0`；沒有可售 SKU 的商品排除 |
-| 模型輸入文字 | `products.product_name`、`category_path`、`summary`、`description`、`product_tags` | 由程式組合 |
+| 模型輸入文字 | `products.product_name`、`categories.name`（大／小類）、`summary`、`description`、`product_tags` | 由程式組合；`category_path` 為分類代碼（例如 `SM-DAIRY`），不送入模型（v1.3） |
 | 商品圖片 | `products.image_urls[0]` | 選填；空陣列以縮寫佔位 |
 | 價格 | 可售 SKU（`status='active'` 且 `available_quantity>0`）的 `price` 最低值 | Decimal128；下架或無庫存 SKU 的低價不得影響顯示 |
 | 分類名稱 | `categories.name`（`major_category_id`、`minor_category_id`） | — |
@@ -275,7 +291,7 @@ v4 集合與欄位依 `VibeCart_AI/MongoDB/schema_complete_v4.py`。
 | 畫面元素 | 來源 |
 |---|---|
 | 權重政策 | `system_configs`（`config_key='recommendation_policy'`、`status='active'`）的 `settings.weights` |
-| 事件統計 | `behavior_events.event_type`、`product_id`、`event_at` |
+| 事件統計 | `behavior_events.event_type`、`product_id`、`event_at`；以 `production_behavior_query()` 排除 synthetic 與 `exclude_from_attribution` |
 | 曝光／點擊／加購／購買（預留） | `recommendation_logs.items`、`clicked_product_ids`、`added_to_cart_product_ids`、`purchased_product_ids` |
 
 ### 7.4 管理頁面
@@ -286,42 +302,51 @@ v4 集合與欄位依 `VibeCart_AI/MongoDB/schema_complete_v4.py`。
 | 訂單管理 | `orders`、`order_items` | `order_number`、`ordered_at`、`status`、`payment_status`、`shipping_status`、`is_demo`、`subtotal`、`discount_amount`、`shipping_fee`、`total_amount`；明細：`product_name_snapshot`、`unit_price`、`quantity`、`line_total` |
 | 會員管理 | `users` | `display_name`、`email`、`role`、`member_level`、`status`、`registered_at`、`last_login_at` |
 
-### 7.5 資料準備狀態（2026-10-09 唯讀核對 Atlas `vibecart_ai`）
+### 7.5 資料準備狀態（v1.3：2026-10-21 依 main 文件核對；即時數字以 [CURRENT_CONTEXT.md](CURRENT_CONTEXT.md) 為準）
 
 | # | 需求 | 狀態 |
 |---|---|---|
-| D1 | 分類、品牌、商品、SKU | ✅ 已有：`categories` 32、`brands` 128、`products` 336、`product_skus` 336 |
-| D2 | 商品圖片 `image_urls` | ✅ 336／336 商品有圖片 |
-| — | 可推薦／可售 | 336 商品為 active 且可推薦；324 個 SKU 為 active 且 `available_quantity>0`；有效（已付款未取消）訂單 1,800 |
-| D3 | 示範訂單與明細 | ✅ 已有：`orders` 3,000（全部 `is_demo=true`）、`order_items` 8,969；`users` 600 位合成會員**全部停用**，不能登入 |
-| D4 | 行為事件 `behavior_events` | ⏳ 0 筆，SAM 待產生（新批次、可辨識 synthetic）；「猜你喜歡」與推薦監控依賴此項 |
-| D5 | 後台寫入契約與稽核 Schema | 📝 JEFF 已回覆（第 12.3 節）；稽核集合待 SAM 新增 migration |
-| D6 | 可登入的私有 customer／admin 測試帳號 | ⏳ SAM 待配置（需 REN 登入／撤權介面；後台授權路徑見第 12.3 節） |
+| D1 | 分類、品牌、商品、SKU | ✅ 10/09 讀回：`categories` 32、`brands` 128、`products` 336、`product_skus` 336 |
+| D2 | 商品圖片 `image_urls` | ✅ 10/09 讀回 336／336 有圖片 |
+| — | 可推薦／可售 | 10/09：336 商品 active 且可推薦、324 個 SKU 可售；10/12～10/17 T5 實測時可售候選 324 筆 |
+| D3 | 示範訂單與明細 | ✅ 3,000 筆 demo 訂單（10/17 讀回為 3,002，多 2 筆 10/14 示範結帳）、`order_items` 8,969；600 位合成會員全部停用 |
+| D4 | 行為事件 `behavior_events` | ✅ 10/18 SAM 正式匯入 1,240 筆 synthetic 事件並完成 verify（[D4 驗收](D4_IMPORT_ACCEPTANCE_2026-10-18.md)）；推薦與監控依第 5.5 節範圍排除 |
+| D5 | 後台寫入契約與稽核 Schema | 📝 契約見第 12.3 節；SAM `schema_d5_v1.py`（`20261018_07_admin_audit_receipts_v4`）已於隔離本機 MongoDB 演練，**尚未啟用**；寫入功能未實作 |
+| D6 | 可登入的私有 customer／admin 測試帳號 | 依 SAM 私有驗收環境紀錄（見 CURRENT_CONTEXT）；帳密不入 Git |
 
-匯入批次與證據見 PR #11 `docs/TEST_DATA_IMPORT_2026-10-05.md`、`VibeCart_AI/MongoDB/test_data/`。所有營運數字皆來自示範訂單，展示時須標示「示範資料」。
+所有營運數字皆來自示範訂單，展示時須標示「示範資料」。10/09 的原始讀回與匯入證據見 git 歷史與 `VibeCart_AI/MongoDB/test_data/`。
 
 ---
 
-## 8. 視覺規範（沿用 `app/static/css/main.css`）
+## 8. 視覺規範（v1.3：淺色數據看板，2026-10-21 定案）
+
+> 依第 10 節 2026-10-21 的四筆視覺決策更新；設計參考 Demo：https://claude.ai/artifact/Cqw1YCeAXzjThabF534WfU 。**現行 `admin.css` 仍為 v1.2 深色 token，改版尚未實作。**前台 `main.css` 不變。
 
 | Token | 值 | 用途 |
 |---|---|---|
-| `--bg` | `#0c0e0d` | 頁面底色 |
-| `--panel` | `#151816` | 卡片 |
-| `--ink` | `#f4f6f1` | 主要文字 |
-| `--muted` | `#a8b0a7` | 次要文字 |
-| `--lime` | `#b7ff2a` | 強調、主要按鈕、目前頁、Local AI |
-| `--line` | `#293028` | 邊框 |
-| `--danger` | `#ff6b6b` | 錯誤 |
-| `--radius` | `18px` | 卡片圓角 |
-| `--cloud`（新） | `#7cc4ff` | Cloud LLM 標籤 |
-| `--warn`（新） | `#ffc857` | 規則退回、模型未載入 |
-| 字型 | `Inter, "Noto Sans TC", system-ui` | — |
-| 斷點 | 900px、620px | — |
+| `--bg` | `#f3f5f8` | 頁面底色 |
+| `--panel` | `#ffffff` | 卡片（細邊框＋淡陰影） |
+| `--panel-2` | `#f6f8fa` | 次底（表頭、篩選列、程式碼區） |
+| `--line` | `#e2e6eb` | 邊框 |
+| `--ink` | `#111827` | 主要文字 |
+| `--ink-2` | `#374151` | 次要內文 |
+| `--muted` | `#6b7280` | 說明文字 |
+| `--brand` | `#b7ff2a` | **只用於色塊**：主要按鈕、Logo、選取狀態（白底上不可當文字或細線） |
+| `--lime` | `#5a960e` | 文字、連結、目前頁、Local AI、長條圖與走勢圖 |
+| `--cloud` | `#2b7bc4` | Cloud LLM 標籤（淺色底）；`#7cc4ff` 只用於深色底 |
+| `--ok` | `#1f9d55` | 可用、成功 |
+| `--warn` | `#b7791f` | 規則退回、模型未載入 |
+| `--danger` | `#d64545` | 錯誤 |
+| `--radius` | `10px` | 卡片圓角 |
+| 字型 | `"IBM Plex Sans", "Noto Sans TC"`；數字用等寬 `"JetBrains Mono"` | 字型檔的載入方式於實作時確認 |
+| 斷點 | 900px、620px | 不變 |
 
+- 標籤與提示改為淺色底＋深色字；狀態燈旁仍必有文字（第 9 節）。
+- 營運總覽改為 12 欄看板格線：KPI 卡附 14 天走勢小圖與「近 7 天 vs 前 7 天」變化；每日營收為 inline SVG 長條圖（刻度、日均線、滑鼠提示），資料表收進「查看資料表」；熱銷 Top 10 改橫條；低庫存加水位條。仍符合 5.1-1（長條圖＋保留表格）。
+- **待決定**：Demo 的「分類營收占比」區塊在第 7 節尚無對應欄位，採用前須先定義資料來源（例如有效訂單明細依大類快照欄位加總）與範圍口徑。
 - 後台樣式寫在 **`static/css/admin.css`**，由 `admin/layout.html` 載入，不修改前台 `main.css`。
-- 元件沿用：`.panel`、`.metrics`、`.button`、`.button.secondary`、`.table-wrap`、`.rank`、`.insight`、`.eyebrow`。
-- 新元件：`.admin-layout`、`.admin-nav`、`.status-dot`、`.score-bar`、`.source-badge`、`.ai-answer`、`.toast`。
+- 元件沿用：`.panel`、`.metrics`、`.button`、`.button.secondary`、`.table-wrap`、`.rank`、`.insight`、`.eyebrow`；新元件：`.admin-layout`、`.admin-nav`、`.status-dot`、`.score-bar`、`.source-badge`、`.ai-answer`、`.toast`。
+- v1.2 深色 token（`--bg #0c0e0d`、`--lime #b7ff2a` 等）保留於 git 歷史；改版完成前仍為現行樣式。
 
 ---
 
@@ -364,22 +389,36 @@ v4 集合與欄位依 `VibeCart_AI/MongoDB/schema_complete_v4.py`。
 | 2026-10-09 | D | 第一版寫入範圍採 SAM 提案欄位；退款不做 | 第 12.3 節 |
 | 2026-10-16 | A 補充 | 四個固定 intent 與自由提問分開啟用；自由提問通過權限、資料、濫用及真模型驗收才開放 | 第 12.2 節 |
 | 2026-10-16 | B 補充 | 稽核及獨立重送紀錄各保留 180 天；批量模式與 request_id 規則定案 | 第 12.3 節 |
+| 2026-10-17 | T5-1 | 雲端洞察 `max_tokens` 1200、逾時 45 秒，截斷時標示；商品依 intent 限量 20／50／100；補貨候選由程式篩選；prompt 禁止自行計算並要求日期照抄 | 真 Claude 3 回 9 次實測（第 5.3 節、[AI_DASHBOARD.md](AI_DASHBOARD.md) T5） |
+| 2026-10-18 | A1 | 雲端 runtime 的三個 AI 開關改讀環境變數，預設關閉、只接受 true／false；不放寬 preview／acceptance 檢查 | #82，第 13 節 |
+| 2026-10-18 | A2 | AI 映像為建置選項 `INSTALL_AI`（預設不變）：CPU 版 PyTorch、建置時內建 BGE 模型、執行期離線載入 | #82，第 13 節 |
+| 2026-10-18 | B1 | 規則推薦改用 v4 政策權重 4/3/2/1，讀 active 政策並驗證數值；SEARCH 依搜尋字計分 | #83（SAM 補 NaN／Infinity 防護），第 5.5 節 |
+| 2026-10-18 | B2 | 個人推薦只排除 synthetic；示範結帳影響本人推薦但不計入成效／歸因 | #84，第 5.5、7.3 節 |
+| 2026-10-18 | 6+4 | 前台首頁「猜你喜歡」改為 6＋4 兩區（請求時計分、高星優先、分類上限、去重） | SAM #81 `storefront_ranking.py`；6＋4 由 SAM 主責 |
+| 2026-10-20 | PR #5 | 偏好分數持久快照以 opt-in CLI 交付（預設 dry-run），**未啟用排程** | SAM 整合，見 `docs/PR5_SCORING_DELIVERY_2026-10-20.md` |
+| 2026-10-21 | 視覺 | 後台改採**淺色數據看板風格**（取代第 8 節的深色 token）：底色 `--bg #f3f5f8`、卡片 `--panel #ffffff`（細邊框＋淡陰影）、次底 `--panel-2 #f6f8fa`、邊框 `--line #e2e6eb`、文字 `--ink #111827`／`--ink-2 #374151`／`--muted #6b7280`；圓角 `--radius 10px`；字型 `"IBM Plex Sans", "Noto Sans TC"`，數字用等寬 `"JetBrains Mono"` | Demo：https://claude.ai/artifact/Cqw1YCeAXzjThabF534WfU 。v1.3 已更新第 8 節 token 表與字型；新樣式仍只寫在 `admin.css`（6-2），前台 `main.css` 不變；`admin.css` 改版尚未實作 |
+| 2026-10-21 | 視覺（品牌色） | 萊姆綠分兩種用途：`--brand #b7ff2a` 只用於色塊（主要按鈕、Logo、選取狀態）；文字、連結、目前頁、Local AI、長條圖與走勢圖改用 `--lime #5a960e` | `#b7ff2a` 在白底上對比不足，不能當文字或細線 |
+| 2026-10-21 | 6-1 補充 | 淺色底的 Cloud 色改用 `#2b7bc4`（同色系加深）；`#7cc4ff` 只用於深色底 | 狀態色同步調整：`--ok #1f9d55`、`--warn #b7791f`、`--danger #d64545`；標籤與提示改為淺色底＋深色字 |
+| 2026-10-21 | 視覺（總覽） | 營運總覽改為 12 欄看板格線：KPI 卡附 14 天走勢小圖與「近 7 天 vs 前 7 天」變化；每日營收為 inline SVG 長條圖（刻度、日均線、滑鼠提示），資料表收進「查看資料表」；熱銷 Top 10 改橫條；低庫存加水位條 | 仍符合 5.1-1（長條圖＋保留表格）。Demo 另有「分類營收占比」區塊，第 7 節尚無對應欄位，**是否採用及資料來源待主 session 決定** |
 
 ---
 
 ## 11. 實作檔案對應（相對 `MuscleCore分析資料/website/app/`）
 
-| 頁面 | 檔案 |
-|---|---|
-| 共用版型 | `templates/admin/layout.html`（新）、`static/css/admin.css`（新） |
-| 營運總覽 | `templates/admin/dashboard.html`（改版型） |
-| AI 板塊 A | `admin.py` 新路由、`services/local_ai.py`（新）、`templates/admin/ai_recommendation.html`（新） |
-| AI 板塊 B | `admin.py` 新路由、`services/ai_workflows.py`（擴充問答）、`templates/admin/ai_insight.html`（新） |
-| AI 比較 | `admin.py` 新路由、`templates/admin/ai_compare.html`（新） |
-| 推薦監控 | `templates/admin/recommendations.html`（改版型與文字） |
-| 商品管理 | `admin.py` 新路由、`services/admin_catalog.py`（新）、`templates/admin/products.html`、`product_form.html`（新） |
-| 訂單管理 | `admin.py` 新路由、`templates/admin/orders.html`、`order_detail.html`（新） |
-| 會員管理 | `admin.py` 新路由、`templates/admin/members.html`（新） |
+| 頁面 | 檔案 | 狀態 |
+|---|---|---|
+| 共用版型 | `templates/admin/layout.html`、`static/css/admin.css`、`static/js/admin.js` | ✅（視覺改版待做，第 8 節） |
+| 營運總覽 | `templates/admin/dashboard.html`、`services/dashboard.py` | ✅ |
+| AI 板塊 A | `admin.py`、`services/local_ai.py`、`templates/admin/ai_recommendation.html` | ✅ |
+| AI 板塊 B | `admin.py`、`services/ai_payload.py`（白名單 v1）、`services/ai_workflows.py`（`run_claude`、intent、防護）、`templates/admin/ai_insight.html` | ✅ |
+| AI 比較 | `admin.py`、`services/ai_compare.py`、`templates/admin/ai_compare.html` | ✅ |
+| 推薦監控 | `templates/admin/recommendations.html`、`services/dashboard.py` | ✅（曝光／轉換未做） |
+| 推薦權重與範圍 | `services/recommendation.py`（`policy_weights`）、`services/behavior_scope.py`（`production_*`／`personalization_*`） | ✅ |
+| 前台 6＋4 | `services/storefront_ranking.py`、`store_v4.py`（SAM 主責） | ✅ |
+| 線上 AI | 網站根目錄 `cloud_runtime.py`、`Dockerfile`、`requirements-cloud-ai.txt`；倉庫 `deploy/cloudbuild.yaml` | ✅ 程式；部署見第 13 節 |
+| 商品管理 | `admin.py` 新路由、`services/admin_catalog.py`、`templates/admin/products.html`、`product_form.html` | ❌ 未實作 |
+| 訂單管理 | `admin.py` 新路由、`templates/admin/orders.html`、`order_detail.html` | ❌ 未實作 |
+| 會員管理 | `admin.py` 新路由、`templates/admin/members.html` | ❌ 未實作 |
 
 ---
 
@@ -439,7 +478,19 @@ v4 集合與欄位依 `VibeCart_AI/MongoDB/schema_complete_v4.py`。
 
 ### 12.4 交給 SAM 的後續
 
-1. 依 12.3-B 設計稽核與獨立重送紀錄的新 migration；目前第六筆為會員 device sessions，不能沿用舊稽核草案的 `_06_` 名稱，且不改歷史 migration checksum。
-2. JEFF 提供全部 consumer／排程清單並完成遠端 synthetic 隔離驗證後，SAM 才可匯入 D4 行為事件（依 12.1）。
+1. 依 12.3-B 設計稽核與獨立重送紀錄的新 migration；目前第六筆為會員 device sessions，不能沿用舊稽核草案的 `_06_` 名稱，且不改歷史 migration checksum。**v1.3 狀態**：SAM 已提出 `schema_d5_v1.py`（`20261018_07_admin_audit_receipts_v4`）並在隔離本機 MongoDB 演練，尚未啟用。
+2. JEFF 提供全部 consumer／排程清單並完成遠端 synthetic 隔離驗證後，SAM 才可匯入 D4 行為事件（依 12.1）。**v1.3 狀態**：10/18 已匯入 1,240 筆並 verify。
 3. 配置私有 admin／customer 測試帳號。
-4. JEFF 實作 12.2 獨立旗標與防護；SAM 依同一來源 SHA／部署 revision 驗收後才開放自由提問。
+4. JEFF 實作 12.2 獨立旗標與防護；SAM 依同一來源 SHA／部署 revision 驗收後才開放自由提問。**v1.3 狀態**：旗標與六點防護已實作，雲端 runtime 可由環境變數設定（預設 false）；啟用驗收未完成，展示維持關閉。
+
+---
+
+## 13. 線上 AI 部署設定（v1.3 新增）
+
+詳細設定、建議值與驗收紀錄見 [AI_DASHBOARD.md 的「線上 AI 設定」](AI_DASHBOARD.md) 與 `deploy/CLAUDE_SECRET_SETUP.md`。設計約束如下：
+
+- 三個 AI 開關（`AI_SUMMARY_ENABLED`、`AI_RECOMMENDATIONS_ENABLED`、`AI_FREE_QUESTION_ENABLED`）由 Cloud Run 環境變數決定，**預設 false**，非 true／false 的值拒絕啟動；開啟 AI 不得放寬 `CLOUD_PREVIEW_READ_ONLY`、驗收模式、資料庫網址與 `SECRET_KEY` 檢查。
+- `ANTHROPIC_API_KEY` 只放 Secret Manager，Key 內容由金鑰擁有人（JEFF）在 Console 新增版本；部署引用明確版本號，不經由對話、命令參數、檔案或 Git。
+- BGE 必須在建置時內建於 AI 映像（`INSTALL_AI=true`，`HF_HOME=/srv/models`、執行期 `HF_HUB_OFFLINE=1`）；Cloud Build 須通過離線載入檢查。
+- 發布流程：建置 → 零流量修訂驗證（BGE、Claude 4 個預設問題、退回）→ JEFF 與 SAM 都同意後才切流量；保留舊修訂以便退回。費用（Cloud Build、Artifact Registry、Cloud Run 記憶體）屬專案帳單，由 SAM 決定；Claude API 費用由 JEFF 的 Key 負擔。
+- 備案：BGE 記憶體或冷啟動不符時只開 Claude（`AI_RECOMMENDATIONS_ENABLED=false`）。長期方案：商品向量離線預先計算存入 Atlas（`product_embeddings`），網站只做 cosine。

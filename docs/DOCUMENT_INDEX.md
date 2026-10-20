@@ -70,7 +70,7 @@
 | [SAM 10/18 新推送驗證](SAM_PUSH_VALIDATION_2026-10-18.md) | Immutable source/commit/GitHub equality, current-image source map, 186 local passes, Cloud Run readback and CSS line-ending repair; remote transactions remain open. |
 | [D4 合成事件正式庫匯入與驗收](D4_IMPORT_ACCEPTANCE_2026-10-18.md) | Same-image remote consumer isolation, project inventory, 1,240 synthetic events, canonical readback and zero-insert replay; not payment or final project acceptance. |
 | [10/17 JEFF 交付核對與 SAM 決定](SAM_JEFF_1017_HANDOFF.md) | PR #23 merge, consumer audit, demonstration decisions and remaining remote gates. |
-| [JEFF 管理後台設計規格 v1.2](JEFF_ADMIN_UI_DESIGN.md) | Admin layout, v4 field map, gated free questions, 180-day audit and idempotency retention, batch request semantics. |
+| [JEFF 管理後台設計規格 v1.3](JEFF_ADMIN_UI_DESIGN.md) | Admin layout, v4 field map, gated free questions, 180-day audit and idempotency retention, batch request semantics; v1.3 syncs merged AI work and light dashboard tokens. |
 | [SAM PR #21 同版驗證與最終驗收缺口](SAM_PR21_ACCEPTANCE_2026-10-16.md) | Docker build and boot, isolated transaction suite, and outstanding remote acceptance. |
 | [Firebase Hosting／Cloud Run 部署判定與操作](../deploy/FIREBASE_CLOUD_RUN_DEPLOYMENT.md) | Current Hosting routing, Cloud Run preview and release gates. |
 | [Render 部署準備與驗收](../deploy/RENDER_DEPLOYMENT.md) | Immutable-image deployment, Atlas network and acceptance prerequisites. |

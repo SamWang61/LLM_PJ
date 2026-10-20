@@ -1,5 +1,10 @@
 # 變更紀錄 / Changelog
 
+## 2026-10-21 — JEFF 管理後台設計規格 v1.3 / Admin design v1.3
+
+- 依 main `c66f731` 同步已合併實作：T5 真模型調整、線上 AI 開關與 AI 映像、v4 權重、個人推薦範圍、SAM 的 6＋4 與 #5 快照；更新現況、資料準備狀態、檔案對應與 D5 進度，新增第 13 節線上 AI 部署設定。Spec synced with merged work.
+- 第 8 節改為 10/21 定案的淺色數據看板 token（`admin.css` 尚未改版）；「分類營收占比」待定義資料來源。See [design spec](docs/JEFF_ADMIN_UI_DESIGN.md).
+
 ## 2026-10-20 — PR #5 離線持久快照接續 / Offline scoring snapshots
 
 - 現行請求時6＋4已接續前台需求；保留尚未被取代的明確會員離線快照工具，JEFF主責計分契約、SAM負責資料庫／測試／整合。見[操作與語義差異](docs/PREFERENCE_SCORING.md)。
