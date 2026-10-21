@@ -1,5 +1,11 @@
 # VibeCart AI MongoDB 建置紀錄
 
+**2026-10-21 最新正式讀回**：active contract 為 `v4-customer-session-audit-20261021`，**30 個集合、96 個索引、8 筆 succeeded migration**；12 項關聯檢查均 0 orphan。新增 `20261021_08_customer_session_audit_v4`，僅啟用一般會員裝置撤銷的同交易稽核與 180 天唯一收據；舊七筆 migration checksum 保留。正式部署與受控資料清理見[優化系統](../../docs/優化系統.md)及[去敏讀回](../../docs/inventory/jeff_production_20261021/release-evidence.json)。下方 27 集合／86 索引／4 migration 及未接線描述為 2026-10-05 的建置快照。
+
+現行入口為 [schema_active_v4.py](schema_active_v4.py)、[check_v4_database.py](../../scripts/check_v4_database.py) 與 [admin_session_audit_schema.py](admin_session_audit_schema.py)。[migrate_admin_sessions.py](../../scripts/migrate_admin_sessions.py) 預設只做 preflight；`--apply` 會要求明確資料庫確認。D5 廣泛編輯草稿仍屬獨立契約，不因本次兩個稽核集合上線而全部啟用。
+
+## 2026-10-05 建置快照
+
 更新：2026-10-05（Asia/Taipei）。已依使用者指示重建 Schema 並匯入超市測試資料；[最新重建與匯入報告](18_2026-10-05_Schema重建與超市商品匯入.md)。原 Schema 依據不變。依新增的 VibeCart_AI_MongoDB_Complete_Schema.md，已完成指定 Atlas 資料庫的 Complete Schema v4 更新與實際驗證。
 
 |項目|實際結果|
@@ -23,14 +29,14 @@ WEB 後端、開發電腦或 Compass 的實際出口須符合清單；更換出�
 
 English: Atlas read-back on 2026-10-19 returned four /32 entries, including the dedicated NAT 35.229.228.204/32, and no 0.0.0.0/0. Per-entry activation and expiry are not exposed by this tool. No access-list changes or website read/write tests were performed.
 
-## 現行文件與程式
+## 文件與程式入口
 
 - [完整規格來源快照](13_完整Schema_v1.0_來源快照.md)
 - [v4 架構、設計決策與遷移](15_完整Schema_v4架構與遷移.md)
 - [v4 驗證結果與全部欄位字典](16_完整Schema_v4驗證與欄位字典.md)
 - [Atlas 實際 Schema 與索引讀回](05_實際Schema與索引.md)
 - [更新前結構](14_完整Schema更新前結構.md)
-- [現行 Schema 定義](schema_complete_v4.py)、[v4 遷移](migrate_complete_v4.py)、[現行唯讀查核](audit_complete_v4.py)
+- [現行 active Schema](schema_active_v4.py)、[現行完整唯讀查核](../../scripts/check_v4_database.py)；[Complete v4 初始定義](schema_complete_v4.py)、[初始 v4 遷移](migrate_complete_v4.py)及[當時查核](audit_complete_v4.py)保留為歷史來源
 - [SKU 購物車服務](../services/sku_cart_service.py)、[評價服務](../services/review_service.py)
 - [新版整合測試](test_complete_v4.py)、[JUnit 結果](complete_v4_test_results.xml)
 
@@ -38,14 +44,13 @@ English: Atlas read-back on 2026-10-19 returned four /32 entries, including the 
 
 ## 執行與歷史版本
 
-在專案根目錄執行：
+目前在專案根目錄使用 active checker；`--env-file` 指向既有受保護設定檔，報告路徑必須尚不存在，且連線出口需已授權：
 
 ```powershell
-& '.\MuscleCore分析資料\website\.venv\Scripts\python.exe' 'VibeCart_AI\MongoDB\audit_complete_v4.py'
-& '.\MuscleCore分析資料\website\.venv\Scripts\python.exe' -m pytest 'VibeCart_AI\MongoDB\test_complete_v4.py' -q
+python scripts/check_v4_database.py --env-file .env --report private-active-schema-readback.json --relationships
 ```
 
-新空環境依序執行 bootstrap_schema.py、migrate_cart_v3.py、migrate_schema_audit.py、migrate_complete_v4.py。遷移以 checksum 保護，不得修改已執行版本。含舊業務資料的環境需另做映射遷移，腳本不會猜測轉換。
+歷史 v4 初始建置依序使用 bootstrap_schema.py、migrate_cart_v3.py、migrate_schema_audit.py、migrate_complete_v4.py；這四步不涵蓋後續裝置 Session、評價、雙角色登入與本輪稽核遷移。以 active checker 的完整 migration 清單核對環境，遷移前先執行相應 preflight。遷移以 checksum 保護，不得修改已執行版本；含舊業務資料的環境須另做明確映射，不能重跑舊建置覆蓋正式資料。
 
 02～12 號文件保存歷史規格與驗證；schema_current.py、audit_schema.py、test_schema_complete.py、test_cart_v3.py 為舊階段版本。舊測試只供相應版本環境使用。原 services/cart_service.py 保留作歷史服務及交易輔助基底，新環境入口為 services/sku_cart_service.py。
 
@@ -53,10 +58,10 @@ English: Atlas read-back on 2026-10-19 returned four /32 entries, including the 
 
 本機應用憑證在 .env，Schema 管理憑證在 .env.schema；已由 .gitignore 排除並設定 Windows ACL。Markdown 不含密碼。連線維運歷史見 [04](04_連線與維運.md)。
 
-本次已完成資料庫、索引、驗證規則、政策設定與必要 SKU／評價服務。舊 Flask 網站尚未接線至新版；首推生成、6+4 排序、衰減計分、統計批次與排程尚未部署。ENABLE_CHECKOUT 保持 false；測試以明確啟用的服務實例驗證交易。資料結構完成不代表完整 AI 推薦及營運功能已上線。
+2026-10-05 當時已完成資料庫、索引、驗證規則、政策設定與必要 SKU／評價服務；當時 Flask 尚未接線、ENABLE_CHECKOUT 為 false。後續前台 6＋4、示範結帳、後台與 scoped 裝置撤銷已由各輪正式發布接續，最新行為請讀本頁頂端與優化系統文件。離線快照排程、完整 D5 編輯及本人驗收的完成狀態仍各自列管。
 
 ## English summary
 
-This directory preserves schema definitions, immutable migrations and dated Atlas evidence. Start with documents 15–17 for Complete Schema v4. The recorded 66 passing tests and 27 collections describe the September 19 validation, not a fresh run. Use sku_cart_service.py for the current SKU cart interface. Legacy tests target older schema versions. Do not run all historical migrations or tests against a populated production database without an explicit migration plan.
+This directory preserves immutable migrations and dated Atlas evidence. The current active contract has 30 collections, 96 indexes and 8 migrations, verified on 2026-10-21; use schema_active_v4.py and scripts/check_v4_database.py. Documents 15–17, the 66-test result and the initial 27-collection structure are historical. Session-revocation auditing is a scoped release; broader D5 editing remains separate. Use sku_cart_service.py for the SKU cart interface, and do not rerun historical initialization against a populated production database.
 
 - [Atlas／Compass 資料庫查詢手冊](19_Atlas與Compass資料庫查詢手冊.md)：連線、商品與 SKU 搜尋、分類、示範訂單及 Schema 查閱。

@@ -1,5 +1,11 @@
 # 變更紀錄 / Changelog
 
+## 2026-10-21 — 七個 PR 正式發布 / Seven-PR production release
+
+- #152、#153、#154、#158、#159、#160、#161 依序合併至 `f616289`；四項 P2、同交易裝置撤銷稽核／180 天收據與文件衝突完成修正。本機 446 passed／0 skipped，各 HEAD 及 main CI 成功。
+- `vibecart-web-jeff-f616-1021` 於 20:51 承接正式 100%；Atlas active schema 30 集合／96 索引／8 migrations，舊 checksum 保留。公開 Firebase 前後台操作及一次點擊登出通過，測試資料清除後獨立讀回 0，稽核留存。見[優化系統及原始證據](docs/優化系統.md)。
+- Production browser verification is Codex technical evidence; named-owner, physical-device acceptance and broader D5 editing remain tracked separately.
+
 ## 2026-10-21 — 推薦成效 P2 補修 / Recommendation attribution fixes
 
 - 修正 A→B→A 在 30 分鐘內的曝光去重；將結帳後所有歸因讀取納入容錯，示範訂單與停用紀錄先略過。Ordered-list deduplication and best-effort post-checkout attribution.

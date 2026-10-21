@@ -1,5 +1,7 @@
 # 營運後台與 v4 測試交接 / Dashboard handoff
 
+**2026/10/21 正式發布與實測**：[本輪完整證據](優化系統.md)記錄七個 PR 依序合併至 `f616289`、446 passed／0 skipped，以及正式修訂 `vibecart-web-jeff-f616-1021` 100%。淺色看板、日期／示範篩選空狀態、三個管理列表、訂單明細、Email 遮罩與推薦漏斗已在公開 Firebase 瀏覽器驗證；個人登出一次提交，會員全裝置撤銷則保留確認與同交易稽核。正式 active schema 為 30 集合／96 索引／8 migrations，180 天收據可防止重送刪除後續新登入。D5 商品／訂單／會員狀態編輯仍待後續。測試資料已清除，稽核及收據各留 3 筆；下方為歷史交接。English: The integrated release and audited session revocation are deployed; dated handoff snapshots below remain historical.
+
 **2026/10/21 推薦成效補修（#159）**：30 分鐘曝光去重會在視窗內查找相同會員、區塊及完整商品順序，A→B→A 會重用原 A；不同順序仍分別記錄。結帳完成後的歸因品項讀取與更新都在 best-effort 邊界內，故障不改變已提交的結帳回應；示範訂單與停用紀錄的環境先略過讀取。14 項倉庫內相關測試及先前 2 項缺陷重現均通過，正式發布結果另記[優化系統](優化系統.md)。English: Ordered-list deduplication covers the full window, and optional attribution reads cannot fail a committed checkout.
 
 **2026/10/20 PR #5接續**：[離線持久快照操作](PREFERENCE_SCORING.md)是前台請求時計分之外的opt-in工具，JEFF主責、SAM整合。現行6＋4分類會衰減並支援文字搜尋；快照version1分類維持raw權重上限70／30、商品逐事件衰減、SEARCH僅明確ObjectId，數值不保證相等。新工具不接前台或啟排程，本輪不連Atlas；10/2的50項與Atlas驗證只作歷史。下方較早「完整6＋4仍屬後續」描述保留原交付日期，現況分別讀[6＋4對話決議](../討論的相關記錄/商品評價與猜你喜歡6加4推薦_對話決議_2026-10-18.md)與本輪快照PR結果。

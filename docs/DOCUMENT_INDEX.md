@@ -1,5 +1,8 @@
 # 全部文件索引 / Document catalog
 
+- [10/21 四項 P2、七個 PR 依序合併、正式部署與前後台驗證](優化系統.md)
+- [本輪去敏清冊、完整分頁日誌、Atlas 清理及 11 張原圖 hash](inventory/jeff_production_20261021/release-evidence.json)
+
 - [10/21 REN候選驗證、完整同digest正式部署與切換前後六角色測試](REN_PRODUCTION_ACCEPTANCE_2026-10-21.md)
 - [10/21 REN今日工作清單與本人待辦](../專題進度/REN_今日工作清單_2026-10-21.md)
 
