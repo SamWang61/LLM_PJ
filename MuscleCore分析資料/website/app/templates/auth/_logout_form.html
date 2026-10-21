@@ -1,4 +1,4 @@
-<form class="logout-form" method="post" action="{{ url_for('auth.logout') }}">
+<form class="logout-form" method="post" action="{{ url_for('auth.logout') }}" data-single-submit>
   <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
   <button class="logout-button" type="submit">登出</button>
 </form>

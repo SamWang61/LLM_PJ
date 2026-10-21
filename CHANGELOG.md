@@ -58,6 +58,11 @@
 - 新增 7 項離線測試。See [dashboard handoff](docs/AI_DASHBOARD.md).
 
 
+## 2026-10-21 — 重複送出登入／登出不再顯示 Bad Request / Repeated login and logout submits
+
+- 登入或登出已成功、表單又被送出一次時，改為導向成功後的頁面，不再顯示 HTTP 400；只接受與剛才那次完全相同的 token，其他 CSRF 失敗仍為 400。前台與後台的登入／登出表單送出一次後即鎖定。Repeated submits after success land on the result instead of a 400 page.
+- 新增 8 項離線測試。See [優化系統 OPT-002](docs/優化系統.md).
+
 ## 2026-10-18 — JEFF 規則推薦改用 v4 權重 / v4 recommendation weights (B1)
 
 - 規則推薦由舊權重 1/3/4/8 改為 v4 政策 PURCHASE 4、ADD_TO_CART 3、SEARCH 2、PRODUCT_VIEW 1，v4 前台讀取資料庫政策；SEARCH 依搜尋字比對商品。Rule recommendations now follow the stored v4 policy.
