@@ -219,7 +219,8 @@ def current_source_files(root, commit):
              'a:focus-visible{outline:3px solid #a45e00}img{width:100%;height:auto}'
              'nav{position:sticky;top:0;background:#f7f6ee;padding:12px}code{overflow-wrap:anywhere}</style>')
     start = ('<!doctype html><html lang="zh-Hant"><meta charset="utf-8">'
-             '<meta name="viewport" content="width=device-width,initial-scale=1">')
+             '<meta name="viewport" content="width=device-width,initial-scale=1">'
+             '<link rel="icon" href="data:,">')
     files['index.html'] = (start + '<title>VibeCart 14頁離線備援</title>' + style
         + '<h1>VibeCart 14頁離線備援 / Offline presentation</h1>'
           '<p>本包只提供使用者指定原稿的14頁閱讀版。請先讀展示內容更新卡，再講解歷史畫面；沒有網站、帳號或資料庫功能。</p>'

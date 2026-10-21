@@ -479,7 +479,7 @@ scripts/test_srj_local_simulation.py,2901,source / 原始碼,572ac198920106b1f3c
 scripts/test_transaction_harness_startup.py,2276,source / 原始碼,f12c8f4d132c6735d4e9761f82068ca1b81feec2d94b6e6cdba96a6b66616af2,text read / 文字讀取 (53 lines)
 scripts/test_v5_offline_bundle.py,7840,source / 原始碼,10fb8701f43aa37046074b0ea3af7c09622f7884345e4050ab55f473ef9c508e,text read / 文字讀取 (173 lines)
 scripts/test_verify_offdevice_recovery.py,1681,source / 原始碼,c88dd5eeb9062e774bf70fc7c5209b471e04f52a2e7d50ca49c49cffd9b534f6,text read / 文字讀取 (43 lines)
-scripts/v5_offline_bundle.py,20146,source / 原始碼,2d30fee5d17aca8c82e8b85cfb0c007ea553990546bb8e8abcbf4d9f996cc83f,text read / 文字讀取 (327 lines)
+scripts/v5_offline_bundle.py,20193,source / 原始碼,7549e8f0b88737304e96df70f5074262302f25b463ee6d372fea31c9c6897afb,text read / 文字讀取 (328 lines)
 scripts/verify_offdevice_recovery.py,8133,source / 原始碼,3acd112a6f8401c8c655c88cfe6f0e4044610fc1a0e138b658f193069d06b646,text read / 文字讀取 (172 lines)
 scripts/verify_preview.cjs,1982,document / 文件,753453095ffd6c1a5e5cf6f121659350b9c0d2d33d4935edd0045770965ec1a5,binary hashed / 二進位雜湊
 scripts/verify_root_docker_build.py,7079,source / 原始碼,05b6295e7debd0180ff518b5a79af8f80843ed2bccf170dce7bcfddca3860cca,text read / 文字讀取 (135 lines)
