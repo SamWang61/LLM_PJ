@@ -1,5 +1,6 @@
 # 全部文件索引 / Document catalog
 
+- [10/22 SAM交付版本、正式映像／日誌／14頁備援與剩餘條件](SAM_DELIVERY_VERSION_2026-10-22.md)
 - [10/22 14頁主檔相符的PDF、離線備援契約與原稿重複頁觀察](SAM_OFFLINE_14_SLIDES_2026-10-22.md)
 - [10/22 接續工作、資料庫與發布覆核、真正待辦及上下文精簡](SAM_READINESS_FOLLOWUP_2026-10-22.md)
 - [10/22 favicon 404修正、候選／正式發布與兩網域驗證](SAM_FAVICON_2026-10-22.md)
