@@ -1,0 +1,36 @@
+{
+  "recorded_at": "2026-10-21T16:29:14.992362+00:00",
+  "old_head": "da11126b6c5838595548f25c3819207bcad1e0f2",
+  "prepared_head": "9dfa4da6302521d6820b9d05488f490508fd9618",
+  "tracked_changes_preserved": 14,
+  "colliding_files_preserved": 38,
+  "collisions_matching_main": 36,
+  "local_untracked_overrides_retained": 2,
+  "stash_retained": true,
+  "original_bytes_verified": true,
+  "presentation_bytes_preserved": true,
+  "conflicts_resolved": [
+    {
+      "path": "docs/CURRENT_CONTEXT.md",
+      "method": "current compact entry; original local version remains in verified backup and stash"
+    },
+    {
+      "path": "docs/DOCUMENT_INDEX.md",
+      "method": "keep newer upstream additions; local conflict side was empty; preserve all auto-merged local text"
+    },
+    {
+      "path": "docs/README.md",
+      "method": "keep newer upstream additions; local conflict side was empty; preserve all auto-merged local text"
+    },
+    {
+      "path": "專題進度/專案未完成工作清單_2026-10-18.md",
+      "method": "keep newer upstream additions; local conflict side was empty; preserve all auto-merged local text"
+    },
+    {
+      "path": "專題進度/待結案12項_執行順序與分工_2026-10-20.md",
+      "method": "keep newer upstream additions; local conflict side was empty; preserve all auto-merged local text"
+    }
+  ],
+  "remaining_unmerged": 0,
+  "source_checkout_notes": "Current context uses the compact entry; original local context remains in the verified private backup and retained stash. One footer style and two local records remain as working differences."
+}

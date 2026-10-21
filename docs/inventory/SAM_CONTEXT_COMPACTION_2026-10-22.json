@@ -1,0 +1,11 @@
+{
+  "source_commit": "5e38cfeee3d51580dc230039b2903ef2715ccea6",
+  "archive": "docs/CURRENT_CONTEXT_HISTORY_2026-10-22.md",
+  "source_sha256": "648b5f164adc66517d832225e197a56f81c35cddf34e6c38ccb432b64cfadb1e",
+  "archive_sha256": "648b5f164adc66517d832225e197a56f81c35cddf34e6c38ccb432b64cfadb1e",
+  "old_bytes": 43538,
+  "new_bytes": 4395,
+  "old_lines": 174,
+  "new_lines": 32,
+  "historical_text_preserved": true
+}
