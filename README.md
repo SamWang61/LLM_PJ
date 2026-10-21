@@ -26,6 +26,7 @@ The Flask storefront is live through Cloud Run and Firebase Hosting. Public rout
 |---|---|
 | [Flask／SKU／AI 串接](docs/FLASK_SKU_AI_INTEGRATION.md) | 啟用方式、LangGraph 架構與待驗收項目 / Integration and UAT |
 | [文件中心](docs/README.md) | 按主題閱讀 / Topic-based navigation |
+| [優化系統](docs/優化系統.md) | 操作優化、Debug 與登出流程調整 / UX improvements and logout behavior |
 | [目錄與管理政策](docs/REPOSITORY_GUIDE.md) | 路徑、版本與附件政策 / Layout and lifecycle |
 | [全部文件索引](docs/DOCUMENT_INDEX.md) | 逐份文件的中英文定位 / Bilingual document catalog |
 | [MongoDB 文件](VibeCart_AI/MongoDB/README.md) | 現行與歷史 Schema / Current and historical schemas |

@@ -72,8 +72,8 @@ def verify_public_role(entry, expected_role, *, http_session_factory=requests.Se
     finally:
         try:
             if authenticated:
-                form = browser.get(base + '/auth/logout', timeout=30)
-                field = BeautifulSoup(form.text, 'html.parser').select_one('input[name="csrf_token"]')
+                form = browser.get(base + '/', timeout=30)
+                field = BeautifulSoup(form.text, 'html.parser').select_one('form[action="/auth/logout"] input[name="csrf_token"]')
                 if form.status_code != 200 or not field:
                     raise RuntimeError('Own-device logout form unavailable')
                 logout = browser.post(base + '/auth/logout', data={'csrf_token': field['value']},

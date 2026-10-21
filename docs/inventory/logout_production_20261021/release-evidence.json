@@ -1,0 +1,267 @@
+{
+  "status": "passed",
+  "timezone": "Asia/Taipei",
+  "operator": "Codex under user authorization",
+  "browser": "Codex IAB on Windows desktop",
+  "merge": {
+    "pr": 157,
+    "url": "https://github.com/SamWang61/LLM_PJ/pull/157",
+    "commit": "a7967c3a6e2e267861ad051aed7b1527af514359",
+    "main_ci": {
+      "id": 39493675062,
+      "conclusion": "success",
+      "url": "https://github.com/SamWang61/LLM_PJ/actions/runs/39493675062"
+    }
+  },
+  "build": {
+    "id": "17764c3e-3e7d-46c3-b222-2bc6a69c90c7",
+    "status": "SUCCESS",
+    "create_time": "2026-10-20T20:42:14.146640875Z",
+    "finish_time": "2026-10-20T20:43:44.051923Z",
+    "steps": [
+      {
+        "name": "gcr.io/cloud-builders/docker",
+        "status": "SUCCESS"
+      },
+      {
+        "name": "gcr.io/cloud-builders/docker",
+        "status": "SUCCESS"
+      }
+    ],
+    "source_commit": "a7967c3a6e2e267861ad051aed7b1527af514359",
+    "committed_files_verified": 56,
+    "source_archive_sha256": "3fd1e2b48f3795ea9ca7f50a1beb4cd99c35f7c42c29219ed84abcc97ca2ad64",
+    "offline_bge_dimensions": 512,
+    "runtime_uid": 10001,
+    "confirmation_template_removed": true,
+    "url": "https://console.cloud.google.com/cloud-build/builds/17764c3e-3e7d-46c3-b222-2bc6a69c90c7?project=278483818008",
+    "image": {
+      "name": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web:logout-a7967c3-20261021",
+      "digest": "sha256:34677e6bfd6f75433fb30836db11825fcfc91a6840e80ece0df34f2852744945",
+      "pushTiming": {
+        "startTime": "2026-10-20T20:43:31.222685626Z",
+        "endTime": "2026-10-20T20:43:43.700420542Z"
+      },
+      "artifactRegistryPackage": "projects/vibecart-llmai/locations/asia-east1/repositories/vibecart/packages/web/versions/sha256:34677e6bfd6f75433fb30836db11825fcfc91a6840e80ece0df34f2852744945"
+    }
+  },
+  "production": {
+    "checked_at": "2026-10-20T20:48:40.070Z",
+    "source_commit": "a7967c3a6e2e267861ad051aed7b1527af514359",
+    "service": "vibecart-web",
+    "region": "asia-east1",
+    "revision": "vibecart-web-logout-a796-1021",
+    "image_digest": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:34677e6bfd6f75433fb30836db11825fcfc91a6840e80ece0df34f2852744945",
+    "revision_ready": true,
+    "primary_traffic": [
+      {
+        "revisionName": "vibecart-web-logout-a796-1021",
+        "percent": 100,
+        "tag": "logout-157",
+        "url": "https://logout-157---vibecart-web-m44ncgz5ta-de.a.run.app"
+      }
+    ],
+    "runtime_config_matches_baseline": true,
+    "runtime_config_fingerprint": "cbdebe0fb2e49eb55dea58e059118bcc9bbfeeb0acdeb508102cb0c418cde9fb",
+    "command": [],
+    "args": [],
+    "hosting": {
+      "release": "sites/vibecart-llmai/releases/1792363722745000",
+      "version": "sites/vibecart-llmai/versions/a33b77d8155885b8",
+      "unchanged": true,
+      "rewrites": [
+        {
+          "glob": "**",
+          "run": {
+            "serviceId": "vibecart-web",
+            "region": "asia-east1"
+          }
+        }
+      ]
+    },
+    "public_routes": [
+      {
+        "route": "/",
+        "method": "GET",
+        "status": 200,
+        "expected": 200
+      },
+      {
+        "route": "/recommendations",
+        "method": "GET",
+        "status": 200,
+        "expected": 200
+      },
+      {
+        "route": "/auth/login",
+        "method": "GET",
+        "status": 200,
+        "expected": 200
+      },
+      {
+        "route": "/health/live",
+        "method": "GET",
+        "status": 200,
+        "expected": 200
+      },
+      {
+        "route": "/health/ready",
+        "method": "GET",
+        "status": 200,
+        "expected": 200
+      },
+      {
+        "route": "/auth/logout",
+        "method": "GET",
+        "status": 405,
+        "expected": 405
+      }
+    ],
+    "logout_request_window": {
+      "start": "2026-10-20T20:46:14Z",
+      "end": "2026-10-20T20:47:31Z",
+      "complete": true,
+      "requests": [
+        {
+          "timestamp": "2026-10-20T20:46:14.658752Z",
+          "method": "POST",
+          "status": 302,
+          "path": "/auth/logout",
+          "revision": "vibecart-web-logout-a796-1021"
+        },
+        {
+          "timestamp": "2026-10-20T20:47:26.459049Z",
+          "method": "POST",
+          "status": 302,
+          "path": "/auth/logout",
+          "revision": "vibecart-web-logout-a796-1021"
+        }
+      ]
+    },
+    "rollback_revision": "vibecart-web-five-fc4e",
+    "error_log_readback": {
+      "checked_at": "2026-10-20T20:50:26.548Z",
+      "since": "2026-10-20T20:45:07Z",
+      "revision": "vibecart-web-logout-a796-1021",
+      "error_entries": 0,
+      "complete": true
+    }
+  },
+  "browser_cases": [
+    {
+      "case": "storefront_customer",
+      "started_at": "2026-10-20T20:46:14.247Z",
+      "completed_at": "2026-10-20T20:46:18.154Z",
+      "click_count": 1,
+      "dialog": null,
+      "before": {
+        "button": "登出",
+        "clientWidth": 1265,
+        "csrf_present": true,
+        "form_action": "/auth/logout",
+        "form_method": "post",
+        "innerHeight": 720,
+        "innerWidth": 1280,
+        "scrollWidth": 1265,
+        "title": "VibeCart｜超級市場",
+        "url": "https://vibecart-llmai.web.app/"
+      },
+      "after": {
+        "confirmation_text": false,
+        "login_link": true,
+        "logout_buttons": 0,
+        "success": "您已安全登出。",
+        "title": "VibeCart｜超級市場",
+        "url": "https://vibecart-llmai.web.app/"
+      },
+      "screenshots": [
+        "01-customer-before.jpg",
+        "02-customer-after.jpg"
+      ],
+      "protected_after": {
+        "url": "https://vibecart-llmai.web.app/auth/login?next=/cart",
+        "login_required": true
+      }
+    },
+    {
+      "case": "admin_backend",
+      "started_at": "2026-10-20T20:47:25.843Z",
+      "completed_at": "2026-10-20T20:47:30.136Z",
+      "click_count": 1,
+      "dialog": null,
+      "before": {
+        "button": "登出",
+        "clientWidth": 1265,
+        "csrf_present": true,
+        "form_action": "/auth/logout",
+        "form_method": "post",
+        "innerHeight": 720,
+        "innerWidth": 1280,
+        "scrollWidth": 1265,
+        "title": "營運總覽｜VibeInsight 後台",
+        "url": "https://vibecart-llmai.web.app/admin/?start=2026-10-21&end=2026-10-21&demo=exclude"
+      },
+      "after": {
+        "confirmation_text": false,
+        "login_link": true,
+        "logout_buttons": 0,
+        "success": "您已安全登出。",
+        "title": "VibeCart｜超級市場",
+        "url": "https://vibecart-llmai.web.app/"
+      },
+      "screenshots": [
+        "03-admin-before.jpg",
+        "04-admin-after.jpg"
+      ],
+      "protected_after": {
+        "admin_page_accessible": false,
+        "login_visible": true,
+        "message": "請先登入後再繼續。",
+        "url": "https://vibecart-llmai.web.app/auth/login?next=/admin/"
+      }
+    }
+  ],
+  "screenshots": [
+    {
+      "file": "01-customer-before.jpg",
+      "sha256": "2bbaabcdee510069164dff2ab509787dc05a2b9518b66b9a49eec4325331b93e",
+      "width": 1265,
+      "height": 711,
+      "bytes": 44347,
+      "edited": false
+    },
+    {
+      "file": "02-customer-after.jpg",
+      "sha256": "99f62ffe99ef6ff58ed492df0682e1d6d8af6aefc197bfd497ed79bcae100b59",
+      "width": 1265,
+      "height": 711,
+      "bytes": 46731,
+      "edited": false
+    },
+    {
+      "file": "03-admin-before.jpg",
+      "sha256": "e119f291748f57e446edf8de9e7662647ecb34ff2c5d88b75366875542f6f25b",
+      "width": 1265,
+      "height": 711,
+      "bytes": 75218,
+      "edited": false
+    },
+    {
+      "file": "04-admin-after.jpg",
+      "sha256": "99f62ffe99ef6ff58ed492df0682e1d6d8af6aefc197bfd497ed79bcae100b59",
+      "width": 1265,
+      "height": 711,
+      "bytes": 46731,
+      "edited": false
+    }
+  ],
+  "scope": {
+    "production_firebase_browser": true,
+    "named_person_acceptance": false,
+    "physical_mobile_device": false,
+    "account_changes": "Only normal login last_login_at and own-device session lifecycle; no credentials changed.",
+    "business_writes": false,
+    "d1_d4_reimported": false,
+    "private_service_traffic_changed": false
+  }
+}

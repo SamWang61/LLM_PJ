@@ -2,6 +2,7 @@
 from datetime import datetime, timezone
 import pytest
 from bson import ObjectId, Decimal128
+from bs4 import BeautifulSoup
 from test_v4_routes import shop, post
 from app.services.member_sessions import revoke_user_sessions, create_member_session
 
@@ -51,13 +52,43 @@ def test_v4_cart_login_returns_to_cart_and_rejects_external_next(shop):
 def test_logout_csrf_and_copied_cookie_cannot_replay(shop):
     app, client, db, uid, _, _ = shop
     old = cookie(client)
-    assert client.get("/auth/logout").status_code == 200
+    assert client.get("/auth/logout").status_code == 405
     assert client.get("/cart").status_code == 200  # GET does not log out
     assert client.post("/auth/logout").status_code == 400
+    assert client.post("/auth/logout", data={"csrf_token": "wrong-token"}).status_code == 400
+    assert client.get("/cart").status_code == 200
     assert post(client, "/auth/logout").status_code == 302
     assert replay(app, old).get("/cart").status_code == 302
     assert login(client).status_code == 302
     assert replay(app, old).get("/cart").status_code == 302
+
+
+@pytest.mark.parametrize("role,path", [
+    ("customer", "/"), ("admin", "/"), ("admin", "/admin/"),
+])
+def test_navigation_logout_finishes_in_one_submission(shop, role, path):
+    app, client, db, uid, _, _ = shop
+    db.users.update_one({"_id": uid}, {"$set": {"role": role}})
+    with client.session_transaction() as state:
+        state["role"] = role
+    old_cookie = cookie(client)
+    page = client.get(path)
+    assert page.status_code == 200
+    form = BeautifulSoup(page.text, "html.parser").select_one('form[action="/auth/logout"]')
+    assert form is not None and form["method"].lower() == "post"
+    assert form.select_one('button[type="submit"]').get_text(strip=True) == "登出"
+    result = client.post(form["action"], data={
+        field["name"]: field.get("value", "") for field in form.select("input[name]")
+    }, follow_redirects=True)
+    assert len(result.history) == 1 and result.history[0].location == "/"
+    assert result.status_code == 200 and "您已安全登出。" in result.text
+    assert "確認登出" not in result.text
+    assert BeautifulSoup(result.text, "html.parser").select_one('form[action="/auth/logout"]') is None
+    with client.session_transaction() as state:
+        assert "user_id" not in state and "member_session" not in state
+    assert db.auth_sessions.count_documents({"user_id": uid, "revoked_at": None}) == 0
+    assert replay(app, old_cookie).get("/cart").status_code == 302
+    assert client.get("/admin/").status_code == 302
 
 
 def test_two_devices_can_login_and_logout_independently(shop):
