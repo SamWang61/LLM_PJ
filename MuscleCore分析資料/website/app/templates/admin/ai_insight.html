@@ -4,14 +4,20 @@
 {% block title %}雲端洞察｜VibeInsight 後台{% endblock %}
 {% block eyebrow %}<span class="cloud-text">CLOUD LLM · 雲端 API</span>{% endblock %}
 {% block heading %}AI 營運洞察{% endblock %}
-{% block meta %}<span>模型 {{ config.CLAUDE_MODEL or '未設定' }}</span><span>只傳送彙總數字，不含會員個資</span>{% if payload %}<span>{{ payload.current_range.start }} ～ {{ payload.current_range.end }}</span><span>{{ demo_labels[range.demo] }}</span>{% endif %}{% if payload and (payload.source.demo_orders.current or payload.source.demo_orders.comparison) %}<span class="source-badge warn">示範資料</span>{% endif %}{% endblock %}
+{% block meta %}<span>模型 {{ config.CLAUDE_MODEL or '未設定' }}</span><span>只傳送彙總數字，不含會員個資</span>{% if payload %}<span>{{ demo_labels[range.demo] }}</span>{% endif %}{% if payload and (payload.source.demo_orders.current or payload.source.demo_orders.comparison) %}<span class="source-badge warn">示範資料</span>{% endif %}{% endblock %}
 {% block content %}
+{% if payload %}
+<section class="panel scope-banner" aria-label="分析範圍">
+  <p><b>目前範圍</b> <span class="mono">{{ payload.current_range.start }}～{{ payload.current_range.end }}</span>（{{ payload.current_range.days }} 天）{% if default_range %} <span class="source-badge muted">預設：最新一筆訂單往前 7 天</span>{% endif %}</p>
+  <p><b>比較期</b> <span class="mono">{{ payload.comparison_range.start }}～{{ payload.comparison_range.end }}</span>（等長、緊接前期，用來計算漲跌）</p>
+</section>
+{% endif %}
 <form class="panel dashboard-filters" method="get" action="{{ url_for('admin.ai_insight') }}">
   <label>本期開始（台北）<input type="date" name="start" value="{{ range.start }}"></label>
   <label>本期結束（含當日）<input type="date" name="end" value="{{ range.end }}"></label>
   <label>示範訂單<select name="demo">{% for value, label in [('all', '全部'), ('exclude', '排除示範'), ('only', '僅示範')] %}<option value="{{ value }}" {% if range.demo == value %}selected{% endif %}>{{ label }}</option>{% endfor %}</select></label>
   <button class="button" type="submit">套用範圍</button><a class="button secondary" href="{{ url_for('admin.ai_insight') }}">重設</a>
-  <p>未選日期：以最近有訂單的日期往前 7 天。比較期自動取緊接在前、等長的期間。每期最多 366 天／5,000 筆。</p>
+  <p>沒有選日期時，預設為最新一筆訂單的日期往前 7 天（不是今天往前）。比較期自動取緊接在前、等長的期間。每段最多 366 天、5,000 筆訂單。</p>
 </form>
 
 {% if error and error.code not in ('invalid_question', 'pii_detected') %}<section class="panel" id="answer"><p class="form-error" role="alert">{{ error.message }}</p></section>{% endif %}
@@ -20,14 +26,14 @@
 {% set cur = payload.totals.current %}{% set base = payload.totals.comparison %}{% set change = payload.totals.change_pct %}
 <section class="panel" aria-labelledby="kpi-title">
   <div class="panel-head"><h2 id="kpi-title">KPI 快照</h2><span class="source-badge muted">與營運總覽相同口徑</span></div>
-  <p class="panel-note">本期 {{ payload.current_range.start }} ～ {{ payload.current_range.end }}（{{ payload.current_range.days }} 天） · 比較期 {{ payload.comparison_range.start }} ～ {{ payload.comparison_range.end }}</p>
+  <p class="panel-note">「有效」＝已付款且未取消的訂單。小字為比較期數字與漲跌。</p>
   <div class="metrics">
-    <article><span>有效營收</span><strong>{{ cur.revenue|ntd }}</strong><small>比較期 {{ base.revenue|ntd }} · {{ pct(change.revenue) }}</small></article>
-    <article><span>有效／全部訂單</span><strong>{{ cur.valid_orders }} / {{ cur.all_orders }}</strong><small>比較期 {{ base.valid_orders }} / {{ base.all_orders }} · {{ pct(change.valid_orders) }}</small></article>
+    <article><span>有效營收</span><strong>{{ cur.revenue|ntd }}</strong><small>已付款且未取消的訂單金額</small><small>比較期 {{ base.revenue|ntd }} · {{ pct(change.revenue) }}</small></article>
+    <article><span>有效／全部訂單</span><strong>{{ cur.valid_orders }} / {{ cur.all_orders }}</strong><small>有效：已付款且未取消</small><small>比較期 {{ base.valid_orders }} / {{ base.all_orders }} · {{ pct(change.valid_orders) }}</small></article>
     <article><span>平均客單</span><strong>{{ cur.average_order_value|ntd }}</strong><small>比較期 {{ base.average_order_value|ntd }} · {{ pct(change.average_order_value) }}</small></article>
-    <article><span>可售候選商品</span><strong>{{ payload.products_meta.total_candidates }}</strong><small>送出 {{ payload.products_meta.returned }} 筆{% if payload.products_meta.truncated %}（已截斷）{% endif %}</small></article>
+    <article><span>可售候選商品</span><strong>{{ payload.products_meta.total_candidates }}</strong><small>交給 AI 分析 {{ payload.products_meta.returned }} 項{% if payload.products_meta.truncated %}（取前 {{ payload.products_meta.limit }} 項）{% endif %}</small></article>
   </div>
-  {% for warning in payload.warnings %}<p class="insight warn-line">{{ warning }}</p>{% endfor %}
+  {% for note in notes %}<p class="insight warn-line">{{ note }}</p>{% endfor %}
 </section>
 
 <section class="panel" aria-labelledby="ask-title">
@@ -38,6 +44,7 @@
     <input type="hidden" name="start" value="{{ payload.current_range.start }}">
     <input type="hidden" name="end" value="{{ payload.current_range.end }}">
     <input type="hidden" name="demo" value="{{ range.demo }}">
+    {% if default_range %}<input type="hidden" name="default_range" value="1">{% endif %}
     <p class="pending-note" data-pending-status role="status" aria-live="polite" hidden></p>
     <div class="intent-buttons">{% for key, item in intents.items() if key != 'free_question' %}<button class="button secondary" type="submit" name="intent" value="{{ key }}">{{ item.label }}</button>{% endfor %}</div>
     {% if free_question_enabled %}<label for="question">自由提問（僅限本店營運問題，最多 300 字；請勿輸入個資）</label>

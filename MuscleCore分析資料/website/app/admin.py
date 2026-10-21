@@ -11,7 +11,7 @@ from .services.admin_records import member_list, order_detail, order_list
 from .services.admin_sessions import admin_session_service, CartError, CartConflict
 from .services.ai_compare import comparison
 from .services.recommendation_logs import recommendation_metrics
-from .services.ai_payload import InsightDataError, build_insight_payload, insight_ranges
+from .services.ai_payload import InsightDataError, build_insight_payload, display_notes, insight_ranges
 from .services.ai_workflows import FAILURE_LABELS, INTENTS, InsightRequestError, clean_question, insight_answer, operational_summary
 from .services.local_ai import (LocalModelUnavailable, install_commands, refresh_vectors, sellable_products,
                                 similar_products, vector_status)
@@ -168,6 +168,11 @@ def recommendations():
     return render_template('admin/recommendations.html', funnel=funnel, **result)
 
 
+def default_range(values):
+    """True when no dates were chosen (the latest order date minus 7 days); the POST form carries this forward."""
+    return values.get('default_range') == '1' or not (values.get('start') or values.get('end'))
+
+
 def insight_page(values, intent=None, answer=None, error=None, status=200):
     db, mode = get_db(), current_app.config['DATA_MODE']
     payload = None
@@ -178,8 +183,8 @@ def insight_page(values, intent=None, answer=None, error=None, status=200):
         error, status = {"code": data_error.code, "message": str(data_error)}, 400
         current = {"start": values.get("start", ""), "end": values.get("end", ""), "demo": values.get("demo", "all")}
     return render_template('admin/ai_insight.html', payload=payload, range=current, intents=INTENTS, answer=answer,
-                           error=error, failure_labels=FAILURE_LABELS,
-                           free_question_enabled=free_question_enabled()), status
+                           error=error, failure_labels=FAILURE_LABELS, notes=display_notes(payload) if payload else [],
+                           default_range=default_range(values), free_question_enabled=free_question_enabled()), status
 
 
 def free_question_enabled():
@@ -215,8 +220,8 @@ def ai_insight_ask():
     except InsightDataError:
         return insight_page(request.form, intent)
     return render_template('admin/ai_insight.html', payload=payload, range=current, intents=INTENTS, answer=answer,
-                           error=None, failure_labels=FAILURE_LABELS,
-                           free_question_enabled=free_question_enabled())
+                           error=None, failure_labels=FAILURE_LABELS, notes=display_notes(payload),
+                           default_range=default_range(request.form), free_question_enabled=free_question_enabled())
 
 
 UNAVAILABLE_LABELS = {"not_installed": "本機模型套件尚未安裝", "model_missing": "模型檔案尚未下載或無法載入"}

@@ -325,3 +325,49 @@ def test_replenishment_sends_only_program_selected_candidates(admin):
     db.product_skus.update_one({"_id": sid}, {"$set": {"available_quantity": 2}})
     payload = payload_for(db, "2026-10-01", "2026-10-07", intent="replenishment")
     assert [p["available_quantity"] for p in payload["products"]] == [2] and any("補貨候選，共 1 筆" in w for w in payload["warnings"])
+
+
+ENGINEERING_WORDS = ("valid_sold_units_desc", "available_minus_safety_asc", "未列入 products", "products 只列", "products 依",
+                     "成長率為 null", "已截斷")
+
+
+def test_screen_shows_ranges_and_plain_notes_while_model_warnings_stay(admin, monkeypatch):
+    """★★★ B: the page explains the scope in plain words; the model payload keeps its machine warnings."""
+    app, client, db, _, pid, sid = admin
+    monkeypatch.setattr("app.services.ai_payload.MAX_PRODUCTS", 1)
+    other = db.products.insert_one({"product_name": "第二項", "status": "active", "is_ai_recommendable": True}).inserted_id
+    db.product_skus.insert_one({"product_id": other, "status": "active", "price": Decimal128("5.00"), "available_quantity": 9, "stock_quantity": 9, "safety_stock": 1})
+    db.products.insert_one({"product_name": "停售品", "status": "active", "is_ai_recommendable": True})
+    payload = payload_for(db, "2026-10-01", "2026-10-07")
+    assert any("只列前 1 筆" in w for w in payload["warnings"]) and any("未列入 products" in w for w in payload["warnings"])
+    html = client.get("/admin/ai/insight?start=2026-10-01&end=2026-10-07").get_data(as_text=True)
+    assert "目前範圍" in html and "2026-10-01～2026-10-07" in html
+    assert "比較期" in html and "2026-09-24～2026-09-30" in html and "等長、緊接前期" in html
+    assert "已付款且未取消" in html and "預設：最新一筆訂單往前 7 天" not in html
+    assert "另有 1 項商品已售完或停售，未納入分析。" in html
+    assert "依「有效銷量由高到低」取前 1 項商品分析（共 2 項）。" in html
+    assert "比較期沒有有效訂單，無法計算成長率。" in html
+    for word in ENGINEERING_WORDS:
+        assert word not in html
+
+
+def test_rule_answer_and_replenishment_notes_are_plain(admin):
+    app, client, db, _, _, sid = admin
+    db.product_skus.update_one({"_id": sid}, {"$set": {"available_quantity": 1, "safety_stock": 3}})
+    html = ask(client, "replenishment").get_data(as_text=True)
+    assert "只分析庫存低於或等於安全庫存的 1 項商品（補貨候選）。" in html
+    screen, sent = html.split('class="panel payload-preview"')
+    assert "products 只列" not in screen  # neither in the notes nor in the rule answer text
+    assert "products 只列" in sent  # the payload preview still shows exactly what the model gets
+
+
+def test_default_range_is_labelled_and_carried_through_the_question_form(admin):
+    app, client, db, _, _, _ = admin
+    order(db, "latest", "2026-08-15T20:00:00+00:00")
+    html = client.get("/admin/ai/insight").get_data(as_text=True)
+    assert "預設：最新一筆訂單往前 7 天" in html and "2026-08-10～2026-08-16" in html
+    assert 'name="default_range" value="1"' in html and "不是今天往前" in html
+    response = client.post("/admin/ai/insight", data={"csrf_token": "test-csrf", "intent": "period_compare",
+                                                      "start": "2026-08-10", "end": "2026-08-16", "demo": "all", "default_range": "1"})
+    assert "預設：最新一筆訂單往前 7 天" in response.get_data(as_text=True)
+    assert "預設：最新一筆訂單往前 7 天" not in ask(client, "period_compare").get_data(as_text=True)

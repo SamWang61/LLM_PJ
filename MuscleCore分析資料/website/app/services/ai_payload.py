@@ -178,3 +178,29 @@ def build_insight_payload(db, mode, current, comparison, intent):
         "products": products, "products_meta": products_meta,
         "unavailable": UNAVAILABLE_FIELDS, "warnings": warnings,
     }
+
+
+SORT_LABELS = {"valid_sold_units_desc": "有效銷量由高到低", "available_minus_safety_asc": "庫存缺口由大到小",
+               "valid_sold_units_asc_available_desc": "銷量低且庫存多"}
+
+
+def display_notes(payload):
+    """Plain-language notes for administrators. The machine-readable payload["warnings"] sent to the
+    model are left unchanged; these are built from the same payload fields for the screen only."""
+    notes = []
+    totals, meta = payload["totals"], payload["products_meta"]
+    demo = payload["source"]["demo_orders"]
+    if not totals["current"]["all_orders"]:
+        notes.append("目前範圍內沒有任何訂單。")
+    if not totals["comparison"]["valid_orders"]:
+        notes.append("比較期沒有有效訂單，無法計算成長率。")
+    if demo["current"] or demo["comparison"]:
+        notes.append(f"含示範訂單：目前範圍 {demo['current']} 筆、比較期 {demo['comparison']} 筆，數字僅供展示，不代表真實營運。")
+    if meta["excluded_without_sellable_sku"]:
+        notes.append(f"另有 {meta['excluded_without_sellable_sku']} 項商品已售完或停售，未納入分析。")
+    if meta.get("filter"):
+        notes.append(f"只分析庫存低於或等於安全庫存的 {meta['total_candidates']} 項商品（補貨候選）。")
+    if meta["truncated"]:
+        label = SORT_LABELS.get(meta["sort"], "預設排序")
+        notes.append(f"依「{label}」取前 {meta['limit']} 項商品分析（共 {meta['total_candidates']} 項）。")
+    return notes

@@ -18,6 +18,7 @@ from typing import TypedDict
 from flask import current_app, has_app_context
 from .recommendation import policy_weights, recommend_products
 from .behavior_scope import personalization_events
+from .ai_payload import display_notes
 
 logger = logging.getLogger(__name__)
 
@@ -369,7 +370,8 @@ def rule_answer(payload, intent):
         lines.append("規則摘要只列出數字變化；資料未包含來客數與流量，無法判定原因。")
     elif intent == "free_question":
         lines.append("雲端 AI 目前無法使用，自由提問沒有規則替代答案；以上為本期彙總。")
-    return "\n".join(lines + payload["warnings"])
+    # The screen gets plain-language notes; the machine-readable warnings stay in the model payload.
+    return "\n".join(lines + display_notes(payload))
 
 
 def insight_answer(payload, intent, question, user_id):
