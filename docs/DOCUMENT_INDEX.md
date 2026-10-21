@@ -1,5 +1,8 @@
 # 全部文件索引 / Document catalog
 
+- [10/21 REN候選驗證、完整同digest正式部署與切換前後六角色測試](REN_PRODUCTION_ACCEPTANCE_2026-10-21.md)
+- [10/21 REN今日工作清單與本人待辦](../專題進度/REN_今日工作清單_2026-10-21.md)
+
 - [2026/10/20 PR #5離線偏好快照](PREFERENCE_SCORING.md)：現行請求時6＋4之外的opt-in工具；JEFF主責、SAM整合，未啟排程或本輪Atlas操作。
 - [10/2 SAM計畫歷史](SAM_WORK_PLAN.md)：保留舊責任、50項測試及Atlas證據日期；現行契約以前項為準。
 
