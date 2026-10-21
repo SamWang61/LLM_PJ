@@ -6,7 +6,7 @@
 > v1.1 依 SAM 審查（PR #11 `docs/JEFF_PUSH_REVIEW_2026-10-07.md`）與契約提案（`docs/SAM_DATA_CONTRACT_2026-10-07.md`）修訂。
 > 配套文件：[AI_DASHBOARD.md](AI_DASHBOARD.md)（既有後台實作與驗證）。
 > v1.2 由專案負責人接續確認啟用與驗收門檻、保存期限及批量重送語義。第 7.5 節的數量是 10/09 歷史讀回；即時狀態先看 [CURRENT_CONTEXT.md](CURRENT_CONTEXT.md)。本文件是設計契約，不代表 D5 寫入、自由提問、真模型或 D4 已部署驗收。
-> **v1.3（2026-10-21，JEFF）**：依 main `c66f731` 同步 10/12～10/20 已合併的實作（T5 真模型調整、線上 AI 開關與 AI 映像、v4 權重、個人推薦範圍、SAM 的 6＋4 與 #5 快照），更新第 2、5、7、11、12.4 節並新增第 13 節；第 8 節改為 10/21 定案的淺色數據看板 token（`admin.css` 尚未改版）。
+> **v1.3（2026-10-21，JEFF）**：依 main `c66f731` 同步 10/12～10/20 已合併的實作（T5 真模型調整、線上 AI 開關與 AI 映像、v4 權重、個人推薦範圍、SAM 的 6＋4 與 #5 快照），更新第 2、5、7、11、12.4 節並新增第 13 節；第 8 節定義淺色數據看板 token。樣式實作由 [PR #154](https://github.com/SamWang61/LLM_PJ/pull/154) 交付，最新整合與部署狀態見 [AI_DASHBOARD](AI_DASHBOARD.md) 及 [CURRENT_CONTEXT](CURRENT_CONTEXT.md)。
 
 ---
 
@@ -17,7 +17,7 @@
 - 文件中的線框圖**不含任何示範數字**；`{欄位}` 表示由資料庫或執行結果帶入的值。
 - 實作一律讀取 v4 真實資料；資料為空時顯示空狀態，不以假資料填充。
 
-English summary (v1.3): Syncs the spec with merged work through main `c66f731` (real-model adjustments, online AI flags and image, v4 weights, the personalization scope, SAM's 6+4 ranking) and adopts the light dashboard tokens decided on 10/21, not yet applied to `admin.css`. Earlier summary: Admin layout and v4 field mapping with explicit KPI and sellable-SKU rules. Section 12 defines a separate release gate for administrator free-text questions, 180-day audit and idempotency-record retention, batch request IDs, and no admin-to-admin deactivation. D5 writes, live model inference, and D4 import remain separate acceptance items.
+English summary (v1.3): Syncs the spec through main `c66f731` and defines the light dashboard tokens. PR #154 delivers the theme; current implementation and release evidence are tracked in AI_DASHBOARD and CURRENT_CONTEXT. The snapshot below is historical. Section 12 retains explicit AI release gates, 180-day audit and idempotency retention, batch request IDs, and customer-only administrative account actions.
 
 ---
 
@@ -32,6 +32,8 @@ English summary (v1.3): Syncs the spec with merged work through main `c66f731` (
 
 ## 2. 現況（main `c66f731`，2026-10-21）
 
+下表是指定提交的歷史快照。後續淺色看板（#154）、管理列表（#158）、推薦成效（#159）與包裝去重（#160）依各 PR 交付；最新狀態與實際驗證見 [優化系統](優化系統.md)，不由本快照推定已部署或尚未交付。
+
 | 頁面 | 路由 | 狀態 |
 |---|---|---|
 | 營運總覽 | `GET /admin/`、`POST /admin/summary` | ✅ 已實作（T1）：共用版型、有效／全部訂單 KPI、每日營收長條圖＋表、熱銷、規則／AI 摘要、低庫存、最近訂單 |
@@ -42,7 +44,7 @@ English summary (v1.3): Syncs the spec with merged work through main `c66f731` (
 | 商品／訂單／會員管理 | `/admin/products`、`/admin/orders`、`/admin/members` | ❌ 未實作；導覽顯示「尚未開放」 |
 | D5 後台寫入 | — | ❌ 未實作；SAM 的 `schema_d5_v1.py`（migration `20261018_07_admin_audit_receipts_v4`）為未啟用草案 |
 | 線上 AI | Cloud Run | 🟨 程式與 AI 映像選項已合併（第 13 節）；Claude Key 版本 1 已建立，私有 0% 預覽已驗 BGE＋Claude。正式站是否開啟以 [CURRENT_CONTEXT.md](CURRENT_CONTEXT.md) 為準 |
-| 視覺改版 | `static/css/admin.css` | 📝 10/21 定案淺色數據看板（第 8 節），**尚未實作** |
+| 視覺改版 | `static/css/admin.css` | 第 8 節定義淺色數據看板；實作由 #154 交付，發布狀態另見最新紀錄 |
 
 10/05 的舊版現況（無後台導覽、共用前台頁首、舊權重 1/3/4/8）已由 T1～T4 與 B1 解決，保留於 git 歷史。
 
@@ -320,7 +322,7 @@ v4 集合與欄位依 `VibeCart_AI/MongoDB/schema_complete_v4.py`。
 
 ## 8. 視覺規範（v1.3：淺色數據看板，2026-10-21 定案）
 
-> 依第 10 節 2026-10-21 的四筆視覺決策更新；設計參考 Demo：https://claude.ai/artifact/Cqw1YCeAXzjThabF534WfU 。**現行 `admin.css` 仍為 v1.2 深色 token，改版尚未實作。**前台 `main.css` 不變。
+> 依第 10 節 2026-10-21 的四筆視覺決策更新；設計參考 Demo：https://claude.ai/artifact/Cqw1YCeAXzjThabF534WfU 。本節是樣式契約；`admin.css` 的實作與發布證據見 [AI_DASHBOARD](AI_DASHBOARD.md) 及 [優化系統](優化系統.md)。前台 `main.css` 不變。
 
 | Token | 值 | 用途 |
 |---|---|---|
@@ -346,7 +348,7 @@ v4 集合與欄位依 `VibeCart_AI/MongoDB/schema_complete_v4.py`。
 - **待決定**：Demo 的「分類營收占比」區塊在第 7 節尚無對應欄位，採用前須先定義資料來源（例如有效訂單明細依大類快照欄位加總）與範圍口徑。
 - 後台樣式寫在 **`static/css/admin.css`**，由 `admin/layout.html` 載入，不修改前台 `main.css`。
 - 元件沿用：`.panel`、`.metrics`、`.button`、`.button.secondary`、`.table-wrap`、`.rank`、`.insight`、`.eyebrow`；新元件：`.admin-layout`、`.admin-nav`、`.status-dot`、`.score-bar`、`.source-badge`、`.ai-answer`、`.toast`。
-- v1.2 深色 token（`--bg #0c0e0d`、`--lime #b7ff2a` 等）保留於 git 歷史；改版完成前仍為現行樣式。
+- v1.2 深色 token（`--bg #0c0e0d`、`--lime #b7ff2a` 等）保留於 git 歷史；現行樣式須依實際來源提交與部署修訂核對。
 
 ---
 
