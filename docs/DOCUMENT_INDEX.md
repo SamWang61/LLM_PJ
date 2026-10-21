@@ -1,5 +1,9 @@
 # 全部文件索引 / Document catalog
 
+- [10/22 接續工作、資料庫與發布覆核、真正待辦及上下文精簡](SAM_READINESS_FOLLOWUP_2026-10-22.md)
+- [10/22 favicon 404修正、候選／正式發布與兩網域驗證](SAM_FAVICON_2026-10-22.md)
+- [最新閱讀入口](CURRENT_CONTEXT.md)／[完整舊入口快照（原文保留）](CURRENT_CONTEXT_HISTORY_2026-10-22.md)
+
 - [10/21 #152 前台速度、購物操作、正式部署與 v5 簡報推送](FRONTEND_PERFORMANCE_2026-10-21.md)
 - [本輪 449 項測試、18 組正式操作、量測樣本及 10 張原圖 hash](inventory/frontend_performance_20261021/release-evidence.json)
 
