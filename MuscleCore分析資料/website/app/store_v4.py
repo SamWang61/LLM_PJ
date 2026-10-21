@@ -11,6 +11,7 @@ from .services.behavior_scope import personalization_behavior_query
 from .services.ai_workflows import storefront_recommendations
 from .services.recommendation import policy_weights
 from .services.storefront_ranking import recommendations_6_4
+from .services import recommendation_logs as rec_logs
 
 bp = Blueprint("store", __name__)
 
@@ -36,6 +37,15 @@ def recommendation_blocks(products, member, query=""):
     if semantics:
         result['source'] = 'bge+rules-6plus4-rating-v1'
     return result
+
+
+def attribution(action, *args):
+    """Recommendation logging is best-effort: a logging failure must never break browsing or the cart."""
+    try:
+        return action(get_db(), *args)
+    except PyMongoError:
+        current_app.logger.warning("recommendation log write skipped (%s)", action.__name__)
+        return None
 
 
 def reviewable_lines(db, member, product_id):
@@ -132,7 +142,8 @@ def home():
         if query:
             record_read_event(member, "SEARCH", query=query)
     result = recommendation_blocks(products, member, query)
-    return render_template("store/home.html", products=shown[(page-1)*24:page*24], categories=categories,
+    recommendation_ids = attribution(rec_logs.log_impressions, member, result) or {}
+    return render_template("store/home.html", recommendation_ids=recommendation_ids, products=shown[(page-1)*24:page*24], categories=categories,
                            selected_category=category, major_categories=major_categories, selected_major=major,
                            page=page, pages=pages, total=total,
                            recommendations=result['personalized'], cross_recommendations=result['cross_category'],
@@ -142,8 +153,11 @@ def home():
 @bp.get('/recommendations')
 @handled
 def recommendations_fragment():
-    result = recommendation_blocks(catalog(get_db()), current_member(), request.args.get('q', '')[:200].strip())
+    member = current_member()
+    result = recommendation_blocks(catalog(get_db()), member, request.args.get('q', '')[:200].strip())
+    recommendation_ids = attribution(rec_logs.log_impressions, member, result) or {}
     return render_template('store/recommendations_v4.html', recommendations=result['personalized'],
+                           recommendation_ids=recommendation_ids,
                            cross_recommendations=result['cross_category'])
 
 
@@ -156,8 +170,9 @@ def product_detail(product_id):
     if not product:
         abort(404)
     skus = list(db.product_skus.find({"product_id": product["_id"], "status": "active"}))
+    rec_id = request.args.get("rec") if attribution(rec_logs.record_click, member, request.args.get("rec"), product["_id"]) else None
     if member:
-        record_read_event(member, "PRODUCT_VIEW", product=product)
+        record_read_event(member, "PRODUCT_VIEW", product=product, recommendation_id=rec_id)
     categories = {c["_id"]: c["name"] for c in db.categories.find({"_id": {"$in": [product["major_category_id"], product["minor_category_id"]]}})}
     context = browsing_context()
     shown = filtered_products(catalog(db), context)
@@ -168,7 +183,7 @@ def product_detail(product_id):
             previous_url = url_for("store.product_detail", product_id=shown[index - 1]["_id"], **context)
         if index + 1 < len(shown):
             next_url = url_for("store.product_detail", product_id=shown[index + 1]["_id"], **context)
-    return render_template("store/product.html", product=product_view(product, skus, categories),
+    return render_template("store/product.html", product=product_view(product, skus, categories), rec_id=rec_id,
                            reviewable_items=reviewable_lines(db, member, product['_id']),
                            product_navigation={"previous_url": previous_url, "next_url": next_url,
                                "list_url": url_for("store.home", page=index // 24 + 1 if index is not None else 1,
@@ -208,8 +223,10 @@ def add_to_cart(product_id):
     sid = oid(data.get("sku_id"))
     if not get_db().product_skus.find_one({"_id": sid, "product_id": oid(product_id), "status": "active"}):
         abort(404)
-    return reply(cart_service().add_item(session["user_id"], sid, integer(data, "quantity", 1),
-                                         operation_id=data.get("operation_id"), expected_revision=revision(data)))
+    document = cart_service().add_item(session["user_id"], sid, integer(data, "quantity", 1),
+                                       operation_id=data.get("operation_id"), expected_revision=revision(data))
+    attribution(rec_logs.record_add_to_cart, current_member(), data.get("rec"), oid(product_id))
+    return reply(document)
 
 
 @bp.post("/cart/update/<sku_id>")
@@ -255,6 +272,7 @@ def checkout():
     data = payload()
     order = cart_service().checkout_cart(session["user_id"], checkout_id=data.get("checkout_id"),
         cart_id=oid(data.get("cart_id")), expected_revision=integer(data, "expected_revision"))
+    attribution(rec_logs.record_order_purchases, current_member(), order)
     if not request.is_json:
         flash(f"示範訂單 {order['order_number']} 已建立（未串接付款）。", "success")
     return reply(order, "store.home")

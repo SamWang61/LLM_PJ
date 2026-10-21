@@ -1,0 +1,35 @@
+{% extends 'admin/layout.html' %}
+{% from 'admin/_list_macros.html' import pill, readonly_note with context %}
+{% import 'admin/_list_macros.html' as lists %}
+{% block title %}訂單 {{ order.number }}｜VibeInsight 後台{% endblock %}
+{% block eyebrow %}MANAGEMENT · 訂單明細{% endblock %}
+{% block heading %}訂單 {{ order.number }}{% endblock %}
+{% block meta %}<span>下單 {{ order.ordered_at|taipei }}（台北）</span>{% if order.demo %}<span class="source-badge warn">示範訂單</span>{% endif %}{% endblock %}
+{% block actions %}<a class="button secondary" href="{{ url_for('admin.orders') }}">← 返回訂單管理</a>{% endblock %}
+{% block content %}
+{{ readonly_note('狀態變更需等 D5 寫入及稽核上線。') }}
+<div class="dash-grid">
+  <section class="panel span-4" aria-labelledby="order-info-title">
+    <h2 id="order-info-title">訂單資訊</h2>
+    <dl class="kv">
+      <dt>訂單狀態</dt><dd>{{ pill(lists.order_labels.get(order.status, order.status)) }}</dd>
+      <dt>付款狀態</dt><dd>{{ pill(lists.payment_labels.get(order.payment, order.payment), 'ok' if order.payment == 'paid' else '') }}</dd>
+      <dt>出貨狀態</dt><dd>{{ lists.shipping_labels.get(order.shipping, order.shipping or '—') }}</dd>
+      <dt>會員</dt><dd>{% if order.member %}{{ order.member.name }} <small class="muted-text">（{{ order.member.email }}）</small>{% else %}—{% endif %}</dd>
+    </dl>
+    <h2 class="sub-title">狀態時間軸</h2>
+    <ol class="timeline">{% for label, when in order.timeline %}<li><span>{{ label }}</span><small class="mono">{{ when|taipei }}</small></li>{% else %}<li>沒有時間紀錄</li>{% endfor %}</ol>
+  </section>
+  <section class="panel span-8" aria-labelledby="order-items-title">
+    <h2 id="order-items-title">品項</h2>
+    <p class="panel-note">名稱與單價為下單當時的快照</p>
+    <div class="table-wrap"><table>
+      <thead><tr><th>商品</th><th class="num">單價</th><th class="num">數量</th><th class="num">小計</th></tr></thead>
+      <tbody>{% for item in order['items'] %}<tr><td class="wrap">{{ item.name }} <small class="muted-text mono">{{ item.code }}</small></td><td class="num">{{ item.unit_price|ntd }}</td><td class="num">{{ item.quantity }}</td><td class="num">{{ item.line_total|ntd }}</td></tr>{% else %}<tr><td colspan="4" class="empty-cell">沒有品項明細。</td></tr>{% endfor %}</tbody>
+    </table></div>
+    <dl class="kv amounts">
+      {% for key, label in [('subtotal', '商品小計'), ('discount_amount', '折扣'), ('shipping_fee', '運費'), ('total_amount', '訂單金額')] %}{% if key in order.amounts %}<dt>{{ label }}</dt><dd class="mono">{{ order.amounts[key]|ntd }}</dd>{% endif %}{% endfor %}
+    </dl>
+  </section>
+</div>
+{% endblock %}

@@ -21,6 +21,7 @@ MIGRATION_SOURCES = {
     '20261005_05_synthetic_profile_v4': ('test_data/schema_test_profile.py',),
     '20261014_06_member_device_sessions_v4': ('auth_session_schema.py', '../../scripts/migrate_auth_sessions.py'),
     '20261018_07_email_role_logins_v4': ('email_role_schema.py', '../../scripts/migrate_email_role_logins.py'),
+    '20261021_08_customer_session_audit_v4': ('admin_session_audit_schema.py', '../../scripts/migrate_admin_sessions.py'),
 }
 
 
