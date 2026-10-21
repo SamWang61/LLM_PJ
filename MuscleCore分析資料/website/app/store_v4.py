@@ -6,10 +6,10 @@ from pymongo.errors import PyMongoError
 from .auth import login_required, current_member
 from .services.member_events import record_read_event
 from .db import get_db
-from .services.sku_gateway import cart_service, review_service, catalog, product_view, money, oid, CartError, CartConflict
+from .services.sku_gateway import cart_service, review_service, catalog, related_products, product_view, money, oid, CartError, CartConflict
 from .services.behavior_scope import personalization_behavior_query
 from .services.ai_workflows import storefront_recommendations
-from .services.recommendation import policy_weights
+from .services.recommendation import weights_from_policy
 from .services.storefront_ranking import recommendations_6_4
 from .services import recommendation_logs as rec_logs
 
@@ -30,7 +30,7 @@ def recommendation_blocks(products, member, query=""):
     rules = list(db.cross_category_rules.find({'status': 'active'}))
     settings = (policy or {}).get('settings')
     settings = dict(settings) if isinstance(settings, dict) else {}
-    settings['weights'] = policy_weights(db)
+    settings['weights'] = weights_from_policy(policy or {})
     signals = storefront_recommendations(products, events, query, weights=settings['weights'], limit=max(1, len(products)))
     semantics = {str(item['product']['_id']): item['score'] for item in signals['items']} if signals['source'] == 'bge' else {}
     result = recommendations_6_4(products, events, rules, settings, semantic_scores=semantics)
@@ -143,7 +143,7 @@ def home():
             record_read_event(member, "SEARCH", query=query)
     result = recommendation_blocks(products, member, query)
     recommendation_ids = attribution(rec_logs.log_impressions, member, result) or {}
-    return render_template("store/home.html", recommendation_ids=recommendation_ids, products=shown[(page-1)*24:page*24], categories=categories,
+    return render_template("store/home_v4.html", recommendation_ids=recommendation_ids, products=shown[(page-1)*24:page*24], categories=categories,
                            selected_category=category, major_categories=major_categories, selected_major=major,
                            page=page, pages=pages, total=total,
                            recommendations=result['personalized'], cross_recommendations=result['cross_category'],
@@ -175,19 +175,11 @@ def product_detail(product_id):
         record_read_event(member, "PRODUCT_VIEW", product=product, recommendation_id=rec_id)
     categories = {c["_id"]: c["name"] for c in db.categories.find({"_id": {"$in": [product["major_category_id"], product["minor_category_id"]]}})}
     context = browsing_context()
-    shown = filtered_products(catalog(db), context)
-    index = next((i for i, p in enumerate(shown) if p["_id"] == product["_id"]), None)
-    previous_url = next_url = None
-    if index is not None:
-        if index > 0:
-            previous_url = url_for("store.product_detail", product_id=shown[index - 1]["_id"], **context)
-        if index + 1 < len(shown):
-            next_url = url_for("store.product_detail", product_id=shown[index + 1]["_id"], **context)
-    return render_template("store/product.html", product=product_view(product, skus, categories), rec_id=rec_id,
+    return render_template("store/product_v4.html", product=product_view(product, skus, categories), rec_id=rec_id,
                            reviewable_items=reviewable_lines(db, member, product['_id']),
-                           product_navigation={"previous_url": previous_url, "next_url": next_url,
-                               "list_url": url_for("store.home", page=index // 24 + 1 if index is not None else 1,
-                                                   _anchor="products", **context)})
+                           related_products=related_products(db, product),
+                           product_navigation={"list_url": url_for("store.home",
+                               page=max(1, request.args.get("page", 1, type=int)), _anchor="products", **context)})
 
 
 @bp.post('/reviews/<order_item_id>')
@@ -253,10 +245,18 @@ def remove_from_cart(sku_id):
 def cart():
     active = cart_service().get_active_cart(session["user_id"])
     items, total = [], Decimal("0")
+    product_ids = [item["product_id"] for item in (active or {}).get("items", [])]
+    products = {p["_id"]: p for p in get_db().products.find({"_id": {"$in": product_ids}})} if product_ids else {}
+    sku_ids = [item["sku_id"] for item in (active or {}).get("items", [])]
+    skus = {s["_id"]: s for s in get_db().product_skus.find({"_id": {"$in": sku_ids}})} if sku_ids else {}
     for item in (active or {}).get("items", []):
-        product = get_db().products.find_one({"_id": item["product_id"]})
+        product = products.get(item["product_id"])
         subtotal = money(item["price_snapshot"]) * item["quantity"]
-        items.append({"product": {"name": product["product_name"] if product else "已下架商品"},
+        sku = skus.get(item["sku_id"], {})
+        items.append({"product": {**(product or {}), "name": product["product_name"] if product else "已下架商品"},
+                      "variant": " / ".join(sku.get("variant_attributes", {}).values()),
+                      "unit_price": money(item["price_snapshot"]),
+                      "max_quantity": min(99, sku.get("available_quantity", 0)) if sku.get("status") == "active" and product and product.get("status") == "active" else 0,
                       "sku_id": str(item["sku_id"]), "qty": item["quantity"], "subtotal": subtotal})
         total += subtotal
     return render_template("store/cart_v4.html", items=items, total=total, cart=active,

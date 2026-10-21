@@ -51,12 +51,15 @@ def test_review_changes_home_ranking_without_cache_or_batch(shop):
     app, client, db, uid, pid, sid = shop
     app.config['REVIEW_SERVICE_FACTORY'] = OfflineReviews
     lid = purchased_line(db, uid, pid)
-    assert '猜你喜歡 · 6＋4' in client.get('/').text
+    home = client.get('/')
+    assert 'id="recommendation-blocks"' in home.text
+    assert '猜你喜歡 · 6＋4' not in home.text  # Empty blocks collapse, refresh target remains.
     before = client.get('/recommendations')
     assert '真實高星商品' not in before.text
     assert post(client, f'/reviews/{lid}', rating=5).status_code == 200
     after = client.get('/recommendations')
     assert '★ 5.0' in after.text and '1筆真實評價' in after.text
+    assert '猜你喜歡 · 6＋4' in after.text
     assert after.headers['Cache-Control'] == 'private, no-store'
 
 

@@ -67,10 +67,25 @@ def product_view(product, skus, categories=None):
 def catalog(db):
     # Classroom catalog is paginated at the route, never silently truncated at 200.
     products = list(db.products.find({"schema_version": 4, "status": "active"}).sort("_id", 1))
+    return catalog_views(db, products)
+
+
+def catalog_views(db, products):
+    """Join only the selected products to their current SKU stock and categories."""
+    if not products:
+        return []
     ids = [p["_id"] for p in products]
     skus = list(db.product_skus.find({"product_id": {"$in": ids}, "status": "active"}))
-    categories = {c["_id"]: c["name"] for c in db.categories.find({"status": "active"})}
+    category_ids = list({p[key] for p in products for key in ("major_category_id", "minor_category_id")})
+    categories = {c["_id"]: c["name"] for c in db.categories.find({"_id": {"$in": category_ids}, "status": "active"})}
     by_product = {}
     for sku in skus:
         by_product.setdefault(sku["product_id"], []).append(sku)
     return [product_view(p, by_product.get(p["_id"], []), categories) for p in products]
+
+
+def related_products(db, product):
+    # Ordinary same-category browsing, independent of personalized 6+4 eligibility.
+    products = list(db.products.find({"schema_version": 4, "status": "active",
+        "minor_category_id": product["minor_category_id"], "_id": {"$ne": product["_id"]}}).sort("_id", 1).limit(4))
+    return catalog_views(db, products)

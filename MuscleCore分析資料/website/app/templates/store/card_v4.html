@@ -1,0 +1,10 @@
+{% macro card(p, href, reason='') %}
+<article class="product-card catalog-card"><a class="card-link" href="{{ href }}">
+  <div class="product-visual">{% include 'store/product_image.html' %}</div>
+  <div class="card-body">{% if reason %}<span class="reason">{{ reason }}</span>{% else %}<span class="stock">{{ '已售完，補貨中' if p.stock < 1 else '庫存 ' ~ p.stock }}</span>{% endif %}
+  <h3>{{ p.name }}</h3><p class="card-description">{{ p.display_description }}</p>
+  <div class="price-row"><strong>NT$ {{ '{:,.2f}'.format(p.price) }}</strong><span data-product-rating="{{ p._id }}">★ {{ '%.1f'|format(p.rating) }}</span></div>
+  {% if reason %}<small>{{ p.rating_count|default(0) }}筆真實評價{% if p.rating_status == 'DEFAULT' %} · 預設星等{% endif %}</small>{% endif %}
+  <span class="card-action">查看商品與規格 →</span></div>
+</a></article>
+{% endmacro %}
