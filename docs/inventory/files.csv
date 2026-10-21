@@ -50,7 +50,7 @@ MuscleCore分析資料/website/app/static/img/team/sam-s.png,64550,document / �
 MuscleCore分析資料/website/app/static/js/admin.js,1553,document / 文件,d6422874476f04fc3642f74457cada4938e430c49eee310203dc8cc031d9f360,binary hashed / 二進位雜湊
 MuscleCore分析資料/website/app/static/js/forms.js,1038,document / 文件,8972445e65cc234cb1d8d2b7ac1f85590e1639bd89f52391f642849f5d1270aa,binary hashed / 二進位雜湊
 MuscleCore分析資料/website/app/static/js/reviews.js,3137,document / 文件,8a9942d25404397d0a2abc0dd826b42770814c35ea410da76b19ee58c5bb3004,binary hashed / 二進位雜湊
-MuscleCore分析資料/website/app/static/js/storefront.js,2600,document / 文件,1da45055a2f3aa99979dd4ec6424335a4a5928fdb409a2c091da45e8ea742d57,binary hashed / 二進位雜湊
+MuscleCore分析資料/website/app/static/js/storefront.js,2640,document / 文件,b41cd51cd76ee550a666211de2135b63673195c8c39777dfbf2e2684376bf2ff,binary hashed / 二進位雜湊
 MuscleCore分析資料/website/app/store.py,4682,source / 原始碼,7f8e251f0b6f77b87cf0ce4cd64bfe546eef32fc19cce169a86e66b2c68ad75f,text read / 文字讀取 (103 lines)
 MuscleCore分析資料/website/app/store_v4.py,13411,source / 原始碼,11e1c8c239c905311ef88c0fa320ff392989729d19d307a3e9444bdc22391ae7,text read / 文字讀取 (278 lines)
 MuscleCore分析資料/website/app/templates/admin/_list_macros.html,1521,source / 原始碼,9106b7399e0bfa53b27f0b87a7c492c5b07818c170ae2006e9806fe0ef8e2d68,text read / 文字讀取 (18 lines)
@@ -67,20 +67,20 @@ MuscleCore分析資料/website/app/templates/admin/products.html,3199,source / �
 MuscleCore分析資料/website/app/templates/admin/recommendations.html,4674,source / 原始碼,3b90413a4eebdcef90b61e0f65bd4c362fe58c5172a41efb944d88d00c20e907,text read / 文字讀取 (49 lines)
 MuscleCore分析資料/website/app/templates/admin/revoke_retry.html,865,source / 原始碼,f9053d6e3652d68501b120c657915b7d7f99deb0e4227efb9e392d199c5ee6ba,text read / 文字讀取 (13 lines)
 MuscleCore分析資料/website/app/templates/auth/_logout_form.html,241,source / 原始碼,46a6da2c8c4919f94c8d6fc8c9e0719c14a2c2a3efbdbb1851ebd003fe94c306,text read / 文字讀取 (4 lines)
-MuscleCore分析資料/website/app/templates/auth/form_expired.html,492,source / 原始碼,cc11f160176c4a3b59d1c0f9039648786c700ed153eeabdce256eadf17747d38,text read / 文字讀取 (9 lines)
+MuscleCore分析資料/website/app/templates/auth/form_expired.html,501,source / 原始碼,b62db67e285cb7fe45033e3ac7560735b474c0103e3de2a3c88faf2f097ea7d2,text read / 文字讀取 (9 lines)
 MuscleCore分析資料/website/app/templates/auth/login.html,928,source / 原始碼,983a604f208d39e49c8baed68d708a5a41770b4123cf53ddddfd2a640ea2f98b,text read / 文字讀取 (2 lines)
 MuscleCore分析資料/website/app/templates/auth/register.html,768,source / 原始碼,d2b0e98826df8b26d90bf1c4c2c809de458a6603633204fd67ca1c59734ca3de,text read / 文字讀取 (2 lines)
 MuscleCore分析資料/website/app/templates/base.html,3386,source / 原始碼,f48c58233603ae9114118c49f339e80754a0b48138cefd215939f0162fdf57f1,text read / 文字讀取 (39 lines)
-MuscleCore分析資料/website/app/templates/store/card_v4.html,893,source / 原始碼,3a03a34489466675a78ea17866f941b1536d80065022d6621d30a5f3661b3de1,text read / 文字讀取 (10 lines)
+MuscleCore分析資料/website/app/templates/store/card_v4.html,903,source / 原始碼,64dde945b8ea1b3fcd4e1257f0e795f38f0b949e59ec3e2fd941a92792684b51,text read / 文字讀取 (10 lines)
 MuscleCore分析資料/website/app/templates/store/cart.html,855,source / 原始碼,3c5be49300699ce6a08fd6f2927794a34300c5438031775ee23ec930d1c3177e,text read / 文字讀取 (2 lines)
 MuscleCore分析資料/website/app/templates/store/cart_v4.html,3094,source / 原始碼,cdae59c07faae7256f125e5cc3f188f9f416366d0ae3f7601eed953fb5b3b6b4,text read / 文字讀取 (32 lines)
 MuscleCore分析資料/website/app/templates/store/home.html,5806,source / 原始碼,a79641ff73975ad2e943e0546df228a3f8de2d87cdd6da89679822cd7e4ffe35,text read / 文字讀取 (24 lines)
-MuscleCore分析資料/website/app/templates/store/home_v4.html,2898,source / 原始碼,6c991c886737defcc14bd89d22544eea6dc3c4bc1eaecb4321ad93870ec5f3bd,text read / 文字讀取 (17 lines)
+MuscleCore分析資料/website/app/templates/store/home_v4.html,2915,source / 原始碼,d11f8e94515321d4d7c2ac6cfceeb7d2804db592ffeaff82de9545ec7116b491,text read / 文字讀取 (17 lines)
 MuscleCore分析資料/website/app/templates/store/product.html,3873,source / 原始碼,14047a7e40f30e132f283b388c7f4682a04e5867fd2c6cc0e9716ff6a33798ab,text read / 文字讀取 (26 lines)
 MuscleCore分析資料/website/app/templates/store/product_image.html,376,source / 原始碼,44890827bdaea1e423a2d62303beec5e15253d0b0ea9f0323f5d3ee4ac38dda8,text read / 文字讀取 (1 lines)
-MuscleCore分析資料/website/app/templates/store/product_v4.html,2490,source / 原始碼,e86d5d758050ebe73608027e03b33a0cb29e82abe5a99e4bff0b2c7f82b30b0e,text read / 文字讀取 (16 lines)
+MuscleCore分析資料/website/app/templates/store/product_v4.html,2506,source / 原始碼,4b340c6c43442b0f6ab14ce93a11d004fab69ea8179bed7fa9a8cdd9b4d7980c,text read / 文字讀取 (16 lines)
 MuscleCore分析資料/website/app/templates/store/recommendations_v4.html,791,source / 原始碼,3d86c5f9e52caf90a7c0ff04ab60b98222002389651421fb9318c2d3a284f1f0,text read / 文字讀取 (12 lines)
-MuscleCore分析資料/website/app/templates/store/review_form_v4.html,1110,source / 原始碼,5ec70d27e9288453eee6ab2fde0b9b2328d3f7fdcde9ba272364f1cf2d06b8ce,text read / 文字讀取 (13 lines)
+MuscleCore分析資料/website/app/templates/store/review_form_v4.html,1123,source / 原始碼,440850c0d38ef6b2e5ae89ef7122db562da7c03bb573e390b77c0d4065e03bd3,text read / 文字讀取 (13 lines)
 MuscleCore分析資料/website/app/templates/store/sku_fields.html,1104,source / 原始碼,f6a8e954277019e6fcfc47f3371cdade4c45cd5a899c0df2f642969440fe8c92,text read / 文字讀取 (8 lines)
 MuscleCore分析資料/website/cloud_runtime.py,3821,source / 原始碼,7a3c019046d9ec14b3d4e762ac9d86d5600c84e07293ccdf1042b90cc2478cbd,text read / 文字讀取 (90 lines)
 MuscleCore分析資料/website/docker-compose.yml,370,document / 文件,6e92b1ca2bd7c2a1e769d14336f363ba6178148b4b72989e6fd61ae9721dc62f,text read / 文字讀取 (18 lines)
@@ -627,7 +627,7 @@ scripts/verify_v4_test.py,9669,source / 原始碼,a4f29b2f393ce353614f0ea1fa859f
 簡報文件/超市AI版_2026-10-18/VibeCart_AI_超市網購與AI系統_2026-10-18_v3.pdf,131,Drive artifact / 雲端大型附件,3b13fec4f2f230e29b383a25ae227997d32bbb02bae4645f50545891d7893799,binary hashed / 二進位雜湊
 簡報文件/超市AI版_2026-10-18/VibeCart_AI_超市網購與AI系統_2026-10-18_v3.pptx,2598250,document / 文件,9985caa029d1aa8475226a54efc3ac6ef91288b451f207719e50ad57daf04a0e,binary hashed / 二進位雜湊
 簡報文件/超市AI版_2026-10-18/VibeCart_AI_超市網購與AI系統_2026-10-18_v5.pdf,131,Drive artifact / 雲端大型附件,518be4cb1bd584a501546008944e15909c440730ec3e035442a133c9fc145c4f,binary hashed / 二進位雜湊
-簡報文件/超市AI版_2026-10-18/VibeCart_AI_超市網購與AI系統_2026-10-18_v5.pptx,2603358,document / 文件,43374f71c5e42fdc1725f38a8ac69ea0e2ccc696f6238ebb06425e58e00d7203,binary hashed / 二進位雜湊
+簡報文件/超市AI版_2026-10-18/VibeCart_AI_超市網購與AI系統_2026-10-18_v5.pptx,3262322,document / 文件,4aa9b13286fe98574d3dd648889545ad196d92cea9aebb9a143c794ad392d193,binary hashed / 二進位雜湊
 簡報文件/超市AI版_2026-10-18/assets/S02-desktop-cloud-preview-20261018.png,163342,document / 文件,e7c534b36e4f855f64523ffb6d2da4dc310e70418a93c81c0b5da93b1d35d28d,binary hashed / 二進位雜湊
 簡報文件/超市AI版_2026-10-18/assets/S02-mobile-card-source.png,43448,document / 文件,39ca1004151dc2f70357cb97b127009c0899e85d695e44edef3c2d93da0abcf3,binary hashed / 二進位雜湊
 簡報文件/超市AI版_2026-10-18/assets/S03-product.png,450300,document / 文件,eb894676383db01208dbabc6202e102fa3b79ba4ddb82480b4d65abc9cb6658c,binary hashed / 二進位雜湊
