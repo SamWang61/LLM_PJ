@@ -176,7 +176,7 @@ The ignored local profile contains the existing v4 connection. It is not a newly
 
 ## 商品／訂單／會員管理（唯讀）／ Read-only management lists（JEFF，2026-10-21）
 
-依設計規格第 6 節實作三個**唯讀**頁面；新增、編輯、狀態變更與會員停用要等 D5 寫入及稽核遷移啟用（規格 12.3），頁面上方都有說明。
+依設計規格第 6 節實作三個列表頁；商品／訂單與會員資料欄位唯讀，會員撤銷裝置另走下述交易稽核。新增、編輯、狀態變更與會員停用仍待 D5 後續實作（規格 12.3），頁面上方都有說明。
 
 - **商品管理** `/admin/products`（`services/admin_catalog.py`）：
   - 篩選：關鍵字（名稱或代碼）、大類別、狀態、可推薦。
@@ -188,7 +188,7 @@ The ignored local profile contains the existing v4 connection. It is not a newly
   - 篩選：顯示名稱、角色、狀態。
   - Email 一律遮罩（`j***@example.com`），**不讀取 `password_hash`**；Email 不能當搜尋條件，避免從遮罩列表反推地址。
   - 沒有停用按鈕；管理員帳號依規格 12.3-C 本來就不能從後台停用。
-- **共通規則**：每頁 50 筆；關鍵字以字面比對（先跳脫，不當成正規表示式）；篩選值不合法時回 400，並附「返回 XX 管理」連結；全部是 GET、需要 `@admin_required`；時間以台北時間顯示。導覽列不再顯示「尚未開放」。
+- **共通規則**：每頁 50 筆；關鍵字以字面比對（先跳脫，不當成正規表示式）；篩選值不合法時回 400，並附「返回 XX 管理」連結；列表是 GET、需要 `@admin_required`；時間以台北時間顯示。導覽列不再顯示「尚未開放」。
 - **驗證**：網站離線測試 342 passed／21 skipped（新增 `tests/test_admin_lists.py` 25 項）。以本機 mongomock 預覽檢查三頁：無殘留深色、375px 無橫向溢出、會員頁 HTML 不含密碼雜湊與完整 Email。
 
 ### 2026-10-21 撤銷會員全部裝置（JEFF）
@@ -196,8 +196,12 @@ The ignored local profile contains the existing v4 connection. It is not a newly
 - 會員管理每一列一般會員都有「撤銷全部裝置」按鈕：`POST /admin/members/<id>/revoke-sessions`，CSRF（全站 POST 檢查）＋`@admin_required`，送出前瀏覽器會再確認一次。
 - 呼叫 REN 的 `revoke_user_sessions()`，刪除該會員所有裝置 session，完成後顯示「已撤銷 N 個裝置」並回到原本的篩選頁；N 是刪除的 session 筆數（含已過期但尚未清除的）。
 - **只能對 `role='customer'` 操作**：管理員帳號（包含自己）伺服器端回 403，畫面上也不顯示按鈕；會員不存在或 ID 不合法回 404。
-- **依 JEFF 決定，暫不寫稽核紀錄**；只在應用程式日誌記錄操作者 ID、會員 ID 與筆數（不含個資）。D5 稽核遷移上線後要補上稽核，並與撤銷放在同一筆交易（`revoke_user_sessions` 已支援 `mongo_session`）。
+- **PR #158 稽核補正**：原先「暫不稽核」方案已由本輪使用者要求取代。撤銷、`admin_audit_logs` 與 `admin_write_requests` 在同一筆交易提交；紀錄操作者／會員 ObjectId、固定原因與撤銷前後裝置數，不保存 Email、密碼或 session token。操作編號為 UUID v4，收據以操作者＋操作編號唯一，180 天內相同內容重送回原結果、不再刪除新登入裝置；異內容／仍留存的過期編號回 409。503 重試頁保留原編號，稽核失敗會全部回滾。
+- **獨立新增 migration** `20261021_08_customer_session_audit_v4`：兩集合 strict/error、180 天 TTL、checksum 登記與完整 active checker；先唯讀 preflight，再明確 `--apply --database-confirm`，既有 validator/index 漂移即拒絕。缺 migration 時撤銷回 503，不能先刪 session。舊 D5 草稿 migration／checksum 不變，其他 D5 寫入未啟用；TTL 清理後不提供永久去重保證。
+- **權限**：交易內再次驗證管理員角色、密碼指紋與有效裝置，並與帳號／裝置撤權序列化；會員角色亦受交易保護。管理員強制撤銷他人裝置仍保留確認，前後台自己的「登出」沿用 #157 單次點擊。
 - 新增 5 項離線測試：撤銷後舊 session 失效、管理員自己的 session 不受影響、0 個裝置、拒絕管理員（含自己）、缺 CSRF、會員不存在、非管理員。
+
+English: Customer revocation, privacy-limited audit and a 180-day idempotency receipt now commit atomically. Replays preserve later logins; audit/receipt failures roll back revocation. The additive scoped migration is checked before release; the immutable broader D5 draft is not activated. Production and browser evidence are recorded separately in the optimization delivery document.
 
 ## 線上 AI 設定 / Online AI configuration（JEFF，2026-10-18，A1／A2）
 

@@ -1,5 +1,5 @@
 ﻿path / 路徑,bytes / 大小,category / 類別,sha256,inspection / 讀取範圍
-.dockerignore,2601,document / 文件,3cf61c64b9011c1218611f3ae7a9f959f5674cba161a585a6da7ade3f31e6aca,text read / 文字讀取 (63 lines)
+.dockerignore,2751,document / 文件,3bd0c6323a4e9e114c8208f1a830dbd07de43b08160bb60ff1bb8c35a4dc8691,text read / 文字讀取 (69 lines)
 .editorconfig,197,document / 文件,928990146b3bf855dbcb2a2185b104259ae19766f81601244726fd24ef9f6b82,text read / 文字讀取 (14 lines)
 .gitattributes,1215,document / 文件,3066f3cc1441dae1e90d56e484f06140b4a05bd5ea7d1d7fa5dcef8066471552,text read / 文字讀取 (36 lines)
 .github/ISSUE_TEMPLATE/bug_report.md,339,document / 文件,43a5bb2767955d3338663e88c43968a5b53aba97ef77a8b7926561fa2d5b63ad,text read / 文字讀取 (15 lines)
@@ -7,22 +7,25 @@
 .github/pull_request_template.md,554,document / 文件,561a8f0facff00a2a57b4b80d69305705216a382e19508702664405a65eb27ae,text read / 文字讀取 (13 lines)
 .github/workflows/validate.yml,3865,document / 文件,7d41cd599dad7010a198e60a418620f709929b1cd34036d035909c1231d0d63d,text read / 文字讀取 (56 lines)
 .gitignore,764,document / 文件,9e5d9dc8d993a2e49d82ad0778b31abae749dc7c9ac2a0c2e08830edffdfb8d7,text read / 文字讀取 (49 lines)
-CHANGELOG.md,12911,document / 文件,9c60f1fedf995e6e448645edde2c80f1b10f3092802e45c7ba2bf242dcf23136,text read / 文字讀取 (139 lines)
+CHANGELOG.md,13641,document / 文件,d994d7d0b7f3d37432f5a932610335866fed50e40da98adf718ae877b66ddc0d,text read / 文字讀取 (145 lines)
 CODE_OF_CONDUCT.md,489,document / 文件,4726f51366646dfcc33567477d958f49b3854f9f2f36d29bdaab72d6116447ae,text read / 文字讀取 (5 lines)
 CONTRIBUTING.md,2151,document / 文件,dde5003ab5a2fa9291e394da75f5e5dd1f9338d0dd70d1ad6da479dd2d3b5b43,text read / 文字讀取 (20 lines)
-Dockerfile,1235,document / 文件,f060de1af0db114b1f7dfbfd722fbc20084090b5b4af4417edfc0303f4b66990,binary hashed / 二進位雜湊
+Dockerfile,1377,document / 文件,0a2a677d5df8d78b4f7eb072aa1eb61c8ca6d5a93413e420067a64289a8c44bc,binary hashed / 二進位雜湊
 Gemini 匯出 2026年9月30日 晚上7_19_25 [GMT+8].md,3723,document / 文件,6718a7eb7833a959816771243824928b35a181408e3c10e3af19ff2f4dd80ac0,text read / 文字讀取 (72 lines)
-MuscleCore分析資料/website/.dockerignore,327,document / 文件,e93ab8b6e4a05bb46354e2dc4ec06124c2eb241fdd872b3424250df4e35afd94,text read / 文字讀取 (18 lines)
+MuscleCore分析資料/website/.dockerignore,445,document / 文件,aa1084aeb09653e94916ad88964b28723dd506df68438837d0f522f802f237e8,text read / 文字讀取 (22 lines)
 MuscleCore分析資料/website/.env.example,1212,document / 文件,4cfc2cdba5724ca29a30759a3a950935f7182063930a80345bc3a373c1dd4040,text read / 文字讀取 (29 lines)
 MuscleCore分析資料/website/.gitignore,64,document / 文件,ccdd8f571040964ac1b06271f16d0249bba4ff1d84d595d688c6f7e058394261,text read / 文字讀取 (7 lines)
-MuscleCore分析資料/website/Dockerfile,1075,document / 文件,6020d6e52ad69fdf55d202fd1703b1e8a4106a304628e310164b439d9c5f31a7,binary hashed / 二進位雜湊
+MuscleCore分析資料/website/Dockerfile,1203,document / 文件,3975511e079154e4654fc49d59c10d6801640a8d07da774117538140625a38dc,binary hashed / 二進位雜湊
 MuscleCore分析資料/website/README.md,4556,document / 文件,c350d963f229c18fac98f3219ae49ba9223ffa50056d01b579449f3e781e59d8,text read / 文字讀取 (85 lines)
 MuscleCore分析資料/website/app/__init__.py,2594,source / 原始碼,48c19b3ba9d217fb68ec093317be4a7c9725d55578b28b5727887c01f3c9675e,text read / 文字讀取 (62 lines)
-MuscleCore分析資料/website/app/admin.py,11256,source / 原始碼,0bc8f77c38951ca8f6e89da0423db134ccb9b1cdc70732bcfb985f925323358c,text read / 文字讀取 (249 lines)
+MuscleCore分析資料/website/app/admin.py,14447,source / 原始碼,129c35a6d0adce7a6f944fe3f88780dc962e4dc4155f62fdfc1e9040740336e1,text read / 文字讀取 (333 lines)
 MuscleCore分析資料/website/app/auth.py,8421,source / 原始碼,bfa3973e9a4439a695e76fc030ea1bf6013c754502d27b9623b54289473d4953,text read / 文字讀取 (191 lines)
 MuscleCore分析資料/website/app/db.py,769,source / 原始碼,f4da1e945c8cafb0636520ccfe8143dc7e6c174779523cc1c7a2e5c46346c45d,text read / 文字讀取 (30 lines)
 MuscleCore分析資料/website/app/security.py,882,source / 原始碼,90a920e1a3e70e6b968252d3fa8ba5bcf160c7d6ef3b04caa4ea16f03515f394,text read / 文字讀取 (22 lines)
 MuscleCore分析資料/website/app/services/__init__.py,57,source / 原始碼,ad99f2d924998782cb45c4afff9971baa500c70ab753ad2afbb4ad3c63c365d8,text read / 文字讀取 (1 lines)
+MuscleCore分析資料/website/app/services/admin_catalog.py,4797,source / 原始碼,358deb6def452ac40c87e52410601b429be7b3d2146abbaaa5bff518c3800431,text read / 文字讀取 (99 lines)
+MuscleCore分析資料/website/app/services/admin_records.py,6337,source / 原始碼,788b38c0cc0cb3d0a3bb6af433e2fcb66d2ce662f088339fed338e0c3638163e,text read / 文字讀取 (118 lines)
+MuscleCore分析資料/website/app/services/admin_sessions.py,4612,source / 原始碼,397a6e16a7a1d07e5f6bfd2a459e396cee0dd8e761942701f261bbb2521a8a00,text read / 文字讀取 (83 lines)
 MuscleCore分析資料/website/app/services/ai_compare.py,2259,source / 原始碼,d4c0e5a428b05e5aa7b731f80a5f5a22fd33066e9684401e50c758b094dbfa73,text read / 文字讀取 (49 lines)
 MuscleCore分析資料/website/app/services/ai_payload.py,10459,source / 原始碼,bf2ff4d1f0ce8c2402c666b18ee86ef17a8e7051b914cb0fd74ebf298f53a178,text read / 文字讀取 (180 lines)
 MuscleCore分析資料/website/app/services/ai_workflows.py,21763,source / 原始碼,c58a53ac7db1def62b5908b1c6d56bb6fff331abc5998386fb8766d99d526332,text read / 文字讀取 (407 lines)
@@ -35,7 +38,7 @@ MuscleCore分析資料/website/app/services/member_sessions.py,2604,source / 原
 MuscleCore分析資料/website/app/services/recommendation.py,3457,source / 原始碼,93f0ca7725135e43981c3024e7a5d6ab4eed7a7d315e9db10fc50d7e012988cf,text read / 文字讀取 (80 lines)
 MuscleCore分析資料/website/app/services/sku_gateway.py,3477,source / 原始碼,62453f330a703ef086ab4ecda99f6dc490f93e9ab4a9be967669bf9e82306f08,text read / 文字讀取 (76 lines)
 MuscleCore分析資料/website/app/services/storefront_ranking.py,6795,source / 原始碼,389105fe3ea8001980b1fa37ede86d622f9ec3d240462611c0eddcfac46fa808,text read / 文字讀取 (131 lines)
-MuscleCore分析資料/website/app/static/css/admin.css,17938,source / 原始碼,6c92a050ca453674c18ff8a28b3d9d584e21cb408d544817ae04311cb92635f8,text read / 文字讀取 (257 lines)
+MuscleCore分析資料/website/app/static/css/admin.css,19651,source / 原始碼,ff96f0d87b6ba0a4dd8aab1bc6cabc10886acf02ee85f7123b7247ceaf0abbc7,text read / 文字讀取 (280 lines)
 MuscleCore分析資料/website/app/static/css/footer-team.css,1078,source / 原始碼,238fc779c6bbc90f940210fccdac9ca2ebb6a302b499f47016804ea0e5abe30d,text read / 文字讀取 (55 lines)
 MuscleCore分析資料/website/app/static/css/main.css,9697,source / 原始碼,79fcb6b8bddc34976d1d89bbb1abcbff77b3657fb167b2c92e699f59f1ce203a,text read / 文字讀取 (22 lines)
 MuscleCore分析資料/website/app/static/img/hero.png,1898747,document / 文件,a0ef2f0fee2b163b02edee7102c975668d5f78286786a575b4d42ef81e05633e,binary hashed / 二進位雜湊
@@ -43,17 +46,23 @@ MuscleCore分析資料/website/app/static/img/product-placeholder.svg,448,docume
 MuscleCore分析資料/website/app/static/img/team/Jeff-s.png,90730,document / 文件,193a5595bb025ac6999082b6e574a8876199f7e7b18aeb173ff2f151139406c6,binary hashed / 二進位雜湊
 MuscleCore分析資料/website/app/static/img/team/Ren-s.png,49897,document / 文件,20f365e734bc0a24047bcadb5791e3ef98ef9a2ee6541eb3ca24980c427295a2,binary hashed / 二進位雜湊
 MuscleCore分析資料/website/app/static/img/team/sam-s.png,64550,document / 文件,25d975cf616ab59ee34a3e1a5e6fe39bfe7c4ccc281d0ee2a19e25d069b80252,binary hashed / 二進位雜湊
-MuscleCore分析資料/website/app/static/js/admin.js,1233,document / 文件,e83709879aed15f8525dbeeba413fdd54422e942ced3c29b6a6070d48f0ab405,binary hashed / 二進位雜湊
+MuscleCore分析資料/website/app/static/js/admin.js,1553,document / 文件,d6422874476f04fc3642f74457cada4938e430c49eee310203dc8cc031d9f360,binary hashed / 二進位雜湊
 MuscleCore分析資料/website/app/static/js/reviews.js,3137,document / 文件,8a9942d25404397d0a2abc0dd826b42770814c35ea410da76b19ee58c5bb3004,binary hashed / 二進位雜湊
 MuscleCore分析資料/website/app/store.py,4682,source / 原始碼,7f8e251f0b6f77b87cf0ce4cd64bfe546eef32fc19cce169a86e66b2c68ad75f,text read / 文字讀取 (103 lines)
 MuscleCore分析資料/website/app/store_v4.py,12069,source / 原始碼,743150b2e6de3a5542a2df378104c96969a67f657d49c4e1fa4720110abaad12,text read / 文字讀取 (260 lines)
+MuscleCore分析資料/website/app/templates/admin/_list_macros.html,1521,source / 原始碼,9106b7399e0bfa53b27f0b87a7c492c5b07818c170ae2006e9806fe0ef8e2d68,text read / 文字讀取 (18 lines)
 MuscleCore分析資料/website/app/templates/admin/ai_compare.html,4366,source / 原始碼,8fc8458d112c0e2f503ca719c7f70c73196c64473bacea39b699a8e68b952c51,text read / 文字讀取 (49 lines)
 MuscleCore分析資料/website/app/templates/admin/ai_insight.html,7248,source / 原始碼,8adb19b7db7d55d977b3af1b2a51303fd81f29eb1655bb0ec9c3d8bfbd4c39cf,text read / 文字讀取 (71 lines)
 MuscleCore分析資料/website/app/templates/admin/ai_recommendation.html,5464,source / 原始碼,e3eac1175ce8385a9ba33f79fd0aaf9ec6f811bbe8a6bbaeb09b935ff349ae1b,text read / 文字讀取 (74 lines)
 MuscleCore分析資料/website/app/templates/admin/dashboard.html,9312,source / 原始碼,84dcf09e1ffa647d90c4a4bfb7a795219ce0dc87a199255622c4a3f5ade35278,text read / 文字讀取 (73 lines)
-MuscleCore分析資料/website/app/templates/admin/filter_error.html,363,source / 原始碼,43920f0eb8a528087baf5f6365fb9e1f7a5d18d6458ac5cfc697a1944735224b,text read / 文字讀取 (4 lines)
+MuscleCore分析資料/website/app/templates/admin/filter_error.html,397,source / 原始碼,11e363e7936ed71fe8b7d15ecb3e86a6f42e388db6176e3b3166328b2046aea5,text read / 文字讀取 (4 lines)
 MuscleCore分析資料/website/app/templates/admin/layout.html,4123,source / 原始碼,b0e7692a4094686ac736432abd6f2f1cad461f2337ef152533d66fdbec43650a,text read / 文字讀取 (72 lines)
+MuscleCore分析資料/website/app/templates/admin/members.html,3428,source / 原始碼,3cd99a40b1c97d877aa1bc19b328fcebb0ea7d144c4de9fd58231250ae8fd7c4,text read / 文字讀取 (35 lines)
+MuscleCore分析資料/website/app/templates/admin/order_detail.html,2814,source / 原始碼,af1f22d1230fb679597cf72efcf31dbf7fdb628d1d661fcbf0e849a2b8e7f7e4,text read / 文字讀取 (35 lines)
+MuscleCore分析資料/website/app/templates/admin/orders.html,3240,source / 原始碼,7b0520f39249747ee159af924cd800cc3eff39c91c1edaba09e64a8528d9ca53,text read / 文字讀取 (36 lines)
+MuscleCore分析資料/website/app/templates/admin/products.html,3199,source / 原始碼,bd541c83d0ff602737070fb101cc230886959d820e2e2231063835f134129783,text read / 文字讀取 (36 lines)
 MuscleCore分析資料/website/app/templates/admin/recommendations.html,3277,source / 原始碼,ce026f7066b32cd7c6d9ee50865829ecb0f96f8ffafb456ba9fe26cd8641825f,text read / 文字讀取 (38 lines)
+MuscleCore分析資料/website/app/templates/admin/revoke_retry.html,852,source / 原始碼,57ed4b283a7c341b25f8de96ad40049f50e372cfd8e7fdb01c96390b898bdd81,text read / 文字讀取 (13 lines)
 MuscleCore分析資料/website/app/templates/auth/_logout_form.html,222,source / 原始碼,12d7a05383fbe6b44d9596478ab452bdb81ea74bd5df3834673334682d7bd3a6,text read / 文字讀取 (4 lines)
 MuscleCore分析資料/website/app/templates/auth/login.html,909,source / 原始碼,1a5c8e29680f48cffc239fc44025432d28fc87dbc290e12e5266a30b0f7a4232,text read / 文字讀取 (2 lines)
 MuscleCore分析資料/website/app/templates/auth/register.html,768,source / 原始碼,d2b0e98826df8b26d90bf1c4c2c809de458a6603633204fd67ca1c59734ca3de,text read / 文字讀取 (2 lines)
@@ -79,7 +88,9 @@ MuscleCore分析資料/website/run_v4_test.ps1,403,document / 文件,62b0ad46693
 MuscleCore分析資料/website/seed_mongodb.py,3893,source / 原始碼,b7b42a41342efe890319db72daf7a36a4400391ac8b10b0309d00ffc4ed9509f,text read / 文字讀取 (60 lines)
 MuscleCore分析資料/website/start_windows.bat,810,source / 原始碼,f2e281bbe832250e46b22b92076b52c168d677b509bc4f34c636c50b2d3bdc8c,text read / 文字讀取 (36 lines)
 MuscleCore分析資料/website/tests/run_ren_demo.py,336,source / 原始碼,e01cd17790a76e402203022df4f2f68d06550951f8b7fe2c0f63878c9048c627,text read / 文字讀取 (7 lines)
-MuscleCore分析資料/website/tests/test_admin_layout.py,8106,source / 原始碼,14781b9965e7bc5d7e3fce835d5df8b5c5d5cc116028c343a1d257b891fcc11f,text read / 文字讀取 (159 lines)
+MuscleCore分析資料/website/tests/test_admin_layout.py,8249,source / 原始碼,923be0e4592668a236451cc6203fbfddea9f72df13635237e47b1c53f6116a0a,text read / 文字讀取 (161 lines)
+MuscleCore分析資料/website/tests/test_admin_lists.py,14361,source / 原始碼,298493cacbc95c3bc4138c2f7cb1116bdfdce5f6ef88e97b9c26c5d0749fed47,text read / 文字讀取 (265 lines)
+MuscleCore分析資料/website/tests/test_admin_session_transactions.py,7816,source / 原始碼,8719eea799ebab8a61b4757c0cc51b9d93ab2d12291aabbcddcd0e59bc9d2a18,text read / 文字讀取 (159 lines)
 MuscleCore分析資料/website/tests/test_ai_compare.py,4115,source / 原始碼,042e9e0be9d4fa0419079eca617481474b54e5e8bf7e941c6b2898dc7014a3de,text read / 文字讀取 (88 lines)
 MuscleCore分析資料/website/tests/test_ai_insight.py,17980,source / 原始碼,062a76b64d102f9bb3709f5d5ae8d2bbca981d2a2596e34160344213050148a0,text read / 文字讀取 (327 lines)
 MuscleCore分析資料/website/tests/test_ai_workflows.py,4789,source / 原始碼,1bfef1bad92e1e96215c260579bf1c387459e023f8eea65692fef9720a1b152a,text read / 文字讀取 (113 lines)
@@ -87,7 +98,7 @@ MuscleCore分析資料/website/tests/test_behavior_scope.py,5924,source / 原始
 MuscleCore分析資料/website/tests/test_checkout_commit_authorization.py,5487,source / 原始碼,27be888c7248df9ba51fc48f616cbf2d3d9d995248b7bb0d5d3e5ec9cff7cccf,text read / 文字讀取 (103 lines)
 MuscleCore分析資料/website/tests/test_cloud_runtime.py,7268,source / 原始碼,c5c7cb10d91e2673771c423f32a9defcf224b59ef780c6ab5af79e1a63812587,text read / 文字讀取 (165 lines)
 MuscleCore分析資料/website/tests/test_dashboard.py,5083,source / 原始碼,32af6c5f6d9c15f9aa376aac18b509a2ce5a1ca87adc0b120b34233f82bd9f35,text read / 文字讀取 (94 lines)
-MuscleCore分析資料/website/tests/test_database_readiness.py,7604,source / 原始碼,fb68b9469f883e15163d63d0f5a0cc530f428aee349c7640cd9408d4bf21b508,text read / 文字讀取 (190 lines)
+MuscleCore分析資料/website/tests/test_database_readiness.py,7604,source / 原始碼,e2fedb3fab468b589adac51fc58c1fddb68b126e399c1259a7eff678456cdb27,text read / 文字讀取 (190 lines)
 MuscleCore分析資料/website/tests/test_dual_role_login.py,6081,source / 原始碼,dac48faf54d1c6f810d93fb4cb8fde64a6df6f613828e55f9c8086931aa1094a,text read / 文字讀取 (126 lines)
 MuscleCore分析資料/website/tests/test_local_ai.py,7786,source / 原始碼,95a2c8019f5404bfd2b96dd53c1b1708ca1d00854fa92c843134e7af9441fed9,text read / 文字讀取 (162 lines)
 MuscleCore分析資料/website/tests/test_local_checkout_fault_matrix.py,2683,source / 原始碼,992b680a01163b008b0eafb5cc44c34203304440f16a9931ca494453543f9f32,text read / 文字讀取 (62 lines)
@@ -130,6 +141,7 @@ VibeCart_AI/MongoDB/17_2026-09-19_MongoDB工作總結.md,2907,document / 文件,
 VibeCart_AI/MongoDB/18_2026-10-05_Schema重建與超市商品匯入.md,3697,document / 文件,644523710c07c64dcb559ca10018e2878387dbca743b801cb7768d3f6aff081a,text read / 文字讀取 (46 lines)
 VibeCart_AI/MongoDB/19_Atlas與Compass資料庫查詢手冊.md,15861,document / 文件,900115c0d4e18c2cbb823f46a0bce3483830974c447177a3f7e2b743fdd3509c,text read / 文字讀取 (246 lines)
 VibeCart_AI/MongoDB/README.md,5601,document / 文件,3169893eaaccff8f60c03b8e3ac1156d3c759859dfd4b476f999af7ed4a1a624,text read / 文字讀取 (62 lines)
+VibeCart_AI/MongoDB/admin_session_audit_schema.py,2332,source / 原始碼,d135de711730beb6f2fc8e01e2ae4fcdf6553bee9883b368a012a8569f94ad0c,text read / 文字讀取 (49 lines)
 VibeCart_AI/MongoDB/audit_complete_v4.py,5905,source / 原始碼,3ad9f7fe36ececfa39c9b3a50189683d6b4f8385ea9e96ac1de7137f8ae6baf3,text read / 文字讀取 (76 lines)
 VibeCart_AI/MongoDB/audit_schema.py,8257,source / 原始碼,4c525a561058422f33dc02650f23b106c5cbadaf061351be9fb1e5f12a3d9b62,text read / 文字讀取 (93 lines)
 VibeCart_AI/MongoDB/auth_session_schema.py,850,source / 原始碼,78bde27912ea0b166d2715d72033d3681d3f4846d0f8c2b32c9e53282a679377,text read / 文字讀取 (12 lines)
@@ -141,7 +153,7 @@ VibeCart_AI/MongoDB/email_role_schema.py,277,source / 原始碼,fe87ad9b4789eaf6
 VibeCart_AI/MongoDB/migrate_cart_v3.py,3410,source / 原始碼,7a9b32bd7458c91364ccdc97fb28ec09b5a750e76a9d49370b556cfe2a8544f3,text read / 文字讀取 (56 lines)
 VibeCart_AI/MongoDB/migrate_complete_v4.py,4231,source / 原始碼,3efb83095edad15898ed2d5e02fd15ddd10dc03aa59a6825de9c85dde43723ec,text read / 文字讀取 (66 lines)
 VibeCart_AI/MongoDB/migrate_schema_audit.py,3275,source / 原始碼,6febedf0eefe1aade2b82098d18ffeeb5ecb346fc1fa1050ce54c5ca797dd547,text read / 文字讀取 (54 lines)
-VibeCart_AI/MongoDB/schema_active_v4.py,963,source / 原始碼,e0c5b14ef00ae6b440f31d53d46c8e2fc286e6e41112d4d4e4bb8e6b6486cdb3,text read / 文字讀取 (18 lines)
+VibeCart_AI/MongoDB/schema_active_v4.py,1189,source / 原始碼,8d3abf190545625b6a119a59b0cded11d7883b22c593feddb1e924e2bb331e02,text read / 文字讀取 (22 lines)
 VibeCart_AI/MongoDB/schema_admin_audit_draft.py,2107,source / 原始碼,96502dd78938ed597d8ba58a6d230caae094eacf7112356acdee7f12c6a07f42,text read / 文字讀取 (41 lines)
 VibeCart_AI/MongoDB/schema_complete_test_results.xml,8934,document / 文件,5fdc708f06fd5ebe40e63c1093cc566a9b11153f40757c122e5359bd40e0733f,text read / 文字讀取 (1 lines)
 VibeCart_AI/MongoDB/schema_complete_v4.py,20515,source / 原始碼,f591cac07341cfd11d7c4483e4bdd3f56c33cd4eaeb39a3a50a7be5426b0ed90,text read / 文字讀取 (302 lines)
@@ -204,7 +216,7 @@ deploy/cloudbuild-github-preview.json,3004,document / 文件,b77dea89e80d628cfe4
 deploy/cloudbuild.yaml,1420,document / 文件,cab917cdb811a08c851fc11d053ccfdb4e71ff460de4c811219f3a9c20b81d0b,text read / 文字讀取 (34 lines)
 deploy/firebase/firebase.json,238,document / 文件,240ac4a15c5fa5ac53e90d65246314be2c6bb167bf882b6ee4d23a64e9ca49dd,text read / 文字讀取 (8 lines)
 deploy/firebase/public/404.html,158,source / 原始碼,8705e739c71babb2113fbe8786adac460d25c6783e3f499a29d05ebbc27db31d,text read / 文字讀取 (1 lines)
-docs/AI_DASHBOARD.md,28456,document / 文件,405d37b166d14b41566423a29ecf207e8ed75c14456fe00d228f0c934d3d3766,text read / 文字讀取 (216 lines)
+docs/AI_DASHBOARD.md,32851,document / 文件,a790929c7cc0c99d1f1d3fa9fbea8583832f417aa4bc300985e891be3cf3870d,text read / 文字讀取 (245 lines)
 docs/BACKUP.md,7000,document / 文件,29699a933e71a49e4a3def778519e70fc634a41344e9963b035eb9ef8f7f6ddd,text read / 文字讀取 (61 lines)
 docs/CONVERSATION_CLOSEOUT_AUDIT_2026-10-20.md,4217,document / 文件,42f0ff708f4805312d33d3be530de233f51ad0820ccb53736498d43cfba920c0,text read / 文字讀取 (23 lines)
 docs/CURRENT_CONTEXT.md,41830,document / 文件,d0ab5c00ca3defd6ba015587b27f95ad7f8275e5f2fa402dc3bc4aecb89a0970,text read / 文字讀取 (170 lines)
@@ -359,7 +371,7 @@ scripts/backup_restore_probe.py,6170,source / 原始碼,30c0f13015a6a1671827ac22
 scripts/capture_h08_mobile_simulation.cjs,8444,document / 文件,752a62945cb7e74bf18caef7c354478e19e3f1f504d229d3101110c263d0d880,binary hashed / 二進位雜湊
 scripts/check_live_catalog.py,8810,source / 原始碼,198824d08b8fe7b57b9cf61de79aa73a987b53a1dccf7390f0ed2f99717a2627,text read / 文字讀取 (193 lines)
 scripts/check_repository.py,2854,source / 原始碼,d9fd6f06b4fa74088aa680c4cafe6893998769241da2e5d7336dcdb6984253bf,text read / 文字讀取 (62 lines)
-scripts/check_v4_database.py,9060,source / 原始碼,44533492e0ebacbca0b3ec3eea7845a37395429e4cd19cce0104a831d2afee8a,text read / 文字讀取 (168 lines)
+scripts/check_v4_database.py,9183,source / 原始碼,1553046ee9b930d6e0903b1285d9bc5b16f6be67db7bbe5c776ae62a398a96a6,text read / 文字讀取 (169 lines)
 scripts/cleanup_n06_barrier_tag.cjs,3066,document / 文件,3a272eff0860a4d537082240b9f38ebcc9792dd7462c0eb07158977f95a5b050,binary hashed / 二進位雜湊
 scripts/cloud_db_health_readback.cjs,4907,document / 文件,a388f708f5abd1106a2281b632eba32af7d961e9cf0a46af7cffb88fffdcdcdd,binary hashed / 二進位雜湊
 scripts/cloud_egress_preflight.cjs,3468,document / 文件,ebf2fd3dfe2d01c063627422bf9fc433e64cb7aef63ce36f8b3ab3de0d0123eb,binary hashed / 二進位雜湊
@@ -368,9 +380,10 @@ scripts/enable_compute_for_egress.cjs,2075,document / 文件,c1be6998debf38152e4
 scripts/encrypted_backup.py,6860,source / 原始碼,82bd2b28977cad316776b8d902b295833cd250476c5c2db3ad88ff7b5e4226bc,text read / 文字讀取 (179 lines)
 scripts/inventory.py,3483,source / 原始碼,b39758d1494ff468d22d0248710361d21940cc092d634acde1faa1c3db7611d3,text read / 文字讀取 (71 lines)
 scripts/migrate_admin_audit.py,4534,source / 原始碼,113741b5ed7aaedd6836c49f8bc2cec05d79feb937996ea5adacb4d90fd4f089,text read / 文字讀取 (93 lines)
+scripts/migrate_admin_sessions.py,5134,source / 原始碼,2f6bc7fef0cba15da763787e910d2bb51442f2427075ad721622bd60227ca62a,text read / 文字讀取 (104 lines)
 scripts/migrate_auth_sessions.py,2187,source / 原始碼,c8d4ef030b155254b6495a4651111bf44a38d00d25f6273c453482273062cd57,text read / 文字讀取 (42 lines)
 scripts/migrate_email_role_logins.py,2072,source / 原始碼,71417f24171de2fb0f042be8398ceb5f5740b46301e413f4ea04b06891e7f90b,text read / 文字讀取 (41 lines)
-scripts/prepare_cloud_source.py,3932,source / 原始碼,7cc8e4110c9bf9e97153cd2f21bbdfd82ef5936c42217e60f8c6497cb588bc71,text read / 文字讀取 (91 lines)
+scripts/prepare_cloud_source.py,4031,source / 原始碼,747e109635c1f0e7d908294a4e1ea024a7ce374614b2ef77de5e2a7810928a73,text read / 文字讀取 (93 lines)
 scripts/private_https_transport.cjs,2451,document / 文件,1dbb68eba0d83232083d1070c7215da18b46a2150e389c53d7b0cd3496497246,binary hashed / 二進位雜湊
 scripts/private_https_transport.py,3135,source / 原始碼,dc5c789b3d38da53152ffaac84073164ff44134408845cb2ac3ed709d9827cd0,text read / 文字讀取 (63 lines)
 scripts/probe_fixed_egress.cjs,6308,document / 文件,575262b252cfe15149ecd527b4fc1306011c2a1cba381d39f3286d3eef697987,binary hashed / 二進位雜湊
@@ -406,7 +419,7 @@ scripts/source_snapshot_delta.py,8416,source / 原始碼,513336b9da9950909f7d826
 scripts/srj_local_simulation.py,6034,source / 原始碼,f45ef6b8ed6c2d86a4f20a52b6c7bc9faa3564eeeb1e8aa741dc1c3d5c497394,text read / 文字讀取 (133 lines)
 scripts/stage_fixed_egress.cjs,6821,document / 文件,0efc9b5311e6e71346d11237b487b206c478eb446603017d3a09928a258b667f,binary hashed / 二進位雜湊
 scripts/stage_n06_private_candidate.cjs,6061,document / 文件,395c6399c524340dfd1e0156f70bd4dcd280d8ab55305ee8299412b9b192c2a9,binary hashed / 二進位雜湊
-scripts/test_admin_audit_migration.py,7006,source / 原始碼,da29d870d841f07b359151d7c4b301ba942e1f575f9bf188c8ad378cdd8fd1a5,text read / 文字讀取 (141 lines)
+scripts/test_admin_audit_migration.py,7154,source / 原始碼,2d436d3fa8d101670a78b7b6ecdc9a499aa4d6812d3abbabaf88a5119e4b07ac,text read / 文字讀取 (143 lines)
 scripts/test_atlas_snapshot_backup.py,5331,source / 原始碼,fe6bfc923f299b01fa744cd0f4666af30c1ba1f349440124d04bcb88c94b39a7,text read / 文字讀取 (117 lines)
 scripts/test_audit_delivery_source.py,576,source / 原始碼,e13453e3c83aabeebc9b2d4d50c38ae0a92de2702c491eaa2ad1512bd9d5b01a,text read / 文字讀取 (14 lines)
 scripts/test_backup_archive_parts.py,1691,source / 原始碼,3638e42b76790c98fa80b41ae3d5b7d971c6186e5d615d081aa409c7fd2dc954,text read / 文字讀取 (47 lines)

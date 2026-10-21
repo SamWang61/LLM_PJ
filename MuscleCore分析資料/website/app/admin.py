@@ -1,11 +1,14 @@
 from datetime import date, datetime, timedelta, timezone
 from decimal import Decimal
 from importlib.util import find_spec
+from uuid import uuid4
+from pymongo.errors import PyMongoError
 from flask import Blueprint, abort, current_app, flash, redirect, render_template, request, session, url_for
 from .auth import admin_required
 from .db import get_db
 from .services.admin_catalog import AdminListError, product_list
-from .services.admin_records import member_list, order_detail, order_list, revoke_customer_sessions
+from .services.admin_records import member_list, order_detail, order_list
+from .services.admin_sessions import admin_session_service, CartError, CartConflict
 from .services.ai_compare import comparison
 from .services.ai_payload import InsightDataError, build_insight_payload, insight_ranges
 from .services.ai_workflows import FAILURE_LABELS, INTENTS, InsightRequestError, clean_question, insight_answer, operational_summary
@@ -300,17 +303,31 @@ def members():
 MEMBER_FILTER_KEYS = ("q", "role", "status", "page")
 
 
+@bp.app_template_global()
+def admin_request_id():
+    return str(uuid4())
+
+
 @bp.post('/members/<user_id>/revoke-sessions')
 @admin_required
 def revoke_member_sessions(user_id):
-    """Sign a customer out of all devices (CSRF is enforced for every POST by security.py)."""
+    """Revocation, audit and replay receipt commit together; CSRF is enforced globally."""
+    if current_app.config.get('CLOUD_PREVIEW_READ_ONLY'):
+        abort(403)
     back = {key: request.form[key] for key in MEMBER_FILTER_KEYS if request.form.get(key)}
+    operation = request.form.get('request_id', '')
     try:
-        count = revoke_customer_sessions(get_db(), user_id)
+        count = admin_session_service().revoke(session.get('user_id'), user_id, request_id=operation)
     except LookupError:
         abort(404, description="找不到這位會員。")
     except PermissionError:
         abort(403, description="只能撤銷一般會員的裝置登入，管理員帳號不可從後台操作。")
-    current_app.logger.info("admin %s revoked %s device sessions of member %s", session.get("user_id"), count, user_id)
+    except CartConflict as error:
+        abort(409, description=str(error))
+    except CartError as error:
+        abort(400, description=str(error))
+    except PyMongoError as error:
+        current_app.logger.warning('Admin device revocation unavailable (%s)', type(error).__name__)
+        return render_template('admin/revoke_retry.html', user_id=user_id, request_id=operation, back=back), 503
     flash(f"已撤銷 {count} 個裝置", "success")
     return redirect(url_for('admin.members', **back))

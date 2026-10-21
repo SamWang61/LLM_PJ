@@ -1,15 +1,26 @@
 """Read-only product, order and member lists (design spec 6.1–6.3)."""
 from datetime import datetime
+from uuid import uuid4
 import pytest
 from bson import Decimal128, ObjectId
 from test_v4_routes import shop
 from app.services.admin_records import mask_email
+from app.services.admin_sessions import AdminSessionService, MIGRATION
+
+
+class OfflineAdminSessions(AdminSessionService):
+    """Route tests only; real atomicity is covered by test_admin_session_transactions."""
+    def _run(self, callback):
+        return callback(None)
 
 
 @pytest.fixture
 def admin(shop):
     app, client, db, uid, pid, sid = shop
     db.users.update_one({"_id": uid}, {"$set": {"role": "admin"}})
+    app.config['ADMIN_SESSION_SERVICE_FACTORY'] = OfflineAdminSessions
+    db.schema_migrations.insert_one({'_id': MIGRATION, 'status': 'succeeded'})
+    db.admin_write_requests.create_index([('actor_id', 1), ('request_id', 1)], unique=True)
     return app, client, db, uid, pid, sid
 
 
@@ -148,10 +159,10 @@ def test_member_filters_and_email_not_searchable(admin):
 def test_member_list_has_no_deactivate_action_and_no_revoke_for_admins(admin):
     _, client, _, _, _, _ = admin
     html = page(client, "/admin/members")  # only the admin fixture user exists
-    assert "管理員帳號不能從後台停用" in html and 'method="post"' not in html and "停用帳號" not in html
+    assert "管理員帳號不能從後台停用" in html and '/revoke-sessions"' not in html and "停用帳號" not in html
 
 
-# ---------- revoke all device sessions (customers only; audit added with D5) ----------
+# ---------- audited revoke all device sessions (customers only) ----------
 
 def customer_with_sessions(app, db, count):
     from app.services.member_sessions import create_member_session
@@ -164,7 +175,7 @@ def customer_with_sessions(app, db, count):
 
 
 def revoke(client, user_id, csrf="test-csrf", **form):
-    return client.post(f"/admin/members/{user_id}/revoke-sessions", data={"csrf_token": csrf, **form})
+    return client.post(f"/admin/members/{user_id}/revoke-sessions", data={"csrf_token": csrf, "request_id": str(uuid4()), **form})
 
 
 def test_revoke_signs_customer_out_of_every_device(admin):
@@ -176,6 +187,8 @@ def test_revoke_signs_customer_out_of_every_device(admin):
     assert "q=" in response.location and "role=customer" in response.location
     assert db.auth_sessions.count_documents({"user_id": cid}) == 0
     assert db.auth_sessions.count_documents({"user_id": uid}) == 1  # the admin's own session is untouched
+    assert db.admin_audit_logs.count_documents({'resource_id': cid}) == 1
+    assert db.admin_write_requests.count_documents({'actor_id': uid}) == 1
     assert "已撤銷 2 個裝置" in page(client, response.location)
     # The revoked customer's old session no longer reaches member pages.
     kicked = app.test_client()
@@ -215,6 +228,30 @@ def test_revoke_requires_admin(shop):
     cid, _ = customer_with_sessions(app, db, 1)
     assert revoke(client, cid).status_code == 302
     assert db.auth_sessions.count_documents({"user_id": cid}) == 1
+
+
+def test_revoke_retry_keeps_same_request_and_filters(admin, monkeypatch):
+    from pymongo.errors import AutoReconnect
+    app, client, db, _, _, _ = admin
+    cid, _ = customer_with_sessions(app, db, 1)
+    operation = str(uuid4())
+    def unavailable(*args, **kwargs):
+        raise AutoReconnect('controlled route fault')
+    monkeypatch.setattr(OfflineAdminSessions, 'revoke', unavailable)
+    response = revoke(client, cid, request_id=operation, q='被撤銷', role='customer')
+    assert response.status_code == 503
+    html = response.get_data(as_text=True)
+    assert operation in html and '重試此操作' in html and '被撤銷' in html
+    assert db.auth_sessions.count_documents({'user_id': cid}) == 1
+
+
+def test_revoke_missing_migration_and_invalid_operation_fail_closed(admin):
+    app, client, db, _, _, _ = admin
+    cid, _ = customer_with_sessions(app, db, 1)
+    assert revoke(client, cid, request_id='invalid').status_code == 400
+    db.schema_migrations.delete_many({})
+    assert revoke(client, cid).status_code == 503
+    assert db.auth_sessions.count_documents({'user_id': cid}) == 1
 
 
 @pytest.mark.parametrize("email,masked", [("ab@x.io", "a***@x.io"), ("", "—"), (None, "—"), ("no-at-sign", "—")])

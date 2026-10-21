@@ -128,7 +128,9 @@ def test_validator_drift_refused_before_creating_other_collection(db):
 
 def test_existing_active_contract_is_not_implicitly_upgraded():
     from schema_active_v4 import SCHEMAS,MIGRATIONS
-    assert 'admin_audit_logs' not in SCHEMAS and 'admin_write_requests' not in SCHEMAS
+    from admin_session_audit_schema import SCHEMAS as SESSION_SCHEMAS, MIGRATION as SESSION_MIGRATION
+    assert all(SCHEMAS[name] == validator for name, validator in SESSION_SCHEMAS.items())
+    assert SESSION_MIGRATION in MIGRATIONS
     assert migration.MIGRATION not in MIGRATIONS
 
 

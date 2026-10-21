@@ -1,7 +1,7 @@
 """Read-only order and member lists for the admin (design spec 6.2, 6.3).
 
-Members never expose password_hash or full email addresses; no write actions exist until the
-D5 audit and idempotency migration is enabled.
+Members never expose password_hash or full email addresses. Audited device revocation
+is implemented separately in admin_sessions; broader D5 status edits remain pending.
 """
 from bson import ObjectId
 from bson.errors import InvalidId
@@ -116,20 +116,3 @@ def member_list(db, values):
     return {"rows": rows, "form": form, "paging": paging}
 
 
-def revoke_customer_sessions(db, user_id):
-    """Sign a customer out of every device. Returns the number of device sessions removed.
-
-    Only role='customer' accounts qualify (design spec 12.3-C); admins are refused. Audit records
-    are added when the D5 audit migration is enabled.
-    """
-    from .member_sessions import revoke_user_sessions
-    try:
-        oid = ObjectId(user_id)
-    except (InvalidId, TypeError):
-        raise LookupError("member not found") from None
-    user = db.users.find_one({"_id": oid}, {"role": 1})
-    if not user:
-        raise LookupError("member not found")
-    if user.get("role") != "customer":
-        raise PermissionError("only customers can be signed out from the admin")
-    return revoke_user_sessions(db, oid)

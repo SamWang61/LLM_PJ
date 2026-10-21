@@ -13,8 +13,8 @@
 
 ## 2026-10-21 — JEFF 商品／訂單／會員管理唯讀頁 / Read-only management lists
 
-- 新增 `/admin/products`、`/admin/orders`（含明細）、`/admin/members` 唯讀列表與篩選；會員 Email 遮罩、不讀取 `password_hash`；寫入功能仍待 D5 稽核遷移。Read-only admin lists.
-- 會員管理新增「撤銷全部裝置」：只對一般會員、CSRF＋管理員權限、完成後顯示「已撤銷 N 個裝置」；稽核待 D5 上線再補。Customer-only sign-out of all devices.
+- 新增 `/admin/products`、`/admin/orders`（含明細）、`/admin/members` 列表與篩選；會員 Email 遮罩、不讀取 `password_hash`；其他狀態編輯仍待 D5。Read-only business fields and filtered admin lists.
+- 一般會員「撤銷全部裝置」補入同交易稽核／180 天唯一收據、管理員裝置授權 fence、保留原編號的重試頁；新 migration `20261021_08_customer_session_audit_v4` 僅啟用此範圍，失敗回滾且缺 migration 不刪 session。Atomic audited revocation; replays preserve later device logins.
 - 新增 30 項離線測試。See [dashboard handoff](docs/AI_DASHBOARD.md).
 
 ## 2026-10-18 — 最新main無流量預覽與私有真模型驗收

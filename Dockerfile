@@ -14,6 +14,8 @@ RUN if [ "$INSTALL_AI" = "true" ]; then \
     fi
 COPY ["MuscleCore分析資料/website/app", "./app"]
 COPY ["VibeCart_AI/services/cart_service.py", "VibeCart_AI/services/sku_cart_service.py", "VibeCart_AI/services/review_service.py", "./VibeCart_AI/services/"]
+COPY ["VibeCart_AI/MongoDB/admin_session_audit_schema.py", "./VibeCart_AI/MongoDB/"]
+COPY ["scripts/migrate_admin_sessions.py", "./scripts/"]
 COPY ["MuscleCore分析資料/website/cloud_runtime.py", "./"]
 USER appuser
 ENV PYTHONUNBUFFERED=1 HF_HUB_OFFLINE=1

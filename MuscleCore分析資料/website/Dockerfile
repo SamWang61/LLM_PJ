@@ -15,6 +15,8 @@ RUN if [ "$INSTALL_AI" = "true" ]; then \
     fi
 COPY app ./app
 COPY VibeCart_AI/services ./VibeCart_AI/services
+COPY VibeCart_AI/MongoDB/admin_session_audit_schema.py ./VibeCart_AI/MongoDB/
+COPY scripts/migrate_admin_sessions.py ./scripts/
 COPY cloud_runtime.py ./
 USER appuser
 ENV PYTHONUNBUFFERED=1 HF_HUB_OFFLINE=1
