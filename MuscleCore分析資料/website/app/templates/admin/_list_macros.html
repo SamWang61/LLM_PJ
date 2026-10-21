@@ -1,0 +1,18 @@
+{# Shared helpers for the read-only management lists. #}
+{% set status_labels = {'active': '上架', 'inactive': '下架', 'draft': '草稿'} %}
+{% set order_labels = {'pending': '待確認', 'confirmed': '已確認', 'shipping': '出貨中', 'completed': '已完成', 'cancelled': '已取消'} %}
+{% set payment_labels = {'unpaid': '未付款', 'paid': '已付款', 'failed': '付款失敗', 'refunded': '已退款'} %}
+{% set shipping_labels = {'pending': '待處理', 'processing': '處理中', 'shipped': '已出貨', 'delivered': '已送達', 'returned': '已退回', 'cancelled': '已取消'} %}
+{% set member_status_labels = {'active': '啟用', 'inactive': '停用'} %}
+{% set role_labels = {'customer': '一般會員', 'admin': '管理員'} %}
+{% macro pill(text, kind='') %}<span class="pill {{ kind }}">{{ text }}</span>{% endmacro %}
+{% macro pager(paging, endpoint, form) %}
+<nav class="pager" aria-label="分頁">
+  <span>共 {{ '{:,}'.format(paging.total) }} 筆 · 第 {{ paging.page }}／{{ paging.pages }} 頁</span>
+  <span class="pager-links">
+    {% if paging.page > 1 %}<a class="button secondary" href="{{ url_for(endpoint, page=paging.page - 1, **form) }}">上一頁</a>{% endif %}
+    {% if paging.page < paging.pages %}<a class="button secondary" href="{{ url_for(endpoint, page=paging.page + 1, **form) }}">下一頁</a>{% endif %}
+  </span>
+</nav>
+{% endmacro %}
+{% macro readonly_note(text) %}<p class="readonly-note" role="note">唯讀列表：{{ text }}</p>{% endmacro %}

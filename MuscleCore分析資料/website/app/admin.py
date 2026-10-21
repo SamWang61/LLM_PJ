@@ -1,10 +1,16 @@
-from datetime import datetime
+from datetime import date, datetime, timedelta, timezone
 from decimal import Decimal
 from importlib.util import find_spec
+from uuid import uuid4
+from pymongo.errors import PyMongoError
 from flask import Blueprint, abort, current_app, flash, redirect, render_template, request, session, url_for
 from .auth import admin_required
 from .db import get_db
+from .services.admin_catalog import AdminListError, product_list
+from .services.admin_records import member_list, order_detail, order_list
+from .services.admin_sessions import admin_session_service, CartError, CartConflict
 from .services.ai_compare import comparison
+from .services.recommendation_logs import recommendation_metrics
 from .services.ai_payload import InsightDataError, build_insight_payload, insight_ranges
 from .services.ai_workflows import FAILURE_LABELS, INTENTS, InsightRequestError, clean_question, insight_answer, operational_summary
 from .services.local_ai import (LocalModelUnavailable, install_commands, refresh_vectors, sellable_products,
@@ -39,6 +45,83 @@ def system_status():
 def admin_context():
     return {"system_status": system_status(), "admin_endpoints": set(current_app.view_functions),
             "read_at": datetime.now(TAIPEI).strftime("%Y-%m-%d %H:%M")}
+
+
+@bp.app_template_global()
+def spark_path(values, width=100, height=30):
+    """SVG path for a KPI sparkline; None values break the line instead of being drawn as zero."""
+    numbers = [float(v) for v in values if v is not None]
+    if len(values) < 2 or not numbers:
+        return ""
+    low, high = min(numbers), max(numbers)
+    span = (high - low) or 1
+    step = width / (len(values) - 1)
+    parts, pen_down = [], False
+    for index, value in enumerate(values):
+        if value is None:
+            pen_down = False
+            continue
+        x = round(index * step, 2)
+        y = round(height - (float(value) - low) / span * height if high != low else height / 2, 2)
+        parts.append(f"{'L' if pen_down else 'M'}{x} {y}")
+        pen_down = True
+    return " ".join(parts)
+
+
+@bp.app_template_global()
+def column_chart(daily, start="", end=""):
+    """Geometry for the daily revenue column chart (viewBox 720x240).
+
+    A date-range filter is zero-filled so gaps show as empty days; without dates only days that
+    have valid orders are drawn, matching the table below the chart.
+    """
+    rows = {row["date"]: row for row in daily}
+    if start and end:
+        first, last = date.fromisoformat(start), date.fromisoformat(end)
+        days = [(first + timedelta(days=i)).isoformat() for i in range((last - first).days + 1)]
+    else:
+        days = sorted(rows)
+    if not days:
+        return None
+    series = [(day, rows.get(day, {"orders": 0, "revenue": Decimal("0")})) for day in days]
+    peak = max((row["revenue"] for _, row in series), default=Decimal("0"))
+    left, top, plot_w, plot_h = 58, 8, 650, 200
+    slot = plot_w / len(series)
+    bar_w = max(1.0, min(slot * 0.72, 36))
+    label_every = max(1, -(-len(series) // 10))
+    bars = []
+    for index, (day, row) in enumerate(series):
+        share = float(row["revenue"] / peak) if peak > 0 else 0.0
+        h = round(share * plot_h, 2)
+        bars.append({"date": day, "orders": row["orders"], "revenue": row["revenue"], "share": round(share * 100, 1),
+                     "x": round(left + index * slot + (slot - bar_w) / 2, 2), "w": round(bar_w, 2),
+                     "y": round(top + plot_h - h, 2), "h": h,
+                     "label": day[5:] if index % label_every == 0 or index == len(series) - 1 else ""})
+    total = sum((row["revenue"] for _, row in series), Decimal("0"))
+    average = total / len(series)
+    ticks = [{"y": round(top + plot_h - fraction * plot_h, 2), "value": peak * Decimal(str(fraction))} for fraction in (0, 0.5, 1)]
+    return {"bars": bars, "ticks": ticks, "average": average, "days": len(series), "left": left, "right": left + plot_w,
+            "baseline": top + plot_h, "avg_y": round(top + plot_h - (float(average / peak) * plot_h if peak > 0 else 0), 2)}
+
+
+@bp.app_template_filter('pct')
+def pct(value):
+    return "—" if value is None else f"{value:+.1f}%"
+
+
+@bp.app_template_filter('compact_ntd')
+def compact_ntd(value):
+    """Axis labels only; exact amounts are shown with the ntd filter."""
+    value = float(value)
+    return f"{value / 10000:.1f} 萬" if value >= 10000 else f"{value:,.0f}"
+
+
+@bp.app_template_filter('taipei')
+def taipei(value):
+    """UTC datetimes from MongoDB shown in Taipei time; missing values show a dash."""
+    if not isinstance(value, datetime):
+        return "—"
+    return value.replace(tzinfo=value.tzinfo or timezone.utc).astimezone(TAIPEI).strftime("%Y-%m-%d %H:%M")
 
 
 @bp.app_template_filter('duration')
@@ -81,7 +164,8 @@ def summary():
 @admin_required
 def recommendations():
     result = recommendation_monitor(get_db(), current_app.config['DATA_MODE'])
-    return render_template('admin/recommendations.html', **result)
+    funnel = recommendation_metrics(get_db()) if current_app.config['DATA_MODE'] == 'v4' else None
+    return render_template('admin/recommendations.html', funnel=funnel, **result)
 
 
 def insight_page(values, intent=None, answer=None, error=None, status=200):
@@ -178,3 +262,74 @@ def ai_recommendation_refresh():
 @admin_required
 def ai_compare():
     return render_template('admin/ai_compare.html', **comparison())
+
+
+LIST_PAGES = {"admin.products": "返回商品管理", "admin.orders": "返回訂單管理", "admin.members": "返回會員管理"}
+
+
+@bp.errorhandler(AdminListError)
+def invalid_list_filters(error):
+    endpoint = request.endpoint if request.endpoint in LIST_PAGES else None
+    return render_template('admin/filter_error.html', message=str(error),
+                           back_url=url_for(endpoint) if endpoint else None,
+                           back_label=LIST_PAGES.get(endpoint)), 400
+
+
+@bp.get('/products')
+@admin_required
+def products():
+    return render_template('admin/products.html', **product_list(get_db(), request.args))
+
+
+@bp.get('/orders')
+@admin_required
+def orders():
+    return render_template('admin/orders.html', **order_list(get_db(), request.args))
+
+
+@bp.get('/orders/<order_id>')
+@admin_required
+def order_detail_page(order_id):
+    detail = order_detail(get_db(), order_id)
+    if detail is None:
+        abort(404, description="找不到這筆訂單。")
+    return render_template('admin/order_detail.html', order=detail)
+
+
+@bp.get('/members')
+@admin_required
+def members():
+    return render_template('admin/members.html', **member_list(get_db(), request.args))
+
+
+MEMBER_FILTER_KEYS = ("q", "role", "status", "page")
+
+
+@bp.app_template_global()
+def admin_request_id():
+    return str(uuid4())
+
+
+@bp.post('/members/<user_id>/revoke-sessions')
+@admin_required
+def revoke_member_sessions(user_id):
+    """Revocation, audit and replay receipt commit together; CSRF is enforced globally."""
+    if current_app.config.get('CLOUD_PREVIEW_READ_ONLY'):
+        abort(403)
+    back = {key: request.form[key] for key in MEMBER_FILTER_KEYS if request.form.get(key)}
+    operation = request.form.get('request_id', '')
+    try:
+        count = admin_session_service().revoke(session.get('user_id'), user_id, request_id=operation)
+    except LookupError:
+        abort(404, description="找不到這位會員。")
+    except PermissionError:
+        abort(403, description="只能撤銷一般會員的裝置登入，管理員帳號不可從後台操作。")
+    except CartConflict as error:
+        abort(409, description=str(error))
+    except CartError as error:
+        abort(400, description=str(error))
+    except PyMongoError as error:
+        current_app.logger.warning('Admin device revocation unavailable (%s)', type(error).__name__)
+        return render_template('admin/revoke_retry.html', user_id=user_id, request_id=operation, back=back), 503
+    flash(f"已撤銷 {count} 個裝置", "success")
+    return redirect(url_for('admin.members', **back))

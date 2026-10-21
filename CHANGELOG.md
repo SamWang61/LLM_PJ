@@ -1,15 +1,44 @@
 # 變更紀錄 / Changelog
 
+## 2026-10-21 — 推薦成效 P2 補修 / Recommendation attribution fixes
+
+- 修正 A→B→A 在 30 分鐘內的曝光去重；將結帳後所有歸因讀取納入容錯，示範訂單與停用紀錄先略過。Ordered-list deduplication and best-effort post-checkout attribution.
+
+## 2026-10-21 — JEFF 管理後台設計規格 v1.3 / Admin design v1.3
+
+- 依 main `c66f731` 同步已合併實作：T5 真模型調整、線上 AI 開關與 AI 映像、v4 權重、個人推薦範圍、SAM 的 6＋4 與 #5 快照；更新現況、資料準備狀態、檔案對應與 D5 進度，新增第 13 節線上 AI 部署設定。Spec synced with merged work.
+- 第 8 節改為 10/21 定案的淺色數據看板 token；原快照未改版的 CSS 由 #154 接續，實際部署另記優化系統文件。「分類營收占比」待定義資料來源。See [design spec](docs/JEFF_ADMIN_UI_DESIGN.md).
+
+## 2026-10-21 — JEFF 前台使用回報 / Storefront issue report
+
+- JEFF 以會員身分操作正式站，整理 12 項前台問題交 SAM：登入／登出重複送出造成 CSRF 400、約 2 秒回應與 MongoClient 生命週期疑點、庫存與規格、商品卡等。各項效能原因仍需獨立量測。見[歷史回報與現況界線](docs/JEFF_FRONTEND_ISSUES_2026-10-21.md)。Documentation only; latency causes remain unisolated.
+
 ## 2026-10-20 — PR #5 離線持久快照接續 / Offline scoring snapshots
 
 - 現行請求時6＋4已接續前台需求；保留尚未被取代的明確會員離線快照工具，JEFF主責計分契約、SAM負責資料庫／測試／整合。見[操作與語義差異](docs/PREFERENCE_SCORING.md)。
 - 快照version1保持分類raw權重70／30上限、商品逐事件衰減與明確ObjectId搜尋；採personalization先排synthetic再limit，真人有效示範購買可影響本人，正式歸因仍排除。預設dry-run，apply另驗唯一索引、會員／政策重讀與完整前像CAS。
 - 本輪不接前台、不啟排程、不連線或寫入Atlas；原10/2的50項測試／Atlas證據維持歷史，新測試、CI及合併結果另由本輪交付報告記錄。
 
+## 2026-10-21 — JEFF 後台淺色數據看板 / Light admin dashboard
+
+- 後台改為淺色數據看板（設計規格 v1.3 第 8 節）；營運總覽改為 12 欄格線，加入 KPI 走勢與「近 7 天 vs 前 7 天」（只用篩選範圍內資料）、SVG 每日營收圖、熱銷橫條與低庫存水位條。Light admin theme and dashboard grid.
+- 前台不變；新增 5 項離線測試。See [dashboard handoff](docs/AI_DASHBOARD.md).
+
+## 2026-10-21 — JEFF 商品／訂單／會員管理唯讀頁 / Read-only management lists
+
+- 新增 `/admin/products`、`/admin/orders`（含明細）、`/admin/members` 列表與篩選；會員 Email 遮罩、不讀取 `password_hash`；其他狀態編輯仍待 D5。Read-only business fields and filtered admin lists.
+- 一般會員「撤銷全部裝置」補入同交易稽核／180 天唯一收據、管理員裝置授權 fence、保留原編號的重試頁；新 migration `20261021_08_customer_session_audit_v4` 僅啟用此範圍，失敗回滾且缺 migration 不刪 session。Atomic audited revocation; replays preserve later device logins.
+- 新增 30 項離線測試。See [dashboard handoff](docs/AI_DASHBOARD.md).
+
 ## 2026-10-18 — 最新main無流量預覽與私有真模型驗收
 
 - [部署與驗收](docs/SAM_MAIN_PREVIEW_2026-10-18.md)：main20ee的52檔封裝與GCS實際讀回一致、Cloud Build三步SUCCESS；真BGE、四Claude問題／快取、角色／交易／1001 synthetic、停用規則退回及清理。
 - 使用者建立Claude secret版本1 Enabled，私有tag明確引用；正式19／私有base11仍各100%、Hosting不變，自由提問關閉。新增密鑰操作文件、私有tag探針及22安全回歸；V5仍2/14，未宣稱正式切流量或全站簽收。
+
+## 2026-10-21 — JEFF 推薦成效紀錄 / Recommendation attribution
+
+- 登入會員看到 6＋4 時寫入 `recommendation_logs`（30 分鐘內同清單只算一次），從推薦卡片點擊、加購寫回；購買只計非示範訂單。Recommendation impressions, clicks and add-to-cart are attributed.
+- 推薦監控新增推薦成效表（曝光、點擊、加購、購買、點擊率）；合成批次與唯讀預覽不記錄，寫入失敗不影響頁面。新增 10 項離線測試。See [dashboard handoff](docs/AI_DASHBOARD.md).
 
 ## 2026-10-18 — SAM 接手JEFF三PR整合與驗收
 

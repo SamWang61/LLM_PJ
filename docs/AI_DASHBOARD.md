@@ -1,5 +1,7 @@
 # 營運後台與 v4 測試交接 / Dashboard handoff
 
+**2026/10/21 推薦成效補修（#159）**：30 分鐘曝光去重會在視窗內查找相同會員、區塊及完整商品順序，A→B→A 會重用原 A；不同順序仍分別記錄。結帳完成後的歸因品項讀取與更新都在 best-effort 邊界內，故障不改變已提交的結帳回應；示範訂單與停用紀錄的環境先略過讀取。14 項倉庫內相關測試及先前 2 項缺陷重現均通過，正式發布結果另記[優化系統](優化系統.md)。English: Ordered-list deduplication covers the full window, and optional attribution reads cannot fail a committed checkout.
+
 **2026/10/20 PR #5接續**：[離線持久快照操作](PREFERENCE_SCORING.md)是前台請求時計分之外的opt-in工具，JEFF主責、SAM整合。現行6＋4分類會衰減並支援文字搜尋；快照version1分類維持raw權重上限70／30、商品逐事件衰減、SEARCH僅明確ObjectId，數值不保證相等。新工具不接前台或啟排程，本輪不連Atlas；10/2的50項與Atlas驗證只作歷史。下方較早「完整6＋4仍屬後續」描述保留原交付日期，現況分別讀[6＋4對話決議](../討論的相關記錄/商品評價與猜你喜歡6加4推薦_對話決議_2026-10-18.md)與本輪快照PR結果。
 
 <!-- SAM MAIN PREVIEW 20261018 BEGIN -->
@@ -171,6 +173,48 @@ python -m venv .venv
 
 The ignored local profile contains the existing v4 connection. It is not a newly isolated database. Keep it private; default checkout and model flags remain disabled.
 
+## 後台淺色數據看板 / Light admin dashboard（JEFF，2026-10-21）
+
+依設計規格 v1.3 第 8 節實作；只改後台，前台 `main.css` 不變。
+
+- **樣式**：`static/css/admin.css` 改為淺色 token（`--bg #f3f5f8`、白色卡片、`--brand #b7ff2a` 只用於色塊、`--lime #5a960e` 用於文字與圖表、淺色底 Cloud 色 `#2b7bc4`、`--ok`／`--warn`／`--danger`）。字型使用 `"IBM Plex Sans","Noto Sans TC"` 與等寬 `"JetBrains Mono"` 的字型堆疊，**不載入外部字型檔**，未安裝時退回系統字型。並覆蓋 `main.css` 在後台會用到的深色寫死值（按鈕、輸入框、摘要框、logo）。
+- **營運總覽**：12 欄看板格線。
+  - KPI 卡加 14 天走勢小圖與「近 7 天 vs 前 7 天」變化。為了遵守「篩選後所有區塊同步」，只使用目前篩選範圍內的資料（範圍結束日往前 14 天）；範圍不足 14 天時顯示「範圍不足 14 天，不計算變化」，不從資料庫補範圍外的日子。
+  - 每日有效營收改為 inline SVG 長條圖：刻度、日均線、每根長條的原生提示（`<title>`）。指定日期時補零顯示無訂單的日子；資料表收進「查看資料表」，仍只列有訂單的日期。
+  - 熱銷 Top 10 改為橫條；低庫存加水位條（`role="meter"`，可售為 0 時標紅）。
+  - 「分類營收占比」尚未定義資料來源，**未加入**。
+- **資料**：`services/dashboard.py` 新增 `insights["trend"]`（`kpi_trend`），既有 `daily` 等欄位形狀不變。`admin.py` 新增 `spark_path`、`column_chart` 與 `pct`、`compact_ntd` 篩選器，只負責產生畫面座標與格式。
+- **驗證**：網站離線測試 317 passed／21 skipped（新增 5 項：走勢只用範圍內資料、圖表補零、水位條與橫條、圖表工具的空值與斷線）。以本機 mongomock 預覽逐頁檢查：總覽、Local 推薦、雲端洞察（含回覆）、AI 比較、推薦監控、篩選錯誤頁皆無殘留深色背景或淺色文字；375px 手機寬度無橫向溢出。
+
+## 商品／訂單／會員管理（唯讀）／ Read-only management lists（JEFF，2026-10-21）
+
+依設計規格第 6 節實作三個列表頁；商品／訂單與會員資料欄位唯讀，會員撤銷裝置另走下述交易稽核。新增、編輯、狀態變更與會員停用仍待 D5 後續實作（規格 12.3），頁面上方都有說明。
+
+- **商品管理** `/admin/products`（`services/admin_catalog.py`）：
+  - 篩選：關鍵字（名稱或代碼）、大類別、狀態、可推薦。
+  - 欄位：圖、代碼、名稱、分類、SKU 數、可售量合計（只計 active SKU）、最低可售價（只計 active 且有庫存的 SKU）、評價、狀態、可推薦。
+- **訂單管理** `/admin/orders`、明細 `/admin/orders/<id>`（`services/admin_records.py`）：
+  - 篩選：台北日期（沿用營運總覽的日期檢查）、訂單狀態、付款狀態、示範、訂單編號。
+  - 明細：品項快照、金額組成、時間軸（下單／付款／完成，只顯示有紀錄的），會員只顯示名稱與遮罩 Email。
+- **會員管理** `/admin/members`：
+  - 篩選：顯示名稱、角色、狀態。
+  - Email 一律遮罩（`j***@example.com`），**不讀取 `password_hash`**；Email 不能當搜尋條件，避免從遮罩列表反推地址。
+  - 沒有停用按鈕；管理員帳號依規格 12.3-C 本來就不能從後台停用。
+- **共通規則**：每頁 50 筆；關鍵字以字面比對（先跳脫，不當成正規表示式）；篩選值不合法時回 400，並附「返回 XX 管理」連結；列表是 GET、需要 `@admin_required`；時間以台北時間顯示。導覽列不再顯示「尚未開放」。
+- **驗證**：網站離線測試 342 passed／21 skipped（新增 `tests/test_admin_lists.py` 25 項）。以本機 mongomock 預覽檢查三頁：無殘留深色、375px 無橫向溢出、會員頁 HTML 不含密碼雜湊與完整 Email。
+
+### 2026-10-21 撤銷會員全部裝置（JEFF）
+
+- 會員管理每一列一般會員都有「撤銷全部裝置」按鈕：`POST /admin/members/<id>/revoke-sessions`，CSRF（全站 POST 檢查）＋`@admin_required`，送出前瀏覽器會再確認一次。
+- 呼叫 REN 的 `revoke_user_sessions()`，刪除該會員所有裝置 session，完成後顯示「已撤銷 N 個裝置」並回到原本的篩選頁；N 是刪除的 session 筆數（含已過期但尚未清除的）。
+- **只能對 `role='customer'` 操作**：管理員帳號（包含自己）伺服器端回 403，畫面上也不顯示按鈕；會員不存在或 ID 不合法回 404。
+- **PR #158 稽核補正**：原先「暫不稽核」方案已由本輪使用者要求取代。撤銷、`admin_audit_logs` 與 `admin_write_requests` 在同一筆交易提交；紀錄操作者／會員 ObjectId、固定原因與撤銷前後裝置數，不保存 Email、密碼或 session token。操作編號為 UUID v4，收據以操作者＋操作編號唯一，180 天內相同內容重送回原結果、不再刪除新登入裝置；異內容／仍留存的過期編號回 409。503 重試頁保留原編號，稽核失敗會全部回滾。
+- **獨立新增 migration** `20261021_08_customer_session_audit_v4`：兩集合 strict/error、180 天 TTL、checksum 登記與完整 active checker；先唯讀 preflight，再明確 `--apply --database-confirm`，既有 validator/index 漂移即拒絕。缺 migration 時撤銷回 503，不能先刪 session。舊 D5 草稿 migration／checksum 不變，其他 D5 寫入未啟用；TTL 清理後不提供永久去重保證。
+- **權限**：交易內再次驗證管理員角色、密碼指紋與有效裝置，並與帳號／裝置撤權序列化；會員角色亦受交易保護。管理員強制撤銷他人裝置仍保留確認，前後台自己的「登出」沿用 #157 單次點擊。
+- 新增 5 項離線測試：撤銷後舊 session 失效、管理員自己的 session 不受影響、0 個裝置、拒絕管理員（含自己）、缺 CSRF、會員不存在、非管理員。
+
+English: Customer revocation, privacy-limited audit and a 180-day idempotency receipt now commit atomically. Replays preserve later logins; audit/receipt failures roll back revocation. The additive scoped migration is checked before release; the immutable broader D5 draft is not activated. Production and browser evidence are recorded separately in the optimization delivery document.
+
 ## 線上 AI 設定 / Online AI configuration（JEFF，2026-10-18，A1／A2）
 
 **狀態：程式與建置設定已完成；SAM已實際建置精簡與AI映像、Gunicorn boot及真BGE斷網驗證。尚未執行Cloud Build／發布或部署；線上AI仍關閉。** 部署由 SAM 執行或授權，費用記在 `vibecart-llmai` 帳單；Claude API 費用由 JEFF 的 Key 負擔。
@@ -195,6 +239,19 @@ The ignored local profile contains the existing v4 connection. It is not a newly
 - **長期方案（B4，下一階段）**：商品向量離線批次計算存入 Atlas（schema 已有 `product_embeddings`，寫入需 SAM 同意），網站只做 cosine，降低記憶體與冷啟動。
 
 English: The integrated source passed local builds, Gunicorn boot, and real offline BGE checks. Cloud Build, deployment, and real Claude acceptance remain pending; production AI stays off. Flags default to off and must be exactly true/false. The AI image (`INSTALL_AI=true`) bakes in CPU PyTorch and the BGE model. The Claude key lives in Secret Manager and is entered by JEFF. The recommended rollout is a zero-traffic revision with 2Gi memory, verified before any traffic switch, with Claude-only as the fallback.
+
+## 推薦成效紀錄 / Recommendation attribution（JEFF，2026-10-21）
+
+依設計規格第 5.5、7.3 節，把推薦監控預留的「曝光／點擊／加購／購買」接上 `recommendation_logs`（`services/recommendation_logs.py`）。
+
+- **曝光**：登入會員在首頁或推薦片段看到 6＋4 時，每個非空區塊寫一筆紀錄（`PERSONALIZED`／`CROSS_CATEGORY`），內容為商品、位置、分數、理由代碼與 `algorithm_version`。30 分鐘內同一位會員看到完全相同的清單（例如切回分頁重新整理）只算一次。推薦卡片連結帶 `rec=<recommendation_id>`。
+- **點擊**：從推薦卡片進入商品頁時，寫入 `clicked_product_ids`，同一筆 `PRODUCT_VIEW` 事件也帶 `recommendation_id`。只有紀錄屬於該會員、且清單裡確實有該商品才會記；偽造、格式錯誤或別人的編號一律忽略。
+- **加購**：商品頁的加入購物車表單帶著同一個 `rec`，成功加入後寫入 `added_to_cart_product_ids`。
+- **購買**：結帳後，對 30 天內曾加購該商品的紀錄寫入 `purchased_product_ids`；**示範訂單不計入**（與 B2 的歸因規則一致）。目前網站訂單都是示範訂單，所以購買數會是 0。
+- **不記錄**：未登入訪客（schema 要求 `user_id`）、設定 `BEHAVIOR_SYNTHETIC_BATCH` 的測試環境（`recommendation_logs` 沒有可標示 synthetic 的欄位）、唯讀預覽。寫入失敗只記警告，不影響頁面、購物車或結帳。
+- **推薦監控**：新增「推薦成效（最近 30 天）」，兩種推薦各列推薦清單、曝光、點擊、加購、購買、點擊率（點擊÷曝光）與點擊後加購率（加購÷點擊），分母為 0 時顯示「—」；沒有紀錄時顯示空狀態。
+- **動到的前台檔案**：`store_v4.py`（首頁、推薦片段、商品頁、加入購物車、結帳）、`services/member_events.py`（`record_read_event` 新增可選的 `recommendation_id`）、`templates/store/recommendations_v4.html`、`templates/store/product.html`。前台排序與畫面不變，只多了連結參數與隱藏欄位。
+- **驗證**：網站離線測試 323 passed／21 skipped（新增 `tests/test_recommendation_logs.py` 10 項：曝光與連結、30 分鐘不重複、點擊與加購、偽造編號、清單外商品、訪客與合成批次不記錄、購買只計非示範且需先加購、寫入失敗不影響頁面、監控漏斗與空狀態）。
 
 ## 驗證與剩餘界線 / Validation and limits
 

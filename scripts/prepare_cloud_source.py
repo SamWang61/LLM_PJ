@@ -16,6 +16,8 @@ REQUIRED = {
 } | {
     f"VibeCart_AI/services/{name}"
     for name in ("cart_service.py", "sku_cart_service.py", "review_service.py")
+} | {
+    'VibeCart_AI/MongoDB/admin_session_audit_schema.py', 'scripts/migrate_admin_sessions.py'
 }
 APP_SUFFIXES = {".py", ".html", ".css", ".js", ".svg", ".png", ".jpg", ".webp"}
 

@@ -1,0 +1,13 @@
+{% extends 'admin/layout.html' %}
+{% block title %}操作暫時無法完成｜VibeInsight 後台{% endblock %}
+{% block heading %}操作暫時無法完成{% endblock %}
+{% block content %}<section class="panel">
+  <p role="alert">目前無法確認操作結果，請稍後使用下方按鈕重試。</p>
+  <form method="post" action="{{ url_for('admin.revoke_member_sessions', user_id=user_id) }}">
+    <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
+    <input type="hidden" name="request_id" value="{{ request_id }}">
+    {% for key, value in back.items() %}<input type="hidden" name="{{ key }}" value="{{ value }}">{% endfor %}
+    <button class="button" type="submit">重試此操作</button>
+    <a class="button secondary" href="{{ url_for('admin.members', **back) }}">返回會員管理</a>
+  </form>
+</section>{% endblock %}
