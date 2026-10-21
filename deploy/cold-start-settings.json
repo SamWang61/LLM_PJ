@@ -1,0 +1,10 @@
+{
+  "startupCpuBoost": true,
+  "startupProbe": {
+    "httpGet": {"path": "/health/ready", "port": 8080},
+    "initialDelaySeconds": 0,
+    "timeoutSeconds": 2,
+    "periodSeconds": 2,
+    "failureThreshold": 60
+  }
+}
