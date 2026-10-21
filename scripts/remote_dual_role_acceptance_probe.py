@@ -42,7 +42,7 @@ def run(config):
         response=session.post(base+'/auth/login',data={'email':email,'password':password,'csrf_token':csrf['value'],**extra},timeout=45,allow_redirects=False)
         return session,response
     def signout(session):
-        csrf=page(session,base+'/auth/logout').select_one('input[name="csrf_token"]')
+        csrf=page(session,base+'/').select_one('form[action="/auth/logout"] input[name="csrf_token"]')
         require(csrf is not None,'Logout CSRF missing')
         response=session.post(base+'/auth/logout',data={'csrf_token':csrf['value']},timeout=45,allow_redirects=False)
         require(response.status_code in (302,303),'Own logout failed')
@@ -61,7 +61,7 @@ def run(config):
                 require(response.headers.get('Location')==('/admin/' if role=='admin' else '/'),'Role landing differs')
                 admin=session.get(base+'/admin/',timeout=45,allow_redirects=False)
                 require(admin.status_code==(200 if role=='admin' else 302),'Role boundary differs')
-                csrf=page(session,base+'/auth/logout').select_one('input[name="csrf_token"]')['value']
+                csrf=page(session,base+'/').select_one('form[action="/auth/logout"] input[name="csrf_token"]')['value']
                 before=db.users.find_one({'email':email,'role':role})['password_hash']
                 require(session.get(base+'/auth/password',timeout=45,allow_redirects=False).status_code==403,'Password GET allowed')
                 rejected=session.post(base+'/auth/password',data={'csrf_token':csrf,'password':'unrelated-test-only'},timeout=45,allow_redirects=False)

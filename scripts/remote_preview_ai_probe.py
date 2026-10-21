@@ -125,7 +125,7 @@ def run(config):
             "synthetic_excluded_before_limit": True}
         report["stage"] = "insight_form"
         insight = page(admin, base + "/admin/ai/insight")
-        form = insight.find("form", method="post")
+        form = insight.select_one("form.ask-form")
         require(form is not None, "Insight form unavailable")
         data = {node["name"]: node.get("value", "") for node in form.select("input[name]")}
         require(data.get("csrf_token"), "CSRF missing")

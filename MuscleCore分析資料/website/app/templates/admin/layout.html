@@ -28,7 +28,7 @@
   <nav class="admin-account" aria-label="帳號">
     <span class="member">管理員：{{ session.get('name') or '—' }}</span>
     <a href="{{ url_for('store.home') }}">回商城</a>
-    <a href="{{ url_for('auth.logout') }}">登出</a>
+    {% include 'auth/_logout_form.html' %}
   </nav>
 </header>
 <div class="admin-layout">
