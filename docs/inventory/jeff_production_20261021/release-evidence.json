@@ -1,0 +1,838 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-21T13:17:00.247410+00:00",
+  "timezone": "Asia/Taipei",
+  "release_commit": "f616289f565bd52cfa89e264a3c02c1a78f91a90",
+  "pull_requests": {
+    "checked_at": "2026-10-21T13:16:07.696Z",
+    "pull_requests": [
+      {
+        "number": 152,
+        "url": "https://github.com/SamWang61/LLM_PJ/pull/152",
+        "head_sha": "da74c240c499a91f1f491576d792374699da9350",
+        "merge_commit": "06c0d6f7e10065cb1bfb45092fb1a33c9a7c250a",
+        "merged_at": "2026-10-21T12:37:58Z",
+        "merged": true
+      },
+      {
+        "number": 153,
+        "url": "https://github.com/SamWang61/LLM_PJ/pull/153",
+        "head_sha": "91c53d3ac0a5d97a881e7d906dfd3c5f326ad453",
+        "merge_commit": "7e6f2b36a6240de94ff0215ad76e5a2a2f0dc015",
+        "merged_at": "2026-10-21T12:38:09Z",
+        "merged": true
+      },
+      {
+        "number": 154,
+        "url": "https://github.com/SamWang61/LLM_PJ/pull/154",
+        "head_sha": "ea915831d1bbe56155a9c485fd6daca333c8e682",
+        "merge_commit": "cc19de3dc0296a68e82d8a859f3fc6771d038909",
+        "merged_at": "2026-10-21T12:38:13Z",
+        "merged": true
+      },
+      {
+        "number": 158,
+        "url": "https://github.com/SamWang61/LLM_PJ/pull/158",
+        "head_sha": "d699fd332aed820aff52dd940dc9e07f82e0b61c",
+        "merge_commit": "259e83fb7b9bb11a211384677d0ec68128b82da3",
+        "merged_at": "2026-10-21T12:38:44Z",
+        "merged": true
+      },
+      {
+        "number": 159,
+        "url": "https://github.com/SamWang61/LLM_PJ/pull/159",
+        "head_sha": "3a639fae191ac31f2e52bba3900ff9c45c6def6e",
+        "merge_commit": "037d4f49c971beaedd1d7d4ae881b1e47a06d2df",
+        "merged_at": "2026-10-21T12:38:49Z",
+        "merged": true
+      },
+      {
+        "number": 160,
+        "url": "https://github.com/SamWang61/LLM_PJ/pull/160",
+        "head_sha": "ccfb03da5e8fcfb26c22657789ad40788a5c259b",
+        "merge_commit": "3ba956deeeea1c0667063c563374281d8d87a550",
+        "merged_at": "2026-10-21T12:38:53Z",
+        "merged": true
+      },
+      {
+        "number": 161,
+        "url": "https://github.com/SamWang61/LLM_PJ/pull/161",
+        "head_sha": "db2c25778ac23ba85a67cdc1d560d6c53376ce44",
+        "merge_commit": "f616289f565bd52cfa89e264a3c02c1a78f91a90",
+        "merged_at": "2026-10-21T12:38:57Z",
+        "merged": true
+      }
+    ]
+  },
+  "local_tests": {
+    "tests": 446,
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0,
+    "junit_elapsed_seconds": 105.972,
+    "started_at": "2026-10-21T20:34:18.156406+08:00",
+    "junit_sha256": "43323282c00b1f8cff897f9149a00532f4b03169a0f6b6e065b2fd73f3b473ad",
+    "scope": "website tests, isolated D5 draft/native MongoDB tests and source packaging",
+    "native_mongodb": "localhost replica set",
+    "additional_tooling_tests": 21,
+    "additional_tooling_overlap": "Some packaging tests overlap; counts are not added."
+  },
+  "build": {
+    "id": "7c127a52-820a-4e89-a9ec-6ecb3b12ca80",
+    "status": "SUCCESS",
+    "image_digest": "sha256:35998718eda5548d317bd411d0e97493695600a79a0879e1cfe18806b2adeea2",
+    "runtime_files": 69,
+    "audit_source_files": 17
+  },
+  "promotion": {
+    "promoted_at": "2026-10-21T12:51:15.667Z",
+    "revision": "vibecart-web-jeff-f616-1021"
+  },
+  "production_readback": {
+    "checked_at": "2026-10-21T13:13:20.220Z",
+    "revision": "vibecart-web-jeff-f616-1021",
+    "image_digest": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:35998718eda5548d317bd411d0e97493695600a79a0879e1cfe18806b2adeea2",
+    "source_commit": "f616289f565bd52cfa89e264a3c02c1a78f91a90",
+    "conditions": [
+      {
+        "type": "Ready",
+        "status": "True",
+        "message": "Updating revision scaling succeeded.",
+        "lastTransitionTime": "2026-10-21T12:51:15.281604Z"
+      },
+      {
+        "type": "Active",
+        "status": "True",
+        "severity": "Info",
+        "lastTransitionTime": "2026-10-21T12:43:32.219352Z"
+      },
+      {
+        "type": "ContainerHealthy",
+        "status": "True",
+        "message": "Containers became healthy in 10.01s.",
+        "lastTransitionTime": "2026-10-21T12:43:31.988006Z"
+      },
+      {
+        "type": "ContainerReady",
+        "status": "True",
+        "message": "Container image import completed in 1.25s.",
+        "lastTransitionTime": "2026-10-21T12:43:17.259447Z"
+      },
+      {
+        "type": "ResourcesAvailable",
+        "status": "True",
+        "message": "Provisioning imported containers completed in 3.02s. Checking container health. This will wait for up to 2m for the configured startup probe, including an initial delay of 0s.",
+        "lastTransitionTime": "2026-10-21T12:43:20.278289Z"
+      }
+    ],
+    "traffic": [
+      {
+        "revisionName": "vibecart-web-jeff-f616-1021",
+        "percent": 100,
+        "tag": "jeff-release1021",
+        "url": "https://jeff-release1021---vibecart-web-m44ncgz5ta-de.a.run.app"
+      }
+    ],
+    "config_fingerprint": "cbdebe0fb2e49eb55dea58e059118bcc9bbfeeb0acdeb508102cb0c418cde9fb",
+    "configuration_unchanged": true,
+    "iam_bindings_sha256": "4cf5fcfdf705e73f88cfea4365b3faac5164befb378ccb42f94db946f4757829",
+    "iam_bindings_unchanged": true,
+    "hosting": {
+      "release": "sites/vibecart-llmai/releases/1792363722745000",
+      "version": "sites/vibecart-llmai/versions/a33b77d8155885b8",
+      "rewrites": [
+        {
+          "glob": "**",
+          "run": {
+            "serviceId": "vibecart-web",
+            "region": "asia-east1"
+          }
+        }
+      ],
+      "unchanged": true
+    },
+    "routes": [
+      {
+        "url": "https://vibecart-llmai.web.app/",
+        "status": 200,
+        "expected": 200
+      },
+      {
+        "url": "https://vibecart-llmai.web.app/recommendations",
+        "status": 200,
+        "expected": 200
+      },
+      {
+        "url": "https://vibecart-llmai.web.app/auth/login",
+        "status": 200,
+        "expected": 200
+      },
+      {
+        "url": "https://vibecart-llmai.web.app/health/live",
+        "status": 200,
+        "expected": 200
+      },
+      {
+        "url": "https://vibecart-llmai.web.app/health/ready",
+        "status": 200,
+        "expected": 200
+      },
+      {
+        "url": "https://vibecart-llmai.web.app/auth/logout",
+        "status": 405,
+        "expected": 405
+      },
+      {
+        "url": "https://vibecart-llmai.firebaseapp.com/",
+        "status": 200,
+        "expected": 200
+      },
+      {
+        "url": "https://vibecart-llmai.firebaseapp.com/recommendations",
+        "status": 200,
+        "expected": 200
+      },
+      {
+        "url": "https://vibecart-llmai.firebaseapp.com/auth/login",
+        "status": 200,
+        "expected": 200
+      },
+      {
+        "url": "https://vibecart-llmai.firebaseapp.com/health/live",
+        "status": 200,
+        "expected": 200
+      },
+      {
+        "url": "https://vibecart-llmai.firebaseapp.com/health/ready",
+        "status": 200,
+        "expected": 200
+      },
+      {
+        "url": "https://vibecart-llmai.firebaseapp.com/auth/logout",
+        "status": 405,
+        "expected": 405
+      }
+    ],
+    "logs": {
+      "checked_at": "2026-10-21T13:13:20.220Z",
+      "period_start": "2026-10-21T12:51:15.667Z",
+      "revision": "vibecart-web-jeff-f616-1021",
+      "entries": 252,
+      "pages": 3,
+      "next_page": false,
+      "complete": true,
+      "status": "no_errors_observed",
+      "http_statuses": {
+        "200": 226,
+        "302": 11,
+        "303": 2,
+        "304": 9,
+        "404": 2,
+        "405": 2
+      },
+      "classes": {
+        "mongo_selection": 0,
+        "mongo_other": 0,
+        "app_database_unavailable": 0,
+        "http_5xx": 0,
+        "other_error": 0
+      },
+      "period_end": "2026-10-21T13:12:40.632Z"
+    },
+    "status": "passed"
+  },
+  "http404_classification": {
+    "complete": true,
+    "pages": 1,
+    "entries": [
+      {
+        "timestamp": "2026-10-21T13:03:26.168313Z",
+        "status": 404,
+        "path": "/favicon.ico"
+      },
+      {
+        "timestamp": "2026-10-21T13:12:28.693428Z",
+        "status": 404,
+        "path": "/favicon.ico"
+      }
+    ]
+  },
+  "atlas_migration": {
+    "status": "passed",
+    "action": "customer-session-audit-migration",
+    "migration": "20261021_08_customer_session_audit_v4",
+    "preflight": {
+      "migration": "20261021_08_customer_session_audit_v4",
+      "status": "preflight-passed",
+      "existing": 0,
+      "written": false
+    },
+    "apply": {
+      "migration": "20261021_08_customer_session_audit_v4",
+      "status": "succeeded",
+      "collections": 2,
+      "indexes": 7
+    },
+    "active_contract": "v4-customer-session-audit-20261021",
+    "collections": 30,
+    "indexes": 96,
+    "migration_count": 8,
+    "historical_checksums_unchanged": true,
+    "relationships": [
+      {
+        "source": "products",
+        "field": "major_category_id",
+        "target": "categories",
+        "orphans": 0
+      },
+      {
+        "source": "products",
+        "field": "minor_category_id",
+        "target": "categories",
+        "orphans": 0
+      },
+      {
+        "source": "product_skus",
+        "field": "product_id",
+        "target": "products",
+        "orphans": 0
+      },
+      {
+        "source": "carts",
+        "field": "user_id",
+        "target": "users",
+        "orphans": 0
+      },
+      {
+        "source": "orders",
+        "field": "user_id",
+        "target": "users",
+        "orphans": 0
+      },
+      {
+        "source": "order_items",
+        "field": "order_id",
+        "target": "orders",
+        "orphans": 0
+      },
+      {
+        "source": "order_items",
+        "field": "user_id",
+        "target": "users",
+        "orphans": 0
+      },
+      {
+        "source": "order_items",
+        "field": "product_id",
+        "target": "products",
+        "orphans": 0
+      },
+      {
+        "source": "order_items",
+        "field": "sku_id",
+        "target": "product_skus",
+        "orphans": 0
+      },
+      {
+        "source": "product_reviews",
+        "field": "user_id",
+        "target": "users",
+        "orphans": 0
+      },
+      {
+        "source": "product_reviews",
+        "field": "order_item_id",
+        "target": "order_items",
+        "orphans": 0
+      },
+      {
+        "source": "product_reviews",
+        "field": "product_id",
+        "target": "products",
+        "orphans": 0
+      }
+    ],
+    "business_counts_unchanged": true,
+    "audit_documents": 0,
+    "receipts": 0
+  },
+  "candidate_functional": {
+    "status": "passed",
+    "action": "same-image-candidate-functional",
+    "source_commit": "f616289f565bd52cfa89e264a3c02c1a78f91a90",
+    "checks": {
+      "customer_http_login": true,
+      "customer_duplicate_login": true,
+      "customer_changed_credentials_rejected": true,
+      "admin_http_login": true,
+      "admin_duplicate_login": true,
+      "admin_changed_credentials_rejected": true,
+      "http_/": true,
+      "http_/cart": true,
+      "http_/admin": true,
+      "http_/admin/products": true,
+      "http_/admin/orders": true,
+      "http_/admin/members": true,
+      "http_/admin/recommendations": true,
+      "atomic_http_revocation": true,
+      "old_customer_device_rejected": true,
+      "receipt_replay_preserves_new_login": true,
+      "one_audit_one_receipt": true,
+      "receipt_returns_original_count": true,
+      "real_atlas_audit_failure_rollback": true,
+      "atlas_ordered_list_A_B_A_deduplication": true,
+      "decimal_capacity_not_merged": true,
+      "job_local_login": true,
+      "actual_atlas_cart_add": true,
+      "committed_checkout_survives_attribution_read_failure": true,
+      "only_owned_sku_stock_changed": true,
+      "http_duplicate_logout": true
+    },
+    "http_scope": "https://jeff-release1021---vibecart-web-m44ncgz5ta-de.a.run.app",
+    "job_local_fault_scope": "only owned customer, order and SKU; shared service unmodified",
+    "revoked_devices": 3,
+    "credentials_logged": false
+  },
+  "public_browser": {
+    "site": "https://vibecart-llmai.web.app",
+    "started_at": "2026-10-21T13:04:19.762Z",
+    "checks": {
+      "customer_login": true,
+      "product_search": true,
+      "product_detail": true,
+      "add_to_cart": true,
+      "demo_checkout": true,
+      "customer_logout_no_dialog": true,
+      "customer_logout_notice": true,
+      "customer_logout_login_link": true,
+      "customer_protected_cart_redirects": true,
+      "admin_login": true,
+      "dashboard_range_filter": true,
+      "dashboard_empty_state": true,
+      "admin_products_filter": true,
+      "admin_order_detail": true,
+      "recommendation_monitor": true,
+      "admin_member_mask": true,
+      "admin_revoke_guard": true,
+      "forced_revoke_confirmation_retained": true,
+      "admin_revoke_success": true,
+      "admin_logout_no_dialog": true,
+      "admin_logout_notice": true,
+      "admin_logout_login_link": true,
+      "admin_protected_redirects": true
+    },
+    "customer_logout_at": "2026-10-21T13:04:23.304Z",
+    "admin_ui_revoked_count": 0,
+    "admin_revoke_at": "2026-10-21T13:08:29.122Z",
+    "admin_logout_at": "2026-10-21T13:08:43.074Z",
+    "finished_at": "2026-10-21T13:08:49.186Z",
+    "notes": [
+      "操作限本次受控測試會員與商品；示範結帳未收款。",
+      "會員裝置撤銷使用瀏覽器原生確認，畫面回報已撤銷 0 個裝置；有登入裝置的 3→0 與重送保護另由同映像 HTTP／Atlas 驗證。",
+      "首次使用 Playwright 操作強制撤銷確認時控制通道逾時；關閉該頁籤後，使用瀏覽器原生操作完成確認與結果讀回。"
+    ],
+    "atlas_followup": {
+      "retained_audits": 3,
+      "device_counts_before": [
+        0,
+        2,
+        3
+      ],
+      "interpretation": "Candidate HTTP revoked 3 devices; the first browser operation persisted a 2-device revocation despite a control timeout, followed by a separately confirmed zero-device operation. Only the latter browser success notice was read directly."
+    }
+  },
+  "screenshots": [
+    {
+      "file": "01-customer-cart.jpg",
+      "mime_type": "image/jpeg",
+      "bytes": 35269,
+      "width": 1265,
+      "height": 711,
+      "sha256": "16da41c5484024711f5648fd71542c62e1e56d15ddbc2040fa739125be8c9e08",
+      "captured_at_utc": "2026-10-21T13:04:06.828979+00:00",
+      "processing": "Original browser bytes; filename extension corrected only."
+    },
+    {
+      "file": "02-customer-checkout-before-logout.jpg",
+      "mime_type": "image/jpeg",
+      "bytes": 51119,
+      "width": 1265,
+      "height": 711,
+      "sha256": "14d76fdc29d49abdd531c3ffe6d58f53f18e6452f7f06204f52ba14a8945abd8",
+      "captured_at_utc": "2026-10-21T13:04:19.870605+00:00",
+      "processing": "Original browser bytes; filename extension corrected only."
+    },
+    {
+      "file": "03-customer-logout.jpg",
+      "mime_type": "image/jpeg",
+      "bytes": 46731,
+      "width": 1265,
+      "height": 711,
+      "sha256": "99f62ffe99ef6ff58ed492df0682e1d6d8af6aefc197bfd497ed79bcae100b59",
+      "captured_at_utc": "2026-10-21T13:04:23.435162+00:00",
+      "processing": "Original browser bytes; filename extension corrected only."
+    },
+    {
+      "file": "04-admin-dashboard.jpg",
+      "mime_type": "image/jpeg",
+      "bytes": 82167,
+      "width": 1265,
+      "height": 711,
+      "sha256": "2e28c934f6c43ba256b4b2cf74ca64e669fde94224e48cccd03e96a87369f57b",
+      "captured_at_utc": "2026-10-21T13:04:41.376699+00:00",
+      "processing": "Original browser bytes; filename extension corrected only."
+    },
+    {
+      "file": "05-admin-empty-range.jpg",
+      "mime_type": "image/jpeg",
+      "bytes": 63469,
+      "width": 1265,
+      "height": 711,
+      "sha256": "d0bcd5b60e7ec89e1df05a8a09efa76c0cf37208cd628ea74a147e5589ae7b8a",
+      "captured_at_utc": "2026-10-21T13:04:50.771543+00:00",
+      "processing": "Original browser bytes; filename extension corrected only."
+    },
+    {
+      "file": "06-admin-product-filter.jpg",
+      "mime_type": "image/jpeg",
+      "bytes": 49310,
+      "width": 1265,
+      "height": 711,
+      "sha256": "6ab0f2d56e4dec143b23766d8641e3d9b785a2659244422027a36adb656fb1c5",
+      "captured_at_utc": "2026-10-21T13:05:00.201379+00:00",
+      "processing": "Original browser bytes; filename extension corrected only."
+    },
+    {
+      "file": "07-admin-demo-order.jpg",
+      "mime_type": "image/jpeg",
+      "bytes": 55226,
+      "width": 1265,
+      "height": 711,
+      "sha256": "5b281cf6163ceb2cbe73344455e570acaeba0ccf70cb19bafb5ba05653bd0db9",
+      "captured_at_utc": "2026-10-21T13:05:13.526442+00:00",
+      "processing": "Original browser bytes; filename extension corrected only."
+    },
+    {
+      "file": "08-admin-recommendation-monitor.jpg",
+      "mime_type": "image/jpeg",
+      "bytes": 71811,
+      "width": 1265,
+      "height": 711,
+      "sha256": "cf13b6c7c79984e47e9748ecce1c73490d0e0afe0df77913f55f637e7a1425dd",
+      "captured_at_utc": "2026-10-21T13:05:17.314103+00:00",
+      "processing": "Original browser bytes; filename extension corrected only."
+    },
+    {
+      "file": "09-admin-members-before-revoke.jpg",
+      "mime_type": "image/jpeg",
+      "bytes": 58816,
+      "width": 1265,
+      "height": 711,
+      "sha256": "5c53a611f9dc3a690b5fc09e56bd66e7017f80b22c9c61fa681bd2167a21a1c7",
+      "captured_at_utc": "2026-10-21T13:05:32.887703+00:00",
+      "processing": "Original browser bytes; filename extension corrected only."
+    },
+    {
+      "file": "10-admin-before-logout.jpg",
+      "mime_type": "image/jpeg",
+      "bytes": 58817,
+      "width": 1265,
+      "height": 711,
+      "sha256": "447670ad9cb45d456667174fc9dc69c6a174afd6e7bc458e4d9de350a6a88b6b",
+      "captured_at_utc": "2026-10-21T13:08:29.166127+00:00",
+      "processing": "Original browser bytes; filename extension corrected only."
+    },
+    {
+      "file": "11-admin-logout.jpg",
+      "mime_type": "image/jpeg",
+      "bytes": 46731,
+      "width": 1265,
+      "height": 711,
+      "sha256": "99f62ffe99ef6ff58ed492df0682e1d6d8af6aefc197bfd497ed79bcae100b59",
+      "captured_at_utc": "2026-10-21T13:08:43.118570+00:00",
+      "processing": "Original browser bytes; filename extension corrected only."
+    }
+  ],
+  "fixture_cleanup": {
+    "status": "passed",
+    "action": "owned-production-fixture-cleanup",
+    "checked_at": "2026-10-21T13:10:37.089686+00:00",
+    "deleted": {
+      "order_items": 2,
+      "orders": 2,
+      "cart_events": 4,
+      "carts": 2,
+      "behavior_events": 8,
+      "recommendation_logs": 3,
+      "auth_sessions": 2,
+      "product_skus": 1,
+      "products": 1,
+      "users": 2
+    },
+    "remaining": {
+      "order_items": 0,
+      "orders": 0,
+      "cart_events": 0,
+      "carts": 0,
+      "behavior_events": 0,
+      "recommendation_logs": 0,
+      "auth_sessions": 0,
+      "product_skus": 0,
+      "products": 0,
+      "users": 0
+    },
+    "before_counts": {
+      "order_items": 8983,
+      "orders": 3011,
+      "cart_events": 28,
+      "carts": 12,
+      "behavior_events": 1305,
+      "recommendation_logs": 3,
+      "auth_sessions": 11,
+      "product_skus": 337,
+      "products": 337,
+      "users": 614
+    },
+    "after_counts": {
+      "order_items": 8981,
+      "orders": 3009,
+      "cart_events": 24,
+      "carts": 10,
+      "behavior_events": 1297,
+      "recommendation_logs": 0,
+      "auth_sessions": 9,
+      "product_skus": 336,
+      "products": 336,
+      "users": 612
+    },
+    "audit_records_retained": 3,
+    "receipts_retained": 3,
+    "audit_device_counts": [
+      0,
+      2,
+      3
+    ],
+    "audit_has_reason_and_counts_only": true,
+    "receipt_retention_days": 180,
+    "migration_checksums_unchanged": true,
+    "active_contract": "v4-customer-session-audit-20261021",
+    "collections": 30,
+    "indexes": 96,
+    "migrations": 8,
+    "relationships": [
+      {
+        "source": "products",
+        "field": "major_category_id",
+        "target": "categories",
+        "orphans": 0
+      },
+      {
+        "source": "products",
+        "field": "minor_category_id",
+        "target": "categories",
+        "orphans": 0
+      },
+      {
+        "source": "product_skus",
+        "field": "product_id",
+        "target": "products",
+        "orphans": 0
+      },
+      {
+        "source": "carts",
+        "field": "user_id",
+        "target": "users",
+        "orphans": 0
+      },
+      {
+        "source": "orders",
+        "field": "user_id",
+        "target": "users",
+        "orphans": 0
+      },
+      {
+        "source": "order_items",
+        "field": "order_id",
+        "target": "orders",
+        "orphans": 0
+      },
+      {
+        "source": "order_items",
+        "field": "user_id",
+        "target": "users",
+        "orphans": 0
+      },
+      {
+        "source": "order_items",
+        "field": "product_id",
+        "target": "products",
+        "orphans": 0
+      },
+      {
+        "source": "order_items",
+        "field": "sku_id",
+        "target": "product_skus",
+        "orphans": 0
+      },
+      {
+        "source": "product_reviews",
+        "field": "user_id",
+        "target": "users",
+        "orphans": 0
+      },
+      {
+        "source": "product_reviews",
+        "field": "order_item_id",
+        "target": "order_items",
+        "orphans": 0
+      },
+      {
+        "source": "product_reviews",
+        "field": "product_id",
+        "target": "products",
+        "orphans": 0
+      }
+    ]
+  },
+  "independent_atlas_readback": {
+    "status": "passed",
+    "action": "independent-read-only-post-cleanup",
+    "checked_at": "2026-10-21T13:12:07.139947+00:00",
+    "remaining": {
+      "orders": 0,
+      "order_items": 0,
+      "carts": 0,
+      "cart_events": 0,
+      "behavior_events": 0,
+      "recommendation_logs": 0,
+      "auth_sessions": 0,
+      "users": 0,
+      "products": 0,
+      "product_skus": 0
+    },
+    "schema": "v4-customer-session-audit-20261021",
+    "collections": 30,
+    "indexes": 96,
+    "migrations": 8,
+    "relationships": [
+      {
+        "source": "products",
+        "field": "major_category_id",
+        "target": "categories",
+        "orphans": 0
+      },
+      {
+        "source": "products",
+        "field": "minor_category_id",
+        "target": "categories",
+        "orphans": 0
+      },
+      {
+        "source": "product_skus",
+        "field": "product_id",
+        "target": "products",
+        "orphans": 0
+      },
+      {
+        "source": "carts",
+        "field": "user_id",
+        "target": "users",
+        "orphans": 0
+      },
+      {
+        "source": "orders",
+        "field": "user_id",
+        "target": "users",
+        "orphans": 0
+      },
+      {
+        "source": "order_items",
+        "field": "order_id",
+        "target": "orders",
+        "orphans": 0
+      },
+      {
+        "source": "order_items",
+        "field": "user_id",
+        "target": "users",
+        "orphans": 0
+      },
+      {
+        "source": "order_items",
+        "field": "product_id",
+        "target": "products",
+        "orphans": 0
+      },
+      {
+        "source": "order_items",
+        "field": "sku_id",
+        "target": "product_skus",
+        "orphans": 0
+      },
+      {
+        "source": "product_reviews",
+        "field": "user_id",
+        "target": "users",
+        "orphans": 0
+      },
+      {
+        "source": "product_reviews",
+        "field": "order_item_id",
+        "target": "order_items",
+        "orphans": 0
+      },
+      {
+        "source": "product_reviews",
+        "field": "product_id",
+        "target": "products",
+        "orphans": 0
+      }
+    ],
+    "migration_preflight": {
+      "migration": "20261021_08_customer_session_audit_v4",
+      "status": "preflight-passed",
+      "existing": 2,
+      "written": false
+    },
+    "audit_records_retained": 3,
+    "receipts_retained": 3,
+    "catalog_counts": {
+      "products": 336,
+      "skus": 336
+    }
+  },
+  "temporary_jobs_cleanup": {
+    "status": "passed",
+    "checked_at": "2026-10-21T13:14:27.205Z",
+    "jobs": [
+      {
+        "job": "vibecart-jeff-1021-migration",
+        "delete_confirmed_http": 404
+      },
+      {
+        "job": "vibecart-jeff-1021-fixture",
+        "delete_confirmed_http": 404
+      },
+      {
+        "job": "vibecart-jeff-1021-candidate",
+        "delete_confirmed_http": 404
+      },
+      {
+        "job": "vibecart-jeff-1021-cleanup",
+        "delete_confirmed_http": 404
+      },
+      {
+        "job": "vibecart-jeff-1021-readback",
+        "delete_confirmed_http": 404
+      }
+    ]
+  },
+  "acceptance_scope": {
+    "codex_desktop_browser": true,
+    "named_owner_signoff": false,
+    "physical_phone_or_second_machine": false,
+    "v5_completed_gates": 3,
+    "v5_total_gates": 14
+  },
+  "credentials_in_evidence": false
+}

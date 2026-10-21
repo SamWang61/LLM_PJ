@@ -1,5 +1,7 @@
 # 最新專案上下文 / Current project context
 
+**2026/10/21 七個 PR 修正與正式發布**：[優化系統與驗收](優化系統.md)收錄四項 P2、#158 同交易撤銷稽核／180 天收據、#161 文件衝突與其餘文件補正。#152→#153→#154→#158→#159→#160→#161 經各 HEAD CI 成功依序合併至 `f616289`，本機 **446 passed／0 skipped**。20:51 `vibecart-web-jeff-f616-1021`／digest `35998718…` 承接正式 100%；69 runtime＋17 稽核來源逐檔對帳，Atlas active contract 30 集合／96 索引／8 migrations、12 項關聯 0 orphan。21:04～21:09 公開 Firebase 前後台操作與一次點擊登出通過；受控資料清除後獨立讀回 0，稽核保留 3 筆。Hosting／IAM／既有執行設定指紋相同。V5 本人關卡仍 3／14，廣泛 D5 狀態編輯仍依後續契約。下方舊 revision、測試數與未合併描述均屬各日期快照。
+
 **2026/10/21 REN候選驗證與正式發布**：[完整報告](REN_PRODUCTION_ACCEPTANCE_2026-10-21.md)、[今日工作清單](../專題進度/REN_今日工作清單_2026-10-21.md)。根目錄精簡／完整映像各54檔同Git、各四遠端探針全過及清理；完整digest `34677e6b…` 發布新正式 `vibecart-web-ren-a796-1021` 100%，切換後正式六角色／多Session與兩Firebase入口通過，Hosting原release沿用。兩自有Job刪除404、私有原100%及IAM不變。本機316 passed／21 skipped、針對性25 passed；本人實機／異機與最終簽收仍依三人表，V5維持3／14。
 
 **2026/10/21 登出流程優化正式發布**：[PR #157](https://github.com/SamWang61/LLM_PJ/pull/157) 已合併 main `a7967c3`、同提交 CI 成功。04:45 新正式 `vibecart-web-logout-a796-1021`／digest `34677e6b…` 承接 100%，保留既有設定與 Hosting 路由；04:46 前台、04:47 後台正式 IAB 各按一次即登出，無確認頁，重開受保護頁均要求登入。[優化系統](優化系統.md)補入部署、四張原圖及去敏清冊；屬 Codex 技術實測，不變更 V5 本人簽收狀態。

@@ -1,5 +1,7 @@
 # 文件中心 / Documentation hub
 
+**2026/10/21 七個 PR 正式交付**：[優化系統](優化系統.md)記錄四項 P2、撤銷稽核、文件補正、446 項測試、依序合併與正式站前後台驗證；[去敏證據與原圖](inventory/jeff_production_20261021/release-evidence.json)。
+
 **2026/10/21 REN正式發布**：[候選、正式功能與清理證據](REN_PRODUCTION_ACCEPTANCE_2026-10-21.md)／[REN今日清單](../專題進度/REN_今日工作清單_2026-10-21.md)。
 
 **2026/10/20 PR #5離線快照**：[操作、score_version1語義與寫入界線](PREFERENCE_SCORING.md)。現行請求時計分與離線持久快照分開，JEFF主責／SAM整合；[10/2工作清單](SAM_WORK_PLAN.md)及原Atlas證據只保留歷史，新驗證由本輪PR另記。
