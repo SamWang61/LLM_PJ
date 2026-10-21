@@ -12,7 +12,7 @@ import unicodedata
 from collections import OrderedDict, deque
 from datetime import datetime, timezone
 from decimal import Decimal
-from threading import Lock
+from threading import Event, Lock
 from time import monotonic, perf_counter
 from typing import TypedDict
 from flask import current_app, has_app_context
@@ -390,6 +390,30 @@ def insight_answer(payload, intent, question, user_id):
         hit = cache["items"].get(fingerprint)
         if hit and monotonic() < hit[0]:
             return {**hit[1], "cached": True}
+    # One Claude call per admin and identical request: a repeat that arrives while the first is still running
+    # (double click, second tab, impatient reload) waits for that result instead of calling Claude again.
+    # In-process only, which matches the single gunicorn worker (several threads) on Cloud Run.
+    inflight = current_app.extensions.setdefault("insight_inflight", {"lock": Lock(), "items": {}})
+    key = (user_id, fingerprint)
+    with inflight["lock"]:
+        pending = inflight["items"].get(key)
+        leader = pending is None
+        if leader:
+            pending = inflight["items"][key] = {"done": Event(), "answer": None}
+    if not leader:
+        if not pending["done"].wait(INSIGHT_TIMEOUT) or pending["answer"] is None:
+            raise InsightRequestError("in_progress", "上一個相同的分析仍在進行，請稍候再試，不必重複送出。", status=409)
+        return {**pending["answer"], "shared": True}
+    try:
+        pending["answer"] = ask_claude(intent, result, fallback, request_json, user_id, fingerprint, cache)
+        return pending["answer"]
+    finally:
+        with inflight["lock"]:
+            inflight["items"].pop(key, None)
+        pending["done"].set()
+
+
+def ask_claude(intent, result, fallback, request_json, user_id, fingerprint, cache):
     check_rate_limit(user_id)
     from langchain_core.prompts import ChatPromptTemplate
     prompt = ChatPromptTemplate.from_messages([("system", INSIGHT_SYSTEM), ("human", "以下 JSON 為本次請求：\n{request}")])

@@ -371,3 +371,85 @@ def test_default_range_is_labelled_and_carried_through_the_question_form(admin):
                                                       "start": "2026-08-10", "end": "2026-08-16", "demo": "all", "default_range": "1"})
     assert "預設：最新一筆訂單往前 7 天" in response.get_data(as_text=True)
     assert "預設：最新一筆訂單往前 7 天" not in ask(client, "period_compare").get_data(as_text=True)
+
+
+def run_in_threads(app, *jobs):
+    """Start each job in its own app context; returns (threads, results) with results filled as jobs finish."""
+    import threading
+    results = {}
+    def runner(name, job):
+        with app.app_context():
+            try:
+                results[name] = job()
+            except Exception as error:  # surfaced to the test through results
+                results[name] = error
+    threads = [threading.Thread(target=runner, args=(name, job), daemon=True) for name, job in jobs]
+    return threads, results
+
+
+def blocking_claude(app):
+    import threading
+    entered, release, calls = threading.Event(), threading.Event(), []
+    def respond(prompt):
+        calls.append(1)
+        entered.set()
+        release.wait(5)
+        return AIMessage(content="同一份答案", usage_metadata={"input_tokens": 120, "output_tokens": 30, "total_tokens": 150})
+    app.config.update(AI_SUMMARY_ENABLED=True, CLAUDE_MODEL="test-model", CLAUDE_FACTORY=lambda: RunnableLambda(respond))
+    return entered, release, calls
+
+
+def test_concurrent_identical_requests_call_claude_once(admin):
+    """★★★ C: a repeat that arrives while the same request is in flight waits for it instead of calling Claude."""
+    from app.services.ai_workflows import insight_answer
+    app, _, db, uid, _, _ = admin
+    entered, release, calls = blocking_claude(app)
+    payload = payload_for(db, "2026-10-01", "2026-10-07", intent="period_compare")
+    ask_once = lambda: insight_answer(payload, "period_compare", None, str(uid))
+    (first, second), results = run_in_threads(app, ("first", ask_once), ("second", ask_once))
+    first.start()
+    assert entered.wait(5)
+    second.start()
+    second.join(0.3)
+    assert second.is_alive()  # waiting for the first call, not calling Claude
+    release.set()
+    first.join(5), second.join(5)
+    assert len(calls) == 1
+    assert results["first"]["text"] == results["second"]["text"] == "同一份答案"
+    assert results["second"]["shared"] and not results["first"].get("shared")
+    with app.app_context():
+        assert app.extensions["insight_inflight"]["items"] == {}
+
+
+def test_inflight_dedup_is_per_admin_and_per_request(admin):
+    from app.services.ai_workflows import insight_answer
+    app, _, db, uid, _, _ = admin
+    entered, release, calls = blocking_claude(app)
+    payload = payload_for(db, "2026-10-01", "2026-10-07", intent="period_compare")
+    other_range = payload_for(db, "2026-10-02", "2026-10-08", intent="period_compare")
+    jobs = [("mine", lambda: insight_answer(payload, "period_compare", None, str(uid))),
+            ("other_admin", lambda: insight_answer(payload, "period_compare", None, "another-admin")),
+            ("other_range", lambda: insight_answer(other_range, "period_compare", None, str(uid)))]
+    threads, results = run_in_threads(app, *jobs)
+    for thread in threads:
+        thread.start()
+    release.set()
+    for thread in threads:
+        thread.join(5)
+    assert len(calls) == 3 and not any(r.get("shared") for r in results.values())
+
+
+def test_waiting_too_long_reports_in_progress(admin, monkeypatch):
+    from app.services.ai_workflows import insight_answer
+    app, client, db, uid, _, _ = admin
+    monkeypatch.setattr("app.services.ai_workflows.INSIGHT_TIMEOUT", 0.2)
+    entered, release, calls = blocking_claude(app)
+    payload = payload_for(db, "2026-10-01", "2026-10-07", intent="period_compare")
+    (first,), results = run_in_threads(app, ("first", lambda: insight_answer(payload, "period_compare", None, str(uid))))
+    first.start()
+    assert entered.wait(5)
+    response = ask(client, "period_compare")  # the same admin and request through the page
+    release.set()
+    first.join(5)
+    assert response.status_code == 409 and "上一個相同的分析仍在進行" in response.get_data(as_text=True)
+    assert len(calls) == 1 and results["first"]["source"] == "claude"
