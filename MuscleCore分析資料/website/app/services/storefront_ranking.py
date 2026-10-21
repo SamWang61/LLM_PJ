@@ -30,7 +30,8 @@ BOX_PREFIX = re.compile(r'^\s*[\[【]\s*箱購\s*[\]】]\s*')
 BOX_NOTE = re.compile(r'[(（][^()（）]*箱購[^()（）]*[)）]')
 PACK_SUFFIX = re.compile(r'\s*[x×X*]\s*\d+(?:\s*[x×X*]\s*\d+)*\D*$')
 UNIT_WORDS = re.compile(r'(?<=\d)\s*(kg|g|ml|l)\s*(?:公斤|公克|克|毫升|公升)', re.IGNORECASE)
-NOISE = re.compile(r'[\s\-_/·・,，.。]+')
+# A dot between digits is part of capacity (1.5L differs from 15L), not decoration.
+NOISE = re.compile(r'[\s\-_/·・,，。]+|(?<!\d)\.|\.(?!\d)')
 
 
 def variant_key(name):
