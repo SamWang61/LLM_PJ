@@ -102,6 +102,17 @@ def login():
         member = current_member()
         if not member or not repeats_last_submission("login_csrf_digest"):
             abort(400, description=CSRF_MESSAGE)
+        # A restored form can carry the old token but different credentials.
+        # Verify the current identity again; never turn a role/account switch into a replay.
+        email = request.form.get("email", "").strip().lower()
+        password = request.form.get("password", "")
+        try:
+            same_identity = (email == member.get("email") and 1 <= len(password) <= 1024
+                             and check_password_hash(member.get("password_hash", ""), password))
+        except (TypeError, ValueError):
+            same_identity = False
+        if not same_identity:
+            abort(400, description=CSRF_MESSAGE)
         # A repeated submit after the first login already succeeded: go where that login went.
         target = "admin.dashboard" if member.get("role") == "admin" else "store.home"
         return redirect(safe_return_path(request.args.get("next", "")) or url_for(target))

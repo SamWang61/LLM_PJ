@@ -84,3 +84,33 @@ def test_login_and_logout_forms_submit_once(shop):
     db.users.update_one({"_id": uid}, {"$set": {"role": "admin"}})
     admin_page = client.get("/admin/").get_data(as_text=True)
     assert 'class="logout-form"' in admin_page and "data-single-submit" in admin_page and "js/forms.js" in admin_page
+
+
+@pytest.mark.parametrize("changed", [{"email": "another@example.test"}, {"password": "different-password"}, {"password": ""}])
+def test_old_token_with_changed_credentials_is_not_a_duplicate(shop, changed):
+    app, _, _, uid, _, _ = shop
+    client = fresh_client(app)
+    assert login(client).status_code == 302
+    data = {"csrf_token": "pre-login-token", "email": "test@example.test", "password": "test-password", **changed}
+    assert client.post("/auth/login", data=data).status_code == 400
+    with client.session_transaction() as state:
+        assert state["user_id"] == str(uid) and state["role"] == "customer"
+
+
+def test_changed_role_requires_a_fresh_form_and_then_authenticates(shop):
+    from bson import ObjectId
+    from bs4 import BeautifulSoup
+    from werkzeug.security import generate_password_hash
+    app, _, db, uid, _, _ = shop
+    db.users.insert_one({**db.users.find_one({"_id": uid}), "_id": ObjectId(), "role": "admin",
+                         "password_hash": generate_password_hash("admin-password")})
+    client = fresh_client(app)
+    assert login(client).status_code == 302
+    assert login(client, password="admin-password").status_code == 400
+    with client.session_transaction() as state:
+        assert state["role"] == "customer"
+    page = BeautifulSoup(client.get("/auth/login").text, "html.parser")
+    token = page.select_one('input[name="csrf_token"]')["value"]
+    assert login(client, token=token, password="admin-password").location == "/admin/"
+    with client.session_transaction() as state:
+        assert state["role"] == "admin"
