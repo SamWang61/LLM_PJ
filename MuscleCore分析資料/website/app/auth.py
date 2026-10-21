@@ -7,6 +7,7 @@ from pymongo.errors import PyMongoError, DuplicateKeyError
 from werkzeug.security import check_password_hash, generate_password_hash
 
 from .db import get_db, utcnow
+from .security import CSRF_MESSAGE, remember_submitted_token, repeats_last_submission
 from .services.member_sessions import create_member_session, valid_member_session, revoke_device_session, account_unexpired
 
 bp = Blueprint("auth", __name__, url_prefix="/auth")
@@ -65,6 +66,7 @@ def start_member_session(user):
                 # A malformed former cookie cannot prevent a valid new login.
                 pass
     session.clear()
+    remember_submitted_token("login_csrf_digest")
     session.update(user_id=str(user["_id"]), name=user.get("display_name", user.get("name", "")), role=user["role"])
     if current_app.config["DATA_MODE"] == "v4":
         session["member_session"] = token
@@ -96,6 +98,13 @@ def admin_required(view):
 
 @bp.route("/login", methods=["GET", "POST"])
 def login():
+    if request.method == "POST" and g.get("csrf_failed"):
+        member = current_member()
+        if not member or not repeats_last_submission("login_csrf_digest"):
+            abort(400, description=CSRF_MESSAGE)
+        # A repeated submit after the first login already succeeded: go where that login went.
+        target = "admin.dashboard" if member.get("role") == "admin" else "store.home"
+        return redirect(safe_return_path(request.args.get("next", "")) or url_for(target))
     if request.method == "POST":
         email = request.form.get("email", "").strip().lower()
         password = request.form.get("password", "")
@@ -184,8 +193,15 @@ def register():
 @bp.post("/logout")
 def logout():
     user = current_member()
+    if g.get("csrf_failed"):
+        if user or not repeats_last_submission("logout_csrf_digest"):
+            abort(400, description=CSRF_MESSAGE)
+        # A repeated logout after the first one already signed this browser out.
+        flash("您已安全登出。", "success")
+        return redirect(url_for("store.home"))
     if user and current_app.config["DATA_MODE"] == "v4":
         revoke_device_session(get_db(), user["_id"], session.get("member_session"))
     session.clear()
+    remember_submitted_token("logout_csrf_digest")
     flash("您已安全登出。", "success")
     return redirect(url_for("store.home"))
