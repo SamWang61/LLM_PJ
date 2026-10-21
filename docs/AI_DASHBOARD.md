@@ -186,6 +186,19 @@ The ignored local profile contains the existing v4 connection. It is not a newly
 
 English: The integrated source passed local builds, Gunicorn boot, and real offline BGE checks. Cloud Build, deployment, and real Claude acceptance remain pending; production AI stays off. Flags default to off and must be exactly true/false. The AI image (`INSTALL_AI=true`) bakes in CPU PyTorch and the BGE model. The Claude key lives in Secret Manager and is entered by JEFF. The recommended rollout is a zero-traffic revision with 2Gi memory, verified before any traffic switch, with Claude-only as the fallback.
 
+## 推薦成效紀錄 / Recommendation attribution（JEFF，2026-10-21）
+
+依設計規格第 5.5、7.3 節，把推薦監控預留的「曝光／點擊／加購／購買」接上 `recommendation_logs`（`services/recommendation_logs.py`）。
+
+- **曝光**：登入會員在首頁或推薦片段看到 6＋4 時，每個非空區塊寫一筆紀錄（`PERSONALIZED`／`CROSS_CATEGORY`），內容為商品、位置、分數、理由代碼與 `algorithm_version`。30 分鐘內同一位會員看到完全相同的清單（例如切回分頁重新整理）只算一次。推薦卡片連結帶 `rec=<recommendation_id>`。
+- **點擊**：從推薦卡片進入商品頁時，寫入 `clicked_product_ids`，同一筆 `PRODUCT_VIEW` 事件也帶 `recommendation_id`。只有紀錄屬於該會員、且清單裡確實有該商品才會記；偽造、格式錯誤或別人的編號一律忽略。
+- **加購**：商品頁的加入購物車表單帶著同一個 `rec`，成功加入後寫入 `added_to_cart_product_ids`。
+- **購買**：結帳後，對 30 天內曾加購該商品的紀錄寫入 `purchased_product_ids`；**示範訂單不計入**（與 B2 的歸因規則一致）。目前網站訂單都是示範訂單，所以購買數會是 0。
+- **不記錄**：未登入訪客（schema 要求 `user_id`）、設定 `BEHAVIOR_SYNTHETIC_BATCH` 的測試環境（`recommendation_logs` 沒有可標示 synthetic 的欄位）、唯讀預覽。寫入失敗只記警告，不影響頁面、購物車或結帳。
+- **推薦監控**：新增「推薦成效（最近 30 天）」，兩種推薦各列推薦清單、曝光、點擊、加購、購買、點擊率（點擊÷曝光）與點擊後加購率（加購÷點擊），分母為 0 時顯示「—」；沒有紀錄時顯示空狀態。
+- **動到的前台檔案**：`store_v4.py`（首頁、推薦片段、商品頁、加入購物車、結帳）、`services/member_events.py`（`record_read_event` 新增可選的 `recommendation_id`）、`templates/store/recommendations_v4.html`、`templates/store/product.html`。前台排序與畫面不變，只多了連結參數與隱藏欄位。
+- **驗證**：網站離線測試 323 passed／21 skipped（新增 `tests/test_recommendation_logs.py` 10 項：曝光與連結、30 分鐘不重複、點擊與加購、偽造編號、清單外商品、訪客與合成批次不記錄、購買只計非示範且需先加購、寫入失敗不影響頁面、監控漏斗與空狀態）。
+
 ## 驗證與剩餘界線 / Validation and limits
 
 2026-10-02：38 項離線測試通過；真實 Atlas 的 27 集合、86 索引與五組整合檢查通過，測試資料筆數已恢復。離線測試涵蓋日期邊界、退款與取消排除、Decimal、空資料、超額查詢、CSRF、角色撤銷、摘要快取及輸出跳脫。真實 Atlas 結果以 [讀回報告](V4_TEST_VERIFICATION.json) 為準。
