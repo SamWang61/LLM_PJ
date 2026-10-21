@@ -2,6 +2,7 @@
 from collections import Counter
 from datetime import datetime, timezone
 import math
+import re
 
 from .behavior_scope import personalization_events
 
@@ -25,13 +26,45 @@ def rating_key(product):
     return (float(product['average_rating_display']), float(product['average_rating_raw']), product['rating_count'])
 
 
+BOX_PREFIX = re.compile(r'^\s*[\[【]\s*箱購\s*[\]】]\s*')
+BOX_NOTE = re.compile(r'[(（][^()（）]*箱購[^()（）]*[)）]')
+PACK_SUFFIX = re.compile(r'\s*[x×X*]\s*\d+(?:\s*[x×X*]\s*\d+)*\D*$')
+UNIT_WORDS = re.compile(r'(?<=\d)\s*(kg|g|ml|l)\s*(?:公斤|公克|克|毫升|公升)', re.IGNORECASE)
+NOISE = re.compile(r'[\s\-_/·・,，.。]+')
+
+
+def variant_key(name):
+    """Same product in a different pack (single vs [箱購] case) maps to one key, so 6+4 shows it once."""
+    text = BOX_NOTE.sub('', BOX_PREFIX.sub('', name or ''))
+    text = PACK_SUFFIX.sub('', text)
+    text = UNIT_WORDS.sub(lambda m: m.group(1), text)
+    return NOISE.sub('', text).casefold()
+
+
+def is_pack_variant(name):
+    name = name or ''
+    return bool(BOX_PREFIX.search(name) or BOX_NOTE.search(name) or PACK_SUFFIX.search(name))
+
+
+def variant_tokens(product):
+    """(token to record, tokens that conflict). Two plain items never merge; a pack variant merges with
+    the plain item or another pack of the same key."""
+    name = product.get('name') or product.get('product_name')
+    key = variant_key(name)
+    if is_pack_variant(name):
+        return 'pack:' + key, {'pack:' + key, 'plain:' + key}
+    return 'plain:' + key, {'pack:' + key}
+
+
 def take_distinct(ranked, count, category_cap, excluded=()):
+    """Keep the highest-ranked item per product and per pack variant; excluded holds product IDs and variant tokens."""
     seen, categories, result = set(excluded), Counter(), []
     for product, score, reason in ranked:
         pid, category = str(product['_id']), str(product['minor_category_id'])
-        if pid in seen or categories[category] >= category_cap:
+        token, conflicts = variant_tokens(product)
+        if pid in seen or seen & conflicts or categories[category] >= category_cap:
             continue
-        seen.add(pid)
+        seen.update((pid, token))
         categories[category] += 1
         result.append({'product': product, 'score': score, 'reason': reason})
         if len(result) == count:
@@ -103,6 +136,8 @@ def recommendations_6_4(products, events, rules=(), settings=None, now=None, sem
                       *(-x for x in rating_key(row[0])), str(row[0]['_id'])))
     personal = take_distinct(personalized, 6, 3)
     selected = {str(item['product']['_id']) for item in personal}
+    # Cross-category picks must not repeat a pack variant already shown in the personal block.
+    shown_variants = {variant_tokens(item['product'])[0] for item in personal}
     cross = []
     for product in usable:
         if str(product['_id']) in selected or str(product['major_category_id']) == primary:
@@ -127,5 +162,5 @@ def recommendations_6_4(products, events, rules=(), settings=None, now=None, sem
         cross.append((product, relation, '跨類共購關聯・高星優先' if relation else '跨類高星探索'))
     # New policy: rating first, then sample size and validated association strength.
     cross.sort(key=lambda row: (*(-x for x in rating_key(row[0])), -row[1], str(row[0]['_id'])))
-    return {'personalized': personal, 'cross_category': take_distinct(cross, 4, 2, selected),
+    return {'personalized': personal, 'cross_category': take_distinct(cross, 4, 2, selected | shown_variants),
             'source': 'rules-6plus4-rating-v1'}

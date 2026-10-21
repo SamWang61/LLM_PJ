@@ -143,6 +143,16 @@ Existing module paths and migration history are preserved. The scoped manifest s
 
 Taipei date filters and demo exclusions apply consistently to v4 revenue, daily totals, ranking and summaries. Inventory is current; recommendation events are bounded counts, not attribution metrics.
 
+## 6＋4 合併同一商品的不同包裝 / Pack variants in 6+4（JEFF，2026-10-21）
+
+- **問題**：T5 時發現，同一商品的單入與箱購（例如「牛頭牌金鑽玉米粒340g」與「[箱購]牛頭牌金鑽玉米粒340g x 24Can罐…」）相似度最高，前台推薦可能同時出現兩項。
+- **做法**（`services/storefront_ranking.py`）：
+  - `variant_key()` 把名稱正規化：去掉 `[箱購]`、含「箱購」的括號註記、結尾的 `x 數量…` 箱數；把「g克／ml毫升／Kg公斤」統一成英文單位；去掉空白與標點後轉小寫。
+  - `take_distinct()` 依排序先到先得：同一個 key 只保留排名最高的一項，空出的名額由下一個商品遞補；破圈區塊也不會再出現個人區塊已顯示的包裝版本。
+  - **只有其中至少一項帶有包裝資訊時才合併**；兩個名稱相同、都沒有包裝資訊的商品不合併（既有 6＋4 測試資料以相同名稱代表不同商品）。
+- **以倉庫中的目錄檔試算**（`VibeCart_AI/MongoDB/supermarket/catalog_v4.extjson`，336 項；當時 Atlas 因 IP 白名單無法連線，未查線上資料）：合併 7 組，全部是正確的單入／箱購配對（爌肉碗、麥仔茶、波爾天然水、BCE 果菜汁、芭樂汁、牛頭牌玉米粒、速纖飲料）；容量不同（UNIDESIGN 純水 1500ml／6000ml）或口味不同的商品不受影響。
+- 驗證：網站離線測試 327 passed／21 skipped（新增 `tests/test_variant_dedupe.py` 11 項）。
+
 ## 私有連線與啟動 / Private connection and launch
 
 SAM 的本機 `MuscleCore分析資料/website/.env.v4-test` 已備妥有效 URI，且受 Git 忽略與 Windows 檔案權限保護。不要貼到 PR、文件、聊天或共用雲端。此設定使用既有 `vibecart_ai` v4 資料庫，**不是新建的隔離測試資料庫**。Atlas connector 需重新登入，但本機 PyMongo 連線可獨立驗證。
