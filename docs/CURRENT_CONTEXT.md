@@ -7,7 +7,7 @@
 - 程式：前台效能／操作改善已由PR #166合併，完整發布、量測、候選與正式桌面操作見[效能交付](FRONTEND_PERFORMANCE_2026-10-21.md)；七個前後台PR與同交易裝置撤銷／180天稽核收據見[優化系統](優化系統.md)。
 - 本輪：分頁圖示缺檔修正、正式修訂／digest／來源及公開驗證見[SAM圖示發布紀錄](SAM_FAVICON_2026-10-22.md)。以當次讀回的100%流量修訂為準，不能用latestReady或私有預設入口冒充正式版本。
 - Atlas：`vibecart_ai` active contract為30集合／96索引／8筆migration；10/22本輪唯讀稽核通過，12組關聯0 orphan。[去敏讀回](inventory/SAM_ATLAS_READBACK_2026-10-22.json)。既有migration checksum不修改。
-- 簡報：使用者指定v5原檔已由PR #165合併，14頁、3,262,322 bytes，SHA-256 `4aa9b13286fe98574d3dd648889545ad196d92cea9aebb9a143c794ad392d193`；[主檔入口](../簡報文件/超市AI版_2026-10-18/README.md)。舊13頁或其他hash是歷史版本，勿混用。
+- 簡報：使用者指定v5原檔已由PR #165合併，14頁、3,262,322 bytes，SHA-256 `4aa9b13286fe98574d3dd648889545ad196d92cea9aebb9a143c794ad392d193`；[主檔入口](../簡報文件/超市AI版_2026-10-18/README.md)。相符[14頁PDF／圖片／離線備援](../簡報文件/超市AI版_2026-10-22_閱讀與備援/README.md)與[修正紀錄](SAM_OFFLINE_14_SLIDES_2026-10-22.md)另存日期目錄；舊13頁保留為歷史版本，勿混用。
 
 ## 完成範圍與真正待辦
 

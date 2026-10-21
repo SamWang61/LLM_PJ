@@ -1,5 +1,7 @@
 # V5 離線備援與故障替代流程
 
+**2026/10/22版本註記**：以下保留13頁歷史流程。現行14頁主檔請用[14頁備援入口](../超市AI版_2026-10-22_閱讀與備援/README.md)；建包預設契約已改為`v5-14-20261022`。若要重建以下13頁包，須指定相符的歷史commit並加`--profile legacy-13`，不能以現行HEAD混配13頁PDF。
+
 [10/20 SAM 模擬 N17 復原結果與現場排練安排](SAM模擬_N17_復原與排練_2026-10-20.md)記錄當時 40 檔 ZIP 的固定版本、雜湊與仍待本人實測的步驟。後續 43 檔離線候選與舊版保留方式見[現行候選與保留清單](../超市AI版_2026-10-18/2026-10-20_SAM模擬_簡報內容增刪與版本導覽.md)。
 
 執行主責：[SAM](mailto:cashsam@gmail.com)。[REN](mailto:chen2000401@gmail.com)覆核會員／購物流程，[JEFF](mailto:jeff841117@gmail.com)覆核 AI／後台；講師為[Alvin 簡志璁](mailto:fcaibialvin@gmail.com)。本表是排練步驟，不是任何人的簽認。
@@ -9,7 +11,7 @@
 於乾淨交付 checkout 先完成 `git lfs pull`，確認 V5 PDF 的實體內容已下載，再進入離線環境。使用 Python 標準函式庫即可建包，建包過程不下載、不連資料庫、不讀環境檔或密鑰。封裝只讀指定提交的 V5 PPTX、PDF、20 張截圖、13 張 PDF 渲染圖及各自索引；PPTX／PDF 固定 SHA-256，手動封面、深淺頁尾與封底不變。
 
 ```powershell
-python scripts/v5_offline_bundle.py build --commit HEAD --output "$env:TEMP/VibeCart_V5_offline_20261018.zip"
+python scripts/v5_offline_bundle.py build --commit <相符的歷史commit> --profile legacy-13 --output "$env:TEMP/VibeCart_V5_offline_20261018.zip"
 python scripts/v5_offline_bundle.py restore --archive "$env:TEMP/VibeCart_V5_offline_20261018.zip" --destination "$env:TEMP/VibeCart_V5_restored_new"
 ```
 

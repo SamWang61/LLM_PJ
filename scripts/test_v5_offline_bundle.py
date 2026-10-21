@@ -6,6 +6,7 @@ import zipfile
 import pytest
 from v5_offline_bundle import pack, restore, verified_payload, safe_name, committed_bytes
 from v5_offline_bundle import note_links
+import v5_offline_bundle as bundle
 
 
 @pytest.mark.parametrize('name', ['../escape.txt', '/absolute', 'C:/escape', 'a\\b', 'a/../b', 'NUL.txt', 'a./b'])
@@ -109,3 +110,64 @@ def test_symbolic_link_member_rejected(tmp_path):
     with pytest.raises(ValueError, match='Unsafe'):
         restore(out.getvalue(), tmp_path / 'fresh')
     assert not (tmp_path / 'fresh').exists()
+
+
+@pytest.fixture
+def current_assets(monkeypatch):
+    out = io.BytesIO()
+    with zipfile.ZipFile(out, 'w') as deck:
+        for i in range(1, 15):
+            deck.writestr(f'ppt/slides/slide{i}.xml', '<slide/>')
+    pptx, pdf = out.getvalue(), b'%PDF-reviewed-fixture'
+    monkeypatch.setattr(bundle, 'CURRENT_PPTX_SHA256', bundle.sha256(pptx))
+    monkeypatch.setattr(bundle, 'CURRENT_PDF_SHA256', bundle.sha256(pdf))
+    assets = {bundle.DECK + '.pptx': pptx,
+              bundle.CURRENT_FOLDER + 'VibeCart_AI_14頁閱讀版_2026-10-22.pdf': pdf,
+              bundle.CURRENT_FOLDER + 'README.md': b'[PDF](VibeCart_AI_14%E9%A0%81%E9%96%B1%E8%AE%80%E7%89%88_2026-10-22.pdf)',
+              bundle.CURRENT_FOLDER + '展示內容更新卡.md': b'current scope',
+              'docs/CURRENT_CONTEXT.md': b'[scope](../some/dated-evidence.md)'}
+    rows = []
+    for i in range(1, 15):
+        name = f'page-{i:02d}.png'
+        data = b'\x89PNG\r\n\x1a\n' + bytes([i])
+        assets[bundle.CURRENT_FOLDER + '投影片/' + name] = data
+        rows.append({'file': name, 'bytes': len(data), 'sha256': bundle.sha256(data)})
+    pages = {'profile': bundle.CURRENT_PROFILE, 'page_count': 14,
+             'source_pptx_sha256': bundle.CURRENT_PPTX_SHA256,
+             'source_pdf_sha256': bundle.CURRENT_PDF_SHA256, 'files': rows}
+    assets[bundle.CURRENT_FOLDER + '投影片/pages.json'] = bundle.encode_json(pages)
+    monkeypatch.setattr(bundle, 'committed_bytes', lambda root, commit, name: assets[name])
+    return assets
+
+
+def test_current_14_slide_package_restores_exact_whitelist(current_assets, tmp_path):
+    files = bundle.current_source_files(tmp_path, 'pinned-commit')
+    assert set(files) == {'presentation.pptx', 'presentation.pdf', 'README.md', 'index.html',
+                          'slides.html', 'slides/pages.json', 'updates/current-context.md',
+                          'updates/current-scope.md', *(f'slides/page-{i:02d}.png' for i in range(1, 15))}
+    assert '14頁'.encode() in files['slides.html']
+    assert b'[PDF](presentation.pdf)' in files['README.md']
+    assert b'github.com/SamWang61/LLM_PJ/blob/pinned-commit/' in files['updates/current-context.md']
+    first, manifest = pack(files, 'pinned-commit')
+    assert pack(files, 'pinned-commit')[0] == first
+    restored = tmp_path / 'offline'
+    assert restore(first, restored) == manifest
+    assert (restored / 'presentation.pptx').read_bytes() == current_assets[bundle.DECK + '.pptx']
+
+
+@pytest.mark.parametrize('kind', ['pptx', 'pdf', 'page', 'index'])
+def test_current_source_change_fails_before_packaging(current_assets, tmp_path, kind):
+    if kind == 'pptx':
+        name = bundle.DECK + '.pptx'
+    elif kind == 'pdf':
+        name = bundle.CURRENT_FOLDER + 'VibeCart_AI_14頁閱讀版_2026-10-22.pdf'
+    elif kind == 'page':
+        name = bundle.CURRENT_FOLDER + '投影片/page-14.png'
+    else:
+        name = bundle.CURRENT_FOLDER + '投影片/pages.json'
+        index = json.loads(current_assets[name]); index['files'].pop()
+        current_assets[name] = bundle.encode_json(index)
+    if kind != 'index':
+        current_assets[name] += b'unreviewed-change'
+    with pytest.raises(ValueError, match='changed|integrity|contract'):
+        bundle.current_source_files(tmp_path, 'pinned-commit')
