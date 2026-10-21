@@ -1,5 +1,7 @@
 # 營運後台與 v4 測試交接 / Dashboard handoff
 
+**2026/10/21 推薦成效補修（#159）**：30 分鐘曝光去重會在視窗內查找相同會員、區塊及完整商品順序，A→B→A 會重用原 A；不同順序仍分別記錄。結帳完成後的歸因品項讀取與更新都在 best-effort 邊界內，故障不改變已提交的結帳回應；示範訂單與停用紀錄的環境先略過讀取。14 項倉庫內相關測試及先前 2 項缺陷重現均通過，正式發布結果另記[優化系統](優化系統.md)。English: Ordered-list deduplication covers the full window, and optional attribution reads cannot fail a committed checkout.
+
 **2026/10/20 PR #5接續**：[離線持久快照操作](PREFERENCE_SCORING.md)是前台請求時計分之外的opt-in工具，JEFF主責、SAM整合。現行6＋4分類會衰減並支援文字搜尋；快照version1分類維持raw權重上限70／30、商品逐事件衰減、SEARCH僅明確ObjectId，數值不保證相等。新工具不接前台或啟排程，本輪不連Atlas；10/2的50項與Atlas驗證只作歷史。下方較早「完整6＋4仍屬後續」描述保留原交付日期，現況分別讀[6＋4對話決議](../討論的相關記錄/商品評價與猜你喜歡6加4推薦_對話決議_2026-10-18.md)與本輪快照PR結果。
 
 <!-- SAM MAIN PREVIEW 20261018 BEGIN -->
@@ -227,6 +229,19 @@ English: Customer revocation, privacy-limited audit and a 180-day idempotency re
 - **長期方案（B4，下一階段）**：商品向量離線批次計算存入 Atlas（schema 已有 `product_embeddings`，寫入需 SAM 同意），網站只做 cosine，降低記憶體與冷啟動。
 
 English: The integrated source passed local builds, Gunicorn boot, and real offline BGE checks. Cloud Build, deployment, and real Claude acceptance remain pending; production AI stays off. Flags default to off and must be exactly true/false. The AI image (`INSTALL_AI=true`) bakes in CPU PyTorch and the BGE model. The Claude key lives in Secret Manager and is entered by JEFF. The recommended rollout is a zero-traffic revision with 2Gi memory, verified before any traffic switch, with Claude-only as the fallback.
+
+## 推薦成效紀錄 / Recommendation attribution（JEFF，2026-10-21）
+
+依設計規格第 5.5、7.3 節，把推薦監控預留的「曝光／點擊／加購／購買」接上 `recommendation_logs`（`services/recommendation_logs.py`）。
+
+- **曝光**：登入會員在首頁或推薦片段看到 6＋4 時，每個非空區塊寫一筆紀錄（`PERSONALIZED`／`CROSS_CATEGORY`），內容為商品、位置、分數、理由代碼與 `algorithm_version`。30 分鐘內同一位會員看到完全相同的清單（例如切回分頁重新整理）只算一次。推薦卡片連結帶 `rec=<recommendation_id>`。
+- **點擊**：從推薦卡片進入商品頁時，寫入 `clicked_product_ids`，同一筆 `PRODUCT_VIEW` 事件也帶 `recommendation_id`。只有紀錄屬於該會員、且清單裡確實有該商品才會記；偽造、格式錯誤或別人的編號一律忽略。
+- **加購**：商品頁的加入購物車表單帶著同一個 `rec`，成功加入後寫入 `added_to_cart_product_ids`。
+- **購買**：結帳後，對 30 天內曾加購該商品的紀錄寫入 `purchased_product_ids`；**示範訂單不計入**（與 B2 的歸因規則一致）。目前網站訂單都是示範訂單，所以購買數會是 0。
+- **不記錄**：未登入訪客（schema 要求 `user_id`）、設定 `BEHAVIOR_SYNTHETIC_BATCH` 的測試環境（`recommendation_logs` 沒有可標示 synthetic 的欄位）、唯讀預覽。寫入失敗只記警告，不影響頁面、購物車或結帳。
+- **推薦監控**：新增「推薦成效（最近 30 天）」，兩種推薦各列推薦清單、曝光、點擊、加購、購買、點擊率（點擊÷曝光）與點擊後加購率（加購÷點擊），分母為 0 時顯示「—」；沒有紀錄時顯示空狀態。
+- **動到的前台檔案**：`store_v4.py`（首頁、推薦片段、商品頁、加入購物車、結帳）、`services/member_events.py`（`record_read_event` 新增可選的 `recommendation_id`）、`templates/store/recommendations_v4.html`、`templates/store/product.html`。前台排序與畫面不變，只多了連結參數與隱藏欄位。
+- **驗證**：網站離線測試 323 passed／21 skipped（新增 `tests/test_recommendation_logs.py` 10 項：曝光與連結、30 分鐘不重複、點擊與加購、偽造編號、清單外商品、訪客與合成批次不記錄、購買只計非示範且需先加購、寫入失敗不影響頁面、監控漏斗與空狀態）。
 
 ## 驗證與剩餘界線 / Validation and limits
 

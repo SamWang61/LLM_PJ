@@ -27,9 +27,20 @@
       <li><span class="status-dot {{ 'ok' if config.AI_RECOMMENDATIONS_ENABLED else 'off' }}" aria-hidden="true"></span>BGE 推薦旗標：{{ '已啟用' if config.AI_RECOMMENDATIONS_ENABLED else '未啟用' }}</li>
       <li><span class="status-dot {{ 'ok' if config.AI_SUMMARY_ENABLED else 'off' }}" aria-hidden="true"></span>Claude 摘要旗標：{{ '已啟用' if config.AI_SUMMARY_ENABLED else '未啟用' }}</li>
     </ul>
-    <p class="panel-note">事件次數不是推薦曝光或轉換率；缺少完整推薦歸因（<code>recommendation_logs</code>）前不計算 CTR 或轉換率。曝光／點擊／加購／購買將於推薦紀錄上線後顯示。</p>
+    <p class="panel-note">下方「最近 1,000 筆事件」是行為次數，不是推薦成效；推薦成效看「推薦成效」區塊（<code>recommendation_logs</code>）。</p>
   </section>
 </div>
+{% if funnel %}
+<section class="panel" aria-labelledby="funnel-title">
+  <h2 id="funnel-title">推薦成效（最近 {{ funnel.days }} 天）</h2>
+  <p class="panel-note">來源 <code>recommendation_logs</code>：登入會員看到的前台 6＋4 推薦。曝光＝顯示的商品數（30 分鐘內同一份清單只算一次）；點擊、加購以從推薦卡片進入商品頁為準；購買只計非示範訂單，示範結帳不計入成效。</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th>推薦類型</th><th class="num">推薦清單</th><th class="num">曝光</th><th class="num">點擊</th><th class="num">加購</th><th class="num">購買</th><th class="num">點擊率</th><th class="num">點擊後加購率</th></tr></thead>
+    <tbody>{% for row in funnel.rows %}<tr><td>{{ row.label }}</td><td class="num">{{ row.lists }}</td><td class="num">{{ row.impressions }}</td><td class="num">{{ row.clicks }}</td><td class="num">{{ row.added }}</td><td class="num">{{ row.purchased }}</td><td class="num">{{ '%.1f%%'|format(row.ctr) if row.ctr is not none else '—' }}</td><td class="num">{{ '%.1f%%'|format(row.cart_rate) if row.cart_rate is not none else '—' }}</td></tr>{% endfor %}</tbody>
+  </table></div>
+  {% if not funnel.rows|sum(attribute='lists') %}<p class="empty-state">最近 {{ funnel.days }} 天還沒有推薦紀錄；登入會員瀏覽首頁後才會開始累積。</p>{% endif %}
+</section>
+{% endif %}
 <section class="panel" aria-labelledby="events-title">
   <h2 id="events-title">最近 1,000 筆事件</h2>
   <p class="panel-note">實際讀取 {{ event_count }} 筆，以下顯示次數最多的 20 組（商品 × 行為）。</p>

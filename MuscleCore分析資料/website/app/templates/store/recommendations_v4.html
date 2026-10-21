@@ -1,10 +1,10 @@
 <section class="section" aria-label="猜你喜歡6加4">
   <div class="section-head"><div><span class="eyebrow">VIBECART AI</span><h2>猜你喜歡 · 6＋4</h2></div></div>
-  {% for heading, items in [('依你的喜好推薦 · 最多6項', recommendations), ('破圈推薦 · 高星優先，最多4項', cross_recommendations)] %}
+  {% for heading, items, block in [('依你的喜好推薦 · 最多6項', recommendations, 'personalized'), ('破圈推薦 · 高星優先，最多4項', cross_recommendations, 'cross_category')] %}
   <h3>{{ heading }}</h3>
   <div class="product-grid">{% for item in items %}{% set p=item.product %}
     <article class="product-card"><div class="product-visual">{% include 'store/product_image.html' %}</div>
-      <div class="card-body"><span class="reason">{{ item.reason }}</span><h3><a href="{{ url_for('store.product_detail', product_id=p._id) }}">{{ p.name }}</a></h3>
+      <div class="card-body"><span class="reason">{{ item.reason }}</span><h3><a href="{{ url_for('store.product_detail', product_id=p._id, rec=(recommendation_ids or {}).get(block)) }}">{{ p.name }}</a></h3>
         <div class="price-row"><strong>NT$ {{ '{:,.2f}'.format(p.price) }}</strong><span data-product-rating="{{ p._id }}">★ {{ '%.1f'|format(p.rating) }}</span></div>
         <p>{{ p.rating_count|default(0) }}筆真實評價{% if p.rating_status == 'DEFAULT' %} · 預設星等{% endif %}</p>
       </div>

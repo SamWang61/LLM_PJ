@@ -1,5 +1,9 @@
 # 變更紀錄 / Changelog
 
+## 2026-10-21 — 推薦成效 P2 補修 / Recommendation attribution fixes
+
+- 修正 A→B→A 在 30 分鐘內的曝光去重；將結帳後所有歸因讀取納入容錯，示範訂單與停用紀錄先略過。Ordered-list deduplication and best-effort post-checkout attribution.
+
 ## 2026-10-21 — JEFF 管理後台設計規格 v1.3 / Admin design v1.3
 
 - 依 main `c66f731` 同步已合併實作：T5 真模型調整、線上 AI 開關與 AI 映像、v4 權重、個人推薦範圍、SAM 的 6＋4 與 #5 快照；更新現況、資料準備狀態、檔案對應與 D5 進度，新增第 13 節線上 AI 部署設定。Spec synced with merged work.
@@ -30,6 +34,11 @@
 
 - [部署與驗收](docs/SAM_MAIN_PREVIEW_2026-10-18.md)：main20ee的52檔封裝與GCS實際讀回一致、Cloud Build三步SUCCESS；真BGE、四Claude問題／快取、角色／交易／1001 synthetic、停用規則退回及清理。
 - 使用者建立Claude secret版本1 Enabled，私有tag明確引用；正式19／私有base11仍各100%、Hosting不變，自由提問關閉。新增密鑰操作文件、私有tag探針及22安全回歸；V5仍2/14，未宣稱正式切流量或全站簽收。
+
+## 2026-10-21 — JEFF 推薦成效紀錄 / Recommendation attribution
+
+- 登入會員看到 6＋4 時寫入 `recommendation_logs`（30 分鐘內同清單只算一次），從推薦卡片點擊、加購寫回；購買只計非示範訂單。Recommendation impressions, clicks and add-to-cart are attributed.
+- 推薦監控新增推薦成效表（曝光、點擊、加購、購買、點擊率）；合成批次與唯讀預覽不記錄，寫入失敗不影響頁面。新增 10 項離線測試。See [dashboard handoff](docs/AI_DASHBOARD.md).
 
 ## 2026-10-18 — SAM 接手JEFF三PR整合與驗收
 
