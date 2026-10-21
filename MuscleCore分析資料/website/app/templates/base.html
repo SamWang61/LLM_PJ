@@ -4,6 +4,7 @@
   <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="{{ 'VibeCart 超級市場教學測試平台' if config.DATA_MODE == 'v4' else 'MuscleCore 智慧運動商品購物平台' }}">
   <title>{% block title %}MuscleCore{% endblock %}</title>
+  <link rel="icon" type="image/svg+xml" href="{{ url_for('favicon') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
   <link rel="stylesheet" href="{{ url_for('static', filename='css/footer-team.css') }}">
 </head>

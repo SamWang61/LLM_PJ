@@ -1,5 +1,5 @@
 import os
-from flask import Flask
+from flask import Flask, send_from_directory
 from dotenv import load_dotenv
 
 from .db import init_db
@@ -36,6 +36,10 @@ def create_app(test_config=None):
     )
     if test_config:
         app.config.update(test_config)
+
+    @app.get("/favicon.ico")
+    def favicon():
+        return send_from_directory(app.static_folder, "img/favicon.svg", max_age=86400)
 
     init_db(app)
     if app.config["DATA_MODE"] not in {"legacy", "v4"}:
