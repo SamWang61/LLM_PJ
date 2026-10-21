@@ -1,0 +1,9 @@
+# Scoped asset overlay on the verified production image. Use only when the Git
+# runtime diff against 8741400 is exactly these four paths, with no removals.
+FROM asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:b62b7ff27f7e31b2fcdc10a35b5c921457842847b3ebe5a80282165255c1160f
+WORKDIR /srv/app
+COPY app/__init__.py ./app/__init__.py
+COPY app/templates/base.html ./app/templates/base.html
+COPY app/templates/admin/layout.html ./app/templates/admin/layout.html
+COPY app/static/img/favicon.svg ./app/static/img/favicon.svg
+USER appuser
