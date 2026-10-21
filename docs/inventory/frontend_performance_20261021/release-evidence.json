@@ -1,0 +1,1786 @@
+{
+  "schema_version": 1,
+  "recorded_at": "2026-10-21T16:03:08.094750+00:00",
+  "timezone": "Asia/Taipei",
+  "release_commit": "87414002009524913413ae2af9b4ec6a76c72979",
+  "verified_main_at_assembly": "f76a3b444c02a4dd3d7cfd830497f094eac39410",
+  "pull_requests": [
+    {
+      "number": 166,
+      "html_url": "https://github.com/SamWang61/LLM_PJ/pull/166",
+      "state": "closed",
+      "merged": true,
+      "merged_at": "2026-10-21T13:55:12Z",
+      "merge_commit_sha": "87414002009524913413ae2af9b4ec6a76c72979"
+    },
+    {
+      "number": 165,
+      "html_url": "https://github.com/SamWang61/LLM_PJ/pull/165",
+      "state": "closed",
+      "merged": true,
+      "merged_at": "2026-10-21T14:00:14Z",
+      "merge_commit_sha": "f76a3b444c02a4dd3d7cfd830497f094eac39410"
+    }
+  ],
+  "github_actions": [
+    {
+      "id": 39611688463,
+      "html_url": "https://github.com/SamWang61/LLM_PJ/actions/runs/39611688463",
+      "head_sha": "d12333343ed178d60ffd669500f0db77e1937055",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 39611626469,
+      "html_url": "https://github.com/SamWang61/LLM_PJ/actions/runs/39611626469",
+      "head_sha": "d12333343ed178d60ffd669500f0db77e1937055",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 39612225731,
+      "html_url": "https://github.com/SamWang61/LLM_PJ/actions/runs/39612225731",
+      "head_sha": "87414002009524913413ae2af9b4ec6a76c72979",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 39612396261,
+      "html_url": "https://github.com/SamWang61/LLM_PJ/actions/runs/39612396261",
+      "head_sha": "753c6e128d81cbcfec377cfd948017be91534847",
+      "event": "pull_request",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 39612959409,
+      "html_url": "https://github.com/SamWang61/LLM_PJ/actions/runs/39612959409",
+      "head_sha": "f76a3b444c02a4dd3d7cfd830497f094eac39410",
+      "event": "push",
+      "status": "completed",
+      "conclusion": "success"
+    }
+  ],
+  "local_tests": {
+    "tests": 449,
+    "errors": 0,
+    "failures": 0,
+    "skipped": 0,
+    "elapsed_seconds": 99.033,
+    "started_at": "2026-10-21T21:48:33.892282+08:00",
+    "junit_sha256": "a810acf2248b922d46b19b74fd5808a5582651ebf2ae7efafb2bb8ab1559d2cd",
+    "scope": "Full website suite and admin audit migration tests, using an isolated localhost replica set",
+    "local_cleanup": "Owned replica set and preview processes stopped; random test databases independently absent"
+  },
+  "build": {
+    "id": "56cce79c-2271-4acc-8b09-cd87d56b4f2d",
+    "status": "SUCCESS",
+    "start": "2026-10-21T13:55:55.092591316Z",
+    "finish": "2026-10-21T13:57:27.360928Z",
+    "image_digest": "sha256:b62b7ff27f7e31b2fcdc10a35b5c921457842847b3ebe5a80282165255c1160f",
+    "runtime_files": 75,
+    "audit_source_files": 17
+  },
+  "promotion": {
+    "promoted_at": "2026-10-21T13:59:23.131Z",
+    "revision": "vibecart-web-perf-8741400-1021"
+  },
+  "production_readback": {
+    "checked_at": "2026-10-21T14:08:54.634Z",
+    "revision": "vibecart-web-perf-8741400-1021",
+    "image_digest": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:b62b7ff27f7e31b2fcdc10a35b5c921457842847b3ebe5a80282165255c1160f",
+    "source_commit": "87414002009524913413ae2af9b4ec6a76c72979",
+    "conditions": [
+      {
+        "type": "Ready",
+        "status": "True",
+        "message": "Updating revision scaling succeeded.",
+        "lastTransitionTime": "2026-10-21T13:59:23.556373Z"
+      },
+      {
+        "type": "Active",
+        "status": "True",
+        "severity": "Info",
+        "lastTransitionTime": "2026-10-21T13:58:10.950647Z"
+      },
+      {
+        "type": "ContainerHealthy",
+        "status": "True",
+        "message": "Containers became healthy in 10.02s.",
+        "lastTransitionTime": "2026-10-21T13:58:10.734704Z"
+      },
+      {
+        "type": "ContainerReady",
+        "status": "True",
+        "message": "Container image import completed in 1.27s.",
+        "lastTransitionTime": "2026-10-21T13:57:56.775920Z"
+      },
+      {
+        "type": "ResourcesAvailable",
+        "status": "True",
+        "message": "Provisioning imported containers completed in 3.09s. Checking container health. This will wait for up to 2m for the configured startup probe, including an initial delay of 0s.",
+        "lastTransitionTime": "2026-10-21T13:57:59.864898Z"
+      }
+    ],
+    "traffic": [
+      {
+        "revisionName": "vibecart-web-perf-8741400-1021",
+        "percent": 100,
+        "tag": "perf-release1021",
+        "url": "https://perf-release1021---vibecart-web-m44ncgz5ta-de.a.run.app"
+      }
+    ],
+    "config_fingerprint": "cbdebe0fb2e49eb55dea58e059118bcc9bbfeeb0acdeb508102cb0c418cde9fb",
+    "configuration_unchanged": true,
+    "iam_bindings_sha256": "4cf5fcfdf705e73f88cfea4365b3faac5164befb378ccb42f94db946f4757829",
+    "iam_bindings_unchanged": true,
+    "hosting": {
+      "release": "sites/vibecart-llmai/releases/1792363722745000",
+      "version": "sites/vibecart-llmai/versions/a33b77d8155885b8",
+      "rewrites": [
+        {
+          "glob": "**",
+          "run": {
+            "serviceId": "vibecart-web",
+            "region": "asia-east1"
+          }
+        }
+      ],
+      "unchanged": true
+    },
+    "routes": [
+      {
+        "url": "https://vibecart-llmai.web.app/",
+        "status": 200,
+        "expected": 200
+      },
+      {
+        "url": "https://vibecart-llmai.web.app/recommendations",
+        "status": 200,
+        "expected": 200
+      },
+      {
+        "url": "https://vibecart-llmai.web.app/auth/login",
+        "status": 200,
+        "expected": 200
+      },
+      {
+        "url": "https://vibecart-llmai.web.app/health/live",
+        "status": 200,
+        "expected": 200
+      },
+      {
+        "url": "https://vibecart-llmai.web.app/health/ready",
+        "status": 200,
+        "expected": 200
+      },
+      {
+        "url": "https://vibecart-llmai.web.app/auth/logout",
+        "status": 405,
+        "expected": 405
+      },
+      {
+        "url": "https://vibecart-llmai.firebaseapp.com/",
+        "status": 200,
+        "expected": 200
+      },
+      {
+        "url": "https://vibecart-llmai.firebaseapp.com/recommendations",
+        "status": 200,
+        "expected": 200
+      },
+      {
+        "url": "https://vibecart-llmai.firebaseapp.com/auth/login",
+        "status": 200,
+        "expected": 200
+      },
+      {
+        "url": "https://vibecart-llmai.firebaseapp.com/health/live",
+        "status": 200,
+        "expected": 200
+      },
+      {
+        "url": "https://vibecart-llmai.firebaseapp.com/health/ready",
+        "status": 200,
+        "expected": 200
+      },
+      {
+        "url": "https://vibecart-llmai.firebaseapp.com/auth/logout",
+        "status": 405,
+        "expected": 405
+      }
+    ],
+    "logs": {
+      "checked_at": "2026-10-21T14:08:54.634Z",
+      "period_start": "2026-10-21T13:59:23.131Z",
+      "revision": "vibecart-web-perf-8741400-1021",
+      "entries": 349,
+      "pages": 4,
+      "next_page": false,
+      "complete": true,
+      "status": "no_errors_observed",
+      "http_statuses": {
+        "200": 253,
+        "302": 22,
+        "303": 5,
+        "304": 64,
+        "400": 1,
+        "404": 1,
+        "405": 2
+      },
+      "classes": {
+        "mongo_selection": 0,
+        "mongo_other": 0,
+        "app_database_unavailable": 0,
+        "http_5xx": 0,
+        "other_error": 0
+      },
+      "period_end": "2026-10-21T14:08:42.935Z"
+    },
+    "status": "passed"
+  },
+  "delivery_service_readback": {
+    "at": "2026-10-21T16:02:42.805Z",
+    "traffic": [
+      {
+        "revisionName": "vibecart-web-perf-8741400-1021",
+        "percent": 100,
+        "tag": "perf-release1021",
+        "url": "https://perf-release1021---vibecart-web-m44ncgz5ta-de.a.run.app"
+      }
+    ],
+    "ready": [
+      {
+        "type": "Ready",
+        "status": "True"
+      },
+      {
+        "type": "ConfigurationsReady",
+        "status": "True"
+      },
+      {
+        "type": "RoutesReady",
+        "status": "True"
+      }
+    ]
+  },
+  "http_error_classification": {
+    "complete": true,
+    "pages": 1,
+    "entries": [
+      {
+        "timestamp": "2026-10-21T14:02:54.188840Z",
+        "status": 404,
+        "path": "/favicon.ico"
+      },
+      {
+        "timestamp": "2026-10-21T14:05:33.068597Z",
+        "status": 400,
+        "path": "/auth/login"
+      },
+      {
+        "timestamp": "2026-10-21T14:06:43.661171Z",
+        "status": 405,
+        "path": "/auth/logout"
+      },
+      {
+        "timestamp": "2026-10-21T14:06:46.552464Z",
+        "status": 405,
+        "path": "/auth/logout"
+      },
+      {
+        "timestamp": "2026-10-21T14:08:40.196587Z",
+        "status": 405,
+        "path": "/auth/logout"
+      }
+    ]
+  },
+  "performance": {
+    "before": {
+      "at": "2026-10-21T13:42:46.219243+00:00",
+      "base": "https://vibecart-llmai.web.app",
+      "method": "sequential Requests Session; response-header TTFB; 1 first + 7 warm samples; no redirects for login POST",
+      "routes": {
+        "health": {
+          "samples": [
+            {
+              "status": 200,
+              "ttfb_ms": 135.4,
+              "total_ms": 137.2
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 115.2,
+              "total_ms": 116.5
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 138.9,
+              "total_ms": 140.4
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 123.5,
+              "total_ms": 124.8
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 137.0,
+              "total_ms": 138.5
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 120.3,
+              "total_ms": 121.7
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 112.2,
+              "total_ms": 113.4
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 139.3,
+              "total_ms": 141.0
+            }
+          ],
+          "warm_median_ms": 123.5,
+          "warm_max_ms": 139.3
+        },
+        "login_page": {
+          "samples": [
+            {
+              "status": 200,
+              "ttfb_ms": 181.7,
+              "total_ms": 183.2
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 153.6,
+              "total_ms": 154.9
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 135.0,
+              "total_ms": 136.5
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 162.6,
+              "total_ms": 164.0
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 151.1,
+              "total_ms": 152.5
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 117.0,
+              "total_ms": 118.7
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 114.1,
+              "total_ms": 115.6
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 138.1,
+              "total_ms": 139.6
+            }
+          ],
+          "warm_median_ms": 138.1,
+          "warm_max_ms": 162.6
+        },
+        "home": {
+          "samples": [
+            {
+              "status": 200,
+              "ttfb_ms": 1896.4,
+              "total_ms": 1946.0
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 1900.0,
+              "total_ms": 1917.0
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 1961.0,
+              "total_ms": 1973.8
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 2079.2,
+              "total_ms": 2100.5
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 2100.6,
+              "total_ms": 2118.0
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 1959.9,
+              "total_ms": 1979.7
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 2045.8,
+              "total_ms": 2105.6
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 1922.4,
+              "total_ms": 1981.1
+            }
+          ],
+          "warm_median_ms": 1961.0,
+          "warm_max_ms": 2100.6
+        },
+        "filter": {
+          "samples": [
+            {
+              "status": 200,
+              "ttfb_ms": 1996.0,
+              "total_ms": 2011.1
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 1903.1,
+              "total_ms": 1923.4
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 1960.0,
+              "total_ms": 2007.6
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 1949.5,
+              "total_ms": 1974.0
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 1987.5,
+              "total_ms": 2007.6
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 2068.8,
+              "total_ms": 2089.0
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 1903.6,
+              "total_ms": 1963.8
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 2014.1,
+              "total_ms": 2017.2
+            }
+          ],
+          "warm_median_ms": 1960.0,
+          "warm_max_ms": 2068.8
+        },
+        "product": {
+          "samples": [
+            {
+              "status": 200,
+              "ttfb_ms": 1916.3,
+              "total_ms": 1917.9
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 1955.7,
+              "total_ms": 1957.4
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 2934.1,
+              "total_ms": 2935.3
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 2150.7,
+              "total_ms": 2152.1
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 2072.4,
+              "total_ms": 2073.8
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 1980.3,
+              "total_ms": 1982.0
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 1914.2,
+              "total_ms": 1924.2
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 1869.2,
+              "total_ms": 1979.1
+            }
+          ],
+          "warm_median_ms": 1980.3,
+          "warm_max_ms": 2934.1
+        },
+        "customer_landing": {
+          "samples": [
+            {
+              "status": 200,
+              "ttfb_ms": 2346.8,
+              "total_ms": 2404.5
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 2341.7,
+              "total_ms": 2411.3
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 2177.4,
+              "total_ms": 2212.6
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 2204.3,
+              "total_ms": 2270.8
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 2317.5,
+              "total_ms": 2319.7
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 2318.0,
+              "total_ms": 2330.9
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 2116.6,
+              "total_ms": 2158.5
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 2284.8,
+              "total_ms": 2287.8
+            }
+          ],
+          "warm_median_ms": 2284.8,
+          "warm_max_ms": 2341.7
+        },
+        "customer_login_post": {
+          "samples": [
+            {
+              "status": 302,
+              "ttfb_ms": 1418.9
+            },
+            {
+              "status": 302,
+              "ttfb_ms": 1366.1
+            },
+            {
+              "status": 302,
+              "ttfb_ms": 1344.6
+            },
+            {
+              "status": 302,
+              "ttfb_ms": 1487.4
+            },
+            {
+              "status": 302,
+              "ttfb_ms": 1342.7
+            },
+            {
+              "status": 302,
+              "ttfb_ms": 1389.9
+            },
+            {
+              "status": 302,
+              "ttfb_ms": 1374.4
+            },
+            {
+              "status": 302,
+              "ttfb_ms": 1377.7
+            }
+          ],
+          "warm_median_ms": 1374.4,
+          "warm_max_ms": 1487.4
+        },
+        "admin_landing": {
+          "samples": [
+            {
+              "status": 200,
+              "ttfb_ms": 1820.6,
+              "total_ms": 1822.3
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 1642.2,
+              "total_ms": 1704.9
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 1636.9,
+              "total_ms": 1662.8
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 1628.5,
+              "total_ms": 1660.8
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 1750.4,
+              "total_ms": 1752.3
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 1713.1,
+              "total_ms": 1718.8
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 1580.0,
+              "total_ms": 1603.4
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 1714.9,
+              "total_ms": 1798.6
+            }
+          ],
+          "warm_median_ms": 1642.2,
+          "warm_max_ms": 1750.4
+        },
+        "admin_login_post": {
+          "samples": [
+            {
+              "status": 302,
+              "ttfb_ms": 1363.1
+            },
+            {
+              "status": 302,
+              "ttfb_ms": 1363.9
+            },
+            {
+              "status": 302,
+              "ttfb_ms": 1340.7
+            },
+            {
+              "status": 302,
+              "ttfb_ms": 1427.6
+            },
+            {
+              "status": 302,
+              "ttfb_ms": 1359.7
+            },
+            {
+              "status": 302,
+              "ttfb_ms": 1409.9
+            },
+            {
+              "status": 302,
+              "ttfb_ms": 1858.2
+            },
+            {
+              "status": 302,
+              "ttfb_ms": 1342.3
+            }
+          ],
+          "warm_median_ms": 1363.9,
+          "warm_max_ms": 1858.2
+        }
+      }
+    },
+    "after": {
+      "at": "2026-10-21T13:59:29.632781+00:00",
+      "base": "https://vibecart-llmai.web.app",
+      "method": "sequential Requests Session; response-header TTFB; 1 first + 7 warm samples; no redirects for login POST",
+      "routes": {
+        "health": {
+          "samples": [
+            {
+              "status": 200,
+              "ttfb_ms": 119.9,
+              "total_ms": 121.3
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 137.1,
+              "total_ms": 138.3
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 125.9,
+              "total_ms": 127.1
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 127.1,
+              "total_ms": 128.2
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 126.7,
+              "total_ms": 128.0
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 150.7,
+              "total_ms": 151.9
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 145.8,
+              "total_ms": 147.0
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 131.5,
+              "total_ms": 132.5
+            }
+          ],
+          "warm_median_ms": 131.5,
+          "warm_max_ms": 150.7
+        },
+        "login_page": {
+          "samples": [
+            {
+              "status": 200,
+              "ttfb_ms": 128.4,
+              "total_ms": 129.6
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 171.8,
+              "total_ms": 173.2
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 136.9,
+              "total_ms": 138.3
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 174.9,
+              "total_ms": 176.2
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 142.3,
+              "total_ms": 143.6
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 143.3,
+              "total_ms": 144.7
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 155.2,
+              "total_ms": 156.7
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 130.6,
+              "total_ms": 131.9
+            }
+          ],
+          "warm_median_ms": 143.3,
+          "warm_max_ms": 174.9
+        },
+        "home": {
+          "samples": [
+            {
+              "status": 200,
+              "ttfb_ms": 1138.7,
+              "total_ms": 1187.3
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 698.2,
+              "total_ms": 725.6
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 721.3,
+              "total_ms": 747.1
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 693.9,
+              "total_ms": 716.5
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 818.6,
+              "total_ms": 830.0
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 734.7,
+              "total_ms": 737.0
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 690.9,
+              "total_ms": 713.7
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 714.6,
+              "total_ms": 761.8
+            }
+          ],
+          "warm_median_ms": 714.6,
+          "warm_max_ms": 818.6
+        },
+        "filter": {
+          "samples": [
+            {
+              "status": 200,
+              "ttfb_ms": 778.8,
+              "total_ms": 925.8
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 701.7,
+              "total_ms": 766.0
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 774.6,
+              "total_ms": 794.5
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 699.2,
+              "total_ms": 722.1
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 853.1,
+              "total_ms": 871.8
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 690.4,
+              "total_ms": 708.3
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 701.2,
+              "total_ms": 762.2
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 821.7,
+              "total_ms": 824.1
+            }
+          ],
+          "warm_median_ms": 701.7,
+          "warm_max_ms": 853.1
+        },
+        "product": {
+          "samples": [
+            {
+              "status": 200,
+              "ttfb_ms": 786.7,
+              "total_ms": 788.1
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 615.3,
+              "total_ms": 616.5
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 612.0,
+              "total_ms": 613.4
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 626.5,
+              "total_ms": 629.7
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 578.5,
+              "total_ms": 584.6
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 587.1,
+              "total_ms": 591.8
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 596.7,
+              "total_ms": 643.3
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 579.7,
+              "total_ms": 583.7
+            }
+          ],
+          "warm_median_ms": 596.7,
+          "warm_max_ms": 626.5
+        },
+        "customer_landing": {
+          "samples": [
+            {
+              "status": 200,
+              "ttfb_ms": 1450.3,
+              "total_ms": 1566.1
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 1059.6,
+              "total_ms": 1110.7
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 982.7,
+              "total_ms": 1002.3
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 1057.9,
+              "total_ms": 1107.5
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 1016.9,
+              "total_ms": 1018.9
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 1122.4,
+              "total_ms": 1184.7
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 1065.7,
+              "total_ms": 1081.4
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 996.3,
+              "total_ms": 1067.7
+            }
+          ],
+          "warm_median_ms": 1057.9,
+          "warm_max_ms": 1122.4
+        },
+        "customer_login_post": {
+          "samples": [
+            {
+              "status": 302,
+              "ttfb_ms": 595.5
+            },
+            {
+              "status": 302,
+              "ttfb_ms": 589.2
+            },
+            {
+              "status": 302,
+              "ttfb_ms": 583.3
+            },
+            {
+              "status": 302,
+              "ttfb_ms": 548.3
+            },
+            {
+              "status": 302,
+              "ttfb_ms": 551.5
+            },
+            {
+              "status": 302,
+              "ttfb_ms": 639.1
+            },
+            {
+              "status": 302,
+              "ttfb_ms": 557.9
+            },
+            {
+              "status": 302,
+              "ttfb_ms": 726.3
+            }
+          ],
+          "warm_median_ms": 583.3,
+          "warm_max_ms": 726.3
+        },
+        "admin_landing": {
+          "samples": [
+            {
+              "status": 200,
+              "ttfb_ms": 858.1,
+              "total_ms": 931.1
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 754.2,
+              "total_ms": 778.5
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 661.6,
+              "total_ms": 682.7
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 662.5,
+              "total_ms": 682.5
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 657.6,
+              "total_ms": 674.0
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 664.3,
+              "total_ms": 686.7
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 849.0,
+              "total_ms": 865.4
+            },
+            {
+              "status": 200,
+              "ttfb_ms": 658.5,
+              "total_ms": 675.8
+            }
+          ],
+          "warm_median_ms": 662.5,
+          "warm_max_ms": 849.0
+        },
+        "admin_login_post": {
+          "samples": [
+            {
+              "status": 302,
+              "ttfb_ms": 551.6
+            },
+            {
+              "status": 302,
+              "ttfb_ms": 644.6
+            },
+            {
+              "status": 302,
+              "ttfb_ms": 564.6
+            },
+            {
+              "status": 302,
+              "ttfb_ms": 562.0
+            },
+            {
+              "status": 302,
+              "ttfb_ms": 548.6
+            },
+            {
+              "status": 302,
+              "ttfb_ms": 551.5
+            },
+            {
+              "status": 302,
+              "ttfb_ms": 567.6
+            },
+            {
+              "status": 302,
+              "ttfb_ms": 579.5
+            }
+          ],
+          "warm_median_ms": 564.6,
+          "warm_max_ms": 644.6
+        }
+      }
+    },
+    "comparison": [
+      {
+        "route": "health",
+        "before_ms": 123.5,
+        "after_ms": 131.5,
+        "reduction_percent": -6.5
+      },
+      {
+        "route": "login_page",
+        "before_ms": 138.1,
+        "after_ms": 143.3,
+        "reduction_percent": -3.8
+      },
+      {
+        "route": "home",
+        "before_ms": 1961.0,
+        "after_ms": 714.6,
+        "reduction_percent": 63.6
+      },
+      {
+        "route": "filter",
+        "before_ms": 1960.0,
+        "after_ms": 701.7,
+        "reduction_percent": 64.2
+      },
+      {
+        "route": "product",
+        "before_ms": 1980.3,
+        "after_ms": 596.7,
+        "reduction_percent": 69.9
+      },
+      {
+        "route": "customer_landing",
+        "before_ms": 2284.8,
+        "after_ms": 1057.9,
+        "reduction_percent": 53.7
+      },
+      {
+        "route": "customer_login_post",
+        "before_ms": 1374.4,
+        "after_ms": 583.3,
+        "reduction_percent": 57.6
+      },
+      {
+        "route": "admin_landing",
+        "before_ms": 1642.2,
+        "after_ms": 662.5,
+        "reduction_percent": 59.7
+      },
+      {
+        "route": "admin_login_post",
+        "before_ms": 1363.9,
+        "after_ms": 564.6,
+        "reduction_percent": 58.6
+      }
+    ],
+    "pool_isolation": {
+      "status": "passed",
+      "at": "2026-10-21T13:53:22.434804+00:00",
+      "method": "same Cloud Run job, Atlas, ping and projected product read; 8 samples each; exclude first for warm median",
+      "samples_ms": {
+        "new_client_each_query": [
+          4910.3,
+          943.8,
+          932.7,
+          877.5,
+          895.5,
+          912.1,
+          911.4,
+          944.7
+        ],
+        "reuse_client_same_query": [
+          806.8,
+          145.9,
+          147,
+          145.5,
+          145.5,
+          145.3,
+          145.7,
+          148
+        ]
+      },
+      "warm_median_ms": {
+        "new_client_each_query": 912.1,
+        "reuse_client_same_query": 145.7
+      }
+    },
+    "limits": "Same workstation, sequential response-header samples. First sample retained; last seven median. Not a cold-start test, load test or p95 SLO. Authentication POST excludes redirected landing. Point-in-time user behavior may differ."
+  },
+  "candidate_functional": {
+    "status": "passed",
+    "schema_status": "passed",
+    "checked_at": "2026-10-21T13:58:51.217976+00:00",
+    "checks": [
+      "customer login",
+      "customer landing",
+      "customer duplicate login",
+      "customer mismatched replay denied",
+      "detail and bounded category browsing",
+      "SKU internal code hidden",
+      "stock controls present",
+      "cart available",
+      "admin denied to customer",
+      "customer GET logout denied",
+      "customer wrong csrf denied",
+      "customer one-step logout",
+      "customer old session denied",
+      "admin login",
+      "admin landing",
+      "admin duplicate login",
+      "admin mismatched replay denied",
+      "admin /admin/products",
+      "admin /admin/orders",
+      "admin /admin/members",
+      "admin /admin/recommendations",
+      "admin GET logout denied",
+      "admin wrong csrf denied",
+      "admin one-step logout",
+      "admin old session denied",
+      "active schema"
+    ],
+    "schema": "v4-customer-session-audit-20261021",
+    "collections": 30,
+    "indexes": 96,
+    "relationships": [
+      {
+        "source": "products",
+        "field": "major_category_id",
+        "target": "categories",
+        "orphans": 0
+      },
+      {
+        "source": "products",
+        "field": "minor_category_id",
+        "target": "categories",
+        "orphans": 0
+      },
+      {
+        "source": "product_skus",
+        "field": "product_id",
+        "target": "products",
+        "orphans": 0
+      },
+      {
+        "source": "carts",
+        "field": "user_id",
+        "target": "users",
+        "orphans": 0
+      },
+      {
+        "source": "orders",
+        "field": "user_id",
+        "target": "users",
+        "orphans": 0
+      },
+      {
+        "source": "order_items",
+        "field": "order_id",
+        "target": "orders",
+        "orphans": 0
+      },
+      {
+        "source": "order_items",
+        "field": "user_id",
+        "target": "users",
+        "orphans": 0
+      },
+      {
+        "source": "order_items",
+        "field": "product_id",
+        "target": "products",
+        "orphans": 0
+      },
+      {
+        "source": "order_items",
+        "field": "sku_id",
+        "target": "product_skus",
+        "orphans": 0
+      },
+      {
+        "source": "product_reviews",
+        "field": "user_id",
+        "target": "users",
+        "orphans": 0
+      },
+      {
+        "source": "product_reviews",
+        "field": "order_item_id",
+        "target": "order_items",
+        "orphans": 0
+      },
+      {
+        "source": "product_reviews",
+        "field": "product_id",
+        "target": "products",
+        "orphans": 0
+      }
+    ]
+  },
+  "public_browser": {
+    "host": "https://vibecart-llmai.web.app",
+    "checks": [
+      {
+        "at": "2026-10-21T14:00:53.296Z",
+        "check": "正式商城與空推薦收起",
+        "result": "passed",
+        "detail": "337 件含 1 件本輪受控商品；搜尋／分類表單、整張商品卡可用，無空推薦標題"
+      },
+      {
+        "at": "2026-10-21T14:01:05.055Z",
+        "check": "缺貨與商品頁",
+        "result": "passed",
+        "detail": "真實既有缺貨商品庫存 0；規格／數量／加減／加入購物車均停用，顯示補貨中及 4 件同分類商品"
+      },
+      {
+        "at": "2026-10-21T14:01:29.226Z",
+        "check": "大類篩選",
+        "result": "passed",
+        "detail": "乳品與蛋品顯示 43 件、2 頁；小類選單縮為 3 項"
+      },
+      {
+        "at": "2026-10-21T14:01:55.028Z",
+        "check": "商品卡、同分類與列表返回",
+        "result": "passed",
+        "detail": "整張卡可進商品頁；單一規格自動選取、價格庫存一致，返回保留乳品與蛋品第 2 頁"
+      },
+      {
+        "at": "2026-10-21T14:02:02.462Z",
+        "check": "正式會員登入",
+        "result": "passed",
+        "detail": "受控會員登入後顯示會員名稱、購物車與登出"
+      },
+      {
+        "at": "2026-10-21T14:02:27.397Z",
+        "check": "搜尋與推薦呈現",
+        "result": "passed",
+        "detail": "搜尋受控商品得到 1 件；有個人行為時顯示 6 件個人推薦，保留預設星等標示與同款商品卡"
+      },
+      {
+        "at": "2026-10-21T14:04:46.524Z",
+        "check": "數量上限與規格自動選取",
+        "result": "passed",
+        "detail": "唯一可售規格自動選取；從9件連按增加兩次仍為10件，符合現有庫存上限。"
+      },
+      {
+        "at": "2026-10-21T14:04:57.331Z",
+        "check": "購物車更新",
+        "result": "passed",
+        "detail": "圖片、商品名、規格、單價及小計均顯示；增加為2件並更新，小計及摘要均為NT$290。"
+      },
+      {
+        "at": "2026-10-21T14:05:04.595Z",
+        "check": "空購物車",
+        "result": "passed",
+        "detail": "移除受控商品後顯示空購物車與繼續購物按鈕。"
+      },
+      {
+        "at": "2026-10-21T14:05:19.842Z",
+        "check": "示範結帳",
+        "result": "passed",
+        "detail": "僅本次受控商品1件；畫面確認示範訂單已建立且未串接付款。"
+      },
+      {
+        "at": "2026-10-21T14:05:29.079Z",
+        "check": "前台一次登出",
+        "result": "passed",
+        "detail": "點擊一次即顯示您已安全登出與登入入口，沒有確認對話框。"
+      },
+      {
+        "at": "2026-10-21T14:05:32.574Z",
+        "check": "前台登出後保護",
+        "result": "passed",
+        "detail": "登出後開啟購物車，轉至登入頁並提示請先登入。"
+      },
+      {
+        "at": "2026-10-21T14:05:38.950Z",
+        "check": "過期表單恢復",
+        "result": "passed",
+        "detail": "跨分頁保留舊登入表單，登出後送出顯示表單已失效與回首頁／重新登入入口。"
+      },
+      {
+        "at": "2026-10-21T14:05:49.244Z",
+        "check": "後台登入與營運總覽",
+        "result": "passed",
+        "detail": "管理員身份可進入營運決策中心；資料庫已連線，最新受控示範訂單NT$145可見；其paid為既有示範流程狀態，未實際收款。"
+      },
+      {
+        "at": "2026-10-21T14:05:53.344Z",
+        "check": "後台訂單列表",
+        "result": "passed",
+        "detail": "最新示範訂單金額NT$145，狀態已確認／已付款／待處理且明確標示示範；列表維持唯讀。"
+      },
+      {
+        "at": "2026-10-21T14:05:58.753Z",
+        "check": "後台商品列表",
+        "result": "passed",
+        "detail": "管理員可讀取商品管理、篩選與價格庫存表，維持唯讀權限邊界。"
+      },
+      {
+        "at": "2026-10-21T14:06:03.491Z",
+        "check": "後台一次登出",
+        "result": "passed",
+        "detail": "由後台商品頁點一次登出，即回商城並顯示安全登出，無確認對話框。"
+      },
+      {
+        "at": "2026-10-21T14:06:06.752Z",
+        "check": "後台登出後保護",
+        "result": "passed",
+        "detail": "重新開啟/admin/轉至登入頁，提示請先登入。"
+      }
+    ],
+    "screenshots": [
+      {
+        "file": "01-catalog.jpg",
+        "mime_type": "image/jpeg",
+        "bytes": 65743,
+        "width": 1265,
+        "height": 711,
+        "sha256": "0cf921894b0ca318e756c36f42567c7e35706b3d0d987aceb4aca01324ab8ab9",
+        "captured_at_utc": "2026-10-21T14:00:53.296515+00:00",
+        "processing": "Original browser bytes, no image editing."
+      },
+      {
+        "file": "02-sold-out.jpg",
+        "mime_type": "image/jpeg",
+        "bytes": 57660,
+        "width": 1265,
+        "height": 711,
+        "sha256": "82b10d40816753ff0badfa8ef7976b9d107f44455c1a915c5cbfac22048a2997",
+        "captured_at_utc": "2026-10-21T14:01:05.055157+00:00",
+        "processing": "Original browser bytes, no image editing."
+      },
+      {
+        "file": "03-category.jpg",
+        "mime_type": "image/jpeg",
+        "bytes": 64144,
+        "width": 1265,
+        "height": 711,
+        "sha256": "afb6b5f9d385e1d9958b4fce89b307d10aed3489c1729cb37b388de1e78f921f",
+        "captured_at_utc": "2026-10-21T14:01:29.225585+00:00",
+        "processing": "Original browser bytes, no image editing."
+      },
+      {
+        "file": "04-product.jpg",
+        "mime_type": "image/jpeg",
+        "bytes": 61684,
+        "width": 1265,
+        "height": 711,
+        "sha256": "ff68b7ad941c7bf6afb10d09e63640ae143493ba91f4be730fd455d4a4e64b82",
+        "captured_at_utc": "2026-10-21T14:01:53.643651+00:00",
+        "processing": "Original browser bytes, no image editing."
+      },
+      {
+        "file": "05-cart.jpg",
+        "mime_type": "image/jpeg",
+        "bytes": 41898,
+        "width": 1265,
+        "height": 711,
+        "sha256": "1f6c422be92d8dffe6a8475cf285ad4f86cbe92609e66b0ddfbd16df1c4fc93c",
+        "captured_at_utc": "2026-10-21T14:04:57.387707+00:00",
+        "processing": "Original browser bytes, no image editing."
+      },
+      {
+        "file": "06-checkout.jpg",
+        "mime_type": "image/jpeg",
+        "bytes": 56130,
+        "width": 1265,
+        "height": 711,
+        "sha256": "deb4b027eb0be64da319c820ddc7b7326c74c44facf218ce1f33649f77219a1b",
+        "captured_at_utc": "2026-10-21T14:05:19.896841+00:00",
+        "processing": "Original browser bytes, no image editing."
+      },
+      {
+        "file": "07-customer-logout.jpg",
+        "mime_type": "image/jpeg",
+        "bytes": 46011,
+        "width": 1265,
+        "height": 711,
+        "sha256": "1171e0ea4bc70ac9c44265e57cc5ff83bdff45cf690b50b1ea263377d877266d",
+        "captured_at_utc": "2026-10-21T14:05:29.133691+00:00",
+        "processing": "Original browser bytes, no image editing."
+      },
+      {
+        "file": "08-expired-form.jpg",
+        "mime_type": "image/jpeg",
+        "bytes": 32503,
+        "width": 1265,
+        "height": 711,
+        "sha256": "2ed786e985d932649914b4a6de0b04f6d42441d3033963c51f36d06d5349928b",
+        "captured_at_utc": "2026-10-21T14:05:39.004401+00:00",
+        "processing": "Original browser bytes, no image editing."
+      },
+      {
+        "file": "09-admin.jpg",
+        "mime_type": "image/jpeg",
+        "bytes": 82063,
+        "width": 1265,
+        "height": 711,
+        "sha256": "2cb6d335e540dbdd1a79cc6d19233942773cd2cb6450a7a1b9647ca48337d26b",
+        "captured_at_utc": "2026-10-21T14:05:49.296062+00:00",
+        "processing": "Original browser bytes, no image editing."
+      },
+      {
+        "file": "10-admin-logout.jpg",
+        "mime_type": "image/jpeg",
+        "bytes": 46011,
+        "width": 1265,
+        "height": 711,
+        "sha256": "1171e0ea4bc70ac9c44265e57cc5ff83bdff45cf690b50b1ea263377d877266d",
+        "captured_at_utc": "2026-10-21T14:06:00.984731+00:00",
+        "processing": "Original browser bytes, no image editing."
+      }
+    ]
+  },
+  "fixture_cleanup": {
+    "status": "passed",
+    "at": "2026-10-21T14:06:45.430706+00:00",
+    "action": "exact-owned-fixture-cleanup",
+    "deleted": {
+      "behavior_events": 7,
+      "recommendation_logs": 1,
+      "auth_sessions": 34,
+      "carts": 1,
+      "cart_events": 5,
+      "order_items": 1,
+      "orders": 1,
+      "product_skus": 1,
+      "products": 1,
+      "users": 2
+    },
+    "remaining": {
+      "behavior_events": 0,
+      "recommendation_logs": 0,
+      "auth_sessions": 0,
+      "carts": 0,
+      "cart_events": 0,
+      "order_items": 0,
+      "orders": 0,
+      "product_skus": 0,
+      "products": 0,
+      "users": 0
+    },
+    "schema": "v4-customer-session-audit-20261021",
+    "collections": 30,
+    "indexes": 96,
+    "migrations": 8,
+    "migration_checksums_unchanged": true,
+    "relationships": [
+      {
+        "source": "products",
+        "field": "major_category_id",
+        "target": "categories",
+        "orphans": 0
+      },
+      {
+        "source": "products",
+        "field": "minor_category_id",
+        "target": "categories",
+        "orphans": 0
+      },
+      {
+        "source": "product_skus",
+        "field": "product_id",
+        "target": "products",
+        "orphans": 0
+      },
+      {
+        "source": "carts",
+        "field": "user_id",
+        "target": "users",
+        "orphans": 0
+      },
+      {
+        "source": "orders",
+        "field": "user_id",
+        "target": "users",
+        "orphans": 0
+      },
+      {
+        "source": "order_items",
+        "field": "order_id",
+        "target": "orders",
+        "orphans": 0
+      },
+      {
+        "source": "order_items",
+        "field": "user_id",
+        "target": "users",
+        "orphans": 0
+      },
+      {
+        "source": "order_items",
+        "field": "product_id",
+        "target": "products",
+        "orphans": 0
+      },
+      {
+        "source": "order_items",
+        "field": "sku_id",
+        "target": "product_skus",
+        "orphans": 0
+      },
+      {
+        "source": "product_reviews",
+        "field": "user_id",
+        "target": "users",
+        "orphans": 0
+      },
+      {
+        "source": "product_reviews",
+        "field": "order_item_id",
+        "target": "order_items",
+        "orphans": 0
+      },
+      {
+        "source": "product_reviews",
+        "field": "product_id",
+        "target": "products",
+        "orphans": 0
+      }
+    ]
+  },
+  "independent_atlas_readback": {
+    "status": "passed",
+    "action": "independent-read-only-post-cleanup",
+    "checked_at": "2026-10-21T14:07:41.091957+00:00",
+    "remaining": {
+      "orders": 0,
+      "order_items": 0,
+      "carts": 0,
+      "cart_events": 0,
+      "behavior_events": 0,
+      "recommendation_logs": 0,
+      "auth_sessions": 0,
+      "users": 0,
+      "products": 0,
+      "product_skus": 0
+    },
+    "schema": "v4-customer-session-audit-20261021",
+    "collections": 30,
+    "indexes": 96,
+    "migrations": 8,
+    "relationships": [
+      {
+        "source": "products",
+        "field": "major_category_id",
+        "target": "categories",
+        "orphans": 0
+      },
+      {
+        "source": "products",
+        "field": "minor_category_id",
+        "target": "categories",
+        "orphans": 0
+      },
+      {
+        "source": "product_skus",
+        "field": "product_id",
+        "target": "products",
+        "orphans": 0
+      },
+      {
+        "source": "carts",
+        "field": "user_id",
+        "target": "users",
+        "orphans": 0
+      },
+      {
+        "source": "orders",
+        "field": "user_id",
+        "target": "users",
+        "orphans": 0
+      },
+      {
+        "source": "order_items",
+        "field": "order_id",
+        "target": "orders",
+        "orphans": 0
+      },
+      {
+        "source": "order_items",
+        "field": "user_id",
+        "target": "users",
+        "orphans": 0
+      },
+      {
+        "source": "order_items",
+        "field": "product_id",
+        "target": "products",
+        "orphans": 0
+      },
+      {
+        "source": "order_items",
+        "field": "sku_id",
+        "target": "product_skus",
+        "orphans": 0
+      },
+      {
+        "source": "product_reviews",
+        "field": "user_id",
+        "target": "users",
+        "orphans": 0
+      },
+      {
+        "source": "product_reviews",
+        "field": "order_item_id",
+        "target": "order_items",
+        "orphans": 0
+      },
+      {
+        "source": "product_reviews",
+        "field": "product_id",
+        "target": "products",
+        "orphans": 0
+      }
+    ],
+    "migration_preflight": {
+      "migration": "20261021_08_customer_session_audit_v4",
+      "status": "preflight-passed",
+      "existing": 2,
+      "written": false
+    },
+    "audit_records_retained": 0,
+    "receipts_retained": 0,
+    "catalog_counts": {
+      "products": 336,
+      "skus": 336
+    }
+  },
+  "temporary_jobs_cleanup": {
+    "status": "passed",
+    "checked_at": "2026-10-21T14:08:11.002Z",
+    "jobs": [
+      {
+        "job": "vibecart-perf-1021-fixture",
+        "delete_confirmed_http": 404
+      },
+      {
+        "job": "vibecart-perf-1021-pool-profile",
+        "delete_confirmed_http": 404
+      },
+      {
+        "job": "vibecart-perf-1021-candidate",
+        "delete_confirmed_http": 404
+      },
+      {
+        "job": "vibecart-perf-1021-cleanup",
+        "delete_confirmed_http": 404
+      },
+      {
+        "job": "vibecart-perf-1021-readback",
+        "delete_confirmed_http": 404
+      }
+    ]
+  },
+  "presentation": {
+    "path": "簡報文件/超市AI版_2026-10-18/VibeCart_AI_超市網購與AI系統_2026-10-18_v5.pptx",
+    "pr": 165,
+    "bytes": 3262322,
+    "sha256": "4aa9b13286fe98574d3dd648889545ad196d92cea9aebb9a143c794ad392d193",
+    "slides": 14,
+    "zip_crc": "passed",
+    "slide_xml": "passed",
+    "content_edited": false,
+    "source_and_remote_exact_commit_hash_verified": true
+  },
+  "acceptance_scope": {
+    "codex_desktop_browser": true,
+    "named_owner_signoff": false,
+    "physical_phone_or_second_machine": false,
+    "v5_completed_gates": 3,
+    "v5_total_gates": 14
+  },
+  "credentials_in_evidence": false
+}
