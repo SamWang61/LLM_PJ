@@ -1,0 +1,112 @@
+{
+  "profile": "v5-14-20261022",
+  "page_count": 14,
+  "source_pptx": "簡報文件/超市AI版_2026-10-18/VibeCart_AI_超市網購與AI系統_2026-10-18_v5.pptx",
+  "source_pptx_sha256": "4aa9b13286fe98574d3dd648889545ad196d92cea9aebb9a143c794ad392d193",
+  "pdf": "簡報文件/超市AI版_2026-10-22_閱讀與備援/VibeCart_AI_14頁閱讀版_2026-10-22.pdf",
+  "source_pdf_sha256": "79e4883a70fc38df2cd94cdb0b74685228b1763481753a55584945c4779186f5",
+  "exporter": "Microsoft PowerPoint 16.0 COM SaveAs ppSaveAsPDF",
+  "renderer": "pypdfium2; 1600 px width; original aspect ratio",
+  "generated_at_utc": "2026-10-21T16:39:54.768002+00:00",
+  "scope": "Faithful rendering of the user-supplied 14-slide master; not a new website acceptance.",
+  "files": [
+    {
+      "file": "page-01.png",
+      "bytes": 570429,
+      "sha256": "5902728f85047b4200ae12c667fbe8f7d3bd7349a55c09853d91d5ec3048375c",
+      "width": 1600,
+      "height": 900
+    },
+    {
+      "file": "page-02.png",
+      "bytes": 309527,
+      "sha256": "1d23d6b38cfd085a968d708541a371c24442e8f83d976647a0dbc01587645dd5",
+      "width": 1600,
+      "height": 900
+    },
+    {
+      "file": "page-03.png",
+      "bytes": 132286,
+      "sha256": "7b9dbeac729570044be641628dddc0c9f5ab79b0a1cef96d995e226079774ccb",
+      "width": 1600,
+      "height": 900
+    },
+    {
+      "file": "page-04.png",
+      "bytes": 166823,
+      "sha256": "d34d1df094efdab83cdad5973a8964da7ecd6596a24bcf2ba74f5e93bbd3d7bc",
+      "width": 1600,
+      "height": 900
+    },
+    {
+      "file": "page-05.png",
+      "bytes": 304409,
+      "sha256": "25c49282e99453eb29be5ddcbaaf6fe8b734798fd16da5d8917761b565bd3b09",
+      "width": 1600,
+      "height": 900
+    },
+    {
+      "file": "page-06.png",
+      "bytes": 172688,
+      "sha256": "be0ec2577c294d9ceba4d9bdcf75e93eeee8ef7fc5307ef1e7123dc030671a66",
+      "width": 1600,
+      "height": 900
+    },
+    {
+      "file": "page-07.png",
+      "bytes": 147787,
+      "sha256": "f350cfd707942668003a5bc9c33a841b698a694511f83961ba44d5003155db51",
+      "width": 1600,
+      "height": 900
+    },
+    {
+      "file": "page-08.png",
+      "bytes": 130936,
+      "sha256": "b62a98642493faa5513a39de7079b1508e2406d428c78b3f0041c6b915f2717c",
+      "width": 1600,
+      "height": 900
+    },
+    {
+      "file": "page-09.png",
+      "bytes": 141147,
+      "sha256": "607359a79f13a79823f5fa910ac08c426351fcac45327bd6ffafe69f1a099d35",
+      "width": 1600,
+      "height": 900
+    },
+    {
+      "file": "page-10.png",
+      "bytes": 136543,
+      "sha256": "2edda66f4dfef1cd7fc27a073166dbb06b05cefa6642022f35fff1c6c2cf38ca",
+      "width": 1600,
+      "height": 900
+    },
+    {
+      "file": "page-11.png",
+      "bytes": 257386,
+      "sha256": "2c725ebaf7be8f112ba8cb700d60c482eee3493bd3d90b0d975f35db833bf4d1",
+      "width": 1600,
+      "height": 900
+    },
+    {
+      "file": "page-12.png",
+      "bytes": 200036,
+      "sha256": "19d31edbce482e8af5b6dbeb9fe5f7cf1ceb41c8e27433c5bc0c3459ce5a4a93",
+      "width": 1600,
+      "height": 900
+    },
+    {
+      "file": "page-13.png",
+      "bytes": 200983,
+      "sha256": "1e6e937930490626440ae68b42d6696c838b2b89fae739fff7f419088fa13543",
+      "width": 1600,
+      "height": 900
+    },
+    {
+      "file": "page-14.png",
+      "bytes": 590214,
+      "sha256": "e240bab4a0293d2f013243d22bbb00163a752d34716b26f7a4d611aadf28497d",
+      "width": 1600,
+      "height": 900
+    }
+  ]
+}

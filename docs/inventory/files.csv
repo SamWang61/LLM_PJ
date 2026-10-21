@@ -234,13 +234,13 @@ deploy/firebase/public/404.html,158,source / 原始碼,8705e739c71babb2113fbe878
 docs/AI_DASHBOARD.md,38390,document / 文件,17d31b951b85875528ba69e3e940ca6b4633665a1b4256a70bcd6f99c21812f4,text read / 文字讀取 (272 lines)
 docs/BACKUP.md,7000,document / 文件,29699a933e71a49e4a3def778519e70fc634a41344e9963b035eb9ef8f7f6ddd,text read / 文字讀取 (61 lines)
 docs/CONVERSATION_CLOSEOUT_AUDIT_2026-10-20.md,4217,document / 文件,42f0ff708f4805312d33d3be530de233f51ad0820ccb53736498d43cfba920c0,text read / 文字讀取 (23 lines)
-docs/CURRENT_CONTEXT.md,4395,document / 文件,1d133bd0747b70af728eede37ced2d216a1897e1fbb318c6094962e0d0aa7938,text read / 文字讀取 (32 lines)
+docs/CURRENT_CONTEXT.md,4569,document / 文件,92340ebcf6987bdc63744334d702c402175f3b278c892932f99e7690c29793cb,text read / 文字讀取 (32 lines)
 docs/CURRENT_CONTEXT_HISTORY_2026-10-18_0515.md,25618,document / 文件,0289e6b581a4a468969840f7abfe0cf5329e79d703023d63f8cc239104babb8d,text read / 文字讀取 (135 lines)
 docs/CURRENT_CONTEXT_HISTORY_2026-10-22.md,43538,document / 文件,648b5f164adc66517d832225e197a56f81c35cddf34e6c38ccb432b64cfadb1e,text read / 文字讀取 (174 lines)
 docs/D4_DEPLOYED_CONSUMER_INVENTORY_2026-10-17.md,5967,document / 文件,005686b58ef75153d182f546b6ac9eb3a8bd5dc899a141aa047803e210e5cb4b,text read / 文字讀取 (29 lines)
 docs/D4_IMPORT_ACCEPTANCE_2026-10-18.md,4113,document / 文件,df1280a013485fe2577b558b64706edfe3e23d26df8880ede8bcb4228d91e824,text read / 文字讀取 (33 lines)
 docs/D4_REMOTE_GATE_2026-10-17.md,7100,document / 文件,99b4636d75f9935283be11dfc949fa323a178c992965b2a258db9b959554a52c,text read / 文字讀取 (40 lines)
-docs/DOCUMENT_INDEX.md,19864,document / 文件,267ef780c33b0da6cc4d602069a802a6aa1b44bfb27c8a19b528f42a5d7aed7c,text read / 文字讀取 (128 lines)
+docs/DOCUMENT_INDEX.md,20095,document / 文件,cf1c90df7d1dfc8386eea448e92dcb1d083a2328b7962f618b8ddea3ea4300c8,text read / 文字讀取 (130 lines)
 docs/DOCUMENT_SYNC_2026-10-17.md,2436,document / 文件,937c1d93f252b15efbb0731d70fabe56c571f2195630ac5b1f72631b62b9bec0,text read / 文字讀取 (44 lines)
 docs/FLASK_SKU_AI_INTEGRATION.md,9922,document / 文件,417d20f5903701927e7494b110c1c7bc3780c393cbba957fb49a530f7e9e73ce,text read / 文字讀取 (135 lines)
 docs/FRONTEND_PERFORMANCE_2026-10-21.md,11663,document / 文件,8de4ec0944afee91b9d68fe3a15eda4650054652aa6350d4690c3709e0aab14b,text read / 文字讀取 (85 lines)
@@ -308,6 +308,7 @@ docs/SAM_DATABASE_TESTS_2026-10-02.json,2532,document / 文件,a46bfbccaaef8cd28
 docs/SAM_DATA_CONTRACT_2026-10-07.md,5627,document / 文件,3d3a1d89c11cbf7bcf00bad52600d35c635060c5b80174e81ef190d070c85d03,text read / 文字讀取 (41 lines)
 docs/SAM_DELIVERY_2026-10-07.md,5469,document / 文件,5bd1241be32239c6bc526bab3f88390fe7af552cae2794119e0c555ed1285d13,text read / 文字讀取 (77 lines)
 docs/SAM_DELIVERY_2026-10-12.md,8866,document / 文件,7a71cdd12ffdcfb3982dd64e8fb991220012f95e6b41393e9aa7c091c8df4923,text read / 文字讀取 (55 lines)
+docs/SAM_DELIVERY_VERSION_2026-10-22.md,4398,document / 文件,534428654e8fd0f016256b5d0a4d0ccd6a25e58582291152733b36a7df266d28,text read / 文字讀取 (26 lines)
 docs/SAM_FAVICON_2026-10-22.md,5198,document / 文件,4d815d2fe3690490acf70e3373abae756cac87a5ab7ce96600c42222a61f5be4,text read / 文字讀取 (39 lines)
 docs/SAM_FIVE_N06_2026-10-20.md,3816,document / 文件,5222ff10d1464676aad11d0d3e09d9d7ef09d07b3093392be0bcab1e2759f9af,text read / 文字讀取 (28 lines)
 docs/SAM_FIVE_N11_2026-10-20.md,7871,document / 文件,c77bb71441111a6eb64886b858ad93eed55ddeae8df0b61514307fd358034df9,text read / 文字讀取 (49 lines)
@@ -328,6 +329,7 @@ docs/SAM_N06_N13_N14_ACCEPTANCE_2026-10-19.md,8662,document / 文件,ae93d4ee127
 docs/SAM_N06_READBACK_2026-10-18.md,5024,document / 文件,81dde6ae2edcb3a8166a6432c3ad42964b3a6145b7350e4685f0557ee0c9f19c,text read / 文字讀取 (44 lines)
 docs/SAM_N14_CURRENT_ATLAS_2026-10-18.md,6489,document / 文件,9e6a455c14ce24461d195f6d1ff318337cac5fc337bb691033071dae44aa6af5,text read / 文字讀取 (34 lines)
 docs/SAM_N14_ENCRYPTED_RESTORE_2026-10-18.md,11743,document / 文件,5fb3830e4b4d3657d41e68cc22965d18cbaa69d6b17991965f7dfee975f0db06,text read / 文字讀取 (85 lines)
+docs/SAM_OFFLINE_14_SLIDES_2026-10-22.md,5075,document / 文件,eae6431c3431398883757dcb1313a5c15872955a05c813186ba85bb72e23eaf4,text read / 文字讀取 (39 lines)
 docs/SAM_ONLINE_FOLLOWUP_2026-10-19.md,8342,document / 文件,220de533b0f3fed92463b22c41f5442b377141f2a1e1c4e2b6905325b2414392,text read / 文字讀取 (39 lines)
 docs/SAM_OUTSTANDING_2026-10-11.md,10116,document / 文件,5888f5d40e068343380aa8c614046a9d30222991de8253708e8fd5dcb52d9aa7,text read / 文字讀取 (62 lines)
 docs/SAM_PR21_ACCEPTANCE_2026-10-16.md,8728,document / 文件,23b4260551265076f2b0e6a2fb80498f25a32bbeb61521930e87f825f05dc7e1,text read / 文字讀取 (45 lines)
@@ -343,7 +345,7 @@ docs/SAM_PROGRESS_CHECKPOINT_2026-10-18.md,8351,document / 文件,e0ce39e6b8b66b
 docs/SAM_PROXY_INDEPENDENT_READBACK_2026-10-20.md,5125,document / 文件,0fdf246c1c2b5f12d3efbbbc478480353572d3205f0830d64cd809eb87c98023,text read / 文字讀取 (31 lines)
 docs/SAM_PUBLICATION_2026-10-07.md,2939,document / 文件,dc9f1408d09d2db86d1f916cbc115e16dfc3cf016e99120f135f38038b6379c5,text read / 文字讀取 (41 lines)
 docs/SAM_PUSH_VALIDATION_2026-10-18.md,4345,document / 文件,8118a0dad5179a9911d03c1483b32fbccb857a37203da969332a373634e5a8c9,text read / 文字讀取 (29 lines)
-docs/SAM_READINESS_FOLLOWUP_2026-10-22.md,4636,document / 文件,6cb829178148e464d81c11dbad9a787eb67c5a0b757f1d98bbc5f966e13b2f0d,text read / 文字讀取 (26 lines)
+docs/SAM_READINESS_FOLLOWUP_2026-10-22.md,5014,document / 文件,a7848e039ee2c981fecc04624d3718c0adb686ff3542a72af0222292fb7aff3c,text read / 文字讀取 (28 lines)
 docs/SAM_RELEASE_2026-10-18.md,7640,document / 文件,4304e027f0eafe5140d4f804133610ffd792cc7736aa8a57865602c783158436,text read / 文字讀取 (36 lines)
 docs/SAM_REMOTE_TRANSACTION_2026-10-18.md,2972,document / 文件,d6c45001bc3f6d646879791369ff4db478ee4c5e10877e2361a40d28556d4015,text read / 文字讀取 (18 lines)
 docs/SAM_REMOTE_TRANSACTION_ACCEPTANCE_2026-10-17.md,9311,document / 文件,a4c9b801b06a0b98ee5bc1e546bd82f30cd5136d7a12941e3b0201b4b2f64ad4,text read / 文字讀取 (48 lines)
@@ -476,9 +478,9 @@ scripts/test_remote_reviews_acceptance_probe.py,4401,source / 原始碼,bb20d30e
 scripts/test_source_snapshot_delta.py,4276,source / 原始碼,a8f67db5499a39171d759496563d06ca7aa3a00bf938509ad6b6be593e94cacd,text read / 文字讀取 (85 lines)
 scripts/test_srj_local_simulation.py,2901,source / 原始碼,572ac198920106b1f3c0e8309d822f6e4ac8217bd291a998f4ac863f68cc391d,text read / 文字讀取 (60 lines)
 scripts/test_transaction_harness_startup.py,2276,source / 原始碼,f12c8f4d132c6735d4e9761f82068ca1b81feec2d94b6e6cdba96a6b66616af2,text read / 文字讀取 (53 lines)
-scripts/test_v5_offline_bundle.py,4510,source / 原始碼,91625ae0dfb1d6863eee89dade8193036544a0a42ea1863979dc97b955805aad,text read / 文字讀取 (111 lines)
+scripts/test_v5_offline_bundle.py,7840,source / 原始碼,10fb8701f43aa37046074b0ea3af7c09622f7884345e4050ab55f473ef9c508e,text read / 文字讀取 (173 lines)
 scripts/test_verify_offdevice_recovery.py,1681,source / 原始碼,c88dd5eeb9062e774bf70fc7c5209b471e04f52a2e7d50ca49c49cffd9b534f6,text read / 文字讀取 (43 lines)
-scripts/v5_offline_bundle.py,14914,source / 原始碼,d7b70c7d7beb8a3f725d1fc594fadba57e2436934f79444558ef7abc23f0f86e,text read / 文字讀取 (258 lines)
+scripts/v5_offline_bundle.py,20193,source / 原始碼,7549e8f0b88737304e96df70f5074262302f25b463ee6d372fea31c9c6897afb,text read / 文字讀取 (328 lines)
 scripts/verify_offdevice_recovery.py,8133,source / 原始碼,3acd112a6f8401c8c655c88cfe6f0e4044610fc1a0e138b658f193069d06b646,text read / 文字讀取 (172 lines)
 scripts/verify_preview.cjs,1982,document / 文件,753453095ffd6c1a5e5cf6f121659350b9c0d2d33d4935edd0045770965ec1a5,binary hashed / 二進位雜湊
 scripts/verify_root_docker_build.py,7079,source / 原始碼,05b6295e7debd0180ff518b5a79af8f80843ed2bccf170dce7bcfddca3860cca,text read / 文字讀取 (135 lines)
@@ -505,7 +507,7 @@ scripts/verify_v4_test.py,9669,source / 原始碼,a4f29b2f393ce353614f0ea1fa859f
 專題進度/SAM代理操作簽收與組員獨立重做_2026-10-20.md,8780,document / 文件,508b8b701fc2181e415ff6eb0f19511dbcf6fb8ffc6c91c66fc0b0420f372d73,text read / 文字讀取 (51 lines)
 專題進度/SAM模擬執行明細_2026-10-20.md,8318,document / 文件,cb28046fd24f36993f833f1bab0fbc436756ce3607c9bc14de8d29300463b101,text read / 文字讀取 (40 lines)
 專題進度/專案工作清單_2026-10-17.md,23765,document / 文件,05e5959358c87622769bd02b21ab1a8a0e2d618f04e9d481fce373e4846b848c,text read / 文字讀取 (109 lines)
-專題進度/專案未完成工作清單_2026-10-18.md,40680,document / 文件,c7aea31bde3c9de81c11a69c40aa07d536faad5b2c1a4396defbfa82fd52ecd4,text read / 文字讀取 (171 lines)
+專題進度/專案未完成工作清單_2026-10-18.md,41002,document / 文件,cda184efea27533be4fa243e5aaf28adc4a68168602b4fc22be1757a078a6931,text read / 文字讀取 (175 lines)
 專題進度/專案未完成工作清單_2026-10-18_0515歷史.md,19185,document / 文件,095529ee5b8bd00299bebf1a0b78fe28a22a68cbd85891e0c394429a11890624,text read / 文字讀取 (99 lines)
 專題進度/專案進度核對_2026-10-15.md,12512,document / 文件,30be0fb00ad29882ce4bdce063e735bccc46cd4fda7fc2209befd7fdc3c8f401,text read / 文字讀取 (72 lines)
 專題進度/待結案12項_執行順序與分工_2026-10-20.md,17368,document / 文件,444f689fe72784e39bc37d1ed8d83d74ee9b08332111c0e8f36cced9f3229245,text read / 文字讀取 (55 lines)
@@ -626,7 +628,7 @@ scripts/verify_v4_test.py,9669,source / 原始碼,a4f29b2f393ce353614f0ea1fa859f
 簡報文件/超市AI版_2026-10-18/2026-10-20_SAM模擬_N18版本鎖定候選.md,5442,document / 文件,ae1c7ebe4cff93b750e9b383a10b8c3627cfc97459d06685788b32fec355d182,text read / 文字讀取 (31 lines)
 簡報文件/超市AI版_2026-10-18/2026-10-20_SAM模擬_展示內容更新卡.md,4835,document / 文件,e2c250d518921380e91fede010b9e01766de0c0f45928212d8773b81da0e51d4,text read / 文字讀取 (26 lines)
 簡報文件/超市AI版_2026-10-18/2026-10-20_SAM模擬_簡報內容增刪與版本導覽.md,6135,document / 文件,8ea0d4d6d025636e868a3db42223823f3ef5bb46ab301c89d2b814daebcdcf42,text read / 文字讀取 (36 lines)
-簡報文件/超市AI版_2026-10-18/README.md,3254,document / 文件,4e3b3820e48ba4dba07169c821ed14f00b76f8cc1ecdf3a2105ef670eb02c1a3,text read / 文字讀取 (37 lines)
+簡報文件/超市AI版_2026-10-18/README.md,3689,document / 文件,c49b8c77cbe0d0a7237a1abba51c2c26a1a65ebc61e3064bbcf972aafe82f5b9,text read / 文字讀取 (39 lines)
 簡報文件/超市AI版_2026-10-18/REN_S03-S05補充講稿_2026-10-18.md,2888,document / 文件,9318715d96ec004ea4c0df9e226667f90f46d4c126eca4f678fde7d4396dfe14,text read / 文字讀取 (23 lines)
 簡報文件/超市AI版_2026-10-18/SHA256.json,4116,document / 文件,57c26d3c7178560abecb649d7d9c3592621d868983fbd6339bf9a3b2fa1380c8,text read / 文字讀取 (122 lines)
 簡報文件/超市AI版_2026-10-18/VibeCart_AI_超市網購與AI系統_2026-10-18_v3.pdf,794645,Drive artifact / 雲端大型附件,61ea74a6a4fe6fadde866b9854ed5aa39e8d82d9ba56926879fd60916b4bbaac,binary hashed / 二進位雜湊
@@ -658,8 +660,26 @@ scripts/verify_v4_test.py,9669,source / 原始碼,a4f29b2f393ce353614f0ea1fa859f
 簡報文件/超市AI版_2026-10-18/預覽/slide-11.png,170417,document / 文件,7f59e790c49165ac602afedd2eda1ed264f808dedb244dd63f528f0711717e92,binary hashed / 二進位雜湊
 簡報文件/超市AI版_2026-10-18/預覽/slide-12.png,93742,document / 文件,01f6850425d5dea5e646ab96f07563c12a7980d4ae05f5108a468cb7bb472e2d,binary hashed / 二進位雜湊
 簡報文件/超市AI版_2026-10-18/預覽/slide-13.png,529017,document / 文件,638553d9c20446f7f5073a8f22018a7af7bd20587a9e8f4aea9379f9e65ed2cc,binary hashed / 二進位雜湊
+簡報文件/超市AI版_2026-10-22_閱讀與備援/README.md,3787,document / 文件,383057348402908120a46c4d3523995ab293e5f6706573c6381bcd816ae95a7b,text read / 文字讀取 (35 lines)
+簡報文件/超市AI版_2026-10-22_閱讀與備援/VibeCart_AI_14頁閱讀版_2026-10-22.pdf,933269,Drive artifact / 雲端大型附件,79e4883a70fc38df2cd94cdb0b74685228b1763481753a55584945c4779186f5,binary hashed / 二進位雜湊
+簡報文件/超市AI版_2026-10-22_閱讀與備援/展示內容更新卡.md,2845,document / 文件,377f13a8e742eb7a7458c996073971ef7bca1d6065630d2f26496cfbbbe3c96c,text read / 文字讀取 (20 lines)
+簡報文件/超市AI版_2026-10-22_閱讀與備援/投影片/page-01.png,570429,document / 文件,5902728f85047b4200ae12c667fbe8f7d3bd7349a55c09853d91d5ec3048375c,binary hashed / 二進位雜湊
+簡報文件/超市AI版_2026-10-22_閱讀與備援/投影片/page-02.png,309527,document / 文件,1d23d6b38cfd085a968d708541a371c24442e8f83d976647a0dbc01587645dd5,binary hashed / 二進位雜湊
+簡報文件/超市AI版_2026-10-22_閱讀與備援/投影片/page-03.png,132286,document / 文件,7b9dbeac729570044be641628dddc0c9f5ab79b0a1cef96d995e226079774ccb,binary hashed / 二進位雜湊
+簡報文件/超市AI版_2026-10-22_閱讀與備援/投影片/page-04.png,166823,document / 文件,d34d1df094efdab83cdad5973a8964da7ecd6596a24bcf2ba74f5e93bbd3d7bc,binary hashed / 二進位雜湊
+簡報文件/超市AI版_2026-10-22_閱讀與備援/投影片/page-05.png,304409,document / 文件,25c49282e99453eb29be5ddcbaaf6fe8b734798fd16da5d8917761b565bd3b09,binary hashed / 二進位雜湊
+簡報文件/超市AI版_2026-10-22_閱讀與備援/投影片/page-06.png,172688,document / 文件,be0ec2577c294d9ceba4d9bdcf75e93eeee8ef7fc5307ef1e7123dc030671a66,binary hashed / 二進位雜湊
+簡報文件/超市AI版_2026-10-22_閱讀與備援/投影片/page-07.png,147787,document / 文件,f350cfd707942668003a5bc9c33a841b698a694511f83961ba44d5003155db51,binary hashed / 二進位雜湊
+簡報文件/超市AI版_2026-10-22_閱讀與備援/投影片/page-08.png,130936,document / 文件,b62a98642493faa5513a39de7079b1508e2406d428c78b3f0041c6b915f2717c,binary hashed / 二進位雜湊
+簡報文件/超市AI版_2026-10-22_閱讀與備援/投影片/page-09.png,141147,document / 文件,607359a79f13a79823f5fa910ac08c426351fcac45327bd6ffafe69f1a099d35,binary hashed / 二進位雜湊
+簡報文件/超市AI版_2026-10-22_閱讀與備援/投影片/page-10.png,136543,document / 文件,2edda66f4dfef1cd7fc27a073166dbb06b05cefa6642022f35fff1c6c2cf38ca,binary hashed / 二進位雜湊
+簡報文件/超市AI版_2026-10-22_閱讀與備援/投影片/page-11.png,257386,document / 文件,2c725ebaf7be8f112ba8cb700d60c482eee3493bd3d90b0d975f35db833bf4d1,binary hashed / 二進位雜湊
+簡報文件/超市AI版_2026-10-22_閱讀與備援/投影片/page-12.png,200036,document / 文件,19d31edbce482e8af5b6dbeb9fe5f7cf1ceb41c8e27433c5bc0c3459ce5a4a93,binary hashed / 二進位雜湊
+簡報文件/超市AI版_2026-10-22_閱讀與備援/投影片/page-13.png,200983,document / 文件,1e6e937930490626440ae68b42d6696c838b2b89fae739fff7f419088fa13543,binary hashed / 二進位雜湊
+簡報文件/超市AI版_2026-10-22_閱讀與備援/投影片/page-14.png,590214,document / 文件,e240bab4a0293d2f013243d22bbb00163a752d34716b26f7a4d611aadf28497d,binary hashed / 二進位雜湊
+簡報文件/超市AI版_2026-10-22_閱讀與備援/投影片/pages.json,3421,document / 文件,acdab8517e84dbeee96be0c0361dd8ac67cd2a9d2b4bd1b9ab613c4038e47174,text read / 文字讀取 (112 lines)
 簡報文件/離線備援/.gitignore,12,document / 文件,9d8053953b76927d7622cf53eb1f509a24d2719f96ef076feff0039792929252,text read / 文字讀取 (1 lines)
-簡報文件/離線備援/README.md,4443,document / 文件,e4d28c574af57856e4506697f5a836bce370dd61be06821eeeca0557738ec1e0,text read / 文字讀取 (48 lines)
+簡報文件/離線備援/README.md,4814,document / 文件,00f74051d2315cfccf7797293bca72708cccc62c4d709aef3bc8b3d3ef518b6a,text read / 文字讀取 (50 lines)
 簡報文件/離線備援/SAM模擬_N17_復原與排練_2026-10-20.md,4053,document / 文件,355b69ca7c8a663443ea6881e81f9a094c73d2afd6ec0ec0a7d7017c0433fe75,text read / 文字讀取 (30 lines)
 簡報文件/離線備援/投影片/page-01.png,153331,document / 文件,b718a6d2aa8d7a51226281ae77e74cccf6d8d78dc82081bbdf8ddd696502d44c,binary hashed / 二進位雜湊
 簡報文件/離線備援/投影片/page-02.png,83808,document / 文件,94c4daed1e58fd42b5a1c824be68be7e85fca8b9b5c9faa9e77c2d755b775b7d,binary hashed / 二進位雜湊

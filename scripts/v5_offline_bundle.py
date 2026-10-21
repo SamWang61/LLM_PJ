@@ -22,6 +22,10 @@ PDF_SHA256 = 'c5555c2a54d8a4200fd79fb8073d0fa5af691b40b13a4e031ddf9f8f6dc4535d'
 INDEX = '簡報文件/screenshots/S01-S12_取證索引_2026-10-18.json'
 RUNBOOK = '簡報文件/離線備援/README.md'
 PAGES = '簡報文件/離線備援/投影片/'
+CURRENT_PROFILE = 'v5-14-20261022'
+CURRENT_FOLDER = '簡報文件/超市AI版_2026-10-22_閱讀與備援/'
+CURRENT_PPTX_SHA256 = '4aa9b13286fe98574d3dd648889545ad196d92cea9aebb9a143c794ad392d193'
+CURRENT_PDF_SHA256 = '79e4883a70fc38df2cd94cdb0b74685228b1763481753a55584945c4779186f5'
 MAX_BYTES = 50 * 1024 * 1024
 MAX_FILES = 43
 NOTES = {
@@ -123,6 +127,7 @@ nav{display:flex;gap:24px;flex-wrap:wrap}article{border-top:1px solid #abc;paddi
 
 
 def source_files(root, commit):
+    """Historical 13-slide contract; requires a matching historical commit."""
     pptx = committed_bytes(root, commit, DECK + '.pptx')
     if sha256(pptx) != PPTX_SHA256:
         raise ValueError('Manual V5 PPTX changed; review a new explicit version contract')
@@ -168,6 +173,69 @@ def source_files(root, commit):
     links = ' '.join(f'<a href="#page-{i}">{i}</a>' for i in range(1, 14))
     slides = ''.join(f'<section id="page-{i}"><h2>第 {i} 頁</h2><img src="slides/page-{i:02d}.png" alt="V5 第 {i} 頁"></section>' for i in range(1, 14))
     files['slides.html'] = ('''<!doctype html><html lang="zh-Hant"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>V5 13頁圖片閱讀版</title><style>body{margin:20px;background:#f7f6ee;color:#153a37;font:18px/1.5 system-ui,sans-serif}nav{position:sticky;top:0;background:#f7f6ee;padding:12px}a{color:#006b50;margin-right:12px}img{width:100%;height:auto}section{max-width:1280px;margin:auto}a:focus-visible{outline:3px solid #a45e00}</style><h1>V5 13頁圖片閱讀版</h1><p>由原 PDF 逐頁渲染；不需 PDF 外掛，沒有即時網站操作。</p><nav><a href="index.html">回索引</a>''' + links + '</nav>' + slides + '</html>\n').encode('utf-8')
+    return files
+
+
+def current_source_files(root, commit):
+    """Reviewed 14-slide master and native PDF, with no application secrets."""
+    pptx = committed_bytes(root, commit, DECK + '.pptx')
+    if sha256(pptx) != CURRENT_PPTX_SHA256:
+        raise ValueError('Current PPTX changed; review a new explicit version contract')
+    with zipfile.ZipFile(io.BytesIO(pptx)) as deck:
+        slides = [n for n in deck.namelist() if re.fullmatch(r'ppt/slides/slide[0-9]+\.xml', n)]
+        if len(slides) != 14 or deck.testzip():
+            raise ValueError('Current 14-slide integrity failed')
+    pdf_path = CURRENT_FOLDER + 'VibeCart_AI_14頁閱讀版_2026-10-22.pdf'
+    pdf = committed_bytes(root, commit, pdf_path)
+    if not pdf.startswith(b'%PDF-') or sha256(pdf) != CURRENT_PDF_SHA256:
+        raise ValueError('Reviewed current PDF payload changed')
+    page_index_path = CURRENT_FOLDER + '投影片/pages.json'
+    page_index = committed_bytes(root, commit, page_index_path)
+    pages = json.loads(page_index)
+    names = [f'page-{i:02d}.png' for i in range(1, 15)]
+    if (pages.get('profile') != CURRENT_PROFILE or pages.get('page_count') != 14
+            or pages.get('source_pptx_sha256') != CURRENT_PPTX_SHA256
+            or pages.get('source_pdf_sha256') != CURRENT_PDF_SHA256
+            or [r['file'] for r in pages['files']] != names):
+        raise ValueError('Current rendered page contract mismatch')
+    sources = {
+        DECK + '.pptx': 'presentation.pptx', pdf_path: 'presentation.pdf',
+        page_index_path: 'slides/pages.json', CURRENT_FOLDER + 'README.md': 'README.md',
+        'docs/CURRENT_CONTEXT.md': 'updates/current-context.md',
+        CURRENT_FOLDER + '展示內容更新卡.md': 'updates/current-scope.md',
+    }
+    files = {'presentation.pptx': pptx, 'presentation.pdf': pdf, 'slides/pages.json': page_index}
+    for source, target in sources.items():
+        if source.endswith('.md'):
+            files[target] = note_links(committed_bytes(root, commit, source), source, target, sources, commit)
+    for row in pages['files']:
+        data = committed_bytes(root, commit, CURRENT_FOLDER + '投影片/' + row['file'])
+        if (not data.startswith(b'\x89PNG\r\n\x1a\n') or sha256(data) != row['sha256']
+                or len(data) != row['bytes']):
+            raise ValueError('Current rendered page integrity failed')
+        files['slides/' + row['file']] = data
+    style = ('<style>body{font:18px/1.6 system-ui,sans-serif;max-width:1600px;margin:24px auto;'
+             'padding:0 20px;background:#f7f6ee;color:#153a37}a{color:#006b50;margin-right:18px}'
+             'a:focus-visible{outline:3px solid #a45e00}img{width:100%;height:auto}'
+             'nav{position:sticky;top:0;background:#f7f6ee;padding:12px}code{overflow-wrap:anywhere}</style>')
+    start = ('<!doctype html><html lang="zh-Hant"><meta charset="utf-8">'
+             '<meta name="viewport" content="width=device-width,initial-scale=1">'
+             '<link rel="icon" href="data:,">')
+    files['index.html'] = (start + '<title>VibeCart 14頁離線備援</title>' + style
+        + '<h1>VibeCart 14頁離線備援 / Offline presentation</h1>'
+          '<p>本包只提供使用者指定原稿的14頁閱讀版。請先讀展示內容更新卡，再講解歷史畫面；沒有網站、帳號或資料庫功能。</p>'
+          '<p>原稿第12、13頁內容相同，頁尾同標12，均原樣保留。頁數以實際順序1至14為準。</p>'
+          '<nav><a href="slides.html">14頁圖片閱讀版</a><a href="presentation.pdf">PDF</a>'
+          '<a href="presentation.pptx">原始PowerPoint</a><a href="README.md">備援流程</a>'
+          '<a href="updates/current-scope.md">展示內容更新卡</a><a href="updates/current-context.md">專案上下文</a>'
+          '<a href="manifest.json">雜湊清冊</a></nav><p>來源提交：<code>' + html.escape(commit)
+          + '</code></p><p>Static recorded material only; no live application or acceptance claim.</p></html>\n').encode('utf-8')
+    nav = ''.join(f'<a href="#page-{i}">{i}</a>' for i in range(1, 15))
+    slides_html = ''.join(f'<section id="page-{i}"><h2>第{i}頁</h2><img src="slides/page-{i:02d}.png" '
+                          f'alt="原稿第{i}頁" loading="lazy"></section>' for i in range(1, 15))
+    files['slides.html'] = (start + '<title>VibeCart 14頁圖片閱讀版</title>' + style
+        + '<h1>VibeCart 14頁圖片閱讀版</h1><p>原稿的畫面與日期保留；現況先讀展示內容更新卡。</p>'
+          '<nav><a href="index.html">回索引</a>' + nav + '</nav>' + slides_html + '</html>\n').encode('utf-8')
     return files
 
 
@@ -237,11 +305,13 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     sub = parser.add_subparsers(dest='mode', required=True)
     build = sub.add_parser('build');build.add_argument('--commit', required=True);build.add_argument('--output', type=Path, required=True)
+    build.add_argument('--profile', choices=(CURRENT_PROFILE, 'legacy-13'), default=CURRENT_PROFILE,
+                       help='Current reviewed 14-slide deck by default; legacy requires a historical matching commit')
     check = sub.add_parser('restore');check.add_argument('--archive', type=Path, required=True);check.add_argument('--destination', type=Path, required=True)
     args = parser.parse_args()
     if args.mode == 'build':
         commit = git(ROOT, 'rev-parse', '--verify', args.commit + '^{commit}').decode().strip()
-        files = source_files(ROOT, commit)
+        files = (source_files if args.profile == 'legacy-13' else current_source_files)(ROOT, commit)
         content, manifest = pack(files, commit)
         verified_payload(content)
         args.output.parent.mkdir(parents=True, exist_ok=True)
