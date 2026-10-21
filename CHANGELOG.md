@@ -47,6 +47,11 @@
 
 
 
+## 2026-10-21 — JEFF 6＋4 合併同一商品的不同包裝 / Pack variants in 6+4
+
+- 前台 6＋4 不再同時推薦同一商品的單入與箱購：以正規化名稱比對，保留排名最高的一項並由下一個商品遞補；以目錄檔試算合併 7 組，皆為正確配對。Single and case packs of one product appear once.
+- 新增 11 項離線測試。See [dashboard handoff](docs/AI_DASHBOARD.md).
+
 ## 2026-10-18 — JEFF 示範結帳計入個人推薦 / Demo checkouts shape personal recommendations (B2)
 
 - 新增 personalization 範圍：個人推薦只排除 synthetic 批次，真實會員的示範結帳會影響自己的推薦；推薦監控與歸因仍排除示範結帳。Attribution scope unchanged.
