@@ -5,6 +5,7 @@
 
 - 正式站：<https://vibecart-llmai.web.app>
 - 比對版本：GitHub main `c66f731`；正式部署來源 `fc4e7c0`（相關前台檔案兩者 Git blob 相同）
+- 審查補充（2026-10-21）：本文保留上述版本的使用回報與初步診斷。最新部署／修正狀態以 [優化系統](優化系統.md) 及 [CURRENT_CONTEXT](CURRENT_CONTEXT.md) 為準；回報中的 P0／P1 是原回報者的排程建議，不代表本輪已重現的缺陷等級。
 - 截圖：本站畫面存於 [evidence/jeff-frontend-issues-20261021](evidence/jeff-frontend-issues-20261021/)。參考網站 <https://www.notorious-2019.com/> 的畫面屬第三方著作，**不收進 repo**，以文字描述其做法，請直接開網站對照。
 
 ## 摘要與建議優先順序
@@ -49,7 +50,7 @@
 **建議**：
 - 送出後立即停用按鈕（前端 JS），避免重複送出。
 - `session.clear()` 之後重新產生 `csrf_token`。
-- 登入／登出遇到 CSRF 失敗時，若使用者狀態已是目標狀態（已登入／已登出），直接導向首頁，不顯示 400。
+- 登入／登出若要容忍重複提交，必須確認是同一次有效操作；登入還須確認此次憑證仍對應已登入身分。缺少、猜測或不相符的 token，以及改用另一角色憑證的舊表單，仍應拒絕，不能只依「目前已登入」略過檢查。
 - 400 頁改用網站版型，提供「回首頁／重新登入」按鈕，不要只有純文字。
 
 ## F11｜整站回應慢（P0）／F04｜標籤篩選慢（P0）
@@ -89,7 +90,7 @@
 ![F02](evidence/jeff-frontend-issues-20261021/F02-recommend-empty.png)
 
 **現象**：兩區都顯示「目前符合條件的商品不足，暫無推薦。」，在首頁最上方佔大片空間。
-**背景**：依規格，6+4 只採用實際評價 ≥ 4.5 的商品；正式資料目前沒有符合的商品，所以為空，屬於規則結果而非程式錯誤。
+**背景**：回報當時此會員的冷啟動推薦沒有符合條件的候選。現行 6+4 的冷啟動探索及破圈候選要求實際評價 ≥ 4.5；有個人行為時，個人區塊也可能納入符合偏好但尚無評價的商品，不能把星等門檻套用到所有推薦。空白是否合理須依當次會員行為、可售候選及各區規則核對，本文不宣稱目前正式資料的即時合格數量。
 **建議**（擇一，需 SAM／JEFF 共同決定，牽涉推薦規格）：
 - 無資料時**整區隱藏**；或
 - 退回顯示「熱門商品／新品」並清楚標示「熱門推薦」而非「猜你喜歡」（不可假裝是個人化結果，也不灌假星等）。
@@ -153,4 +154,4 @@
 - F02（推薦空白時的呈現）與 F09（相關商品）牽涉推薦規則，改動前請與 JEFF 確認；JEFF 可提供 BGE 相似商品或熱門退回的資料接口。
 - 其餘為前台、效能與流程，由 SAM 判斷處理順序與是否列入下一階段。
 
-English summary: JEFF reports twelve storefront issues found while using production as a member. Two P0 items share a root cause: every request creates and pings a new MongoClient and reloads the full catalog (about 1.8 s of the 2.1 s TTFB), and the resulting slowness makes users double-submit login/logout forms, whose second POST fails CSRF after `session.clear()` even though the first succeeded. Remaining items are UX and layout recommendations with reference-site descriptions; third-party screenshots are intentionally not committed.
+English summary: Historical storefront observations refer to c66f731 / fc4e7c0. Per-request MongoClient creation and full-catalog reads are code-backed performance suspects; the timing table alone does not prove their individual contribution. Duplicate-login handling must still verify the submitted identity. The actual-rating threshold applies to cold-start exploration and cross-category candidates, not every personalized result. Current delivery evidence is tracked in the optimization document; original screenshots and priorities remain historical.
