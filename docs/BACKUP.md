@@ -1,5 +1,13 @@
 # 每日備份 / Daily backup
 
+## 2026-10-22 最新決定與權限修復進度 / Current decision
+
+SAM已明確同意專用Desktop OAuth與Drive管理授權，並選定**一般檔案同步；機密以密文存於原固定目錄**，金鑰與OAuth憑證放在專案外，不上傳。此決定取代下方9月「方案尚待選擇」；不是本次加密或備份驗收完成。
+
+已建立OAuth品牌／桌面用戶端、啟用官方Drive API、完成40項本機測試及DPAPI憑證保存；Google未驗證應用程式警告仍需SAM本人完成，refresh token尚未取得。Testing模式的7日期限、完整ACL、真正撤銷／恢復、加密封裝及雲端一致性仍待實測；0專案複製、0既有共用變更。詳細[本輪處理紀錄與操作順序](log/SAM_DRIVE_BACKUP_2026-10-22.md)優先於下方歷史段落。每日23:30提示已更新，不再重問已決定的機密方案。
+
+English: A dedicated OAuth client and Drive API are prepared. Owner consent, durable authorization, target ACL transitions and cloud consistency are not yet verified. The approved policy is normal-file synchronization plus encrypted secrets in the same fixed destination; keys remain outside the project.
+
 <!-- SAM REMOTE ROLE RESULT 20261020 BEGIN -->
 **2026/10/20 REN復原子項接受方式**：依[SAM本輪決定](SAM_ACCEPTANCE_DECISIONS_2026-10-20.md)，接受完整同機模擬通過；本輪[USB來源／資料庫還原對帳](inventory/SAM_PROXY_N14_RESTORE_2026-10-20.json)已通過，實際環境與機器不同與否照實保留。此決定未補齊每日固定Drive可逆ACL／排程，亦未清除自動核准審查拒絕刪除的私有明文；詳[執行與待辦](SAM_ROLE_PROXY_REMOTE_EXECUTION_2026-10-20.md)。
 <!-- SAM REMOTE ROLE RESULT 20261020 END -->

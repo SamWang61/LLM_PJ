@@ -1,0 +1,61 @@
+{
+  "schema": 1,
+  "checked_at": "2026-10-22T07:10:42+08:00",
+  "baseline": "72ae3c8e5f6f0b125fbee257b8a9a105667483a1",
+  "fixed_project_id": "1rQrO8v6bl3_y_B0BwpZXhlHFHS8swQc5",
+  "folder_id": "1lXZv3hn3CgYmotpxgcna8i27wEodL8Gh",
+  "connector": {
+    "project": {
+      "owner": 1,
+      "writer": 2,
+      "can_share": true
+    },
+    "folder": {
+      "owner": 1,
+      "anyone_reader": 1,
+      "allow_file_discovery": false,
+      "can_share": true
+    },
+    "permission_ids_available": false,
+    "inheritance_details_available": false,
+    "revoke_tool_available": false
+  },
+  "cloud_setup": {
+    "project": "vibecart-llmai",
+    "oauth_brand_created": true,
+    "desktop_client_created": true,
+    "drive_api_state": "ENABLED",
+    "drive_api_readback_http": 200,
+    "test_users": 1,
+    "scope": "https://www.googleapis.com/auth/drive",
+    "publishing_status": "Testing",
+    "owner_consent_completed": false,
+    "refresh_token_saved": false
+  },
+  "secret_policy": {
+    "user_approved": true,
+    "mode": "normal_files_plus_encrypted_secrets_in_fixed_destination",
+    "keys_uploaded": false,
+    "client_storage": "Windows DPAPI outside source root",
+    "oauth_token_storage": "Windows DPAPI outside source root"
+  },
+  "validation": {
+    "local_tests_passed": 40,
+    "live_empty_probe_performed": false,
+    "full_target_acl_inventory_completed": false
+  },
+  "backup": {
+    "project_files_copied": 0,
+    "existing_sharing_mutations": 0,
+    "cloud_consistency_verified": false,
+    "complete": false
+  },
+  "pending": [
+    "owner_google_warning_handoff",
+    "durable_oauth_publishing_and_token_lifetime",
+    "live_empty_acl_probe",
+    "complete_target_acl_and_relationship",
+    "encrypted_full_source_plan_and_restore",
+    "cloud_manifest_size_hash_stability_and_acl_restore"
+  ]
+}

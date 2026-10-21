@@ -25,7 +25,7 @@ def main():
         if p.suffix.lower() == '.pdf':
             attr = subprocess.check_output(['git', 'check-attr', 'filter', '--', rel.as_posix()], cwd=ROOT)
             lfs_pdf = attr.decode('utf-8', errors='replace').rstrip().endswith(': lfs')
-        if (p.suffix.lower() in {'.pem', '.key', '.p12', '.mp4', '.zip'}
+        if (name.startswith('client_secret') or p.suffix.lower() in {'.pem', '.key', '.p12', '.dpapi', '.mp4', '.zip'}
                 or (p.suffix.lower() == '.pdf' and not lfs_pdf)
                 or (p.stat().st_size >= 100 * 1024 * 1024 and not lfs_pdf)):
             errors.append(f'{rel}: private or externally managed artifact')
