@@ -181,10 +181,8 @@ def register():
     return render_template("auth/register.html")
 
 
-@bp.route("/logout", methods=["GET", "POST"])
+@bp.post("/logout")
 def logout():
-    if request.method == "GET":
-        return render_template("auth/logout.html")
     user = current_member()
     if user and current_app.config["DATA_MODE"] == "v4":
         revoke_device_session(get_db(), user["_id"], session.get("member_session"))
