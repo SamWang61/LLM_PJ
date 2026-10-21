@@ -1,5 +1,7 @@
 # 文件中心 / Documentation hub
 
+**2026/10/21 前台效能正式交付**：[登入與頁面量測、12 項改善、449 項測試、正式部署及 18 組操作](FRONTEND_PERFORMANCE_2026-10-21.md)／[優化系統](優化系統.md)／[原圖及去敏清冊](inventory/frontend_performance_20261021/release-evidence.json)。v5 簡報原樣經 PR #165 合併；本人簽收另列。
+
 **2026/10/21 七個 PR 正式交付**：[優化系統](優化系統.md)記錄四項 P2、撤銷稽核、文件補正、446 項測試、依序合併與正式站前後台驗證；[去敏證據與原圖](inventory/jeff_production_20261021/release-evidence.json)。
 
 **2026/10/21 REN正式發布**：[候選、正式功能與清理證據](REN_PRODUCTION_ACCEPTANCE_2026-10-21.md)／[REN今日清單](../專題進度/REN_今日工作清單_2026-10-21.md)。
