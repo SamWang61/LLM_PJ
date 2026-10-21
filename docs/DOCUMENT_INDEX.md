@@ -1,5 +1,8 @@
 # 全部文件索引 / Document catalog
 
+- [10/21 #152 前台速度、購物操作、正式部署與 v5 簡報推送](FRONTEND_PERFORMANCE_2026-10-21.md)
+- [本輪 449 項測試、18 組正式操作、量測樣本及 10 張原圖 hash](inventory/frontend_performance_20261021/release-evidence.json)
+
 - [10/21 四項 P2、七個 PR 依序合併、正式部署與前後台驗證](優化系統.md)
 - [本輪去敏清冊、完整分頁日誌、Atlas 清理及 11 張原圖 hash](inventory/jeff_production_20261021/release-evidence.json)
 

@@ -1,5 +1,11 @@
 # 變更紀錄 / Changelog
 
+## 2026-10-21 — #152 前台效能與操作 / Storefront performance and UX
+
+- PR #166 合併 `8741400`，工作程序重用 MongoClient、商品頁有界查詢、購物車批次讀取；會員登入 POST／首頁／商品頁暖機中位數從 1.374／1.961／1.980 秒降至 0.583／0.715／0.597 秒。權限、庫存及評價仍即時讀取。
+- 補齊缺貨停用、規格與數量控制、整張商品卡、精簡篩選、同分類／列表返回、購物車摘要與失效表單恢復。449 passed／0 skipped；正式 `vibecart-web-perf-8741400-1021` 100%，18 組公開站操作通過，測試資料及自有 Job 清理完成。見[測量方法與正式證據](docs/FRONTEND_PERFORMANCE_2026-10-21.md)。
+- 使用者指定 v5 簡報原樣經 PR #165 合併；14 頁、3,262,322 bytes，來源與 GitHub SHA-256 相同。Warm response samples and Codex browser checks do not replace cold-start/load testing or named-owner acceptance.
+
 ## 2026-10-21 — 七個 PR 正式發布 / Seven-PR production release
 
 - #152、#153、#154、#158、#159、#160、#161 依序合併至 `f616289`；四項 P2、同交易裝置撤銷稽核／180 天收據與文件衝突完成修正。本機 446 passed／0 skipped，各 HEAD 及 main CI 成功。

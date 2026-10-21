@@ -8,7 +8,7 @@
 
 ## 本機驗證
 
-用Flask client分別在legacy／v4模式驗證：GET 200、正確SVG MIME、一天快取、If-None-Match 304；未知靜態路徑404。過程將MongoClient設為立即拋錯以確認圖示沒有資料庫依賴，兩模式均通過。來源白名單／交付稽核7項passed。
+用Flask client分別在legacy／v4模式驗證：GET 200、正確SVG MIME、一天快取、If-None-Match 304；未知靜態路徑404。過程將MongoClient設為立即拋錯以確認圖示沒有資料庫依賴，兩模式均通過。來源白名單／交付稽核7項passed。網站本機離線回歸399 passed／35 skipped（69.69秒）；跳過案例需額外真交易或模型前置，不能稱為全部真交易測試通過。GitHub CI另跑一次性MongoDB交易檢查，以其實際結果為準。
 
 ## 發布界線與重現
 
