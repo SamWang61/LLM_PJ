@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import date, datetime, timedelta
 from decimal import Decimal
 from importlib.util import find_spec
 from flask import Blueprint, abort, current_app, flash, redirect, render_template, request, session, url_for
@@ -39,6 +39,75 @@ def system_status():
 def admin_context():
     return {"system_status": system_status(), "admin_endpoints": set(current_app.view_functions),
             "read_at": datetime.now(TAIPEI).strftime("%Y-%m-%d %H:%M")}
+
+
+@bp.app_template_global()
+def spark_path(values, width=100, height=30):
+    """SVG path for a KPI sparkline; None values break the line instead of being drawn as zero."""
+    numbers = [float(v) for v in values if v is not None]
+    if len(values) < 2 or not numbers:
+        return ""
+    low, high = min(numbers), max(numbers)
+    span = (high - low) or 1
+    step = width / (len(values) - 1)
+    parts, pen_down = [], False
+    for index, value in enumerate(values):
+        if value is None:
+            pen_down = False
+            continue
+        x = round(index * step, 2)
+        y = round(height - (float(value) - low) / span * height if high != low else height / 2, 2)
+        parts.append(f"{'L' if pen_down else 'M'}{x} {y}")
+        pen_down = True
+    return " ".join(parts)
+
+
+@bp.app_template_global()
+def column_chart(daily, start="", end=""):
+    """Geometry for the daily revenue column chart (viewBox 720x240).
+
+    A date-range filter is zero-filled so gaps show as empty days; without dates only days that
+    have valid orders are drawn, matching the table below the chart.
+    """
+    rows = {row["date"]: row for row in daily}
+    if start and end:
+        first, last = date.fromisoformat(start), date.fromisoformat(end)
+        days = [(first + timedelta(days=i)).isoformat() for i in range((last - first).days + 1)]
+    else:
+        days = sorted(rows)
+    if not days:
+        return None
+    series = [(day, rows.get(day, {"orders": 0, "revenue": Decimal("0")})) for day in days]
+    peak = max((row["revenue"] for _, row in series), default=Decimal("0"))
+    left, top, plot_w, plot_h = 58, 8, 650, 200
+    slot = plot_w / len(series)
+    bar_w = max(1.0, min(slot * 0.72, 36))
+    label_every = max(1, -(-len(series) // 10))
+    bars = []
+    for index, (day, row) in enumerate(series):
+        share = float(row["revenue"] / peak) if peak > 0 else 0.0
+        h = round(share * plot_h, 2)
+        bars.append({"date": day, "orders": row["orders"], "revenue": row["revenue"], "share": round(share * 100, 1),
+                     "x": round(left + index * slot + (slot - bar_w) / 2, 2), "w": round(bar_w, 2),
+                     "y": round(top + plot_h - h, 2), "h": h,
+                     "label": day[5:] if index % label_every == 0 or index == len(series) - 1 else ""})
+    total = sum((row["revenue"] for _, row in series), Decimal("0"))
+    average = total / len(series)
+    ticks = [{"y": round(top + plot_h - fraction * plot_h, 2), "value": peak * Decimal(str(fraction))} for fraction in (0, 0.5, 1)]
+    return {"bars": bars, "ticks": ticks, "average": average, "days": len(series), "left": left, "right": left + plot_w,
+            "baseline": top + plot_h, "avg_y": round(top + plot_h - (float(average / peak) * plot_h if peak > 0 else 0), 2)}
+
+
+@bp.app_template_filter('pct')
+def pct(value):
+    return "—" if value is None else f"{value:+.1f}%"
+
+
+@bp.app_template_filter('compact_ntd')
+def compact_ntd(value):
+    """Axis labels only; exact amounts are shown with the ntd filter."""
+    value = float(value)
+    return f"{value / 10000:.1f} 萬" if value >= 10000 else f"{value:,.0f}"
 
 
 @bp.app_template_filter('duration')

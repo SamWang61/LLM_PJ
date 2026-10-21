@@ -15,6 +15,11 @@
 - 快照version1保持分類raw權重70／30上限、商品逐事件衰減與明確ObjectId搜尋；採personalization先排synthetic再limit，真人有效示範購買可影響本人，正式歸因仍排除。預設dry-run，apply另驗唯一索引、會員／政策重讀與完整前像CAS。
 - 本輪不接前台、不啟排程、不連線或寫入Atlas；原10/2的50項測試／Atlas證據維持歷史，新測試、CI及合併結果另由本輪交付報告記錄。
 
+## 2026-10-21 — JEFF 後台淺色數據看板 / Light admin dashboard
+
+- 後台改為淺色數據看板（設計規格 v1.3 第 8 節）；營運總覽改為 12 欄格線，加入 KPI 走勢與「近 7 天 vs 前 7 天」（只用篩選範圍內資料）、SVG 每日營收圖、熱銷橫條與低庫存水位條。Light admin theme and dashboard grid.
+- 前台不變；新增 5 項離線測試。See [dashboard handoff](docs/AI_DASHBOARD.md).
+
 ## 2026-10-18 — 最新main無流量預覽與私有真模型驗收
 
 - [部署與驗收](docs/SAM_MAIN_PREVIEW_2026-10-18.md)：main20ee的52檔封裝與GCS實際讀回一致、Cloud Build三步SUCCESS；真BGE、四Claude問題／快取、角色／交易／1001 synthetic、停用規則退回及清理。

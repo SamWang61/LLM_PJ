@@ -161,6 +161,19 @@ python -m venv .venv
 
 The ignored local profile contains the existing v4 connection. It is not a newly isolated database. Keep it private; default checkout and model flags remain disabled.
 
+## 後台淺色數據看板 / Light admin dashboard（JEFF，2026-10-21）
+
+依設計規格 v1.3 第 8 節實作；只改後台，前台 `main.css` 不變。
+
+- **樣式**：`static/css/admin.css` 改為淺色 token（`--bg #f3f5f8`、白色卡片、`--brand #b7ff2a` 只用於色塊、`--lime #5a960e` 用於文字與圖表、淺色底 Cloud 色 `#2b7bc4`、`--ok`／`--warn`／`--danger`）。字型使用 `"IBM Plex Sans","Noto Sans TC"` 與等寬 `"JetBrains Mono"` 的字型堆疊，**不載入外部字型檔**，未安裝時退回系統字型。並覆蓋 `main.css` 在後台會用到的深色寫死值（按鈕、輸入框、摘要框、logo）。
+- **營運總覽**：12 欄看板格線。
+  - KPI 卡加 14 天走勢小圖與「近 7 天 vs 前 7 天」變化。為了遵守「篩選後所有區塊同步」，只使用目前篩選範圍內的資料（範圍結束日往前 14 天）；範圍不足 14 天時顯示「範圍不足 14 天，不計算變化」，不從資料庫補範圍外的日子。
+  - 每日有效營收改為 inline SVG 長條圖：刻度、日均線、每根長條的原生提示（`<title>`）。指定日期時補零顯示無訂單的日子；資料表收進「查看資料表」，仍只列有訂單的日期。
+  - 熱銷 Top 10 改為橫條；低庫存加水位條（`role="meter"`，可售為 0 時標紅）。
+  - 「分類營收占比」尚未定義資料來源，**未加入**。
+- **資料**：`services/dashboard.py` 新增 `insights["trend"]`（`kpi_trend`），既有 `daily` 等欄位形狀不變。`admin.py` 新增 `spark_path`、`column_chart` 與 `pct`、`compact_ntd` 篩選器，只負責產生畫面座標與格式。
+- **驗證**：網站離線測試 317 passed／21 skipped（新增 5 項：走勢只用範圍內資料、圖表補零、水位條與橫條、圖表工具的空值與斷線）。以本機 mongomock 預覽逐頁檢查：總覽、Local 推薦、雲端洞察（含回覆）、AI 比較、推薦監控、篩選錯誤頁皆無殘留深色背景或淺色文字；375px 手機寬度無橫向溢出。
+
 ## 線上 AI 設定 / Online AI configuration（JEFF，2026-10-18，A1／A2）
 
 **狀態：程式與建置設定已完成；SAM已實際建置精簡與AI映像、Gunicorn boot及真BGE斷網驗證。尚未執行Cloud Build／發布或部署；線上AI仍關閉。** 部署由 SAM 執行或授權，費用記在 `vibecart-llmai` 帳單；Claude API 費用由 JEFF 的 Key 負擔。
