@@ -33,11 +33,12 @@
 <section class="panel" aria-labelledby="ask-title">
   <h2 id="ask-title">快速提問</h2>
   <p class="panel-note">送給模型的資料一律由伺服器依白名單 v1 重新彙總；數字由程式計算，模型只負責解讀。</p>
-  <form method="post" action="{{ url_for('admin.ai_insight') }}#answer" class="ask-form">
+  <form method="post" action="{{ url_for('admin.ai_insight') }}#answer" class="ask-form" data-single-submit data-pending-text="AI 分析中，約 10～20 秒，請勿重複點擊…" data-pending-label="分析中…">
     <input type="hidden" name="csrf_token" value="{{ csrf_token() }}">
     <input type="hidden" name="start" value="{{ payload.current_range.start }}">
     <input type="hidden" name="end" value="{{ payload.current_range.end }}">
     <input type="hidden" name="demo" value="{{ range.demo }}">
+    <p class="pending-note" data-pending-status role="status" aria-live="polite" hidden></p>
     <div class="intent-buttons">{% for key, item in intents.items() if key != 'free_question' %}<button class="button secondary" type="submit" name="intent" value="{{ key }}">{{ item.label }}</button>{% endfor %}</div>
     {% if free_question_enabled %}<label for="question">自由提問（僅限本店營運問題，最多 300 字；請勿輸入個資）</label>
     <div class="question-row">

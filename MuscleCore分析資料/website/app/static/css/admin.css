@@ -278,3 +278,8 @@ code{font-family:var(--mono);font-size:.85em;color:var(--ink-2)}
 .timeline li small{grid-column:2;color:var(--muted)}
 .button.small{padding:4px 10px;font-size:.78rem}
 @media(max-width:619px){.pager .button,.admin-main td .button{width:auto}}
+
+/* Submitting state for AI forms (forms.js data-single-submit) */
+.button[aria-disabled="true"]{opacity:.6;cursor:progress}
+.pending-note{flex-basis:100%;margin:8px 0 0;padding:8px 12px;border-left:3px solid var(--cloud);border-radius:0 6px 6px 0;background:#eef5fc;color:var(--ink-2);font-size:.84rem}
+.admin-actions .pending-note{margin-top:6px;font-size:.78rem}
