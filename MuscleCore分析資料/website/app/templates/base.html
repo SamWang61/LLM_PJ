@@ -16,7 +16,7 @@
       {% if session.get('user_id') %}<a href="{{ url_for('store.cart') }}">購物車 {% if config.DATA_MODE == "legacy" %}<b>{{ session.get('cart', {})|length }}</b>{% endif %}</a>{% endif %}
       {% if session.get('role') == 'admin' %}<a href="{{ url_for('admin.dashboard') }}">營運後台</a>{% endif %}
       {% if config.CLOUD_PREVIEW_READ_ONLY %}<span class="member">商品瀏覽展示</span>
-      {% elif session.get('user_id') %}<span class="member">{{ session.get('name') }}</span><a href="{{ url_for('auth.logout') }}">登出</a>
+      {% elif session.get('user_id') %}<span class="member">{{ session.get('name') }}</span>{% include 'auth/_logout_form.html' %}
       {% else %}<a href="{{ url_for('auth.login') }}">登入</a><a class="nav-cta" href="{{ url_for('auth.register') }}">加入會員</a>{% endif %}
     </nav>
   </header>

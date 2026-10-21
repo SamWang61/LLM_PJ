@@ -12,8 +12,11 @@ class Browser:
         self.logout_calls = 0
 
     def get(self, url, **kwargs):
-        if url.endswith(('/auth/login', '/auth/logout')):
+        if url.endswith('/auth/login'):
             return SimpleNamespace(status_code=200, text='<input name="csrf_token" value="csrf">')
+        if url == 'https://vibecart-llmai.web.app/':
+            assert self.own
+            return SimpleNamespace(status_code=200, text='<form action="/auth/logout"><input name="csrf_token" value="csrf"></form>')
         if url.endswith('/admin/'):
             # The real holder logs in after the probe. It must remain valid.
             self.sessions.add('concurrent-holder-device')

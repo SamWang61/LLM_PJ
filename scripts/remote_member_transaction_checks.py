@@ -9,7 +9,7 @@ from remote_readonly_admin_checks import run as run_readonly_admin_checks
 
 
 def csrf_headers(session, base):
-    field = page(session, base + '/auth/logout').select_one('input[name="csrf_token"]')
+    field = page(session, base + '/').select_one('form[action="/auth/logout"] input[name="csrf_token"]')
     require(field and field.get('value'), 'CSRF unavailable')
     session.headers['X-CSRF-Token'] = field['value']
     return session
