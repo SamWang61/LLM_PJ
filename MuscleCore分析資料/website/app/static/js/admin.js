@@ -11,6 +11,13 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  // Destructive admin forms ask for confirmation; without JavaScript the server-side checks still apply.
+  document.querySelectorAll("form[data-confirm]").forEach((form) => {
+    form.addEventListener("submit", (event) => {
+      if (!window.confirm(form.dataset.confirm)) event.preventDefault();
+    });
+  });
+
   document.querySelectorAll(".toast").forEach((toast) => {
     let remaining = Number(toast.dataset.timeout) || 3500;
     let started = Date.now();

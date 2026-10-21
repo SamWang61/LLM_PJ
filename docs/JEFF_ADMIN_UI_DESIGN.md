@@ -7,6 +7,7 @@
 > 配套文件：[AI_DASHBOARD.md](AI_DASHBOARD.md)（既有後台實作與驗證）。
 > v1.2 由專案負責人接續確認啟用與驗收門檻、保存期限及批量重送語義。第 7.5 節的數量是 10/09 歷史讀回；即時狀態先看 [CURRENT_CONTEXT.md](CURRENT_CONTEXT.md)。本文件是設計契約，不代表 D5 寫入、自由提問、真模型或 D4 已部署驗收。
 > **v1.3（2026-10-21，JEFF）**：依 main `c66f731` 同步 10/12～10/20 已合併的實作（T5 真模型調整、線上 AI 開關與 AI 映像、v4 權重、個人推薦範圍、SAM 的 6＋4 與 #5 快照），更新第 2、5、7、11、12.4 節並新增第 13 節；第 8 節定義淺色數據看板 token。樣式實作由 [PR #154](https://github.com/SamWang61/LLM_PJ/pull/154) 交付，最新整合與部署狀態見 [AI_DASHBOARD](AI_DASHBOARD.md) 及 [CURRENT_CONTEXT](CURRENT_CONTEXT.md)。
+> **10/21 整合補正**：#158 交付三個管理列表，並以獨立 migration `20261021_08_customer_session_audit_v4` 啟用一般會員裝置撤銷、同交易稽核與 180 天收據；嚴格 snapshot 僅允許 `device_count`，resource_type 為 `customer_sessions`，收據結果為撤銷筆數。第 12.3 節的廣泛 D5 商品／訂單／會員狀態編輯與批量契約仍待後續 migration，不沿用舊草稿 checksum；新 scoped contract 不能當作全部 D5 完成。#159 接續推薦監控計數。下方 c66 現況表為歷史快照，發布證據統一記入[優化系統](優化系統.md)。Scoped session revocation is delivered separately from the immutable broader D5 draft.
 
 ---
 

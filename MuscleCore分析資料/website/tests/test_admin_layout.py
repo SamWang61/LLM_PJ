@@ -28,7 +28,9 @@ def test_layout_navigation_header_and_status(admin):
     html = page(client, "/admin/")
     assert 'aria-label="後台導覽"' in html and "css/admin.css" in html
     assert re.search(r'href="/admin/"\s+aria-current="page"', html)
-    assert 'href="/admin/recommendations"' in html and "尚未開放" in html  # unbuilt pages are disabled, not 404 links
+    assert 'href="/admin/recommendations"' in html
+    # All management pages now have routes, so the "not yet open" placeholder disappears.
+    assert all(f'href="/admin/{page}"' in html for page in ("products", "orders", "members")) and "尚未開放" not in html
     assert "管理員：測試管理員" in html and "回商城" in html and "/auth/logout" in html
     assert "購物車" not in html  # admin header is separate from the storefront header
     assert "資料庫" in html and "BGE" in html and "雲端 LLM" in html and "未啟用" in html

@@ -54,6 +54,12 @@ VibeCart_AI/services/*
 !VibeCart_AI/services/cart_service.py
 !VibeCart_AI/services/sku_cart_service.py
 !VibeCart_AI/services/review_service.py
+!VibeCart_AI/MongoDB/
+VibeCart_AI/MongoDB/*
+!VibeCart_AI/MongoDB/admin_session_audit_schema.py
+!scripts/
+scripts/*
+!scripts/migrate_admin_sessions.py
 **/__pycache__/**
 **/*.pyc
 **/.env*

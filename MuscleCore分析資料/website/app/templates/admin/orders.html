@@ -1,0 +1,36 @@
+{% extends 'admin/layout.html' %}
+{% from 'admin/_list_macros.html' import pager, pill, readonly_note with context %}
+{% import 'admin/_list_macros.html' as lists %}
+{% block title %}訂單管理｜VibeInsight 後台{% endblock %}
+{% block eyebrow %}MANAGEMENT{% endblock %}
+{% block heading %}訂單管理{% endblock %}
+{% block meta %}<span>共 {{ '{:,}'.format(paging.total) }} 筆</span><span>依下單時間由新到舊</span><span>時間為台北時間</span>{% endblock %}
+{% block content %}
+{{ readonly_note('狀態變更需等 D5 寫入及稽核上線；退款不在第一版範圍（設計規格 12.3）。') }}
+<form class="panel dashboard-filters" method="get" action="{{ url_for('admin.orders') }}">
+  <label>開始日期（台北）<input type="date" name="start" value="{{ form.start }}"></label>
+  <label>結束日期（含當日）<input type="date" name="end" value="{{ form.end }}"></label>
+  <label>訂單狀態<select name="status"><option value="">全部</option>{% for value, label in lists.order_labels.items() %}<option value="{{ value }}" {% if form.status == value %}selected{% endif %}>{{ label }}</option>{% endfor %}</select></label>
+  <label>付款狀態<select name="payment"><option value="">全部</option>{% for value, label in lists.payment_labels.items() %}<option value="{{ value }}" {% if form.payment == value %}selected{% endif %}>{{ label }}</option>{% endfor %}</select></label>
+  <label>示範訂單<select name="demo">{% for value, label in [('all', '全部'), ('exclude', '排除示範'), ('only', '僅示範')] %}<option value="{{ value }}" {% if form.demo == value %}selected{% endif %}>{{ label }}</option>{% endfor %}</select></label>
+  <label>訂單編號<input type="search" name="number" value="{{ form.number }}" maxlength="64"></label>
+  <button class="button" type="submit">篩選</button><a class="button secondary" href="{{ url_for('admin.orders') }}">重設</a>
+</form>
+<section class="panel" aria-labelledby="order-list-title">
+  <h2 id="order-list-title" class="visually-hidden">訂單列表</h2>
+  <div class="table-wrap"><table>
+    <thead><tr><th>訂單編號</th><th>下單時間</th><th>狀態</th><th>付款</th><th>出貨</th><th>示範</th><th class="num">金額</th><th>操作</th></tr></thead>
+    <tbody>{% for o in rows %}<tr>
+      <td><code>{{ o.number }}</code></td>
+      <td class="mono">{{ o.ordered_at|taipei }}</td>
+      <td>{{ pill(lists.order_labels.get(o.status, o.status), 'bad' if o.status == 'cancelled' else 'ok' if o.status == 'completed' else '') }}</td>
+      <td>{{ pill(lists.payment_labels.get(o.payment, o.payment), 'ok' if o.payment == 'paid' else 'warn' if o.payment == 'unpaid' else 'bad') }}</td>
+      <td>{{ lists.shipping_labels.get(o.shipping, o.shipping or '—') }}</td>
+      <td>{{ pill('示範', 'warn') if o.demo else '—' }}</td>
+      <td class="num">{{ o.total|ntd }}</td>
+      <td><a class="text-link" href="{{ url_for('admin.order_detail_page', order_id=o.id) }}">明細</a></td>
+    </tr>{% else %}<tr><td colspan="8" class="empty-cell">沒有符合條件的訂單。</td></tr>{% endfor %}</tbody>
+  </table></div>
+  {{ pager(paging, 'admin.orders', form) }}
+</section>
+{% endblock %}
