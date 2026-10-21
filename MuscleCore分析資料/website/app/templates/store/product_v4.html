@@ -1,0 +1,16 @@
+{% extends 'base.html' %}{% from 'store/card_v4.html' import card %}
+{% block title %}{{ product.name }}｜VibeCart{% endblock %}
+{% block content %}
+<section class="detail storefront-detail"><div class="detail-visual">{% with p=product %}{% include 'store/product_image.html' %}{% endwith %}</div>
+<div><span class="eyebrow">{{ product.major_category }} · {{ product.category }}</span><h1>{{ product.name }}</h1>
+<div class="rating"><span data-product-rating="{{ product._id }}">★ {{ '%.1f'|format(product.rating|default(0)) }}</span>{% if product.rating_status == 'DEFAULT' %}<span data-rating-default="{{ product._id }}">（預設值，尚無評價）</span>{% endif %}<span data-rating-count="{{ product._id }}">（{{ product.rating_count|default(0) }}筆評價）</span></div>
+<div class="detail-price" data-sku-price>NT$ {{ '{:,.2f}'.format(product.price) }}</div><p data-sku-stock>現有庫存：{{ product.stock }}</p>
+{% if config.CLOUD_PREVIEW_READ_ONLY %}<p class="hint">展示環境僅供瀏覽，會員與購物功能尚未開放。</p>{% else %}
+<form method="post" action="{{ url_for('store.add_to_cart', product_id=product._id) }}" data-sku-form><input type="hidden" name="csrf_token" value="{{ csrf_token() }}">{% if rec_id %}<input type="hidden" name="rec" value="{{ rec_id }}">{% endif %}
+{% include 'store/sku_fields.html' %}<button class="button full" type="submit" {% if product.stock < 1 %}disabled{% endif %}>{{ '已售完，補貨中' if product.stock < 1 else '加入購物車' }}</button><p class="hint" data-sku-status role="status">請選擇規格；結帳時會再次確認價格與庫存。</p></form>{% endif %}
+<details class="product-description" open><summary>商品介紹</summary><p>{{ product.display_description }}</p></details>
+{% if product.source_url %}<p class="hint">教學測試商品；庫存為模擬值，不提供實際出貨。名稱、規格與照片來源：<a href="{{ product.source_url }}" target="_blank" rel="noopener noreferrer">原商品頁</a>。</p>{% endif %}</div></section>
+<nav class="product-navigation" aria-label="商品瀏覽"><a class="product-list-link" href="{{ product_navigation.list_url }}">返回商品列表</a></nav>
+{% if related_products %}<section class="section"><h2>同分類商品</h2><div class="product-grid">{% for p in related_products %}{{ card(p, url_for('store.product_detail', product_id=p._id)) }}{% endfor %}</div></section>{% endif %}
+{% include 'store/review_form_v4.html' %}
+{% endblock %}

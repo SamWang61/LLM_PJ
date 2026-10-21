@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block title %}重新整理表單｜VibeCart{% endblock %}
+{% block content %}
+<section class="auth-card"><h1>請重新整理表單</h1>
+<p role="alert">表單已失效，請重新載入頁面後再試。</p>
+<p>若剛才已完成登入或登出，返回首頁即可查看目前狀態。</p>
+<a class="button" href="{{ url_for('store.home') }}">回首頁</a>
+<a class="button secondary" href="{{ url_for('auth.login') }}">重新登入</a></section>
+{% endblock %}

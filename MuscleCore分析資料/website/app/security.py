@@ -2,7 +2,7 @@
 import hashlib
 import hmac
 import secrets
-from flask import abort, g, request, session
+from flask import abort, g, render_template, request, session
 
 
 CSRF_MESSAGE = "表單已失效，請重新載入頁面後再試。"
@@ -38,6 +38,12 @@ def csrf_token():
 
 def init_security(app):
     app.jinja_env.globals.update(csrf_token=csrf_token, operation_id=lambda: secrets.token_urlsafe(24))
+
+    @app.errorhandler(400)
+    def bad_request(error):
+        if error.description == CSRF_MESSAGE and not request.is_json:
+            return render_template("auth/form_expired.html"), 400
+        return error
 
     @app.before_request
     def protect_forms():
