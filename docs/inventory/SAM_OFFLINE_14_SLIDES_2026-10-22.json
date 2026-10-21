@@ -1,0 +1,56 @@
+{
+  "started_at_utc": "2026-10-21T16:45:58Z",
+  "verified_at_utc": "2026-10-21T16:46:52.691258+00:00",
+  "executor": "Codex; SAM proxy technical N16/N17/N18 supplement",
+  "source_commit": "872b1b7b91995f835d4d1a442d6eb51adf319602",
+  "profile": "v5-14-20261022",
+  "payload_files": 22,
+  "manifest_files": 1,
+  "archive_bytes": 7310018,
+  "archive_sha256": "6a8ca650c8ed78f35e0908d98ce4bd3785cebf6dce8d66e3902d51bc6ef00719",
+  "two_builds_identical": true,
+  "fresh_restore_verified": true,
+  "disk_hashes_verified": 22,
+  "html_links_verified": true,
+  "html_scripts": 0,
+  "html_external_assets": 0,
+  "pdf_pages": 14,
+  "png_pages": 14,
+  "master_unchanged": true,
+  "master_sha256": "4aa9b13286fe98574d3dd648889545ad196d92cea9aebb9a143c794ad392d193",
+  "pdf_sha256": "79e4883a70fc38df2cd94cdb0b74685228b1763481753a55584945c4779186f5",
+  "browser": {
+    "surface": "Codex in-app browser",
+    "transport": "loopback HTTP, restored files only",
+    "checks": [
+      "index title and seven local links",
+      "14-page navigation",
+      "all 14 images complete at 1600x900",
+      "jump to page 14"
+    ],
+    "direct_file_url": "not verified; browser policy allows only HTTP/HTTPS and rejected file: navigation; no alternate surface or bypass attempted",
+    "network_disconnected_device": "not performed",
+    "second_device": "not performed",
+    "projector": "not performed"
+  },
+  "screenshot": {
+    "file": "docs/inventory/sam_offline_20261022/offline-14-browser.png",
+    "bytes": 80575,
+    "sha256": "aef4dd3ce89dc0db00a402d8c8cf6c1f0dc0fbfe1c9c00db872a092c63345b34"
+  },
+  "initial_attempts": [
+    "first 14-slide loopback run requested missing favicon.ico; final HTML declares an inline empty icon and no such request was observed",
+    "direct file: URL denied by browser policy; not retried or bypassed"
+  ],
+  "unit_tests": {
+    "passed": 22,
+    "failed": 0
+  },
+  "source_observation": "Original slides 12 and 13 repeat content and footer 12; retained.",
+  "scope": "Static fallback only. No Atlas writes, website deployment, Drive copy or permissions change.",
+  "remote_lfs": {
+    "remote_lfs_download_verified": true,
+    "bytes": 933269,
+    "sha256": "79e4883a70fc38df2cd94cdb0b74685228b1763481753a55584945c4779186f5"
+  }
+}
