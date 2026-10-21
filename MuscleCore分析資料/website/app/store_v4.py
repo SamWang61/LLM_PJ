@@ -272,8 +272,7 @@ def checkout():
     data = payload()
     order = cart_service().checkout_cart(session["user_id"], checkout_id=data.get("checkout_id"),
         cart_id=oid(data.get("cart_id")), expected_revision=integer(data, "expected_revision"))
-    product_ids = [line["product_id"] for line in get_db().order_items.find({"order_id": order["_id"]}, {"product_id": 1})]
-    attribution(rec_logs.record_purchases, current_member(), order, product_ids)
+    attribution(rec_logs.record_order_purchases, current_member(), order)
     if not request.is_json:
         flash(f"示範訂單 {order['order_number']} 已建立（未串接付款）。", "success")
     return reply(order, "store.home")

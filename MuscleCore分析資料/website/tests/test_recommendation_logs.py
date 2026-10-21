@@ -136,3 +136,49 @@ def test_monitor_empty_state(shop):
     _, client, db, uid, _, _ = shop
     db.users.update_one({"_id": uid}, {"$set": {"role": "admin"}})
     assert "還沒有推薦紀錄" in client.get("/admin/recommendations").get_data(as_text=True)
+
+
+def test_intervening_list_does_not_reset_the_dedupe_window(rated):
+    app, _, db, uid, pid, _ = rated
+    other = ObjectId()
+    def block(ids):
+        return {"source": "rules", "personalized": [
+            {"product": {"_id": item}, "score": 1, "reason": "可售商品探索"} for item in ids]}
+    with app.app_context():
+        first = rec_logs.log_impressions(db, {"_id": uid}, block([pid, other]))
+        reordered = rec_logs.log_impressions(db, {"_id": uid}, block([other, pid]))
+        last = rec_logs.log_impressions(db, {"_id": uid}, block([pid, other]))
+    assert last == first and reordered != first
+    assert db.recommendation_logs.count_documents({"user_id": uid}) == 2
+
+
+@pytest.mark.parametrize("skip", [None, "demo", "synthetic"])
+def test_attribution_reads_cannot_fail_an_already_committed_checkout(shop, monkeypatch, skip):
+    from types import SimpleNamespace
+    from pymongo.errors import ConnectionFailure
+    from app import store_v4
+    app, client, db, uid, pid, sid = shop
+    app.config["ENABLE_CHECKOUT"] = True
+    assert post(client, f"/cart/add/{pid}", sku_id=str(sid), quantity=1,
+                operation_id="attribution-read-add").status_code == 200
+    cart = db.carts.find_one({"user_id": uid})
+    checkout_factory = store_v4.cart_service
+    def committed_checkout(*args, **kwargs):
+        order = checkout_factory().checkout_cart(*args, **kwargs)
+        # Exercise real-order attribution without enabling real payment in the fixture.
+        return {**order, "is_demo": skip == "demo"}
+    monkeypatch.setattr(store_v4, "cart_service", lambda: SimpleNamespace(checkout_cart=committed_checkout))
+    if skip == "synthetic":
+        app.config["BEHAVIOR_SYNTHETIC_BATCH"] = "isolated-attribution-test"
+    reads = []
+    def unavailable(*args, **kwargs):
+        reads.append(True)
+        if skip:
+            raise AssertionError("disabled attribution must not query order items")
+        raise ConnectionFailure("isolated optional read failure")
+    monkeypatch.setattr(db.order_items, "find", unavailable)
+    response = post(client, "/checkout", checkout_id="attribution-read-checkout",
+                    cart_id=str(cart["_id"]), expected_revision=cart["revision"])
+    assert response.status_code == 200
+    assert db.orders.count_documents({"user_id": uid}) == 1
+    assert len(reads) == (0 if skip else 1)

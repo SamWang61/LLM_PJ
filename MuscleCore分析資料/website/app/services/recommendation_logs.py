@@ -53,7 +53,9 @@ def log_impressions(db, member, result):
             continue
         product_ids = [item["product_id"] for item in items]
         recent = db.recommendation_logs.find_one(
-            {"user_id": member["_id"], "recommendation_type": kind, "shown_at": {"$gte": now - timedelta(minutes=DEDUPE_MINUTES)}},
+            {"user_id": member["_id"], "recommendation_type": kind,
+             "shown_at": {"$gte": now - timedelta(minutes=DEDUPE_MINUTES)},
+             "$expr": {"$eq": ["$items.product_id", product_ids]}},
             {"recommendation_id": 1, "items.product_id": 1}, sort=[("shown_at", -1)])
         if recent and [item["product_id"] for item in recent.get("items", [])] == product_ids:
             ids[block] = recent["recommendation_id"]
@@ -97,6 +99,15 @@ def record_purchases(db, member, order, product_ids):
             {"user_id": member["_id"], "shown_at": {"$gte": since}, "added_to_cart_product_ids": pid},
             {"$addToSet": {"purchased_product_ids": pid}}).modified_count
     return credited
+
+
+def record_order_purchases(db, member, order):
+    """Keep all optional attribution reads inside the caller's best-effort boundary."""
+    if not member or order.get("is_demo") or not logging_enabled():
+        return 0
+    product_ids = [line["product_id"] for line in db.order_items.find(
+        {"order_id": order["_id"]}, {"product_id": 1})]
+    return record_purchases(db, member, order, product_ids)
 
 
 def recommendation_metrics(db, days=30):

@@ -1,5 +1,9 @@
 # 變更紀錄 / Changelog
 
+## 2026-10-21 — 推薦成效 P2 補修 / Recommendation attribution fixes
+
+- 修正 A→B→A 在 30 分鐘內的曝光去重；將結帳後所有歸因讀取納入容錯，示範訂單與停用紀錄先略過。Ordered-list deduplication and best-effort post-checkout attribution.
+
 ## 2026-10-20 — PR #5 離線持久快照接續 / Offline scoring snapshots
 
 - 現行請求時6＋4已接續前台需求；保留尚未被取代的明確會員離線快照工具，JEFF主責計分契約、SAM負責資料庫／測試／整合。見[操作與語義差異](docs/PREFERENCE_SCORING.md)。

@@ -1,5 +1,7 @@
 # 營運後台與 v4 測試交接 / Dashboard handoff
 
+**2026/10/21 推薦成效補修（#159）**：30 分鐘曝光去重會在視窗內查找相同會員、區塊及完整商品順序，A→B→A 會重用原 A；不同順序仍分別記錄。結帳完成後的歸因品項讀取與更新都在 best-effort 邊界內，故障不改變已提交的結帳回應；示範訂單與停用紀錄的環境先略過讀取。14 項倉庫內相關測試及先前 2 項缺陷重現均通過，正式發布結果另記[優化系統](優化系統.md)。English: Ordered-list deduplication covers the full window, and optional attribution reads cannot fail a committed checkout.
+
 **2026/10/20 PR #5接續**：[離線持久快照操作](PREFERENCE_SCORING.md)是前台請求時計分之外的opt-in工具，JEFF主責、SAM整合。現行6＋4分類會衰減並支援文字搜尋；快照version1分類維持raw權重上限70／30、商品逐事件衰減、SEARCH僅明確ObjectId，數值不保證相等。新工具不接前台或啟排程，本輪不連Atlas；10/2的50項與Atlas驗證只作歷史。下方較早「完整6＋4仍屬後續」描述保留原交付日期，現況分別讀[6＋4對話決議](../討論的相關記錄/商品評價與猜你喜歡6加4推薦_對話決議_2026-10-18.md)與本輪快照PR結果。
 
 <!-- SAM MAIN PREVIEW 20261018 BEGIN -->
