@@ -1,8 +1,8 @@
 <input type="hidden" name="operation_id" value="{{ operation_id() }}">
 <label>商品規格
-<select name="sku_id" required>
+<select name="sku_id" required data-sku-select {% if product.stock < 1 %}disabled{% endif %}>
 <option value="">請選擇規格</option>
 {% for sku in product.skus %}
-<option value="{{ sku._id }}" {% if sku.available_quantity < 1 %}disabled{% endif %}>{{ sku.sku_code }} · {{ sku.variant_attributes.values()|join(' / ') }} · NT$ {{ sku.price }} · 庫存 {{ sku.available_quantity }}</option>
+<option value="{{ sku._id }}" data-price="{{ sku.price }}" data-stock="{{ sku.available_quantity }}" {% if sku.available_quantity < 1 %}disabled{% endif %}>{{ sku.variant_attributes.values()|join(' / ') or '標準規格' }} · NT$ {{ sku.price }} · {{ '已售完' if sku.available_quantity < 1 else '庫存 ' ~ sku.available_quantity }}</option>
 {% endfor %}</select></label>
-<label>數量 <input type="number" name="quantity" value="1" min="1" max="99" required></label>
+<label>數量<span class="quantity-control" data-quantity-control><button type="button" data-step="-1" aria-label="減少數量" {% if product.stock < 1 %}disabled{% endif %}>−</button><input aria-label="數量" type="number" name="quantity" value="1" min="1" max="99" required {% if product.stock < 1 %}disabled{% endif %}><button type="button" data-step="1" aria-label="增加數量" {% if product.stock < 1 %}disabled{% endif %}>＋</button></span></label>

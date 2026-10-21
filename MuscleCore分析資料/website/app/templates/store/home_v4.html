@@ -1,0 +1,17 @@
+{% extends 'base.html' %}{% from 'store/card_v4.html' import card %}
+{% block title %}VibeCart｜超級市場{% endblock %}
+{% block content %}
+<section class="hero supermarket-hero compact-hero"><div class="hero-copy"><span class="eyebrow">VIBECART SUPERMARKET</span><h1>日常所需，一次找到。</h1><p>依分類與規格輕鬆選購。教學測試商城，不提供實際付款或出貨。</p><a class="button" href="#products">瀏覽商品</a></div></section>
+<div id="recommendation-blocks" data-refresh-url="{{ url_for('store.recommendations_fragment', q=request.args.get('q', '')) }}">{% include 'store/recommendations_v4.html' %}</div>
+<section class="section" id="products">
+<form method="get" action="{{ url_for('store.home', _anchor='products') }}" class="catalog-search" role="search">
+  <label class="search-query">搜尋商品<input type="search" name="q" maxlength="200" placeholder="輸入商品名稱或規格" value="{{ request.args.get('q', '') }}"></label>
+  <label>商品大類<select name="major" data-major-filter><option value="">全部大類</option>{% for m in major_categories %}<option value="{{ m }}" {% if m == selected_major %}selected{% endif %}>{{ m }}</option>{% endfor %}</select></label>
+  <label>商品分類<select name="category"><option value="">全部分類</option>{% for c in categories %}<option value="{{ c }}" {% if c == selected_category %}selected{% endif %}>{{ c }}</option>{% endfor %}</select></label>
+  <button class="button" type="submit">搜尋商品</button><a href="{{ url_for('store.home', _anchor='products') }}">清除篩選</a>
+</form>
+<div class="section-head"><div><span class="eyebrow">SHOP</span><h2>超市商品</h2></div><p>共 {{ total }} 項商品 · 第 {{ page }} / {{ pages }} 頁</p></div>
+<div class="product-grid">{% for p in products %}{{ card(p, url_for('store.product_detail', product_id=p._id, major=selected_major, category=selected_category, q=request.args.get('q', ''), page=page)) }}{% else %}<p>目前沒有符合條件的商品。請調整關鍵字或清除篩選。</p>{% endfor %}</div>
+{% if pages > 1 %}<nav class="filters pagination" aria-label="商品分頁">{% if page > 1 %}<a href="{{ url_for('store.home', page=page-1, major=selected_major, category=selected_category, q=request.args.get('q', ''), _anchor='products') }}">上一頁</a>{% endif %}{% for n in range(1, pages+1) %}<a class="{{ 'active' if n == page }}" {% if n == page %}aria-current="page"{% endif %} aria-label="第 {{ n }} 頁" href="{{ url_for('store.home', page=n, major=selected_major, category=selected_category, q=request.args.get('q', ''), _anchor='products') }}">{{ n }}</a>{% endfor %}{% if page < pages %}<a href="{{ url_for('store.home', page=page+1, major=selected_major, category=selected_category, q=request.args.get('q', ''), _anchor='products') }}">下一頁</a>{% endif %}</nav>{% endif %}
+</section>
+{% endblock %}

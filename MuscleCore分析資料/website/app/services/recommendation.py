@@ -12,6 +12,11 @@ LEGACY_EVENT_TYPES = {"view": "PRODUCT_VIEW", "cart": "ADD_TO_CART", "favorite":
 def policy_weights(db):
     """Read the active v4 policy weights, falling back to the defaults for missing or invalid values."""
     policy = db.system_configs.find_one({"config_key": "recommendation_policy", "status": "active"}) or {}
+    return weights_from_policy(policy)
+
+
+def weights_from_policy(policy):
+    """Normalize an already-read policy without issuing another database query."""
     settings = policy.get("settings")
     stored = settings.get("weights") if isinstance(settings, dict) else None
     if not isinstance(stored, dict):

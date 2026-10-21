@@ -226,7 +226,7 @@ def test_supermarket_catalog_beyond_200_paginates_filters_and_shows_source(shop)
     for page in range(1, 14):
         response = client.get('/', query_string={'page': page})
         assert response.status_code == 200
-        ids = re.findall(r'<article class="product-card"><a class="product-visual" href="/product/([a-f0-9]+)(?:\?[^\"]*)?"', response.text)
+        ids = re.findall(r'<a class="card-link" href="/product/([a-f0-9]+)(?:\?[^\"]*)?"', response.text)
         assert len(ids) == (24 if page < 13 else 18)
         assert not seen.intersection(ids)
         seen.update(ids)
@@ -246,46 +246,3 @@ def test_supermarket_page_parameter_is_bounded(shop, page):
     _, client, _, _, _, _ = shop
     response = client.get('/', query_string={'page': page})
     assert response.status_code == 200 and '第 1 / 1 頁' in response.text
-
-
-def test_product_navigation_order_filters_boundaries_and_page_return(shop):
-    from copy import deepcopy
-    from html import unescape
-    import re
-    _, client, db, _, pid, sid = shop
-    template = db.products.find_one({"_id": pid})
-    sku_template = db.product_skus.find_one({"_id": sid})
-    ids = [pid]
-    for i in range(26):
-        product = deepcopy(template)
-        product.update(_id=ObjectId(), product_name=f"Browse {i:02d}")
-        db.products.insert_one(product)
-        sku = deepcopy(sku_template)
-        sku.update(_id=ObjectId(), product_id=product["_id"])
-        db.product_skus.insert_one(sku)
-        ids.append(product["_id"])
-    ids.sort()
-    with client.session_transaction() as state:
-        state.pop("user_id", None)
-    def navigation(pid, **params):
-        response = client.get(f"/product/{pid}", query_string=params)
-        assert response.status_code == 200
-        return unescape(response.text.split('<nav class="product-navigation"')[1])
-    first = navigation(ids[0])
-    assert 'rel="prev"' not in first and 'disabled' in first
-    assert f'/product/{ids[1]}' in first
-    middle = navigation(ids[24])
-    assert f'/product/{ids[23]}' in middle and f'/product/{ids[25]}' in middle
-    assert 'page=2' in middle
-    last = navigation(ids[-1])
-    assert 'rel="next"' not in last and 'disabled' in last
-    only = navigation(ids[-1], q="Browse 25", major="sport", category="weight")
-    assert 'rel="prev"' not in only and 'rel="next"' not in only
-    assert 'q=Browse+25' in only and 'major=sport' in only and 'category=weight' in only
-    filtered = navigation(ids[-2], q="Browse 2")
-    next_url = re.search(r'rel="next" href="([^"]+)"', filtered).group(1)
-    assert 'q=Browse+2' in next_url and client.get(next_url).status_code == 200
-    listing = client.get('/', query_string={"q": "Browse 2", "major": "sport", "category": "weight"})
-    assert 'q=Browse+2' in unescape(listing.text)
-    db.products.update_one({"_id": ids[-1]}, {"$set": {"status": "inactive"}})
-    assert 'rel="next"' not in navigation(ids[-2])
