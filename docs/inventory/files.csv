@@ -7,7 +7,7 @@
 .github/pull_request_template.md,554,document / 文件,561a8f0facff00a2a57b4b80d69305705216a382e19508702664405a65eb27ae,text read / 文字讀取 (13 lines)
 .github/workflows/validate.yml,3865,document / 文件,7d41cd599dad7010a198e60a418620f709929b1cd34036d035909c1231d0d63d,text read / 文字讀取 (56 lines)
 .gitignore,764,document / 文件,9e5d9dc8d993a2e49d82ad0778b31abae749dc7c9ac2a0c2e08830edffdfb8d7,text read / 文字讀取 (49 lines)
-CHANGELOG.md,13641,document / 文件,d994d7d0b7f3d37432f5a932610335866fed50e40da98adf718ae877b66ddc0d,text read / 文字讀取 (145 lines)
+CHANGELOG.md,14696,document / 文件,6c852ffcd48eeedbc8968324f3c27992eeaf045f27955ffa8c94bdd8fd59a703,text read / 文字讀取 (154 lines)
 CODE_OF_CONDUCT.md,489,document / 文件,4726f51366646dfcc33567477d958f49b3854f9f2f36d29bdaab72d6116447ae,text read / 文字讀取 (5 lines)
 CONTRIBUTING.md,2151,document / 文件,dde5003ab5a2fa9291e394da75f5e5dd1f9338d0dd70d1ad6da479dd2d3b5b43,text read / 文字讀取 (20 lines)
 Dockerfile,1377,document / 文件,0a2a677d5df8d78b4f7eb072aa1eb61c8ca6d5a93413e420067a64289a8c44bc,binary hashed / 二進位雜湊
@@ -62,7 +62,7 @@ MuscleCore分析資料/website/app/templates/admin/order_detail.html,2814,source
 MuscleCore分析資料/website/app/templates/admin/orders.html,3240,source / 原始碼,7b0520f39249747ee159af924cd800cc3eff39c91c1edaba09e64a8528d9ca53,text read / 文字讀取 (36 lines)
 MuscleCore分析資料/website/app/templates/admin/products.html,3199,source / 原始碼,bd541c83d0ff602737070fb101cc230886959d820e2e2231063835f134129783,text read / 文字讀取 (36 lines)
 MuscleCore分析資料/website/app/templates/admin/recommendations.html,3277,source / 原始碼,ce026f7066b32cd7c6d9ee50865829ecb0f96f8ffafb456ba9fe26cd8641825f,text read / 文字讀取 (38 lines)
-MuscleCore分析資料/website/app/templates/admin/revoke_retry.html,852,source / 原始碼,57ed4b283a7c341b25f8de96ad40049f50e372cfd8e7fdb01c96390b898bdd81,text read / 文字讀取 (13 lines)
+MuscleCore分析資料/website/app/templates/admin/revoke_retry.html,865,source / 原始碼,f9053d6e3652d68501b120c657915b7d7f99deb0e4227efb9e392d199c5ee6ba,text read / 文字讀取 (13 lines)
 MuscleCore分析資料/website/app/templates/auth/_logout_form.html,222,source / 原始碼,12d7a05383fbe6b44d9596478ab452bdb81ea74bd5df3834673334682d7bd3a6,text read / 文字讀取 (4 lines)
 MuscleCore分析資料/website/app/templates/auth/login.html,909,source / 原始碼,1a5c8e29680f48cffc239fc44025432d28fc87dbc290e12e5266a30b0f7a4232,text read / 文字讀取 (2 lines)
 MuscleCore分析資料/website/app/templates/auth/register.html,768,source / 原始碼,d2b0e98826df8b26d90bf1c4c2c809de458a6603633204fd67ca1c59734ca3de,text read / 文字讀取 (2 lines)
@@ -224,12 +224,13 @@ docs/CURRENT_CONTEXT_HISTORY_2026-10-18_0515.md,25618,document / 文件,0289e6b5
 docs/D4_DEPLOYED_CONSUMER_INVENTORY_2026-10-17.md,5967,document / 文件,005686b58ef75153d182f546b6ac9eb3a8bd5dc899a141aa047803e210e5cb4b,text read / 文字讀取 (29 lines)
 docs/D4_IMPORT_ACCEPTANCE_2026-10-18.md,4113,document / 文件,df1280a013485fe2577b558b64706edfe3e23d26df8880ede8bcb4228d91e824,text read / 文字讀取 (33 lines)
 docs/D4_REMOTE_GATE_2026-10-17.md,7100,document / 文件,99b4636d75f9935283be11dfc949fa323a178c992965b2a258db9b959554a52c,text read / 文字讀取 (40 lines)
-docs/DOCUMENT_INDEX.md,18783,document / 文件,9ac06cecba28aa125718b3f26894538339fe4b9a8926b37654491fc603880fb2,text read / 文字讀取 (117 lines)
+docs/DOCUMENT_INDEX.md,19026,document / 文件,90c95344647877b507a17917a32c08a55d1e0ef62b115781c9b7d6c5d4aeecfd,text read / 文字讀取 (118 lines)
 docs/DOCUMENT_SYNC_2026-10-17.md,2436,document / 文件,937c1d93f252b15efbb0731d70fabe56c571f2195630ac5b1f72631b62b9bec0,text read / 文字讀取 (44 lines)
 docs/FLASK_SKU_AI_INTEGRATION.md,9922,document / 文件,417d20f5903701927e7494b110c1c7bc3780c393cbba957fb49a530f7e9e73ce,text read / 文字讀取 (135 lines)
 docs/HANDOFF_SAM_2026-10-07.md,6127,document / 文件,548c29e7ef76424df91c6557fc335ff49aae8990e7c353ff2a76a0ef2c5c3da3,text read / 文字讀取 (61 lines)
-docs/JEFF_ADMIN_UI_DESIGN.md,34791,document / 文件,e78963a47e5a4a0be0e1e3e073a291955eec567462e4801b0c304bb0624d94ac,text read / 文字讀取 (445 lines)
+docs/JEFF_ADMIN_UI_DESIGN.md,46875,document / 文件,0d982c5283130da9128bea45c6f5ff9242e5259c45bf94318cd1640a359823af,text read / 文字讀取 (499 lines)
 docs/JEFF_DEMO_REVIEW_2026-10-05.md,5716,document / 文件,e32219fd457a4e649a3bbece849521e8628a0d87e0c33e3dea11880dc0109b67,text read / 文字讀取 (66 lines)
+docs/JEFF_FRONTEND_ISSUES_2026-10-21.md,11104,document / 文件,f17dc02e1836e226913af1fae9214ac635b0f18eee277ccd53993c8b3d3ec811,text read / 文字讀取 (157 lines)
 docs/JEFF_PUSH_REVIEW_2026-10-07.md,6093,document / 文件,80d03580917daabbc818da2847f6d8cab254e6b38685ad4ca4a895610836f2df,text read / 文字讀取 (56 lines)
 docs/JEFF_REPLY_SAM_PLAN_2026-10-11.md,8403,document / 文件,9a2225ae83333a092396649330310a16e317e37eb1d51555576592f4987fbb85,text read / 文字讀取 (53 lines)
 docs/MERGE_RECORD_2026-10-02.md,5110,document / 文件,c3e7174202a1d5ac538356e910cc6e34706a829a72fc328c65085745c5139498,text read / 文字讀取 (58 lines)
@@ -243,7 +244,7 @@ docs/PRODUCT_REVIEWS_6PLUS4_DELIVERY_2026-10-18.md,5084,document / 文件,71ba86
 docs/PROJECT_BLOCKERS_2026-10-07.md,7592,document / 文件,6b1155df3f8881bd72e210c35d1854049435b8d4e64e952ba1edd64106ec7e4c,text read / 文字讀取 (36 lines)
 docs/PROJECT_PROGRESS_2026-10-07.md,9042,document / 文件,7356da4362fdaacfb75c85542c8881d932f28b52873f721a1ce97ef03bf9bd95,text read / 文字讀取 (71 lines)
 docs/PR_AUDIT_2026-10-18.md,19536,document / 文件,59c484131ce27e83b8b1862ce9f850298a843f62747898797d08bdc54ad0349c,text read / 文字讀取 (106 lines)
-docs/README.md,14340,document / 文件,ebc3273c6018dc01c0c5eeac6705da44e66af631d5d8aa5949e7acc0666d9f66,text read / 文字讀取 (104 lines)
+docs/README.md,14466,document / 文件,1606405f76d28292a3c206487eb1034550deb5582ce3efbb38ce44a114394d61,text read / 文字讀取 (105 lines)
 docs/REN_AUTH_ORDER.md,3504,document / 文件,21802edfff3de3eb320a83568e8ff3bc6faa5b50453593271a8ae86b5d72009b,text read / 文字讀取 (49 lines)
 docs/REN_D4_PREFLIGHT_2026-10-17.md,2289,document / 文件,cff4530aca95e7c7ea6781b02b67970d72b75927f4fdaa5260d11171b9b90cbc,text read / 文字讀取 (20 lines)
 docs/REN_D4_PRIVATE_PROBE_2026-10-17.md,12255,document / 文件,fddb8021fb93841a60fc00a1dfbbc15ec545cdc63bc796b59857bda4d08ff356,text read / 文字讀取 (75 lines)
@@ -350,6 +351,15 @@ docs/TEST_DATA_IMPORT_2026-10-05.md,4453,document / 文件,520a4bec5bd6106344d15
 docs/TEST_DATA_SPEC.md,8436,document / 文件,82cc75c361c7c8a7e563a1984ea2b5ceb5c71b781e0519efeae1a84982d3c8cc,text read / 文字讀取 (86 lines)
 docs/V4_TEST_VERIFICATION.json,3704,document / 文件,6a4af8a219e3d5a30631be907d3d5817b0198e5b7f59ef369b63fb65cfce1033,text read / 文字讀取 (196 lines)
 docs/WORK_EXECUTION_2026-10-18.md,10655,document / 文件,be376e1f2ff24357edeff04a8ffd22f067d9826c3628446d0566a121e914de3c,text read / 文字讀取 (63 lines)
+docs/evidence/jeff-frontend-issues-20261021/F01-bad-request.png,8383,document / 文件,90de5de930ef84ee95f2d9cd4922a6fce9420f1ec7ebb3ce8bf580e041e2fab1,binary hashed / 二進位雜湊
+docs/evidence/jeff-frontend-issues-20261021/F02-recommend-empty.png,50496,document / 文件,3cc4bf7e3b9fbb12896387edad67d02d3ff25633d1bbd1a946a8fde19078973c,binary hashed / 二進位雜湊
+docs/evidence/jeff-frontend-issues-20261021/F03-search-block.png,20374,document / 文件,59eb5294b5677c644fb5014f371838dce1c8125e9d989a33c8fe89b19bc12856,binary hashed / 二進位雜湊
+docs/evidence/jeff-frontend-issues-20261021/F05-tag-filter.png,31278,document / 文件,03be0894461cfa9b1f0cdd98c216e38030e1a73d8bc9eca0af98b23468430520,binary hashed / 二進位雜湊
+docs/evidence/jeff-frontend-issues-20261021/F06-card-alignment.png,168711,document / 文件,f828d479af61d024fe7e8eff0d9c07fb0f80f15f123eb857256e156fbb713e7b,binary hashed / 二進位雜湊
+docs/evidence/jeff-frontend-issues-20261021/F07-sku-dropdown.png,14924,document / 文件,f1aadd2f326568eb190ea9caf58f2b27ca2ef72cb4cca363734d0f52ff90a6f1,binary hashed / 二進位雜湊
+docs/evidence/jeff-frontend-issues-20261021/F09-title-layout.png,77087,document / 文件,9a89d90dad0f0359519396939e5d7b18321d66e01d8c6dbdbde6fe0479932cab,binary hashed / 二進位雜湊
+docs/evidence/jeff-frontend-issues-20261021/F11-zero-stock.png,17740,document / 文件,aeda12e84b40a2bb28431517b1d95fee130b91577f7ca3432e3bc179fb6f8211,binary hashed / 二進位雜湊
+docs/evidence/jeff-frontend-issues-20261021/F13-recommend-cards.png,123112,document / 文件,3804f8b951c39b7e13fa404c56fb5d78257fae1a0fd147246c7033310b1abb1b,binary hashed / 二進位雜湊
 docs/evidence/main-preview-2026-10-18/catalog.png,47246,document / 文件,d63c8f7c043db052b7d84926e98221f69b73903f98ceb75cd633a97fbbabfb6a,binary hashed / 二進位雜湊
 docs/evidence/main-preview-2026-10-18/product-price.png,42707,document / 文件,89611617383eb829e9286f5cb090d768cc4d2efba82c0ec93aca530fa0747390,binary hashed / 二進位雜湊
 docs/evidence/main-preview-2026-10-18/product.png,87561,document / 文件,9ad1885dd3c2a0fade50b8a6c148c1449353df80a5048358c720548e28002bd7,binary hashed / 二進位雜湊
