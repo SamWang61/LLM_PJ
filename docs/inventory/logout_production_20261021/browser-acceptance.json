@@ -1,0 +1,81 @@
+{
+  "checked_at": "2026-10-20T20:47:42.058Z",
+  "operator": "Codex under user authorization",
+  "account": "SAM existing customer and admin roles",
+  "browser": "Codex IAB on Windows desktop",
+  "scope": "production Firebase site; desktop browser; no named-person acceptance",
+  "cases": [
+    {
+      "case": "storefront_customer",
+      "started_at": "2026-10-20T20:46:14.247Z",
+      "completed_at": "2026-10-20T20:46:18.154Z",
+      "click_count": 1,
+      "dialog": null,
+      "before": {
+        "button": "登出",
+        "clientWidth": 1265,
+        "csrf_present": true,
+        "form_action": "/auth/logout",
+        "form_method": "post",
+        "innerHeight": 720,
+        "innerWidth": 1280,
+        "scrollWidth": 1265,
+        "title": "VibeCart｜超級市場",
+        "url": "https://vibecart-llmai.web.app/"
+      },
+      "after": {
+        "confirmation_text": false,
+        "login_link": true,
+        "logout_buttons": 0,
+        "success": "您已安全登出。",
+        "title": "VibeCart｜超級市場",
+        "url": "https://vibecart-llmai.web.app/"
+      },
+      "screenshots": [
+        "01-customer-before.jpg",
+        "02-customer-after.jpg"
+      ],
+      "protected_after": {
+        "url": "https://vibecart-llmai.web.app/auth/login?next=/cart",
+        "login_required": true
+      }
+    },
+    {
+      "case": "admin_backend",
+      "started_at": "2026-10-20T20:47:25.843Z",
+      "completed_at": "2026-10-20T20:47:30.136Z",
+      "click_count": 1,
+      "dialog": null,
+      "before": {
+        "button": "登出",
+        "clientWidth": 1265,
+        "csrf_present": true,
+        "form_action": "/auth/logout",
+        "form_method": "post",
+        "innerHeight": 720,
+        "innerWidth": 1280,
+        "scrollWidth": 1265,
+        "title": "營運總覽｜VibeInsight 後台",
+        "url": "https://vibecart-llmai.web.app/admin/?start=2026-10-21&end=2026-10-21&demo=exclude"
+      },
+      "after": {
+        "confirmation_text": false,
+        "login_link": true,
+        "logout_buttons": 0,
+        "success": "您已安全登出。",
+        "title": "VibeCart｜超級市場",
+        "url": "https://vibecart-llmai.web.app/"
+      },
+      "screenshots": [
+        "03-admin-before.jpg",
+        "04-admin-after.jpg"
+      ],
+      "protected_after": {
+        "admin_page_accessible": false,
+        "login_visible": true,
+        "message": "請先登入後再繼續。",
+        "url": "https://vibecart-llmai.web.app/auth/login?next=/admin/"
+      }
+    }
+  ]
+}
