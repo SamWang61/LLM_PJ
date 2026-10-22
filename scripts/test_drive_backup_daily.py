@@ -1,7 +1,7 @@
 import copy
 import pytest
 from drive_backup_acl import DriveError,PROJECT
-from drive_backup_daily import unchanged_remote
+from drive_backup_daily import unchanged_remote,verify_project_checkpoint
 
 
 @pytest.mark.parametrize('change',['head','version','new','missing','incomplete'])
@@ -70,3 +70,19 @@ def test_reviewed_preflight_does_not_authorize_a_later_project_version():
     assert unchanged_remote(accepted,copy.deepcopy(accepted))
     later=copy.deepcopy(accepted);later['nodes'][PROJECT]['version']='38'
     with pytest.raises(DriveError,match='audit required'):unchanged_remote(accepted,later)
+
+
+def test_source_confirmation_checkpoint_accepts_only_unchanged_project():
+    before=project_snapshot()['nodes'][PROJECT]
+    checkpoint={k:before[k] for k in ('id','mimeType','version','modifiedTime')}
+    verify_project_checkpoint(checkpoint,copy.deepcopy(before))
+
+
+@pytest.mark.parametrize('change',['id','mimeType','version','modifiedTime','missing_version'])
+def test_long_acl_scan_cannot_reuse_confirmation_for_changed_project(change):
+    before=project_snapshot()['nodes'][PROJECT]
+    after=copy.deepcopy(before)
+    if change=='missing_version':after.pop('version')
+    else:after[change]='changed'
+    with pytest.raises(DriveError,match='reconfirm sources'):
+        verify_project_checkpoint(before,after)

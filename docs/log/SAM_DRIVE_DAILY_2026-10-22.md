@@ -29,6 +29,8 @@ English: The complete source snapshot at 2026-10-22 21:19:10 Taipei time was ver
 
 後續每日前置檢查已補上限定規則：只有固定 `application/vnd.google-apps.project` 容器、操作者明確重新核對原兩個來源、版本遞增且其他所有已讀欄位完全相同時，才保存版本審查並繼續。來源準備後須與本輪已接受的前置快照嚴格比較；版本再次增加仍須重新核對來源，不能沿用先前 UI 確認。一般檔案、原生 Google 文件、ACL、修改時間、來源物件集合或其他欄位變動仍須停下重新稽核；不是全域略過版本檢查。15 個新增回歸案例覆蓋這些界線。
 
+後續每日執行另在長時間權限列舉開始前，立即讀取固定專案的 ID、類型、版本及修改時間作為來源確認檢查點；完整列舉後必須仍精確相同，才允許審查先前容器版本差異。這避免把掃描期間的新來源變動沿用先前 UI 確認。6 項測試覆蓋相同檢查點、來源 ID／類型／版本／時間變動及缺少版本；檢查點私有保存。
+
 PR #180／#181 發布使本機文件及 `.git` 改變，所以先完整核對第一個雲端快照，再重新建立最新來源清冊，以原 ID 補齊變動，最後重做完整雲端、來源及加密復原驗證。沒有跳過來源差異檢查。
 
 相較第一份快照，最新來源新增 87 個檔案、24 個檔案內容變動；2 個已不在來源的舊檔仍保留在 Drive，沒有鏡像刪除。
@@ -51,7 +53,7 @@ English: A second restoration was rolled back after conflicting ACL observations
 
 ## 驗證與證據 / Validation and evidence
 
-本輪備份相關測試共 **207 項通過**（190 項 Drive 備份＋17 項加密封裝）；其中新增 15 項專案版本審查案例。前階段 161 項測試的實作已由 [PR #180](https://github.com/SamWang61/LLM_PJ/pull/180) 與 [PR #181](https://github.com/SamWang61/LLM_PJ/pull/181) 合併，兩個 PR 的測試提交各有兩項 GitHub CI 成功。本次補修與完成紀錄在新 PR 發布，CI／合併結果以該 PR 為準；未重新執行整站或正式站部署。
+本輪備份相關測試共 **213 項通過**（196 項 Drive 備份＋17 項加密封裝）；其中新增 15 項專案版本審查案例。前階段 161 項測試的實作已由 [PR #180](https://github.com/SamWang61/LLM_PJ/pull/180) 與 [PR #181](https://github.com/SamWang61/LLM_PJ/pull/181) 合併，兩個 PR 的測試提交各有兩項 GitHub CI 成功。本次補修與完成紀錄在新 PR 發布，CI／合併結果以該 PR 為準；未重新執行整站或正式站部署。
 
 一般 `files.list` 不保證子物件的 `permissionDetails`，因此每個物件另以完整 `permissions.list` 讀回，再核對新目錄清冊。每個批次最多 100 個純 GET；檢查 response ID、分頁、缺漏與重複，失敗項目完整重讀。撤權與恢復仍單筆依序進行。[Google 批次規範](https://developers.google.com/workspace/drive/api/guides/performance#batch-requests)。
 
@@ -65,4 +67,4 @@ English: A second restoration was rolled back after conflicting ACL observations
 4. 每輪完整讀回權限與雲端狀態，保存新的原 ACL 後才暫停共用；傳輸、全雲端／來源核對、所有密文認證復原全部通過，才恢復原權限並再次完整回讀。
 5. 失敗保留停止共用及可恢復狀態；不刪除目的地額外檔案、不上傳金鑰。只在完成、失敗、新阻礙或必要本人動作時通知，狀態不變不重複通知。
 
-English: Production publication is complete; a new post-publication offline consent is recorded separately. Subsequent daily runs retain fresh original ACLs, reject unexpected remote changes, perform full source/cloud/recovery verification, and restore sharing only after every gate passes. A fixed project container version increase is reviewed only after its sources are reconfirmed and every other available metadata field is equal; this does not waive document or permission changes. All 207 backup tests passed. Completion records, the daily preflight, quota and native-document fixes and their Git publication are after this backup cutoff and belong to the next cycle.
+English: Production publication is complete; a new post-publication offline consent is recorded separately. Subsequent daily runs retain fresh original ACLs, reject unexpected remote changes, perform full source/cloud/recovery verification, and restore sharing only after every gate passes. A fixed project container version increase is reviewed only after its sources are reconfirmed and every other available metadata field is equal; this does not waive document or permission changes. All 213 backup tests passed. Completion records, the daily preflight, quota and native-document fixes and their Git publication are after this backup cutoff and belong to the next cycle.

@@ -1,5 +1,5 @@
 {
-  "recorded_at": "2026-10-23T00:56:38.712124+08:00",
+  "recorded_at": "2026-10-23T01:02:15.333464+08:00",
   "state": "completed_and_original_sharing_restored",
   "oauth_publishing_status": "Production",
   "oauth_google_verification_complete": false,
@@ -48,9 +48,9 @@
     "preserved_independent_downloads_reauthenticated": 3566
   },
   "local_tests": {
-    "passed": 207,
+    "passed": 213,
     "failed": 0,
-    "drive_backup_tests": 190,
+    "drive_backup_tests": 196,
     "encrypted_archive_tests": 17,
     "previous_code_publication_prs": [
       180,
@@ -105,5 +105,10 @@
     "same_ids_retained": true,
     "server_cause": "not captured",
     "resolved_by_readback_and_same_id_retry": true
+  },
+  "daily_preflight_guard": {
+    "captures_project_before_long_acl_scan": true,
+    "rejects_later_project_changes": true,
+    "regression_tests": 6
   }
 }

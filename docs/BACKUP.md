@@ -6,7 +6,7 @@
 
 SAM 核准的唯一排除仍為 `MuscleCore分析資料/website/.pytest_cache`；OAuth 已為 Production。Production 發布後的新離線授權已於 2026-10-22 20:28:47 完成；2026-10-22 21:57:36 再核對目前憑證，確認對應原核准用戶端、refresh token 已更新、重新整理與擁有者身分均通過。原「稍後處理」待辦已由實際收據取代，多餘授權頁與等待程序已關閉，不需重複授權。憑證繼續以 Windows DPAPI 保存在專案外。 每日 23:30 排程維持，以下舊「尚未核准／未完成」段落為歷史。
 
-本次完成紀錄、每日前置檢查、限流與原生文件補修及後續 GitHub 合併在來源清冊時間之後發布，列入下一輪備份；不能把事後內容冒稱已在本次 Drive 快照中。後續執行入口為 `scripts/drive_backup_daily.py`，沿用專案外金鑰，先保存本輪原 ACL，再撤權、完整對帳、認證復原及恢復；未完成隔離只能續用原恢復資料。本輪 207 項本機備份測試通過；先前 PR #180／#181 CI 通過，本次補修與紀錄的 CI／合併另以新 PR 為準。
+本次完成紀錄、每日前置檢查、限流與原生文件補修及後續 GitHub 合併在來源清冊時間之後發布，列入下一輪備份；不能把事後內容冒稱已在本次 Drive 快照中。後續執行入口為 `scripts/drive_backup_daily.py`，沿用專案外金鑰，先保存本輪原 ACL，再撤權、完整對帳、認證復原及恢復；未完成隔離只能續用原恢復資料。本輪 213 項本機備份測試通過；先前 PR #180／#181 CI 通過，本次補修與紀錄的 CI／合併另以新 PR 為準。
 
 English: This full backup and original sharing restoration passed all cloud, source, authenticated recovery and whole-tree ACL gates. The fixed link and destination-only content remain intact. Documents generated after this source cutoff enter the next daily cycle.
 

@@ -39,6 +39,16 @@ def project_version_only_change(before, after):
             =={k:v for k,v in after.items() if k!='version'})
 
 
+def verify_project_checkpoint(checkpoint, current):
+    """The UI confirmation cannot authorize changes during a long ACL scan."""
+    fields=('id','mimeType','version','modifiedTime')
+    if (any(not checkpoint.get(k) or not current.get(k) for k in fields)
+            or checkpoint['id']!=PROJECT
+            or checkpoint['mimeType']!='application/vnd.google-apps.project'
+            or any(checkpoint[k]!=current[k] for k in fields)):
+        raise DriveError('Project changed after source confirmation; reconfirm sources')
+
+
 def unchanged_remote(previous,current,*,project_sources_reconfirmed=False):
     if not previous.get('complete') or not current.get('complete') or previous['nodes'].keys()!=current['nodes'].keys():
         raise DriveError('Remote inventory changed; confidential-content audit required')
@@ -85,6 +95,9 @@ def main():
                 local.drive=Drive(AuthorizedSession(Credentials.from_authorized_user_info(json.loads(credential_json),scopes=[SCOPE])))
             return local.drive
         api=factory()
+        project_checkpoint=api.request('GET',f'files/{PROJECT}',params={
+            'fields':'id,mimeType,version,modifiedTime'})
+        verify_project_checkpoint(project_checkpoint,project_checkpoint)
         full_acl=permissions_many(previous['nodes'],factory)
         def acl_validator(row):
             check_owner(row)
@@ -98,6 +111,7 @@ def main():
                     or normalized(permissions)!=normalized(previous['nodes'][row['id']]['permissions'])):
                 raise DriveError('Remote ACL changed; preserve and review before a new cycle')
         current=read_tree(api,previous,acl_validator=acl_validator)
+        verify_project_checkpoint(project_checkpoint,current['nodes'][PROJECT])
         unchanged_remote(previous,current,project_sources_reconfirmed=args.project_sources_reconfirmed)
         # The UI attestation covers this first readback only. A new version
         # during local preparation requires another review, even for the project.
@@ -113,6 +127,7 @@ def main():
         record_project_review(current)
         directory=args.run_directory;directory.mkdir(exist_ok=False)
         write_private_json(directory/'previous-completion.json',last)
+        write_private_json(directory/'source-confirmation-project-checkpoint.json',project_checkpoint)
         write_private_json(directory/'project-metadata-reviews.json',project_reviews)
         manifest=prepare(policy['source_root'],directory/'source',args.key,
             excludes=policy['approved_exclusions'],prior_manifest=previous_plan['source_manifest'])
