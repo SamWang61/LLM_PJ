@@ -129,13 +129,19 @@ class CachedEmbeddings:
             self.cache.clear()
 
 
+_BGE_INIT_LOCK = Lock()
+
+
 def bge_embeddings():
-    if "bge_embeddings" not in current_app.extensions:
-        from langchain_huggingface import HuggingFaceEmbeddings
-        current_app.extensions["bge_embeddings"] = CachedEmbeddings(HuggingFaceEmbeddings(
-            model_name=current_app.config["BGE_MODEL"],
-            model_kwargs={"device": "cpu", "local_files_only": True},
-            encode_kwargs={"normalize_embeddings": True}))
+    # Concurrent cold requests must share one model and its vector cache. Model
+    # construction releases the GIL; checking extensions alone is not a lock.
+    with _BGE_INIT_LOCK:
+        if "bge_embeddings" not in current_app.extensions:
+            from langchain_huggingface import HuggingFaceEmbeddings
+            current_app.extensions["bge_embeddings"] = CachedEmbeddings(HuggingFaceEmbeddings(
+                model_name=current_app.config["BGE_MODEL"],
+                model_kwargs={"device": "cpu", "local_files_only": True},
+                encode_kwargs={"normalize_embeddings": True}))
     return current_app.extensions["bge_embeddings"]
 
 

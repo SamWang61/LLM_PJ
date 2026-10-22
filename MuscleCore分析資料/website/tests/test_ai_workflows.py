@@ -61,6 +61,67 @@ def test_embedding_cache_invalidates_changed_text():
     assert delegate.calls == 2 and len(cache.cache) == 2
 
 
+def test_concurrent_cold_requests_construct_one_model_and_compute_vectors_once(monkeypatch):
+    import sys
+    from types import SimpleNamespace
+    from threading import Barrier, Event
+    from concurrent.futures import ThreadPoolExecutor
+    from app.services.ai_workflows import bge_embeddings
+    app = create_app({"BGE_MODEL": "offline-fixture"})
+    barrier, entered, release = Barrier(3), Event(), Event()
+    constructors, encodes = [], []
+
+    class SlowModel(Embeddings):
+        def __init__(self, **kwargs):
+            constructors.append(kwargs)
+            entered.set()
+            assert release.wait(5)
+
+        def embed_documents(self, texts):
+            encodes.append(list(texts))
+            return super().embed_documents(texts)
+
+    monkeypatch.setitem(sys.modules, "langchain_huggingface", SimpleNamespace(HuggingFaceEmbeddings=SlowModel))
+
+    def request():
+        with app.app_context():
+            barrier.wait(timeout=5)
+            model = bge_embeddings()
+            return model, model.embed_documents(["瑜珈", "啞鈴"])
+
+    with ThreadPoolExecutor(max_workers=3) as pool:
+        futures = [pool.submit(request) for _ in range(3)]
+        try:
+            assert entered.wait(5)
+        finally:
+            release.set()
+        results = [f.result(timeout=5) for f in futures]
+    assert len(constructors) == len(encodes) == 1
+    assert all(model is results[0][0] and vectors == results[0][1] for model, vectors in results)
+
+
+def test_failed_bge_load_can_retry_without_publishing_partial_model(monkeypatch):
+    import sys
+    from types import SimpleNamespace
+    from app.services.ai_workflows import bge_embeddings
+    app = create_app({"BGE_MODEL": "offline-fixture"})
+    attempts = []
+
+    def load(**kwargs):
+        attempts.append(kwargs)
+        if len(attempts) == 1:
+            raise RuntimeError("fixture failure")
+        return Embeddings()
+
+    monkeypatch.setitem(sys.modules, "langchain_huggingface", SimpleNamespace(HuggingFaceEmbeddings=load))
+    with app.app_context():
+        with pytest.raises(RuntimeError):
+            bge_embeddings()
+        assert "bge_embeddings" not in app.extensions
+        assert isinstance(bge_embeddings(), CachedEmbeddings)
+    assert len(attempts) == 2
+
+
 def test_summary_uses_allowlisted_metrics_and_real_langchain():
     insights = {"revenue": 100, "orders": 2, "avg_order": 50, "low_stock": [{"email": "private@example.test"}],
                 "messages": ["規則式摘要"], "customer": "secret-name"}
