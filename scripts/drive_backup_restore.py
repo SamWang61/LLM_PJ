@@ -7,12 +7,15 @@ back; a failed restoration revokes only the grants from this recovery plan.
 """
 from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
+from collections import Counter
+import hashlib
 import json
 from pathlib import Path
+import time
 
-from drive_backup_acl import (DriveError, FOLDER, PROJECT, PERMISSION_FIELDS,
-    identifier, acl_semantics, plan as acl_plan, write_private_json)
-from drive_backup_isolation import check_owner, owner_only, permission_set
+from drive_backup_acl import (DriveError, FOLDER, PROJECT, PERMISSION_FIELDS, API,
+    identifier, acl_semantics, plan as acl_plan, write_private_json, rate_limited, rate_backoff)
+from drive_backup_isolation import check_owner, owner_only, permission_set, INLINE_FIELDS
 from drive_backup_payload import verify_source, hashes
 from drive_backup_sync import read_tree, verify_cloud, verify_complete
 from drive_backup_transfer import download
@@ -104,6 +107,92 @@ def expected_permissions(original, latest):
     return expected
 
 
+def acl_views_match(row, permissions, expected):
+    """Require exact identities and semantics; list metadata can omit inheritance."""
+    inline = row.get('permissions', [])
+    try:
+        indexed = permission_set(inline)
+        complete = permission_set(permissions)
+        if (not indexed or indexed.keys() != complete.keys()
+                or row.get('shared') is not any(p.get('role') != 'owner' for p in permissions)):
+            return False
+        for key, permission in indexed.items():
+            if (any(permission.get(flag) for flag in ('deleted', 'pendingOwner', 'view'))
+                    or acl_semantics(permission) != acl_semantics(complete[key])):
+                return False
+            if 'permissionDetails' in permission:
+                if normalized([permission]) != normalized([complete[key]]):
+                    return False
+        return normalized(permissions) == expected
+    except (DriveError, ValueError, KeyError, TypeError):
+        return False
+
+
+def reconcile_acl_readback(row, permissions, expected, drive, directory):
+    """Resolve differing observations only with two fresh, agreeing endpoints.
+
+    Never infer missing optional fields or waive a changed grant. Preserve every
+    discrepancy before bounded read retries so a failed run remains diagnosable.
+    """
+    check_owner(row)
+    if acl_views_match(row, permissions, expected):
+        row['permissions'] = permissions
+        return
+    key = identifier(row['id'])
+    proof = {'file_id': key, 'initial_metadata': dict(row),
+             'initial_complete_permissions': permissions, 'attempts': [], 'complete': False}
+    folder = Path(directory) / 'acl-reconciliation'
+    folder.mkdir(exist_ok=True)
+    path = folder / (key + '.json')
+    write_private_json(path, proof)
+    for attempt in range(3):
+        if attempt:
+            time.sleep(attempt)
+        fresh_permissions = drive.permissions(key)
+        fresh = drive.request('GET', f'files/{key}', params={
+            'fields': INLINE_FIELDS + ',appProperties,headRevisionId',
+            'includePermissionsForView': 'published'})
+        proof['attempts'].append({'checked_at': datetime.now(timezone.utc).isoformat(),
+            'metadata': fresh, 'complete_permissions': fresh_permissions})
+        write_private_json(path, proof)
+        check_owner(fresh)
+        if any(fresh.get(k) != row.get(k) for k in ('id', 'name', 'mimeType', 'parents')):
+            raise DriveError('Object identity changed during ACL reconciliation')
+        if acl_views_match(fresh, fresh_permissions, expected):
+            row.clear(); row.update(fresh); row['permissions'] = fresh_permissions
+            proof['complete'] = True
+            write_private_json(path, proof)
+            return
+    raise DriveError('Restored direct or inherited ACL differs after independent readback')
+
+
+def native_document_fingerprint(drive, key):
+    """Content/revision evidence is independent of ACL-updated modifiedTime."""
+    key=identifier(key)
+    fields={'fields':'id,mimeType,version'}
+    before=drive.request('GET',f'files/{key}',params=fields)
+    if before.get('mimeType')!='application/vnd.google-apps.document' or not before.get('version'):
+        raise DriveError('Native document requires a supported content fingerprint')
+    for attempt in range(8):
+        response=drive.session.get(API+f'files/{key}/export',params={'mimeType':'text/plain'},
+                                   timeout=60,allow_redirects=False)
+        if rate_limited(response) and attempt<7:
+            response.close();time.sleep(rate_backoff(attempt));continue
+        try:
+            if response.status_code!=200:raise DriveError('Native content export failed')
+            digest=hashlib.sha256(response.content).hexdigest()
+        finally:response.close()
+        break
+    revisions=list(drive.pages(f'files/{key}/revisions','revisions',pageSize=1000,
+        fields='nextPageToken,revisions(id,mimeType,modifiedTime)'))
+    if (not revisions or any(not r.get('id') or not r.get('modifiedTime') for r in revisions)
+            or len({r['id'] for r in revisions})!=len(revisions)):
+        raise DriveError('Native content revision evidence is incomplete')
+    after=drive.request('GET',f'files/{key}',params=fields)
+    if before!=after:raise DriveError('Native document changed during fingerprint')
+    return {'text_sha256':digest,'revisions':sorted(revisions,key=lambda r:r['id'])}
+
+
 def restore(plan, original, saved_acl_plan, recovery, drive, directory, drive_factory=None):
     """Restore original ACL only after fresh cloud, source and recovery gates.
 
@@ -125,6 +214,11 @@ def restore(plan, original, saved_acl_plan, recovery, drive, directory, drive_fa
     latest = json.loads((directory/'verified-cloud.json').read_text(encoding='utf8'))
     expected = expected_permissions(original, latest)
     grants = sorted(saved_acl_plan['direct'], key=lambda r: (r['file_id']==FOLDER, r['file_id'],r['permission_id']))
+    native_ids=[key for key,row in latest['nodes'].items()
+                if row['mimeType'].startswith('application/vnd.google-apps.')
+                and row['mimeType'] not in ('application/vnd.google-apps.folder','application/vnd.google-apps.project')]
+    native_before={key:native_document_fingerprint(drive,key) for key in native_ids}
+    write_private_json(directory/'native-content-before.json',native_before)
     state = {'complete':False, 'sharing_restored':False, 'phase':'gates_passed', 'operations':[],
              'started_at':datetime.now(timezone.utc).isoformat()}
     write_private_json(state_path, state)
@@ -150,28 +244,42 @@ def restore(plan, original, saved_acl_plan, recovery, drive, directory, drive_fa
                     or any(acl_semantics(current[pid]) != acl_semantics(row) for pid,row in before.items())):
                 raise DriveError('Restored permission or existing ACL differs')
             operation['phase']='verified'; write_private_json(state_path,state)
+        # Capture the metadata immediately after our verified permission calls.
+        # Only their exact version increments may explain a native mtime change.
+        changed_counts=Counter(r['file_id'] for r in grants)
+        post_permission={}
+        for key,count in changed_counts.items():
+            row=drive.request('GET',f'files/{identifier(key)}',params={'fields':'id,mimeType,version,modifiedTime'})
+            before=latest['nodes'][key]
+            versions=[before.get('version'),row.get('version')]
+            if (any(not isinstance(v,str) or not v.isascii() or not v.isdigit() for v in versions)
+                    or int(versions[1])!=int(versions[0])+count or not row.get('modifiedTime')):
+                raise DriveError('Unexpected metadata change during permission restoration')
+            post_permission[key]=row
+        write_private_json(directory/'post-permission-metadata.json',post_permission)
         full_acl = (permissions_many(latest['nodes'],drive_factory) if drive_factory
                     else {key:drive.permissions(key) for key in latest['nodes']})
+        write_private_json(directory/'full-acl-readback.json', full_acl)
         def validator(row):
-            check_owner(row)
-            inline = row.get('permissions', [])
-            permission_set(inline)
-            permissions = full_acl.get(row['id'], [])
-            if {p['id']:acl_semantics(p) for p in inline}!={p['id']:acl_semantics(p) for p in permissions}:
-                raise DriveError('ACL changed between full and inline readback')
-            row['permissions'] = permissions
-            if normalized(permissions) != expected.get(row['id']):
-                raise DriveError('Restored direct or inherited ACL differs')
+            reconcile_acl_readback(row, full_acl.get(row['id'], []),
+                                   expected.get(row['id']), drive, directory)
         fresh = read_tree(drive, plan['destination_before'], acl_validator=validator)
-        # ACL updates increment version. Content is checked by size/hash for all
-        # blobs; native sources have no content mutation in this operation.
+        # ACL updates can increment version and modifiedTime on directly changed
+        # objects. Blob hashes, native content/revisions, and exact post-operation
+        # metadata distinguish these updates from content or concurrent changes.
         old = latest['nodes']
         if fresh['nodes'].keys() != old.keys(): raise DriveError('Cloud inventory changed during restoration')
         for key,row in fresh['nodes'].items():
             if any(row.get(k)!=old[key].get(k) for k in ('id','name','parents','mimeType','size','md5Checksum','sha256Checksum','headRevisionId')):
                 raise DriveError('Cloud content changed during restoration')
-            if row['mimeType'].startswith('application/vnd.google-apps.') and row.get('modifiedTime') != old[key].get('modifiedTime'):
-                raise DriveError('Native source changed during restoration')
+            if row['mimeType'].startswith('application/vnd.google-apps.'):
+                baseline=post_permission.get(key,old[key])
+                fields=('version','modifiedTime') if key in post_permission else ('modifiedTime',)
+                if any(row.get(k)!=baseline.get(k) for k in fields):
+                    raise DriveError('Native source changed during restoration')
+        native_after={key:native_document_fingerprint(drive,key) for key in native_ids}
+        if native_after!=native_before:raise DriveError('Native document content or revisions changed')
+        write_private_json(directory/'native-content-after.json',native_after)
         verify_source(plan['source_manifest']['source_root'], plan['source_manifest'])
         write_private_json(directory/'restored-cloud.json',fresh)
         state.update(complete=True, sharing_restored=True, phase='restored_and_verified',

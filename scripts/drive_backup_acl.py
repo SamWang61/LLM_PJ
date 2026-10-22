@@ -8,6 +8,7 @@ from datetime import datetime, timezone
 import json
 from pathlib import Path
 import re
+import random
 import time
 import uuid
 
@@ -33,6 +34,25 @@ def identifier(value):
     return value
 
 
+def rate_limited(response):
+    """Only explicit quota reasons qualify; a generic 403 is not retryable."""
+    if response.status_code == 429:
+        return True
+    if response.status_code != 403:
+        return False
+    try:
+        data = response.json()
+        errors = data['error']['errors']
+        reasons = {row['reason'] for row in errors}
+    except (ValueError, TypeError, KeyError):
+        return False
+    return bool(reasons) and reasons <= {'rateLimitExceeded', 'userRateLimitExceeded'}
+
+
+def rate_backoff(attempt):
+    return min(2 ** attempt + random.random(), 32)
+
+
 class Drive:
     def __init__(self, session):
         self.session = session
@@ -42,7 +62,7 @@ class Drive:
         # All callers use relative, validated resource IDs; never forward tokens.
         if path.startswith("/") or ":" in path or ".." in path:
             raise ValueError("Invalid API path")
-        for attempt in range(4):
+        for attempt in range(8):
             try:
                 response = self.session.request(method, API + path, timeout=30,
                                                 allow_redirects=False, **kwargs)
@@ -53,13 +73,23 @@ class Drive:
                     time.sleep(2 ** attempt)
                     continue
                 raise DriveError("Drive transport failed; mutation outcome requires readback") from None
-            if response.status_code in (429, 500, 502, 503, 504) and method == "GET" and attempt < 3:
+            if method == "GET" and rate_limited(response) and attempt < 7:
+                response.close()
+                time.sleep(rate_backoff(attempt))
+                continue
+            if response.status_code in (500, 502, 503, 504) and method == "GET" and attempt < 3:
+                response.close()
                 time.sleep(2 ** attempt)
                 continue
             if not 200 <= response.status_code < 300:
                 # Google errors may include private names; do not echo response bodies.
-                raise DriveError(f"Drive {method} HTTP {response.status_code}")
-            return response.json() if response.content else {}
+                status = response.status_code
+                response.close()
+                raise DriveError(f"Drive {method} HTTP {status}")
+            try:
+                return response.json() if response.content else {}
+            finally:
+                response.close()
         raise DriveError("Drive retry budget exceeded")
 
     def pages(self, path, key, **params):

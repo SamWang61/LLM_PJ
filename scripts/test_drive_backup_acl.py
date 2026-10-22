@@ -207,7 +207,7 @@ class Transport:
 
 def response(status=200):
     from types import SimpleNamespace
-    return SimpleNamespace(status_code=status, content=b"{}", json=lambda: {"ok": True})
+    return SimpleNamespace(status_code=status, content=b"{}", json=lambda: {"ok": True},close=lambda:None)
 
 
 def test_read_transport_and_retryable_http_failures_are_bounded(monkeypatch):
@@ -241,6 +241,52 @@ def test_tls_failure_never_retries(monkeypatch):
     with pytest.raises(acl.DriveError, match="TLS validation failed"):
         acl.Drive(transport).request("GET", "files/test")
     assert len(transport.calls) == 1
+
+
+def quota_response(status=403, reasons=('rateLimitExceeded',)):
+    from types import SimpleNamespace
+    body={'error':{'errors':[{'reason':reason,'message':'private detail'} for reason in reasons]}}
+    return SimpleNamespace(status_code=status,content=b'error',json=lambda:body,close=lambda:None)
+
+
+@pytest.mark.parametrize('status,reason',[(403,'rateLimitExceeded'),(403,'userRateLimitExceeded'),(429,'rateLimitExceeded')])
+def test_explicit_read_quota_error_retries_and_can_recover(monkeypatch,status,reason):
+    waits=[]
+    monkeypatch.setattr(acl.time,'sleep',waits.append)
+    monkeypatch.setattr(acl.random,'random',lambda:0.25)
+    transport=Transport([quota_response(status,(reason,)),response()])
+    assert acl.Drive(transport).request('GET','files/test')=={'ok':True}
+    assert waits==[1.25] and len(transport.calls)==2
+
+
+def test_quota_backoff_is_bounded_and_does_not_expose_error_details(monkeypatch):
+    waits=[]
+    monkeypatch.setattr(acl.time,'sleep',waits.append)
+    monkeypatch.setattr(acl.random,'random',lambda:0.25)
+    transport=Transport([quota_response() for _ in range(8)])
+    with pytest.raises(acl.DriveError,match='HTTP 403') as error:
+        acl.Drive(transport).request('GET','files/test')
+    assert len(transport.calls)==8 and waits==[1.25,2.25,4.25,8.25,16.25,32,32]
+    assert 'private' not in str(error.value)
+
+
+@pytest.mark.parametrize('reasons',[(),('insufficientFilePermissions',),('dailyLimitExceeded',),
+    ('rateLimitExceeded','insufficientFilePermissions'),('unknown',)])
+def test_nontransient_or_mixed_403_does_not_retry(monkeypatch,reasons):
+    monkeypatch.setattr(acl.time,'sleep',lambda _:pytest.fail('Unexpected retry'))
+    transport=Transport([quota_response(reasons=reasons)])
+    with pytest.raises(acl.DriveError,match='HTTP 403'):
+        acl.Drive(transport).request('GET','files/test')
+    assert len(transport.calls)==1
+
+
+@pytest.mark.parametrize('method',['POST','PATCH','DELETE'])
+def test_permission_mutations_are_not_replayed_for_quota_errors(monkeypatch,method):
+    monkeypatch.setattr(acl.time,'sleep',lambda _:pytest.fail('Unexpected mutation replay'))
+    transport=Transport([quota_response()])
+    with pytest.raises(acl.DriveError,match='HTTP 403'):
+        acl.Drive(transport).request(method,'files/test/permissions')
+    assert len(transport.calls)==1
 
 
 def test_oauth_refresh_retries_only_transport_errors(monkeypatch):

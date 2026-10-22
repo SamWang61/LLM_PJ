@@ -20,11 +20,33 @@ from drive_backup_transfer import generated_ids
 from drive_backup_acl_batch import permissions_many
 
 
-def unchanged_remote(previous,current):
+def project_version_only_change(before, after):
+    """A reviewed fixed project container is distinct from backed-up file content.
+
+    Version can include server changes not reflected in content. Accept only a
+    strictly increasing version with every other available field equal; the
+    caller must separately reconfirm the two source IDs in the Drive UI.
+    """
+    required={'id','name','mimeType','modifiedTime','version','permissions',
+              'owners','ownedByMe','trashed','capabilities'}
+    if not required <= before.keys() or not required <= after.keys():return False
+    if before['id']!=PROJECT or after['id']!=PROJECT:return False
+    if before['mimeType']!='application/vnd.google-apps.project' or after['mimeType']!=before['mimeType']:return False
+    versions=[before['version'],after['version']]
+    if any(not isinstance(v,str) or not v.isascii() or not v.isdigit() for v in versions):return False
+    if int(versions[1])<=int(versions[0]):return False
+    return ({k:v for k,v in before.items() if k!='version'}
+            =={k:v for k,v in after.items() if k!='version'})
+
+
+def unchanged_remote(previous,current,*,project_sources_reconfirmed=False):
     if not previous.get('complete') or not current.get('complete') or previous['nodes'].keys()!=current['nodes'].keys():
         raise DriveError('Remote inventory changed; confidential-content audit required')
     fields=('name','parents','mimeType','size','md5Checksum','sha256Checksum','headRevisionId','version','modifiedTime')
     for key,row in current['nodes'].items():
+        if (key==PROJECT and project_sources_reconfirmed
+                and project_version_only_change(previous['nodes'][key],row)):
+            continue
         if any(row.get(k)!=previous['nodes'][key].get(k) for k in fields):
             raise DriveError('Remote object changed; confidential-content audit required')
     return True
@@ -76,15 +98,30 @@ def main():
                     or normalized(permissions)!=normalized(previous['nodes'][row['id']]['permissions'])):
                 raise DriveError('Remote ACL changed; preserve and review before a new cycle')
         current=read_tree(api,previous,acl_validator=acl_validator)
-        unchanged_remote(previous,current)
+        unchanged_remote(previous,current,project_sources_reconfirmed=args.project_sources_reconfirmed)
+        # The UI attestation covers this first readback only. A new version
+        # during local preparation requires another review, even for the project.
+        accepted_preflight=current
+        project_reviews=[]
+        def record_project_review(snapshot):
+            before=previous['nodes'][PROJECT];after=snapshot['nodes'][PROJECT]
+            if before.get('version')!=after.get('version'):
+                project_reviews.append({'project_id':PROJECT,'before_version':before['version'],
+                    'after_version':after['version'],'all_other_available_metadata_equal':True,
+                    'source_ids_reconfirmed':True,'checked_at':snapshot['captured_at'],
+                    'cause':'not established'})
+        record_project_review(current)
         directory=args.run_directory;directory.mkdir(exist_ok=False)
         write_private_json(directory/'previous-completion.json',last)
+        write_private_json(directory/'project-metadata-reviews.json',project_reviews)
         manifest=prepare(policy['source_root'],directory/'source',args.key,
             excludes=policy['approved_exclusions'],prior_manifest=previous_plan['source_manifest'])
         # Recheck after local preparation; original ACL capture must be fresh.
         full_acl=permissions_many(previous['nodes'],factory)
         current=read_tree(api,previous,acl_validator=acl_validator)
-        unchanged_remote(previous,current)
+        unchanged_remote(accepted_preflight,current)
+        record_project_review(current)
+        write_private_json(directory/'project-metadata-reviews.json',project_reviews)
         isolation=directory/'isolation';isolation.mkdir()
         fresh_plan=acl_plan(current)
         if not fresh_plan['acl_plan_ready']:raise ValueError('Fresh ACL cannot be restored exactly')
