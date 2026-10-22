@@ -47,7 +47,7 @@ jobs:
           python -m pip install -r scripts/requirements-backup.txt
           python -m pip install -r scripts/requirements-drive-backup.txt
           python -m pytest scripts/test_drive_backup_acl.py scripts/test_drive_backup_isolation.py -q -p no:cacheprovider
-          python -m pytest scripts/test_drive_backup_payload.py scripts/test_drive_backup_transfer.py scripts/test_drive_backup_remediate.py scripts/test_drive_backup_sync.py -q -p no:cacheprovider
+          python -m pytest scripts/test_drive_backup_payload.py scripts/test_drive_backup_transfer.py scripts/test_drive_backup_remediate.py scripts/test_drive_backup_sync.py scripts/test_drive_backup_restore.py scripts/test_drive_backup_daily.py -q -p no:cacheprovider
           python -m pytest scripts/test_backup_manifest.py scripts/test_v5_offline_bundle.py scripts/test_encrypted_backup.py scripts/test_backup_restore_acceptance.py scripts/test_backup_archive_parts.py scripts/test_atlas_snapshot_backup.py scripts/test_source_snapshot_delta.py scripts/test_verify_offdevice_recovery.py -q -p no:cacheprovider
       - name: 雲端來源白名單封裝 / Cloud source allowlist
         run: |

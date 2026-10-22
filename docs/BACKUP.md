@@ -1,5 +1,13 @@
 # 每日備份 / Daily backup
 
+## 2026-10-22 19:22 每日全量執行 / Current full backup
+
+SAM 已核准唯一排除 `MuscleCore分析資料/website/.pytest_cache`；OAuth 已回讀 **Production／實際運作中**，不再引用下方舊待決定狀態。新完整清冊為 47,658 檔、5,301,373,391 bytes、3,492 加密檔；全量程序已啟動，150 項本機測試通過。**全量雲端對帳、遠端認證復原及共用恢復尚在執行，未宣稱完成。** 詳見[最新每日備份紀錄與執行入口](log/SAM_DRIVE_DAILY_2026-10-22.md)、[政策](../config/drive-backup-policy.json)。
+
+GitHub 發布造成的來源變動須重建清冊並以原 ID 補齊差異。全部來源／雲端／復原核對成功才恢復原權限，全樹回讀通過才產生完成收據；失敗保留停止共用及原私有恢復狀態。固定連結及目的地額外檔案保留。Production 不等於 Google 應用程式驗證完成，也不承諾永久免登入。
+
+English: The exact exclusion and Production publication are approved and applied. Full backup is running; sharing stays suspended until all consistency, recovery and ACL readback gates pass. Historical pending-approval statements below are superseded.
+
 ## 2026-10-22 13:40 機密修復與全備份狀態 / Latest status
 
 **已完成 980 個雲端檔案／984 個版本的加密修復及遠端認證復原，原明文版本已確認移除；原物件 ID 與固定連結保留。共用仍停止。** 最終完整回讀 11,780 個物件皆 owner-only。詳細[處理紀錄](log/SAM_DRIVE_ENCRYPTION_2026-10-22.md)及[去敏證據](inventory/SAM_DRIVE_ENCRYPTION_2026-10-22.json)優先於下方早先隔離狀態。

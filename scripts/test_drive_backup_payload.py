@@ -66,3 +66,17 @@ def test_readable_staging_does_not_turn_missing_source_into_complete_backup(tmp_
     manifest=payload.prepare(root,tmp_path/'partial',key,stage_readable_only=True)
     assert not manifest['complete'] and manifest['source_errors'] and manifest['exclusions']==[]
     with pytest.raises(ValueError):payload.verify_source(root,manifest)
+
+
+def test_unchanged_ciphertext_is_reused_only_for_same_source_and_key(tmp_path):
+    root=tmp_path/'source';root.mkdir();(root/'.env').write_bytes(b'fixture')
+    key=tmp_path/'key';key.write_bytes(b'k'*32)
+    first=payload.prepare(root,tmp_path/'first',key)
+    second=payload.prepare(root,tmp_path/'second',key,prior_manifest=first)
+    assert first['files']['.env']['payload']==second['files']['.env']['payload']
+    key.write_bytes(b'n'*32)
+    third=payload.prepare(root,tmp_path/'third',key,prior_manifest=first)
+    assert first['files']['.env']['payload']!=third['files']['.env']['payload']
+    (root/'.env').write_bytes(b'changed')
+    fourth=payload.prepare(root,tmp_path/'fourth',key,prior_manifest=third)
+    assert third['files']['.env']['plaintext']!=fourth['files']['.env']['plaintext']

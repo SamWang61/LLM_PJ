@@ -85,3 +85,28 @@ def test_legacy_audit_blocks_changed_files_and_unchecked_native_history(tmp_path
     with pytest.raises(ValueError,match='history'):sync.validate_legacy_audit(cloud,audit,tmp_path)
     audit['native_sources'][0]['historical_native_revisions_checked']=True
     assert sync.validate_legacy_audit(cloud,audit,tmp_path)
+
+
+def test_folder_retry_uses_same_id_after_confirmed_absence(tmp_path,monkeypatch):
+    plan=make_plan(tmp_path);cloud=copy.deepcopy(plan['destination_before']);requests=[]
+    folder=plan['folders'][0]
+    class API:
+        def request(self,method,path,**kwargs):
+            requests.append(kwargs['json']['id'])
+            if len(requests)==1:raise DriveError('lost create response')
+            row=kwargs['json'];cloud['nodes'][row['id']]=dict(row)
+    def readback(api,key):
+        if key not in cloud['nodes']:raise DriveError('Drive GET HTTP 404')
+        return cloud['nodes'][key]
+    def upload(api,path,key,metadata,expected,**kwargs):
+        parent=next(r['parent'] for r in plan['files'] if r['id']==key)
+        row={'id':key,'name':metadata['name'],'parents':[parent],'mimeType':'text/plain',
+             'size':str(expected['size']),'md5Checksum':expected['md5'],'sha256Checksum':expected['sha256']}
+        cloud['nodes'][key]=row;return row
+    monkeypatch.setattr(sync,'read_tree',lambda *a:copy.deepcopy(cloud))
+    monkeypatch.setattr(sync,'readback',readback)
+    monkeypatch.setattr(sync,'upload',upload)
+    monkeypatch.setattr(sync.time,'sleep',lambda _:None)
+    receipt=sync.transfer(plan,API,tmp_path/'run',workers=1)
+    assert requests==[folder['id'],folder['id']] and receipt['cloud_consistent']
+    assert len(cloud['nodes'])==len(plan['original_ids'])+2

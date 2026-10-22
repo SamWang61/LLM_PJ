@@ -109,3 +109,5 @@
 
 - [N03 最新來源與版本核對](SAM_VERSION_MAP_2026-10-18.md)
 - [N02 交接來源補充](SAM_V1_DELIVERY_SCOPE_2026-10-18.md)
+
+- [SAM 每日完整備份／OAuth Production 與核准排除](log/SAM_DRIVE_DAILY_2026-10-22.md)
