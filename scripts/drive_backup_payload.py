@@ -131,7 +131,7 @@ def office_secret(path):
     return False
 
 
-def prepare(root, directory, key, excludes=(), workers=8, stage_readable_only=False):
+def prepare(root, directory, key, excludes=(), workers=8, stage_readable_only=False, prior_manifest=None):
     root, directory, key = Path(root).resolve(), Path(directory).resolve(), Path(key).resolve()
     if directory.is_relative_to(root) or key.is_relative_to(root) or key.is_relative_to(directory):
         raise ValueError('Keep private staging and key separate from source and each other')
@@ -142,6 +142,8 @@ def prepare(root, directory, key, excludes=(), workers=8, stage_readable_only=Fa
         raise ValueError('Source cannot be completely read; no payload is ready')
     staged = directory / 'source'; payloads = directory / 'payloads'; restored = directory / 'restore-check'
     for p in (staged, payloads, restored): p.mkdir()
+    key_id = hashlib.sha256(key.read_bytes()).hexdigest()[:16]
+    previous = (prior_manifest or {}).get('files', {}) if (prior_manifest or {}).get('key_id') == key_id else {}
     def one(relative):
         source = root / relative
         target = staged / relative
@@ -157,9 +159,20 @@ def prepare(root, directory, key, excludes=(), workers=8, stage_readable_only=Fa
         encrypted = sensitive_name(relative) or content_secret or office_secret(target)
         payload = target
         if encrypted:
+            prior = previous.get(relative, {})
+            reusable = prior.get('encrypted') and prior.get('plaintext') == plain
+            if reusable:
+                old_payload = Path(prior['payload_path']).resolve()
+                if old_payload.is_relative_to(root):
+                    raise ValueError('Previous encrypted payload must be outside the source')
+                actual, _ = hashes(old_payload)
+                reusable = actual == prior.get('payload')
             payload = payloads / relative
             payload.parent.mkdir(parents=True, exist_ok=True)
-            encrypt(target, payload, key)
+            if reusable:
+                shutil.copyfile(old_payload, payload)
+            else:
+                encrypt(target, payload, key)
             check = restored / relative
             check.parent.mkdir(parents=True, exist_ok=True)
             result = decrypt(payload, check, key)
@@ -181,7 +194,7 @@ def prepare(root, directory, key, excludes=(), workers=8, stage_readable_only=Fa
                 'source_root': str(root), 'files': records, 'directories': listing['directories'],
                 'exclusions': listing['exclusions'], 'complete': listing['complete'],
                 'source_errors': listing['errors'],
-                'key_id': hashlib.sha256(key.read_bytes()).hexdigest()[:16]}
+                'key_id': key_id}
     write_private_json(directory / 'manifest.json', manifest)
     return manifest
 

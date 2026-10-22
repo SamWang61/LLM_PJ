@@ -16,29 +16,31 @@ from drive_backup_payload import safe_relative, verify_source
 from drive_backup_transfer import generated_ids, matches, upload, readback
 
 
-def read_tree(drive, original):
+def read_tree(drive, original, *, acl_validator=None):
     """Complete paginated owner-only readback, including every destination extra."""
     nodes = {}
     roots = {PROJECT, FOLDER, *original.get('additional_project_source_ids', [])}
     fields = INLINE_FIELDS + ',appProperties,headRevisionId'
     for key in roots:
-        row = drive.request('GET', f'files/{identifier(key)}', params={'fields': fields})
+        row = drive.request('GET', f'files/{identifier(key)}', params={
+            'fields': fields, 'includePermissionsForView': 'published'})
         if any(row.get(k) != original['nodes'][key].get(k) for k in ('id', 'name', 'mimeType', 'parents')):
             raise DriveError('Fixed target identity changed')
-        owner_only(row); nodes[key] = row
+        (acl_validator or owner_only)(row); nodes[key] = row
         permissions = drive.permissions(key)
-        if len(permissions) != 1 or permissions[0].get('role') != 'owner':
-            raise DriveError('Root ACL endpoint is not owner-only')
+        checked = dict(row, permissions=permissions)
+        (acl_validator or owner_only)(checked)
     queue = [FOLDER]
     while queue:
         group, queue = queue[:20], queue[20:]
         query = '(' + ' or '.join(f"'{identifier(x)}' in parents" for x in group) + ') and trashed=false'
         for row in drive.pages('files', 'files', q=query, pageSize=1000,
-                               fields=f'nextPageToken,incompleteSearch,files({fields})'):
+                               fields=f'nextPageToken,incompleteSearch,files({fields})',
+                               includePermissionsForView='published'):
             key = identifier(row.get('id'))
             if key in nodes or len(row.get('parents', [])) != 1 or row['parents'][0] not in group:
                 raise DriveError('Duplicate or out-of-scope object')
-            owner_only(row); nodes[key] = row
+            (acl_validator or owner_only)(row); nodes[key] = row
             if row['mimeType'] == FOLDER_MIME: queue.append(key)
     if not original['nodes'].keys() <= nodes.keys():
         raise DriveError('An original destination object is missing')
@@ -196,6 +198,25 @@ def transfer(plan, drive_factory, directory, workers=12):
 
 def verify_complete(plan, drive, directory):
     fresh = read_tree(drive, plan['destination_before'])
+    verify_cloud(plan, fresh)
+    source = verify_source(plan['source_manifest']['source_root'], plan['source_manifest'])
+    receipt = {'cloud_consistent': True, 'cloud_objects': len(fresh['nodes']), 'source': source,
+               'source_files': len(plan['files']), 'sharing_restored': False, 'backup_completed': False,
+               'checked_at': datetime.now(timezone.utc).isoformat()}
+    write_private_json(Path(directory) / 'verified-cloud.json', fresh)
+    write_private_json(Path(directory) / 'consistency-receipt.json', receipt)
+    return receipt
+
+
+def verify_cloud(plan, fresh):
+    """Verify a saved snapshot independently of subsequent local changes.
+
+    This permits a new full manifest to reconcile source changes after a transfer.
+    It is NOT sufficient evidence for restoring sharing: verify_complete still
+    requires the live source, and the restore gate checks it again.
+    """
+    if not fresh.get('complete'):
+        raise DriveError('Cloud enumeration incomplete')
     expected = set(plan['original_ids']) | {r['id'] for r in plan['folders'] + plan['files']}
     if fresh['nodes'].keys() != expected: raise DriveError('Full cloud inventory differs')
     for row in plan['folders']:
@@ -214,10 +235,4 @@ def verify_complete(plan, drive, directory):
             fields = ('name','parents','mimeType') if old['mimeType'] == FOLDER_MIME else ('name','parents','mimeType','size','md5Checksum','sha256Checksum','version')
             if any(fresh['nodes'][key].get(k) != old.get(k) for k in fields):
                 raise DriveError('Destination-only content changed')
-    source = verify_source(plan['source_manifest']['source_root'], plan['source_manifest'])
-    receipt = {'cloud_consistent': True, 'cloud_objects': len(fresh['nodes']), 'source': source,
-               'source_files': len(plan['files']), 'sharing_restored': False, 'backup_completed': False,
-               'checked_at': datetime.now(timezone.utc).isoformat()}
-    write_private_json(Path(directory) / 'verified-cloud.json', fresh)
-    write_private_json(Path(directory) / 'consistency-receipt.json', receipt)
-    return receipt
+    return True

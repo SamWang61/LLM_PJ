@@ -1,0 +1,23 @@
+{
+  "recorded_at": "2026-10-22T19:22:00+08:00",
+  "oauth_publishing_status": "Production",
+  "oauth_google_verification_complete": false,
+  "approved_exclusions": [
+    "MuscleCore分析資料/website/.pytest_cache"
+  ],
+  "first_source_manifest": {
+    "complete": true,
+    "files": 47658,
+    "plaintext_bytes": 5301373391,
+    "encrypted_files": 3492
+  },
+  "local_tests": {
+    "passed": 149,
+    "failed": 0
+  },
+  "full_cloud_backup_completed": false,
+  "sharing_restored": false,
+  "state": "full_transfer_in_progress",
+  "fixed_ids_preserved": true,
+  "keys_uploaded": false
+}

@@ -1,0 +1,15 @@
+{
+  "source_root": "C:\\LLM\\LLM_PJ",
+  "project_id": "1rQrO8v6bl3_y_B0BwpZXhlHFHS8swQc5",
+  "folder_id": "1lXZv3hn3CgYmotpxgcna8i27wEodL8Gh",
+  "additional_project_source_ids": ["1F0K89qC8R6QBietjvY8-NABrTWoWenVyXeayodLFfl4"],
+  "fixed_link": "https://drive.google.com/drive/project/1rQrO8v6bl3_y_B0BwpZXhlHFHS8swQc5?usp=drive_link",
+  "approved_exclusions": ["MuscleCore分析資料/website/.pytest_cache"],
+  "exclusion_approved_on": "2026-10-22",
+  "timezone": "Asia/Taipei",
+  "daily_time": "23:30",
+  "overwrite_same_relative_path": true,
+  "delete_destination_extras": false,
+  "preserve_object_ids": true,
+  "secret_storage": "AES-256-GCM ciphertext; key outside source and never uploaded"
+}
