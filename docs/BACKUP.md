@@ -1,5 +1,13 @@
 # 每日備份 / Daily backup
 
+## 2026-10-22 最新決定與權限修復進度 / Current decision
+
+SAM已明確同意專用Desktop OAuth與Drive管理授權，並選定**一般檔案同步；機密以密文存於原固定目錄**，金鑰與OAuth憑證放在專案外，不上傳。此決定取代下方9月「方案尚待選擇」；不是本次加密或備份驗收完成。
+
+SAM已完成本人授權，DPAPI token、Drive scope、擁有人身分及refresh均已核實；單層與雙層空白探針已驗撤銷、繼承隔離、原樣恢復及清理，57項本機測試通過。11,780物件完整ACL已讀回（4直接／11,777繼承，還原計畫0阻礙）；My Drive缺省inheritedFrom改以實際parent鏈與完整權限逐層核對，不猜測外部或混合授權。Testing模式7日期限、真實固定專案隔離／恢復、機密封裝及雲端一致性仍待完成；0專案複製、0既有共用變更。詳細[本輪處理紀錄與操作順序](log/SAM_DRIVE_BACKUP_2026-10-22.md)優先於下方歷史段落，不再要求SAM重做已完成的安全提示或重選機密方案。
+
+English: Owner authorization and empty inherited-ACL probes passed. Full target ACL coverage, durable authorization, encrypted transfer and cloud consistency remain separate gates. No project data or keys have been uploaded.
+
 <!-- SAM REMOTE ROLE RESULT 20261020 BEGIN -->
 **2026/10/20 REN復原子項接受方式**：依[SAM本輪決定](SAM_ACCEPTANCE_DECISIONS_2026-10-20.md)，接受完整同機模擬通過；本輪[USB來源／資料庫還原對帳](inventory/SAM_PROXY_N14_RESTORE_2026-10-20.json)已通過，實際環境與機器不同與否照實保留。此決定未補齊每日固定Drive可逆ACL／排程，亦未清除自動核准審查拒絕刪除的私有明文；詳[執行與待辦](SAM_ROLE_PROXY_REMOTE_EXECUTION_2026-10-20.md)。
 <!-- SAM REMOTE ROLE RESULT 20261020 END -->

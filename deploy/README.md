@@ -1,5 +1,7 @@
 # VibeCart Cloud Run／Firebase 展示部署
 
+**2026/10/22 09:05 現行正式版**：[資源與PR #171／#175發布紀錄](../docs/log/SAM_PR171_PRODUCTION_2026-10-22.md)。`vibecart-web-bge-lock-1022` 100%，2Gi／CPU 1、service與revision上限皆3、min 0、concurrency 20；[設定檔](runtime-capacity.json)。三並行冷請求均200，BGE每程序只初始化一次。下方512Mi／max1與唯讀預覽指早期部署範例，**不可套回現行正式服務**。
+
 **2026/10/20根目錄建置入口**：[Dockerfile／白名單封裝與Cloud Build驗證](ROOT_DOCKERFILE_2026-10-20.md)。新增repo根目錄Dockerfile與.dockerignore；GitHub trigger使用固定commit的repository白名單，保留私有0%候選與既有flat封裝。下方較早時點按歷史證據閱讀。
 
 <!-- SAM MAIN PRODUCTION INDEPENDENT 20261019 BEGIN -->

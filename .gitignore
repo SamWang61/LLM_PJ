@@ -43,6 +43,8 @@ node_modules/
 *service_account*.json
 *-firebase-adminsdk-*.json
 credentials*.json
+client_secret*.json
+*.dpapi
 token*.json
 desktop.ini
 *.log

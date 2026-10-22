@@ -1,0 +1,91 @@
+{
+  "schema": 1,
+  "checked_at": "2026-10-22T01:33:07.629997+00:00",
+  "baseline": "72ae3c8e5f6f0b125fbee257b8a9a105667483a1",
+  "fixed_project_id": "1rQrO8v6bl3_y_B0BwpZXhlHFHS8swQc5",
+  "folder_id": "1lXZv3hn3CgYmotpxgcna8i27wEodL8Gh",
+  "connector": {
+    "project": {
+      "owner": 1,
+      "writer": 2,
+      "can_share": true
+    },
+    "folder": {
+      "owner": 1,
+      "anyone_reader": 1,
+      "allow_file_discovery": false,
+      "can_share": true
+    },
+    "permission_ids_available": false,
+    "inheritance_details_available": false,
+    "revoke_tool_available": false
+  },
+  "cloud_setup": {
+    "project": "vibecart-llmai",
+    "oauth_brand_created": true,
+    "desktop_client_created": true,
+    "drive_api_state": "ENABLED",
+    "drive_api_readback_http": 200,
+    "test_users": 1,
+    "scope": "https://www.googleapis.com/auth/drive",
+    "publishing_status": "Testing",
+    "owner_consent_completed": true,
+    "refresh_token_saved": true,
+    "owner_identity_verified": true,
+    "drive_scope_verified": true,
+    "refresh_verified": true,
+    "publishing_blocker": "Branding home page, privacy policy and authorized domain settings incomplete; publish button disabled"
+  },
+  "secret_policy": {
+    "user_approved": true,
+    "mode": "normal_files_plus_encrypted_secrets_in_fixed_destination",
+    "keys_uploaded": false,
+    "client_storage": "Windows DPAPI outside source root",
+    "oauth_token_storage": "Windows DPAPI outside source root"
+  },
+  "validation": {
+    "local_tests_passed": 57,
+    "live_empty_probe_performed": true,
+    "full_target_acl_inventory_completed": true,
+    "inherited_empty_tree_probe_passed": true,
+    "probe_permission_ids_preserved": true,
+    "probe_cleaned_up": true,
+    "objects_discovered": 11780,
+    "direct_grants": 4,
+    "inherited_grants": 11777,
+    "restore_plan_blockers": 0,
+    "acl_plan_ready": true
+  },
+  "backup": {
+    "project_files_copied": 0,
+    "existing_sharing_mutations": 0,
+    "cloud_consistency_verified": false,
+    "complete": false
+  },
+  "pending": [
+    "durable_oauth_publishing_and_token_lifetime",
+    "encrypted_full_source_plan_and_restore",
+    "real_target_isolation_and_cloud_manifest_size_hash_stability_and_acl_restore",
+    "existing_confidential_content_remediation",
+    "owner_decision_on_extended_sharing_suspension"
+  ],
+  "source_credentials": {
+    "existing_client_json_in_source": true,
+    "git_ignored_by_this_pr": true,
+    "tracked_or_uploaded": false,
+    "backup_requires_encryption": true
+  },
+  "private_evidence_integrity": {
+    "acl_sha256": "35b2b8a9b65171f1f28b5ba96ada2e4d3b6f13eaf9bfb70676b39bd2272b35d6",
+    "plan_sha256": "4461c82e677ffc6f535550b7e176a38d4e1f6100f109d27ab5657358d5adef62",
+    "raw_acl_uploaded": false,
+    "revalidation_required_before_mutation": true
+  },
+  "automation": {
+    "id": "llm-pj-23-30",
+    "status": "ACTIVE",
+    "schedule": "Asia/Taipei 23:30 daily",
+    "prompt_updated": true,
+    "actual_backup_enabled": false
+  }
+}
