@@ -28,7 +28,7 @@
 | Claude 跨執行個體去重 | JEFF：PR #171 僅 process-local，最多 3 instances 時，分流到不同 instances 仍可能各呼叫一次。分散式去重未實作。 |
 | 商品向量預先計算／持久化 | JEFF：目前每個程序各自載入與計算；新 instance 仍有冷啟動。需要獨立契約及驗證，不能由 324/324 記憶體命中推定結案。 |
 | 模型中文輸出 | 頁面與規則文字已中文；實際 Claude 仍出現 change_pct／null，JEFF 後續改善輸出用語。 |
-| Drive 每日固定專案 | 依[權限紀錄](SAM_DRIVE_BACKUP_2026-10-22.md)；OAuth、空白探針、完整 ACL、真正備份分開驗收。 |
+| Drive 每日固定專案 | 依[權限修復 PR #174](https://github.com/SamWang61/LLM_PJ/pull/174)；OAuth、空白探針、完整 ACL、真正備份分開驗收。 |
 
 完整私人原始服務設定、ACL 與授權資料留在專案外。公開清冊僅記去敏版本、雜湊及驗證結果。回復策略以先前已驗證 revision 做 traffic 回復，仍保留 2Gi／max 3；本輪未執行回復演練。
 
