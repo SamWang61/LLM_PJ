@@ -38,12 +38,21 @@ class Drive:
         self.session = session
 
     def request(self, method, path, **kwargs):
+        from requests.exceptions import ConnectionError, Timeout, SSLError
         # All callers use relative, validated resource IDs; never forward tokens.
         if path.startswith("/") or ":" in path or ".." in path:
             raise ValueError("Invalid API path")
         for attempt in range(4):
-            response = self.session.request(method, API + path, timeout=60,
-                                            allow_redirects=False, **kwargs)
+            try:
+                response = self.session.request(method, API + path, timeout=30,
+                                                allow_redirects=False, **kwargs)
+            except SSLError:
+                raise DriveError("Drive TLS validation failed") from None
+            except (ConnectionError, Timeout):
+                if method == "GET" and attempt < 3:
+                    time.sleep(2 ** attempt)
+                    continue
+                raise DriveError("Drive transport failed; mutation outcome requires readback") from None
             if response.status_code in (429, 500, 502, 503, 504) and method == "GET" and attempt < 3:
                 time.sleep(2 ** attempt)
                 continue
@@ -86,14 +95,30 @@ class Drive:
                                pageSize=1000, supportsAllDrives="true", includeItemsFromAllDrives="true"))
 
 
-def inventory(drive):
+def inventory(drive, checkpoint=None, project_source_files=()):
     nodes = {}
     for root, mime in ((PROJECT, "application/vnd.google-apps.project"), (FOLDER, FOLDER_MIME)):
         item = drive.metadata(root)
         if item.get("id") != root or item.get("mimeType") != mime or item.get("name") != "LLM_PJ" or item.get("trashed"):
             raise DriveError("Fixed target identity mismatch")
         nodes[root] = item
+    # These IDs must first be confirmed in the fixed project's source list.
+    # A project reference is not a Drive parent-child relationship.
+    for key in project_source_files:
+        key = identifier(key)
+        item = drive.metadata(key)
+        if (key in nodes or item.get("id") != key or item.get("trashed")
+                or item.get("mimeType") != "application/vnd.google-apps.document"):
+            raise DriveError("Additional project source must be a distinct verified Google Doc")
+        nodes[key] = item
     queue = [FOLDER]
+    def progress(phase):
+        if checkpoint:
+            checkpoint({"schema": 1, "phase": phase, "complete": False,
+                        "project_id": PROJECT, "folder_id": FOLDER,
+                        "captured_at": datetime.now(timezone.utc).isoformat(),
+                        "pending_folders": list(queue), "nodes": nodes})
+    progress("discovering")
     while queue:
         parent = queue.pop(0)
         for item in drive.children(parent):
@@ -103,10 +128,15 @@ def inventory(drive):
             nodes[key] = item
             if item.get("mimeType") == FOLDER_MIME:
                 queue.append(key)
-    for item in nodes.values():
+        progress("discovering")
+    progress("reading_permissions")
+    for index, item in enumerate(nodes.values(), 1):
         item["permissions"] = drive.permissions(item["id"])
+        if index % 25 == 0:
+            progress("reading_permissions")
     return {"schema": 1, "captured_at": datetime.now(timezone.utc).isoformat(),
             "project_id": PROJECT, "folder_id": FOLDER, "nodes": nodes,
+            "additional_project_source_ids": list(project_source_files),
             "complete": True}
 
 
@@ -134,6 +164,42 @@ def restore_body(permission):
             raise ValueError("Expired permission requires explicit review")
         body["expirationTime"] = permission["expirationTime"]
     return body
+
+
+def my_drive_source(file_id, permission, nodes):
+    """Resolve an omitted inheritedFrom using a fully verified single-parent chain.
+
+    Google only populates inheritedFrom for shared-drive items. This does not
+    guess from names: every edge and exact principal/role must be in the snapshot.
+    """
+    visited = set()
+    current, grant = file_id, permission
+    while True:
+        if current in visited:
+            raise ValueError("Cyclic inheritance chain")
+        visited.add(current)
+        item = nodes.get(current, {})
+        if item.get("driveId") or item.get("inheritedPermissionsDisabled"):
+            raise ValueError("Cannot resolve shared-drive or limited-access inheritance")
+        details = grant.get("permissionDetails", [])
+        if not details or any(not isinstance(d.get("inherited"), bool) for d in details):
+            raise ValueError("Inheritance metadata missing")
+        if all(not d["inherited"] for d in details):
+            return current
+        if any(not d["inherited"] for d in details):
+            raise ValueError("Mixed direct and inherited permission requires review")
+        parents = item.get("parents", [])
+        if len(parents) != 1 or parents[0] not in nodes:
+            raise ValueError("Inheritance source outside fixed target or unknown")
+        parent = parents[0]
+        explicit = {d["inheritedFrom"] for d in details if d.get("inheritedFrom")}
+        if explicit and explicit != {parent}:
+            raise ValueError("Conflicting inheritance source in parent chain")
+        matching = [p for p in nodes[parent].get("permissions", [])
+                    if p.get("id") == grant.get("id") and acl_semantics(p) == acl_semantics(grant)]
+        if len(matching) != 1:
+            raise ValueError("Inheritance parent grant missing, ambiguous or changed")
+        current, grant = parent, matching[0]
 
 
 def plan(snapshot):
@@ -164,6 +230,10 @@ def plan(snapshot):
                     if any(not d["inherited"] for d in details):
                         raise ValueError("Mixed direct and inherited permission requires review")
                     parents = [d.get("inheritedFrom") for d in details]
+                    resolution = "api_inheritedFrom"
+                    if all(source is None for source in parents):
+                        parents = [my_drive_source(file_id, p, nodes)]
+                        resolution = "verified_my_drive_parent_chain"
                     if any(source not in nodes for source in parents):
                         raise ValueError("Inheritance source outside fixed target or unknown")
                     ancestors, pending = set(), list(item.get("parents", []))
@@ -181,7 +251,8 @@ def plan(snapshot):
                                     and q.get("role") == p["role"]]
                         if not matching:
                             raise ValueError("Inheritance source grant missing or changed")
-                    inherited.append({"file_id": file_id, "permission_id": p["id"], "sources": parents})
+                    inherited.append({"file_id": file_id, "permission_id": p["id"], "sources": parents,
+                                      "source_resolution": resolution})
                 else:
                     direct.append({"file_id": file_id, "permission_id": p["id"], "restore": body})
             except (ValueError, TypeError) as error:
@@ -269,6 +340,8 @@ def main():
     parser.add_argument("--private-output", type=Path, required=True)
     parser.add_argument("--probe-empty-object", action="store_true",
                         help="Test ACL transitions on a new empty object; no real backup data")
+    parser.add_argument("--project-source-file", action="append", default=[],
+                        help="Google Doc ID independently verified in the fixed project's sources")
     args = parser.parse_args()
     from drive_backup_auth import PRIVATE, session
     destination = args.private_output.resolve()
@@ -284,7 +357,17 @@ def main():
     if args.probe_empty_object:
         print(json.dumps(probe_permissions(drive, destination / "probe.json")))
         return 0
-    snapshot = inventory(drive)
+    last_progress = [0.0]
+    def checkpoint(data):
+        temporary = destination / "checkpoint.pending"
+        temporary.write_text(json.dumps(data, ensure_ascii=False) + "\n", encoding="utf-8")
+        temporary.replace(destination / "checkpoint.json")
+        if time.monotonic() - last_progress[0] >= 30:
+            print(json.dumps({"phase": data["phase"], "objects": len(data["nodes"]),
+                              "permissions_read": sum("permissions" in x for x in data["nodes"].values()),
+                              "complete": False}), flush=True)
+            last_progress[0] = time.monotonic()
+    snapshot = inventory(drive, checkpoint, args.project_source_file)
     result = plan(snapshot)
     for name, data in (("acl.json", snapshot), ("plan.json", result)):
         (destination / name).write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
@@ -295,4 +378,9 @@ def main():
 
 
 if __name__ == "__main__":
-    raise SystemExit(main())
+    try:
+        raise SystemExit(main())
+    except Exception as error:
+        print(json.dumps({"complete": False, "error_type": type(error).__name__,
+                          "backup_started": False}))
+        raise SystemExit(1) from None

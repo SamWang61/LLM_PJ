@@ -9,6 +9,8 @@ import ctypes
 from ctypes import wintypes
 import json
 import os
+import time
+from functools import partial
 from pathlib import Path
 
 SCOPE = "https://www.googleapis.com/auth/drive"
@@ -50,9 +52,22 @@ def save_credentials(credentials):
     temporary.replace(TOKEN)
 
 
+def refresh_credentials(credentials, request, transport_error):
+    """Retry network failures only; revoked consent must return to the owner."""
+    for attempt in range(3):
+        try:
+            credentials.refresh(request)
+            return
+        except transport_error:
+            if attempt == 2:
+                raise RuntimeError("OAuth refresh transport failed; credential retained") from None
+            time.sleep(2 ** attempt)
+
+
 def session():
     from google.oauth2.credentials import Credentials
     from google.auth.transport.requests import AuthorizedSession, Request
+    from google.auth.exceptions import TransportError
     if not TOKEN.exists():
         raise RuntimeError("Owner consent not completed; no Drive credential saved")
     data = json.loads(protect(TOKEN.read_bytes(), decrypt=True))
@@ -60,7 +75,7 @@ def session():
         raise RuntimeError("Owner Drive scope missing")
     credentials = Credentials.from_authorized_user_info(data, scopes=[SCOPE])
     if not credentials.valid:
-        credentials.refresh(Request())
+        refresh_credentials(credentials, partial(Request(), timeout=30), TransportError)
         save_credentials(credentials)
     return AuthorizedSession(credentials)
 
@@ -68,7 +83,11 @@ def session():
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--client-json", type=Path, required=True)
+    parser.add_argument("--timeout", type=int, default=3600,
+                        help="Seconds to allow the owner to complete consent (120 to 3600)")
     args = parser.parse_args()
+    if not 120 <= args.timeout <= 3600:
+        parser.error("Owner consent timeout must be between 120 and 3600 seconds")
     from google_auth_oauthlib.flow import InstalledAppFlow
     raw = args.client_json.read_bytes()
     client = json.loads(protect(raw, decrypt=True) if args.client_json.suffix == ".dpapi" else raw)
@@ -84,7 +103,7 @@ def main():
         with contextlib.redirect_stdout(stream):
             credentials = flow.run_local_server(
                 host="127.0.0.1", port=0, open_browser=False,
-                authorization_prompt_message="{url}", timeout_seconds=600,
+                authorization_prompt_message="{url}", timeout_seconds=args.timeout,
                 success_message="LLM_PJ authorization received. You may close this tab.")
     if not credentials.refresh_token:
         raise RuntimeError("Offline authorization missing; credential not saved")

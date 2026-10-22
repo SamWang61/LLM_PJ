@@ -191,3 +191,151 @@ def test_probe_never_overwrites_previous_recovery_state(tmp_path):
     with pytest.raises(ValueError):
         acl.probe_permissions(api, journal)
     assert not api.calls and journal.read_text() == "previous"
+
+
+class Transport:
+    def __init__(self, responses):
+        self.responses, self.calls = iter(responses), []
+
+    def request(self, *args, **kwargs):
+        self.calls.append((args, kwargs))
+        result = next(self.responses)
+        if isinstance(result, Exception):
+            raise result
+        return result
+
+
+def response(status=200):
+    from types import SimpleNamespace
+    return SimpleNamespace(status_code=status, content=b"{}", json=lambda: {"ok": True})
+
+
+def test_read_transport_and_retryable_http_failures_are_bounded(monkeypatch):
+    from requests.exceptions import ConnectionError, Timeout
+    waits = []
+    monkeypatch.setattr(acl.time, "sleep", waits.append)
+    transport = Transport([ConnectionError("private"), response(503), Timeout("private"), response()])
+    assert acl.Drive(transport).request("GET", "files/test") == {"ok": True}
+    assert waits == [1, 2, 4] and len(transport.calls) == 4
+    assert all(c[1]["timeout"] == 30 and c[1]["allow_redirects"] is False for c in transport.calls)
+    transport = Transport([Timeout("private")] * 4)
+    with pytest.raises(acl.DriveError, match="transport failed") as error:
+        acl.Drive(transport).request("GET", "files/test")
+    assert "private" not in str(error.value) and len(transport.calls) == 4
+
+
+@pytest.mark.parametrize("method", ["POST", "PATCH", "DELETE"])
+def test_uncertain_mutation_is_not_retried(monkeypatch, method):
+    from requests.exceptions import ConnectionError
+    monkeypatch.setattr(acl.time, "sleep", lambda _: pytest.fail("Unexpected retry"))
+    transport = Transport([ConnectionError("private"), response()])
+    with pytest.raises(acl.DriveError, match="readback"):
+        acl.Drive(transport).request(method, "files/test")
+    assert len(transport.calls) == 1
+
+
+def test_tls_failure_never_retries(monkeypatch):
+    from requests.exceptions import SSLError
+    monkeypatch.setattr(acl.time, "sleep", lambda _: pytest.fail("Unexpected retry"))
+    transport = Transport([SSLError("private")])
+    with pytest.raises(acl.DriveError, match="TLS validation failed"):
+        acl.Drive(transport).request("GET", "files/test")
+    assert len(transport.calls) == 1
+
+
+def test_oauth_refresh_retries_only_transport_errors(monkeypatch):
+    import drive_backup_auth as auth
+    class NetworkFailure(Exception):
+        pass
+    class RevokedConsent(Exception):
+        pass
+    class Credential:
+        def __init__(self, failures):
+            self.failures, self.calls = iter(failures), 0
+        def refresh(self, request):
+            assert request == "request"
+            self.calls += 1
+            error = next(self.failures)
+            if error:
+                raise error
+    waits = []
+    monkeypatch.setattr(auth.time, "sleep", waits.append)
+    credential = Credential([NetworkFailure(), NetworkFailure(), None])
+    auth.refresh_credentials(credential, "request", NetworkFailure)
+    assert credential.calls == 3 and waits == [1, 2]
+    credential = Credential([NetworkFailure("private")] * 3)
+    with pytest.raises(RuntimeError, match="credential retained") as error:
+        auth.refresh_credentials(credential, "request", NetworkFailure)
+    assert "private" not in str(error.value) and credential.calls == 3
+    credential = Credential([RevokedConsent()])
+    with pytest.raises(RevokedConsent):
+        auth.refresh_credentials(credential, "request", NetworkFailure)
+    assert credential.calls == 1
+
+
+class InventoryDrive:
+    def __init__(self, fail_permissions=False):
+        self.fail_permissions = fail_permissions
+    def metadata(self, key):
+        mime = "application/vnd.google-apps.project" if key == acl.PROJECT else acl.FOLDER_MIME if key == acl.FOLDER else "application/vnd.google-apps.document"
+        item = node(key, mime)
+        item.pop("permissions")
+        return item
+    def children(self, key):
+        return []
+    def permissions(self, key):
+        if self.fail_permissions:
+            raise acl.DriveError("Simulated read failure")
+        return [owner()]
+
+
+def test_checkpoint_preserves_incomplete_discovery_on_failed_acl_read():
+    saved = []
+    with pytest.raises(acl.DriveError):
+        acl.inventory(InventoryDrive(True), lambda data: saved.append(copy.deepcopy(data)))
+    assert saved and all(s["complete"] is False for s in saved)
+    assert saved[-1]["phase"] == "reading_permissions"
+    assert set(saved[-1]["nodes"]) == {acl.PROJECT, acl.FOLDER}
+    with pytest.raises(ValueError):
+        acl.plan(saved[-1])
+
+
+def test_verified_project_source_is_included_without_guessing_parenthood():
+    result = acl.inventory(InventoryDrive(), project_source_files=["verified-doc"])
+    assert result["complete"] and result["additional_project_source_ids"] == ["verified-doc"]
+    assert result["nodes"]["verified-doc"]["parents"] == []
+    assert acl.plan(result)["objects"] == 3
+
+
+def test_duplicate_source_refuses_inventory():
+    with pytest.raises(acl.DriveError):
+        acl.inventory(InventoryDrive(), project_source_files=[acl.FOLDER])
+
+
+def test_my_drive_inheritance_resolves_only_verified_parent_grants(snapshot):
+    inherited = grant(permissionDetails=[{"inherited": True}])
+    snapshot["nodes"]["subfolder"] = node("subfolder", acl.FOLDER_MIME, [acl.FOLDER], [owner(), inherited])
+    snapshot["nodes"]["file"] = node("file", "text/plain", ["subfolder"], [owner(), inherited])
+    result = acl.plan(snapshot)
+    assert result["acl_plan_ready"] and len(result["inherited"]) == 2
+    assert all(x["sources"] == [acl.FOLDER] and x["source_resolution"] == "verified_my_drive_parent_chain"
+               for x in result["inherited"])
+
+
+@pytest.mark.parametrize("change", [
+    {"parents": ["outside"]}, {"parents": [acl.FOLDER, acl.PROJECT]},
+    {"parents": ["file"]}, {"inheritedPermissionsDisabled": True},
+    {"driveId": "shared"},
+])
+def test_unverifiable_my_drive_parent_chain_blocks(snapshot, change):
+    inherited = grant(permissionDetails=[{"inherited": True}])
+    item = node("file", "text/plain", [acl.FOLDER], [owner(), inherited])
+    item.update(change)
+    snapshot["nodes"]["file"] = item
+    assert not acl.plan(snapshot)["acl_plan_ready"]
+
+
+def test_my_drive_parent_grant_requires_exact_restore_semantics(snapshot):
+    inherited = grant(role="writer", permissionDetails=[{"inherited": True}])
+    snapshot["nodes"]["file"] = node("file", "text/plain", [acl.FOLDER], [owner(), inherited])
+    assert not acl.plan(snapshot)["acl_plan_ready"]
