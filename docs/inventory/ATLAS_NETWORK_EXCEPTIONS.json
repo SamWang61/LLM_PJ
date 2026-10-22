@@ -1,0 +1,23 @@
+{
+  "schema": 1,
+  "project": "vibecart_ai",
+  "repository": "SamWang61/LLM_PJ",
+  "exceptions": [
+    {
+      "cidr": "0.0.0.0/0",
+      "status": "accepted_exception",
+      "decision_label": "VERTCART 專屬特點／學習協作例外",
+      "approved_by": "SAM",
+      "approved_on": "2026-10-22",
+      "authority": "direct_user_instruction_in_this_chat",
+      "purpose": "共同作品與學習歷程，允許組員跨網路環境連線",
+      "expires_on": null,
+      "suppress_repeated_removal_requests": true,
+      "automatic_removal_allowed": false,
+      "ignore_other_security_checks": false,
+      "technical_meaning": "all_IPv4_sources",
+      "last_observation": "Active in the user-provided Atlas screenshot; no fresh API readback claimed",
+      "cloud_settings_changed_by_this_task": false
+    }
+  ]
+}

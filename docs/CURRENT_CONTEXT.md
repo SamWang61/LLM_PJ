@@ -16,7 +16,7 @@ V5正式清單最新統計仍為 **3/14結案、11待結案**；不是功能失�
 | 下一步 | 主責與完成條件 |
 | --- | --- |
 | 代理管理判定及本人重做 | JEFF覆核AI／後台／S06～S08，REN覆核會員／購物／S03～S05，SAM覆核資料／整合／交付。SAM模擬可依上述規則作管理簽收，記真實工具／設備／版本／結果與未測項；本人獨立重做另填，不冒稱親歷。 |
-| 每日固定Drive備份 | 10/22 OAuth本人授權、refresh、身分／scope讀回及空白單層／繼承ACL撤銷恢復均通過；57項測試。11,780物件完整ACL已讀回（4直接／11,777繼承，還原計畫0阻礙）。Testing 7日限制、真實固定ACL隔離／恢復、加密及雲端對帳仍待，0專案複製／0既有共用變更。[本輪紀錄](log/SAM_DRIVE_BACKUP_2026-10-22.md)／[規範](BACKUP.md)。 |
+| 每日固定Drive備份 | SAM已同意延長停止共用；10/22 12:16完整回讀11,780物件owner-only，4筆原直接授權已撤銷，原ACL／還原計畫私有保存。78項測試通過，0專案複製；機密及歷史版本處理、加密復原／全量雲端對帳、原ACL恢復與Testing 7日限制仍待。保持停止共用，不覆蓋原還原資料。[實際隔離紀錄](log/SAM_DRIVE_ISOLATION_2026-10-22.md)／[規範](BACKUP.md)。 |
 | 復原副本處理 | 同機完整USB復原子項已依[SAM決定](SAM_ACCEPTANCE_DECISIONS_2026-10-20.md)接受；設備仍照實記同機，不代填REN簽名。自動核准審查拒絕刪除的私有明文仍待SAM本機處理，保留密文／分離金鑰及原報告。 |
 | 展示與最終接受 | 各段採用圖／版本、離線備援與同版接受按同一代理規則記管理判定及限制；未實際操作的真手機／異機／投影或本人講述，不填成實體結果。本人重做另依[三人表](../專題進度/待結案篩選與三人實作表_2026-10-20.md)記錄。 |
 | 10/31管理覆核 | SAM依仍需使用情況覆核三條工作站/32規則並移除或展延；這是管理期限，未宣稱Atlas已設定自動到期。[主責／用途](SAM_ACCEPTANCE_DECISIONS_2026-10-20.md)。 |
@@ -27,6 +27,7 @@ V5正式清單最新統計仍為 **3/14結案、11待結案**；不是功能失�
 - 不重匯D1～D4，不為補畫面捏造正式評價、訂單或6＋4候選。評價與顯示進位規則、去重及synthetic排除維持既定契約。
 - N07～N10是後續階段；廣泛D5狀態編輯不由裝置撤銷功能推定完成。
 - 正式庫故障、其他人的Session或權限不任意變更；固定Drive專案／連結與目的地額外檔案保留，金鑰不上傳。
+- Atlas `0.0.0.0/0` 為 SAM 核准的「VERTCART 學習協作例外」，後續列 accepted_exception、不重複要求移除；仍保留帳密／角色／TLS／外洩檢查。[範圍與決策](log/SAM_ATLAS_NETWORK_EXCEPTION_2026-10-22.md)。
 - 原目錄未提交修改保留；在乾淨工作樹做範圍明確的修改。分開記錄本機、CI／合併、部署、Atlas持久化、代理操作及本人驗收。
 
 English: Start here and read only the relevant linked source. Current technical delivery, the 30/96/8 data contract and the 14-slide user-supplied presentation are distinct from named acceptance, physical-device evidence and the fixed-project daily backup. All historical context remains available in the unchanged snapshot.

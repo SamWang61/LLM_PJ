@@ -1,7 +1,10 @@
 # 全部文件索引 / Document catalog
 
+- [10/22 SAM核准的VERTCART Atlas網路例外與後續檢查規則](log/SAM_ATLAS_NETWORK_EXCEPTION_2026-10-22.md)
+
 - [10/22 正式2Gi／max3、PR #171與#175、並行BGE修復及驗證](log/SAM_PR171_PRODUCTION_2026-10-22.md)
 - [10/22 SAM每日Drive權限修復、專用OAuth與已決定的機密方案](log/SAM_DRIVE_BACKUP_2026-10-22.md)
+- [10/22 SAM核准延長停止共用：實際撤權、完整隔離與原權限保存](log/SAM_DRIVE_ISOLATION_2026-10-22.md)
 
 - [10/22 SAM交付版本、正式映像／日誌／14頁備援與剩餘條件](SAM_DELIVERY_VERSION_2026-10-22.md)
 - [10/22 14頁主檔相符的PDF、離線備援契約與原稿重複頁觀察](SAM_OFFLINE_14_SLIDES_2026-10-22.md)
