@@ -12,7 +12,7 @@
     "encrypted_files": 3492
   },
   "local_tests": {
-    "passed": 150,
+    "passed": 161,
     "failed": 0
   },
   "full_cloud_backup_completed": false,
@@ -25,5 +25,12 @@
     "initial_content_uploads": 0,
     "same_ids_retained": true,
     "server_cause": "not captured"
+  },
+  "acl_batch_probe": {
+    "read_only": true,
+    "objects": 2,
+    "matches_independent_permissions_endpoint": true,
+    "owner_only": true,
+    "whole_tree_acceptance": false
   }
 }

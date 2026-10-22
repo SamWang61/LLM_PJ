@@ -17,6 +17,7 @@ from drive_backup_run import private_path
 from drive_backup_sync import read_tree,build_plan,transfer
 from drive_backup_restore import normalized,recover_encrypted,restore
 from drive_backup_transfer import generated_ids
+from drive_backup_acl_batch import permissions_many
 
 
 def unchanged_remote(previous,current):
@@ -62,11 +63,15 @@ def main():
                 local.drive=Drive(AuthorizedSession(Credentials.from_authorized_user_info(json.loads(credential_json),scopes=[SCOPE])))
             return local.drive
         api=factory()
+        full_acl=permissions_many(previous['nodes'],factory)
         def acl_validator(row):
             check_owner(row)
-            permissions=row.get('permissions',[])
-            if any(r['role']!='owner' and not r.get('permissionDetails') for r in permissions):
-                permissions=api.permissions(row['id']);row['permissions']=permissions
+            inline=row.get('permissions',[])
+            permissions=full_acl.get(row['id'],[])
+            from drive_backup_acl import acl_semantics
+            if {p['id']:acl_semantics(p) for p in inline}!={p['id']:acl_semantics(p) for p in permissions}:
+                raise DriveError('ACL changed during readback')
+            row['permissions']=permissions
             if (row['id'] not in previous['nodes']
                     or normalized(permissions)!=normalized(previous['nodes'][row['id']]['permissions'])):
                 raise DriveError('Remote ACL changed; preserve and review before a new cycle')
@@ -77,6 +82,7 @@ def main():
         manifest=prepare(policy['source_root'],directory/'source',args.key,
             excludes=policy['approved_exclusions'],prior_manifest=previous_plan['source_manifest'])
         # Recheck after local preparation; original ACL capture must be fresh.
+        full_acl=permissions_many(previous['nodes'],factory)
         current=read_tree(api,previous,acl_validator=acl_validator)
         unchanged_remote(previous,current)
         isolation=directory/'isolation';isolation.mkdir()
@@ -95,7 +101,7 @@ def main():
         transfer_plan=build_plan(manifest,isolated,lambda n:generated_ids(api,n))
         receipt=transfer(transfer_plan,factory,directory)
         recovery=recover_encrypted(transfer_plan,factory,directory/'authenticated-recovery',args.key)
-        result=restore(transfer_plan,current,fresh_plan,recovery,api,directory)
+        result=restore(transfer_plan,current,fresh_plan,recovery,api,directory,drive_factory=factory)
         receipt.update(backup_completed=True,sharing_restored=True,encrypted_files_recovered=recovery['count'],
             finished_at=result['finished_at'],acl_objects_verified=result['verified_objects'])
         write_private_json(directory/'completion-receipt.json',receipt)

@@ -17,6 +17,7 @@ from drive_backup_payload import verify_source, hashes
 from drive_backup_sync import read_tree, verify_cloud, verify_complete
 from drive_backup_transfer import download
 from encrypted_backup import decrypt
+from drive_backup_acl_batch import permissions_batch, permissions_many
 
 
 def recover_encrypted(plan, drive_factory, directory, key, workers=8):
@@ -103,7 +104,7 @@ def expected_permissions(original, latest):
     return expected
 
 
-def restore(plan, original, saved_acl_plan, recovery, drive, directory):
+def restore(plan, original, saved_acl_plan, recovery, drive, directory, drive_factory=None):
     """Restore original ACL only after fresh cloud, source and recovery gates.
 
     Does not update active-isolation.json; the CLI commits that marker only after
@@ -117,6 +118,9 @@ def restore(plan, original, saved_acl_plan, recovery, drive, directory):
     if (not calculated['acl_plan_ready'] or calculated != saved_acl_plan):
         raise ValueError('Immutable original ACL and saved restore plan differ')
     validate_recovery(plan, recovery)
+    if drive_factory:
+        for rows in permissions_batch(drive,[FOLDER,PROJECT]).values():
+            if len(rows)!=1 or rows[0]['role']!='owner':raise DriveError('Batch preflight is not owner-only')
     verify_complete(plan, drive, directory)
     latest = json.loads((directory/'verified-cloud.json').read_text(encoding='utf8'))
     expected = expected_permissions(original, latest)
@@ -146,14 +150,16 @@ def restore(plan, original, saved_acl_plan, recovery, drive, directory):
                     or any(acl_semantics(current[pid]) != acl_semantics(row) for pid,row in before.items())):
                 raise DriveError('Restored permission or existing ACL differs')
             operation['phase']='verified'; write_private_json(state_path,state)
+        full_acl = (permissions_many(latest['nodes'],drive_factory) if drive_factory
+                    else {key:drive.permissions(key) for key in latest['nodes']})
         def validator(row):
             check_owner(row)
-            permissions = row.get('permissions', [])
-            if any(p['role'] != 'owner' and not p.get('permissionDetails') for p in permissions):
-                # Some files.list responses omit inheritance details. Read the
-                # complete ACL endpoint rather than infer an absent direct grant.
-                permissions = drive.permissions(row['id'])
-                row['permissions'] = permissions
+            inline = row.get('permissions', [])
+            permission_set(inline)
+            permissions = full_acl.get(row['id'], [])
+            if {p['id']:acl_semantics(p) for p in inline}!={p['id']:acl_semantics(p) for p in permissions}:
+                raise DriveError('ACL changed between full and inline readback')
+            row['permissions'] = permissions
             if normalized(permissions) != expected.get(row['id']):
                 raise DriveError('Restored direct or inherited ACL differs')
         fresh = read_tree(drive, plan['destination_before'], acl_validator=validator)
