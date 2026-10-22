@@ -12,12 +12,13 @@ import unicodedata
 from collections import OrderedDict, deque
 from datetime import datetime, timezone
 from decimal import Decimal
-from threading import Lock
+from threading import Event, Lock
 from time import monotonic, perf_counter
 from typing import TypedDict
 from flask import current_app, has_app_context
 from .recommendation import policy_weights, recommend_products
 from .behavior_scope import personalization_events
+from .ai_payload import display_notes
 
 logger = logging.getLogger(__name__)
 
@@ -128,13 +129,19 @@ class CachedEmbeddings:
             self.cache.clear()
 
 
+_BGE_INIT_LOCK = Lock()
+
+
 def bge_embeddings():
-    if "bge_embeddings" not in current_app.extensions:
-        from langchain_huggingface import HuggingFaceEmbeddings
-        current_app.extensions["bge_embeddings"] = CachedEmbeddings(HuggingFaceEmbeddings(
-            model_name=current_app.config["BGE_MODEL"],
-            model_kwargs={"device": "cpu", "local_files_only": True},
-            encode_kwargs={"normalize_embeddings": True}))
+    # Concurrent cold requests must share one model and its vector cache. Model
+    # construction releases the GIL; checking extensions alone is not a lock.
+    with _BGE_INIT_LOCK:
+        if "bge_embeddings" not in current_app.extensions:
+            from langchain_huggingface import HuggingFaceEmbeddings
+            current_app.extensions["bge_embeddings"] = CachedEmbeddings(HuggingFaceEmbeddings(
+                model_name=current_app.config["BGE_MODEL"],
+                model_kwargs={"device": "cpu", "local_files_only": True},
+                encode_kwargs={"normalize_embeddings": True}))
     return current_app.extensions["bge_embeddings"]
 
 
@@ -369,7 +376,8 @@ def rule_answer(payload, intent):
         lines.append("規則摘要只列出數字變化；資料未包含來客數與流量，無法判定原因。")
     elif intent == "free_question":
         lines.append("雲端 AI 目前無法使用，自由提問沒有規則替代答案；以上為本期彙總。")
-    return "\n".join(lines + payload["warnings"])
+    # The screen gets plain-language notes; the machine-readable warnings stay in the model payload.
+    return "\n".join(lines + display_notes(payload))
 
 
 def insight_answer(payload, intent, question, user_id):
@@ -388,6 +396,30 @@ def insight_answer(payload, intent, question, user_id):
         hit = cache["items"].get(fingerprint)
         if hit and monotonic() < hit[0]:
             return {**hit[1], "cached": True}
+    # One Claude call per admin and identical request: a repeat that arrives while the first is still running
+    # (double click, second tab, impatient reload) waits for that result instead of calling Claude again.
+    # In-process only, which matches the single gunicorn worker (several threads) on Cloud Run.
+    inflight = current_app.extensions.setdefault("insight_inflight", {"lock": Lock(), "items": {}})
+    key = (user_id, fingerprint)
+    with inflight["lock"]:
+        pending = inflight["items"].get(key)
+        leader = pending is None
+        if leader:
+            pending = inflight["items"][key] = {"done": Event(), "answer": None}
+    if not leader:
+        if not pending["done"].wait(INSIGHT_TIMEOUT) or pending["answer"] is None:
+            raise InsightRequestError("in_progress", "上一個相同的分析仍在進行，請稍候再試，不必重複送出。", status=409)
+        return {**pending["answer"], "shared": True}
+    try:
+        pending["answer"] = ask_claude(intent, result, fallback, request_json, user_id, fingerprint, cache)
+        return pending["answer"]
+    finally:
+        with inflight["lock"]:
+            inflight["items"].pop(key, None)
+        pending["done"].set()
+
+
+def ask_claude(intent, result, fallback, request_json, user_id, fingerprint, cache):
     check_rate_limit(user_id)
     from langchain_core.prompts import ChatPromptTemplate
     prompt = ChatPromptTemplate.from_messages([("system", INSIGHT_SYSTEM), ("human", "以下 JSON 為本次請求：\n{request}")])

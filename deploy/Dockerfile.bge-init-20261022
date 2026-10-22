@@ -1,0 +1,7 @@
+# Serialize cold BGE construction after PR #171. Only these three runtime files
+# differ from this verified digest; the source packer must enforce that set.
+FROM asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:802af6a8f24bb0e8af077ae96cd909f84fefc3918e5c6f477f36fce26fa8e842
+WORKDIR /srv/app
+COPY app/services/ai_workflows.py app/services/local_ai.py ./app/services/
+COPY app/templates/admin/ai_recommendation.html ./app/templates/admin/
+USER appuser

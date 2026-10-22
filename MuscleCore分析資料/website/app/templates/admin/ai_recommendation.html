@@ -4,12 +4,12 @@
 {% block eyebrow %}LOCAL AI · 本機模型{% endblock %}
 {% block heading %}相似商品推薦{% endblock %}
 {% block meta %}<span>模型 {{ config.BGE_MODEL }}</span><span>CPU</span><span>資料不離開本機</span><span>向量快取 {{ vectors.cached }} 筆{% if vectors.refreshed_at %}／最後更新 {{ vectors.refreshed_at }}{% endif %}</span>{% endblock %}
-{% block actions %}{% if products %}<form method="post" action="{{ url_for('admin.ai_recommendation_refresh') }}"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><input type="hidden" name="product_id" value="{{ selected }}"><button class="button secondary" type="submit">更新商品向量</button></form>{% endif %}{% endblock %}
+{% block actions %}{% if products %}<form method="post" action="{{ url_for('admin.ai_recommendation_refresh') }}" data-single-submit data-pending-text="正在重新計算全部商品向量，可能需要一至兩分鐘，請勿重複送出…" data-pending-label="更新中…"><input type="hidden" name="csrf_token" value="{{ csrf_token() }}"><input type="hidden" name="product_id" value="{{ selected }}"><button class="button secondary" type="submit">更新商品向量</button><p class="pending-note" data-pending-status role="status" aria-live="polite" hidden></p></form>{% endif %}{% endblock %}
 {% block content %}
 {% if not products %}
 <section class="panel"><p class="empty-state">資料庫尚無可推薦商品（需為上架、可推薦，且至少一個 SKU 有可售庫存）。</p></section>
 {% else %}
-<form class="panel dashboard-filters" method="get" action="{{ url_for('admin.ai_recommendation') }}">
+<form class="panel dashboard-filters" method="get" action="{{ url_for('admin.ai_recommendation') }}" data-single-submit data-pending-text="正在載入模型與計算向量，首次可能需要一至兩分鐘，請勿重複送出…" data-pending-label="計算中…">
   <label class="wide">選擇商品（{{ products|length }} 個可推薦且可購買）
     <select name="product_id" required>
       <option value="">— 請選擇 —</option>
@@ -17,6 +17,7 @@
     </select>
   </label>
   <button class="button" type="submit">計算相似商品</button>
+  <p class="pending-note" data-pending-status role="status" aria-live="polite" hidden></p>
   <p>候選只含上架、可推薦，且至少一個 SKU 為 active 並有可售庫存的商品；基準商品本身排除。價格為可售 SKU 最低價。</p>
 </form>
 
@@ -43,7 +44,7 @@
     </div>
     <details class="table-details"><summary>模型輸入文字預覽</summary><pre class="text-preview">{{ result.base.text }}</pre></details>
   </section>
-  <section class="panel" aria-labelledby="top-title">
+  <section class="panel" aria-labelledby="top-title" aria-live="polite">
     <div class="panel-head"><h2 id="top-title">Top {{ result['items']|length }} 相似商品</h2><span class="source-badge local">BGE · 本機</span></div>
     {% for item in result['items'] %}
     <div class="similar-row">

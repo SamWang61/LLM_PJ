@@ -1,0 +1,10 @@
+# PR #171: overlay exactly the seven reviewed runtime files on the verified
+# production digest. The source packer must reject any additional runtime diff.
+FROM asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:d40711d619f20001357977c4cfdf96ebe63a96abf976c95cca0636e4d42e09aa
+WORKDIR /srv/app
+COPY app/admin.py ./app/admin.py
+COPY app/services/ai_payload.py app/services/ai_workflows.py ./app/services/
+COPY app/static/css/admin.css ./app/static/css/admin.css
+COPY app/static/js/forms.js ./app/static/js/forms.js
+COPY app/templates/admin/ai_insight.html app/templates/admin/ai_recommendation.html ./app/templates/admin/
+USER appuser

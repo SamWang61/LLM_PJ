@@ -1,0 +1,10 @@
+{
+  "service": "vibecart-web",
+  "region": "asia-east1",
+  "memory": "2Gi",
+  "cpu": "1",
+  "service_max_instances": 3,
+  "revision_max_instances": 3,
+  "minimum_instances": 0,
+  "concurrency": 20
+}

@@ -64,7 +64,8 @@ def local_embeddings():
     except ImportError:
         raise LocalModelUnavailable("not_installed") from None
     except Exception:
-        current_app.extensions.pop("bge_embeddings", None)
+        # bge_embeddings publishes only a fully constructed model. A failed
+        # caller must not remove a model successfully loaded by another thread.
         raise LocalModelUnavailable("model_missing") from None
     if not isinstance(model, CachedEmbeddings):
         # Test factories may return a bare model; keep one cache per app so hit counts stay meaningful.
