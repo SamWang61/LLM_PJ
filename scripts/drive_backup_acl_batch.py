@@ -9,9 +9,10 @@ from email import policy
 from email.parser import BytesParser
 import json,re,threading,time,uuid
 from urllib.parse import urlencode
-from drive_backup_acl import DriveError,PERMISSION_FIELDS,identifier
+from drive_backup_acl import DriveError,PERMISSION_FIELDS,identifier,rate_limited,rate_backoff
 
 BATCH='https://www.googleapis.com/batch/drive/v3'
+BATCH_START_INTERVAL=3.0
 
 
 def parse_response(content_type,content,ids):
@@ -56,14 +57,19 @@ def permissions_batch(drive,ids):
                f'GET /drive/v3/files/{key}/permissions?{query} HTTP/1.1\r\nAccept: application/json\r\n\r\n').encode('ascii')
     body+=f'--{boundary}--\r\n'.encode('ascii')
     # The outer POST contains only GETs. Transport retries cannot mutate Drive.
-    for attempt in range(4):
+    from requests.exceptions import SSLError
+    for attempt in range(8):
         try:
             response=drive.session.post(BATCH,data=body,headers={'Content-Type':'multipart/mixed; boundary='+boundary},
                 timeout=90,allow_redirects=False)
+        except SSLError:
+            raise DriveError('Permission batch TLS validation failed') from None
         except Exception:
-            if attempt==3:raise DriveError('Read-only permission batch transport failed') from None
+            if attempt>=3:raise DriveError('Read-only permission batch transport failed') from None
             time.sleep(2**attempt);continue
-        if response.status_code in (429,500,502,503,504) and attempt<3:
+        if rate_limited(response) and attempt<7:
+            response.close();time.sleep(rate_backoff(attempt));continue
+        if response.status_code in (500,502,503,504) and attempt<3:
             response.close();time.sleep(2**attempt);continue
         if response.status_code!=200:
             status=response.status_code;response.close()
@@ -82,9 +88,10 @@ def permissions_many(ids,drive_factory,workers=4):
     groups=[ids[i:i+100] for i in range(0,len(ids),100)]
     lock=threading.Lock();next_start=[0.0]
     def one(group):
-        # At most one new 100-call batch per second, with bounded overlap.
+        # List calls cost quota units even inside batches. Leave headroom under
+        # the current per-user quota: at most 100 new GETs every three seconds.
         with lock:
-            start=max(time.monotonic(),next_start[0]);next_start[0]=start+1
+            start=max(time.monotonic(),next_start[0]);next_start[0]=start+BATCH_START_INTERVAL
         delay=start-time.monotonic()
         if delay>0:time.sleep(delay)
         return permissions_batch(drive_factory(),group)

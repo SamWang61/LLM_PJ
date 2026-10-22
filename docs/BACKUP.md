@@ -1,5 +1,15 @@
 # 每日備份 / Daily backup
 
+## 2026-10-23 00:55:52 每日完整備份完成 / Full backup completed
+
+**本次完整備份及原共用恢復已通過驗證。** 最新完整清冊時間 2026-10-22 21:19:10（Asia/Taipei），共 47,743 檔、5,310 個子目錄、5,301,622,386 bytes；3,566 個機密檔全部從雲端獨立下載並認證復原。雲端 53,836 個物件完整對帳，之後才恢復原 4 筆直接授權，再完整核對 53,836 個物件的直接／繼承權限及來源穩定性。固定連結與所有原 ID 保留，未刪除目的地額外內容。詳見[本次紀錄](log/SAM_DRIVE_DAILY_2026-10-22.md)及[去敏收據](inventory/SAM_DRIVE_DAILY_2026-10-22.json)。
+
+SAM 核准的唯一排除仍為 `MuscleCore分析資料/website/.pytest_cache`；OAuth 已為 Production。Production 發布後的新離線授權已於 2026-10-22 20:28:47 完成；2026-10-22 21:57:36 再核對目前憑證，確認對應原核准用戶端、refresh token 已更新、重新整理與擁有者身分均通過。原「稍後處理」待辦已由實際收據取代，多餘授權頁與等待程序已關閉，不需重複授權。憑證繼續以 Windows DPAPI 保存在專案外。 每日 23:30 排程維持，以下舊「尚未核准／未完成」段落為歷史。
+
+本次完成紀錄、每日前置檢查、限流與原生文件補修及後續 GitHub 合併在來源清冊時間之後發布，列入下一輪備份；不能把事後內容冒稱已在本次 Drive 快照中。後續執行入口為 `scripts/drive_backup_daily.py`，沿用專案外金鑰，先保存本輪原 ACL，再撤權、完整對帳、認證復原及恢復；未完成隔離只能續用原恢復資料。本輪 213 項本機備份測試通過；先前 PR #180／#181 CI 通過，本次補修與紀錄的 CI／合併另以新 PR 為準。
+
+English: This full backup and original sharing restoration passed all cloud, source, authenticated recovery and whole-tree ACL gates. The fixed link and destination-only content remain intact. Documents generated after this source cutoff enter the next daily cycle.
+
 ## 2026-10-22 19:22 每日全量執行 / Current full backup
 
 SAM 已核准唯一排除 `MuscleCore分析資料/website/.pytest_cache`；OAuth 已回讀 **Production／實際運作中**，不再引用下方舊待決定狀態。新完整清冊為 47,658 檔、5,301,373,391 bytes、3,492 加密檔；全量程序已啟動，161 項本機測試通過。**全量雲端對帳、遠端認證復原及共用恢復尚在執行，未宣稱完成。** 詳見[最新每日備份紀錄與執行入口](log/SAM_DRIVE_DAILY_2026-10-22.md)、[政策](../config/drive-backup-policy.json)。

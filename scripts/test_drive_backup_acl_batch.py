@@ -58,4 +58,50 @@ def test_outer_retry_is_bounded_and_contains_only_gets(monkeypatch):
     api=SimpleNamespace(session=SimpleNamespace(post=post))
     monkeypatch.setattr(batch.time,'sleep',lambda _:None)
     with pytest.raises(DriveError,match='429'):batch.permissions_batch(api,['a'])
-    assert len(calls)==4 and len(set(calls))==1
+    assert len(calls)==8 and len(set(calls))==1
+
+
+def test_outer_403_quota_retries_read_only_batch(monkeypatch):
+    kind,content=response([('a',200,{'permissions':[{'id':'owner','role':'owner'}]})])
+    calls=[];waits=[]
+    def post(url,**kwargs):
+        calls.append(kwargs['data'])
+        if len(calls)==1:
+            return SimpleNamespace(status_code=403,json=lambda:{'error':{'errors':[{'reason':'rateLimitExceeded'}]}},close=lambda:None)
+        return SimpleNamespace(status_code=200,headers={'Content-Type':kind},content=content,close=lambda:None)
+    api=SimpleNamespace(session=SimpleNamespace(post=post))
+    monkeypatch.setattr(batch.time,'sleep',waits.append)
+    assert batch.permissions_batch(api,['a'])=={'a':[{'id':'owner','role':'owner'}]}
+    assert len(calls)==2 and calls[0]==calls[1] and len(waits)==1
+
+
+def test_outer_permission_denial_is_not_retried(monkeypatch):
+    calls=[]
+    def post(*args,**kwargs):
+        calls.append(True)
+        return SimpleNamespace(status_code=403,json=lambda:{'error':{'errors':[{'reason':'insufficientFilePermissions'}]}},close=lambda:None)
+    monkeypatch.setattr(batch.time,'sleep',lambda _:pytest.fail('Unexpected permission retry'))
+    with pytest.raises(DriveError,match='403'):
+        batch.permissions_batch(SimpleNamespace(session=SimpleNamespace(post=post)),['a'])
+    assert len(calls)==1
+
+
+def test_batch_tls_failure_is_not_retried(monkeypatch):
+    from requests.exceptions import SSLError
+    def post(*args,**kwargs):raise SSLError('private')
+    monkeypatch.setattr(batch.time,'sleep',lambda _:pytest.fail('Unexpected TLS retry'))
+    with pytest.raises(DriveError,match='TLS validation'):
+        batch.permissions_batch(SimpleNamespace(session=SimpleNamespace(post=post)),['a'])
+
+
+def test_permission_batches_leave_quota_headroom_and_include_every_id(monkeypatch):
+    clock=[0.0];starts=[]
+    monkeypatch.setattr(batch.time,'monotonic',lambda:clock[0])
+    monkeypatch.setattr(batch.time,'sleep',lambda delay:clock.__setitem__(0,clock[0]+delay))
+    def one(api,ids):
+        starts.append(clock[0])
+        return {key:[{'id':'owner','role':'owner'}] for key in ids}
+    monkeypatch.setattr(batch,'permissions_batch',one)
+    ids=[f'file_{i}' for i in range(250)]
+    result=batch.permissions_many(ids,lambda:None,workers=1)
+    assert set(result)==set(ids) and starts==[0.0,3.0,6.0]
