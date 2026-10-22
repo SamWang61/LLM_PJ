@@ -1,0 +1,295 @@
+{
+  "schema": 1,
+  "checked_at": "2026-10-22T01:05:08.698Z",
+  "project": "vibecart-llmai",
+  "region": "asia-east1",
+  "service": "vibecart-web",
+  "capacity": {
+    "memory": "2Gi",
+    "cpu": "1",
+    "service_max_instances": 3,
+    "revision_max_instances": 3,
+    "minimum_instances": 0,
+    "concurrency": 20
+  },
+  "pr171": {
+    "head": "8c09489b70eff1f3e57c26c8a7ae2bae8960766a",
+    "merged_main": "1d9c3b9417c7bb1aa02932f42bd9723015dc966b",
+    "build": "a05de77d-a2ca-420b-854a-bfda936153f6",
+    "revision": "vibecart-web-pr171-1d9-1022",
+    "digest": "sha256:802af6a8f24bb0e8af077ae96cd909f84fefc3918e5c6f477f36fce26fa8e842",
+    "local_passed": 405,
+    "local_skipped": 35,
+    "post_release_logs": {
+      "period_start": "2026-10-22T00:37:00Z",
+      "entries": 101,
+      "pages": 1,
+      "complete": true,
+      "http_statuses": {
+        "200": 51,
+        "302": 3,
+        "304": 3,
+        "405": 3,
+        "504": 3
+      },
+      "classes": {
+        "mongo_selection": 0,
+        "mongo_other": 0,
+        "app_database_unavailable": 0,
+        "http_5xx": 3,
+        "other_error": 0
+      }
+    }
+  },
+  "followup_pr175": {
+    "head": "dedd60d881514ba72ba3507662a83c8e43d806ed",
+    "merged_main": "453600ada83fd041c5c1aa8f1040f75093d50fc1",
+    "github_head_checks": "two success",
+    "build": "b95871b7-7a29-45ad-a6ce-ce2dc49f17d8",
+    "revision": "vibecart-web-bge-lock-1022",
+    "image": "asia-east1-docker.pkg.dev/vibecart-llmai/vibecart/web@sha256:e9ca69abaacb70fa85c732b71317598c0955e3cc378cb09443911ab75e822b63",
+    "source": "dedd60d881514ba72ba3507662a83c8e43d806ed",
+    "local_passed": 407,
+    "local_skipped": 35,
+    "build_checks": {
+      "runtime_file_hashes": 74,
+      "uid": 10001,
+      "real_bge_dimensions": 512,
+      "concurrent_requests": 3,
+      "model_loads": 1,
+      "cpu_limit": 1,
+      "memory_limit": "2g"
+    },
+    "traffic": [
+      {
+        "revision": "vibecart-web-bge-lock-1022",
+        "percent": 100
+      }
+    ],
+    "conditions": [
+      {
+        "type": "Ready",
+        "state": "CONDITION_SUCCEEDED"
+      },
+      {
+        "type": "Active",
+        "state": "CONDITION_SUCCEEDED"
+      },
+      {
+        "type": "ResourcesAvailable",
+        "state": "CONDITION_SUCCEEDED"
+      },
+      {
+        "type": "ContainerReady",
+        "state": "CONDITION_SUCCEEDED"
+      },
+      {
+        "type": "ContainerHealthy",
+        "state": "CONDITION_SUCCEEDED"
+      }
+    ],
+    "post_release_logs": {
+      "period_start": "2026-10-22T00:59:00Z",
+      "entries": 85,
+      "pages": 1,
+      "complete": true,
+      "http_statuses": {
+        "200": 43,
+        "302": 3,
+        "304": 8,
+        "405": 3
+      },
+      "classes": {
+        "mongo_selection": 0,
+        "mongo_other": 0,
+        "app_database_unavailable": 0,
+        "http_5xx": 0,
+        "other_error": 0
+      }
+    },
+    "local_requests": [
+      {
+        "timestamp": "2026-10-22T01:00:44.038901Z",
+        "status": 200,
+        "method": "GET",
+        "latency": "85.935310415s",
+        "instance_fingerprint": "8713c1b675e4"
+      },
+      {
+        "timestamp": "2026-10-22T01:00:44.044891Z",
+        "status": 200,
+        "method": "GET",
+        "latency": "85.935031464s",
+        "instance_fingerprint": "8713c1b675e4"
+      },
+      {
+        "timestamp": "2026-10-22T01:00:44.049927Z",
+        "status": 200,
+        "method": "GET",
+        "latency": "85.923338376s",
+        "instance_fingerprint": "8713c1b675e4"
+      },
+      {
+        "timestamp": "2026-10-22T01:01:44.034248Z",
+        "status": 200,
+        "method": "GET",
+        "latency": "90.780037212s",
+        "instance_fingerprint": "b846cd7a817e"
+      },
+      {
+        "timestamp": "2026-10-22T01:01:44.044836Z",
+        "status": 200,
+        "method": "GET",
+        "latency": "95.159410706s",
+        "instance_fingerprint": "ba229b9b0c27"
+      },
+      {
+        "timestamp": "2026-10-22T01:01:44.049988Z",
+        "status": 200,
+        "method": "GET",
+        "latency": "88.286262723s",
+        "instance_fingerprint": "ba229b9b0c27"
+      },
+      {
+        "timestamp": "2026-10-22T01:01:47.979782Z",
+        "status": 200,
+        "method": "GET",
+        "latency": "88.274832274s",
+        "instance_fingerprint": "ba229b9b0c27"
+      },
+      {
+        "timestamp": "2026-10-22T01:01:47.980254Z",
+        "status": 200,
+        "method": "GET",
+        "latency": "89.503020969s",
+        "instance_fingerprint": "ba229b9b0c27"
+      },
+      {
+        "timestamp": "2026-10-22T01:01:48.154067Z",
+        "status": 200,
+        "method": "GET",
+        "latency": "89.544289322s",
+        "instance_fingerprint": "ba229b9b0c27"
+      },
+      {
+        "timestamp": "2026-10-22T01:01:48.288716Z",
+        "status": 200,
+        "method": "GET",
+        "latency": "89.314364533s",
+        "instance_fingerprint": "ba229b9b0c27"
+      },
+      {
+        "timestamp": "2026-10-22T01:01:48.579844Z",
+        "status": 200,
+        "method": "GET",
+        "latency": "88.268014623s",
+        "instance_fingerprint": "ba229b9b0c27"
+      },
+      {
+        "timestamp": "2026-10-22T01:01:49.033911Z",
+        "status": 200,
+        "method": "GET",
+        "latency": "89.532168210s",
+        "instance_fingerprint": "ba229b9b0c27"
+      },
+      {
+        "timestamp": "2026-10-22T01:02:44.038467Z",
+        "status": 200,
+        "method": "GET",
+        "latency": "0.979216642s",
+        "instance_fingerprint": "8713c1b675e4"
+      },
+      {
+        "timestamp": "2026-10-22T01:02:44.045892Z",
+        "status": 200,
+        "method": "GET",
+        "latency": "1.062112487s",
+        "instance_fingerprint": "8713c1b675e4"
+      },
+      {
+        "timestamp": "2026-10-22T01:02:44.049319Z",
+        "status": 200,
+        "method": "GET",
+        "latency": "38.118370336s",
+        "instance_fingerprint": "ba229b9b0c27"
+      },
+      {
+        "timestamp": "2026-10-22T01:02:47.977725Z",
+        "status": 200,
+        "method": "GET",
+        "latency": "1.106883505s",
+        "instance_fingerprint": "8713c1b675e4"
+      },
+      {
+        "timestamp": "2026-10-22T01:02:47.979378Z",
+        "status": 200,
+        "method": "GET",
+        "latency": "0.983086084s",
+        "instance_fingerprint": "8713c1b675e4"
+      },
+      {
+        "timestamp": "2026-10-22T01:02:48.155536Z",
+        "status": 200,
+        "method": "GET",
+        "latency": "0.986509692s",
+        "instance_fingerprint": "8713c1b675e4"
+      },
+      {
+        "timestamp": "2026-10-22T01:02:48.290936Z",
+        "status": 200,
+        "method": "GET",
+        "latency": "34.144471318s",
+        "instance_fingerprint": "ba229b9b0c27"
+      },
+      {
+        "timestamp": "2026-10-22T01:02:48.578226Z",
+        "status": 200,
+        "method": "GET",
+        "latency": "33.829467958s",
+        "instance_fingerprint": "ba229b9b0c27"
+      },
+      {
+        "timestamp": "2026-10-22T01:02:49.032429Z",
+        "status": 200,
+        "method": "GET",
+        "latency": "0.684981045s",
+        "instance_fingerprint": "8713c1b675e4"
+      }
+    ],
+    "model_load_starts": [
+      {
+        "timestamp": "2026-10-22T01:01:18.991398Z",
+        "instance_fingerprint": "8713c1b675e4"
+      },
+      {
+        "timestamp": "2026-10-22T01:02:24.128002Z",
+        "instance_fingerprint": "b846cd7a817e"
+      },
+      {
+        "timestamp": "2026-10-22T01:02:24.166020Z",
+        "instance_fingerprint": "ba229b9b0c27"
+      }
+    ],
+    "chrome_result_screenshots": [
+      {
+        "path": "pr171_production_20261022/pr175-production-cold-1.png",
+        "sha256": "fbd22b5cc3393d835e2e89510f3218083d5dde733fcef223677ffbd92118cd2b"
+      },
+      {
+        "path": "pr171_production_20261022/pr175-production-cold-2.png",
+        "sha256": "f836deb1a74de08f8e40edac204e5dc39db7edbc05fc24305d6de696df8cbaeb"
+      },
+      {
+        "path": "pr171_production_20261022/pr175-production-cold-3.png",
+        "sha256": "9d68b30183d4dbdd6259a73df8f6f2ea60ce8f94ced99f332faf48e03320f44e"
+      }
+    ]
+  },
+  "boundaries": {
+    "distributed_claude_deduplication": false,
+    "persistent_product_vectors": false,
+    "real_payment_tested": false,
+    "named_person_acceptance": false,
+    "fixed_drive_backup_completed": false
+  }
+}

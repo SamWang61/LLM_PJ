@@ -339,3 +339,16 @@ def test_my_drive_parent_grant_requires_exact_restore_semantics(snapshot):
     inherited = grant(role="writer", permissionDetails=[{"inherited": True}])
     snapshot["nodes"]["file"] = node("file", "text/plain", [acl.FOLDER], [owner(), inherited])
     assert not acl.plan(snapshot)["acl_plan_ready"]
+
+
+def test_snapshot_write_failure_keeps_previous_checkpoint(tmp_path, monkeypatch):
+    path = tmp_path / "checkpoint.json"
+    path.write_text("previous complete checkpoint", encoding="utf8")
+    def interrupted(data, stream, **kwargs):
+        stream.write('{"incomplete":')
+        raise MemoryError("simulated allocation failure")
+    monkeypatch.setattr(acl.json, "dump", interrupted)
+    with pytest.raises(MemoryError):
+        acl.write_private_json(path, {"nodes": []})
+    assert path.read_text() == "previous complete checkpoint"
+    assert path.with_name("checkpoint.json.pending").exists()

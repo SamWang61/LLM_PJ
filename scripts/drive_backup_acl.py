@@ -335,6 +335,15 @@ def acl_semantics(permission):
             if key in permission}
 
 
+def write_private_json(path, data):
+    """Stream large snapshots and replace only after a complete write."""
+    temporary = path.with_name(path.name + ".pending")
+    with temporary.open("w", encoding="utf-8") as stream:
+        json.dump(data, stream, ensure_ascii=False)
+        stream.write("\n")
+    temporary.replace(path)
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--private-output", type=Path, required=True)
@@ -359,9 +368,7 @@ def main():
         return 0
     last_progress = [0.0]
     def checkpoint(data):
-        temporary = destination / "checkpoint.pending"
-        temporary.write_text(json.dumps(data, ensure_ascii=False) + "\n", encoding="utf-8")
-        temporary.replace(destination / "checkpoint.json")
+        write_private_json(destination / "checkpoint.json", data)
         if time.monotonic() - last_progress[0] >= 30:
             print(json.dumps({"phase": data["phase"], "objects": len(data["nodes"]),
                               "permissions_read": sum("permissions" in x for x in data["nodes"].values()),
@@ -370,7 +377,7 @@ def main():
     snapshot = inventory(drive, checkpoint, args.project_source_file)
     result = plan(snapshot)
     for name, data in (("acl.json", snapshot), ("plan.json", result)):
-        (destination / name).write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+        write_private_json(destination / name, data)
     print(json.dumps({"objects": result["objects"], "direct_grants": len(result["direct"]),
                       "inherited_grants": len(result["inherited"]), "blockers": len(result["blockers"]),
                       "acl_plan_ready": result["acl_plan_ready"], "mutations": 0}))

@@ -1,5 +1,6 @@
 # 全部文件索引 / Document catalog
 
+- [10/22 正式2Gi／max3、PR #171與#175、並行BGE修復及驗證](log/SAM_PR171_PRODUCTION_2026-10-22.md)
 - [10/22 SAM每日Drive權限修復、專用OAuth與已決定的機密方案](log/SAM_DRIVE_BACKUP_2026-10-22.md)
 
 - [10/22 SAM交付版本、正式映像／日誌／14頁備援與剩餘條件](SAM_DELIVERY_VERSION_2026-10-22.md)
