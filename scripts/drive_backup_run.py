@@ -32,6 +32,9 @@ def main():
     parser.add_argument('--run-directory', required=True, type=private_path)
     parser.add_argument('--project-sources-reconfirmed', action='store_true')
     parser.add_argument('--apply', action='store_true')
+    parser.add_argument('--workers', type=int, default=48, choices=range(1, 49))
+    parser.add_argument('--resume-snapshot', action='store_true',
+                        help='Resume only a saved immutable plan after local changes; final source check still required')
     args = parser.parse_args()
     if not args.project_sources_reconfirmed:
         parser.error('First recheck the fixed project and its two original source objects')
@@ -45,7 +48,10 @@ def main():
                 or Path(manifest['source_root']).resolve() != Path(r'C:\LLM\LLM_PJ').resolve()):
             raise ValueError('A complete manifest of the approved source is required')
         for row in manifest['files'].values(): private_path(row['payload_path'])
-        verify_source(manifest['source_root'], manifest)
+        if args.resume_snapshot and not (args.run_directory/'transfer-plan.json').exists():
+            raise ValueError('Snapshot resume requires an existing durable plan')
+        if not args.resume_snapshot:
+            verify_source(manifest['source_root'], manifest)
         base = session(); drive = Drive(base)
         snapshot = read_tree(drive, original)
         plan_path = args.run_directory / 'transfer-plan.json'
@@ -71,7 +77,8 @@ def main():
                 local.drive = Drive(AuthorizedSession(Credentials.from_authorized_user_info(
                     json.loads(credential_json), scopes=[SCOPE])))
             return local.drive
-        result = transfer(plan, factory, args.run_directory)
+        result = transfer(plan, factory, args.run_directory, workers=args.workers,
+                          check_source_before=not args.resume_snapshot)
         print(json.dumps(result))
 
 

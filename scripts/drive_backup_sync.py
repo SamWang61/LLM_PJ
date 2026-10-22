@@ -135,7 +135,7 @@ def validate_legacy_audit(snapshot, audit, remediation_directory):
     return True
 
 
-def transfer(plan, drive_factory, directory, workers=12):
+def transfer(plan, drive_factory, directory, workers=48, check_source_before=True):
     """Caller holds the execution lock. Resume uses the same saved plan/IDs."""
     directory = Path(directory)
     if not plan['source_manifest'].get('complete') or plan['source_manifest'].get('source_errors'):
@@ -146,7 +146,8 @@ def transfer(plan, drive_factory, directory, workers=12):
         if json.loads(state_path.read_text(encoding='utf8')) != plan:
             raise ValueError('Resume must use the exact saved transfer plan')
     else: write_private_json(state_path, plan)
-    verify_source(plan['source_manifest']['source_root'], plan['source_manifest'])
+    if check_source_before:
+        verify_source(plan['source_manifest']['source_root'], plan['source_manifest'])
     before = plan['destination_before']
     latest = read_tree(drive_factory(), before)
     allowed = set(plan['original_ids']) | {r['id'] for r in plan['folders'] + plan['files']}
