@@ -1,5 +1,15 @@
 # 每日備份 / Daily backup
 
+## 2026-10-22 13:40 機密修復與全備份狀態 / Latest status
+
+**已完成 980 個雲端檔案／984 個版本的加密修復及遠端認證復原，原明文版本已確認移除；原物件 ID 與固定連結保留。共用仍停止。** 最終完整回讀 11,780 個物件皆 owner-only。詳細[處理紀錄](log/SAM_DRIVE_ENCRYPTION_2026-10-22.md)及[去敏證據](inventory/SAM_DRIVE_ENCRYPTION_2026-10-22.json)優先於下方早先隔離狀態。
+
+來源已私有準備 47,557 個可讀檔案、3,407 個加密檔，但 `MuscleCore分析資料/website/.pytest_cache` 拒絕讀取，尚待 SAM 同意明確排除或修復讀權限。未自動排除，manifest 仍不完整，來源全量上傳為 0；不能將雲端舊內容修復或本機準備冒稱完整備份。最終清冊須在來源變動後重新核對。133 項本機測試通過；全量雲端核對及原 ACL 恢復尚未執行。
+
+OAuth 用途／隱私／使用說明頁已上線，品牌欄位已保存；Testing 轉 Production 的操作當下確認仍待答覆，目前仍有 7 日限制。每日 23:30 排程保持；未通過全部備份條件前不恢復共用、不覆蓋原恢復計畫。
+
+English: Existing confidential content has been encrypted and independently recovered from Drive. Full source backup is still blocked by one unreadable cache directory; sharing remains suspended. OAuth branding is ready, but production publication is pending.
+
 ## 2026-10-22 最新決定與權限修復進度 / Current decision
 
 SAM已明確同意專用Desktop OAuth與Drive管理授權，並選定**一般檔案同步；機密以密文存於原固定目錄**，金鑰與OAuth憑證放在專案外，不上傳。此決定取代下方9月「方案尚待選擇」；不是本次加密或備份驗收完成。

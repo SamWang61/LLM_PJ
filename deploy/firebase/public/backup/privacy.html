@@ -1,0 +1,11 @@
+<!doctype html>
+<html lang="zh-Hant"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>LLM_PJ Daily Backup｜隱私說明</title>
+<style>body{max-width:760px;margin:60px auto;padding:0 24px;font:18px/1.8 system-ui;color:#17302c;background:#f7faf8}h1{line-height:1.3}a{color:#12634e}</style>
+<main><a href="/backup/">LLM_PJ Daily Backup</a><h1>隱私說明 / Privacy</h1><p>更新：2026-10-22。管理者：SAM（cashsam@gmail.com）。</p>
+<h2>存取與用途</h2><p>桌面工具使用管理者授予的 Google Drive 權限，讀取指定 LLM_PJ 專案、來源資料夾及其子檔案的內容、中繼資料、版本與共用權限；以備份、機密加密、完整性核對及權限恢復為唯一用途。Google 的 Drive 授權範圍涵蓋整個雲端硬碟；程式以固定物件 ID 限制實際備份操作，僅接受指定管理者帳號。</p>
+<h2>儲存與分享</h2><p>備份一般檔案保留於指定 Drive 目錄；機密以 AES-256-GCM 密文保存。共用停止期間先處理舊明文及其版本，密文經雲端下載解密驗證後才處理對應明文版本。完整備份驗證通過後恢復原有權限，原授權對象可讀一般檔案及密文，無法從備份取得解密金鑰。</p>
+<p>OAuth token 使用 Windows DPAPI 加密保存在本機專案外；金鑰、原始權限身分及私有操作紀錄也留在本機受限目錄。公開 GitHub 紀錄僅包含去敏結果，不含憑證、金鑰或完整權限清冊。本機暫存與復原副本由管理者保管並於確認復原需求後處理。</p>
+<h2>使用限制與控制</h2><p>工具不販售 Google 使用者資料，不用於廣告、信用評估或訓練人工智慧模型，不將其傳送至語言模型 API。資料僅為上述備份目的送往管理者指定的 Google Drive。Google API 資料的使用遵守 Google API Services User Data Policy，包括 Limited Use 規定。</p>
+<p>管理者可在 Google 帳戶的第三方連線設定撤銷授權；撤銷後新備份將停止，既存 Drive 副本與本機恢復資料不會自動刪除。查詢、存取或刪除請聯絡 <a href="mailto:cashsam@gmail.com">cashsam@gmail.com</a>。</p>
+<p lang="en">Google Drive data is used only for owner-authorized backup, encryption, integrity checks and permission recovery. Tokens and keys stay in restricted local storage. Data is not sold, used for advertising, sent to language-model APIs or used to train AI models. Google API data use complies with the Google API Services User Data Policy, including Limited Use. Revoking access stops future backups but does not automatically delete retained copies. Contact the owner to manage retention.</p></main></html>
