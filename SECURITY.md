@@ -10,6 +10,8 @@ Contact SamWang61 through an existing private channel. Do not post secrets or pe
 
 ## 管理原則 / Handling
 
+本專案 Atlas `0.0.0.0/0` 依 SAM 2026/10/22 指示列為已接受的「VERTCART 學習協作例外」；後續不重複要求移除或自動刪除。適用範圍與保留的安全檢查見[決策紀錄](docs/log/SAM_ATLAS_NETWORK_EXCEPTION_2026-10-22.md)。This exact project/CIDR is an accepted exception; credential and access checks remain required.
+
 - 憑證只存本機受保護環境或 Secret Manager；`.env.example` 僅放占位值。Store secrets in protected local configuration or a secret manager.
 - 發現外洩時先撤銷／輪替憑證，再處理 Git 歷史與存取紀錄。Rotate exposed credentials before cleaning history.
 - 公開 GitHub 與共用 Drive 都不能保存明文機密。Neither public GitHub nor shared Drive is a secret store.

@@ -1,0 +1,84 @@
+{
+  "schema": 1,
+  "checked_at": "2026-10-22T04:16:14.506316+00:00",
+  "baseline": "4ce6cf5af3b026fdb8b3127d94f1954ea96888ed",
+  "fixed_project_id": "1rQrO8v6bl3_y_B0BwpZXhlHFHS8swQc5",
+  "folder_id": "1lXZv3hn3CgYmotpxgcna8i27wEodL8Gh",
+  "authority": {
+    "owner": "SAM",
+    "extended_suspension_explicitly_approved": true,
+    "secret_policy": "normal_files_plus_encrypted_secrets_in_fixed_destination"
+  },
+  "original_acl": {
+    "captured_at": "2026-10-22T04:12:19.928280+00:00",
+    "objects": 11780,
+    "direct_grants": 4,
+    "inherited_grants": 11777,
+    "restore_blockers": 0,
+    "saved_before_first_mutation": true
+  },
+  "isolation": {
+    "started_at": "2026-10-22T04:13:12.300914+00:00",
+    "direct_revocations_verified": 4,
+    "owner_only_objects": 11780,
+    "non_owner_grants": 0,
+    "complete": true,
+    "initial_verification_failed": true,
+    "initial_failure_cause": "not_established",
+    "readonly_retry_passed": true,
+    "deletions_replayed": false,
+    "sharing_restored": false,
+    "original_ids_preserved": true,
+    "browser_folder_access": "Restricted; owner only"
+  },
+  "validation": {
+    "windows_tests_passed": 78,
+    "cloud_readback_completed": true,
+    "raw_acl_uploaded": false,
+    "cli_readonly_recheck": {
+      "checked_at": "2026-10-22T04:23:20.311186+00:00",
+      "objects": 11780,
+      "non_owner_grants": 0,
+      "complete": true,
+      "mutations": 0
+    }
+  },
+  "recovery": {
+    "original_acl_and_plan_private": true,
+    "active_isolation_pointer_saved": true,
+    "exclusive_execution_lock": true,
+    "owner_only_state_must_not_replace_original_acl": true,
+    "restore_only_after_remediation_and_cloud_verification": true
+  },
+  "backup": {
+    "project_files_copied": 0,
+    "content_updates": 0,
+    "content_deletions": 0,
+    "complete": false,
+    "keys_uploaded": false,
+    "cloud_content_consistency_verified": false
+  },
+  "automation": {
+    "id": "llm-pj-23-30",
+    "status": "ACTIVE",
+    "schedule": "Asia/Taipei 23:30 daily",
+    "prompt_updated": true,
+    "actual_backup_completed": false
+  },
+  "pending": [
+    "existing_confidential_content_and_revision_remediation",
+    "encrypted_full_source_plan_and_restore",
+    "cloud_manifest_size_hash_source_stability",
+    "original_acl_restoration_and_readback",
+    "durable_oauth_publishing_and_token_lifetime"
+  ],
+  "private_evidence_sha256": {
+    "original-acl.json": "82095c3885a83ab7be9f7fdacdfc23265ea97103301b1179ecd2db8992115b1a",
+    "restore-plan.json": "e4f0c16b1c7dc6847631ee3bd25b4fc2aba5126a2747f437a33d2ebf7b48791a",
+    "initial-failed-journal.json": "25eedd02ac18da41db6e4b8368fc93416a8ca67dd794c4b7d21a2fd08a240b8f",
+    "journal.json": "3ec268ffeafb670afb22d281651dbede8fb1eb403c2f2b05ac963b9ca8b678e9",
+    "isolated-acl.json": "be89e105ff1bd5d9d04e134db59affbce6795cba847c3ce316d6e6798fce9c73",
+    "folder-restricted.png": "3a9839219714b380b3f9dce6e02053e2163ecacb841e76662935de06050e6510",
+    "latest-isolation-readback.json": "85ec8a1554461bc1768f4c7a87950edb2a4d0de763324332b8327cbafaf682eb"
+  }
+}

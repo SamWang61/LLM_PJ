@@ -4,9 +4,13 @@
 
 SAM已明確同意專用Desktop OAuth與Drive管理授權，並選定**一般檔案同步；機密以密文存於原固定目錄**，金鑰與OAuth憑證放在專案外，不上傳。此決定取代下方9月「方案尚待選擇」；不是本次加密或備份驗收完成。
 
-SAM已完成本人授權，DPAPI token、Drive scope、擁有人身分及refresh均已核實；單層與雙層空白探針已驗撤銷、繼承隔離、原樣恢復及清理，57項本機測試通過。11,780物件完整ACL已讀回（4直接／11,777繼承，還原計畫0阻礙）；My Drive缺省inheritedFrom改以實際parent鏈與完整權限逐層核對，不猜測外部或混合授權。Testing模式7日期限、真實固定專案隔離／恢復、機密封裝及雲端一致性仍待完成；0專案複製、0既有共用變更。詳細[本輪處理紀錄與操作順序](log/SAM_DRIVE_BACKUP_2026-10-22.md)優先於下方歷史段落，不再要求SAM重做已完成的安全提示或重選機密方案。
+SAM已完成本人授權，DPAPI token、Drive scope、擁有人身分及refresh均已核實。SAM後續明確同意「先暫停共用至修復完成」；12:16（Asia/Taipei）已撤銷固定專案及兩個來源的4筆直接非擁有者授權，完整回讀11,780物件皆為owner-only、非擁有者授權0。原ACL、身分／permission ID及還原計畫在第一筆撤權前完整保存於專案外；固定物件ID與連結不變。78項本機測試通過。詳細[實際隔離與恢復限制](log/SAM_DRIVE_ISOLATION_2026-10-22.md)優先於[07:23～09:33授權／探針歷史](log/SAM_DRIVE_BACKUP_2026-10-22.md)及下方舊段落。
 
-English: Owner authorization and empty inherited-ACL probes passed. Full target ACL coverage, durable authorization, encrypted transfer and cloud consistency remain separate gates. No project data or keys have been uploaded.
+**目前維持停止共用，不能提前恢復。** Testing模式7日期限、既有機密內容及其歷史版本處理、全量機密封裝／復原、雲端清冊／大小／雜湊／來源穩定性對帳，以及真實ACL恢復仍待完成；0專案檔案複製，不宣稱每日備份完成。不再要求SAM重做已完成的安全提示、重選機密方案或重答延長停止共用。
+
+排程先讀專案外的 `active-isolation.json`，沿用其中的原始還原資料；不得用目前owner-only清冊覆蓋原ACL，也不得重跑撤權。`scripts/drive_backup_isolation.py --verify-active` 僅重新讀回雲端並保存另一份檢查結果，不變更共用、原始還原資料或專案內容。所有備份階段使用同一執行鎖，失敗保持停止共用。
+
+English: SAM approved extended suspension. Four original non-owner grants were removed; a complete readback verified all 11,780 objects are owner-only. Original ACLs and restore identities are preserved privately. Sharing stays suspended until confidential-content remediation, encrypted recovery and full cloud verification succeed. No project data or keys have been uploaded; this is not a completed daily backup.
 
 <!-- SAM REMOTE ROLE RESULT 20261020 BEGIN -->
 **2026/10/20 REN復原子項接受方式**：依[SAM本輪決定](SAM_ACCEPTANCE_DECISIONS_2026-10-20.md)，接受完整同機模擬通過；本輪[USB來源／資料庫還原對帳](inventory/SAM_PROXY_N14_RESTORE_2026-10-20.json)已通過，實際環境與機器不同與否照實保留。此決定未補齊每日固定Drive可逆ACL／排程，亦未清除自動核准審查拒絕刪除的私有明文；詳[執行與待辦](SAM_ROLE_PROXY_REMOTE_EXECUTION_2026-10-20.md)。
