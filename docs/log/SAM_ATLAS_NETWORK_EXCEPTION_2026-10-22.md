@@ -20,4 +20,6 @@ SAM 明確要求保留 `0.0.0.0/0`，原因是本專案為共同作品與學習�
 
 [機器可讀決策](../inventory/ATLAS_NETWORK_EXCEPTIONS.json)與[最新上下文](../CURRENT_CONTEXT.md)提供後續檢查入口。歷史報告保留各自當時的真實觀察，不改寫舊數據。
 
+已同步此例外至既有SAM及JEFF／REN兩份進度監控提示，保留原排程與收件設定；本次未另外寄送信件。依SAM要求另保存一份專案外的後續記憶更新，避免下次仍採用舊的廣域規則判定。
+
 English: SAM explicitly accepts the existing `0.0.0.0/0` entry for this collaborative learning project. Future reviews should classify this exact project/CIDR pair as an accepted exception, not repeatedly demand removal or silently delete it. The CIDR permits all IPv4 sources; it is not a unique project address. Authentication, authorization, TLS, credential leakage and actual access checks remain in scope. No Atlas network settings were changed in this task.
