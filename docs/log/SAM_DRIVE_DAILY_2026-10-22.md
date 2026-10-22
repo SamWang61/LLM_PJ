@@ -8,7 +8,7 @@
 - `LLM_PJ Daily Backup` 的 OAuth 已切換 Production，Google Cloud 畫面回讀「實際運作中」。Google 應用程式驗證仍未完成，發布狀態不等同驗證或永久免重新登入；Testing 時簽發的 token 不宣稱已自動延長。[Google token 期限說明](https://developers.google.com/identity/protocols/oauth2/#expiration)。既有授權用於本輪，憑證繼續 DPAPI 私有保存。
 - 重新開啟固定專案，核對原資料夾與 Google 文件兩個來源 ID；固定連結、專案及來源物件均保留。
 - 新完整來源清冊 `complete=true`：47,658 檔、5,301,373,391 bytes；3,492 檔完成 AES-256-GCM 與本機認證復原，唯一排除項符合 SAM 決定。這是初次全量快照的數字；最後 GitHub 發布後若來源改變，必須產生新清冊並重新對帳。
-- 150 項本機備份測試通過，涵蓋原授權恢復、直接／繼承權限、遺失 API 回覆、部分恢復失敗後撤回、雲端／來源／機密復原不足時禁止恢復，以及密文重用需同來源與同金鑰。
+- 161 項本機備份測試通過，涵蓋原授權恢復、直接／繼承權限、遺失 API 回覆、部分恢復失敗後撤回、雲端／來源／機密復原不足時禁止恢復，以及密文重用需同來源與同金鑰。
 
 ## 執行狀態及驗收界線
 
@@ -21,6 +21,14 @@ GitHub 推送／合併會改變來源文件與 `.git`。工具把先前雲端快
 ## 首輪傳輸中斷與續傳
 
 首輪建立目錄時，有一個已預配 ID 的新目錄未能回讀，程序在內容上傳前停止。獨立重查該 ID 為 HTTP 404；原請求的服務端失敗原因未保存，不推定成因。已保留進度日誌，補上「只有確認不存在才以同 ID 有界重試」及回歸測試。續傳使用相同完整快照與預配 ID，並行工作數上限 48；不以新 ID 重建、不刪除目的地內容。GitHub 發布後的來源差異仍須於最後補齊，`--resume-snapshot` 不會略過完成前的來源穩定性檢查。
+
+## 完整權限讀回 / Complete ACL readback
+
+實際雲端清冊的子物件省略 `permissionDetails`，不能以一般檔案清冊推定直接／繼承來源。`drive_backup_acl_batch.py` 會對每個物件讀取完整 `permissions.list`，每批最多 100 個純 GET，驗證 response ID 無遺漏／重複／越界；失敗或有下一頁的項目改用完整分頁端點。外層雖為 multipart POST，內層只有讀取；撤銷及恢復授權仍依序單筆進行。[Google 官方批次規範](https://developers.google.com/workspace/drive/api/guides/performance#batch-requests)。
+
+本輪已在原專案及原資料夾做唯讀實測，兩個批次結果均與獨立權限端點相同，仍 owner-only。正式恢復後會批次讀回每個子項，再和新雲端清冊及原授權／繼承預期核對。這個兩物件實測僅證明 API 能力，不替代最後全樹驗收。新增含中文、多部件亂序、缺項、重複、越界、分頁、讀取錯誤及重試上限測試；備份相關本機測試總計 161 項通過。
+
+English: File-list responses omit child inheritance details. Full ACL readback therefore uses read-only permission batches for every object, validates response identities and handles pagination without omissions. The two fixed roots passed a live read-only comparison; the final whole-tree acceptance remains a separate gate.
 
 ## 操作入口 / Runbook
 

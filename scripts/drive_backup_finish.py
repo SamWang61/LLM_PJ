@@ -48,7 +48,7 @@ def main():
         recovery=recover_encrypted(plan,factory,directory/'authenticated-recovery',args.key)
         if not args.restore:
             print(json.dumps({'cloud_recovery_complete':True,'encrypted_files':recovery['count'], 'sharing_restored':False})); return
-        result=restore(plan,original,acl,recovery,factory(),directory)
+        result=restore(plan,original,acl,recovery,factory(),directory,drive_factory=factory)
         receipt=json.loads((directory/'consistency-receipt.json').read_text(encoding='utf8'))
         receipt.update(backup_completed=True,sharing_restored=True,encrypted_files_recovered=recovery['count'],
                        finished_at=result['finished_at'],acl_objects_verified=result['verified_objects'])
