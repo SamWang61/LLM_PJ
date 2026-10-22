@@ -2,7 +2,7 @@
 
 ## 2026-10-22 19:22 每日全量執行 / Current full backup
 
-SAM 已核准唯一排除 `MuscleCore分析資料/website/.pytest_cache`；OAuth 已回讀 **Production／實際運作中**，不再引用下方舊待決定狀態。新完整清冊為 47,658 檔、5,301,373,391 bytes、3,492 加密檔；全量程序已啟動，149 項本機測試通過。**全量雲端對帳、遠端認證復原及共用恢復尚在執行，未宣稱完成。** 詳見[最新每日備份紀錄與執行入口](log/SAM_DRIVE_DAILY_2026-10-22.md)、[政策](../config/drive-backup-policy.json)。
+SAM 已核准唯一排除 `MuscleCore分析資料/website/.pytest_cache`；OAuth 已回讀 **Production／實際運作中**，不再引用下方舊待決定狀態。新完整清冊為 47,658 檔、5,301,373,391 bytes、3,492 加密檔；全量程序已啟動，150 項本機測試通過。**全量雲端對帳、遠端認證復原及共用恢復尚在執行，未宣稱完成。** 詳見[最新每日備份紀錄與執行入口](log/SAM_DRIVE_DAILY_2026-10-22.md)、[政策](../config/drive-backup-policy.json)。
 
 GitHub 發布造成的來源變動須重建清冊並以原 ID 補齊差異。全部來源／雲端／復原核對成功才恢復原權限，全樹回讀通過才產生完成收據；失敗保留停止共用及原私有恢復狀態。固定連結及目的地額外檔案保留。Production 不等於 Google 應用程式驗證完成，也不承諾永久免登入。
 

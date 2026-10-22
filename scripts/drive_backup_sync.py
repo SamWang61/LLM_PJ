@@ -8,6 +8,7 @@ from datetime import datetime, timezone
 import json
 from pathlib import Path, PurePosixPath
 import threading
+import time
 
 from drive_backup_acl import (DriveError, FOLDER, PROJECT, FOLDER_MIME, identifier,
                               write_private_json)
@@ -161,12 +162,21 @@ def transfer(plan, drive_factory, directory, workers=48, check_source_before=Tru
         if row['id'] in latest['nodes']:
             current = latest['nodes'][row['id']]
         else:
-            record({'id': row['id'], 'phase': 'folder_create_requested'})
-            try:
-                drive.request('POST', 'files', params={'fields': 'id'}, json={
-                    'id': row['id'], 'name': row['name'], 'parents': [row['parent']], 'mimeType': FOLDER_MIME})
-            except Exception: pass
-            current = readback(drive, row['id'])
+            for attempt in range(3):
+                # Preallocated IDs make this retry identity-preserving. Retry
+                # only after GET confirms absence; never allocate another ID.
+                record({'id': row['id'], 'phase': 'folder_create_requested', 'attempt':attempt+1})
+                try:
+                    drive.request('POST', 'files', params={'fields': 'id'}, json={
+                        'id': row['id'], 'name': row['name'], 'parents': [row['parent']], 'mimeType': FOLDER_MIME})
+                except Exception as error:
+                    record({'id':row['id'],'phase':'folder_create_response_error','error_type':type(error).__name__})
+                try:
+                    current = readback(drive, row['id'])
+                    break
+                except DriveError as error:
+                    if str(error) != 'Drive GET HTTP 404' or attempt == 2: raise
+                    time.sleep(2 ** attempt)
         if (current.get('name') != row['name'] or current.get('parents') != [row['parent']]
                 or current.get('mimeType') != FOLDER_MIME): raise DriveError('Created folder identity mismatch')
         record({'id': row['id'], 'phase': 'folder_verified'})

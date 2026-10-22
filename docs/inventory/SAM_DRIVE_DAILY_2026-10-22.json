@@ -12,12 +12,18 @@
     "encrypted_files": 3492
   },
   "local_tests": {
-    "passed": 149,
+    "passed": 150,
     "failed": 0
   },
   "full_cloud_backup_completed": false,
   "sharing_restored": false,
   "state": "full_transfer_in_progress",
   "fixed_ids_preserved": true,
-  "keys_uploaded": false
+  "keys_uploaded": false,
+  "first_transfer_retry": {
+    "reason": "one preallocated folder ID absent on readback",
+    "initial_content_uploads": 0,
+    "same_ids_retained": true,
+    "server_cause": "not captured"
+  }
 }
