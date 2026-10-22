@@ -1,0 +1,47 @@
+{
+  "checked_at": "2026-10-22T05:40:55.192287+00:00",
+  "remediated_files": 980,
+  "remediated_versions": 984,
+  "owner_only_objects": 11780,
+  "nonowner_grants": 0,
+  "original_ids_retained": true,
+  "cloud_recovery_and_original_plaintext_removal_verified": true,
+  "sharing_restored": false,
+  "source_full_backup_completed": false,
+  "source_files_transferred": 0,
+  "fixed_project_id": "1rQrO8v6bl3_y_B0BwpZXhlHFHS8swQc5",
+  "fixed_folder_id": "1lXZv3hn3CgYmotpxgcna8i27wEodL8Gh",
+  "fixed_link": "https://drive.google.com/drive/project/1rQrO8v6bl3_y_B0BwpZXhlHFHS8swQc5?usp=drive_link",
+  "cloud_blobs_audited": 10611,
+  "native_source_revision_counts": [
+    1
+  ],
+  "ordinary_revision_retention_unset": 91,
+  "ordinary_revisions_retained": 28,
+  "ordinary_retained_bytes": 209235,
+  "source_preparation": {
+    "readable_files": 47557,
+    "bytes": 5296813561,
+    "encrypted_files": 3407,
+    "complete": false,
+    "errors": [
+      {
+        "path": "MuscleCore分析資料/website/.pytest_cache",
+        "error": "PermissionError"
+      }
+    ],
+    "approved_exclusions": []
+  },
+  "oauth": {
+    "publishing_status": "Testing",
+    "branding_saved": true,
+    "production_confirmation_pending": true,
+    "homepage": "https://vibecart-llmai.web.app/backup/",
+    "privacy": "https://vibecart-llmai.web.app/backup/privacy.html"
+  },
+  "hosting_version": "29dabfcbfc68cb49",
+  "local_contract_tests_passed": 133,
+  "initial_pin_readback_failure_recovered": true,
+  "source_full_cloud_transfer_executed": false,
+  "keys_or_credentials_published": false
+}

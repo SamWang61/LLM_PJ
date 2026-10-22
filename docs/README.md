@@ -1,5 +1,7 @@
 # 文件中心 / Documentation hub
 
+**2026/10/22 固定 Drive 機密修復**：[加密、雲端復原、來源缺項與 OAuth 狀態](log/SAM_DRIVE_ENCRYPTION_2026-10-22.md)／[去敏證據](inventory/SAM_DRIVE_ENCRYPTION_2026-10-22.json)。全量來源備份尚未完成，共用維持停止。
+
 **2026/10/21 前台效能正式交付**：[登入與頁面量測、12 項改善、449 項測試、正式部署及 18 組操作](FRONTEND_PERFORMANCE_2026-10-21.md)／[優化系統](優化系統.md)／[原圖及去敏清冊](inventory/frontend_performance_20261021/release-evidence.json)。v5 簡報原樣經 PR #165 合併；本人簽收另列。
 
 **2026/10/21 七個 PR 正式交付**：[優化系統](優化系統.md)記錄四項 P2、撤銷稽核、文件補正、446 項測試、依序合併與正式站前後台驗證；[去敏證據與原圖](inventory/jeff_production_20261021/release-evidence.json)。
