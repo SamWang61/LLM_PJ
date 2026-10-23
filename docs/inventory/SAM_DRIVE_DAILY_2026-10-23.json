@@ -1,0 +1,57 @@
+{
+  "schema": 1,
+  "scheduled_date": "2026-10-23",
+  "scheduled_time": "23:30",
+  "timezone": "Asia/Taipei",
+  "backup_completed": true,
+  "sharing_restored": true,
+  "fixed_link": "https://drive.google.com/drive/project/1rQrO8v6bl3_y_B0BwpZXhlHFHS8swQc5?usp=drive_link",
+  "project_id": "1rQrO8v6bl3_y_B0BwpZXhlHFHS8swQc5",
+  "folder_id": "1lXZv3hn3CgYmotpxgcna8i27wEodL8Gh",
+  "additional_project_source_ids": [
+    "1F0K89qC8R6QBietjvY8-NABrTWoWenVyXeayodLFfl4"
+  ],
+  "source_captured_at": "2026-10-23T16:14:03.049443+00:00",
+  "finished_at": "2026-10-23T18:48:00.285719+00:00",
+  "source_files": 47778,
+  "source_directories": 5309,
+  "source_plaintext_bytes": 5301769589,
+  "approved_exclusions": [
+    "MuscleCore分析資料/website/.pytest_cache"
+  ],
+  "cloud_objects": 53876,
+  "encrypted_files_independently_recovered": 3601,
+  "original_direct_grants_restored": 4,
+  "acl_objects_verified": 53876,
+  "post_restore_reconciliations": 242,
+  "max_reconciliation_attempts": 1,
+  "new_file_objects": 37,
+  "new_folder_objects": 3,
+  "updated_existing_files": 28,
+  "unchanged_source_files_verified": 47713,
+  "destination_content_deleted": 0,
+  "original_ids_preserved": true,
+  "source_rechecked_before_completion": true,
+  "pre_transfer_isolation_review": {
+    "objects": 53836,
+    "non_owner_grants": 0,
+    "inherited_object_version_increments_reviewed": 53833,
+    "direct_object_version_increments_reviewed": 3,
+    "ordinary_hashes_revisions_and_modified_times_unchanged": true,
+    "native_text_and_visible_revisions_unchanged": true,
+    "original_revocation_journals_preserved": true,
+    "permission_deletes_not_replayed": true
+  },
+  "completion_receipt_sha256": "ec8630bff794dc5f00ffdd35cea01e72db9ce3fc4e3412dfd8f9febbb52d97aa",
+  "post_cutoff_fix_validation": {
+    "tests_passed": 246,
+    "drive_backup_tests": 229,
+    "encrypted_archive_tests": 17,
+    "new_cases": 33,
+    "real_snapshot_offline_replay_objects": 53836,
+    "not_used_as_new_cloud_run_evidence": true
+  },
+  "publication_boundary": "This record, repair code and later Git publication enter the next daily source snapshot.",
+  "private_evidence_uploaded": false,
+  "credentials_or_keys_uploaded": false
+}
