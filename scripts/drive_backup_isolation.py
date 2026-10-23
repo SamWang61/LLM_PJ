@@ -79,7 +79,40 @@ def owner_only(item):
         raise DriveError("Non-owner access remains or the full ACL is unavailable")
 
 
-def verify_isolation(drive, snapshot, source_ids=()):
+def verify_isolation(drive, snapshot, source_ids=(), *, evidence_directory=None):
+    # A list response can lag behind a verified parent permission removal.
+    # Accept a disagreement only through the same bounded, independent endpoint
+    # verification used by restoration; never repeat DELETE or infer access.
+    from drive_backup_restore import normalized, reconcile_acl_readback
+    if evidence_directory is not None:
+        evidence_directory = Path(evidence_directory)
+        evidence_directory.mkdir(exist_ok=False)
+    def verified_owner(item):
+        original = snapshot["nodes"].get(item.get("id"))
+        if original is None:
+            raise DriveError("Target inventory changed during isolation readback")
+        expected_rows = [p for p in original.get("permissions", []) if p.get("role") == "owner"]
+        if len(expected_rows) != 1:
+            raise DriveError("Original owner identity is incomplete")
+        expected = normalized(expected_rows)
+        try:
+            owner_only(item)
+            if normalized(item["permissions"]) != expected:
+                raise DriveError("Original owner identity changed")
+            return
+        except (DriveError, ValueError):
+            if evidence_directory is None:
+                raise
+        key = identifier(item["id"])
+        write_private_json(evidence_directory / (key + "-initial.json"), {
+            "metadata": dict(item), "original_permissions": original["permissions"]})
+        try:
+            current_permissions = drive.permissions(key)
+            reconcile_acl_readback(item, current_permissions, expected, drive, evidence_directory)
+            owner_only(item)
+        except (DriveError, ValueError) as error:
+            raise DriveError("Non-owner isolation readback failed after independent verification") from error
+
     roots = {PROJECT, FOLDER, *source_ids}
     nodes = {}
     for key in roots:
@@ -90,11 +123,13 @@ def verify_isolation(drive, snapshot, source_ids=()):
         if any(item.get(field) != snapshot["nodes"][key].get(field)
                for field in ("name", "mimeType", "parents")):
             raise DriveError("Root identity changed; inspect the existing recovery plan")
-        owner_only(item)
+        verified_owner(item)
         # Independently verify the three roots with the paginated ACL endpoint.
         rows = drive.permissions(key)
-        if len(rows) != 1 or rows[0].get("role") != "owner" or rows[0].get("emailAddress") != OWNER:
+        expected = normalized([p for p in snapshot["nodes"][key]["permissions"] if p.get("role") == "owner"])
+        if normalized(rows) != expected:
             raise DriveError("Root ACL endpoint still reports non-owner access")
+        item["permissions"] = rows
         nodes[key] = item
     queue = [FOLDER]
     while queue:
@@ -106,7 +141,7 @@ def verify_isolation(drive, snapshot, source_ids=()):
             key = identifier(item.get("id"))
             if key in nodes or len(item.get("parents", [])) != 1 or item["parents"][0] not in group:
                 raise DriveError("Duplicate or out-of-scope readback item")
-            owner_only(item)
+            verified_owner(item)
             nodes[key] = item
             if item["mimeType"] == FOLDER_MIME:
                 queue.append(key)
@@ -165,8 +200,10 @@ def isolate(drive, snapshot, directory, source_ids=()):
             operation["status"] = "verified_absent"
             write_private_json(journal, state)
         state["phase"] = "root_permissions_removed"
+        state["permissions_removed_at"] = datetime.now(timezone.utc).isoformat()
         write_private_json(journal, state)
-        verified = verify_isolation(drive, snapshot, source_ids)
+        verified = verify_isolation(drive, snapshot, source_ids,
+                                    evidence_directory=directory / "isolation-readback")
         write_private_json(directory / "isolated-acl.json", verified)
         state.update(phase="isolation_verified", complete=True,
                      verified_at=verified["checked_at"], verified_objects=verified["objects"],
@@ -218,7 +255,9 @@ def verify_active(drive, private):
             or not journal.get("owner_approved_extended_isolation")
             or journal.get("sharing_restored") or state.get("sharing_restored")):
         raise ValueError("Incomplete or already restored recovery state")
-    verified = verify_isolation(drive, snapshot, snapshot.get("additional_project_source_ids", []))
+    import uuid
+    verified = verify_isolation(drive, snapshot, snapshot.get("additional_project_source_ids", []),
+        evidence_directory=output / ("readonly-isolation-recheck-" + uuid.uuid4().hex))
     # Rechecks never replace the immutable original ACL, plan or execution log.
     write_private_json(output / "latest-isolation-readback.json", verified)
     return {"phase": "isolation_verified", "complete": True,

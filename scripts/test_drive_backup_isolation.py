@@ -201,3 +201,93 @@ def test_root_rename_during_readback_fails_closed(snapshot, tmp_path):
     api.nodes[acl.FOLDER]["name"] = "unexpected rename"
     with pytest.raises(acl.DriveError, match="Root identity changed"):
         isolation.verify_isolation(api, snapshot)
+
+
+class LaggedListDrive(FakeDrive):
+    def __init__(self, snapshot, *, stale_permission_reads=0, fresh_change=None, **kwargs):
+        super().__init__(snapshot, **kwargs)
+        self.old_child = self.inline("child")
+        self.stale_permission_reads = stale_permission_reads
+        self.child_permission_reads = 0
+        self.fresh_change = fresh_change
+
+    def pages(self, path, key, **params):
+        yield copy.deepcopy(self.old_child)
+
+    def permissions(self, key):
+        if key == "child":
+            self.child_permission_reads += 1
+            if self.child_permission_reads <= self.stale_permission_reads:
+                return copy.deepcopy(self.old_child["permissions"])
+        return super().permissions(key)
+
+    def request(self, method, path, **kwargs):
+        row = super().request(method, path, **kwargs)
+        if method == "GET" and path == "files/child" and self.fresh_change:
+            change = self.fresh_change
+            if change == "extra_grant":
+                row["permissions"].append(grant()); row["shared"] = True
+            elif change == "shared_flag":
+                row["shared"] = True
+            elif change == "owner_id":
+                row["permissions"][0]["id"] = "different-owner-id"
+            elif change == "missing_owner_email":
+                row["permissions"][0].pop("emailAddress")
+            elif change == "missing_permissions":
+                row.pop("permissions")
+            elif change == "parent":
+                row["parents"] = ["outside"]
+            elif change == "type":
+                row["mimeType"] = acl.FOLDER_MIME
+        return row
+
+
+def test_stale_shared_list_requires_two_fresh_owner_only_endpoints(snapshot, tmp_path):
+    api = LaggedListDrive(snapshot, directory=tmp_path)
+    result = isolation.isolate(api, snapshot, tmp_path)
+    assert result["complete"] and len(api.deletes) == 2
+    proof = json.loads((tmp_path / "isolation-readback" / "acl-reconciliation" / "child.json").read_text())
+    assert proof["initial_metadata"]["shared"] is True
+    assert len(proof["initial_metadata"]["permissions"]) == 2
+    assert proof["complete"] and len(proof["attempts"]) == 1
+    fresh = proof["attempts"][0]
+    assert fresh["metadata"]["shared"] is False
+    assert [p["role"] for p in fresh["complete_permissions"]] == ["owner"]
+    saved = json.loads((tmp_path / "original-acl.json").read_text())
+    assert len(saved["nodes"]["child"]["permissions"]) == 2
+
+
+def test_isolation_read_retry_preserves_conflict_and_never_repeats_delete(snapshot, tmp_path, monkeypatch):
+    import drive_backup_restore as restore
+    monkeypatch.setattr(restore.time, "sleep", lambda _: None)
+    api = LaggedListDrive(snapshot, stale_permission_reads=2, directory=tmp_path)
+    result = isolation.isolate(api, snapshot, tmp_path)
+    assert result["complete"] and len(api.deletes) == 2
+    proof = json.loads((tmp_path / "isolation-readback" / "acl-reconciliation" / "child.json").read_text())
+    assert proof["complete"] and len(proof["attempts"]) == 2
+    assert any(p["role"] != "owner" for p in proof["attempts"][0]["complete_permissions"])
+
+
+@pytest.mark.parametrize("change", ["extra_grant", "shared_flag", "owner_id",
+                                    "missing_owner_email", "missing_permissions", "parent", "type"])
+def test_isolation_disagreement_cannot_waive_access_or_identity(snapshot, tmp_path, monkeypatch, change):
+    import drive_backup_restore as restore
+    monkeypatch.setattr(restore.time, "sleep", lambda _: None)
+    api = LaggedListDrive(snapshot, fresh_change=change, directory=tmp_path)
+    with pytest.raises(acl.DriveError, match="Non-owner isolation"):
+        isolation.isolate(api, snapshot, tmp_path)
+    journal = json.loads((tmp_path / "journal.json").read_text())
+    assert journal["phase"] == "failed_closed" and not journal["sharing_restored"]
+    assert len(api.deletes) == 2
+    proof = json.loads((tmp_path / "isolation-readback" / "acl-reconciliation" / "child.json").read_text())
+    assert not proof["complete"] and 1 <= len(proof["attempts"]) <= 3
+
+
+def test_repeated_isolation_audit_does_not_overwrite_prior_evidence(snapshot, tmp_path):
+    api = LaggedListDrive(snapshot, directory=tmp_path)
+    isolation.isolate(api, snapshot, tmp_path)
+    path = tmp_path / "isolation-readback" / "acl-reconciliation" / "child.json"
+    original = path.read_bytes()
+    with pytest.raises(FileExistsError):
+        isolation.verify_isolation(api, snapshot, evidence_directory=tmp_path / "isolation-readback")
+    assert path.read_bytes() == original and len(api.deletes) == 2

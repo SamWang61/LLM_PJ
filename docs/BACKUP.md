@@ -1,5 +1,13 @@
 # 每日備份 / Daily backup
 
+## 2026-10-24 02:48:00 每日完整備份完成 / Full backup completed
+
+**10/23 23:30 排程已完成，原共用已恢復。** 來源清冊為 2026-10-24 00:14:03（Asia/Taipei），47,778 檔、5,309 個子目錄、5,301,769,589 bytes；3,601 份密文獨立下載與認證復原、53,876 個雲端物件與直接／繼承權限完整核對通過。原 4 筆直接授權在全部內容／復原門檻通過後恢復，並在最後完整權限及來源回讀後寫入完成收據。固定連結、所有原 ID 與目的地額外內容不變。詳見[本次紀錄](log/SAM_DRIVE_DAILY_2026-10-23.md)與[去敏收據](inventory/SAM_DRIVE_DAILY_2026-10-23.json)。
+
+本輪曾因隔離清冊與新端點觀測不同停止，保留原撤權日誌後唯讀重核，未重送撤權；另逐物件核對移除授權造成的版本增量、普通檔案內容／修改時間及原生文件完整內容版本。補修加入隔離時有證據的兩端點重核、即時落盤的來源檢查點與撤權版本審核，246 項測試及本輪真實快照離線重播通過。下方舊受阻狀態仍留作歷史；本次事後紀錄、補修與 Git 發布屬下一輪來源。
+
+English: The scheduled full backup completed with original sharing restored. All cloud, source, encrypted-recovery and ACL checks passed. The fixed link and extra destination content remain unchanged. Post-cutoff documentation and repairs enter the next daily cycle.
+
 ## 2026-10-23 00:55:52 每日完整備份完成 / Full backup completed
 
 **本次完整備份及原共用恢復已通過驗證。** 最新完整清冊時間 2026-10-22 21:19:10（Asia/Taipei），共 47,743 檔、5,310 個子目錄、5,301,622,386 bytes；3,566 個機密檔全部從雲端獨立下載並認證復原。雲端 53,836 個物件完整對帳，之後才恢復原 4 筆直接授權，再完整核對 53,836 個物件的直接／繼承權限及來源穩定性。固定連結與所有原 ID 保留，未刪除目的地額外內容。詳見[本次紀錄](log/SAM_DRIVE_DAILY_2026-10-22.md)及[去敏收據](inventory/SAM_DRIVE_DAILY_2026-10-22.json)。
