@@ -32,6 +32,6 @@
 - 撤權前後保存原生文件指紋及完整雲端觀測，逐物件核對版本增量只等於原已移除的授權數；普通檔案雜湊、revision、修改時間及其他欄位不可變。直接物件的時間變動須落在已保存的操作區間。
 - **246 項本機測試通過**（229 項 Drive、17 項加密封裝），包括 33 項新案例；另以本輪 53,836 個真實保存快照做離線審核重播，全部通過。未重新執行整站部署、Atlas 或人員驗收。
 
-**時間界線：本輪雲端執行使用原程式與上述保存證據的恢復流程；這份完成紀錄、補修程式及後續 Git 提交在來源清冊之後產生，納入下一輪每日備份。** 本機補修測試與離線證據重播不冒稱新版程式已另做一輪完整雲端備份；GitHub CI／合併結果以本次 PR 為準。私有完成收據 SHA-256：`ec8630bff794dc5f00ffdd35cea01e72db9ce3fc4e3412dfd8f9febbb52d97aa`。
+**時間界線：本輪雲端執行使用原程式與上述保存證據的恢復流程；這份完成紀錄、補修程式及後續 Git 提交在來源清冊之後產生，納入下一輪每日備份。** 本機補修測試與離線證據重播不冒稱新版程式已另做一輪完整雲端備份；GitHub 發布見 [PR #183](https://github.com/SamWang61/LLM_PJ/pull/183)，CI／合併狀態以該 PR 實際紀錄為準。私有完成收據 SHA-256：`ec8630bff794dc5f00ffdd35cea01e72db9ce3fc4e3412dfd8f9febbb52d97aa`。
 
 English: The October 23 scheduled backup completed on October 24 at 02:48:00 Taipei time. All 47,778 source files, 3,601 independently downloaded encrypted recoveries and 53,876 cloud objects/ACLs passed verification before the completion receipt. Original sharing and fixed IDs were restored. Conflicting isolation observations and permission-related version increments were independently reviewed without replaying mutations. The follow-up repair passed 246 tests and an offline replay of the real snapshot. This log, repair and Git publication are post-cutoff material for the next daily cycle.
