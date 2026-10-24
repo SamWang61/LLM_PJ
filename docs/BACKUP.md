@@ -1,5 +1,13 @@
 # 每日備份 / Daily backup
 
+## 2026-10-24 23:36 本輪前置受阻 / Current preflight blocked
+
+**10/24 排程尚未啟動完整備份。** 已確認沒有重疊執行、前次真實完成／恢復收據一致，以及固定專案仍連到原兩個來源。之後自動核准審查拒絕保存來源確認並啟動每日備份，僅回覆 `blocked by policy`；沒有繞過拒絕。等待程序已停止、鎖已釋放，沒有撤權或傳輸。固定連結與前次成功指標維持。詳見[本輪前置紀錄](log/SAM_DRIVE_DAILY_2026-10-24.md)及[去敏結果](inventory/SAM_DRIVE_DAILY_2026-10-24.json)。
+
+下方 10/24 02:48 的成功屬於 **10/23 排程**，不可當成本次完成。此阻礙不是已確認的 OAuth 失效，不重複要求既有 Production 授權；後續條件允許時須重新確認來源，不能沿用本次 UI 核對。
+
+English: The October 24 run was blocked by automatic approval review before the daily entrypoint. No sharing change or file transfer occurred. The previous successful backup remains valid for its own source cutoff and does not cover this schedule.
+
 ## 2026-10-24 02:48:00 每日完整備份完成 / Full backup completed
 
 **10/23 23:30 排程已完成，原共用已恢復。** 來源清冊為 2026-10-24 00:14:03（Asia/Taipei），47,778 檔、5,309 個子目錄、5,301,769,589 bytes；3,601 份密文獨立下載與認證復原、53,876 個雲端物件與直接／繼承權限完整核對通過。原 4 筆直接授權在全部內容／復原門檻通過後恢復，並在最後完整權限及來源回讀後寫入完成收據。固定連結、所有原 ID 與目的地額外內容不變。詳見[本次紀錄](log/SAM_DRIVE_DAILY_2026-10-23.md)與[去敏收據](inventory/SAM_DRIVE_DAILY_2026-10-23.json)。
