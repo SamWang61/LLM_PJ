@@ -19,6 +19,6 @@
 
 ## 紀錄界線 / Evidence boundary
 
-這是未啟動備份的前置紀錄，不是新的完成收據。紀錄與 Git 發布會屬於未來成功備份的來源。本次只修改文件，沒有修改備份程式或重新執行前次 246 項程式測試；文件檢查與 GitHub CI／發布狀態另依本次 PR 的實際結果判讀。
+這是未啟動備份的前置紀錄，不是新的完成收據。紀錄與 Git 發布會屬於未來成功備份的來源。本次只修改文件，沒有修改備份程式或重新執行前次 246 項程式測試；文件政策檢查為 1,127 files／847 UTF-8 texts／0 errors，GitHub CI／發布狀態依 [PR #184](https://github.com/SamWang61/LLM_PJ/pull/184) 的實際結果判讀。
 
 English: This scheduled run stopped before the daily backup entrypoint because automatic approval review rejected saving the source attestation and starting the backup. The two original project sources were verified in the UI, then all created tabs were closed. The waiting process was stopped and the lock released. No sharing change or file transfer occurred. The previous successful receipt remains intact and does not cover this schedule. This is a preflight record, not a completed cloud backup or evidence of OAuth failure.
