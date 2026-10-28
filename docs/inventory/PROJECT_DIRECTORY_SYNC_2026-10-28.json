@@ -1,0 +1,69 @@
+{
+  "date": "2026-10-28",
+  "base_commit": "7cf1403765a13e913c4beca1602e13b9c599b21a",
+  "scope": "User-requested local project directory to GitHub sync; original file bytes preserved. Historical source files retain their original dates and wording.",
+  "source_files": [
+    {
+      "path": "MuscleCore分析資料/website/app/templates/base.html",
+      "bytes": 3643,
+      "sha256": "c3e8d6ad31630d3914ec9ce844523dd9b749a7b753a233180cfa8640068b29a6"
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/supermarket/recovery_20261005/before/import_report.json",
+      "bytes": 768,
+      "sha256": "12dd92176a8c914c8eca80398dfd72352b19cdfa795bab1fe7b3ea266f5e5e15"
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/supermarket/recovery_20261005/before/latest_status.json",
+      "bytes": 666,
+      "sha256": "b8e2b2a60fca49259db08951358ce4e996343ba31d872cfca215f3f175e22a92"
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/supermarket/recovery_20261005/before/storefront_report.json",
+      "bytes": 438,
+      "sha256": "c7028657a136fde9c26e365dcf64d22c935afab15b178aed6f58d76129297cf0"
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/supermarket/recovery_20261005/schema_readback.json",
+      "bytes": 170473,
+      "sha256": "1f63630f0b51b558b171224d039c30e9699a1245bfd961c480252384c41ad3ad"
+    },
+    {
+      "path": "VibeCart_AI/MongoDB/test_data/generated/migration_before.json",
+      "bytes": 140109,
+      "sha256": "d4880c4e33f5a34690bf9f84048edf1e04b612b3d56afc9e57cf0a79f9952675"
+    },
+    {
+      "path": "簡報文件/Untitled project/audio/speech-zm_yunxia-1792464275225.wav",
+      "bytes": 1915782,
+      "sha256": "ad51a71e6cb9cc5f15d395587ff95a70d5945504f9cca3232d03c4a4fe7fe259"
+    },
+    {
+      "path": "簡報文件/【内容梗概】.txt",
+      "bytes": 2308,
+      "sha256": "7a46dec3eec60246c9e9398f6c71a65467e60d932dc691a798e135a6d8a1153a"
+    },
+    {
+      "path": "討論的相關記錄/1017 的交付說明，請協助確認最後幾項 by JEFF.txt",
+      "bytes": 4631,
+      "sha256": "027c6abb7ba51bf9ad6e1b0158f77bf130cd5b9c67cc7624731f499a372c15b5"
+    }
+  ],
+  "incoming_newer_files": [
+    "docs/SAM_ROLE_PROXY_REMOTE_EXECUTION_2026-10-20.md",
+    "docs/inventory/SAM_ROLE_PROXY_REMOTE_2026-10-20.json"
+  ],
+  "excluded_untracked_count": 14,
+  "excluded_categories": [
+    "editing cache and PowerPoint lock files",
+    "editor project with personal photo references",
+    "credential launcher",
+    "billing exports",
+    "raw discussion note with personal connection details"
+  ],
+  "verification": {
+    "source_copy_sha256_equal": true,
+    "new_database_access": false,
+    "new_deployment": false
+  }
+}

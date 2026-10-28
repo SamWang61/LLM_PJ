@@ -1,0 +1,40 @@
+10/17 的交付說明，請協助確認最後幾項 🙏
+【1. 請合併】 PR #23 feature/jeff-ai-validation → #21（codex/sam-final-baseline-20261016）
+內容：T5 真實模型實測＋雲端洞察修正；已先合併 #21 最新 b62e2c7，GitHub 顯示可合併、無衝突
+對 #21 只差 6 個檔案：ai_payload.py、ai_workflows.py、ai_insight.html、test_ai_insight.py、AI_DASHBOARD.md、CHANGELOG.md
+本機依 CI 步驟：website 172 passed／3 skipped（REN 並發）、test_data 26、backup 3、prepare_cloud_source OK、文件檢查 0 errors
+CHANGELOG：#21 合併 T1～T4 時沒保留這 4 條，我只「新增」補回，沒改你的條目
+#21 合併 main 後，#12～#15 可關閉（內容都已在 #21）
+【2. behavior_events consumer 清單（依 #21＋#23 原始碼，D4 匯入前請確認）】 讀取（都已用 production_behavior_query 排除 synthetic）：
+app/services/dashboard.py 推薦監控
+app/store_v4.py 前台推薦（→ ai_workflows.storefront_recommendations 內再過濾一次）
+app/store.py legacy 首頁 寫入（測試／示範事件有標記）：
+app/services/member_events.py（synthetic／synthetic_batch_id／exclude_from_attribution）
+VibeCart_AI/services/sku_cart_service.py（示範結帳 PURCHASE 標 exclude_from_attribution） 其他：
+scripts/verify_v4_test.py：你的驗證工具，只清自己建的測試資料
+seed_mongodb.py（legacy）：只建 collection／索引，不可對 v4 執行
+PR #5 preference_service.py：讀取「沒有」過濾 synthetic → 截止前不採用
+T5 沒有新增任何 behavior_events 讀寫
+排程、recommendation_logs、user_preference_scores：目前沒有程式讀寫 → JEFF 確認：synthetic 不進正式推薦與監控，D4 可以匯入（遠端隔離證據請你驗）
+【3. 已實作 vs 只有規格（簡報請照這個寫）】 ✅ 已實作（離線測試＋T5 真實模型）
+後台版型、營運總覽、推薦監控、雲端洞察（4 個預設問題）、Local 相似商品、AI 比較
+白名單 v1、「送給模型的資料」＝實際送出、模型失敗退回規則
+自由提問六點防護（你加的旗標預設關閉，展示建議維持關閉） 📝 只有 v1.2 規格、未實作
+D5 商品／SKU／訂單／會員寫入、稽核 180 天、冪等、批量 request_id
+6+4 推薦、計分衰減、排程、回購／跨類統計、猜你喜歡（需 D4） ❌ v1 不做：取消／退款、刪除
+【4. T5 真實模型實測（10/12～10/17，Atlas 唯讀）】
+BGE bge-small-zh-v1.5（本機 CPU）：324 筆可售商品，載入 5.0 秒、全部向量化 7.6 秒、相似查詢中位數 26.5 ms；Top5 抽查 40 筆全部同大類、37 筆同小類
+Claude claude-sonnet-5：3 回共 9 次呼叫
+修正後延遲約 7.5～8.6 秒（補貨長回覆 20.6 秒），輸入 token 從約 18k 降到 5k～10k
+回覆數字都與送出資料一致；修正了截斷、日期抄錯、補貨以偏概全／自行算差額
+仍可能小幅自行相減、回覆偏長 → 畫面保留「請人工核對」
+細節：docs/AI_DASHBOARD.md 的 T5 小節
+【5. 要跟你商量】 ① 線上要不要開 Claude？目前「只設環境變數開不起來」，需要改你的檔案：
+cloud_runtime.py 把 AI_SUMMARY_ENABLED／AI_FREE_QUESTION_ENABLED 寫死 False → 改成讀環境變數（自由提問建議仍固定 False）
+requirements-cloud.txt 缺 langgraph、langchain-core、langchain-anthropic（版本同 requirements-llm.txt）
+Secret Manager 放 ANTHROPIC_API_KEY；設定 AI_SUMMARY_ENABLED=true、CLAUDE_MODEL=claude-sonnet-5
+預覽模式 CLOUD_PREVIEW_READ_ONLY=true 會擋 /admin，展示後台要用正式版 若來不及：S08 截圖改在本機拍並標註「本機執行＋commit SHA」 ② BGE 需要 PyTorch，建議只在本機展示，線上維持關閉 ③ 自由提問：展示維持關閉，只用 4 個預設問題 ④ PR #5：截止前不採用 ⑤ D5：簡報寫「規格完成、未實作」 ⑥ 後台「撤銷會員全部裝置 session」（REN #18 點名）：要不要截止前做？要看 REN 後端有沒有接口 ⑦ 截圖（S06～S08）要放哪個分支：PR #19 還是新分支？ ⑧ 展示用管理員密碼是群組共用的弱密碼：截圖不會露出，展示後請更換
+【6. 提醒】
+Atlas 現在 orders 3,002 筆（多 2 筆 10/14 示範訂單，應是結帳驗收留下的）
+雲端洞察沒選日期時取「最後一筆訂單往前 7 天」＝10/09～10/15，本期只有 2 筆、營收 −96.5%
+展示／截圖請手動選 09/29～10/05 之類的完整區間；若 10/14 那 2 筆是測試殘留，要不要清掉由你決定
