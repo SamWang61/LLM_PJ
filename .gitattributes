@@ -34,3 +34,7 @@ scripts/run_remote_d4_consumer_probe.cjs -text !eol whitespace=blank-at-eol,blan
 
 # Keep published presentation metadata byte-identical.
 簡報文件/**/*.json -text !eol
+
+# Preserve original historical JSON bytes during directory synchronization.
+VibeCart_AI/MongoDB/supermarket/recovery_20261005/**/*.json -text !eol
+VibeCart_AI/MongoDB/test_data/generated/migration_before.json -text !eol

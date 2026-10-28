@@ -49,3 +49,11 @@ token*.json
 desktop.ini
 *.log
 deploy/firebase/.firebase/
+
+# Local editing state and private source records / 本機編輯狀態與私有原始紀錄
+~$*
+/簡報文件/Untitled project/cache/
+/簡報文件/Untitled project/concat.json
+/討論的相關記錄/Open-Credentials.cmd
+/討論的相關記錄/抵免額*.csv
+/討論的相關記錄/5_6251381472637232259.md
