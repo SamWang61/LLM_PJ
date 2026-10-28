@@ -1,0 +1,64 @@
+{
+  "date": "2026-10-28",
+  "scope": "VibeCart AI user and administrator operation manuals",
+  "website": "https://vibecart-llmai.web.app/",
+  "file_count": 4,
+  "validation": {
+    "source": "The four reviewed files delivered in this conversation",
+    "visual_qa": "18 rendered pages reviewed during manual authoring",
+    "links": "Chapter links and website links verified during manual authoring",
+    "mobile_images": "Browser narrow viewport illustrations, not physical-device acceptance",
+    "admin_images": "Current templates with local teaching data, not live business records",
+    "pdf_storage": "Git LFS"
+  },
+  "files": [
+    {
+      "path": "操作手冊/2026-10-28/VibeCart_AI_使用者操作手冊_手機與電腦版.docx",
+      "bytes": 656611,
+      "sha256": "f49282b7e9bca9dfda7e2b20d9dc2084884bb336ec60b96b10fa01745c4af4a3",
+      "role": "user",
+      "pages": 8,
+      "format": "docx",
+      "devices": [
+        "mobile",
+        "desktop"
+      ]
+    },
+    {
+      "path": "操作手冊/2026-10-28/VibeCart_AI_使用者操作手冊_手機與電腦版.pdf",
+      "bytes": 773910,
+      "sha256": "2b36167f849d516bb700bf6fcd5b47d996cd1624670583d51c9202bd7199faec",
+      "role": "user",
+      "pages": 8,
+      "format": "pdf",
+      "devices": [
+        "mobile",
+        "desktop"
+      ]
+    },
+    {
+      "path": "操作手冊/2026-10-28/VibeCart_AI_管理者操作手冊_手機與電腦版.docx",
+      "bytes": 474130,
+      "sha256": "0b63bf5dbe6db0d17f7b82ec38ce0633ac8c31059111f2bb7ef7bc3be32b03fd",
+      "role": "administrator",
+      "pages": 10,
+      "format": "docx",
+      "devices": [
+        "mobile",
+        "desktop"
+      ]
+    },
+    {
+      "path": "操作手冊/2026-10-28/VibeCart_AI_管理者操作手冊_手機與電腦版.pdf",
+      "bytes": 826901,
+      "sha256": "f7d05ee2fda80efd932b7d07115463dce960973b6e8b1189afcebac7922117b8",
+      "role": "administrator",
+      "pages": 10,
+      "format": "pdf",
+      "devices": [
+        "mobile",
+        "desktop"
+      ]
+    }
+  ]
+}
